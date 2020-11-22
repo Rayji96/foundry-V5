@@ -1,0 +1,45 @@
+{
+  "Actor": {
+    "types": ["player"],
+    "templates": {
+      "background": {
+        "biography": "",
+        "age": ""
+      }
+    },
+    "player":{
+      "templates": ["background"],
+      "resources": {
+        "health": {
+          "min": 0,
+          "value": 0,
+          "max": 10
+        },
+        "willpower": {
+          "min": 0,
+          "value": 0,
+          "max": 10
+        }
+      },
+      "goodness": {
+        "value": 5,
+        "max": 10
+      }
+    }
+  },
+  "Item": {
+    "types": ["weapon", "power"],
+    "templates": {
+      "desc": {
+        "description": ""
+      }
+    },
+    "weapon": {
+      "templates": ["desc"]
+    },
+    "power": {
+      "templates": ["desc"],
+      "discipline": ""
+    }
+  }
+}
