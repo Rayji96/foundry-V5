@@ -4,12 +4,12 @@
     "templates": {
       "base": {
         "health": {
-          "value": 10,
+          "value": 0,
           "min": 0,
           "max": 10
         },
         "power": {
-          "value": 5,
+          "value": 0,
           "min": 0,
           "max": 5
         }

@@ -7,7 +7,7 @@ export class BoilerplateItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["boilerplate", "sheet", "item"],
+      classes: ["vtm5e", "sheet", "item"],
       width: 520,
       height: 480,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
@@ -16,7 +16,7 @@ export class BoilerplateItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = "systems/boilerplate/templates/item";
+    const path = "systems/vtm5e/templates/item";
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.html`;
 

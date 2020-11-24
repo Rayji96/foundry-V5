@@ -8,7 +8,7 @@
   "templateVersion": 2,
   "author": "Ray Ji",
   "esmodules": ["module/boilerplate.js"],
-  "styles": ["css/boilerplate.css"],
+  "styles": ["css/vtm5e.css"],
   "scripts": [],
   "packs": [],
   "languages": [
@@ -22,8 +22,8 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
-  "url": "",
-  "manifest": "",
-  "download": "",
+  "url": "https://github.com/Rayji96/foundry-V5/",
+  "manifest": "https://github.com/Rayji96/foundry-V5/system.json",
+  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_0.1.0.zip",
   "license": "LICENSE.txt"
 }

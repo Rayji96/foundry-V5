@@ -7,8 +7,8 @@ export class BoilerplateActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["boilerplate", "sheet", "actor"],
-      template: "systems/boilerplate/templates/actor/actor-sheet.html",
+      classes: ["vtm5e", "sheet", "actor"],
+      template: "systems/vtm5e/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]

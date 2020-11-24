@@ -4,7 +4,10 @@
   <header class="sheet-header">
       <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
       <div class="header-fields">
+        <div class="flexrow">
           <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+          <h1 class="charname"><input name="clan" type="text" value="Clan" placeholder="Clan"/></h1>
+        </div>
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
@@ -15,24 +18,68 @@
             <div class="resource flex-group-center">
                 <label for="data.health.value" class="resource-label">Health</label>
                 <div class="resource-content flexrow flex-center flex-between">
-                  <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
+                  <div class="flexcol">
+                    <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
+                    <span> Aggrevated </span>
+                  </div>
                   <span> / </span>
-                  <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+                  <div class="flexcol">
+                    <input type="text" name="placeholder" value="0" data-dtype="Number"/>
+                    <span> Superficial </span>
+                  </div>
+                  <span> / </span>
+                  <div class="flexcol">
+                    <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+                    <span> Max </span>
+                  </div>
                 </div>
             </div>
             <div class="resource flex-group-center">
-                <label for="data.power.value" class="resource-label">Power</label>
+                <label for="data.power.value" class="resource-label">Willpower</label>
                 <div class="resource-content flexrow flex-center flex-between">
-                  <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number"/>
+                  <div class="flexcol">
+                    <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number"/>
+                    <span> Aggrevated </span>
+                  </div>
                   <span> / </span>
-                  <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number"/>
+                  <div class="flexcol">
+                    <input type="text" name="placeholder" value="0" data-dtype="Number"/>
+                    <span> Superficial </span>
+                  </div>
+                  <span> / </span>
+                  <div class="flexcol">
+                    <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number"/>
+                    <span> Max </span>
+                  </div>
                 </div>
             </div>
         </div>
         {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
         use both the "grid" and "grid-Ncol" class where "N" can be any number
         from 1 to 12 and will create that number of columns.  --}}
-        <div class="abilities grid grid-3col">
+        <div class="resources grid grid-3col">
+            <div class="resource flex-group-center">
+                <label for="placeholder" class="resource-label">Humanity</label>
+                <div class="resource-content flexrow flex-center flex-between">
+                  <input type="text" name="placeholder" value="0" data-dtype="Number"/>
+                  <span> / 10</span>
+                </div>
+            </div>
+            <div class="resource flex-group-center">
+                <label for="placeholder" class="resource-label">Hunger</label>
+                <div class="resource-content flexrow flex-center flex-between">
+                  <input type="text" name="placeholder" value="0" data-dtype="Number"/>
+                  <span> / 5</span>
+                </div>
+            </div>
+            <div class="resource flex-group-center">
+              <label for="placeholder" class="resource-label">Rouse</label>
+              <div class="resource-content flexrow flex-center flex-between">
+                <button class="rollable" type="text" name="placeholder" data-roll="d6">Dice</button>
+              </div>
+            </div>
+        </div>
+        <!-- <div class="abilities grid grid-3col">
           {{#each data.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
               <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
@@ -40,7 +87,7 @@
               <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{key}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
             </div>
           {{/each}}
-        </div>
+        </div> -->
       </div>
   </header>
 
