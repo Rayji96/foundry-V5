@@ -1,45 +1,68 @@
 {
   "Actor": {
-    "types": ["player"],
+    "types": ["character"],
     "templates": {
-      "background": {
-        "biography": "",
-        "age": ""
-      }
-    },
-    "player":{
-      "templates": ["background"],
-      "resources": {
+      "base": {
         "health": {
+          "value": 10,
           "min": 0,
-          "value": 0,
           "max": 10
         },
-        "willpower": {
+        "power": {
+          "value": 5,
           "min": 0,
-          "value": 0,
-          "max": 10
+          "max": 5
+        }
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "biography": "",
+      "attributes": {
+        "level": {
+          "value": 1
         }
       },
-      "goodness": {
-        "value": 5,
-        "max": 10
+      "abilities": {
+        "str": {
+          "value": 10
+        },
+        "dex": {
+          "value": 10
+        },
+        "con": {
+          "value": 10
+        },
+        "int": {
+          "value": 10
+        },
+        "wis": {
+          "value": 10
+        },
+        "cha": {
+          "value": 10
+        }
       }
     }
   },
   "Item": {
-    "types": ["weapon", "power"],
+    "types": ["item", "feature", "spell"],
     "templates": {
-      "desc": {
+      "base": {
         "description": ""
       }
     },
-    "weapon": {
-      "templates": ["desc"]
+    "item": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0
     },
-    "power": {
-      "templates": ["desc"],
-      "discipline": ""
+    "feature": {
+      "templates": ["base"]
+    },
+    "spell": {
+      "templates": ["base"],
+      "spellLevel": 1
     }
   }
 }
