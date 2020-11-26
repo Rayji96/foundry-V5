@@ -149,9 +149,9 @@
                 <div class="item-controls"></div>
               </li>
               {{#each data.disciplines as |discipline key|}}
-                  <li class="item flexrow item-header">
-                    <div class="item-name">{{discipline.name}}</div>
-                    <input type="text" value="{{discipline.value}}" data-dtype="Number"/>
+                  <li class="flexrow item-header">
+                    <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="Rolling {{discipline.name}}">{{discipline.name}}</div>
+                    <input type="text" name="data.disciplines.{{key}}.value" value="{{discipline.value}}" data-dtype="Number"/>
                     <div class="item-controls">
                       <a class="item-control item-create" title="Create item" data-type="power" data-discipline="{{key}}"><i class="fas fa-plus"></i> Add Power</a>
                     </div>
