@@ -4,13 +4,13 @@
     "templates": {
       "base": {
         "health": {
-          "value": 0,
-          "min": 0,
+          "aggravated": 0,
+          "superficial": 0,
           "max": 10
         },
-        "power": {
-          "value": 0,
-          "min": 0,
+        "willpower": {
+          "aggravated": 0,
+          "superficial": 0,
           "max": 5
         }
       }
@@ -18,35 +18,196 @@
     "character": {
       "templates": ["base"],
       "biography": "",
-      "attributes": {
-        "level": {
-          "value": 1
-        }
+      "clan": {
+        "value": ""
+      },
+      "exp": {
+        "value": 0
+      },
+      "humanity": {
+        "value": 0
+      },
+      "hunger": {
+        "value": 0
       },
       "abilities": {
-        "str": {
-          "value": 10
+        "strength": {
+          "value": 0
         },
-        "dex": {
-          "value": 10
+        "charisma": {
+          "value": 0
         },
-        "con": {
-          "value": 10
+        "intelligence": {
+          "value": 0
         },
-        "int": {
-          "value": 10
+        "dexterity": {
+          "value": 0
         },
-        "wis": {
-          "value": 10
+        "manipulation": {
+          "value": 0
         },
-        "cha": {
-          "value": 10
+        "wits": {
+          "value": 0
+        },
+        "stamina": {
+          "value": 0
+        },
+        "composure": {
+          "value": 0
+        },
+        "resolve": {
+          "value": 0
+        }
+      },
+      "skills": {
+        "athletics": {
+          "value": 0
+        },
+        "animal ken": {
+          "value": 0
+        },
+        "academics": {
+          "value": 0
+        },
+        "brawl": {
+          "value": 0
+        },
+        "etiquette": {
+          "value": 0
+        },
+        "awareness": {
+          "value": 0
+        },
+        "craft": {
+          "value": 0
+        },
+        "insight": {
+          "value": 0
+        },
+        "finance": {
+          "value": 0
+        },
+        "drive": {
+          "value": 0
+        },
+        "intimidation": {
+          "value": 0
+        },
+        "investigation": {
+          "value": 0
+        },
+        "firearms": {
+          "value": 0
+        },
+        "leadership": {
+          "value": 0
+        },
+        "medicine": {
+          "value": 0
+        },
+        "melee": {
+          "value": 0
+        },
+        "performance": {
+          "value": 0
+        },
+        "occult": {
+          "value": 0
+        },
+        "larceny": {
+          "value": 0
+        },
+        "persuasion": {
+          "value": 0
+        },
+        "politics": {
+          "value": 0
+        },
+        "stealth": {
+          "value": 0
+        },
+        "streetwise": {
+          "value": 0
+        },
+        "science": {
+          "value": 0
+        },
+        "survival": {
+          "value": 0
+        },
+        "subterfuge": {
+          "value": 0
+        },
+        "technology": {
+          "value": 0
+        }
+      },
+      "disciplines": {
+        "animalism": {
+          "name": "Animalism",
+          "value": 0,
+          "powers": []
+        },
+        "auspex": {
+          "name": "Auspex",
+          "value": 0,
+          "powers": []
+        },
+        "celerity": {
+          "name": "Celerity",
+          "value": 0,
+          "powers": []
+        },
+        "dominate": {
+          "name": "Dominate",
+          "value": 0,
+          "powers": []
+        },
+        "fortitude": {
+          "name": "Fortitude",
+          "value": 0,
+          "powers": []
+        },
+        "obfuscate": {
+          "name": "Obfuscate",
+          "value": 0,
+          "powers": []
+        },
+        "potence": {
+          "name": "Potence",
+          "value": 0,
+          "powers": []
+        },
+        "presence": {
+          "name": "Presence",
+          "value": 0,
+          "powers": []
+        },
+        "protean": {
+          "name": "Protean",
+          "value": 0,
+          "powers": []
+        },
+        "sorcery": {
+          "name": "Blood Sorcery",
+          "value": 0,
+          "powers": []
+        },
+        "rituals": {
+          "name": "Rituals",
+          "value": 0,
+          "powers": []
+        },
+        "alchemy": {
+          "name": "Thin-Blood Alchemy",
+          "value": 0,
+          "powers": []
         }
       }
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "feature", "power", "specialty"],
     "templates": {
       "base": {
         "description": ""
@@ -60,9 +221,13 @@
     "feature": {
       "templates": ["base"]
     },
-    "spell": {
+    "power": {
       "templates": ["base"],
-      "spellLevel": 1
+      "discipline": "rituals"
+    },
+    "specialty": {
+      "templates": ["base"],
+      "skill": ""
     }
   }
 }
