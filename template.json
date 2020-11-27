@@ -18,6 +18,7 @@
     "character": {
       "templates": ["base"],
       "biography": "",
+      "blood": "",
       "clan": {
         "value": ""
       },
@@ -207,19 +208,15 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "power", "specialty"],
+    "types": ["feature", "power", "specialty"],
     "templates": {
       "base": {
         "description": ""
       }
     },
-    "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0
-    },
     "feature": {
-      "templates": ["base"]
+      "templates": ["base"],
+      "featuretype":"merit"
     },
     "power": {
       "templates": ["base"],

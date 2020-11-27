@@ -46,7 +46,10 @@ export class BoilerplateActorSheet extends ActorSheet {
     // Initialize containers.
     const specialties = [];
     const gear = [];
-    const features = [];
+    const features = {
+      "merit": [],
+      "flaw": []
+    };
     const disciplines = {
       "animalism": [],
       "auspex": [],
@@ -76,7 +79,7 @@ export class BoilerplateActorSheet extends ActorSheet {
       }
       // Append to features.
       else if (i.type === 'feature') {
-        features.push(i);
+        features[i.data.featuretype].push(i);
       }
       // Append to disciplines.
       else if (i.type === 'power') {
