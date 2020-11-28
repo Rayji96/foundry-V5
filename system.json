@@ -23,7 +23,7 @@
   "primaryTokenAttribute": "",
   "secondaryTokenAttribute": "",
   "url": "https://github.com/Rayji96/foundry-V5/",
-  "manifest": "https://github.com/Rayji96/foundry-V5/system.json",
-  "download": "https://github.com/Rayji96/foundry-V5/releases/download/v0.1.0/foundryvtt_v5_0.1.0.zip",
+  "manifest": "https://raw.githubusercontent.com/Rayji96/foundry-V5/release/0.1.0/system.json",
+  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v0.1.0.zip",
   "license": "LICENSE.txt"
 }
