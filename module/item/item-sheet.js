@@ -2,7 +2,7 @@
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class BoilerplateItemSheet extends ItemSheet {
+export class VampireItemSheet extends ItemSheet {
 
   /** @override */
   static get defaultOptions() {

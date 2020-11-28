@@ -2,7 +2,7 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class BoilerplateActorSheet extends ActorSheet {
+export class VampireActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {

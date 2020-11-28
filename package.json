@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "vtm5e",
   "version": "1.0.0",
-  "description": "CSS compiler for the Boilerplate system",
+  "description": "CSS compiler for the Vampire 5e system",
   "scripts": {
     "build": "gulp",
     "compile": "gulp css",
