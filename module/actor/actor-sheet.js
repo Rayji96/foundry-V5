@@ -128,7 +128,7 @@ export class BoilerplateActorSheet extends ActorSheet {
     html.find('.rollable').click(this._onRoll.bind(this));
 
     // Rollable Vampire abilities.
-    html.find('.vrollable').click(this._onVampireRoll.bind(this));
+    html.find('.vrollable').click(this._onVampireRollDialog.bind(this));
 
     // Drag events for macros.
     if (this.actor.owner) {
@@ -182,8 +182,8 @@ export class BoilerplateActorSheet extends ActorSheet {
     const dataset = element.dataset;
 
     if (dataset.roll) {
-      let roll = new Roll(dataset.roll, this.actor.data.data);
-      let label = dataset.label ? `Rolling ${dataset.label}` : '';
+      let roll = new Roll(dataset.roll + "d10cs>5", this.actor.data.data);
+      let label = dataset.label ? dataset.label : '';
       roll.roll().toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
@@ -191,38 +191,92 @@ export class BoilerplateActorSheet extends ActorSheet {
     }
   }
 
-    /**
+  //roll helper
+  _vampireRoll(num_dice, actor, label = ""){
+    let roll = new Roll(num_dice + "d10cs>5", actor.data.data);
+    let roll_result = roll.evaluate();
+    let hunger_dice = actor.data.data.hunger.value;
+    let success = 0;
+    let hunger_success = 0;
+    roll_result.terms[0].results.forEach((dice, index) => {
+      if (dice.success){
+        if ((index + 1) > hunger_dice){
+          success++
+        }else{
+          hunger_success++
+        }
+      }
+    });
+
+    label = label + ` \nSuccesses: ${success} \nHunger Successes: ${hunger_success}\n`;
+
+    roll_result.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: actor }),
+      flavor: label
+    });
+  }
+
+  /**
    * Handle clickable Vampire rolls.
    * @param {Event} event   The originating click event
    * @private
    */
-  _onVampireRoll(event) {
+  _onVampireRollDialog(event) {
     event.preventDefault();
     const element = event.currentTarget;
     const dataset = element.dataset;
-    if (dataset.roll) {
-      let roll = new Roll(dataset.roll + "d10cs>5", this.actor.data.data);
-      let label = dataset.label ? dataset.label : '';
-      let roll_result = roll.evaluate();
-      let hunger_dice = this.actor.data.data.hunger.value;
-      let success = 0;
-      let hunger_success = 0;
-      roll_result.terms[0].results.forEach((dice, index) => {
-        if (dice.success){
-          if ((index + 1) > hunger_dice){
-            success++
-          }else{
-            hunger_success++
-          }
-        }
-      });
-
-      label = label + `\nSuccesses: ${success}\nHunger Successes: ${hunger_success}\n`;
-
-      roll_result.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label
-      });
+    let options = '';
+    for (const [key, value] of Object.entries(this.actor.data.data.abilities)) {
+      options = options.concat(`<option value="${key}">${key}</option>`);
     }
+
+    let template = `
+      <form>
+          <div class="form-group">
+              <label>Select ability</label>
+              <select id="abilitySelect">${options}</select>
+          </div>  
+          <div class="form-group">
+              <label>Modifier?</label>
+              <input type="text" id="inputMod" value="0">
+          </div>
+      </form>`;
+  
+    let buttons = {};
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: 'Roll',
+        callback: async (html) => {
+          const ability = html.find('#abilitySelect')[0].value;
+          const modifier = parseInt(html.find('#inputMod')[0].value || 0);
+          const ability_val = this.actor.data.data.abilities[ability].value
+          let num_dice = ability_val + parseInt(dataset.roll) + modifier
+          this._vampireRoll(num_dice, this.actor, dataset.label);
+        },
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: 'Cancel',
+      },
+    };
+  
+    new Dialog({
+      title: `Rolling ${dataset.label}...`,
+      content: template,
+      buttons: buttons,
+      default: 'draw',
+    }).render(true);
   }
+
+  
+  // _onVampireRoll(event) {
+  //   event.preventDefault();
+  //   const element = event.currentTarget;
+  //   const dataset = element.dataset;
+
+  //   if (dataset.roll) {
+  //     this._vampireRoll(dataset.roll, this.actor, dataset.label);
+  //   }
+  // }
 }

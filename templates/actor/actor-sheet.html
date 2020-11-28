@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="resource flex-group-center">
-                <label for="data.willpower" class="resource-label vrollable" data-roll="3" data-label="Rolling Willpower">Willpower</label>
+                <label for="data.willpower" class="resource-label rollable" data-roll="3" data-label="Rolling Willpower">Willpower</label>
                 <div class="resource-content flexrow flex-center flex-between">
                   <div class="flexcol">
                     <input type="text" name="data.willpower.aggravated" value="{{data.willpower.aggravated}}" data-dtype="Number"/>
@@ -77,7 +77,7 @@
             <div class="resource flex-group-center">
               <label for="placeholder" class="resource-label">Rouse</label>
               <div class="resource-content flexrow flex-center flex-between">
-                <button class="vrollable" type="text" name="rouse" data-roll="1" data-label="Rousing Blood...">Dice</button>
+                <button class="rollable" type="text" name="rouse" data-roll="1" data-label="Rousing Blood...">Dice</button>
               </div>
             </div>
         </div>
@@ -102,7 +102,7 @@
         <div class="abilities grid grid-3col">
           {{#each data.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
-              <label for="data.abilities.{{key}}.value" class="resource-label vrollable" data-roll="{{ability.value}}" data-label="Rolling {{key}}">{{key}}</label>
+              <label for="data.abilities.{{key}}.value" class="resource-label" data-roll="{{ability.value}}" data-label="{{key}}">{{key}}</label>
               <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
             </div>
           {{/each}}
@@ -112,7 +112,7 @@
         <div class="skills grid grid-3col">
           {{#each data.skills as |skill key|}}
             <div class="skill flexrow flex-group-center">
-              <label for="data.skills.{{key}}.value" class="resource-label vrollable" data-roll="{{skill.value}}" data-label="Rolling {{key}}">{{key}}</label>
+              <label for="data.skills.{{key}}.value" class="resource-label vrollable" data-roll="{{skill.value}}" data-label="{{key}}">{{key}}</label>
               <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
             </div>
           {{/each}}
@@ -150,7 +150,7 @@
               </li>
               {{#each data.disciplines as |discipline key|}}
                   <li class="flexrow item-header">
-                    <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="Rolling {{discipline.name}}">{{discipline.name}}</div>
+                    <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="{{key}}">{{discipline.name}}</div>
                     <input type="text" name="data.disciplines.{{key}}.value" value="{{discipline.value}}" data-dtype="Number"/>
                     <div class="item-controls">
                       <a class="item-control item-create" title="Create item" data-type="power" data-discipline="{{key}}"><i class="fas fa-plus"></i> Add Power</a>
