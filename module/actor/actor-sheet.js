@@ -252,7 +252,7 @@ export class VampireActorSheet extends ActorSheet {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0);
           const ability_val = this.actor.data.data.abilities[ability].value
           let num_dice = ability_val + parseInt(dataset.roll) + modifier
-          this._vampireRoll(num_dice, this.actor, dataset.label);
+          this._vampireRoll(num_dice, this.actor, `${dataset.label} + ${ability}`);
         },
       },
       cancel: {
