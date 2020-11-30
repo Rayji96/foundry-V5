@@ -196,19 +196,44 @@ export class VampireActorSheet extends ActorSheet {
     let roll = new Roll(num_dice + "d10cs>5", actor.data.data);
     let roll_result = roll.evaluate();
     let hunger_dice = actor.data.data.hunger.value;
+
     let success = 0;
-    let hunger_success = 0;
+    let crit_success = 0;
+    let hunger_crit_fail = false;
+    let hunger_crit_success = false;
+
     roll_result.terms[0].results.forEach((dice, index) => {
       if (dice.success){
-        if ((index + 1) > hunger_dice){
-          success++
-        }else{
-          hunger_success++
+        success++;
+      }
+      if (dice.result == 10){
+        crit_success++;
+      }
+      if ((index + 1) <= hunger_dice){
+        if (dice.result == 10){
+          hunger_crit_success = true;
+        }else if (dice.result == 1){
+          hunger_crit_fail = true;
         }
       }
     });
 
-    label = label + ` \nSuccesses: ${success} \nHunger Successes: ${hunger_success}\n`;
+    crit_success = Math.floor(crit_success/2);
+    success = (crit_success * 2) + success;
+
+    label = `<p class="roll-label uppercase">${label}</p>`
+
+    if (hunger_crit_success && crit_success){
+      label = label + `<p class="roll-content">Messy Critical!</p>`;
+    }
+    else if (crit_success){
+      label = label + `<p class="roll-content">Critical Success!</p>`;
+    }
+    if (hunger_crit_fail){
+      label = label + `<p class="roll-content">Possible Bestial Failure!</p>`;
+    }
+
+    label = label + `<p class="roll-label">Successes: ${success}</p>`;
 
     roll_result.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: actor }),

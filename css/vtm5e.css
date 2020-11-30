@@ -251,3 +251,18 @@
   flex: 0 0 86px;
   text-align: right;
 }
+
+/* ChatMessage CSS */
+
+.roll-label {
+  font-weight: bold;
+  font-size: 130%;
+}
+
+.roll-content {
+  font-size: 120%;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
