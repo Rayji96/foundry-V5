@@ -24,8 +24,23 @@
         <div class="tab attributes" data-group="primary" data-tab="attributes">
             {{!-- As you add new fields, add them in here! --}}
             <div class="resource">
-              <label class="resource-label">Discipline</label>
-                <input type="text" name="data.discipline" value="{{data.discipline}}"/>
+              <label class="resource-label">Discipline: </label>
+                <select name="data.discipline" data-type="String">
+                    {{#select data.discipline}}
+                        <option value="animalism">Animalism</option>
+                        <option value="auspex">Auspex</option>
+                        <option value="celerity">Celerity</option>
+                        <option value="dominate">Dominate</option>
+                        <option value="fortitude">Fortitude</option>
+                        <option value="obfuscate">Obfuscate</option>
+                        <option value="potence">Potence</option>
+                        <option value="presence">Presence</option>
+                        <option value="protean">Protean</option>
+                        <option value="sorcery">Blood Sorcery</option>
+                        <option value="rituals">Rituals</option>
+                        <option value="alchemy">Thin-Blood Alchemy</option>
+                    {{/select}}
+                </select>
             </div>
         </div>
     </section>
