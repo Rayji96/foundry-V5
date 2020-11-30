@@ -102,7 +102,7 @@
         <div class="abilities grid grid-3col">
           {{#each data.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
-              <label for="data.abilities.{{key}}.value" class="resource-label" data-roll="{{ability.value}}" data-label="{{key}}">{{key}}</label>
+              <label for="data.abilities.{{key}}.value" class="resource-label vrollable" data-roll="{{ability.value}}" data-label="{{key}}">{{key}}</label>
               <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
             </div>
           {{/each}}
