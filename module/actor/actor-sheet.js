@@ -94,8 +94,6 @@ export class VampireActorSheet extends ActorSheet {
     actorData.gear = gear;
     actorData.features = features;
     actorData.disciplines_list = disciplines;
-    console.log(actorData)
-    console.log(sheetData.items)
   }
 
   /* -------------------------------------------- */
@@ -183,8 +181,32 @@ export class VampireActorSheet extends ActorSheet {
 
     if (dataset.roll) {
       let roll = new Roll(dataset.roll + "d10cs>5", this.actor.data.data);
-      let label = dataset.label ? dataset.label : '';
-      roll.roll().toMessage({
+      let roll_result = roll.evaluate();
+
+      let success = 0;
+      let crit_success = 0;
+
+      roll_result.terms[0].results.forEach((dice, index) => {
+        if (dice.success){
+          success++;
+        }
+        if (dice.result == 10){
+          crit_success++;
+        }
+      });
+
+      crit_success = Math.floor(crit_success/2);
+      success = (crit_success * 2) + success;
+
+      let label = dataset.label ? `<p class="roll-label uppercase">${dataset.label}</p>` : '';
+
+      if (crit_success){
+        label = label + `<p class="roll-content">Critical Success!</p>`;
+      }
+  
+      label = label + `<p class="roll-label">Successes: ${success}</p>`;
+
+      roll_result.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
       });
