@@ -6,7 +6,8 @@
       <div class="header-fields">
         <div class="flexrow">
           <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-          <h1 class="charname"><input name="clan" type="text" value="{{actor.clan}}" placeholder="Clan"/></h1>
+          <h1 class="charname"><input name="data.clan.value" type="text" value="{{data.clan.value}}" placeholder="Clan"/></h1>
+          <h1 class="charname"><input name="data.headers.predator" type="text" value="{{data.headers.predator}}" placeholder="Predator"/></h1>
         </div>
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -242,7 +243,54 @@
       
       {{!-- Biography Tab --}}
       <div class="tab biography" data-group="primary" data-tab="description">
-          {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+        <div class="resource flexrow grid grid-3col">
+          <div class="flex-group-center">
+            <label class="resource-label">Concept</label>
+            <input type="text" name="data.headers.concept" value="{{data.headers.concept}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Chronicle</label>
+            <input type="text" name="data.headers.chronicle" value="{{data.headers.chronicle}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Ambition</label>
+            <input type="text" name="data.headers.ambition" value="{{data.headers.ambition}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Sire</label>
+            <input type="text" name="data.headers.sire" value="{{data.headers.sire}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Desire</label>
+            <input type="text" name="data.headers.desire" value="{{data.headers.desire}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Generation</label>
+            <input type="text" name="data.headers.generation" value="{{data.headers.generation}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Chronicle Tenets</label>
+            <textarea name="data.headers.tenets" rows="10">
+{{data.headers.tenets}}
+            </textarea>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Touchstones & Convictions</label>
+            <textarea name="data.headers.touchstones" rows="10">
+{{data.headers.touchstones}}
+            </textarea>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Clan Bane</label>
+            <textarea name="data.headers.bane" rows="10">
+{{data.headers.bane}}
+            </textarea>
+          </div>
+        </div>
+        <div class="flex-center">
+          <label class="resource-label">Biography</label>
+        </div>
+        {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
       </div>
   </section>
 </form>
