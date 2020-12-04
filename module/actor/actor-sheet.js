@@ -21,14 +21,105 @@ export class VampireActorSheet extends ActorSheet {
   getData() {
     const data = super.getData();
     data.dtypes = ["String", "Number", "Boolean"];
-    // for (let attr of Object.values(data.data.attributes)) {
-    //   attr.isCheckbox = attr.dtype === "Boolean";
-    // }
 
     // Prepare items.
     if (this.actor.data.type == 'character') {
       this._prepareCharacterItems(data);
     }
+
+    // TODO: confirm that I can finish and use this list
+    const blood_potency = [
+      {
+        "surge": "None",
+        "mend": "1 point of Superficial damage",
+        "power": "None",
+        "rouse": "None",
+        "bane": "0",
+        "feeding": "No effect"
+      },
+      {
+        "surge": "Add 1 die",
+        "mend": "1 point of Superficial damage",
+        "power": "None",
+        "rouse": "Level 1",
+        "bane": "1",
+        "feeding": "No effect"
+      },
+      {
+        "surge": "Add 1 die",
+        "mend": "2 point of Superficial damage",
+        "power": "Add 1 die",
+        "rouse": "Level 1",
+        "bane": "1",
+        "feeding": "Animal and bagged blood slakes half Hunger."
+      },
+      {
+        "surge": "Add 2 die",
+        "mend": "2 point of Superficial damage",
+        "power": "Add 1 die",
+        "rouse": "Level 2 and below",
+        "bane": "2",
+        "feeding": "Animal and bagged blood slakes no Hunger."
+      },
+      {
+        "surge": "Add 2 die",
+        "mend": "3 point of Superficial damage",
+        "power": "Add 2 die",
+        "rouse": "Level 2 and below",
+        "bane": "2",
+        "feeding": "Animal and bagged blood slakes no Hunger. Slake 1 less Hunger per human."
+      },
+      {
+        "surge": "Add 3 die",
+        "mend": "3 point of Superficial damage",
+        "power": "Add 2 die",
+        "rouse": "Level 3 and below",
+        "bane": "3",
+        "feeding": "Animal and bagged blood slakes no Hunger. Slake 1 less Hunger per human. Must drain and kill a human to reduce Hunger below 2"
+      },
+      {
+        "surge": "Add 3 die",
+        "mend": "3 point of Superficial damage",
+        "power": "Add 3 die",
+        "rouse": "Level 3 and below",
+        "bane": "3",
+        "feeding": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 2"
+      },
+      {
+        "surge": "Add 4 die",
+        "mend": "3 point of Superficial damage",
+        "power": "Add 3 die",
+        "rouse": "Level 4 and below",
+        "bane": "4",
+        "feeding": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 2"
+      },
+      {
+        "surge": "Add 4 die",
+        "mend": "4 point of Superficial damage",
+        "power": "Add 4 die",
+        "rouse": "Level 4 and below",
+        "bane": "4",
+        "feeding": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 3"
+      },
+      {
+        "surge": "Add 5 die",
+        "mend": "4 point of Superficial damage",
+        "power": "Add 4 die",
+        "rouse": "Level 5 and below",
+        "bane": "5",
+        "feeding": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 3"
+      },
+      {
+        "surge": "Add 5 die",
+        "mend": "5 point of Superficial damage",
+        "power": "Add 5 die",
+        "rouse": "Level 5 and below",
+        "bane": "5",
+        "feeding": "Animal and bagged blood slakes no Hunger. Slake 3 less Hunger per human. Must drain and kill a human to reduce Hunger below 3"
+      },
+    ]
+
+    data.blood_potency = blood_potency
 
     return data;
   }

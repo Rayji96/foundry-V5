@@ -18,7 +18,22 @@
     "character": {
       "templates": ["base"],
       "biography": "",
-      "blood": "",
+      "headers":{
+        "concept":"",
+        "predator":"",
+        "chronicle":"",
+        "ambition":"",
+        "sire":"",
+        "desire":"",
+        "generation":"",
+        "tenets":"",
+        "touchstones":"",
+        "bane":""
+      },
+      "blood": {
+        "potency": 0,
+        "resonance": ""
+      },
       "clan": {
         "value": ""
       },
@@ -216,7 +231,8 @@
     },
     "feature": {
       "templates": ["base"],
-      "featuretype":"merit"
+      "featuretype":"merit",
+      "value": 0
     },
     "power": {
       "templates": ["base"],
