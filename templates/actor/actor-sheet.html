@@ -6,7 +6,8 @@
       <div class="header-fields">
         <div class="flexrow">
           <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-          <h1 class="charname"><input name="clan" type="text" value="{{actor.clan}}" placeholder="Clan"/></h1>
+          <h1 class="charname"><input name="data.clan.value" type="text" value="{{data.clan.value}}" placeholder="Clan"/></h1>
+          <h1 class="charname"><input name="data.headers.predator" type="text" value="{{data.headers.predator}}" placeholder="Predator"/></h1>
         </div>
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -77,7 +78,7 @@
             <div class="resource flex-group-center">
               <label for="placeholder" class="resource-label">Rouse</label>
               <div class="resource-content flexrow flex-center flex-between">
-                <button class="rollable" type="text" name="rouse" data-roll="1" data-label="Rousing Blood...">Dice</button>
+                <button class="rollable" type="text" name="rouse" data-roll="1" data-label="Rousing Blood...">Roll</button>
               </div>
             </div>
         </div>
@@ -103,7 +104,7 @@
           {{#each data.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
               <label for="data.abilities.{{key}}.value" class="resource-label vrollable" data-roll="{{ability.value}}" data-label="{{key}}">{{key}}</label>
-              <input type="text" name="data.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
+              <input type="number" name="data.abilities.{{key}}.value" min="0" value="{{ability.value}}" data-dtype="Number"/>
             </div>
           {{/each}}
         </div>
@@ -113,7 +114,7 @@
           {{#each data.skills as |skill key|}}
             <div class="skill flexrow flex-group-center">
               <label for="data.skills.{{key}}.value" class="resource-label vrollable" data-roll="{{skill.value}}" data-label="{{key}}">{{key}}</label>
-              <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+              <input type="number" name="data.skills.{{key}}.value" min="0" value="{{skill.value}}" data-dtype="Number"/>
             </div>
           {{/each}}
         </div>
@@ -151,7 +152,7 @@
               {{#each data.disciplines as |discipline key|}}
                   <li class="flexrow item-header">
                     <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="{{key}}">{{discipline.name}}</div>
-                    <input type="text" name="data.disciplines.{{key}}.value" value="{{discipline.value}}" data-dtype="Number"/>
+                    <input type="number" name="data.disciplines.{{key}}.value" min="0" value="{{discipline.value}}" data-dtype="Number"/>
                     <div class="item-controls">
                       <a class="item-control item-create" title="Create item" data-type="power" data-discipline="{{key}}"><i class="fas fa-plus"></i> Add Power</a>
                     </div>
@@ -180,7 +181,7 @@
               </li>
               {{#each actor.features as |feature key|}}
                   <li class="flexrow item-header">
-                    <div class="item-name">{{key}}</div>
+                    <div class="item-name">{{toUpperCaseFirstLetter key}}</div>
                     <div class="item-controls">
                       <a class="item-control item-create" title="Create item" data-type="feature" data-featuretype="{{key}}"><i class="fas fa-plus"></i> Add Feat</a>
                     </div>
@@ -201,13 +202,95 @@
 
       {{!-- Blood Tab --}}
       <div class="tab blood" data-group="primary" data-tab="blood">
-        {{editor content=data.blood target="data.blood" button=true owner=owner editable=editable}}
+        <div class="resource flexrow grid grid-2col">
+          <div class="flex-group-center flexrow">
+            <label class="resource-label">Blood Potency: </label>
+            <input type="number" name="data.blood.potency" min="0" max="10" value="{{data.blood.potency}}"/>
+          </div>
+          <div class="flex-group-center flexrow">
+            <label class="resource-label">Blood Resonance: </label>
+            <input type="text" name="data.blood.resonance" value="{{data.blood.resonance}}"/>
+          </div>
+        </div>
+        <div class="resource flexrow grid grid-2col">
+          <div class="flex-group-center">
+            <label class="resource-label">Blood Surge: </label>
+            <p>{{lookup (lookup blood_potency data.blood.potency) "surge"}}</p>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Mend Amount: </label>
+            <p>{{lookup (lookup blood_potency data.blood.potency) "mend"}}</p>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Power Bonus: </label>
+            <p>{{lookup (lookup blood_potency data.blood.potency) "power"}}</p>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Rouse Re-Roll: </label>
+            <p>{{lookup (lookup blood_potency data.blood.potency) "rouse"}}</p>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Feeding Penalty: </label>
+            <p>{{lookup (lookup blood_potency data.blood.potency) "feeding"}}</p>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Bane Severity: </label>
+            <p>{{lookup (lookup blood_potency data.blood.potency) "bane"}}</p>
+          </div>
+        </div>
     </div>
 
       
       {{!-- Biography Tab --}}
       <div class="tab biography" data-group="primary" data-tab="description">
-          {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+        <div class="resource flexrow grid grid-3col">
+          <div class="flex-group-center">
+            <label class="resource-label">Concept</label>
+            <input type="text" name="data.headers.concept" value="{{data.headers.concept}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Chronicle</label>
+            <input type="text" name="data.headers.chronicle" value="{{data.headers.chronicle}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Ambition</label>
+            <input type="text" name="data.headers.ambition" value="{{data.headers.ambition}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Sire</label>
+            <input type="text" name="data.headers.sire" value="{{data.headers.sire}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Desire</label>
+            <input type="text" name="data.headers.desire" value="{{data.headers.desire}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Generation</label>
+            <input type="text" name="data.headers.generation" value="{{data.headers.generation}}"/>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Chronicle Tenets</label>
+            <textarea name="data.headers.tenets" rows="10">
+{{data.headers.tenets}}
+            </textarea>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Touchstones & Convictions</label>
+            <textarea name="data.headers.touchstones" rows="10">
+{{data.headers.touchstones}}
+            </textarea>
+          </div>
+          <div class="flex-group-center">
+            <label class="resource-label">Clan Bane</label>
+            <textarea name="data.headers.bane" rows="10">
+{{data.headers.bane}}
+            </textarea>
+          </div>
+        </div>
+        <div class="flex-center">
+          <label class="resource-label">Biography</label>
+        </div>
+        {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
       </div>
   </section>
 </form>
