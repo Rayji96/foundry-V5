@@ -41,181 +41,218 @@
         "value": 0
       },
       "humanity": {
-        "value": 0
+        "value": 0,
+        "stains": 0
       },
       "hunger": {
         "value": 0
       },
       "abilities": {
         "strength": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Strength"
         },
         "charisma": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Charisma"
         },
         "intelligence": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Intelligence"
         },
         "dexterity": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Dexterity"
         },
         "manipulation": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Manipulation"
         },
         "wits": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Wits"
         },
         "stamina": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Stamina"
         },
         "composure": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Composure"
         },
         "resolve": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Resolve"
         }
       },
       "skills": {
         "athletics": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Athletics"
         },
         "animal ken": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.AnimalKen"
         },
         "academics": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Academics"
         },
         "brawl": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Brawl"
         },
         "etiquette": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Etiquette"
         },
         "awareness": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Awareness"
         },
         "craft": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Craft"
         },
         "insight": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Insight"
         },
         "finance": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Finance"
         },
         "drive": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Drive"
         },
         "intimidation": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Intimidation"
         },
         "investigation": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Investigation"
         },
         "firearms": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Firearms"
         },
         "leadership": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Leadership"
         },
         "medicine": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Medicine"
         },
         "melee": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Melee"
         },
         "performance": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Performance"
         },
         "occult": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Occult"
         },
         "larceny": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Larceny"
         },
         "persuasion": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Persuasion"
         },
         "politics": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Politics"
         },
         "stealth": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Stealth"
         },
         "streetwise": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Streetwise"
         },
         "science": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Science"
         },
         "survival": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Survival"
         },
         "subterfuge": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Subterfuge"
         },
         "technology": {
-          "value": 0
+          "value": 0,
+          "name": "VTM5E.Technology"
         }
       },
       "disciplines": {
         "animalism": {
-          "name": "Animalism",
+          "name": "VTM5E.Animalism",
           "value": 0,
           "powers": []
         },
         "auspex": {
-          "name": "Auspex",
+          "name": "VTM5E.Auspex",
           "value": 0,
           "powers": []
         },
         "celerity": {
-          "name": "Celerity",
+          "name": "VTM5E.Celerity",
           "value": 0,
           "powers": []
         },
         "dominate": {
-          "name": "Dominate",
+          "name": "VTM5E.Dominate",
           "value": 0,
           "powers": []
         },
         "fortitude": {
-          "name": "Fortitude",
+          "name": "VTM5E.Fortitude",
           "value": 0,
           "powers": []
         },
         "obfuscate": {
-          "name": "Obfuscate",
+          "name": "VTM5E.Obfuscate",
           "value": 0,
           "powers": []
         },
         "potence": {
-          "name": "Potence",
+          "name": "VTM5E.Potence",
           "value": 0,
           "powers": []
         },
         "presence": {
-          "name": "Presence",
+          "name": "VTM5E.Presence",
           "value": 0,
           "powers": []
         },
         "protean": {
-          "name": "Protean",
+          "name": "VTM5E.Protean",
           "value": 0,
           "powers": []
         },
         "sorcery": {
-          "name": "Blood Sorcery",
+          "name": "VTM5E.BloodSorcery",
           "value": 0,
           "powers": []
         },
         "rituals": {
-          "name": "Rituals",
+          "name": "VTM5E.Rituals",
           "value": 0,
           "powers": []
         },
         "alchemy": {
-          "name": "Thin-Blood Alchemy",
+          "name": "VTM5E.ThinBloodAlchemy",
           "value": 0,
           "powers": []
         }

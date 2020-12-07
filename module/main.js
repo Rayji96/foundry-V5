@@ -50,6 +50,11 @@ Hooks.once('init', async function() {
   Handlebars.registerHelper('toUpperCaseFirstLetter', function(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);;
   });
+
+  //TODO: There's gotta be a better way lol
+  Handlebars.registerHelper('generateFeatureLabel', function(str) {
+    return (str == "merit" ? "VTM5E.Merit" : "VTM5E.Flaw")
+  });
 });
 
 Hooks.once("ready", async function() {
