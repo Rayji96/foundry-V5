@@ -4,7 +4,7 @@
   "description": "Vampire 5e system for Foundry VTT!",
   "version": "0.2.0",
   "minimumCoreVersion": "0.6.0",
-  "compatibleCoreVersion": "0.7.7",
+  "compatibleCoreVersion": "0.7.8",
   "templateVersion": 2,
   "author": "Ray Ji",
   "esmodules": ["module/main.js"],

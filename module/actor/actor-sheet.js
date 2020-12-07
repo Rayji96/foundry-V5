@@ -1,95 +1,3 @@
-// TODO: confirm that I can finish and use this list
-const BLOOD_POTENCY = [
-  {
-    "surge": "None",
-    "mend": "1 point of Superficial damage",
-    "power": "None",
-    "rouse": "None",
-    "bane": "0",
-    "feeding": "No effect"
-  },
-  {
-    "surge": "Add 1 die",
-    "mend": "1 point of Superficial damage",
-    "power": "None",
-    "rouse": "Level 1",
-    "bane": "1",
-    "feeding": "No effect"
-  },
-  {
-    "surge": "Add 1 die",
-    "mend": "2 point of Superficial damage",
-    "power": "Add 1 die",
-    "rouse": "Level 1",
-    "bane": "1",
-    "feeding": "Animal and bagged blood slakes half Hunger."
-  },
-  {
-    "surge": "Add 2 die",
-    "mend": "2 point of Superficial damage",
-    "power": "Add 1 die",
-    "rouse": "Level 2 and below",
-    "bane": "2",
-    "feeding": "Animal and bagged blood slakes no Hunger."
-  },
-  {
-    "surge": "Add 2 die",
-    "mend": "3 point of Superficial damage",
-    "power": "Add 2 die",
-    "rouse": "Level 2 and below",
-    "bane": "2",
-    "feeding": "Animal and bagged blood slakes no Hunger. Slake 1 less Hunger per human."
-  },
-  {
-    "surge": "Add 3 die",
-    "mend": "3 point of Superficial damage",
-    "power": "Add 2 die",
-    "rouse": "Level 3 and below",
-    "bane": "3",
-    "feeding": "Animal and bagged blood slakes no Hunger. Slake 1 less Hunger per human. Must drain and kill a human to reduce Hunger below 2"
-  },
-  {
-    "surge": "Add 3 die",
-    "mend": "3 point of Superficial damage",
-    "power": "Add 3 die",
-    "rouse": "Level 3 and below",
-    "bane": "3",
-    "feeding": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 2"
-  },
-  {
-    "surge": "Add 4 die",
-    "mend": "3 point of Superficial damage",
-    "power": "Add 3 die",
-    "rouse": "Level 4 and below",
-    "bane": "4",
-    "feeding": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 2"
-  },
-  {
-    "surge": "Add 4 die",
-    "mend": "4 point of Superficial damage",
-    "power": "Add 4 die",
-    "rouse": "Level 4 and below",
-    "bane": "4",
-    "feeding": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 3"
-  },
-  {
-    "surge": "Add 5 die",
-    "mend": "4 point of Superficial damage",
-    "power": "Add 4 die",
-    "rouse": "Level 5 and below",
-    "bane": "5",
-    "feeding": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 3"
-  },
-  {
-    "surge": "Add 5 die",
-    "mend": "5 point of Superficial damage",
-    "power": "Add 5 die",
-    "rouse": "Level 5 and below",
-    "bane": "5",
-    "feeding": "Animal and bagged blood slakes no Hunger. Slake 3 less Hunger per human. Must drain and kill a human to reduce Hunger below 3"
-  },
-]
-
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -112,6 +20,97 @@ export class VampireActorSheet extends ActorSheet {
   /** @override */
   getData() {
     const data = super.getData();
+    // TODO: confirm that I can finish and use this list
+    const BLOOD_POTENCY = [
+      {
+        "surge": game.i18n.localize("VTM5E.None"),
+        "mend": game.i18n.localize("VTM5E.1SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.None"),
+        "rouse": game.i18n.localize("VTM5E.None"),
+        "bane": "0",
+        "feeding": game.i18n.localize("VTM5E.NoEffect")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add1Dice"),
+        "mend": game.i18n.localize("VTM5E.1SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.None"),
+        "rouse": game.i18n.localize("VTM5E.Level1"),
+        "bane": "1",
+        "feeding": game.i18n.localize("VTM5E.NoEffect")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add1Dice"),
+        "mend": game.i18n.localize("VTM5E.2SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add1Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level1"),
+        "bane": "1",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty1")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add2Dice"),
+        "mend": game.i18n.localize("VTM5E.2SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add1Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level2"),
+        "bane": "2",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty2")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add2Dice"),
+        "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add2Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level2"),
+        "bane": "2",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty3")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add3Dice"),
+        "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add2Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level3"),
+        "bane": "3",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty4")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add3Dice"),
+        "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add3Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level3"),
+        "bane": "3",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty5")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add4Dice"),
+        "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add3Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level4"),
+        "bane": "4",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty5")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add4Dice"),
+        "mend": game.i18n.localize("VTM5E.4SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add4Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level4"),
+        "bane": "4",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty6")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add5Dice"),
+        "mend": game.i18n.localize("VTM5E.4SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add4Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level5"),
+        "bane": "5",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty6")
+      },
+      {
+        "surge": game.i18n.localize("VTM5E.Add5Dice"),
+        "mend": game.i18n.localize("VTM5E.5SuperficialDamage"),
+        "power": game.i18n.localize("VTM5E.Add5Dice"),
+        "rouse": game.i18n.localize("VTM5E.Level5"),
+        "bane": "5",
+        "feeding": game.i18n.localize("VTM5E.FeedingPenalty7")
+      }
+    ]
     data.dtypes = ["String", "Number", "Boolean"];
 
     // Prepare items.
@@ -292,10 +291,10 @@ export class VampireActorSheet extends ActorSheet {
       let label = dataset.label ? `<p class="roll-label uppercase">${dataset.label}</p>` : '';
 
       if (crit_success){
-        label = label + `<p class="roll-content">Critical Success!</p>`;
+        label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`;
       }
   
-      label = label + `<p class="roll-label">Successes: ${success}</p>`;
+      label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${success}</p>`;
 
       roll_result.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -337,16 +336,16 @@ export class VampireActorSheet extends ActorSheet {
     label = `<p class="roll-label uppercase">${label}</p>`
 
     if (hunger_crit_success && crit_success){
-      label = label + `<p class="roll-content">Messy Critical!</p>`;
+      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.MessyCritical')}</p>`;
     }
     else if (crit_success){
-      label = label + `<p class="roll-content">Critical Success!</p>`;
+      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`;
     }
     if (hunger_crit_fail){
-      label = label + `<p class="roll-content">Possible Bestial Failure!</p>`;
+      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.PossibleBestialFailure')}</p>`;
     }
 
-    label = label + `<p class="roll-label">Successes: ${success}</p>`;
+    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${success}</p>`;
 
     roll_result.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: actor }),
@@ -365,17 +364,17 @@ export class VampireActorSheet extends ActorSheet {
     const dataset = element.dataset;
     let options = '';
     for (const [key, value] of Object.entries(this.actor.data.data.abilities)) {
-      options = options.concat(`<option value="${key}">${key}</option>`);
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`);
     }
 
     let template = `
       <form>
           <div class="form-group">
-              <label>Select ability</label>
+              <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
               <select id="abilitySelect">${options}</select>
           </div>  
           <div class="form-group">
-              <label>Modifier?</label>
+              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
           </div>
       </form>`;
@@ -384,7 +383,7 @@ export class VampireActorSheet extends ActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: 'Roll',
+        label: game.i18n.localize('VTM5E.Roll'),
         callback: async (html) => {
           const ability = html.find('#abilitySelect')[0].value;
           const modifier = parseInt(html.find('#inputMod')[0].value || 0);
@@ -395,12 +394,12 @@ export class VampireActorSheet extends ActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: 'Cancel',
+        label: game.i18n.localize('VTM5E.Cancel'),
       },
     };
   
     new Dialog({
-      title: `Rolling ${dataset.label}...`,
+      title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
       content: template,
       buttons: buttons,
       default: 'draw',
