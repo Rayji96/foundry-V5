@@ -14,7 +14,7 @@ Development is currently in progress but the system is currently functional and 
 Please reach out to me at weinerdolphin#3175 on Discord with issues, bugs, etc.
 
 
-[Foundry Shield 0.7.7]: https://img.shields.io/badge/Foundry-0.7.7-informational
+[Foundry Shield 0.7.8]: https://img.shields.io/badge/Foundry-0.7.8-informational
 [Foundry URL]: https://foundryvtt.com
 
 [MIT License]: https://img.shields.io/badge/License-MIT-green
