@@ -11,7 +11,7 @@ Development is currently in progress but the system is currently functional and 
 
 ## Feedback
 
-Please reach out to me on weinerdolphin#3175 on Discord with issues, bugs, etc.
+Please reach out to me at weinerdolphin#3175 on Discord with issues, bugs, etc.
 
 
 [Foundry Shield 0.7.7]: https://img.shields.io/badge/Foundry-0.7.7-informational
