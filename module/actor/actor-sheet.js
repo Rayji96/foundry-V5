@@ -388,8 +388,9 @@ export class VampireActorSheet extends ActorSheet {
           const ability = html.find('#abilitySelect')[0].value;
           const modifier = parseInt(html.find('#inputMod')[0].value || 0);
           const ability_val = this.actor.data.data.abilities[ability].value
+          const ability_name = game.i18n.localize(this.actor.data.data.abilities[ability].name)
           let num_dice = ability_val + parseInt(dataset.roll) + modifier
-          this._vampireRoll(num_dice, this.actor, `${dataset.label} + ${ability}`);
+          this._vampireRoll(num_dice, this.actor, `${dataset.label} + ${ability_name}`);
         },
       },
       cancel: {
