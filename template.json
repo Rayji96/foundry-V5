@@ -199,62 +199,80 @@
         "animalism": {
           "name": "VTM5E.Animalism",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "auspex": {
           "name": "VTM5E.Auspex",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "celerity": {
           "name": "VTM5E.Celerity",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "dominate": {
           "name": "VTM5E.Dominate",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "fortitude": {
           "name": "VTM5E.Fortitude",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "obfuscate": {
           "name": "VTM5E.Obfuscate",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "potence": {
           "name": "VTM5E.Potence",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "presence": {
           "name": "VTM5E.Presence",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "protean": {
           "name": "VTM5E.Protean",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "sorcery": {
           "name": "VTM5E.BloodSorcery",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
-        "rituals": {
-          "name": "VTM5E.Rituals",
+        "oblivion": {
+          "name": "VTM5E.Oblivion",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
         },
         "alchemy": {
           "name": "VTM5E.ThinBloodAlchemy",
           "value": 0,
-          "powers": []
+          "powers": [],
+          "visible": false
+        },
+        "rituals": {
+          "name": "VTM5E.Rituals",
+          "value": 0,
+          "powers": [],
+          "visible": false
         }
       }
     }
@@ -269,7 +287,7 @@
     "feature": {
       "templates": ["base"],
       "featuretype":"merit",
-      "value": 0
+      "points": 0
     },
     "power": {
       "templates": ["base"],

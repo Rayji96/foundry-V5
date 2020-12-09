@@ -219,14 +219,14 @@ export class VampireActorSheet extends ActorSheet {
     html.find('.vrollable').click(this._onVampireRollDialog.bind(this));
 
     // Drag events for macros.
-    if (this.actor.owner) {
-      let handler = ev => this._onDragItemStart(ev);
-      html.find('li.item').each((i, li) => {
-        if (li.classList.contains("inventory-header")) return;
-        li.setAttribute("draggable", true);
-        li.addEventListener("dragstart", handler, false);
-      });
-    }
+    // if (this.actor.owner) {
+    //   let handler = ev => this._onDragItemStart(ev);
+    //   html.find('li.item').each((i, li) => {
+    //     if (li.classList.contains("inventory-header")) return;
+    //     li.setAttribute("draggable", true);
+    //     li.addEventListener("dragstart", handler, false);
+    //   });
+    // }
   }
 
   /**
