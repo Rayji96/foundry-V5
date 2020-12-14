@@ -55,6 +55,16 @@ Hooks.once('init', async function() {
   Handlebars.registerHelper('generateFeatureLabel', function(str) {
     return (str == "merit" ? "VTM5E.Merit" : "VTM5E.Flaw")
   });
+
+  Handlebars.registerHelper('numLoop', function(num, options) {
+    var ret = "";
+
+    for (var i = 0, j = num; i < j; i++) {
+      ret = ret + options.fn(i);
+    }
+  
+    return ret;
+  });
 });
 
 Hooks.once("ready", async function() {

@@ -275,31 +275,48 @@ export class VampireActorSheet extends ActorSheet {
 
       let success = 0;
       let crit_success = 0;
+      let fail = 0;
 
       roll_result.terms[0].results.forEach((dice, index) => {
         if (dice.success){
-          success++;
-        }
-        if (dice.result == 10){
-          crit_success++;
+          if (dice.result == 10){
+            crit_success++;
+          }else{
+            success++;
+          }
+        }else{
+          fail++
         }
       });
 
-      crit_success = Math.floor(crit_success/2);
-      success = (crit_success * 2) + success;
+      let total_crit_success = 0
+      total_crit_success = Math.floor(crit_success/2);
+      let total_success = (total_crit_success * 2) + success + crit_success;
 
       let label = dataset.label ? `<p class="roll-label uppercase">${dataset.label}</p>` : '';
 
-      if (crit_success){
+      if (total_crit_success){
         label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`;
       }
   
-      label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${success}</p>`;
+      label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success}</p>`;
 
-      roll_result.toMessage({
+      for (var i = 0, j = crit_success; i < j; i++) {
+        label = label + `<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">`;
+      }
+      for (var i = 0, j = success; i < j; i++) {
+        label = label + `<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img">`;
+      }
+      for (var i = 0, j = fail; i < j; i++) {
+        label = label + `<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img">`;
+      }
+
+      message = roll_result.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
       });
+
+      console.log(message)
     }
   }
 
@@ -310,42 +327,81 @@ export class VampireActorSheet extends ActorSheet {
     let hunger_dice = actor.data.data.hunger.value;
 
     let success = 0;
+    let hunger_success = 0;
     let crit_success = 0;
-    let hunger_crit_fail = false;
-    let hunger_crit_success = false;
+    let hunger_crit_success = 0;
+    let fail = 0;
+    let hunger_fail = 0;
+    let hunger_crit_fail = 0;
 
     roll_result.terms[0].results.forEach((dice, index) => {
       if (dice.success){
-        success++;
-      }
-      if (dice.result == 10){
-        crit_success++;
-      }
-      if ((index + 1) <= hunger_dice){
         if (dice.result == 10){
-          hunger_crit_success = true;
-        }else if (dice.result == 1){
-          hunger_crit_fail = true;
+          if ((index + 1) <= hunger_dice){
+            hunger_crit_success++;
+          }else{
+            crit_success++;
+          }
+        }else if ((index + 1) <= hunger_dice){
+          hunger_success++;
+        }else{
+          success++;
+        }
+      }else{
+        if ((index + 1) <= hunger_dice){
+          if (dice.result == 1){
+            hunger_crit_fail++;
+          }else{
+            hunger_fail++;
+          }
+        }else{
+          fail++
         }
       }
     });
 
-    crit_success = Math.floor(crit_success/2);
-    success = (crit_success * 2) + success;
+    let total_crit_success = 0
+    total_crit_success = Math.floor((crit_success + hunger_crit_success)/2);
+    let total_success = (total_crit_success * 2) + success + hunger_success + crit_success + hunger_crit_success;
 
     label = `<p class="roll-label uppercase">${label}</p>`
 
-    if (hunger_crit_success && crit_success){
+    if (hunger_crit_success && total_crit_success){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.MessyCritical')}</p>`;
     }
-    else if (crit_success){
+    else if (total_crit_success){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`;
     }
     if (hunger_crit_fail){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.PossibleBestialFailure')}</p>`;
     }
 
-    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${success}</p>`;
+    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success}</p>`;
+
+    for (var i = 0, j = crit_success; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">`;
+    }
+    for (var i = 0, j = success; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img">`;
+    }
+    for (var i = 0, j = fail; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img">`;
+    }
+
+    label = label + `<br>`
+
+    for (var i = 0, j = hunger_crit_success; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/red-crit.png" alt="Hunger Crit" class="roll-img">`;
+    }
+    for (var i = 0, j = hunger_success; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/red-success.png" alt="Hunger Success" class="roll-img">`;
+    }
+    for (var i = 0, j = hunger_crit_fail; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Bestial Fail" class="roll-img">`;
+    }
+    for (var i = 0, j = hunger_fail; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img">`;
+    }
 
     roll_result.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: actor }),
