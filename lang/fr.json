@@ -72,7 +72,10 @@
     "VTM5E.Delete": "Supprimer",
 
     "VTM5E.Level": "Niveau",
+    "VTM5E.Add": "Ajouter",
     "VTM5E.AddPower": "Ajouter",
+    "VTM5E.SelectDiscipline": "Choisir une discipline",
+    "VTM5E.AddDiscipline": "Ajouter",
     "VTM5E.Animalism": "Animalisme",
     "VTM5E.Auspex": "Auspex",
     "VTM5E.Celerity": "Célérité",

@@ -154,9 +154,12 @@
                 <div class="item-image"></div>
                 <div class="item-name">{{localize "VTM5E.Name"}}</div>
                 <div class="item-name">{{localize "VTM5E.Level"}}</div>
-                <div class="item-controls"></div>
+                <div class="item-controls">
+                  <a class="item-control discipline-create" title="{{localize 'VTM5E.Add'}}"><i class="fas fa-plus"></i> {{localize "VTM5E.Add"}}</a>
+                </div>
               </li>
               {{#each data.disciplines as |discipline key|}}
+              {{#if discipline.visible}}
                   <li class="flexrow item-header">
                     {{#if (ne key "rituals")}}
                     <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="{{key}}">{{localize discipline.name}}</div>
@@ -166,6 +169,7 @@
                     {{/if}}
                     <div class="item-controls">
                       <a class="item-control item-create" title="{{localize 'VTM5E.AddPower'}}" data-type="power" data-discipline="{{key}}"><i class="fas fa-plus"></i> {{localize "VTM5E.AddPower"}}</a>
+                      <a class="item-control discipline-delete" title="{{localize 'VTM5E.Delete'}}" data-discipline="{{key}}"><i class="fas fa-trash"></i></a>
                     </div>
                   </li>
                   {{#each (lookup ../actor.disciplines_list key) as |item id|}}
@@ -178,6 +182,7 @@
                           </div>
                       </li>
                   {{/each}}
+              {{/if}}
               {{/each}}
           </ol>
       </div>

@@ -151,6 +151,7 @@ export class VampireActorSheet extends ActorSheet {
       "presence": [],
       "protean": [],
       "sorcery": [],
+      "oblivion": [],
       "rituals": [],
       "alchemy": []
     };
@@ -175,6 +176,9 @@ export class VampireActorSheet extends ActorSheet {
       else if (i.type === 'power') {
         if (i.data.discipline != undefined) {
           disciplines[i.data.discipline].push(i);
+          if (!this.actor.data.data.disciplines[i.data.discipline].visible){
+            this.actor.update({[`data.disciplines.${i.data.discipline}.visible`]: true});
+          }
         }
       }
     }
@@ -194,6 +198,15 @@ export class VampireActorSheet extends ActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
+
+    // Make Discipline visible
+    html.find('.discipline-create').click(this._onShowDiscipline.bind(this));
+
+    // Make Discipline hidden
+    html.find('.discipline-delete').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset;
+      this.actor.update({[`data.disciplines.${data.discipline}.visible`]: false});
+    });
 
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
@@ -227,6 +240,50 @@ export class VampireActorSheet extends ActorSheet {
     //     li.addEventListener("dragstart", handler, false);
     //   });
     // }
+  }
+
+  /**
+   * Handle making a discipline visible
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onShowDiscipline(event){
+    event.preventDefault();
+    let options = '';
+    for (const [key, value] of Object.entries(this.actor.data.data.disciplines)) {
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`);
+    }
+
+    let template = `
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.SelectDiscipline')}</label>
+              <select id="disciplineSelect">${options}</select>
+          </div>
+      </form>`;
+  
+    let buttons = {};
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Add'),
+        callback: async (html) => {
+          const discipline = html.find('#disciplineSelect')[0].value;
+          this.actor.update({[`data.disciplines.${discipline}.visible`]: true});
+        },
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel'),
+      },
+    };
+  
+    new Dialog({
+      title: game.i18n.localize('VTM5E.AddDiscipline'),
+      content: template,
+      buttons: buttons,
+      default: 'draw',
+    }).render(true);
   }
 
   /**
@@ -311,12 +368,10 @@ export class VampireActorSheet extends ActorSheet {
         label = label + `<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img">`;
       }
 
-      message = roll_result.toMessage({
+      roll_result.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
-      });
-
-      console.log(message)
+      }); 
     }
   }
 
