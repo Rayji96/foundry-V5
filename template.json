@@ -278,7 +278,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty"],
+    "types": ["feature", "power", "specialty", "item"],
     "templates": {
       "base": {
         "description": ""
@@ -291,11 +291,19 @@
     },
     "power": {
       "templates": ["base"],
-      "discipline": "rituals"
+      "discipline": "rituals",
+      "duration": "",
+      "pool": "",
+      "cost": "",
+      "rollable": false
     },
     "specialty": {
       "templates": ["base"],
       "skill": ""
+    },
+    "item": {
+      "templates": ["base"],
+      "bonus": 0
     }
   }
 }
