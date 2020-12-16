@@ -266,3 +266,7 @@
 .uppercase {
   text-transform: uppercase;
 }
+
+.roll-img {
+  max-width: 10%;
+}

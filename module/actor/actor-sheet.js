@@ -151,6 +151,7 @@ export class VampireActorSheet extends ActorSheet {
       "presence": [],
       "protean": [],
       "sorcery": [],
+      "oblivion": [],
       "rituals": [],
       "alchemy": []
     };
@@ -175,6 +176,9 @@ export class VampireActorSheet extends ActorSheet {
       else if (i.type === 'power') {
         if (i.data.discipline != undefined) {
           disciplines[i.data.discipline].push(i);
+          if (!this.actor.data.data.disciplines[i.data.discipline].visible){
+            this.actor.update({[`data.disciplines.${i.data.discipline}.visible`]: true});
+          }
         }
       }
     }
@@ -194,6 +198,15 @@ export class VampireActorSheet extends ActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;
+
+    // Make Discipline visible
+    html.find('.discipline-create').click(this._onShowDiscipline.bind(this));
+
+    // Make Discipline hidden
+    html.find('.discipline-delete').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset;
+      this.actor.update({[`data.disciplines.${data.discipline}.visible`]: false});
+    });
 
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
@@ -219,14 +232,58 @@ export class VampireActorSheet extends ActorSheet {
     html.find('.vrollable').click(this._onVampireRollDialog.bind(this));
 
     // Drag events for macros.
-    if (this.actor.owner) {
-      let handler = ev => this._onDragItemStart(ev);
-      html.find('li.item').each((i, li) => {
-        if (li.classList.contains("inventory-header")) return;
-        li.setAttribute("draggable", true);
-        li.addEventListener("dragstart", handler, false);
-      });
+    // if (this.actor.owner) {
+    //   let handler = ev => this._onDragItemStart(ev);
+    //   html.find('li.item').each((i, li) => {
+    //     if (li.classList.contains("inventory-header")) return;
+    //     li.setAttribute("draggable", true);
+    //     li.addEventListener("dragstart", handler, false);
+    //   });
+    // }
+  }
+
+  /**
+   * Handle making a discipline visible
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onShowDiscipline(event){
+    event.preventDefault();
+    let options = '';
+    for (const [key, value] of Object.entries(this.actor.data.data.disciplines)) {
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`);
     }
+
+    let template = `
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.SelectDiscipline')}</label>
+              <select id="disciplineSelect">${options}</select>
+          </div>
+      </form>`;
+  
+    let buttons = {};
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Add'),
+        callback: async (html) => {
+          const discipline = html.find('#disciplineSelect')[0].value;
+          this.actor.update({[`data.disciplines.${discipline}.visible`]: true});
+        },
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel'),
+      },
+    };
+  
+    new Dialog({
+      title: game.i18n.localize('VTM5E.AddDiscipline'),
+      content: template,
+      buttons: buttons,
+      default: 'draw',
+    }).render(true);
   }
 
   /**
@@ -275,31 +332,46 @@ export class VampireActorSheet extends ActorSheet {
 
       let success = 0;
       let crit_success = 0;
+      let fail = 0;
 
       roll_result.terms[0].results.forEach((dice, index) => {
         if (dice.success){
-          success++;
-        }
-        if (dice.result == 10){
-          crit_success++;
+          if (dice.result == 10){
+            crit_success++;
+          }else{
+            success++;
+          }
+        }else{
+          fail++
         }
       });
 
-      crit_success = Math.floor(crit_success/2);
-      success = (crit_success * 2) + success;
+      let total_crit_success = 0
+      total_crit_success = Math.floor(crit_success/2);
+      let total_success = (total_crit_success * 2) + success + crit_success;
 
       let label = dataset.label ? `<p class="roll-label uppercase">${dataset.label}</p>` : '';
 
-      if (crit_success){
+      if (total_crit_success){
         label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`;
       }
   
-      label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${success}</p>`;
+      label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success}</p>`;
+
+      for (var i = 0, j = crit_success; i < j; i++) {
+        label = label + `<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">`;
+      }
+      for (var i = 0, j = success; i < j; i++) {
+        label = label + `<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img">`;
+      }
+      for (var i = 0, j = fail; i < j; i++) {
+        label = label + `<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img">`;
+      }
 
       roll_result.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label
-      });
+      }); 
     }
   }
 
@@ -310,42 +382,81 @@ export class VampireActorSheet extends ActorSheet {
     let hunger_dice = actor.data.data.hunger.value;
 
     let success = 0;
+    let hunger_success = 0;
     let crit_success = 0;
-    let hunger_crit_fail = false;
-    let hunger_crit_success = false;
+    let hunger_crit_success = 0;
+    let fail = 0;
+    let hunger_fail = 0;
+    let hunger_crit_fail = 0;
 
     roll_result.terms[0].results.forEach((dice, index) => {
       if (dice.success){
-        success++;
-      }
-      if (dice.result == 10){
-        crit_success++;
-      }
-      if ((index + 1) <= hunger_dice){
         if (dice.result == 10){
-          hunger_crit_success = true;
-        }else if (dice.result == 1){
-          hunger_crit_fail = true;
+          if ((index + 1) <= hunger_dice){
+            hunger_crit_success++;
+          }else{
+            crit_success++;
+          }
+        }else if ((index + 1) <= hunger_dice){
+          hunger_success++;
+        }else{
+          success++;
+        }
+      }else{
+        if ((index + 1) <= hunger_dice){
+          if (dice.result == 1){
+            hunger_crit_fail++;
+          }else{
+            hunger_fail++;
+          }
+        }else{
+          fail++
         }
       }
     });
 
-    crit_success = Math.floor(crit_success/2);
-    success = (crit_success * 2) + success;
+    let total_crit_success = 0
+    total_crit_success = Math.floor((crit_success + hunger_crit_success)/2);
+    let total_success = (total_crit_success * 2) + success + hunger_success + crit_success + hunger_crit_success;
 
     label = `<p class="roll-label uppercase">${label}</p>`
 
-    if (hunger_crit_success && crit_success){
+    if (hunger_crit_success && total_crit_success){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.MessyCritical')}</p>`;
     }
-    else if (crit_success){
+    else if (total_crit_success){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`;
     }
     if (hunger_crit_fail){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.PossibleBestialFailure')}</p>`;
     }
 
-    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${success}</p>`;
+    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success}</p>`;
+
+    for (var i = 0, j = crit_success; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">`;
+    }
+    for (var i = 0, j = success; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img">`;
+    }
+    for (var i = 0, j = fail; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img">`;
+    }
+
+    label = label + `<br>`
+
+    for (var i = 0, j = hunger_crit_success; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/red-crit.png" alt="Hunger Crit" class="roll-img">`;
+    }
+    for (var i = 0, j = hunger_success; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/red-success.png" alt="Hunger Success" class="roll-img">`;
+    }
+    for (var i = 0, j = hunger_crit_fail; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Bestial Fail" class="roll-img">`;
+    }
+    for (var i = 0, j = hunger_fail; i < j; i++) {
+      label = label + `<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img">`;
+    }
 
     roll_result.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: actor }),
