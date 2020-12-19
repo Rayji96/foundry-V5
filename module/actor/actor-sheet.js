@@ -422,9 +422,9 @@ export class VampireActorSheet extends ActorSheet {
     let successRoll = false;
     if (difficulty != 0) {
       successRoll = total_success >= difficulty;
-      resultRoll = `<span class="danger">${game.i18n.localize('VTM5E.Fail')}</span>`;
+      resultRoll = `( <span class="danger">${game.i18n.localize('VTM5E.Fail')}</span> )`;
       if (successRoll) {
-        resultRoll = `<span class="success">${game.i18n.localize('VTM5E.Success')}</span>`;
+        resultRoll = `( <span class="success">${game.i18n.localize('VTM5E.Success')}</span> )`;
       }
     }
 
@@ -440,7 +440,7 @@ export class VampireActorSheet extends ActorSheet {
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.BestialFailure')}</p>`;
     }
 
-    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success} (${resultRoll})</p>`;
+    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success} ${resultRoll}</p>`;
 
     for (var i = 0, j = crit_success; i < j; i++) {
       label = label + `<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">`;
