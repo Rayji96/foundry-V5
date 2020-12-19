@@ -499,7 +499,7 @@ export class VampireActorSheet extends ActorSheet {
           </div>  
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-              <input type="number" min="0" id="inputDif" value="0">
+              <input type="text" min="0" id="inputDif" value="0">
           </div>
       </form>`;
   
