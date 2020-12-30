@@ -265,6 +265,14 @@
   font-size: 130%;
 }
 
+.roll-label .danger {
+  color: #831515;
+}
+
+.roll-label .success {
+  color: #18520b;
+}
+
 .roll-content {
   font-size: 120%;
 }
