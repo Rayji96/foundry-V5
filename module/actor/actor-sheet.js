@@ -436,8 +436,11 @@ export class VampireActorSheet extends ActorSheet {
     else if (total_crit_success){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`;
     }
-    if (hunger_crit_fail && !successRoll){
+    if (hunger_crit_fail && !successRoll && difficulty > 0){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.BestialFailure')}</p>`;
+    }
+    if (hunger_crit_fail && !successRoll && difficulty == 0){
+      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.PossibleBestialFailure')}</p>`;
     }
 
     label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success} ${resultRoll}</p>`;
