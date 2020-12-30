@@ -376,11 +376,12 @@ export class VampireActorSheet extends ActorSheet {
   }
 
   //roll helper
-  _vampireRoll(num_dice, actor, label = ""){
+  _vampireRoll(num_dice, difficulty, actor, label = ""){
     let roll = new Roll(num_dice + "d10cs>5", actor.data.data);
     let roll_result = roll.evaluate();
     let hunger_dice = actor.data.data.hunger.value;
 
+    let resultRoll = `<span></span>`;
     let success = 0;
     let hunger_success = 0;
     let crit_success = 0;
@@ -418,6 +419,14 @@ export class VampireActorSheet extends ActorSheet {
     let total_crit_success = 0
     total_crit_success = Math.floor((crit_success + hunger_crit_success)/2);
     let total_success = (total_crit_success * 2) + success + hunger_success + crit_success + hunger_crit_success;
+    let successRoll = false;
+    if (difficulty != 0) {
+      successRoll = total_success >= difficulty;
+      resultRoll = `( <span class="danger">${game.i18n.localize('VTM5E.Fail')}</span> )`;
+      if (successRoll) {
+        resultRoll = `( <span class="success">${game.i18n.localize('VTM5E.Success')}</span> )`;
+      }
+    }
 
     label = `<p class="roll-label uppercase">${label}</p>`
 
@@ -427,11 +436,14 @@ export class VampireActorSheet extends ActorSheet {
     else if (total_crit_success){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`;
     }
-    if (hunger_crit_fail){
+    if (hunger_crit_fail && !successRoll && difficulty > 0){
+      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.BestialFailure')}</p>`;
+    }
+    if (hunger_crit_fail && !successRoll && difficulty == 0){
       label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.PossibleBestialFailure')}</p>`;
     }
 
-    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success}</p>`;
+    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${total_success} ${resultRoll}</p>`;
 
     for (var i = 0, j = crit_success; i < j; i++) {
       label = label + `<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">`;
@@ -487,6 +499,10 @@ export class VampireActorSheet extends ActorSheet {
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
+          </div>  
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
+              <input type="text" min="0" id="inputDif" value="0">
           </div>
       </form>`;
   
@@ -498,10 +514,11 @@ export class VampireActorSheet extends ActorSheet {
         callback: async (html) => {
           const ability = html.find('#abilitySelect')[0].value;
           const modifier = parseInt(html.find('#inputMod')[0].value || 0);
+          const difficulty = parseInt(html.find('#inputDif')[0].value || 0);
           const ability_val = this.actor.data.data.abilities[ability].value
           const ability_name = game.i18n.localize(this.actor.data.data.abilities[ability].name)
           let num_dice = ability_val + parseInt(dataset.roll) + modifier
-          this._vampireRoll(num_dice, this.actor, `${dataset.label} + ${ability_name}`);
+          this._vampireRoll(num_dice, difficulty, this.actor, `${dataset.label} + ${ability_name}`);
         },
       },
       cancel: {
