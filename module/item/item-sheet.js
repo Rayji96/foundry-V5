@@ -56,12 +56,14 @@ export class VampireItemSheet extends ItemSheet {
     // Checkbox Handler.
     var checkbox = document.querySelector('input[type="checkbox"]');
 
-    checkbox.addEventListener('change', () => {
-      if(checkbox.checked) {
-        this.item.update({[`data.rollable`]: true});
-      } else {
-        this.item.update({[`data.rollable`]: false});
-      }
-    });
+    if (checkbox != null){
+      checkbox.addEventListener('change', () => {
+        if(checkbox.checked) {
+          this.item.update({[`data.rollable`]: true});
+        } else {
+          this.item.update({[`data.rollable`]: false});
+        }
+      });
+    }
   }
 }

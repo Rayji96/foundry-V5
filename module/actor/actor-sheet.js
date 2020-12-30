@@ -379,7 +379,7 @@ export class VampireActorSheet extends ActorSheet {
   }
 
   //roll helper
-  _vampireRoll(num_dice, difficulty, actor, label = ""){
+  _vampireRoll(num_dice, actor, label = "", difficulty = 0){
     let roll = new Roll(num_dice + "d10cs>5", actor.data.data);
     let roll_result = roll.evaluate();
     let hunger_dice = actor.data.data.hunger.value;
@@ -521,7 +521,7 @@ export class VampireActorSheet extends ActorSheet {
           const ability_val = this.actor.data.data.abilities[ability].value
           const ability_name = game.i18n.localize(this.actor.data.data.abilities[ability].name)
           let num_dice = ability_val + parseInt(dataset.roll) + modifier
-          this._vampireRoll(num_dice, difficulty, this.actor, `${dataset.label} + ${ability_name}`);
+          this._vampireRoll(num_dice, this.actor, `${dataset.label} + ${ability_name}`, difficulty);
         },
       },
       cancel: {
