@@ -62,7 +62,6 @@ export class VampireItemSheet extends ItemSheet {
       } else {
         this.item.update({[`data.rollable`]: false});
       }
-      console.log(this.item)
     });
   }
 }

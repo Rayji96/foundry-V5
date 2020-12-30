@@ -293,7 +293,8 @@
       "templates": ["base"],
       "discipline": "rituals",
       "duration": "",
-      "pool": "",
+      "dice1": "discipline",
+      "dice2": "discipline",
       "cost": "",
       "rollable": false
     },

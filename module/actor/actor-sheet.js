@@ -231,6 +231,9 @@ export class VampireActorSheet extends ActorSheet {
     // Rollable Vampire abilities.
     html.find('.vrollable').click(this._onVampireRollDialog.bind(this));
 
+    // Rollable Vampire abilities.
+    html.find('.power-rollable').click(this._onVampireRoll.bind(this));
+
     // Drag events for macros.
     // if (this.actor.owner) {
     //   let handler = ev => this._onDragItemStart(ev);
@@ -518,14 +521,15 @@ export class VampireActorSheet extends ActorSheet {
     }).render(true);
   }
 
-  
-  // _onVampireRoll(event) {
-  //   event.preventDefault();
-  //   const element = event.currentTarget;
-  //   const dataset = element.dataset;
-
-  //   if (dataset.roll) {
-  //     this._vampireRoll(dataset.roll, this.actor, dataset.label);
-  //   }
-  // }
+  _onVampireRoll(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+    let item = this.actor.items.get(dataset.id)
+    let discipline_value = this.actor.data.data.disciplines[item.data.data.discipline].value
+    let dice1 = item.data.data.dice1 == "discipline" ? discipline_value : this.actor.data.data.abilities[item.data.data.dice1].value
+    let dice2 = item.data.data.dice2 == "discipline" ? discipline_value : this.actor.data.data.abilities[item.data.data.dice2].value
+    let dice_pool = dice1 + dice2
+    this._vampireRoll(dice_pool, this.actor, `${item.data.name}`);
+  }
 }

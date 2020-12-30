@@ -174,7 +174,11 @@
                   </li>
                   {{#each (lookup ../actor.disciplines_list key) as |item id|}}
                       <li class="item flexrow" data-item-id="{{item._id}}">
-                          <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                        {{#if item.data.rollable}}
+                          <div class="item-image power-rollable" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                        {{else}}
+                          <div class="item-image" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+                        {{/if}}
                           <h4 class="item-name">{{item.name}}</h4>
                           <div class="item-controls">
                               <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i class="fas fa-edit"></i></a>

@@ -5,7 +5,8 @@
 }
 
 .rollable:hover, .rollable:focus, 
-.vrollable:hover, .vrollable:focus {
+.vrollable:hover, .vrollable:focus,
+.power-rollable:hover, .power-rollable:focus {
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
@@ -177,6 +178,11 @@
 .vtm5e .sheet-body .tab,
 .vtm5e .sheet-body .tab .editor {
   height: 100%;
+  min-height: 100px;
+}
+
+.vtm5e .sheet-body .tab .half-height {
+  height: 50%;
 }
 
 .vtm5e .tox .tox-editor-container {
