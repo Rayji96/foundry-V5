@@ -3,6 +3,7 @@ import { VampireActor } from "./actor/actor.js";
 import { VampireActorSheet } from "./actor/actor-sheet.js";
 import { VampireItem } from "./item/item.js";
 import { VampireItemSheet } from "./item/item-sheet.js";
+import { VampireDie, VampireHungerDie } from "./dice/dice.js";
 
 Hooks.once('init', async function() {
 
@@ -25,6 +26,8 @@ Hooks.once('init', async function() {
   // Define custom Entity classes
   CONFIG.Actor.entityClass = VampireActor;
   CONFIG.Item.entityClass = VampireItem;
+  CONFIG.Dice.terms["v"] = VampireDie;
+  CONFIG.Dice.terms["h"] = VampireHungerDie;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
@@ -71,6 +74,46 @@ Hooks.once("ready", async function() {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createVampireMacro(data, slot));
 });
+
+Hooks.once('diceSoNiceReady', (dice3d) => {
+  dice3d.addSystem({id:"vtm5e",name:"VtM5e"}, true);
+  dice3d.addDicePreset({
+    type:"dv",
+    labels:[
+      'systems/vtm5e/assets/images/normal-fail.png', 
+      'systems/vtm5e/assets/images/normal-fail.png', 
+      'systems/vtm5e/assets/images/normal-fail.png', 
+      'systems/vtm5e/assets/images/normal-fail.png', 
+      'systems/vtm5e/assets/images/normal-fail.png', 
+      'systems/vtm5e/assets/images/normal-success.png',
+      'systems/vtm5e/assets/images/normal-success.png',
+      'systems/vtm5e/assets/images/normal-success.png',
+      'systems/vtm5e/assets/images/normal-success.png',
+      'systems/vtm5e/assets/images/normal-crit.png'
+    ],
+    colorset:"white",
+    fontScale: 0.5,
+    system:"vtm5e"
+  });
+  dice3d.addDicePreset({
+    type:"dh",
+    labels:[
+      'systems/vtm5e/assets/images/bestial-fail.png', 
+      'systems/vtm5e/assets/images/red-fail.png', 
+      'systems/vtm5e/assets/images/red-fail.png', 
+      'systems/vtm5e/assets/images/red-fail.png', 
+      'systems/vtm5e/assets/images/red-fail.png', 
+      'systems/vtm5e/assets/images/red-success.png',
+      'systems/vtm5e/assets/images/red-success.png',
+      'systems/vtm5e/assets/images/red-success.png',
+      'systems/vtm5e/assets/images/red-success.png',
+      'systems/vtm5e/assets/images/red-crit.png'
+    ],
+    colorset:"black",
+    system:"vtm5e"
+  });
+});
+
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */

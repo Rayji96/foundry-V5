@@ -330,7 +330,7 @@ export class VampireActorSheet extends ActorSheet {
     const dataset = element.dataset;
 
     if (dataset.roll) {
-      let roll = new Roll(dataset.roll + "d10cs>5", this.actor.data.data);
+      let roll = new Roll(dataset.roll + "dvcs>5", this.actor.data.data);
       let roll_result = roll.evaluate();
 
       let success = 0;
@@ -380,9 +380,10 @@ export class VampireActorSheet extends ActorSheet {
 
   //roll helper
   _vampireRoll(num_dice, actor, label = "", difficulty = 0){
-    let roll = new Roll(num_dice + "d10cs>5", actor.data.data);
+    let hunger_dice = Math.min(actor.data.data.hunger.value, num_dice);
+    let dice = num_dice - hunger_dice;
+    let roll = new Roll(dice + "dvcs>5 + " + hunger_dice + "dhcs>5", actor.data.data);
     let roll_result = roll.evaluate();
-    let hunger_dice = actor.data.data.hunger.value;
 
     let resultRoll = `<span></span>`;
     let success = 0;
@@ -396,25 +397,27 @@ export class VampireActorSheet extends ActorSheet {
     roll_result.terms[0].results.forEach((dice, index) => {
       if (dice.success){
         if (dice.result == 10){
-          if ((index + 1) <= hunger_dice){
-            hunger_crit_success++;
-          }else{
-            crit_success++;
-          }
-        }else if ((index + 1) <= hunger_dice){
-          hunger_success++;
+          crit_success++;
         }else{
           success++;
         }
       }else{
-        if ((index + 1) <= hunger_dice){
-          if (dice.result == 1){
-            hunger_crit_fail++;
-          }else{
-            hunger_fail++;
-          }
+        fail++
+      }
+    });
+
+    roll_result.terms[2].results.forEach((dice, index) => {
+      if (dice.success){
+        if (dice.result == 10){
+          hunger_crit_success++;
         }else{
-          fail++
+          hunger_success++;
+        }
+      }else{
+        if (dice.result == 1){
+          hunger_crit_fail++;
+        }else{
+          hunger_fail++;
         }
       }
     });
