@@ -80,16 +80,16 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   dice3d.addDicePreset({
     type:"dv",
     labels:[
-      'systems/vtm5e/assets/images/normal-fail.png', 
-      'systems/vtm5e/assets/images/normal-fail.png', 
-      'systems/vtm5e/assets/images/normal-fail.png', 
-      'systems/vtm5e/assets/images/normal-fail.png', 
-      'systems/vtm5e/assets/images/normal-fail.png', 
-      'systems/vtm5e/assets/images/normal-success.png',
-      'systems/vtm5e/assets/images/normal-success.png',
-      'systems/vtm5e/assets/images/normal-success.png',
-      'systems/vtm5e/assets/images/normal-success.png',
-      'systems/vtm5e/assets/images/normal-crit.png'
+      'systems/vtm5e/assets/images/normal-fail-dsn.png', 
+      'systems/vtm5e/assets/images/normal-fail-dsn.png', 
+      'systems/vtm5e/assets/images/normal-fail-dsn.png', 
+      'systems/vtm5e/assets/images/normal-fail-dsn.png', 
+      'systems/vtm5e/assets/images/normal-fail-dsn.png', 
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
     colorset:"white",
     fontScale: 0.5,
@@ -98,16 +98,16 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   dice3d.addDicePreset({
     type:"dh",
     labels:[
-      'systems/vtm5e/assets/images/bestial-fail.png', 
-      'systems/vtm5e/assets/images/red-fail.png', 
-      'systems/vtm5e/assets/images/red-fail.png', 
-      'systems/vtm5e/assets/images/red-fail.png', 
-      'systems/vtm5e/assets/images/red-fail.png', 
-      'systems/vtm5e/assets/images/red-success.png',
-      'systems/vtm5e/assets/images/red-success.png',
-      'systems/vtm5e/assets/images/red-success.png',
-      'systems/vtm5e/assets/images/red-success.png',
-      'systems/vtm5e/assets/images/red-crit.png'
+      'systems/vtm5e/assets/images/bestial-fail-dsn.png', 
+      'systems/vtm5e/assets/images/red-fail-dsn.png', 
+      'systems/vtm5e/assets/images/red-fail-dsn.png', 
+      'systems/vtm5e/assets/images/red-fail-dsn.png', 
+      'systems/vtm5e/assets/images/red-fail-dsn.png', 
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-crit-dsn.png'
     ],
     colorset:"black",
     system:"vtm5e"

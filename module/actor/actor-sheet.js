@@ -23,7 +23,7 @@ export class VampireActorSheet extends ActorSheet {
     // TODO: confirm that I can finish and use this list
     const BLOOD_POTENCY = [
       {
-        "surge": game.i18n.localize("VTM5E.None"),
+        "surge": game.i18n.localize("VTM5E.Add1Dice"),
         "mend": game.i18n.localize("VTM5E.1SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.None"),
         "rouse": game.i18n.localize("VTM5E.None"),
@@ -31,83 +31,83 @@ export class VampireActorSheet extends ActorSheet {
         "feeding": game.i18n.localize("VTM5E.NoEffect")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add1Dice"),
+        "surge": game.i18n.localize("VTM5E.Add2Dice"),
         "mend": game.i18n.localize("VTM5E.1SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.None"),
         "rouse": game.i18n.localize("VTM5E.Level1"),
-        "bane": "1",
+        "bane": "2",
         "feeding": game.i18n.localize("VTM5E.NoEffect")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add1Dice"),
+        "surge": game.i18n.localize("VTM5E.Add2Dice"),
         "mend": game.i18n.localize("VTM5E.2SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add1Dice"),
         "rouse": game.i18n.localize("VTM5E.Level1"),
-        "bane": "1",
+        "bane": "2",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty1")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add2Dice"),
+        "surge": game.i18n.localize("VTM5E.Add3Dice"),
         "mend": game.i18n.localize("VTM5E.2SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add1Dice"),
         "rouse": game.i18n.localize("VTM5E.Level2"),
-        "bane": "2",
+        "bane": "3",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty2")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add2Dice"),
+        "surge": game.i18n.localize("VTM5E.Add3Dice"),
         "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add2Dice"),
         "rouse": game.i18n.localize("VTM5E.Level2"),
-        "bane": "2",
+        "bane": "3",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty3")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add3Dice"),
+        "surge": game.i18n.localize("VTM5E.Add4Dice"),
         "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add2Dice"),
         "rouse": game.i18n.localize("VTM5E.Level3"),
-        "bane": "3",
+        "bane": "4",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty4")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add3Dice"),
+        "surge": game.i18n.localize("VTM5E.Add4Dice"),
         "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add3Dice"),
         "rouse": game.i18n.localize("VTM5E.Level3"),
-        "bane": "3",
+        "bane": "4",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty5")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add4Dice"),
+        "surge": game.i18n.localize("VTM5E.Add5Dice"),
         "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add3Dice"),
         "rouse": game.i18n.localize("VTM5E.Level4"),
-        "bane": "4",
+        "bane": "5",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty5")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add4Dice"),
+        "surge": game.i18n.localize("VTM5E.Add5Dice"),
         "mend": game.i18n.localize("VTM5E.4SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add4Dice"),
         "rouse": game.i18n.localize("VTM5E.Level4"),
-        "bane": "4",
+        "bane": "5",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty6")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add5Dice"),
+        "surge": game.i18n.localize("VTM5E.Add6Dice"),
         "mend": game.i18n.localize("VTM5E.4SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add4Dice"),
         "rouse": game.i18n.localize("VTM5E.Level5"),
-        "bane": "5",
+        "bane": "6",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty6")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add5Dice"),
+        "surge": game.i18n.localize("VTM5E.Add6Dice"),
         "mend": game.i18n.localize("VTM5E.5SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add5Dice"),
         "rouse": game.i18n.localize("VTM5E.Level5"),
-        "bane": "5",
+        "bane": "6",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty7")
       }
     ]

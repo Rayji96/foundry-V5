@@ -18,6 +18,7 @@
     "character": {
       "templates": ["base"],
       "biography": "",
+      "equipment": "",
       "headers":{
         "concept":"",
         "predator":"",
