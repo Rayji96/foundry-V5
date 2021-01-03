@@ -22,6 +22,7 @@
     "VTM5E.Features": "Vantagens",
     "VTM5E.Blood": "Sangue",
     "VTM5E.Description": "Descrição",
+    "VTM5E.Equipment": "Equipamento",
     "VTM5E.Attributes": "Atributos",
 
     "VTM5E.Abilities": "Habilidades",
@@ -110,6 +111,7 @@
     "VTM5E.Add3Dice": "Adicionar 3 dados",
     "VTM5E.Add4Dice": "Adicionar 4 dados",
     "VTM5E.Add5Dice": "Adicionar 5 dados",
+    "VTM5E.Add6Dice": "Adicionar 6 dados",
     "VTM5E.1SuperficialDamage": "1 ponto de dano Superficial",
     "VTM5E.2SuperficialDamage": "2 pontos de dano Superficial",
     "VTM5E.3SuperficialDamage": "3 pontos de dano Superficial",
@@ -141,6 +143,8 @@
     "VTM5E.Biography": "Biografia",
 
     "VTM5E.Discipline": "Disciplina",
+    "VTM5E.System": "Sistema",
+    "VTM5E.Rollable": "Enrolável",
     "VTM5E.FeatureType": "Tipo de Vantagem",
 
     "VTM5E.RollingWillpower": "Rolando Força de Vontade",

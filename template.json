@@ -279,7 +279,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "item"],
+    "types": ["feature", "power", "specialty"],
     "templates": {
       "base": {
         "description": ""
@@ -302,10 +302,6 @@
     "specialty": {
       "templates": ["base"],
       "skill": ""
-    },
-    "item": {
-      "templates": ["base"],
-      "bonus": 0
     }
   }
 }
