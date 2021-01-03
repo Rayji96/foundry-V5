@@ -23,7 +23,7 @@ export class VampireActorSheet extends ActorSheet {
     // TODO: confirm that I can finish and use this list
     const BLOOD_POTENCY = [
       {
-        "surge": game.i18n.localize("VTM5E.None"),
+        "surge": game.i18n.localize("VTM5E.Add1Dice"),
         "mend": game.i18n.localize("VTM5E.1SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.None"),
         "rouse": game.i18n.localize("VTM5E.None"),
@@ -31,83 +31,83 @@ export class VampireActorSheet extends ActorSheet {
         "feeding": game.i18n.localize("VTM5E.NoEffect")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add1Dice"),
+        "surge": game.i18n.localize("VTM5E.Add2Dice"),
         "mend": game.i18n.localize("VTM5E.1SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.None"),
         "rouse": game.i18n.localize("VTM5E.Level1"),
-        "bane": "1",
+        "bane": "2",
         "feeding": game.i18n.localize("VTM5E.NoEffect")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add1Dice"),
+        "surge": game.i18n.localize("VTM5E.Add2Dice"),
         "mend": game.i18n.localize("VTM5E.2SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add1Dice"),
         "rouse": game.i18n.localize("VTM5E.Level1"),
-        "bane": "1",
+        "bane": "2",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty1")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add2Dice"),
+        "surge": game.i18n.localize("VTM5E.Add3Dice"),
         "mend": game.i18n.localize("VTM5E.2SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add1Dice"),
         "rouse": game.i18n.localize("VTM5E.Level2"),
-        "bane": "2",
+        "bane": "3",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty2")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add2Dice"),
+        "surge": game.i18n.localize("VTM5E.Add3Dice"),
         "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add2Dice"),
         "rouse": game.i18n.localize("VTM5E.Level2"),
-        "bane": "2",
+        "bane": "3",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty3")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add3Dice"),
+        "surge": game.i18n.localize("VTM5E.Add4Dice"),
         "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add2Dice"),
         "rouse": game.i18n.localize("VTM5E.Level3"),
-        "bane": "3",
+        "bane": "4",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty4")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add3Dice"),
+        "surge": game.i18n.localize("VTM5E.Add4Dice"),
         "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add3Dice"),
         "rouse": game.i18n.localize("VTM5E.Level3"),
-        "bane": "3",
+        "bane": "4",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty5")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add4Dice"),
+        "surge": game.i18n.localize("VTM5E.Add5Dice"),
         "mend": game.i18n.localize("VTM5E.3SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add3Dice"),
         "rouse": game.i18n.localize("VTM5E.Level4"),
-        "bane": "4",
+        "bane": "5",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty5")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add4Dice"),
+        "surge": game.i18n.localize("VTM5E.Add5Dice"),
         "mend": game.i18n.localize("VTM5E.4SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add4Dice"),
         "rouse": game.i18n.localize("VTM5E.Level4"),
-        "bane": "4",
+        "bane": "5",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty6")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add5Dice"),
+        "surge": game.i18n.localize("VTM5E.Add6Dice"),
         "mend": game.i18n.localize("VTM5E.4SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add4Dice"),
         "rouse": game.i18n.localize("VTM5E.Level5"),
-        "bane": "5",
+        "bane": "6",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty6")
       },
       {
-        "surge": game.i18n.localize("VTM5E.Add5Dice"),
+        "surge": game.i18n.localize("VTM5E.Add6Dice"),
         "mend": game.i18n.localize("VTM5E.5SuperficialDamage"),
         "power": game.i18n.localize("VTM5E.Add5Dice"),
         "rouse": game.i18n.localize("VTM5E.Level5"),
-        "bane": "5",
+        "bane": "6",
         "feeding": game.i18n.localize("VTM5E.FeedingPenalty7")
       }
     ]
@@ -231,6 +231,9 @@ export class VampireActorSheet extends ActorSheet {
     // Rollable Vampire abilities.
     html.find('.vrollable').click(this._onVampireRollDialog.bind(this));
 
+    // Rollable Vampire powers.
+    html.find('.power-rollable').click(this._onVampireRoll.bind(this));
+
     // Drag events for macros.
     // if (this.actor.owner) {
     //   let handler = ev => this._onDragItemStart(ev);
@@ -240,6 +243,23 @@ export class VampireActorSheet extends ActorSheet {
     //     li.addEventListener("dragstart", handler, false);
     //   });
     // }
+
+    // Collapsible Vampire powers
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.parentElement.nextElementSibling;
+        console.log(content)
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
   }
 
   /**
@@ -327,7 +347,7 @@ export class VampireActorSheet extends ActorSheet {
     const dataset = element.dataset;
 
     if (dataset.roll) {
-      let roll = new Roll(dataset.roll + "d10cs>5", this.actor.data.data);
+      let roll = new Roll(dataset.roll + "dvcs>5", this.actor.data.data);
       let roll_result = roll.evaluate();
 
       let success = 0;
@@ -376,10 +396,11 @@ export class VampireActorSheet extends ActorSheet {
   }
 
   //roll helper
-  _vampireRoll(num_dice, difficulty, actor, label = ""){
-    let roll = new Roll(num_dice + "d10cs>5", actor.data.data);
+  _vampireRoll(num_dice, actor, label = "", difficulty = 0){
+    let hunger_dice = Math.min(actor.data.data.hunger.value, num_dice);
+    let dice = num_dice - hunger_dice;
+    let roll = new Roll(dice + "dvcs>5 + " + hunger_dice + "dhcs>5", actor.data.data);
     let roll_result = roll.evaluate();
-    let hunger_dice = actor.data.data.hunger.value;
 
     let resultRoll = `<span></span>`;
     let success = 0;
@@ -393,25 +414,27 @@ export class VampireActorSheet extends ActorSheet {
     roll_result.terms[0].results.forEach((dice, index) => {
       if (dice.success){
         if (dice.result == 10){
-          if ((index + 1) <= hunger_dice){
-            hunger_crit_success++;
-          }else{
-            crit_success++;
-          }
-        }else if ((index + 1) <= hunger_dice){
-          hunger_success++;
+          crit_success++;
         }else{
           success++;
         }
       }else{
-        if ((index + 1) <= hunger_dice){
-          if (dice.result == 1){
-            hunger_crit_fail++;
-          }else{
-            hunger_fail++;
-          }
+        fail++
+      }
+    });
+
+    roll_result.terms[2].results.forEach((dice, index) => {
+      if (dice.success){
+        if (dice.result == 10){
+          hunger_crit_success++;
         }else{
-          fail++
+          hunger_success++;
+        }
+      }else{
+        if (dice.result == 1){
+          hunger_crit_fail++;
+        }else{
+          hunger_fail++;
         }
       }
     });
@@ -518,7 +541,7 @@ export class VampireActorSheet extends ActorSheet {
           const ability_val = this.actor.data.data.abilities[ability].value
           const ability_name = game.i18n.localize(this.actor.data.data.abilities[ability].name)
           let num_dice = ability_val + parseInt(dataset.roll) + modifier
-          this._vampireRoll(num_dice, difficulty, this.actor, `${dataset.label} + ${ability_name}`);
+          this._vampireRoll(num_dice, this.actor, `${dataset.label} + ${ability_name}`, difficulty);
         },
       },
       cancel: {
@@ -535,14 +558,15 @@ export class VampireActorSheet extends ActorSheet {
     }).render(true);
   }
 
-  
-  // _onVampireRoll(event) {
-  //   event.preventDefault();
-  //   const element = event.currentTarget;
-  //   const dataset = element.dataset;
-
-  //   if (dataset.roll) {
-  //     this._vampireRoll(dataset.roll, this.actor, dataset.label);
-  //   }
-  // }
+  _onVampireRoll(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+    let item = this.actor.items.get(dataset.id)
+    let discipline_value = this.actor.data.data.disciplines[item.data.data.discipline].value
+    let dice1 = item.data.data.dice1 == "discipline" ? discipline_value : this.actor.data.data.abilities[item.data.data.dice1].value
+    let dice2 = item.data.data.dice2 == "discipline" ? discipline_value : this.actor.data.data.abilities[item.data.data.dice2].value
+    let dice_pool = dice1 + dice2
+    this._vampireRoll(dice_pool, this.actor, `${item.data.name}`);
+  }
 }

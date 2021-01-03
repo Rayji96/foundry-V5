@@ -22,6 +22,7 @@
     "VTM5E.Features": "Features",
     "VTM5E.Blood": "Blood",
     "VTM5E.Description": "Description",
+    "VTM5E.Equipment": "Equipment",
     "VTM5E.Attributes": "Attributes",
 
     "VTM5E.Abilities": "Abilities",
@@ -110,6 +111,7 @@
     "VTM5E.Add3Dice": "Add 3 dice",
     "VTM5E.Add4Dice": "Add 4 dice",
     "VTM5E.Add5Dice": "Add 5 dice",
+    "VTM5E.Add6Dice": "Add 6 dice",
     "VTM5E.1SuperficialDamage": "1 point of Superficial damage",
     "VTM5E.2SuperficialDamage": "2 points of Superficial damage",
     "VTM5E.3SuperficialDamage": "3 points of Superficial damage",
@@ -141,6 +143,8 @@
     "VTM5E.Biography": "Biography",
 
     "VTM5E.Discipline": "Discipline",
+    "VTM5E.System": "System",
+    "VTM5E.Rollable": "Rollable",
     "VTM5E.FeatureType": "Feature Type",
 
     "VTM5E.RollingWillpower": "Rolling Willpower",

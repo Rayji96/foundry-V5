@@ -18,6 +18,7 @@
     "character": {
       "templates": ["base"],
       "biography": "",
+      "equipment": "",
       "headers":{
         "concept":"",
         "predator":"",
@@ -291,7 +292,12 @@
     },
     "power": {
       "templates": ["base"],
-      "discipline": "rituals"
+      "discipline": "rituals",
+      "duration": "",
+      "dice1": "discipline",
+      "dice2": "discipline",
+      "cost": "",
+      "rollable": false
     },
     "specialty": {
       "templates": ["base"],
