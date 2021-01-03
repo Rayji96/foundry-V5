@@ -231,7 +231,7 @@ export class VampireActorSheet extends ActorSheet {
     // Rollable Vampire abilities.
     html.find('.vrollable').click(this._onVampireRollDialog.bind(this));
 
-    // Rollable Vampire abilities.
+    // Rollable Vampire powers.
     html.find('.power-rollable').click(this._onVampireRoll.bind(this));
 
     // Drag events for macros.
@@ -243,6 +243,23 @@ export class VampireActorSheet extends ActorSheet {
     //     li.addEventListener("dragstart", handler, false);
     //   });
     // }
+
+    // Collapsible Vampire powers
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.parentElement.nextElementSibling;
+        console.log(content)
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
   }
 
   /**
