@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'cormorantlight';
+    src: url('Cormorant-Light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.vtm5e.sheet.actor .window-content {
+    background:#faf5ed;
+    font-family: 'cormorantlight';
+
+}
+
+.vtm5e.sheet.actor .profile-img,
+.vtm5e.sheet.actor .item-image img {background:#790813}
+
+.vtm5e.sheet.actor .window-content input {
+    font-family:initial;
+    background:white;
+    border:1px solid #e0dede
+}
+
+
+.vtm5e.sheet.actor .window-content button.rollable {
+    background:#790813;
+    color:white;
+    font-family:'cormorantlight';
+    font-weight:bold;
+    border:none;
+}
+
+.vtm5e.sheet.actor .window-content .resource-label {
+    text-transform:initial;
+    font-size: 16px;
+}
+
+.vtm5e.sheet.actor .window-content  .abilities .ability .resource-label{
+    font-weight:bold;
+    font-size:18px;
+}
+
+.vtm5e.sheet.actor .window-content nav.sheet-tabs {
+    background:#e6ded0;
+    color:#790813;
+    font-size:16px;
+    margin-bottom:20px;
+    height:41px;
+   
+
+}
+
+.vtm5e.sheet.actor .window-content nav.sheet-tabs a.item.active {
+    background:#faf5ed;
+    text-decoration:none;
+   
+}
+
+.vtm5e.sheet.actor .window-content .header-fields .resource {
+    
+    border:1px solid #d6d6d2;
+    border-radius:5px
+}
+
+.vtm5e.sheet.actor .window-content .abilities,.vtm5e.sheet.actor .window-content .skills {
+    border:none;
+}
+
+.vtm5e.sheet.actor .window-content .sheet-body .tab > .resource-label {
+    color:#790813;
+    border-bottom:1px solid #790813;
+    width:100%;
+    display:block;
+   text-transform:uppercase;
+}
+
