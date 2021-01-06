@@ -2,6 +2,7 @@
 
 [![Foundry Shield 0.7.9]][Foundry URL]
 [![MIT License]][MIT URL]
+[![GitHub Super-Linter]][Super-Linter URL]
 
 This system is for playing Vampire the Masquerade 5th edition on the Foundry Virtual Tabletop System.
 
@@ -19,7 +20,7 @@ Please check the issues list before suggesting new features. :smiley:
 
 ## Credits
 
-Huge thanks to these folk for their contributions:
+Huge thanks to these folks for their contributions:
 
 * This sheet was initially based on the [boilerplate system] by @asacolips#1867
 * French localization started by @Lloyxide#6914
@@ -32,6 +33,9 @@ Huge thanks to these folk for their contributions:
 
 [MIT License]: https://img.shields.io/badge/License-MIT-green
 [MIT URL]: https://github.com/Rayji96/foundry-V5/blob/main/LICENSE
+
+[GitHub Super-Linter]: https://github.com/Rayji96/foundry-V5/workflows/Super-Linter/badge.svg
+[Super-Linter URL]: https://github.com/marketplace/actions/super-linter
 
 [boilerplate system]: https://gitlab.com/asacolips-projects/foundry-mods/foundryvtt-system-tutorial
 [danielmalka]: https://github.com/danielmalka
