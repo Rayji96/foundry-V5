@@ -117,7 +117,7 @@
           {{/each}}
         </div>
 
-        <label class="resource-label">Skills</label>
+        <label class="resource-label">{{localize "VTM5E.Skills"}}</label>
         <div class="skills grid grid-3col flex-group-center">
           {{#each data.skills as |skill key|}}
             <div class="skill flexrow flex-center">
@@ -126,8 +126,9 @@
             </div>
           {{/each}}
         </div>
+
         <label class="resource-label">{{localize "VTM5E.Specialties"}}</label>
-        <ol class="items-list">
+        <ol class="items-list flex-left">
           <li class="item flexrow item-header">
             <div class="item-name">{{localize "VTM5E.Specialty"}}</div>
             <div class="item-name">{{localize "VTM5E.Skill"}}</div>
@@ -273,9 +274,8 @@
         </div>
     </div>
 
-      
       {{!-- Biography Tab --}}
-      <div class="tab biography" data-group="primary" data-tab="description">
+      <div class="tab" data-group="primary" data-tab="description">
         <div class="resource flexrow grid grid-3col">
           <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Concept"}}</label>
@@ -317,19 +317,14 @@
 </textarea>
           </div>
         </div>
-        <div class="flex-center">
-          <label class="resource-label">{{localize "VTM5E.Biography"}}</label>
-        </div>
+        <label class="resource-label flex-center">{{localize "VTM5E.Biography"}}</label>
         {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
       </div>
 
-
-      {{!-- Biography Tab --}}
-      <div class="tab equipment" data-group="primary" data-tab="equipment">
-        <div class="flex-center">
-          <label class="resource-label">{{localize "VTM5E.Equipment"}}</label>
-        </div>
-        {{editor content=data.equipment target="data.equipment" button=true owner=owner editable=editable}}
+      {{!-- Equipment Tab --}}
+      <div class="tab" data-group="primary" data-tab="equipment">
+          <label class="resource-label flex-center">{{localize "VTM5E.Equipment"}}</label>
+          {{editor content=data.equipment target="data.equipment" button=true owner=owner editable=editable}}
       </div>
   </section>
 </form>
