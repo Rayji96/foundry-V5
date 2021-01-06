@@ -1,15 +1,17 @@
+/* global Die */
+
+/**
+ * Extend the basic Die to show custom vampire icons on a d10.
+ * @extends {Die}
+ */
 export class VampireDie extends Die {
-    constructor(termData ) {
-        termData.faces=10;
+    constructor(termData) {
+        termData.faces = 10;
         super(termData);
     }
 
-    /* -------------------------------------------- */
-
     /** @override */
     static DENOMINATION = "v";
-
-    /* -------------------------------------------- */
 
     /** @override */
     static getResultLabel(result) {
@@ -28,18 +30,19 @@ export class VampireDie extends Die {
     }
 }
 
+
+/**
+ * Extend the basic Die to show custom vampire icons on a d10.
+ * @extends {Die}
+ */
 export class VampireHungerDie extends Die {
-    constructor(termData ) {
-        termData.faces=10;
+    constructor(termData) {
+        termData.faces = 10;
         super(termData);
     }
 
-    /* -------------------------------------------- */
-
     /** @override */
     static DENOMINATION = "h";
-
-    /* -------------------------------------------- */
 
     /** @override */
     static getResultLabel(result) {
