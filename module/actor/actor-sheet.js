@@ -193,6 +193,8 @@ export class VampireActorSheet extends ActorSheet {
   activateListeners (html) {
     super.activateListeners(html)
 
+    this._setupResources(html)
+
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
@@ -230,6 +232,8 @@ export class VampireActorSheet extends ActorSheet {
 
     // Rollable Vampire powers.
     html.find('.power-rollable').click(this._onVampireRoll.bind(this))
+
+    html.find('.resource-value > .resource-value-step').click(this._onResourceValueChange.bind(this))
 
     // Drag events for macros.
     // if (this.actor.owner) {
@@ -563,5 +567,36 @@ export class VampireActorSheet extends ActorSheet {
     const dice2 = item.data.data.dice2 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice2].value
     const dicePool = dice1 + dice2
     this._vampireRoll(dicePool, this.actor, `${item.data.name}`)
+  }
+
+  _onResourceValueChange (event) {
+    event.preventDefault()
+    const elem = event.currentTarget
+    const value = Number(elem.getAttribute('data-value'))
+    const parent = $(elem.parentNode)
+    const steps = parent.find('.resource-value-step')
+    if (value < 0 || value > steps.length) {
+      return
+    }
+
+    steps.removeClass('active')
+    steps.each(function (i) {
+      if (i <= value) {
+        $(this).addClass('active')
+      }
+    })
+
+    parent.find('input').val(value+1)
+  }
+
+  _setupResources (html) {
+    html.find('.resource-value').each(function () {
+      const value = Number($(this).find('input').val())
+      $(this).find('.resource-value-step').each(function (i) {
+        if (i + 1 <= value) {
+          $(this).addClass('active')
+        }
+      })
+    })
   }
 }
