@@ -147,9 +147,9 @@
           "value": 0,
           "name": "VTM5E.Medicine"
         },
-        "melee": {
+        "larceny": {
           "value": 0,
-          "name": "VTM5E.Melee"
+          "name": "VTM5E.Larceny"
         },
         "performance": {
           "value": 0,
@@ -159,9 +159,9 @@
           "value": 0,
           "name": "VTM5E.Occult"
         },
-        "larceny": {
+        "melee": {
           "value": 0,
-          "name": "VTM5E.Larceny"
+          "name": "VTM5E.Melee"
         },
         "persuasion": {
           "value": 0,

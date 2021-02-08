@@ -370,10 +370,6 @@
 
 /* Resource boxes CSS */
 
-.vtm5e .resource-value input {
-  display: none;
-}
-
 .vtm5e .resource-value .resource-value-step {
   height: 14px;
   width: 14px;
@@ -385,6 +381,18 @@
 
 .vtm5e .resource-value .resource-value-step.active {
   background-color: #790813;
+}
+
+.vtm5e .resource-value .resource-value-empty {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  background:
+    linear-gradient(45deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%),
+    linear-gradient(135deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
 }
 
 /* ChatMessage CSS */
