@@ -23,19 +23,10 @@
                 <div class="resource flex-group-center">
                     <label for="data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="flexcol">
-                            <input type="text" name="data.health.aggravated" value="{{data.health.aggravated}}"
-                                data-dtype="Number" />
-                            <span>{{localize "VTM5E.Aggravated"}}</span>
-                        </div>
-                        <div class="flexcol">
-                            <input type="text" name="data.health.superficial" value="{{data.health.superficial}}"
-                                data-dtype="Number" />
-                            <span>{{localize "VTM5E.Superficial"}}</span>
-                        </div>
-                        <div class="flexcol">
-                            <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number" />
-                            <span>{{localize "VTM5E.Max"}}</span>
+                        <div class="resource-counter" data-states="-:max,/:superficial,x:aggravated" data-max="{{data.health.max}}" data-superficial="{{data.health.superficial}}" data-aggravated="{{data.health.aggravated}}" data-name="data.health">
+                            {{#numLoop 15}}
+                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                            {{/numLoop}}
                         </div>
                     </div>
                 </div>
@@ -43,20 +34,10 @@
                     <label for="data.willpower" class="resource-label rollable" data-roll="3"
                         data-label="{{localize 'VTM5E.RollingWillpower'}}">{{localize "VTM5E.Willpower"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="flexcol">
-                            <input type="text" name="data.willpower.aggravated" value="{{data.willpower.aggravated}}"
-                                data-dtype="Number" />
-                            <span>{{localize "VTM5E.Aggravated"}}</span>
-                        </div>
-                        <div class="flexcol">
-                            <input type="text" name="data.willpower.superficial" value="{{data.willpower.superficial}}"
-                                data-dtype="Number" />
-                            <span>{{localize "VTM5E.Superficial"}}</span>
-                        </div>
-                        <div class="flexcol">
-                            <input type="text" name="data.willpower.max" value="{{data.willpower.max}}"
-                                data-dtype="Number" />
-                            <span>{{localize "VTM5E.Max"}}</span>
+                        <div class="resource-counter" data-states="-:max,/:superficial,x:aggravated" data-max="{{data.willpower.max}}" data-superficial="{{data.willpower.superficial}}" data-aggravated="{{data.willpower.aggravated}}" data-name="data.willpower">
+                            {{#numLoop 15}}
+                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                            {{/numLoop}}
                         </div>
                     </div>
                 </div>
@@ -65,34 +46,31 @@
             use both the "grid" and "grid-Ncol" class where "N" can be any number
             from 1 to 12 and will create that number of columns. --}}
             <div class="resources grid grid-4col">
-                <div class="resource flex-group-center">
+                <div class="resource flex-group-center exp">
                     <label for="data.exp" class="resource-label">{{localize "VTM5E.Exp"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
                         <input type="number" name="data.exp.value" value="{{data.exp.value}}" data-dtype="Number" />
                     </div>
                 </div>
-                <div class="resource flex-group-center">
+                <div class="resource flex-group-center humanity">
                     <label for="data.humanity.value" class="resource-label">{{localize "VTM5E.Humanity"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="flexcol">
-                            <input type="number" name="data.humanity.value" value="{{data.humanity.value}}"
-                                data-dtype="Number" />
-                            <span>{{localize "VTM5E.Value"}}</span>
+                        <div class="resource-counter" data-states="-:value,/:stains" data-value="{{data.humanity.value}}" data-stains="{{data.humanity.stains}}"  data-name="data.humanity">
+                            {{#numLoop 10}}
+                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                            {{/numLoop}}
                         </div>
-                        <div class="flexcol">
-                            <input type="number" name="data.humanity.stains" value="{{data.humanity.stains}}"
-                                data-dtype="Number" />
-                            <span>{{localize "VTM5E.Stains"}}</span>
-                        </div>
-                        <span> / 10</span>
                     </div>
                 </div>
                 <div class="resource flex-group-center">
                     <label for="data.hunger.value" class="resource-label">{{localize "VTM5E.Hunger"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <input type="number" min="0" max="5" name="data.hunger.value" value="{{data.hunger.value}}"
-                            data-dtype="Number" />
-                        <span> / 5</span>
+                        <div class="resource-value" data-value="{{data.hunger.value}}" data-name="data.hunger.value">
+                            <span class="resource-value-empty"></span>
+                            {{#numLoop 5}}
+                            <span class="resource-value-step" data-index="{{this}}"></span>
+                            {{/numLoop}}
+                        </div>
                     </div>
                 </div>
                 <div class="resource flex-group-center">
@@ -199,8 +177,12 @@
                     {{#if (ne key "rituals")}}
                     <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="{{key}}">{{localize
                         discipline.name}}</div>
-                    <input type="number" name="data.disciplines.{{key}}.value" min="0" value="{{discipline.value}}"
-                        data-dtype="Number" />
+                    <div class="resource-value" data-value="{{discipline.value}}" data-name="data.disciplines.{{key}}.value">
+                        <span class="resource-value-empty"></span>
+                        {{#numLoop 5}}
+                        <span class="resource-value-step" data-index="{{this}}"></span>
+                        {{/numLoop}}
+                    </div>
                     {{else}}
                     <div class="item-name" data-roll="{{discipline.value}}" data-label="{{key}}">{{localize
                         discipline.name}}
@@ -285,9 +267,14 @@
         {{!-- Blood Tab --}}
         <div class="tab blood" data-group="primary" data-tab="blood">
             <div class="resource flexrow grid grid-2col">
-                <div class="flex-group-center flexrow">
+                <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.BloodPotency"}}: </label>
-                    <input type="number" name="data.blood.potency" min="0" max="10" value="{{data.blood.potency}}" />
+                    <div class="resource-value" data-value="{{data.blood.potency}}" data-name="data.blood.potency">
+                        <span class="resource-value-empty"></span>
+                        {{#numLoop 10}}
+                        <span class="resource-value-step" data-index="{{this}}"></span>
+                        {{/numLoop}}
+                    </div>
                 </div>
                 <div class="flex-group-center flexrow">
                     <label class="resource-label">{{localize "VTM5E.BloodResonance"}}: </label>

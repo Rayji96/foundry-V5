@@ -194,6 +194,7 @@ export class VampireActorSheet extends ActorSheet {
     super.activateListeners(html)
 
     this._setupResources(html)
+    this._setupResourceCounters(html)
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
@@ -235,6 +236,7 @@ export class VampireActorSheet extends ActorSheet {
 
     html.find('.resource-value > .resource-value-step').click(this._onResourceValueChange.bind(this))
     html.find('.resource-value > .resource-value-empty').click(this._onResourceValueEmpty.bind(this))
+    html.find('.resource-counter > .resource-counter-step').click(this._onResourceCounterChange.bind(this))
 
     // Drag events for macros.
     // if (this.actor.owner) {
@@ -573,7 +575,8 @@ export class VampireActorSheet extends ActorSheet {
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
-    actorData.data[fields[1]][fields[2]][fields[3]] = value
+    let lastField = fields.pop()
+    fields.reduce((data, field) => data[field], actorData)[lastField] = value
     this.actor.update(actorData)
   }
 
@@ -587,6 +590,50 @@ export class VampireActorSheet extends ActorSheet {
 
     steps.removeClass('active')
     this._assignToActorField(fields, 0)
+  }
+
+  _onResourceCounterChange (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const index = Number(element.dataset.index)
+    const state = element.dataset.state || ''
+    const parent = $(element.parentNode)
+    const data = parent[0].dataset
+    const states = parseCounterStates(data.states)
+    const fields = data.name.split('.')
+    const steps = parent.find('.resource-counter-step')
+    if (index < 0 || index > steps.length) {
+      return
+    }
+
+    const allStates = ['', ...Object.keys(states)]
+    const currentState = allStates.indexOf(state)
+    if (currentState < 0) {
+      return
+    }
+
+    const newState = allStates[(currentState+1)%allStates.length]
+    steps[index].dataset.state = newState
+
+    if (state !== '' && state !== '-') {
+      data[states[state]] = Number(data[states[state]]) - 1
+    }
+
+    // If the step was removed we also need to subtract from the maximum.
+    if (state !== '' && newState === '') {
+      data[states['-']] = Number(data[states['-']]) - 1
+    }
+
+    if (newState !== '') {
+      data[states[newState]] = Number(data[states[newState]]) + 1
+    }
+
+    const newValue = Object.values(states).reduce(function (obj, k) {
+      obj[k] = Number(data[k]) || 0
+      return obj
+    }, {})
+
+    this._assignToActorField(fields, newValue)
   }
 
   _onResourceValueChange (event) {
@@ -621,4 +668,36 @@ export class VampireActorSheet extends ActorSheet {
       })
     })
   }
+
+  _setupResourceCounters (html) {
+    html.find('.resource-counter').each(function () {
+      const data = this.dataset
+      const states = parseCounterStates(data.states)
+
+      const fulls = Number(data[states['-']]) || 0
+      const halfs = Number(data[states['/']]) || 0
+      const crossed = Number(data[states['x']]) || 0
+
+      const values = new Array(fulls)
+      values.fill('-', 0, fulls)
+      values.fill('/', fulls - halfs - crossed, fulls - crossed)
+      values.fill('x', fulls - crossed, fulls)
+
+      $(this).find('.resource-counter-step').each(function () {
+        this.dataset.state = ''
+        if (this.dataset.index < values.length) {
+          this.dataset.state = values[this.dataset.index]
+        }
+      })
+    })
+  }
+
+}
+
+function parseCounterStates(states) {
+  return states.split(',').reduce((obj, state) => {
+    const [k, v] = state.split(':')
+    obj[k] = v
+    return obj
+  }, {})
 }
