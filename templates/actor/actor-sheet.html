@@ -5,7 +5,7 @@
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
             alt="Profile Image" />
         <div class="header-fields">
-            <div class="flexrow">
+            <div class="grid grid-3col flexrow">
                 <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
                         placeholder="{{localize 'VTM5E.Name'}}" /></h1>
                 <h1 class="charname"><input name="data.clan.value" type="text" value="{{data.clan.value}}"
@@ -16,7 +16,7 @@
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number
             from 1 to 12 and will create that number of columns. --}}
-            <div class="resources grid grid-2col">
+            <div class="resources grid grid-3col">
                 {{!-- "flex-group-center" is also defined in the _grid.scss file
                 and it will add a small amount of padding, a border, and will
                 center all of its child elements content and text. --}}
@@ -24,7 +24,7 @@
                     <label for="data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
                         <div class="resource-counter" data-states="-:max,/:superficial,x:aggravated" data-max="{{data.health.max}}" data-superficial="{{data.health.superficial}}" data-aggravated="{{data.health.aggravated}}" data-name="data.health">
-                            {{#numLoop 15}}
+                            {{#numLoop 10}}
                             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
                             {{/numLoop}}
                         </div>
@@ -35,7 +35,18 @@
                         data-label="{{localize 'VTM5E.RollingWillpower'}}">{{localize "VTM5E.Willpower"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
                         <div class="resource-counter" data-states="-:max,/:superficial,x:aggravated" data-max="{{data.willpower.max}}" data-superficial="{{data.willpower.superficial}}" data-aggravated="{{data.willpower.aggravated}}" data-name="data.willpower">
-                            {{#numLoop 15}}
+                            {{#numLoop 10}}
+                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                            {{/numLoop}}
+                        </div>
+                    </div>
+                </div>
+                <div class="resource flex-group-center humanity">
+                    <label for="data.humanity.value" class="resource-label rollable" data-roll="{{remorse data.humanity.value data.humanity.stains}}"
+                    data-label="{{localize 'VTM5E.RollingRemorse'}}">{{localize "VTM5E.Humanity"}}</label>
+                    <div class="resource-content flexrow flex-center flex-between">
+                        <div class="resource-counter" data-states="-:value,/:stains" data-value="{{data.humanity.value}}" data-stains="{{data.humanity.stains}}"  data-name="data.humanity">
+                            {{#numLoop 10}}
                             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
                             {{/numLoop}}
                         </div>
@@ -50,16 +61,8 @@
                     <label for="data.exp" class="resource-label">{{localize "VTM5E.Exp"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
                         <input type="number" name="data.exp.value" value="{{data.exp.value}}" data-dtype="Number" />
-                    </div>
-                </div>
-                <div class="resource flex-group-center humanity">
-                    <label for="data.humanity.value" class="resource-label">{{localize "VTM5E.Humanity"}}</label>
-                    <div class="resource-content flexrow flex-center flex-between">
-                        <div class="resource-counter" data-states="-:value,/:stains" data-value="{{data.humanity.value}}" data-stains="{{data.humanity.stains}}"  data-name="data.humanity">
-                            {{#numLoop 10}}
-                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
-                            {{/numLoop}}
-                        </div>
+                        /
+                        <input type="number" name="data.exp.max" value="{{data.exp.max}}" data-dtype="Number" />
                     </div>
                 </div>
                 <div class="resource flex-group-center">
@@ -78,6 +81,13 @@
                     <div class="resource-content flexrow flex-center flex-between">
                         <button class="rollable" type="text" name="rouse" data-roll="1"
                             data-label="{{localize 'VTM5E.RousingBlood'}}...">{{localize "VTM5E.Roll"}}</button>
+                    </div>
+                </div>
+                <div class="resource flex-group-center">
+                    <label for="placeholder" class="resource-label">{{localize "VTM5E.Frenzy"}}</label>
+                    <div class="resource-content flexrow flex-center flex-between">
+                        <button class="rollable" type="text" name="frenzy" data-roll="{{frenzy data.willpower.max data.willpower.superficial data.willpower.aggravated data.humanity.value}}"
+                            data-label="{{localize 'VTM5E.ResistingFrenzy'}}...">{{localize "VTM5E.Roll"}}</button>
                     </div>
                 </div>
             </div>

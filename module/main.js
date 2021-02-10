@@ -60,6 +60,16 @@ Hooks.once('init', async function () {
     return (str === 'merit' ? 'VTM5E.Merit' : 'VTM5E.Flaw')
   })
 
+  // TODO: there exist math helpers for handlebars
+  Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
+    return ((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3))
+  })
+
+  // TODO: there exist math helpers for handlebars
+  Handlebars.registerHelper('remorse', function (humanity, stain) {
+    return (10 - humanity - stain)
+  })
+
   Handlebars.registerHelper('numLoop', function (num, options) {
     let ret = ''
 
@@ -68,6 +78,26 @@ Hooks.once('init', async function () {
     }
 
     return ret
+  })
+
+  Handlebars.registerHelper('getDisciplineName', function (key) {
+    const disciplines = {
+      animalism: 'VTM5E.Animalism',
+      auspex: 'VTM5E.Auspex',
+      celerity: 'VTM5E.Celerity',
+      dominate: 'VTM5E.Dominate',
+      fortitude: 'VTM5E.Fortitude',
+      obfuscate: 'VTM5E.Obfuscate',
+      potence: 'VTM5E.Potence',
+      presence: 'VTM5E.Presence',
+      protean: 'VTM5E.Protean',
+      sorcery: 'VTM5E.BloodSorcery',
+      oblivion: 'VTM5E.Oblivion',
+      alchemy: 'VTM5E.ThinBloodAlchemy',
+      rituals: 'VTM5E.Rituals'
+    }
+
+    return disciplines[key]
   })
 })
 

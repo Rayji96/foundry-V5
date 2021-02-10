@@ -193,8 +193,8 @@ export class VampireActorSheet extends ActorSheet {
   activateListeners (html) {
     super.activateListeners(html)
 
-    this._setupResources(html)
-    this._setupResourceCounters(html)
+    this._setupDotCounters(html)
+    this._setupSquareCounters(html)
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
@@ -234,9 +234,9 @@ export class VampireActorSheet extends ActorSheet {
     // Rollable Vampire powers.
     html.find('.power-rollable').click(this._onVampireRoll.bind(this))
 
-    html.find('.resource-value > .resource-value-step').click(this._onResourceValueChange.bind(this))
-    html.find('.resource-value > .resource-value-empty').click(this._onResourceValueEmpty.bind(this))
-    html.find('.resource-counter > .resource-counter-step').click(this._onResourceCounterChange.bind(this))
+    html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
+    html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
+    html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
 
     // Drag events for macros.
     // if (this.actor.owner) {
@@ -575,12 +575,12 @@ export class VampireActorSheet extends ActorSheet {
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
-    let lastField = fields.pop()
+    const lastField = fields.pop()
     fields.reduce((data, field) => data[field], actorData)[lastField] = value
     this.actor.update(actorData)
   }
 
-  _onResourceValueEmpty (event) {
+  _onDotCounterEmpty (event) {
     event.preventDefault()
     const element = event.currentTarget
     const parent = $(element.parentNode)
@@ -592,40 +592,45 @@ export class VampireActorSheet extends ActorSheet {
     this._assignToActorField(fields, 0)
   }
 
-  _onResourceCounterChange (event) {
+  _onSquareCounterChange (event) {
     event.preventDefault()
     const element = event.currentTarget
     const index = Number(element.dataset.index)
-    const state = element.dataset.state || ''
+    const oldState = element.dataset.state || ''
     const parent = $(element.parentNode)
     const data = parent[0].dataset
     const states = parseCounterStates(data.states)
     const fields = data.name.split('.')
     const steps = parent.find('.resource-counter-step')
+    const humanity = data.name === 'data.humanity'
+    const fulls = Number(data[states['-']]) || 0
+    const halfs = Number(data[states['/']]) || 0
+    const crossed = Number(data[states.x]) || 0
+
     if (index < 0 || index > steps.length) {
       return
     }
 
     const allStates = ['', ...Object.keys(states)]
-    const currentState = allStates.indexOf(state)
+    const currentState = allStates.indexOf(oldState)
     if (currentState < 0) {
       return
     }
 
-    const newState = allStates[(currentState+1)%allStates.length]
+    const newState = allStates[(currentState + 1) % allStates.length]
     steps[index].dataset.state = newState
 
-    if (state !== '' && state !== '-') {
-      data[states[state]] = Number(data[states[state]]) - 1
+    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && humanity)) {
+      data[states[oldState]] = Number(data[states[oldState]]) - 1
     }
 
     // If the step was removed we also need to subtract from the maximum.
-    if (state !== '' && newState === '') {
+    if (oldState !== '' && newState === '' && !humanity) {
       data[states['-']] = Number(data[states['-']]) - 1
     }
 
     if (newState !== '') {
-      data[states[newState]] = Number(data[states[newState]]) + 1
+      data[states[newState]] = Number(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
     }
 
     const newValue = Object.values(states).reduce(function (obj, k) {
@@ -636,7 +641,7 @@ export class VampireActorSheet extends ActorSheet {
     this._assignToActorField(fields, newValue)
   }
 
-  _onResourceValueChange (event) {
+  _onDotCounterChange (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
@@ -658,7 +663,7 @@ export class VampireActorSheet extends ActorSheet {
     this._assignToActorField(fields, index + 1)
   }
 
-  _setupResources (html) {
+  _setupDotCounters (html) {
     html.find('.resource-value').each(function () {
       const value = Number(this.dataset.value)
       $(this).find('.resource-value-step').each(function (i) {
@@ -669,19 +674,24 @@ export class VampireActorSheet extends ActorSheet {
     })
   }
 
-  _setupResourceCounters (html) {
+  _setupSquareCounters (html) {
     html.find('.resource-counter').each(function () {
       const data = this.dataset
       const states = parseCounterStates(data.states)
+      const humanity = data.name === 'data.humanity'
 
       const fulls = Number(data[states['-']]) || 0
       const halfs = Number(data[states['/']]) || 0
-      const crossed = Number(data[states['x']]) || 0
+      const crossed = Number(data[states.x]) || 0
 
-      const values = new Array(fulls)
+      const values = humanity ? new Array(fulls + halfs) : new Array(fulls)
       values.fill('-', 0, fulls)
-      values.fill('/', fulls - halfs - crossed, fulls - crossed)
-      values.fill('x', fulls - crossed, fulls)
+      if (humanity) {
+        values.fill('/', fulls, fulls + halfs)
+      } else {
+        values.fill('/', fulls - halfs - crossed, fulls - crossed)
+        values.fill('x', fulls - crossed, fulls)
+      }
 
       $(this).find('.resource-counter-step').each(function () {
         this.dataset.state = ''
@@ -691,10 +701,9 @@ export class VampireActorSheet extends ActorSheet {
       })
     })
   }
-
 }
 
-function parseCounterStates(states) {
+function parseCounterStates (states) {
   return states.split(',').reduce((obj, state) => {
     const [k, v] = state.split(':')
     obj[k] = v

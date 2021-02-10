@@ -68,7 +68,7 @@
                     <option value="intelligence">{{localize "VTM5E.Intelligence"}}</option>
                     <option value="wits">{{localize "VTM5E.Wits"}}</option>
                     <option value="resolve">{{localize "VTM5E.Resolve"}}</option>
-                    <option value="discipline">{{localize "VTM5E.Discipline"}}</option>
+                    <option value="discipline">{{localize (getDisciplineName item.data.discipline)}}</option>
                     {{/select}}
                 </select>
                 <label class="resource-label">+</label>
@@ -83,7 +83,7 @@
                     <option value="intelligence">{{localize "VTM5E.Intelligence"}}</option>
                     <option value="wits">{{localize "VTM5E.Wits"}}</option>
                     <option value="resolve">{{localize "VTM5E.Resolve"}}</option>
-                    <option value="discipline">{{localize "VTM5E.Discipline"}}</option>
+                    <option value="discipline">{{localize (getDisciplineName item.data.discipline)}}</option>
                     {{/select}}
                 </select>
             </div>

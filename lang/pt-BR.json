@@ -9,6 +9,7 @@
     "VTM5E.Humanity": "Humanidade",
     "VTM5E.Hunger": "Fome",
     "VTM5E.Rouse": "Despertar o Sangue",
+    "VTM5E.Frenzy": "Frenesi",
     "VTM5E.Roll": "Rolar",
 
     "VTM5E.Superficial": "Superficial",
@@ -148,7 +149,9 @@
     "VTM5E.FeatureType": "Tipo de Vantagem",
 
     "VTM5E.RollingWillpower": "Rolando Força de Vontade",
+    "VTM5E.RollingRemorse": "Rolando Remorso",
     "VTM5E.RousingBlood": "Despertando o Sangue",
+    "VTM5E.ResistingFrenzy": "Resistindo ao Frenesi",
     "VTM5E.CriticalSuccess": "Sucesso Crítico!",
     "VTM5E.Success": "Sucesso!",
     "VTM5E.Successes": "Sucessos",

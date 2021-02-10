@@ -174,15 +174,6 @@
   font-size: 16px;
 }
 
-.vtm5e .resource.exp {
-  width: 50%;
-}
-
-.vtm5e .resource.humanity {
-  width: 150%;
-  margin-left: -50%;
-}
-
 .vtm5e .window-content .abilities .ability .resource-label {
   font-weight: bold;
   font-size: 18px;
@@ -399,7 +390,8 @@
   display: inline-block;
   border-radius: 50%;
   cursor: pointer;
-  background: linear-gradient(
+  background:
+    linear-gradient(
       45deg,
       transparent 0%,
       transparent 43%,
@@ -432,19 +424,21 @@
 }
 
 .vtm5e .resource-counter .resource-counter-step[data-state="/"] {
-  background: linear-gradient(
-    135deg,
-    transparent 0%,
-    transparent 43%,
-    black 45%,
-    black 55%,
-    transparent 57%,
-    transparent 100%
-  );
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
 }
 
 .vtm5e .resource-counter .resource-counter-step[data-state="x"] {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       45deg,
       transparent 0%,
       transparent 43%,

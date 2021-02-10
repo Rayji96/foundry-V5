@@ -27,6 +27,7 @@ Huge thanks to these folks for their contributions:
 * Brazilian Portuguese localization started by [danielmalka]
 * Icons used with permissions from [cftarbay]
 * CSS improvements by [lipefl]
+* Incredible work on dot and box counters by [erizocosmico]
 
 [Foundry Shield 0.7.9]: https://img.shields.io/badge/Foundry-0.7.9-informational
 [Foundry URL]: https://foundryvtt.com
@@ -41,3 +42,4 @@ Huge thanks to these folks for their contributions:
 [danielmalka]: https://github.com/danielmalka
 [cftarbay]: https://github.com/cftarbay
 [lipefl]: https://github.com/lipefl
+[erizocosmico]: https://github.com/erizocosmico
