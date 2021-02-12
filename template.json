@@ -275,6 +275,12 @@
           "value": 0,
           "powers": [],
           "visible": false
+        },
+        "ceremonies": {
+          "name": "VTM5E.Ceremonies",
+          "value": 0,
+          "powers": [],
+          "visible": false
         }
       }
     }

@@ -154,6 +154,7 @@ export class VampireActorSheet extends ActorSheet {
       sorcery: [],
       oblivion: [],
       rituals: [],
+      ceremonies: [],
       alchemy: []
     }
 
@@ -565,7 +566,14 @@ export class VampireActorSheet extends ActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const item = this.actor.items.get(dataset.id)
-    const disciplineValue = this.actor.data.data.disciplines[item.data.data.discipline].value
+    let disciplineValue = 0
+    if (item.data.data.discipline === 'rituals') {
+      disciplineValue = this.actor.data.data.disciplines.sorcery.value
+    } else if (item.data.data.discipline === 'ceremonies') {
+      disciplineValue = this.actor.data.data.disciplines.oblivion.value
+    } else {
+      disciplineValue = this.actor.data.data.disciplines[item.data.data.discipline].value
+    }
     const dice1 = item.data.data.dice1 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice1].value
     const dice2 = item.data.data.dice2 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice2].value
     const dicePool = dice1 + dice2

@@ -47,6 +47,14 @@ Hooks.once('init', async function () {
     return outStr
   })
 
+  Handlebars.registerHelper('or', function (bool1, bool2) {
+    return bool1 || bool2
+  })
+
+  Handlebars.registerHelper('and', function (bool1, bool2) {
+    return bool1 && bool2
+  })
+
   Handlebars.registerHelper('toLowerCase', function (str) {
     return str.toLowerCase()
   })
@@ -80,7 +88,7 @@ Hooks.once('init', async function () {
     return ret
   })
 
-  Handlebars.registerHelper('getDisciplineName', function (key) {
+  Handlebars.registerHelper('getDisciplineName', function (key, roll = false) {
     const disciplines = {
       animalism: 'VTM5E.Animalism',
       auspex: 'VTM5E.Auspex',
@@ -94,9 +102,16 @@ Hooks.once('init', async function () {
       sorcery: 'VTM5E.BloodSorcery',
       oblivion: 'VTM5E.Oblivion',
       alchemy: 'VTM5E.ThinBloodAlchemy',
-      rituals: 'VTM5E.Rituals'
+      rituals: 'VTM5E.Rituals',
+      ceremonies: 'VTM5E.Ceremonies'
     }
-
+    if (roll) {
+      if (key === 'rituals') {
+        return disciplines.sorcery
+      } else if (key === 'ceremonies') {
+        return disciplines.oblivion
+      }
+    }
     return disciplines[key]
   })
 })

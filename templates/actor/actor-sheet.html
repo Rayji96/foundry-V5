@@ -184,7 +184,7 @@
                 {{#each data.disciplines as |discipline key|}}
                 {{#if discipline.visible}}
                 <li class="flexrow item-header">
-                    {{#if (ne key "rituals")}}
+                    {{#if (and (ne key "rituals") (ne key "ceremonies"))}}
                     <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="{{key}}">{{localize
                         discipline.name}}</div>
                     <div class="resource-value" data-value="{{discipline.value}}" data-name="data.disciplines.{{key}}.value">
@@ -194,8 +194,7 @@
                         {{/numLoop}}
                     </div>
                     {{else}}
-                    <div class="item-name" data-roll="{{discipline.value}}" data-label="{{key}}">{{localize
-                        discipline.name}}
+                    <div class="item-name" data-roll="{{discipline.value}}" data-label="{{key}}">{{localize discipline.name}}
                     </div>
                     {{/if}}
                     <div class="item-controls">
