@@ -9,6 +9,7 @@
     "VTM5E.Humanity": "Humanité",
     "VTM5E.Hunger": "Soif",
     "VTM5E.Rouse": "Exaltation",
+    "VTM5E.Frenzy": "Frénésie",
     "VTM5E.Roll": "Jet",
 
     "VTM5E.Superficial": "Superficiel",
@@ -90,6 +91,7 @@
     "VTM5E.Oblivion": "Obténébration",
     "VTM5E.ThinBloodAlchemy": "Alchimie du sang clair",
     "VTM5E.Rituals": "Rituels",
+    "VTM5E.Ceremonies": "Cérémonies",
 
     "VTM5E.AddFeat": "Ajouter",
     "VTM5E.Merit": "Avantage",
@@ -139,7 +141,7 @@
     "VTM5E.Generation": "Génération",
     "VTM5E.ChronicleTenets": "Principes de la Chronique",
     "VTM5E.TouchstonesAndConvictions": "Attaches et Convictions",
-    "VTM5E.ClanBane": "Fléan de clan",
+    "VTM5E.ClanBane": "Fléau de clan",
     "VTM5E.Biography": "Biographie",
 
     "VTM5E.Discipline": "Discipline",
@@ -148,7 +150,9 @@
     "VTM5E.FeatureType": "Type d'Atout",
 
     "VTM5E.RollingWillpower": "Jet de Volonté",
+    "VTM5E.RollingRemorse": "Jeté de Remords",
     "VTM5E.RousingBlood": "Exaltation du sang",
+    "VTM5E.ResistingFrenzy": "Résister à la frénésie",
     "VTM5E.CriticalSuccess": "Succès Critique!",
     "VTM5E.Success": "Succès!",
     "VTM5E.Successes": "Succès",

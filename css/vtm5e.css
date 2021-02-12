@@ -2,8 +2,8 @@
 
 /* Fonts */
 @font-face {
-  font-family: 'cormorantLight';
-  src: url('../assets/fonts/Cormorant-Light-webfont.woff') format('woff');
+  font-family: "cormorantLight";
+  src: url("../assets/fonts/Cormorant-Light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -142,12 +142,14 @@
 /* New Styles */
 .vtm5e .window-content {
   background: #faf5ed;
-  font-family: 'cormorantLight', sans-serif;
+  font-family: "cormorantLight", sans-serif;
   font-weight: 600;
 }
 
 .vtm5e .profile-img,
-.vtm5e .item-image img { background: #790813; }
+.vtm5e .item-image img {
+  background: #790813;
+}
 
 .vtm5e input {
   font-family: initial;
@@ -158,7 +160,7 @@
 .vtm5e button.rollable {
   background: #790813;
   color: white;
-  font-family: 'cormorantlight', sans-serif;
+  font-family: "cormorantlight", sans-serif;
   font-weight: bold;
   border: none;
 }
@@ -364,6 +366,105 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+/* Resource boxes CSS */
+
+.vtm5e .resource-value .resource-value-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.vtm5e .resource-value .resource-value-step.active {
+  background-color: #790813;
+}
+
+.vtm5e .resource-value .resource-value-empty {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  background:
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+.vtm5e .resource-counter .resource-counter-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.vtm5e .resource-counter .resource-counter-step[data-state="-"] {
+  background-color: #790813;
+}
+
+.vtm5e .resource-counter .resource-counter-step[data-state="/"] {
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+.vtm5e .resource-counter .resource-counter-step[data-state="x"] {
+  background:
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+.vtm5e .flex-group-center:not(.flexrow) .resource-value,
+.vtm5e .flex-group-center:not(.flexrow) .resource-counter {
+  margin-top: 5px;
+}
+
+.vtm5e .tab.disciplines .resource-value {
+  margin-top: 2px;
 }
 
 /* ChatMessage CSS */

@@ -9,6 +9,7 @@
     "VTM5E.Humanity": "Humanidad",
     "VTM5E.Hunger": "Ansia",
     "VTM5E.Rouse": "Enardecimiento",
+    "VTM5E.Frenzy": "Frenesí",
     "VTM5E.Roll": "Tirar",
 
     "VTM5E.Superficial": "Superficial",
@@ -90,6 +91,7 @@
     "VTM5E.Oblivion": "Olvido",
     "VTM5E.ThinBloodAlchemy": "Alquimia de Sangre Débil",
     "VTM5E.Rituals": "Rituales",
+    "VTM5E.Ceremonies": "Ceremonias",
 
     "VTM5E.AddFeat": "Añadir",
     "VTM5E.Merit": "Ventaja",
@@ -148,7 +150,9 @@
     "VTM5E.FeatureType": "Tipo de rasgo",
 
     "VTM5E.RollingWillpower": "Tirando Fuerza de Voluntad",
+    "VTM5E.RollingRemorse": "Tirando del Remordimiento",
     "VTM5E.RousingBlood": "Enardeciendo la Sangre",
+    "VTM5E.ResistingFrenzy": "Resistiendo el Frenesí",
     "VTM5E.CriticalSuccess": "¡Éxito crítico!",
     "VTM5E.Success": "¡Éxito!",
     "VTM5E.Successes": "Éxitos",

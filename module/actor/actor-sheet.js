@@ -154,6 +154,7 @@ export class VampireActorSheet extends ActorSheet {
       sorcery: [],
       oblivion: [],
       rituals: [],
+      ceremonies: [],
       alchemy: []
     }
 
@@ -193,6 +194,9 @@ export class VampireActorSheet extends ActorSheet {
   activateListeners (html) {
     super.activateListeners(html)
 
+    this._setupDotCounters(html)
+    this._setupSquareCounters(html)
+
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
@@ -230,6 +234,10 @@ export class VampireActorSheet extends ActorSheet {
 
     // Rollable Vampire powers.
     html.find('.power-rollable').click(this._onVampireRoll.bind(this))
+
+    html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
+    html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
+    html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
 
     // Drag events for macros.
     // if (this.actor.owner) {
@@ -558,10 +566,155 @@ export class VampireActorSheet extends ActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const item = this.actor.items.get(dataset.id)
-    const disciplineValue = this.actor.data.data.disciplines[item.data.data.discipline].value
+    let disciplineValue = 0
+    if (item.data.data.discipline === 'rituals') {
+      disciplineValue = this.actor.data.data.disciplines.sorcery.value
+    } else if (item.data.data.discipline === 'ceremonies') {
+      disciplineValue = this.actor.data.data.disciplines.oblivion.value
+    } else {
+      disciplineValue = this.actor.data.data.disciplines[item.data.data.discipline].value
+    }
     const dice1 = item.data.data.dice1 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice1].value
     const dice2 = item.data.data.dice2 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice2].value
     const dicePool = dice1 + dice2
     this._vampireRoll(dicePool, this.actor, `${item.data.name}`)
   }
+
+  // There's gotta be a better way to do this but for the life of me I can't figure it out
+  _assignToActorField (fields, value) {
+    const actorData = duplicate(this.actor)
+    const lastField = fields.pop()
+    fields.reduce((data, field) => data[field], actorData)[lastField] = value
+    this.actor.update(actorData)
+  }
+
+  _onDotCounterEmpty (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const parent = $(element.parentNode)
+    const fieldStrings = parent[0].dataset.name
+    const fields = fieldStrings.split('.')
+    const steps = parent.find('.resource-value-empty')
+
+    steps.removeClass('active')
+    this._assignToActorField(fields, 0)
+  }
+
+  _onSquareCounterChange (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const index = Number(element.dataset.index)
+    const oldState = element.dataset.state || ''
+    const parent = $(element.parentNode)
+    const data = parent[0].dataset
+    const states = parseCounterStates(data.states)
+    const fields = data.name.split('.')
+    const steps = parent.find('.resource-counter-step')
+    const humanity = data.name === 'data.humanity'
+    const fulls = Number(data[states['-']]) || 0
+    const halfs = Number(data[states['/']]) || 0
+    const crossed = Number(data[states.x]) || 0
+
+    if (index < 0 || index > steps.length) {
+      return
+    }
+
+    const allStates = ['', ...Object.keys(states)]
+    const currentState = allStates.indexOf(oldState)
+    if (currentState < 0) {
+      return
+    }
+
+    const newState = allStates[(currentState + 1) % allStates.length]
+    steps[index].dataset.state = newState
+
+    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && humanity)) {
+      data[states[oldState]] = Number(data[states[oldState]]) - 1
+    }
+
+    // If the step was removed we also need to subtract from the maximum.
+    if (oldState !== '' && newState === '' && !humanity) {
+      data[states['-']] = Number(data[states['-']]) - 1
+    }
+
+    if (newState !== '') {
+      data[states[newState]] = Number(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
+    }
+
+    const newValue = Object.values(states).reduce(function (obj, k) {
+      obj[k] = Number(data[k]) || 0
+      return obj
+    }, {})
+
+    this._assignToActorField(fields, newValue)
+  }
+
+  _onDotCounterChange (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const index = Number(dataset.index)
+    const parent = $(element.parentNode)
+    const fieldStrings = parent[0].dataset.name
+    const fields = fieldStrings.split('.')
+    const steps = parent.find('.resource-value-step')
+    if (index < 0 || index > steps.length) {
+      return
+    }
+
+    steps.removeClass('active')
+    steps.each(function (i) {
+      if (i <= index) {
+        $(this).addClass('active')
+      }
+    })
+    this._assignToActorField(fields, index + 1)
+  }
+
+  _setupDotCounters (html) {
+    html.find('.resource-value').each(function () {
+      const value = Number(this.dataset.value)
+      $(this).find('.resource-value-step').each(function (i) {
+        if (i + 1 <= value) {
+          $(this).addClass('active')
+        }
+      })
+    })
+  }
+
+  _setupSquareCounters (html) {
+    html.find('.resource-counter').each(function () {
+      const data = this.dataset
+      const states = parseCounterStates(data.states)
+      const humanity = data.name === 'data.humanity'
+
+      const fulls = Number(data[states['-']]) || 0
+      const halfs = Number(data[states['/']]) || 0
+      const crossed = Number(data[states.x]) || 0
+
+      const values = humanity ? new Array(fulls + halfs) : new Array(fulls)
+      values.fill('-', 0, fulls)
+      if (humanity) {
+        values.fill('/', fulls, fulls + halfs)
+      } else {
+        values.fill('/', fulls - halfs - crossed, fulls - crossed)
+        values.fill('x', fulls - crossed, fulls)
+      }
+
+      $(this).find('.resource-counter-step').each(function () {
+        this.dataset.state = ''
+        if (this.dataset.index < values.length) {
+          this.dataset.state = values[this.dataset.index]
+        }
+      })
+    })
+  }
+}
+
+function parseCounterStates (states) {
+  return states.split(',').reduce((obj, state) => {
+    const [k, v] = state.split(':')
+    obj[k] = v
+    return obj
+  }, {})
 }
