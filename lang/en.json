@@ -9,6 +9,7 @@
     "VTM5E.Humanity": "Humanity",
     "VTM5E.Hunger": "Hunger",
     "VTM5E.Rouse": "Rouse",
+    "VTM5E.Frenzy": "Frenzy",
     "VTM5E.Roll": "Roll",
 
     "VTM5E.Superficial": "Superficial",
@@ -89,7 +90,8 @@
     "VTM5E.BloodSorcery": "Blood Sorcery",
     "VTM5E.Oblivion": "Oblivion",
     "VTM5E.ThinBloodAlchemy": "Thin-Blood Alchemy",
-    "VTM5E.Rituals": "Rituals and Ceremonies",
+    "VTM5E.Rituals": "Rituals",
+    "VTM5E.Ceremonies": "Ceremonies",
 
     "VTM5E.AddFeat": "Add",
     "VTM5E.Merit": "Merit",
@@ -148,7 +150,9 @@
     "VTM5E.FeatureType": "Feature Type",
 
     "VTM5E.RollingWillpower": "Rolling Willpower",
+    "VTM5E.RollingRemorse": "Rolling Remorse",
     "VTM5E.RousingBlood": "Rousing Blood",
+    "VTM5E.ResistingFrenzy": "Resisting Frenzy",
     "VTM5E.CriticalSuccess": "Critical Success!",
     "VTM5E.Success": "Success!",
     "VTM5E.Successes": "Successes",
