@@ -22,6 +22,7 @@ export class VampireActorSheet extends ActorSheet {
   getData () {
     const data = super.getData()
     // TODO: confirm that I can finish and use this list
+
     const BLOOD_POTENCY = [
       {
         surge: game.i18n.localize('VTM5E.Add1Dice'),
@@ -194,6 +195,7 @@ export class VampireActorSheet extends ActorSheet {
   activateListeners (html) {
     super.activateListeners(html)
 
+    // this._setupResourceTrackers(html)
     this._setupDotCounters(html)
     this._setupSquareCounters(html)
 
@@ -238,6 +240,9 @@ export class VampireActorSheet extends ActorSheet {
     html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
     html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
+    html.find('.resourceTracker > .resourceTracker-box').mousedown(this._onResourceTrackerChange.bind(this))
+    html.find('.resourceTracker-pls').mousedown(this._onPls.bind(this))
+    html.find('.resourceTracker-mns').mousedown(this._onMns.bind(this))
 
     // Drag events for macros.
     // if (this.actor.owner) {
@@ -584,6 +589,12 @@ export class VampireActorSheet extends ActorSheet {
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
     const lastField = fields.pop()
+    // new Dialog({
+    //   title: "Test",
+    //   content: `fields: ${fields}`,
+    //   buttons: "",
+    //   default: 'draw'
+    // }).render(true)
     fields.reduce((data, field) => data[field], actorData)[lastField] = value
     this.actor.update(actorData)
   }
@@ -681,6 +692,79 @@ export class VampireActorSheet extends ActorSheet {
       })
     })
   }
+
+  _onPls(event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const parent = element.parentNode
+    const fields = parent.dataset.name.split('.')
+
+    let boxes = parent.dataset.boxes.split(',')
+    let max = element.dataset.max
+
+    if (boxes.length < 20) {
+      boxes.push('-')
+      max++;
+      this._assignToActorField(element.dataset.name.split('.'), max)
+      this._assignToActorField(fields, boxes)
+    }
+
+
+  }
+  _onMns(event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const parent = element.parentNode
+    const fields = parent.dataset.name.split('.')
+
+    let boxes = parent.dataset.boxes.split(',')
+    let max = element.dataset.max
+
+    if (boxes.length > 1 ){
+      boxes.splice(boxes.length - 1, 1)
+      max--;
+      this._assignToActorField(element.dataset.name.split('.'), max)
+      this._assignToActorField(fields, boxes)
+    }
+
+
+  }
+  _onResourceTrackerChange (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const index = Number(element.dataset.index)
+    const parent = element.parentNode
+    const fields = dataset.name.split('.')
+    // const states = ['-', '/', 'x']
+    const states = parent.dataset.states.split(',')
+    const mouse = event.which
+    let currentState = dataset.state
+    let stateIndex = states.indexOf(String(currentState))
+
+    switch (mouse) {
+      case 1: //left click Increment Upwards
+        if (stateIndex < (states.length - 1)) {
+          stateIndex++;
+        } else if (stateIndex >= (states.length - 1)) {
+          stateIndex = 0
+        }
+        break;
+      case 3: //right click increments downward
+        if (stateIndex > 0) {
+          stateIndex--;
+        } else if (stateIndex <= 0) {
+          stateIndex = (states.length -1)
+        }
+        break;
+    }
+
+    dataset.state = states[stateIndex]
+    this._assignToActorField(fields, dataset.state)
+
+
+  }
+
 
   _setupSquareCounters (html) {
     html.find('.resource-counter').each(function () {

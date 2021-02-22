@@ -21,24 +21,34 @@
                 and it will add a small amount of padding, a border, and will
                 center all of its child elements content and text. --}}
                 <div class="resource flex-group-center">
-                    <label for="data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
+		<label for="data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="resource-counter" data-states="-:max,/:superficial,x:aggravated" data-max="{{data.health.max}}" data-superficial="{{data.health.superficial}}" data-aggravated="{{data.health.aggravated}}" data-name="data.health">
-                            {{#numLoop 10}}
-                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
-                            {{/numLoop}}
-                        </div>
+			    <div class="resourceTracker" data-current="{{data.health.current}}" data-currentName="data.health.current" data-max="{{data.health.max}}" data-states="{{data.health.states}}"{}>
+				    <div class="resourceTracker-control" data-name="data.health.boxes" data-boxes="{{data.health.boxes}}">
+					    <div class="resourceTracker-mns" data-name="data.health.max" data-max="{{data.health.max}}"></div>
+					    {{data.health.current}} / {{data.health.max}}
+					    <div class="resourceTracker-pls" data-name="data.health.max" data-max="{{data.health.max}}"></div>
+				    </div>
+				    {{#each data.health.boxes}}
+				    <div class="resourceTracker-box" data-name="data.health.boxes.{{@index}}" data-index="{{@index}}" data-state="{{this}}"></div>
+				    {{/each}}
+                            </div>
                     </div>
                 </div>
                 <div class="resource flex-group-center">
                     <label for="data.willpower" class="resource-label rollable" data-roll="3"
                         data-label="{{localize 'VTM5E.RollingWillpower'}}">{{localize "VTM5E.Willpower"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="resource-counter" data-states="-:max,/:superficial,x:aggravated" data-max="{{data.willpower.max}}" data-superficial="{{data.willpower.superficial}}" data-aggravated="{{data.willpower.aggravated}}" data-name="data.willpower">
-                            {{#numLoop 10}}
-                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
-                            {{/numLoop}}
-                        </div>
+			    <div class="resourceTracker" data-current="{{data.health.current}}" data-currentName="data.health.current" data-max="{{data.willpower.max}}" data-states="{{data.willpower.states}}"{}>
+				    <div class="resourceTracker-control" data-name="data.willpower.boxes" data-boxes="{{data.willpower.boxes}}">
+					    <div class="resourceTracker-mns" data-name="data.willpower.max" data-max="{{data.willpower.max}}"></div>
+					    {{data.willpower.current}} / {{data.willpower.max}}
+					    <div class="resourceTracker-pls" data-name="data.willpower.max" data-max="{{data.willpower.max}}"></div>
+				    </div>
+				    {{#each data.willpower.boxes}}
+				    <div class="resourceTracker-box" data-name="data.willpower.boxes.{{@index}}" data-index="{{@index}}" data-state="{{this}}"></div>
+				    {{/each}}
+                            </div>
                     </div>
                 </div>
                 <div class="resource flex-group-center humanity">

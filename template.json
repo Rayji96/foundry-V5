@@ -4,14 +4,16 @@
     "templates": {
       "base": {
         "health": {
-          "aggravated": 0,
-          "superficial": 0,
-          "max": 0
+          "max": 3,
+          "current": 3,
+	  "states": ["-", "/", "x"],
+	  "boxes": ["-","-","-"] 
         },
         "willpower": {
-          "aggravated": 0,
-          "superficial": 0,
-          "max": 0
+          "max": 3,
+          "current": 3,
+	  "states": ["-", "/", "x"],
+	  "boxes": ["-","-","-"] 
         }
       }
     },

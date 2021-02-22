@@ -1,4 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
+/* Left these variables in for easy moding of trackerBoxes colors later for wounds */
+:root {
+  --undamaged:    transparent;
+  --superficial:  transparent;
+  --aggravated:   transparent;
+  --transparent:  transparent;
+  --plus:             #00dba1;
+  --minus:            #9c1200;
+
+
+}
 
 /* Fonts */
 @font-face {
@@ -369,7 +380,6 @@
 }
 
 /* Resource boxes CSS */
-
 .vtm5e .resource-value .resource-value-step {
   height: 14px;
   width: 14px;
@@ -457,6 +467,110 @@
       transparent 100%
     );
 }
+
+/* New resourceTracker css */
+.vtm5e .resourceTracker-control {
+  border: 1px solid black;
+  margin-bottom: 2px;
+
+}
+.vtm5e  .resourceTracker-pls {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  margin-left: 1px;
+  margin-right: 1px;
+  display: inline-block;
+  cursor: pointer;
+  /* background-color: green; */
+  background:
+    linear-gradient(
+      0deg,
+      var(--transparent) 0%,
+      var(--transparent) 43%,
+      black 45%,
+      black 55%,
+      var(--transparent) 57%,
+      var(--transparent) 100%
+    ),
+    linear-gradient(
+      90deg,
+      var(--plus) 0%,
+      var(--plus) 43%,
+      black 45%,
+      black 55%,
+      var(--plus) 57%,
+      var(--plus) 100%
+    );
+}
+.vtm5e .resourceTracker-mns {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  margin-left: 1px;
+  margin-right: 1px;
+  display: inline-block;
+  cursor: pointer;
+  /* background-color: red; */
+  background:
+    linear-gradient(
+      0deg,
+      var(--minus) 0%,
+      var(--minus) 43%,
+      black 45%,
+      black 55%,
+      var(--minus) 57%,
+      var(--minus) 100%
+    );
+}
+.vtm5e .resourceTracker .resourceTracker-box {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  margin-left: 1px;
+  margin-right: 1px;
+  display: inline-block;
+  cursor: pointer;
+}
+.vtm5e .resourceTracker .resourceTracker-box[data-state="-"] {
+  background-color: var(--undamaged);
+}
+
+.vtm5e .resourceTracker .resourceTracker-box[data-state="/"] {
+  background:
+    linear-gradient(
+      135deg,
+      var(--superficial) 0%,
+      var(--superficial) 43%,
+      black 45%,
+      black 55%,
+      var(--superficial) 57%,
+      var(--superficial) 100%
+    );
+}
+
+.vtm5e .resourceTracker .resourceTracker-box[data-state="x"] {
+  background:
+    linear-gradient(
+      45deg,
+      var(--transparent) 0%,
+      var(--transparent) 43%,
+      black 45%,
+      black 55%,
+      var(--transparent) 57%,
+      var(--transparent) 100%
+    ),
+    linear-gradient(
+      135deg,
+      var(--aggravated) 0%,
+      var(--aggravated) 43%,
+      black 45%,
+      black 55%,
+      var(--aggravated) 57%,
+      var(--aggravated) 100%
+    );
+}
+/* END resourceTracker css */
 
 .vtm5e .flex-group-center:not(.flexrow) .resource-value,
 .vtm5e .flex-group-center:not(.flexrow) .resource-counter {
