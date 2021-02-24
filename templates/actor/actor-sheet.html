@@ -101,7 +101,9 @@
         <a class="item" data-tab="features">{{localize "VTM5E.Features"}}</a>
         <a class="item" data-tab="blood">{{localize "VTM5E.Blood"}}</a>
         <a class="item" data-tab="description">{{localize "VTM5E.Description"}}</a>
+        <a class="item" data-tab="boons">{{localize "VTM5E.Boons"}}</a>
         <a class="item" data-tab="equipment">{{localize "VTM5E.Equipment"}}</a>
+        <a class="item" data-tab="notes">{{localize "VTM5E.Notes"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -365,10 +367,46 @@
             {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
 
+        {{!-- Boons Tab --}}
+        <div class="tab boons" data-group="primary" data-tab="boons">
+            <label class="resource-label flex-center">{{localize "VTM5E.Boons"}}</label>
+            <ol class="items-list flex-left">
+                <li class="item flexrow item-header">
+                    <div class="item-name">{{localize "VTM5E.Name"}}</div>
+                    <div class="item-name">{{localize "VTM5E.Type"}}</div>
+                    <div class="item-name">{{localize "VTM5E.Description"}}</div>
+                    <div class="item-controls">
+                        <a class="item-control item-create" title="{{localize 'VTM5E.AddItem'}}"
+                            data-type="boon"><i class="fas fa-plus"></i> {{localize "VTM5E.AddItem"}}
+                        </a>
+                    </div>
+                </li>
+                {{#each actor.boons as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <h4 class="item-name">{{item.name}}</h4>
+                    <h4 class="item-name">{{item.data.boontype}}</h4>
+                    <h4 class="item-name">{{item.data.description}}</h4>
+                    <div class="item-controls">
+                        <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
+                                class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}"><i
+                                class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+
         {{!-- Equipment Tab --}}
         <div class="tab" data-group="primary" data-tab="equipment">
             <label class="resource-label flex-center">{{localize "VTM5E.Equipment"}}</label>
             {{editor content=data.equipment target="data.equipment" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Notes Tab --}}
+        <div class="tab" data-group="primary" data-tab="notes">
+            <label class="resource-label flex-center">{{localize "VTM5E.Notes"}}</label>
+            {{editor content=data.notes target="data.notes" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>
