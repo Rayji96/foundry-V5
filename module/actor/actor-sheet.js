@@ -585,16 +585,28 @@ export class VampireActorSheet extends ActorSheet {
     this._vampireRoll(dicePool, this.actor, `${item.data.name}`)
   }
 
+
+  // There were issues in health tracking from multiple separate fields needing to be updated at once.
+  // The old method "_assignToActorField()" was de-syncing the data. This field does the same thing,
+  // but assigns multiple fields/values at once, before making a single update to the actor data.
+  _updateActorFields (containers) {
+    const actorData = duplicate(this.actor)
+    let i;
+    for (i=0;i < (containers.length);i++) {
+      let fields = containers[i]['field']
+      let value = containers[i]['value']
+      let lastField = fields.pop()
+      fields.reduce((data, field) => data[field], actorData)[lastField] = value
+      //
+    }
+    this.actor.update(actorData)
+
+  }
+
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
     const lastField = fields.pop()
-    // new Dialog({
-    //   title: "Test",
-    //   content: `fields: ${fields}`,
-    //   buttons: "",
-    //   default: 'draw'
-    // }).render(true)
     fields.reduce((data, field) => data[field], actorData)[lastField] = value
     this.actor.update(actorData)
   }
@@ -611,6 +623,7 @@ export class VampireActorSheet extends ActorSheet {
     this._assignToActorField(fields, 0)
   }
 
+  // This no longer affects health/willpower. It still is used for humanity, but should probably be replaced.
   _onSquareCounterChange (event) {
     event.preventDefault()
     const element = event.currentTarget
@@ -693,38 +706,56 @@ export class VampireActorSheet extends ActorSheet {
     })
   }
 
+  // Increases the number of counters for health/willpower
   _onPls(event) {
     event.preventDefault()
     const element = event.currentTarget
-    const parent = element.parentNode
-    const fields = parent.dataset.name.split('.')
+    const TrackerData = element.parentNode.parentNode.dataset // TrackerData contains the dataset of the "resourceTracker" div that contains all data for tracker management
+    const maxField = TrackerData.nameMax.split('.')
+    const boxesField = TrackerData.nameBoxes.split('.')
+    const currentField = TrackerData.nameCurrent.split('.')
 
-    let boxes = parent.dataset.boxes.split(',')
-    let max = element.dataset.max
-
+    let boxes = TrackerData.boxes.split(',')
+    let max = TrackerData.max
+    let current = TrackerData.current
     if (boxes.length < 20) {
-      boxes.push('-')
+      current++;
       max++;
-      this._assignToActorField(element.dataset.name.split('.'), max)
-      this._assignToActorField(fields, boxes)
+      boxes.push('-')
+      const currentContainer = {field: currentField, value: current};
+      const boxContainer = {field: boxesField, value: boxes};
+      const maxContainer = {field: maxField, value: max} 
+      const containers = [currentContainer, boxContainer, maxContainer]
+      this._updateActorFields(containers)
     }
 
 
   }
+  // decreases the number of counters for health/willpower
   _onMns(event) {
     event.preventDefault()
     const element = event.currentTarget
-    const parent = element.parentNode
-    const fields = parent.dataset.name.split('.')
+    const TrackerData = element.parentNode.parentNode.dataset // TrackerData contains the dataset of the "resourceTracker" div that contains all data for tracker management
+    const maxField = TrackerData.nameMax.split('.')
+    const boxesField = TrackerData.nameBoxes.split('.')
+    const currentField = TrackerData.nameCurrent.split('.')
 
-    let boxes = parent.dataset.boxes.split(',')
-    let max = element.dataset.max
+    let boxes = TrackerData.boxes.split(',')
+    let max = TrackerData.max
+    let current = TrackerData.current
 
     if (boxes.length > 1 ){
-      boxes.splice(boxes.length - 1, 1)
+      // If the last box doesn't contains a wound, we reduce current  to stay valid
+      if (boxes[boxes.length - 1] == TrackerData.states[0]){
+        current--;
+      }
       max--;
-      this._assignToActorField(element.dataset.name.split('.'), max)
-      this._assignToActorField(fields, boxes)
+      boxes.splice(boxes.length - 1, 1)
+      const currentContainer = {field: currentField, value: current};
+      const boxContainer = {field: boxesField, value: boxes};
+      const maxContainer = {field: maxField, value: max} 
+      const containers = [currentContainer, boxContainer, maxContainer]
+      this._updateActorFields(containers)
     }
 
 
@@ -734,14 +765,13 @@ export class VampireActorSheet extends ActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const index = Number(element.dataset.index)
-    const parent = element.parentNode
     const fields = dataset.name.split('.')
-    // const states = ['-', '/', 'x']
-    const states = parent.dataset.states.split(',')
+    const states = element.parentNode.dataset.states.split(',')
     const mouse = event.which
+
     let currentState = dataset.state
     let stateIndex = states.indexOf(String(currentState))
-
+    const OldIndex = states.indexOf(String(currentState))
     switch (mouse) {
       case 1: //left click Increment Upwards
         if (stateIndex < (states.length - 1)) {
@@ -758,9 +788,25 @@ export class VampireActorSheet extends ActorSheet {
         }
         break;
     }
+   
+    // This current refers to health/willpowwer current
+    let currentValue = element.parentNode.dataset.current
+    const currentField = element.parentNode.dataset.nameCurrent.split('.')
+    if ((stateIndex != 0) && (OldIndex == 0)) {
+      currentValue--;
+    } else if ((OldIndex != 0) && stateIndex == 0){
+      currentValue++;
+    }
 
+
+    // dataset.state = states[stateIndex]
     dataset.state = states[stateIndex]
-    this._assignToActorField(fields, dataset.state)
+    const state = dataset.state
+    const boxesContainer = {field: fields, value: state}
+    const currentContainer = {field: currentField, value: currentValue}
+    const containers = [boxesContainer, currentContainer]
+    this._updateActorFields(containers)
+    // this._assignToActorField(fields, dataset.state)
 
 
   }

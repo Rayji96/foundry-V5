@@ -21,13 +21,22 @@
                 and it will add a small amount of padding, a border, and will
                 center all of its child elements content and text. --}}
                 <div class="resource flex-group-center">
-		<label for="data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
+			<label for="data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-			    <div class="resourceTracker" data-current="{{data.health.current}}" data-currentName="data.health.current" data-max="{{data.health.max}}" data-states="{{data.health.states}}"{}>
-				    <div class="resourceTracker-control" data-name="data.health.boxes" data-boxes="{{data.health.boxes}}">
-					    <div class="resourceTracker-mns" data-name="data.health.max" data-max="{{data.health.max}}"></div>
+			    <div class="resourceTracker" 
+				    data-name-current="data.health.current" 
+				    data-current="{{data.health.current}}" 
+
+				    data-name-max="data.health.max" 
+				    data-max="{{data.health.max}}" 
+
+				    data-name-boxes="data.health.boxes" 
+				    data-boxes="{{data.health.boxes}}"
+				    data-states="{{data.health.states}}">
+				    <div class="resourceTracker-control">
+					    <div class="resourceTracker-mns"></div>
 					    {{data.health.current}} / {{data.health.max}}
-					    <div class="resourceTracker-pls" data-name="data.health.max" data-max="{{data.health.max}}"></div>
+					    <div class="resourceTracker-pls"></div>
 				    </div>
 				    {{#each data.health.boxes}}
 				    <div class="resourceTracker-box" data-name="data.health.boxes.{{@index}}" data-index="{{@index}}" data-state="{{this}}"></div>
@@ -39,11 +48,20 @@
                     <label for="data.willpower" class="resource-label rollable" data-roll="3"
                         data-label="{{localize 'VTM5E.RollingWillpower'}}">{{localize "VTM5E.Willpower"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-			    <div class="resourceTracker" data-current="{{data.health.current}}" data-currentName="data.health.current" data-max="{{data.willpower.max}}" data-states="{{data.willpower.states}}"{}>
-				    <div class="resourceTracker-control" data-name="data.willpower.boxes" data-boxes="{{data.willpower.boxes}}">
-					    <div class="resourceTracker-mns" data-name="data.willpower.max" data-max="{{data.willpower.max}}"></div>
+			    <div class="resourceTracker" 
+				    data-name-current="data.willpower.current" 
+				    data-current="{{data.willpower.current}}" 
+
+				    data-name-max="data.willpower.max" 
+				    data-max="{{data.willpower.max}}" 
+
+				    data-name-boxes="data.willpower.boxes" 
+				    data-boxes="{{data.willpower.boxes}}"
+				    data-states="{{data.willpower.states}}">
+				    <div class="resourceTracker-control">
+					    <div class="resourceTracker-mns"></div>
 					    {{data.willpower.current}} / {{data.willpower.max}}
-					    <div class="resourceTracker-pls" data-name="data.willpower.max" data-max="{{data.willpower.max}}"></div>
+					    <div class="resourceTracker-pls"></div>
 				    </div>
 				    {{#each data.willpower.boxes}}
 				    <div class="resourceTracker-box" data-name="data.willpower.boxes.{{@index}}" data-index="{{@index}}" data-state="{{this}}"></div>
