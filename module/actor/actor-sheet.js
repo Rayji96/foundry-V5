@@ -584,9 +584,9 @@ export class VampireActorSheet extends ActorSheet {
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
     // update actor owned items
-    if (fields.length >= 3 && fields[0] === "actor") {
+    if (fields.length === 2 && fields[0] === "items") {
       for (const i of actorData.items) {
-        if (fields[1] === i.type && fields[2] === i.name) {
+        if (fields[1] === i._id) {
           i.data.points = value
           break
         }
