@@ -169,6 +169,29 @@
                 </li>
                 {{/each}}
             </ol>
+
+            <label class="resource-label">{{localize "VTM5E.Specialties"}}</label>
+            <ol class="items-list flex-left">
+                <li class="item flexrow item-header">
+                    <div class="item-name">{{localize "VTM5E.Specialty"}}</div>
+                    <div class="item-name">{{localize "VTM5E.Skill"}}</div>
+                    <div class="item-controls">
+                        <a class="item-control customRoll-create" title="{{localize 'VTM5E.AddItem'}}"
+                            data-type="specialty"><i class="fas fa-plus"></i> {{localize "VTM5E.AddItem"}}
+                        </a>
+                    </div>
+                </li>
+                {{#each actor.data.customRolls as |roll id|}}
+                <li class="item flexrow" data-item-id="{{id}}">
+                    <h4 class="item-name custom-rollable" data-dice1="{{roll.dice1}}" data-dice2="{{roll.dice2}}" data-name="{{roll.name}}">{{roll.name}}</h4>
+                    <h4 class="item-name">{{roll.dice1}}</h4>
+                    <h4 class="item-name">{{roll.dice2}}</h4>
+                    <select class="customRoll-item" id="dice2-data">
+                        <option value="" hidden selected>Select skill …</option>
+                    </select>
+                </li>
+                {{/each}}
+            </ol>
         </div>
 
         {{!-- Owned Powers Tab --}}

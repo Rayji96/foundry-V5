@@ -212,6 +212,8 @@ export class VampireActorSheet extends ActorSheet {
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this))
 
+    html.find('.customRoll-create').click(this._onCustomRollCreate.bind(this))
+
     // Update Inventory Item
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
@@ -234,6 +236,8 @@ export class VampireActorSheet extends ActorSheet {
 
     // Rollable Vampire powers.
     html.find('.power-rollable').click(this._onVampireRoll.bind(this))
+
+    html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
 
     html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
     html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
@@ -279,6 +283,23 @@ export class VampireActorSheet extends ActorSheet {
       const li = $(this).parents('.item')
       const item = actor.getOwnedItem(li.data('itemId'))
       this.value = item.data.data.skill
+    })
+
+    html.find('.customRoll-item').change(ev => {
+      const li = ev.currentTarget.parentNode
+      const id = li.dataset.itemId
+      const actorData = duplicate(this.actor)
+      actorData.data.customRolls[id].dice2 = ev.target.value
+      actor.update(actorData)
+    });
+    html.find('.customRoll-item').each(function () {
+      let optionList = this.options
+      Object.values(skills).forEach(value => optionList.add(
+        new Option(game.i18n.localize(value.name))
+        ))
+      const li = ev.currentTarget.parentNode
+      const id = li.dataset.itemId
+      this.value = actor.data.data.customRolls[id].dice2
     })
   }
 
@@ -354,6 +375,23 @@ export class VampireActorSheet extends ActorSheet {
 
     // Finally, create the item!
     return this.actor.createOwnedItem(itemData)
+  }
+
+  _onCustomRollCreate (event) {
+    event.preventDefault()
+    const header = event.currentTarget
+    // Get the type of item to create.
+    const type = header.dataset.type
+    // Grab any data associated with this control.
+    const data = duplicate(header.dataset)
+    const actorData = duplicate(this.actor)
+    const rollData = {
+      name: "Name",
+      dice1: "Strength",
+      dice2: "Athletics"
+    }
+    actorData.data.customRolls.push(rollData)
+    this.actor.update(actorData)
   }
 
   /**
@@ -594,6 +632,18 @@ export class VampireActorSheet extends ActorSheet {
     const dice2 = item.data.data.dice2 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice2].value
     const dicePool = dice1 + dice2
     this._vampireRoll(dicePool, this.actor, `${item.data.name}`)
+  }
+
+  _onCustomVampireRoll (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    
+
+    const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
+    const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+    const dicePool = dice1 + dice2
+    this._vampireRoll(dicePool, this.actor, `${dataset.name}`)
   }
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out
