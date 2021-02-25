@@ -583,8 +583,19 @@ export class VampireActorSheet extends ActorSheet {
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
-    const lastField = fields.pop()
-    fields.reduce((data, field) => data[field], actorData)[lastField] = value
+    // update actor owned items
+    if (fields.length >= 3 && fields[0] === "actor") {
+      for (const i of actorData.items) {
+        if (fields[1] === i.type && fields[2] === i.name) {
+          i.data.points = value
+          break
+        }
+      }
+    }
+    else {
+      const lastField = fields.pop()
+      fields.reduce((data, field) => data[field], actorData)[lastField] = value
+    }
     this.actor.update(actorData)
   }
 

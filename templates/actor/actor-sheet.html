@@ -257,6 +257,12 @@
                         </div>
                         <h4 class="item-name collapsible">{{item.name}}</h4>
                         <h4 class="item-name">{{item.data.points}}</h4>
+                        <div class="resource-value" data-value="{{item.data.points}}" data-name="actor.feature.{{item.name}}">
+                            <span class="resource-value-empty"></span>
+                            {{#numLoop 5}}
+                            <span class="resource-value-step" data-index="{{this}}"></span>
+                            {{/numLoop}}
+                        </div>
                         <div class="item-controls">
                             <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
                                     class="fas fa-edit"></i></a>
