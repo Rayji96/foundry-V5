@@ -264,6 +264,22 @@ export class VampireActorSheet extends ActorSheet {
         }
       })
     }
+    html.find('.skill-item').change(ev => {
+      const li = $(ev.currentTarget).parents('.item')
+      const item = this.actor.getOwnedItem(li.data('itemId'))
+      item.update({ 'data.skill': ev.target.value });
+    });
+    let skills = this.actor.data.data.skills
+    let actor = this.actor
+    html.find('.skill-item').each(function () {
+      const id = this.parentNode.dataset.itemId
+      const item = actor.getOwnedItem(id)
+      let optionList = this.options
+      Object.values(skills).forEach(value => optionList.add(
+        new Option(game.i18n.localize(value.name))
+        ))
+      this.value = item.data.data.skill
+    })
   }
 
   /**
