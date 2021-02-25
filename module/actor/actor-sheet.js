@@ -274,6 +274,7 @@ export class VampireActorSheet extends ActorSheet {
       item.update({ 'data.skill': ev.target.value });
     });
     let skills = this.actor.data.data.skills
+    let abilities = this.actor.data.data.abilities
     let actor = this.actor
     html.find('.skill-item').each(function () {
       let optionList = this.options
@@ -285,21 +286,38 @@ export class VampireActorSheet extends ActorSheet {
       this.value = item.data.data.skill
     })
 
-    html.find('.customRoll-item').change(ev => {
+    html.find('.customRoll-dice2').change(ev => {
       const li = ev.currentTarget.parentNode
       const id = li.dataset.itemId
       const actorData = duplicate(this.actor)
       actorData.data.customRolls[id].dice2 = ev.target.value
       actor.update(actorData)
     });
-    html.find('.customRoll-item').each(function () {
+    html.find('.customRoll-dice2').each(function () {
       let optionList = this.options
       Object.values(skills).forEach(value => optionList.add(
         new Option(game.i18n.localize(value.name))
         ))
-      const li = ev.currentTarget.parentNode
+      const li = this.parentNode
       const id = li.dataset.itemId
       this.value = actor.data.data.customRolls[id].dice2
+    })
+
+    html.find('.customRoll-dice1').change(ev => {
+      const li = ev.currentTarget.parentNode
+      const id = li.dataset.itemId
+      const actorData = duplicate(this.actor)
+      actorData.data.customRolls[id].dice1 = ev.target.value
+      actor.update(actorData)
+    });
+    html.find('.customRoll-dice1').each(function () {
+      let optionList = this.options
+      Object.values(abilities).forEach(value => optionList.add(
+        new Option(game.i18n.localize(value.name))
+        ))
+      const li = this.parentNode
+      const id = li.dataset.itemId
+      this.value = actor.data.data.customRolls[id].dice1
     })
   }
 

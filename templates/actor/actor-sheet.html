@@ -185,8 +185,11 @@
                 <li class="item flexrow" data-item-id="{{id}}">
                     <h4 class="item-name custom-rollable" data-dice1="{{roll.dice1}}" data-dice2="{{roll.dice2}}" data-name="{{roll.name}}">{{roll.name}}</h4>
                     <h4 class="item-name">{{roll.dice1}}</h4>
+                    <select class="customRoll-dice1" id="dice1-data">
+                        <option value="" hidden selected>Select attribute …</option>
+                    </select>
                     <h4 class="item-name">{{roll.dice2}}</h4>
-                    <select class="customRoll-item" id="dice2-data">
+                    <select class="customRoll-dice2" id="dice2-data">
                         <option value="" hidden selected>Select skill …</option>
                     </select>
                 </li>
