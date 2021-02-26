@@ -137,6 +137,7 @@ export class VampireActorSheet extends ActorSheet {
     // Initialize containers.
     const specialties = []
     const boons = []
+    const customRolls = []
     const gear = []
     const features = {
       background: [],
@@ -169,6 +170,9 @@ export class VampireActorSheet extends ActorSheet {
       } else if (i.type === 'boon') {
         // Append to boons.
         boons.push(i)
+      } else if (i.type === 'customRoll') {
+        // Append to custom rolls.
+        customRolls.push(i)
       } else if (i.type === 'item') {
         // Append to gear.
         gear.push(i)
@@ -189,6 +193,7 @@ export class VampireActorSheet extends ActorSheet {
     // Assign and return
     actorData.specialties = specialties
     actorData.boons = boons
+    actorData.customRolls = customRolls
     actorData.gear = gear
     actorData.features = features
     actorData.disciplines_list = disciplines
@@ -244,6 +249,7 @@ export class VampireActorSheet extends ActorSheet {
     html.find('.power-rollable').click(this._onVampireRoll.bind(this))
 
     html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
+    html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
 
     html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
     html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
@@ -293,37 +299,33 @@ export class VampireActorSheet extends ActorSheet {
     })
 
     html.find('.customRoll-dice2').change(ev => {
-      const li = ev.currentTarget.parentNode
-      const id = li.dataset.itemId
-      const actorData = duplicate(this.actor)
-      actorData.data.customRolls[id].dice2 = ev.target.value
-      actor.update(actorData)
+      const li = $(ev.currentTarget).parents('.item')
+      const item = this.actor.getOwnedItem(li.data('itemId'))
+      item.update({ 'data.dice2': ev.target.value });
     });
     html.find('.customRoll-dice2').each(function () {
       let optionList = this.options
       Object.values(skills).forEach(value => optionList.add(
-        new Option(game.i18n.localize(value.name))
-        ))
-      const li = this.parentNode
-      const id = li.dataset.itemId
-      this.value = actor.data.data.customRolls[id].dice2
+      new Option(game.i18n.localize(value.name))
+      ))
+      const li = $(this).parents('.item')
+      const item = actor.getOwnedItem(li.data('itemId'))
+      this.value = item.data.data.dice2
     })
 
     html.find('.customRoll-dice1').change(ev => {
-      const li = ev.currentTarget.parentNode
-      const id = li.dataset.itemId
-      const actorData = duplicate(this.actor)
-      actorData.data.customRolls[id].dice1 = ev.target.value
-      actor.update(actorData)
+      const li = $(ev.currentTarget).parents('.item')
+      const item = this.actor.getOwnedItem(li.data('itemId'))
+      item.update({ 'data.dice1': ev.target.value });
     });
     html.find('.customRoll-dice1').each(function () {
       let optionList = this.options
       Object.values(abilities).forEach(value => optionList.add(
-        new Option(game.i18n.localize(value.name))
-        ))
-      const li = this.parentNode
-      const id = li.dataset.itemId
-      this.value = actor.data.data.customRolls[id].dice1
+      new Option(game.i18n.localize(value.name))
+      ))
+      const li = $(this).parents('.item')
+      const item = actor.getOwnedItem(li.data('itemId'))
+      this.value = item.data.data.dice1
     })
   }
 
@@ -665,12 +667,18 @@ export class VampireActorSheet extends ActorSheet {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
-    
-
-    const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
-    const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
-    const dicePool = dice1 + dice2
-    this._vampireRoll(dicePool, this.actor, `${dataset.name}`)
+    if (dataset.dice1 === "") {
+      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      dataset.roll = dice2 + 1 // specialty modifier
+      dataset.label = dataset.name
+      this._onVampireRollDialog(event)
+    }
+    else {
+      const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
+      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      const dicePool = dice1 + dice2
+      this._vampireRoll(dicePool, this.actor, `${dataset.name}`)
+    }
   }
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out
