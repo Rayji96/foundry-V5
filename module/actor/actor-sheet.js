@@ -332,7 +332,7 @@ export class VampireActorSheet extends ActorSheet {
       data.skill = ''
     }
     if (type === 'boon') {
-      data.boontype = "Trivial"
+      data.boontype = 'Trivial'
     }
     // Initialize a default name.
     const name = `New ${type.capitalize()}`
