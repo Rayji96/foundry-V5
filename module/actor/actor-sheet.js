@@ -139,6 +139,7 @@ export class VampireActorSheet extends ActorSheet {
     const boons = []
     const gear = []
     const features = {
+      background: [],
       merit: [],
       flaw: []
     }

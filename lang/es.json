@@ -27,6 +27,7 @@
     "VTM5E.Notes": "Notas",
     "VTM5E.Boons": "Bendiciones",
     "VTM5E.Type": "Tipo",
+    "VTM5E.Other": "Otro",
     "VTM5E.Attributes": "Atributos",
 
     "VTM5E.Abilities": "Atributos",
@@ -99,6 +100,7 @@
     "VTM5E.AddFeat": "Añadir",
     "VTM5E.Merit": "Ventaja",
     "VTM5E.Flaw": "Defecto",
+    "VTM5E.Background": "Fondo",
     "VTM5E.Points": "Puntos",
 
     "VTM5E.BloodPotency": "Potencia de Sangre",
