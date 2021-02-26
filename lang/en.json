@@ -24,6 +24,10 @@
     "VTM5E.Blood": "Blood",
     "VTM5E.Description": "Description",
     "VTM5E.Equipment": "Equipment",
+    "VTM5E.Notes": "Notes",
+    "VTM5E.Boons": "Boons",
+    "VTM5E.Type": "Type",
+    "VTM5E.Other": "Other",
     "VTM5E.Attributes": "Attributes",
 
     "VTM5E.Abilities": "Abilities",
@@ -96,6 +100,7 @@
     "VTM5E.AddFeat": "Add",
     "VTM5E.Merit": "Merit",
     "VTM5E.Flaw": "Flaw",
+    "VTM5E.Background": "Background",
     "VTM5E.Points": "Points",
 
     "VTM5E.BloodPotency": "Blood Potency",

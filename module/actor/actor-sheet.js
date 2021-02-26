@@ -136,8 +136,10 @@ export class VampireActorSheet extends ActorSheet {
 
     // Initialize containers.
     const specialties = []
+    const boons = []
     const gear = []
     const features = {
+      background: [],
       merit: [],
       flaw: []
     }
@@ -164,6 +166,9 @@ export class VampireActorSheet extends ActorSheet {
       if (i.type === 'specialty') {
         // Append to specialties.
         specialties.push(i)
+      } else if (i.type === 'boon') {
+        // Append to boons.
+        boons.push(i)
       } else if (i.type === 'item') {
         // Append to gear.
         gear.push(i)
@@ -183,6 +188,7 @@ export class VampireActorSheet extends ActorSheet {
 
     // Assign and return
     actorData.specialties = specialties
+    actorData.boons = boons
     actorData.gear = gear
     actorData.features = features
     actorData.disciplines_list = disciplines
@@ -324,6 +330,9 @@ export class VampireActorSheet extends ActorSheet {
     const data = duplicate(header.dataset)
     if (type === 'specialty') {
       data.skill = ''
+    }
+    if (type === 'boon') {
+      data.boontype = "Trivial"
     }
     // Initialize a default name.
     const name = `New ${type.capitalize()}`

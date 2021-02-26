@@ -63,9 +63,13 @@ Hooks.once('init', async function () {
     return str.charAt(0).toUpperCase() + str.slice(1)
   })
 
-  // TODO: There's gotta be a better way lol
+  const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    return (str === 'merit' ? 'VTM5E.Merit' : 'VTM5E.Flaw')
+    return 'VTM5E.'.concat(capitalize(str))
   })
 
   // TODO: there exist math helpers for handlebars
