@@ -24,6 +24,10 @@
     "VTM5E.Blood": "Sangue",
     "VTM5E.Description": "Descrição",
     "VTM5E.Equipment": "Equipamento",
+    "VTM5E.Notes": "Notas",
+    "VTM5E.Boons": "Bênçãos",
+    "VTM5E.Type": "Tipo",
+    "VTM5E.Other": "Otro",
     "VTM5E.Attributes": "Atributos",
 
     "VTM5E.Abilities": "Habilidades",
@@ -96,6 +100,7 @@
     "VTM5E.AddFeat": "Adicionar",
     "VTM5E.Merit": "Qualidades",
     "VTM5E.Flaw": "Defeitos",
+    "VTM5E.Background": "Fundo",
     "VTM5E.Points": "Pontos",
 
     "VTM5E.BloodPotency": "Potência de Sangue",
