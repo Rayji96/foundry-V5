@@ -700,6 +700,14 @@ export class VampireActorSheet extends ActorSheet {
         }
       })
     })
+    html.find('.resource-value-static').each(function () {
+      const value = Number(this.dataset.value)
+      $(this).find('.resource-value-static-step').each(function (i) {
+        if (i + 1 <= value) {
+          $(this).addClass('active')
+        }
+      })
+    })
   }
 
   _setupSquareCounters (html) {

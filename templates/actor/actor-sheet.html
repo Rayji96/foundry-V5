@@ -271,9 +271,9 @@
             <label class="resource-label flex-center">{{localize "VTM5E.Features"}}</label>
             <ol class="items-list">
                 <li class="item flexrow item-header">
-                    <div class="item-name">{{localize "VTM5E.Name"}}</div>
+                    <div class="item-name-header">{{localize "VTM5E.Name"}}</div>
                     <div class="item-image"></div>
-                    <div class="item-name">{{localize "VTM5E.Points"}}</div>
+                    <div class="item-name-header">{{localize "VTM5E.Points"}}</div>
                     <div class="item-controls"></div>
                 </li>
                 {{#each actor.features as |feature key|}}
@@ -291,12 +291,20 @@
                                 alt="{{item.name}}" />
                         </div>
                         <h4 class="item-name collapsible">{{item.name}}</h4>
+                        {{#if (ne key "background")}}
+                        <div class="resource-value-static" data-value="{{item.data.points}}" data-name="items.{{item._id}}">
+                            {{#numLoop 5}}
+                            <span class="resource-value-static-step" data-index="{{this}}"></span>
+                            {{/numLoop}}
+                        </div>
+                        {{else}}
                         <div class="resource-value" data-value="{{item.data.points}}" data-name="items.{{item._id}}">
                             <span class="resource-value-empty"></span>
                             {{#numLoop 5}}
                             <span class="resource-value-step" data-index="{{this}}"></span>
                             {{/numLoop}}
                         </div>
+                        {{/if}}
                         <div class="item-controls">
                             <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
                                     class="fas fa-edit"></i></a>
