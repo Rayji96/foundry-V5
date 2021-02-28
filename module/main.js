@@ -6,6 +6,7 @@ import { VampireActorSheet } from './actor/actor-sheet.js'
 import { VampireItem } from './item/item.js'
 import { VampireItemSheet } from './item/item-sheet.js'
 import { VampireDie, VampireHungerDie } from './dice/dice.js'
+import {migrateWorld} from './migration.js'
 
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
@@ -13,7 +14,9 @@ Hooks.once('init', async function () {
   game.vtm5e = {
     VampireActor,
     VampireItem,
-    rollItemMacro
+    rollItemMacro,
+    migrateWorld
+
   }
 
   /**
@@ -119,6 +122,21 @@ Hooks.once('init', async function () {
 Hooks.once('ready', async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createVampireMacro(data, slot))
+  if ( !game.user.isGM ) return;
+  // const currentVersion = game.settings.get("dnd5e", "systemMigrationVersion");
+  // const NEEDS_MIGRATION_VERSION = "1.2.1";
+  // const COMPATIBLE_MIGRATION_VERSION = 0.80;
+  // const needsMigration = currentVersion && isNewerVersion(NEEDS_MIGRATION_VERSION, currentVersion);
+  // if ( !needsMigration ) return;
+
+  // Perform the migration
+  // if ( currentVersion && isNewerVersion(COMPATIBLE_MIGRATION_VERSION, currentVersion) ) {
+  //   const warning = `Your DnD5e system data is from too old a Foundry version and cannot be reliably migrated to the latest version. The process will be attempted, but errors may occur.`;
+  //   ui.notifications.error(warning, {permanent: true});
+  // }
+  migrateWorld();
+
+
 })
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
