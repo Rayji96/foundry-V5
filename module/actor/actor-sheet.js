@@ -332,7 +332,7 @@ export class VampireActorSheet extends ActorSheet {
       data.skill = ''
     }
     if (type === 'boon') {
-      data.boontype = "Trivial"
+      data.boontype = 'Trivial'
     }
     // Initialize a default name.
     const name = `New ${type.capitalize()}`
@@ -592,8 +592,19 @@ export class VampireActorSheet extends ActorSheet {
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
-    const lastField = fields.pop()
-    fields.reduce((data, field) => data[field], actorData)[lastField] = value
+    // update actor owned items
+    if (fields.length === 2 && fields[0] === "items") {
+      for (const i of actorData.items) {
+        if (fields[1] === i._id) {
+          i.data.points = value
+          break
+        }
+      }
+    }
+    else {
+      const lastField = fields.pop()
+      fields.reduce((data, field) => data[field], actorData)[lastField] = value
+    }
     this.actor.update(actorData)
   }
 
@@ -684,6 +695,14 @@ export class VampireActorSheet extends ActorSheet {
     html.find('.resource-value').each(function () {
       const value = Number(this.dataset.value)
       $(this).find('.resource-value-step').each(function (i) {
+        if (i + 1 <= value) {
+          $(this).addClass('active')
+        }
+      })
+    })
+    html.find('.resource-value-static').each(function () {
+      const value = Number(this.dataset.value)
+      $(this).find('.resource-value-static-step').each(function (i) {
         if (i + 1 <= value) {
           $(this).addClass('active')
         }
