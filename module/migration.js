@@ -3,7 +3,7 @@
  * @return {Promise}      A Promise which resolves once the migration is completed
  */
 export const migrateWorld = async function() {
-  ui.notifications.info(`Applying VtM5e System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, {permanent: true});
+  // ui.notifications.info(`Applying VtM5e System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, {permanent: true});
 					
 
 	
@@ -62,59 +62,6 @@ export const migrateWorld = async function() {
   // ui.notifications.info(`VtM5e System Migration to version ${game.system.data.version} completed!`, {permanent: true});
 };
 
-/* -------------------------------------------- */
-
-/**
- * Apply migration rules to all Entities within a single Compendium pack
- * @param pack
- * @return {Promise}
- */
-// export const migrateCompendium = async function(pack) {
-//   const entity = pack.metadata.entity;
-//   if ( !["Actor", "Item", "Scene"].includes(entity) ) return;
-//
-//   // Unlock the pack for editing
-//   const wasLocked = pack.locked;
-//   await pack.configure({locked: false});
-//
-//   // Begin by requesting server-side data model migration and get the migrated content
-//   await pack.migrate();
-//   const content = await pack.getContent();
-//
-//   // Iterate over compendium entries - applying fine-tuned migration functions
-//   for ( let ent of content ) {
-//     let updateData = {};
-//     try {
-//       switch (entity) {
-//         case "Actor":
-//           updateData = migrateActorData(ent.data);
-//           break;
-//         case "Item":
-//           updateData = migrateItemData(ent.data);
-//           break;
-//         case "Scene":
-//           updateData = migrateSceneData(ent.data);
-//           break;
-//       }
-//       if ( isObjectEmpty(updateData) ) continue;
-//
-//       // Save the entry, if data was changed
-//       updateData["_id"] = ent._id;
-//       await pack.updateEntity(updateData);
-//       console.log(`Migrated ${entity} entity ${ent.name} in Compendium ${pack.collection}`);
-//     }
-//
-//     // Handle migration failures
-//     catch(err) {
-//       err.message = `Failed dnd5e system migration for entity ${ent.name} in pack ${pack.collection}: ${err.message}`;
-//       console.error(err);
-//     }
-//   }
-//
-//   // Apply the original locked status for the pack
-//   pack.configure({locked: wasLocked});
-//   console.log(`Migrated all ${entity} entities from Compendium ${pack.collection}`);
-// };
 
 /* -------------------------------------------- */
 /*  Entity Type Migration Helpers               */
@@ -128,7 +75,7 @@ export const migrateWorld = async function() {
  */
 export const migrateActorData = function(actor) {
   const updateData = {};
-  ui.notifications.info(`${actor.name}`, {permanent: true});
+	// ui.notifications.info(`Actor: ${actor.name} now`, {permanent: true});
 
   // Actor Data Updates
 	_migrateActorTrackersToBoxes(actor, updateData);
@@ -139,30 +86,6 @@ export const migrateActorData = function(actor) {
 /* -------------------------------------------- */
 
 
-/**
- * Scrub an Actor's system data, removing all keys which are not explicitly defined in the system template
- * @param {Object} actorData    The data object for an Actor
- * @return {Object}             The scrubbed Actor data
- */
-function cleanActorData(actorData) {
-
-  // Scrub system data
-  const model = game.system.model.Actor[actorData.type];
-  actorData.data = filterObject(actorData.data, model);
-
-  // Scrub system flags
-  const allowedFlags = CONFIG.DND5E.allowedActorFlags.reduce((obj, f) => {
-    obj[f] = null;
-    return obj;
-  }, {});
-  if ( actorData.flags.dnd5e ) {
-    actorData.flags.dnd5e = filterObject(actorData.flags.dnd5e, allowedFlags);
-  }
-
-  // Return the scrubbed data
-  return actorData;
-}
-
 
 /**
  * Migrate actors health/willpower trackers from a numerical wounds system to the box system.
@@ -170,9 +93,45 @@ function cleanActorData(actorData) {
  */
 function _migrateActorTrackersToBoxes(actorData, updateData) {
   const ad = actorData.data;
+	// Check if Actor Contains old Tracker data:
+	const trackers = ["health", "willpower"]
+	let needsMigration = false;
+	for (let tracker of trackers){
+		const fields = ["aggravated", "superficial"]
+		for (let field of fields) {
+			if (typeof ad[tracker][field] !== "undefined") {
+				// ui.notifications.info(`Actor: ${actorData.name} Requires Migration`, {permanent: true});
+				needsMigration = true;
+			}
+		}
+	}
+	if (needsMigration){
+		for (let tracker of trackers) {
+			const max = 10;
+			let current = 10;
+			const aggravated = ad.health.aggravated
+			const superficial = ad.health.superficial
+			let boxes = []
+			for (let i=0; i < aggravated;i++){
+				boxes.push ("x")
+				current--
+			}
+			for (let i=0; i < superficial;i++){
+				boxes.push ("/")
+				current--
+			}
+			for (let i=0; i < current;i++){
+				boxes.push ("-")
+			}
+			ui.notifications.info(`Actor: ${actorData.name} ${tracker}:${boxes}`, {permanent: true});
+
+		}
+	}
+	// if (typeof ad.$tracker.aggravated !== "undefined" ) {
+	// 	ui.notifications.info(`Actor: ${actorData.name} Requires Migration`, {permanent: true});
   //
-  // // Work is needed if old data is present
-  // const old = actorData.type === 'vehicle' ? ad?.attributes?.speed : ad?.attributes?.speed?.value;
+	// }
+  //
   // const hasOld = old !== undefined;
   // if ( hasOld ) {
   //
@@ -194,20 +153,3 @@ function _migrateActorTrackersToBoxes(actorData, updateData) {
 
 
 
-/**
- * Purge the data model of any inner objects which have been flagged as _deprecated.
- * @param {object} data   The data to clean
- * @private
- */
-// export function removeDeprecatedObjects(data) {
-//   for ( let [k, v] of Object.entries(data) ) {
-//     if ( getType(v) === "Object" ) {
-//       if (v._deprecated === true) {
-//         console.log(`Deleting deprecated object key ${k}`);
-//         delete data[k];
-//       }
-//       else removeDeprecatedObjects(v);
-//     }
-//   }
-//   return data;
-// }
