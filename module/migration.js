@@ -109,8 +109,8 @@ function _migrateActorTrackersToBoxes(actorData, updateData) {
 		for (let tracker of trackers) {
 			const max = 10;
 			let current = 10;
-			const aggravated = ad.health.aggravated
-			const superficial = ad.health.superficial
+			const aggravated = ad[tracker]['aggravated']
+			const superficial = ad[tracker]['superficial']
 			let boxes = []
 			for (let i=0; i < aggravated;i++){
 				boxes.push ("x")
@@ -124,14 +124,15 @@ function _migrateActorTrackersToBoxes(actorData, updateData) {
 				boxes.push ("-")
 			}
 			ui.notifications.info(`Actor: ${actorData.name} ${tracker}:${boxes}`, {permanent: true});
+			updateData[`data.${tracker}.max`] = 10;
+			updateData[`data.${tracker}.current`] = current;
+			updateData[`data.${tracker}.boxes`] = boxes.splice(',');
+			updateData[`data.${tracker}.-=aggravated`] = null;
+			updateData[`data.${tracker}.-=superficial`] = null;
+
 
 		}
 	}
-	// if (typeof ad.$tracker.aggravated !== "undefined" ) {
-	// 	ui.notifications.info(`Actor: ${actorData.name} Requires Migration`, {permanent: true});
-  //
-	// }
-  //
   // const hasOld = old !== undefined;
   // if ( hasOld ) {
   //
@@ -143,7 +144,6 @@ function _migrateActorTrackersToBoxes(actorData, updateData) {
   //   }
   //
   //   // Remove the old attribute
-  //   updateData["data.attributes.-=speed"] = null;
   // }
   return updateData
 }
