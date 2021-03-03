@@ -3,10 +3,7 @@
  * @return {Promise}      A Promise which resolves once the migration is completed
  */
 export const migrateWorld = async function() {
-  // ui.notifications.info(`Applying VtM5e System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, {permanent: true});
-					
-
-	
+  ui.notifications.info(`Applying VtM5e System Migration for version ${game.system.data.version}. Please be patient and do not close your game or shut down your server.`, {permanent: true});
   // Migrate World Actors
   for ( let a of game.actors.entities ) {
     try {
@@ -20,46 +17,7 @@ export const migrateWorld = async function() {
       console.error(err);
     }
   }
-
-  // Migrate World Items
-  // for ( let i of game.items.entities ) {
-  //   try {
-  //     const updateData = migrateItemData(i.data);
-  //     if ( !isObjectEmpty(updateData) ) {
-  //       console.log(`Migrating Item entity ${i.name}`);
-  //       await i.update(updateData, {enforceTypes: false});
-  //     }
-  //   } catch(err) {
-  //     err.message = `Failed dnd5e system migration for Item ${i.name}: ${err.message}`;
-  //     console.error(err);
-  //   }
-  // }
-
-  // Migrate Actor Override Tokens
-  // for ( let s of game.scenes.entities ) {
-  //   try {
-  //     const updateData = migrateSceneData(s.data);
-  //     if ( !isObjectEmpty(updateData) ) {
-  //       console.log(`Migrating Scene entity ${s.name}`);
-  //       await s.update(updateData, {enforceTypes: false});
-  //     }
-  //   } catch(err) {
-  //     err.message = `Failed dnd5e system migration for Scene ${s.name}: ${err.message}`;
-  //     console.error(err);
-  //   }
-  // }
-
-  // Migrate World Compendium Packs
-  // for ( let p of game.packs ) {
-  //   if ( p.metadata.package !== "world" ) continue;
-  //   if ( !["Actor", "Item", "Scene"].includes(p.metadata.entity) ) continue;
-  //   await migrateCompendium(p);
-  // }
-
-  // Set the migration as complete
-  // game.settings.set("vtm5e", "systemMigrationVersion", game.system.data.version);
-  // ui.notifications.info(`VtM5e System Migration to version ${currentVersion} completed!`, {permanent: true});
-  // ui.notifications.info(`VtM5e System Migration to version ${game.system.data.version} completed!`, {permanent: true});
+  ui.notifications.info(`Migration's Complete for version ${game.system.data.version}.`, {permanent: true});
 };
 
 
@@ -95,7 +53,9 @@ function _migrateActorTrackersToBoxes(actorData, updateData) {
   const ad = actorData.data;
 	// Check if Actor Contains old Tracker data:
 	const trackers = ["health", "willpower"]
+	const states = ['-', '/','x']
 	let needsMigration = false;
+
 	for (let tracker of trackers){
 		const fields = ["aggravated", "superficial"]
 		for (let field of fields) {
@@ -123,28 +83,17 @@ function _migrateActorTrackersToBoxes(actorData, updateData) {
 			for (let i=0; i < current;i++){
 				boxes.push ("-")
 			}
-			ui.notifications.info(`Actor: ${actorData.name} ${tracker}:${boxes}`, {permanent: true});
 			updateData[`data.${tracker}.max`] = 10;
 			updateData[`data.${tracker}.current`] = current;
-			updateData[`data.${tracker}.boxes`] = boxes.splice(',');
+			updateData[`data.${tracker}.boxes`] = boxes;
+			updateData[`data.${tracker}.states`] = states;
+			// remove old Tracker Values
 			updateData[`data.${tracker}.-=aggravated`] = null;
 			updateData[`data.${tracker}.-=superficial`] = null;
 
 
 		}
 	}
-  // const hasOld = old !== undefined;
-  // if ( hasOld ) {
-  //
-  //   // If new data is not present, migrate the old data
-  //   const hasNew = ad?.attributes?.movement?.walk !== undefined;
-  //   if ( !hasNew && (typeof old === "string") ) {
-  //     const s = (old || "").split(" ");
-  //     if ( s.length > 0 ) updateData["data.attributes.movement.walk"] = Number.isNumeric(s[0]) ? parseInt(s[0]) : null;
-  //   }
-  //
-  //   // Remove the old attribute
-  // }
   return updateData
 }
 

@@ -125,13 +125,10 @@ Hooks.once('init', async function () {
 Hooks.once('ready', async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createVampireMacro(data, slot))
+
+
 	// Only Migrate when GM is present.
   if ( !game.user.isGM ) return;
-	
-	// THis is a test. It should be deleted before relese
-  game.settings.set("vtm5e", "systemMigrationVersion", "1.2.0");
-	// Delete the above before release
-	
 	// systemVersion holds the current active version of the system. "currentVersion" holds the last version to perform a migration. After the migration
 	// "currentVersion" will be updated to match the systemVersion
   const currentVersion = game.settings.get("vtm5e", "systemMigrationVersion");
@@ -141,7 +138,7 @@ Hooks.once('ready', async function () {
   // Perform the migration
   migrateWorld();
 	// Update game settings
-  // game.settings.set("vtm5e", "systemMigrationVersion", game.system.data.version);
+  game.settings.set("vtm5e", "systemMigrationVersion", game.system.data.version);
 
 
 })
