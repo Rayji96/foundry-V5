@@ -75,8 +75,8 @@ Hooks.once('init', async function () {
   })
 
   // TODO: there exist math helpers for handlebars
-  Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
-    return ((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3))
+  Handlebars.registerHelper('frenzy', function (willpowerCurrent, humanity) {
+    return ((willpowerCurrent) + Math.floor(humanity / 3));
   })
 
   // TODO: there exist math helpers for handlebars
