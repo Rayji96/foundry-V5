@@ -29,6 +29,7 @@
     "VTM5E.Type": "Type",
     "VTM5E.Other": "Autre",
     "VTM5E.Attributes": "Attributes",
+    "VTM5E.Attribute": "Attribute",
 
     "VTM5E.Abilities": "Attributs",
     "VTM5E.Strength": "Force",
@@ -76,6 +77,7 @@
     "VTM5E.AddItem": "Ajouter",
     "VTM5E.Edit": "Éditer",
     "VTM5E.Delete": "Supprimer",
+    "VTM5E.CustomRolls": "VTM5E.CustomRolls",
 
     "VTM5E.Level": "Niveau",
     "VTM5E.Add": "Ajouter",

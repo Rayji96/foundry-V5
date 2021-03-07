@@ -137,6 +137,7 @@ export class VampireActorSheet extends ActorSheet {
     // Initialize containers.
     const specialties = []
     const boons = []
+    const customRolls = []
     const gear = []
     const features = {
       background: [],
@@ -169,6 +170,9 @@ export class VampireActorSheet extends ActorSheet {
       } else if (i.type === 'boon') {
         // Append to boons.
         boons.push(i)
+      } else if (i.type === 'customRoll') {
+        // Append to custom rolls.
+        customRolls.push(i)
       } else if (i.type === 'item') {
         // Append to gear.
         gear.push(i)
@@ -189,6 +193,7 @@ export class VampireActorSheet extends ActorSheet {
     // Assign and return
     actorData.specialties = specialties
     actorData.boons = boons
+    actorData.customRolls = customRolls
     actorData.gear = gear
     actorData.features = features
     actorData.disciplines_list = disciplines
@@ -218,6 +223,8 @@ export class VampireActorSheet extends ActorSheet {
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this))
 
+    html.find('.customRoll-create').click(this._onCustomRollCreate.bind(this))
+
     // Update Inventory Item
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
@@ -240,6 +247,9 @@ export class VampireActorSheet extends ActorSheet {
 
     // Rollable Vampire powers.
     html.find('.power-rollable').click(this._onVampireRoll.bind(this))
+
+    html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
+    html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
 
     html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
     html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
@@ -270,6 +280,53 @@ export class VampireActorSheet extends ActorSheet {
         }
       })
     }
+    html.find('.skill-item').change(ev => {
+      const li = $(ev.currentTarget).parents('.item')
+      const item = this.actor.getOwnedItem(li.data('itemId'))
+      item.update({ 'data.skill': ev.target.value });
+    });
+    let skills = this.actor.data.data.skills
+    let abilities = this.actor.data.data.abilities
+    let actor = this.actor
+    html.find('.skill-item').each(function () {
+      let optionList = this.options
+      Object.values(skills).forEach(value => optionList.add(
+        new Option(game.i18n.localize(value.name))
+        ))
+      const li = $(this).parents('.item')
+      const item = actor.getOwnedItem(li.data('itemId'))
+      this.value = item.data.data.skill
+    })
+
+    html.find('.customRoll-dice2').change(ev => {
+      const li = $(ev.currentTarget).parents('.item')
+      const item = this.actor.getOwnedItem(li.data('itemId'))
+      item.update({ 'data.dice2': ev.target.value });
+    });
+    html.find('.customRoll-dice2').each(function () {
+      let optionList = this.options
+      Object.values(skills).forEach(value => optionList.add(
+      new Option(game.i18n.localize(value.name))
+      ))
+      const li = $(this).parents('.item')
+      const item = actor.getOwnedItem(li.data('itemId'))
+      this.value = item.data.data.dice2
+    })
+
+    html.find('.customRoll-dice1').change(ev => {
+      const li = $(ev.currentTarget).parents('.item')
+      const item = this.actor.getOwnedItem(li.data('itemId'))
+      item.update({ 'data.dice1': ev.target.value });
+    });
+    html.find('.customRoll-dice1').each(function () {
+      let optionList = this.options
+      Object.values(abilities).forEach(value => optionList.add(
+      new Option(game.i18n.localize(value.name))
+      ))
+      const li = $(this).parents('.item')
+      const item = actor.getOwnedItem(li.data('itemId'))
+      this.value = item.data.data.dice1
+    })
   }
 
   /**
@@ -347,6 +404,23 @@ export class VampireActorSheet extends ActorSheet {
 
     // Finally, create the item!
     return this.actor.createOwnedItem(itemData)
+  }
+
+  _onCustomRollCreate (event) {
+    event.preventDefault()
+    const header = event.currentTarget
+    // Get the type of item to create.
+    const type = header.dataset.type
+    // Grab any data associated with this control.
+    const data = duplicate(header.dataset)
+    const actorData = duplicate(this.actor)
+    const rollData = {
+      name: "Name",
+      dice1: "Strength",
+      dice2: "Athletics"
+    }
+    actorData.data.customRolls.push(rollData)
+    this.actor.update(actorData)
   }
 
   /**
@@ -587,6 +661,24 @@ export class VampireActorSheet extends ActorSheet {
     const dice2 = item.data.data.dice2 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice2].value
     const dicePool = dice1 + dice2
     this._vampireRoll(dicePool, this.actor, `${item.data.name}`)
+  }
+
+  _onCustomVampireRoll (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    if (dataset.dice1 === "") {
+      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      dataset.roll = dice2 + 1 // specialty modifier
+      dataset.label = dataset.name
+      this._onVampireRollDialog(event)
+    }
+    else {
+      const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
+      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      const dicePool = dice1 + dice2
+      this._vampireRoll(dicePool, this.actor, `${dataset.name}`)
+    }
   }
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out

@@ -287,7 +287,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "boon"],
+    "types": ["feature", "power", "specialty", "boon", "customRoll"],
     "templates": {
       "base": {
         "description": ""
@@ -314,6 +314,11 @@
     "boon": {
       "templates": ["base"],
       "boontype": "Trivial"
+    },
+    "customRoll": {
+      "templates": ["base"],
+      "dice1" : "",
+      "dice2" : ""
     }
   }
 }
