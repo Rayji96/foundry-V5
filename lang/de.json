@@ -24,12 +24,12 @@
     "VTM5E.Blood": "Blut",
     "VTM5E.Description": "Beschreibung",
     "VTM5E.Equipment": "Ausrüstung",
-    "VTM5E.Notes": "VTM5E.Notes",
-    "VTM5E.Boons": "VTM5E.Boons",
-    "VTM5E.Type": "VTM5E.Type",
-    "VTM5E.Other": "VTM5E.Other",
+    "VTM5E.Notes": "Notizen",
+    "VTM5E.Boons": "Gefallen",
+    "VTM5E.Type": "Typ",
+    "VTM5E.Other": "Sonstige",
     "VTM5E.Attributes": "Attribute",
-    "VTM5E.Attribute": "VTM5E.Attribute",
+    "VTM5E.Attribute": "Attribut",
 
     "VTM5E.Abilities": "Attribute",
     "VTM5E.Strength": "Körperkraft",
@@ -77,8 +77,9 @@
     "VTM5E.AddItem": "Hinzufügen",
     "VTM5E.Edit": "Bearbeiten",
     "VTM5E.Delete": "Löschen",
-    "VTM5E.CustomRolls": "VTM5E.CustomRolls",
 
+    "VTM5E.CustomRolls": "Benutzerdefinierter Wurf",
+    
     "VTM5E.Level": "Level",
     "VTM5E.Add": "Hinzufügen",
     "VTM5E.AddPower": "Hinzufügen",
@@ -102,7 +103,7 @@
     "VTM5E.AddFeat": "Hinzufügen",
     "VTM5E.Merit": "Vorteile",
     "VTM5E.Flaw": "Schwächen",
-    "VTM5E.Background": "VTM5E.Background",
+    "VTM5E.Background": "Hintergrund",
     "VTM5E.Points": "Punkte",
 
     "VTM5E.BloodPotency": "Blutmacht",
