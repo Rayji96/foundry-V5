@@ -227,8 +227,7 @@ export class VampireActorSheet extends ActorSheet {
     })
 
     // Rollable abilities.
-    // html.find('.rollable').click(this._onRoll.bind(this))
-    html.find('.rollable').click(this._onRollCore.bind(this))
+    html.find('.rollable').click(this._onRoll.bind(this))
 
     // Rollable Vampire abilities.
     html.find('.vrollable').click(this._onVampireRollDialog.bind(this))
@@ -341,19 +340,13 @@ export class VampireActorSheet extends ActorSheet {
     return this.actor.createOwnedItem(itemData)
   }
 
-  _onRollCore(event) {
+  _onRoll(event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
     // const rollType = dataset.type
     const useHunger = dataset.useHunger
     const numDice = dataset.roll
-    // new Dialog({
-    //   title: "Test",
-    //   content: useHunger,
-    //   buttons: '',
-    //   default: 'draw'
-    // }).render(true)
 
     if (useHunger == '1') {
       this._rollDice(numDice, this.actor, `${dataset.label}`, 0, true)
@@ -545,7 +538,7 @@ export class VampireActorSheet extends ActorSheet {
     const dice1 = item.data.data.dice1 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice1].value
     const dice2 = item.data.data.dice2 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice2].value
     const dicePool = dice1 + dice2
-    this._vampireRoll(dicePool, this.actor, `${item.data.name}`)
+    this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out
