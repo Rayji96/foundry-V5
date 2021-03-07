@@ -227,7 +227,8 @@ export class VampireActorSheet extends ActorSheet {
     })
 
     // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this))
+    // html.find('.rollable').click(this._onRoll.bind(this))
+    html.find('.rollable').click(this._onRollCore.bind(this))
 
     // Rollable Vampire abilities.
     html.find('.vrollable').click(this._onVampireRollDialog.bind(this))
@@ -340,68 +341,35 @@ export class VampireActorSheet extends ActorSheet {
     return this.actor.createOwnedItem(itemData)
   }
 
-  /**
-     * Handle clickable rolls.
-     * @param {Event} event   The originating click event
-     * @private
-     */
-  _onRoll (event) {
+  _onRollCore(event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
+    // const rollType = dataset.type
+    const useHunger = dataset.useHunger
+    const numDice = dataset.roll
+    // new Dialog({
+    //   title: "Test",
+    //   content: useHunger,
+    //   buttons: '',
+    //   default: 'draw'
+    // }).render(true)
 
-    if (dataset.roll) {
-      const roll = new Roll(dataset.roll + 'dvcs>5', this.actor.data.data)
-      const rollResult = roll.evaluate()
-
-      let success = 0
-      let critSuccess = 0
-      let fail = 0
-
-      rollResult.terms[0].results.forEach((dice) => {
-        if (dice.success) {
-          if (dice.result === 10) {
-            critSuccess++
-          } else {
-            success++
-          }
-        } else {
-          fail++
-        }
-      })
-
-      let totalCritSuccess = 0
-      totalCritSuccess = Math.floor(critSuccess / 2)
-      const totalSuccess = (totalCritSuccess * 2) + success + critSuccess
-
-      let label = dataset.label ? `<p class="roll-label uppercase">${dataset.label}</p>` : ''
-
-      if (totalCritSuccess) {
-        label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
-      }
-
-      label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${totalSuccess}</p>`
-
-      for (let i = 0, j = critSuccess; i < j; i++) {
-        label = label + '<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">'
-      }
-      for (let i = 0, j = success; i < j; i++) {
-        label = label + '<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img">'
-      }
-      for (let i = 0, j = fail; i < j; i++) {
-        label = label + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img">'
-      }
-
-      rollResult.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label
-      })
+    if (useHunger == '1') {
+      this._rollDice(numDice, this.actor, `${dataset.label}`, 0, true)
+    } else {
+      this._rollDice(numDice, this.actor, `${dataset.label}`, 0, false)
     }
-  }
 
-  // roll helper
-  _vampireRoll (numDice, actor, label = '', difficulty = 0) {
-    const hungerDice = Math.min(actor.data.data.hunger.value, numDice)
+  }
+  _rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true) {
+    var hungerDice;
+    if (useHunger) {
+      hungerDice = Math.min(actor.data.data.hunger.value, numDice)
+    } else {
+      hungerDice = 0
+
+    }
     const dice = numDice - hungerDice
     const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dhcs>5', actor.data.data)
     const rollResult = roll.evaluate()
@@ -501,7 +469,6 @@ export class VampireActorSheet extends ActorSheet {
       flavor: label
     })
   }
-
   /**
      * Handle clickable Vampire rolls.
      * @param {Event} event   The originating click event
@@ -544,7 +511,8 @@ export class VampireActorSheet extends ActorSheet {
           const abilityVal = this.actor.data.data.abilities[ability].value
           const abilityName = game.i18n.localize(this.actor.data.data.abilities[ability].name)
           const numDice = abilityVal + parseInt(dataset.roll) + modifier
-          this._vampireRoll(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
+          this._rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, true)
+          // this._vampireRoll(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
         }
       },
       cancel: {
