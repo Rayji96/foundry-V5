@@ -229,9 +229,6 @@ export class VampireActorSheet extends ActorSheet {
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this))
 
-	// Rouse abilities.
-    html.find('.rousable').click(this._onRouse.bind(this))
-
     // Rollable Vampire abilities.
     html.find('.vrollable').click(this._onVampireRollDialog.bind(this))
 
@@ -401,68 +398,6 @@ export class VampireActorSheet extends ActorSheet {
       })
     }
   }
-
-_onRouse (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-
-    if (dataset.roll) {
-      const roll = new Roll(dataset.roll + 'dhcs>5', this.actor.data.data)
-      const rollResult = roll.evaluate()
-
-      let success = 0
-      let critSuccess = 0
-      let fail = 0
-	  let bestial = 0
-
-      rollResult.terms[0].results.forEach((dice) => {
-        if (dice.success) {
-          if (dice.result === 10) {
-            critSuccess++
-          } else {
-            success++
-          }
-        } else if (dice.result === 1) {
-		 	bestial++
-		  } else {
-          fail++
-        }
-      })
-
-      let totalCritSuccess = 0
-      totalCritSuccess = Math.floor(critSuccess / 2)
-      const totalSuccess = (totalCritSuccess * 2) + success + critSuccess
-
-      let label = dataset.label ? `<p class="roll-label uppercase">${dataset.label}</p>` : ''
-
-      if (totalCritSuccess) {
-        label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
-      }
-
-      label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${totalSuccess}</p>`
-
-      for (let i = 0, j = critSuccess; i < j; i++) {
-        label = label + '<img src="systems/vtm5e/assets/images/red-crit.png" alt="Normal Crit" class="roll-img">'
-      }
-      for (let i = 0, j = success; i < j; i++) {
-        label = label + '<img src="systems/vtm5e/assets/images/red-success.png" alt="Normal Success" class="roll-img">'
-      }
-      for (let i = 0, j = fail; i < j; i++) {
-        label = label + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Normal Fail" class="roll-img">'
-      }
-	  for (let i = 0, j = bestial; i < j; i++) {
-        label = label + '<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Bestial Fail" class="roll-img">'
-      }
-
-      rollResult.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label
-      })
-    }
-  }
-
-
 
   // roll helper
   _vampireRoll (numDice, actor, label = '', difficulty = 0) {
@@ -641,9 +576,7 @@ _onRouse (event) {
     }
     const dice1 = item.data.data.dice1 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice1].value
     const dice2 = item.data.data.dice2 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice2].value
-    //const dice3 = floor(this.actor.data.blood_potency.value/2)
-    const dice3 = 0
-	const dicePool = dice1 + dice2 + dice3
+    const dicePool = dice1 + dice2
     this._vampireRoll(dicePool, this.actor, `${item.data.name}`)
   }
 

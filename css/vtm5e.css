@@ -13,8 +13,6 @@
   font-family: "Roboto", sans-serif;
 }
 
-.rouseable:hover,
-.rouseable:focus,
 .rollable:hover,
 .rollable:focus,
 .vrollable:hover,
@@ -159,8 +157,7 @@
   border: 1px solid #e0dede;
 }
 
-.vtm5e button.rollable,
-.vtm5e button.rousable {
+.vtm5e button.rollable {
   background: #790813;
   color: white;
   font-family: "cormorantlight", sans-serif;
