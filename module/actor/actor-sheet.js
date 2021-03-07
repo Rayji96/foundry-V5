@@ -339,12 +339,15 @@ export class VampireActorSheet extends ActorSheet {
     // Finally, create the item!
     return this.actor.createOwnedItem(itemData)
   }
-
+/**
+     * Handle clickable rolls.
+     * @param {Event} event   The originating click event
+     * @private
+     */
   _onRoll(event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
-    // const rollType = dataset.type
     const useHunger = dataset.useHunger
     const numDice = dataset.roll
 
