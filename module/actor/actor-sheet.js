@@ -600,8 +600,24 @@ export class VampireActorSheet extends ActorSheet {
       //
     }
     this.actor.update(actorData)
-
   }
+
+  _onCustomVampireRoll (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    if (dataset.dice1 === "") {
+      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      dataset.roll = dice2 + 1 // specialty modifier
+      dataset.label = dataset.name
+      this._onVampireRollDialog(event)
+    }
+    else {
+      const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
+      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      const dicePool = dice1 + dice2
+      this._vampireRoll(dicePool, this.actor, `${dataset.name}`)
+    }
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
