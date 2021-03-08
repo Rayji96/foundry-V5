@@ -642,7 +642,7 @@ export class VampireActorSheet extends ActorSheet {
       const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
       const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
-      this._vampireRoll(dicePool, this.actor, `${dataset.name}`)
+      this._rollDice(dicePool, this.actor, `${dataset.name}`)
     }
   }
 
