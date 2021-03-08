@@ -24,7 +24,12 @@
     "VTM5E.Blood": "Sang",
     "VTM5E.Description": "Description",
     "VTM5E.Equipment": "Équipement",
+    "VTM5E.Notes": "Noter",
+    "VTM5E.Boons": "Aubaines",
+    "VTM5E.Type": "Type",
+    "VTM5E.Other": "Autre",
     "VTM5E.Attributes": "Attributes",
+    "VTM5E.Attribute": "Attribute",
 
     "VTM5E.Abilities": "Attributs",
     "VTM5E.Strength": "Force",
@@ -72,6 +77,7 @@
     "VTM5E.AddItem": "Ajouter",
     "VTM5E.Edit": "Éditer",
     "VTM5E.Delete": "Supprimer",
+    "VTM5E.CustomRolls": "VTM5E.CustomRolls",
 
     "VTM5E.Level": "Niveau",
     "VTM5E.Add": "Ajouter",
@@ -96,6 +102,7 @@
     "VTM5E.AddFeat": "Ajouter",
     "VTM5E.Merit": "Avantage",
     "VTM5E.Flaw": "Handicap",
+    "VTM5E.Background": "Fond",
     "VTM5E.Points": "Points",
 
     "VTM5E.BloodPotency": "Puissance du Sang",

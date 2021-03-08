@@ -21,6 +21,7 @@
       "templates": ["base"],
       "biography": "",
       "equipment": "",
+      "notes": "",
       "headers":{
         "concept":"",
         "predator":"",
@@ -288,7 +289,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty"],
+    "types": ["feature", "power", "specialty", "boon", "customRoll"],
     "templates": {
       "base": {
         "description": ""
@@ -311,6 +312,15 @@
     "specialty": {
       "templates": ["base"],
       "skill": ""
+    },
+    "boon": {
+      "templates": ["base"],
+      "boontype": "Trivial"
+    },
+    "customRoll": {
+      "templates": ["base"],
+      "dice1" : "",
+      "dice2" : ""
     }
   }
 }

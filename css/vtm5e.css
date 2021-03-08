@@ -35,6 +35,13 @@
   cursor: pointer;
 }
 
+.custom-rollable:hover,
+.custom-rollable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
 .grid,
 .grid-2col {
   display: grid;
@@ -357,6 +364,11 @@
   font-weight: 600;
 }
 
+.vtm5e .items-list .item-name-header {
+  margin: 0;
+  font-weight: bold;
+}
+
 .vtm5e .items-list .item-controls {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 86px;
@@ -389,6 +401,18 @@
 }
 
 .vtm5e .resource-value .resource-value-step.active {
+  background-color: #790813;
+}
+
+.vtm5e .resource-value-static .resource-value-static-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.vtm5e .resource-value-static .resource-value-static-step.active {
   background-color: #790813;
 }
 
