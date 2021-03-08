@@ -619,6 +619,8 @@ export class VampireActorSheet extends ActorSheet {
       this._vampireRoll(dicePool, this.actor, `${dataset.name}`)
     }
 
+	}
+
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
