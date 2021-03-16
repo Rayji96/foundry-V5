@@ -79,7 +79,7 @@
                 <div class="resource flex-group-center">
                     <label for="placeholder" class="resource-label">{{localize "VTM5E.Rouse"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <button class="rollable" type="text" name="rouse" data-roll="1"
+                        <button class="rollable" type="text" name="rouse" data-roll="1" data-use-hunger="1"
                             data-label="{{localize 'VTM5E.RousingBlood'}}...">{{localize "VTM5E.Roll"}}</button>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
                 <li class="item flexcol" data-item-id="{{item._id}}">
                     <div class="flexrow">
                         {{#if item.data.rollable}}
-                        <div class="item-image power-rollable" data-id="{{item._id}}"><img src="{{item.img}}"
+                        <div class="item-image power-rollable" data-id="{{item._id}}" data-use-hunger="1"><img src="{{item.img}}"
                                 title="{{item.name}}" width="24" height="24" alt="{{item.name}}" /></div>
                         {{else}}
                         <div class="item-image" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}"
