@@ -668,15 +668,12 @@ export class VampireActorSheet extends ActorSheet {
     this._vampireRoll(dicePool, this.actor, `${item.data.name}`)
   }
 
-<<<<<<< HEAD
-
   // There were issues in health tracking from multiple separate fields needing to be updated at once.
   // The old method "_assignToActorField()" was de-syncing the data. This field does the same thing,
   // but assigns multiple fields/values at once, before making a single update to the actor data.
   _updateActorFields (containers) {
     const actorData = duplicate(this.actor)
-    let i;
-    for (i=0;i < (containers.length);i++) {
+    for (let i = 0; i < (containers.length); i++) {
       let fields = containers[i]['field']
       let value = containers[i]['value']
       let lastField = fields.pop()
@@ -832,13 +829,13 @@ export class VampireActorSheet extends ActorSheet {
   _onPls(event) {
     event.preventDefault()
     const element = event.currentTarget
-    const TrackerData = element.parentNode.parentNode.dataset // TrackerData contains the dataset of the "resourceTracker" div that contains all data for tracker management
-    const maxField = TrackerData.nameMax.split('.')
-    const boxesField = TrackerData.nameBoxes.split('.')
-    const currentField = TrackerData.nameCurrent.split('.')
+    const trackerData = element.parentNode.parentNode.dataset // TrackerData contains the dataset of the "resourceTracker" div that contains all data for tracker management
+    const maxField = trackerData.nameMax.split('.')
+    const boxesField = trackerData.nameBoxes.split('.')
+    const currentField = trackerData.nameCurrent.split('.')
 
-    let boxes = TrackerData.boxes.split(',')
-    let max = TrackerData.max
+    let boxes = trackerData.boxes.split(',')
+    let max = trackerData.max
     let current = TrackerData.current
     if (boxes.length < 20) {
       current++;
@@ -893,7 +890,7 @@ export class VampireActorSheet extends ActorSheet {
 
     let currentState = dataset.state
     let stateIndex = states.indexOf(String(currentState))
-    const OldIndex = states.indexOf(String(currentState))
+    const oldIndex = states.indexOf(String(currentState))
     switch (mouse) {
       case 1: //left click Increment Upwards
         if (stateIndex < (states.length - 1)) {
@@ -914,9 +911,9 @@ export class VampireActorSheet extends ActorSheet {
     // This current refers to health/willpowwer current
     let currentValue = element.parentNode.dataset.current
     const currentField = element.parentNode.dataset.nameCurrent.split('.')
-    if ((stateIndex != 0) && (OldIndex == 0)) {
+    if ((stateIndex != 0) && (oldIndex == 0)) {
       currentValue--;
-    } else if ((OldIndex != 0) && stateIndex == 0){
+    } else if ((oldIndex != 0) && stateIndex == 0){
       currentValue++;
     }
 
