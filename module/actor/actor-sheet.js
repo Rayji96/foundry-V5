@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ActorSheet, ChatMessage, Dialog, Roll, duplicate, game, mergeObject, Option */
+/* global DEFAULT_TOKEN, ActorSheet, ChatMessage, Dialog, Roll, duplicate, game, mergeObject */
 
 /**
  * Extend the basic ActorSheet with some very simple modifications

@@ -147,19 +147,19 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   })
   dice3d.addColorset({
     name: 'hunger',
-    description: "V5 Hunger Dice",
-    category: "V5",
+    description: 'V5 Hunger Dice',
+    category: 'V5',
     foreground: '#fff',
-    background: "#450000",
+    background: '#450000',
     texture: 'none',
     edge: '#450000',
     material: 'plastic',
     font: 'Arial Black',
-    fontScale:{
-       "d6":1.1,
-       "df":2.5
+    fontScale: {
+      d6: 1.1,
+      df: 2.5
     }
-  },"default");
+  }, 'default')
   dice3d.addDicePreset({
     type: 'dh',
     labels: [
