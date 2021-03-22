@@ -305,11 +305,12 @@
       "dice1": "discipline",
       "dice2": "discipline",
       "cost": "",
-      "rollable": false
+      "rollable": false,
+      "skill": false
     },
     "specialty": {
       "templates": ["base"],
-      "skill": ""
+      "skill": "athletics"
     },
     "boon": {
       "templates": ["base"],

@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ActorSheet, ChatMessage, Dialog, Roll, duplicate, game, mergeObject */
+/* global DEFAULT_TOKEN, ActorSheet, ChatMessage, Dialog, Roll, duplicate, game, mergeObject, Option */
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -255,6 +255,9 @@ export class VampireActorSheet extends ActorSheet {
     html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
 
+    html.find('.resource-plus').click(this._onResourceChange.bind(this))
+    html.find('.resource-minus').click(this._onResourceChange.bind(this))
+
     // Drag events for macros.
     // if (this.actor.owner) {
     //   let handler = ev => this._onDragItemStart(ev);
@@ -280,33 +283,20 @@ export class VampireActorSheet extends ActorSheet {
         }
       })
     }
-    html.find('.skill-item').change(ev => {
-      const li = $(ev.currentTarget).parents('.item')
-      const item = this.actor.getOwnedItem(li.data('itemId'))
-      item.update({ 'data.skill': ev.target.value });
-    });
-    let skills = this.actor.data.data.skills
-    let abilities = this.actor.data.data.abilities
-    let actor = this.actor
-    html.find('.skill-item').each(function () {
-      let optionList = this.options
-      Object.values(skills).forEach(value => optionList.add(
-        new Option(game.i18n.localize(value.name))
-        ))
-      const li = $(this).parents('.item')
-      const item = actor.getOwnedItem(li.data('itemId'))
-      this.value = item.data.data.skill
-    })
+
+    const skills = this.actor.data.data.skills
+    const abilities = this.actor.data.data.abilities
+    const actor = this.actor
 
     html.find('.customRoll-dice2').change(ev => {
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getOwnedItem(li.data('itemId'))
-      item.update({ 'data.dice2': ev.target.value });
-    });
+      item.update({ 'data.dice2': ev.target.value })
+    })
     html.find('.customRoll-dice2').each(function () {
-      let optionList = this.options
+      const optionList = this.options
       Object.values(skills).forEach(value => optionList.add(
-      new Option(game.i18n.localize(value.name))
+        new Option(game.i18n.localize(value.name))
       ))
       const li = $(this).parents('.item')
       const item = actor.getOwnedItem(li.data('itemId'))
@@ -316,12 +306,12 @@ export class VampireActorSheet extends ActorSheet {
     html.find('.customRoll-dice1').change(ev => {
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getOwnedItem(li.data('itemId'))
-      item.update({ 'data.dice1': ev.target.value });
-    });
+      item.update({ 'data.dice1': ev.target.value })
+    })
     html.find('.customRoll-dice1').each(function () {
-      let optionList = this.options
+      const optionList = this.options
       Object.values(abilities).forEach(value => optionList.add(
-      new Option(game.i18n.localize(value.name))
+        new Option(game.i18n.localize(value.name))
       ))
       const li = $(this).parents('.item')
       const item = actor.getOwnedItem(li.data('itemId'))
@@ -408,16 +398,11 @@ export class VampireActorSheet extends ActorSheet {
 
   _onCustomRollCreate (event) {
     event.preventDefault()
-    const header = event.currentTarget
-    // Get the type of item to create.
-    const type = header.dataset.type
-    // Grab any data associated with this control.
-    const data = duplicate(header.dataset)
     const actorData = duplicate(this.actor)
     const rollData = {
-      name: "Name",
-      dice1: "Strength",
-      dice2: "Athletics"
+      name: 'Name',
+      dice1: 'Strength',
+      dice2: 'Athletics'
     }
     actorData.data.customRolls.push(rollData)
     this.actor.update(actorData)
@@ -428,27 +413,26 @@ export class VampireActorSheet extends ActorSheet {
      * @param {Event} event   The originating click event
      * @private
      */
-  _onRoll(event) {
+  _onRoll (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
     const useHunger = dataset.useHunger
     const numDice = dataset.roll
 
-    if (useHunger == '1') {
+    if (useHunger === '1') {
       this._rollDice(numDice, this.actor, `${dataset.label}`, 0, true)
     } else {
       this._rollDice(numDice, this.actor, `${dataset.label}`, 0, false)
     }
-
   }
+
   _rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true) {
-    var hungerDice;
+    let hungerDice
     if (useHunger) {
       hungerDice = Math.min(actor.data.data.hunger.value, numDice)
     } else {
       hungerDice = 0
-
     }
     const dice = numDice - hungerDice
     const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dhcs>5', actor.data.data)
@@ -549,6 +533,7 @@ export class VampireActorSheet extends ActorSheet {
       flavor: label
     })
   }
+
   /**
      * Handle clickable Vampire rolls.
      * @param {Event} event   The originating click event
@@ -622,8 +607,18 @@ export class VampireActorSheet extends ActorSheet {
     } else {
       disciplineValue = this.actor.data.data.disciplines[item.data.data.discipline].value
     }
+
     const dice1 = item.data.data.dice1 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice1].value
-    const dice2 = item.data.data.dice2 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice2].value
+
+    let dice2
+    if (item.data.data.dice2 === 'discipline') {
+      dice2 = disciplineValue
+    } else if (item.data.data.skill) {
+      dice2 = this.actor.data.data.skills[item.data.data.dice2].value
+    } else {
+      dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
+    }
+
     const dicePool = dice1 + dice2
     this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
@@ -632,13 +627,12 @@ export class VampireActorSheet extends ActorSheet {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
-    if (dataset.dice1 === "") {
+    if (dataset.dice1 === '') {
       const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
       dataset.roll = dice2 + 1 // specialty modifier
       dataset.label = dataset.name
       this._onVampireRollDialog(event)
-    }
-    else {
+    } else {
       const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
       const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
@@ -650,15 +644,14 @@ export class VampireActorSheet extends ActorSheet {
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
     // update actor owned items
-    if (fields.length === 2 && fields[0] === "items") {
+    if (fields.length === 2 && fields[0] === 'items') {
       for (const i of actorData.items) {
         if (fields[1] === i._id) {
           i.data.points = value
           break
         }
       }
-    }
-    else {
+    } else {
       const lastField = fields.pop()
       fields.reduce((data, field) => data[field], actorData)[lastField] = value
     }
@@ -777,13 +770,14 @@ export class VampireActorSheet extends ActorSheet {
       const halfs = Number(data[states['/']]) || 0
       const crossed = Number(data[states.x]) || 0
 
-      const values = humanity ? new Array(fulls + halfs) : new Array(fulls)
-      values.fill('-', 0, fulls)
+      const values = humanity ? new Array(fulls + halfs) : new Array(halfs + crossed)
+
       if (humanity) {
+        values.fill('-', 0, fulls)
         values.fill('/', fulls, fulls + halfs)
       } else {
-        values.fill('/', fulls - halfs - crossed, fulls - crossed)
-        values.fill('x', fulls - crossed, fulls)
+        values.fill('/', 0, halfs)
+        values.fill('x', halfs, halfs + crossed)
       }
 
       $(this).find('.resource-counter-step').each(function () {
@@ -793,6 +787,28 @@ export class VampireActorSheet extends ActorSheet {
         }
       })
     })
+  }
+
+  _onResourceChange (event) {
+    event.preventDefault()
+    const actorData = duplicate(this.actor)
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const resource = dataset.resource
+    if (dataset.action === 'plus') {
+      actorData.data[resource].max++
+    } else if (dataset.action === 'minus') {
+      actorData.data[resource].max--
+    }
+
+    if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
+      actorData.data[resource].aggravated = actorData.data[resource].max - actorData.data[resource].superficial
+      if (actorData.data[resource].aggravated <= 0) {
+        actorData.data[resource].aggravated = 0
+        actorData.data[resource].superficial = actorData.data[resource].max
+      }
+    }
+    this.actor.update(actorData)
   }
 }
 

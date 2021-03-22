@@ -199,6 +199,13 @@
   text-decoration: none;
 }
 
+.vtm5e .resource .resource-control:hover,
+.vtm5e .resource .resource-control:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
 .vtm5e .window-content .header-fields .resource {
   border: 1px solid #d6d6d2;
   border-radius: 5px;
