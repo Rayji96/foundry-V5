@@ -54,8 +54,9 @@
                     <option value="ceremonies">{{localize "VTM5E.Ceremonies"}}</option>
                     {{/select}}
                 </select>
-                <label class="resource-label">{{localize "VTM5E.Rollable"}}: </label>
-                <input type="checkbox" id="data.rollable" name="data.rollable" {{checked data.rollable}}>
+
+                <div></div>
+                <div></div>
 
                 <label class="resource-label">{{localize "VTM5E.System"}}: </label>
                 <select name="data.dice1" data-type="String">
@@ -73,6 +74,39 @@
                     {{/select}}
                 </select>
                 <label class="resource-label">+</label>
+                {{#if data.skill}}
+                <select name="data.dice2" data-type="String">
+                    {{#select data.dice2}}
+                    <option value="academics">{{localize "VTM5E.Academics"}}</option>
+                    <option value="animal ken">{{localize "VTM5E.AnimalKen"}}</option>
+                    <option value="athletics">{{localize "VTM5E.Athletics"}}</option>
+                    <option value="awareness">{{localize "VTM5E.Awareness"}}</option>
+                    <option value="brawl">{{localize "VTM5E.Brawl"}}</option>
+                    <option value="craft">{{localize "VTM5E.Craft"}}</option>
+                    <option value="drive">{{localize "VTM5E.Drive"}}</option>
+                    <option value="etiquette">{{localize "VTM5E.Etiquette"}}</option>
+                    <option value="finance">{{localize "VTM5E.Finance"}}</option>
+                    <option value="firearms">{{localize "VTM5E.Firearms"}}</option>
+                    <option value="insight">{{localize "VTM5E.Insight"}}</option>
+                    <option value="intimidation">{{localize "VTM5E.Intimidation"}}</option>
+                    <option value="investigation">{{localize "VTM5E.Investigation"}}</option>
+                    <option value="larceny">{{localize "VTM5E.Larceny"}}</option>
+                    <option value="leadership">{{localize "VTM5E.Leadership"}}</option>
+                    <option value="medicine">{{localize "VTM5E.Medicine"}}</option>
+                    <option value="melee">{{localize "VTM5E.Melee"}}</option>
+                    <option value="occult">{{localize "VTM5E.Occult"}}</option>
+                    <option value="performance">{{localize "VTM5E.Performance"}}</option>
+                    <option value="persuasion">{{localize "VTM5E.Persuasion"}}</option>
+                    <option value="politics">{{localize "VTM5E.Politics"}}</option>
+                    <option value="science">{{localize "VTM5E.Science"}}</option>
+                    <option value="stealth">{{localize "VTM5E.Stealth"}}</option>
+                    <option value="streetwise">{{localize "VTM5E.Streetwise"}}</option>
+                    <option value="subterfuge">{{localize "VTM5E.Subterfuge"}}</option>
+                    <option value="survival">{{localize "VTM5E.Survival"}}</option>
+                    <option value="technology">{{localize "VTM5E.Technology"}}</option>
+                    {{/select}}
+                </select>
+                {{else}}
                 <select name="data.dice2" data-type="String">
                     {{#select data.dice2}}
                     <option value="strength">{{localize "VTM5E.Strength"}}</option>
@@ -87,6 +121,14 @@
                     <option value="discipline">{{localize (getDisciplineName item.data.discipline)}}</option>
                     {{/select}}
                 </select>
+                {{/if}}
+
+                <label class="resource-label">{{localize "VTM5E.Rollable"}}: </label>
+                <input type="checkbox" id="data.rollable" name="data.rollable" {{checked data.rollable}}>
+
+                <label class="resource-label">{{localize "VTM5E.UseSkill"}}: </label>
+                <input type="checkbox" id="data.skill" name="data.skill" {{checked data.skill}}>
+
             </div>
         </div>
     </section>

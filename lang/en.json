@@ -24,7 +24,12 @@
     "VTM5E.Blood": "Blood",
     "VTM5E.Description": "Description",
     "VTM5E.Equipment": "Equipment",
+    "VTM5E.Notes": "Notes",
+    "VTM5E.Boons": "Boons",
+    "VTM5E.Type": "Type",
+    "VTM5E.Other": "Other",
     "VTM5E.Attributes": "Attributes",
+    "VTM5E.Attribute": "Attribute",
 
     "VTM5E.Abilities": "Abilities",
     "VTM5E.Strength": "Strength",
@@ -72,6 +77,7 @@
     "VTM5E.AddItem": "Add",
     "VTM5E.Edit": "Edit",
     "VTM5E.Delete": "Delete",
+    "VTM5E.CustomRolls": "Custom Rolls",
 
     "VTM5E.Level": "Level",
     "VTM5E.Add": "Add",
@@ -96,6 +102,7 @@
     "VTM5E.AddFeat": "Add",
     "VTM5E.Merit": "Merit",
     "VTM5E.Flaw": "Flaw",
+    "VTM5E.Background": "Background",
     "VTM5E.Points": "Points",
 
     "VTM5E.BloodPotency": "Blood Potency",
@@ -147,6 +154,7 @@
     "VTM5E.Discipline": "Discipline",
     "VTM5E.System": "System",
     "VTM5E.Rollable": "Rollable",
+    "VTM5E.UseSkill": "Use Skills",
     "VTM5E.FeatureType": "Feature Type",
 
     "VTM5E.RollingWillpower": "Rolling Willpower",

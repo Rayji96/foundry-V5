@@ -54,15 +54,28 @@ export class VampireItemSheet extends ItemSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
-    // Checkbox Handler.
-    const checkbox = document.querySelector('input[type="checkbox"]')
+    // Rollable Checkbox Handler.
+    const rollCheckbox = document.querySelector('input[type="checkbox"][name="data.rollable"]')
 
-    if (checkbox != null) {
-      checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
+    if (rollCheckbox != null) {
+      rollCheckbox.addEventListener('change', () => {
+        if (rollCheckbox.checked) {
           this.item.update({ 'data.rollable': true })
         } else {
           this.item.update({ 'data.rollable': false })
+        }
+      })
+    }
+
+    // Skill Checkbox Handler.
+    const skillCheckbox = document.querySelector('input[type="checkbox"][name="data.skill"]')
+
+    if (skillCheckbox != null) {
+      skillCheckbox.addEventListener('change', () => {
+        if (skillCheckbox.checked) {
+          this.item.update({ 'data.skill': true })
+        } else {
+          this.item.update({ 'data.skill': false })
         }
       })
     }

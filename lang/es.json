@@ -24,7 +24,12 @@
     "VTM5E.Blood": "Sangre",
     "VTM5E.Description": "Descripción",
     "VTM5E.Equipment": "Equipo",
+    "VTM5E.Notes": "Notas",
+    "VTM5E.Boons": "Bendiciones",
+    "VTM5E.Type": "Tipo",
+    "VTM5E.Other": "Otro",
     "VTM5E.Attributes": "Atributos",
+    "VTM5E.Attribute": "Atributo",
 
     "VTM5E.Abilities": "Atributos",
     "VTM5E.Strength": "Fuerza",
@@ -72,6 +77,7 @@
     "VTM5E.AddItem": "Añadir",
     "VTM5E.Edit": "Editar",
     "VTM5E.Delete": "Borrar",
+    "VTM5E.CustomRolls": "VTM5E.CustomRolls",
 
     "VTM5E.Level": "Nivel",
     "VTM5E.Add": "Añadir",
@@ -96,6 +102,7 @@
     "VTM5E.AddFeat": "Añadir",
     "VTM5E.Merit": "Ventaja",
     "VTM5E.Flaw": "Defecto",
+    "VTM5E.Background": "Fondo",
     "VTM5E.Points": "Puntos",
 
     "VTM5E.BloodPotency": "Potencia de Sangre",
@@ -147,6 +154,7 @@
     "VTM5E.Discipline": "Disciplina",
     "VTM5E.System": "Sistema",
     "VTM5E.Rollable": "Tirable",
+    "VTM5E.UseSkill": "Usar Habilidades",
     "VTM5E.FeatureType": "Tipo de rasgo",
 
     "VTM5E.RollingWillpower": "Tirando Fuerza de Voluntad",

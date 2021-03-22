@@ -63,9 +63,13 @@ Hooks.once('init', async function () {
     return str.charAt(0).toUpperCase() + str.slice(1)
   })
 
-  // TODO: There's gotta be a better way lol
+  const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+  }
+
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    return (str === 'merit' ? 'VTM5E.Merit' : 'VTM5E.Flaw')
+    return 'VTM5E.'.concat(capitalize(str))
   })
 
   // TODO: there exist math helpers for handlebars
@@ -137,10 +141,25 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/normal-success-dsn.png',
       'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
-    colorset: 'white',
+    colorset: 'black',
     fontScale: 0.5,
     system: 'vtm5e'
   })
+  dice3d.addColorset({
+    name: 'hunger',
+    description: 'V5 Hunger Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#450000',
+    texture: 'none',
+    edge: '#450000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5
+    }
+  }, 'default')
   dice3d.addDicePreset({
     type: 'dh',
     labels: [
@@ -155,7 +174,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/red-success-dsn.png',
       'systems/vtm5e/assets/images/red-crit-dsn.png'
     ],
-    colorset: 'black',
+    colorset: 'hunger',
     system: 'vtm5e'
   })
 })

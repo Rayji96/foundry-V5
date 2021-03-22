@@ -25,9 +25,14 @@ Huge thanks to these folks for their contributions:
 * This sheet was initially based on the [boilerplate system] by @asacolips#1867
 * French localization started by @Lloyxide#6914
 * Brazilian Portuguese localization started by [danielmalka]
+* German localization started by [tom959]
+* Spanish localization started by [erizocosmico]
 * Icons used with permissions from [cftarbay]
 * CSS improvements by [lipefl]
 * Incredible work on dot and box counters by [erizocosmico]
+* Refactors and enhancements by [bmgraves]
+* Feedback and fixes by [eisenfuchs]
+* Features improvements and custom roll table by [Veichassur]
 
 [Foundry Shield 0.7.9]: https://img.shields.io/badge/Foundry-0.7.9-informational
 [Foundry URL]: https://foundryvtt.com
@@ -43,3 +48,7 @@ Huge thanks to these folks for their contributions:
 [cftarbay]: https://github.com/cftarbay
 [lipefl]: https://github.com/lipefl
 [erizocosmico]: https://github.com/erizocosmico
+[tom959]: https://github.com/tom959
+[bmgraves]: https://github.com/bmgraves
+[eisenfuchs]: https://github.com/eisenfuchs
+[Veichassur]: https://github.com/Veichassur

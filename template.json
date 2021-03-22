@@ -19,6 +19,7 @@
       "templates": ["base"],
       "biography": "",
       "equipment": "",
+      "notes": "",
       "headers":{
         "concept":"",
         "predator":"",
@@ -286,7 +287,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty"],
+    "types": ["feature", "power", "specialty", "boon", "customRoll"],
     "templates": {
       "base": {
         "description": ""
@@ -304,11 +305,21 @@
       "dice1": "discipline",
       "dice2": "discipline",
       "cost": "",
-      "rollable": false
+      "rollable": false,
+      "skill": false
     },
     "specialty": {
       "templates": ["base"],
-      "skill": ""
+      "skill": "athletics"
+    },
+    "boon": {
+      "templates": ["base"],
+      "boontype": "Trivial"
+    },
+    "customRoll": {
+      "templates": ["base"],
+      "dice1" : "",
+      "dice2" : ""
     }
   }
 }
