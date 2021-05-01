@@ -18,8 +18,8 @@ export class VampireActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    if ( !game.user.isGM && !this.actor.owner ) return "systems/foundry-V5/templates/actor/limited-sheet.html";
-    return "systems/foundry-V5/templates/actor/actor-sheet.html";
+    if ( !game.user.isGM && !this.actor.owner ) return "systems/vtm5e/templates/actor/limited-sheet.html";
+    return "systems/vtm5e/templates/actor/actor-sheet.html";
   }
 
   /* -------------------------------------------- */
