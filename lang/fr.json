@@ -24,8 +24,8 @@
     "VTM5E.Blood": "Sang",
     "VTM5E.Description": "Description",
     "VTM5E.Equipment": "Équipement",
-    "VTM5E.Notes": "Noter",
-    "VTM5E.Boons": "Aubaines",
+    "VTM5E.Notes": "Notes",
+    "VTM5E.Boons": "Dettes",
     "VTM5E.Type": "Type",
     "VTM5E.Other": "Autre",
     "VTM5E.Attributes": "Attributes",
@@ -94,7 +94,7 @@
     "VTM5E.Presence": "Présence",
     "VTM5E.Protean": "Protéisme",
     "VTM5E.BloodSorcery": "Sorcellerie du sang",
-    "VTM5E.Oblivion": "Obténébration",
+    "VTM5E.Oblivion": "Néant",
     "VTM5E.ThinBloodAlchemy": "Alchimie du sang clair",
     "VTM5E.Rituals": "Rituels",
     "VTM5E.Ceremonies": "Cérémonies",
@@ -153,7 +153,7 @@
 
     "VTM5E.Discipline": "Discipline",
     "VTM5E.System": "Système",
-    "VTM5E.Rollable": "Jet de dès",
+    "VTM5E.Rollable": "Jet de dés",
     "VTM5E.UseSkill": "Utiliser des Compétences",
     "VTM5E.FeatureType": "Type d'Atout",
 
