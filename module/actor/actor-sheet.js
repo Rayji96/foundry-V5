@@ -558,7 +558,6 @@ export class VampireActorSheet extends ActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     let options = ''
-    console.log(this)
 
 
     for (const [key, value] of Object.entries(this.actor.data.data.abilities)) {
