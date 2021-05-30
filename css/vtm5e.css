@@ -250,6 +250,23 @@
   margin-bottom: 10px;
 }
 
+.vtm5e .sheet-header .profile-img-zone {
+  max-width: 100px; /* .profile-img width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.vtm5e .sheet-header .profile-img-zone button {
+  background: #790813;
+  color: white;
+  font-family: "cormorantlight", sans-serif;
+  font-weight: bold;
+  border: none;
+}
+
 .vtm5e .sheet-header .profile-img {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100px;
@@ -258,7 +275,7 @@
   max-height: 205px;
   height: auto;
   width: 100px;
-  margin-right: 10px;
+  margin-right: 0;
 }
 
 .vtm5e .sheet-header .header-fields {
@@ -523,4 +540,13 @@
 
 .roll-img {
   max-width: 10%;
+}
+
+.vtm5e .locked .abilities .resource-value-empty, .vtm5e .locked .skills .resource-value-empty {
+  opacity: 0;
+  cursor:default;
+}
+
+.vtm5e .locked .abilities .resource-value-step, .vtm5e .locked .skills .resource-value-step {
+  cursor:default;
 }
