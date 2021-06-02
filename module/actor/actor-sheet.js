@@ -12,11 +12,11 @@ export class VampireActorSheet extends ActorSheet {
       template: 'systems/vtm5e/templates/actor/actor-sheet.html',
       width: 800,
       height: 700,
-      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'stats' }],
+      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'stats' }]
     })
   }
 
-  constructor(actor, options) {
+  constructor (actor, options) {
     super(actor, options)
     this.locked = true
   }
@@ -270,7 +270,7 @@ export class VampireActorSheet extends ActorSheet {
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
     html.find('.resource-minus').click(this._onResourceChange.bind(this))
 
-    html.find(".lock-btn").click(this._onToggleLocked.bind(this))
+    html.find('.lock-btn').click(this._onToggleLocked.bind(this))
 
     // Drag events for macros.
     // if (this.actor.owner) {
@@ -559,7 +559,6 @@ export class VampireActorSheet extends ActorSheet {
     const dataset = element.dataset
     let options = ''
 
-
     for (const [key, value] of Object.entries(this.actor.data.data.abilities)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
@@ -639,8 +638,8 @@ export class VampireActorSheet extends ActorSheet {
     this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
 
-  _onToggleLocked(event) {
-    event.preventDefault();
+  _onToggleLocked (event) {
+    event.preventDefault()
     this.locked = !this.locked
     this._render()
   }
@@ -682,7 +681,7 @@ export class VampireActorSheet extends ActorSheet {
 
   _onDotCounterEmpty (event) {
     event.preventDefault()
-    if(this.locked) return;
+    if (this.locked) return
     const element = event.currentTarget
     const parent = $(element.parentNode)
     const fieldStrings = parent[0].dataset.name
@@ -744,7 +743,7 @@ export class VampireActorSheet extends ActorSheet {
 
   _onDotCounterChange (event) {    
     event.preventDefault()
-    if(this.locked) return;
+    if (this.locked) return
     const element = event.currentTarget
     const dataset = element.dataset
     const index = Number(dataset.index)
