@@ -542,13 +542,13 @@
   max-width: 10%;
 }
 
-.vtm5e .locked .abilities .resource-value-empty, 
+.vtm5e .locked .abilities .resource-value-empty,
 .vtm5e .locked .skills .resource-value-empty {
   opacity: 0;
   cursor: default;
 }
 
-.vtm5e .locked .abilities .resource-value-step, 
+.vtm5e .locked .abilities .resource-value-step,
 .vtm5e .locked .skills .resource-value-step {
   cursor: default;
 }
