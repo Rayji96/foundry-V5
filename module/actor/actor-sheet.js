@@ -741,7 +741,7 @@ export class VampireActorSheet extends ActorSheet {
     this._assignToActorField(fields, newValue)
   }
 
-  _onDotCounterChange (event) {    
+  _onDotCounterChange (event) {
     event.preventDefault()
     if (this.locked) return
     const element = event.currentTarget
