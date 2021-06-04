@@ -10,6 +10,7 @@ export const preloadHandlebarsTemplates = async function() {
   
       // Item Sheet Partials
       "systems/vtm5e/templates/item/parts/skills.html",
+      "systems/vtm5e/templates/item/parts/disciplines.html",
       "systems/vtm5e/templates/item/parts/attributes.html"      
 
     ];
