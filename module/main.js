@@ -72,8 +72,15 @@ Hooks.once('init', async function () {
   }
 
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
+    
     return 'VTM5E.'.concat(capitalize(str))
   })
+  
+  Handlebars.registerHelper('generateSkillLabel', function (str) {
+    return 'VTM5E.'.concat( str.split(' ').flatMap( word => capitalize(word)).join(''));
+  })
+
+  ;
 
   // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
