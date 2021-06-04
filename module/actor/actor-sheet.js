@@ -16,6 +16,11 @@ export class VampireActorSheet extends ActorSheet {
     })
   }
 
+  constructor (actor, options) {
+    super(actor, options)
+    this.locked = true
+  }
+
   /** @override */
   get template () {
     if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
@@ -126,6 +131,7 @@ export class VampireActorSheet extends ActorSheet {
     }
 
     data.blood_potency = BLOOD_POTENCY
+    data.locked = this.locked
 
     return data
   }
@@ -263,6 +269,8 @@ export class VampireActorSheet extends ActorSheet {
 
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
     html.find('.resource-minus').click(this._onResourceChange.bind(this))
+
+    html.find('.lock-btn').click(this._onToggleLocked.bind(this))
 
     // Drag events for macros.
     // if (this.actor.owner) {
@@ -550,6 +558,7 @@ export class VampireActorSheet extends ActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     let options = ''
+
     for (const [key, value] of Object.entries(this.actor.data.data.abilities)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
@@ -629,6 +638,12 @@ export class VampireActorSheet extends ActorSheet {
     this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
 
+  _onToggleLocked (event) {
+    event.preventDefault()
+    this.locked = !this.locked
+    this._render()
+  }
+
   _onCustomVampireRoll (event) {
     event.preventDefault()
     const element = event.currentTarget
@@ -666,6 +681,7 @@ export class VampireActorSheet extends ActorSheet {
 
   _onDotCounterEmpty (event) {
     event.preventDefault()
+    if (this.locked) return
     const element = event.currentTarget
     const parent = $(element.parentNode)
     const fieldStrings = parent[0].dataset.name
@@ -727,6 +743,7 @@ export class VampireActorSheet extends ActorSheet {
 
   _onDotCounterChange (event) {
     event.preventDefault()
+    if (this.locked) return
     const element = event.currentTarget
     const dataset = element.dataset
     const index = Number(dataset.index)
