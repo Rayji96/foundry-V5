@@ -1,6 +1,7 @@
 /* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui */
 
 // Import Modules
+import { preloadHandlebarsTemplates } from './templates.js'
 import { VampireActor } from './actor/actor.js'
 import { VampireActorSheet } from './actor/actor-sheet.js'
 import { VampireItem } from './item/item.js'
@@ -35,6 +36,8 @@ Hooks.once('init', async function () {
   Actors.registerSheet('vtm5e', VampireActorSheet, { makeDefault: true })
   Items.unregisterSheet('core', ItemSheet)
   Items.registerSheet('vtm5e', VampireItemSheet, { makeDefault: true })
+
+  preloadHandlebarsTemplates();
 
   // If you need to add Handlebars helpers, here are a few useful examples:
   Handlebars.registerHelper('concat', function () {
