@@ -176,7 +176,7 @@
                         <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}" />
                     </div>
                     <h4 class="item-name">{{item.name}}</h4>
-                    <h4 class="item-name">{{item.data.skill}}</h4>
+                    <h4 class="item-name">{{localize (generateSkillLabel item.data.skill)}}</h4>
                     <div class="item-controls">
                         <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
                                 class="fas fa-edit"></i></a>
@@ -206,12 +206,8 @@
                         <img src="{{roll.img}}" title="{{roll.name}}" width="24" height="24" alt="{{roll.name}}" />
                     </div>
                     <h4 class="item-name">{{roll.name}}</h4>
-                    <select class="customRoll-dice1" id="dice1-data">
-                        <option value="" hidden selected>…</option>
-                    </select>
-                    <select class="customRoll-dice2" id="dice2-data">
-                        <option value="" hidden selected>…</option>
-                    </select>
+                    <h4 class="item-name">{{localize (generateSkillLabel roll.data.dice1)}}</h4>
+                    <h4 class="item-name">{{localize (generateSkillLabel roll.data.dice2)}}</h4>
                     <div class="item-controls">
                         <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
                                 class="fas fa-edit"></i></a>

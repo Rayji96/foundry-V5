@@ -297,40 +297,6 @@ export class VampireActorSheet extends ActorSheet {
         }
       })
     }
-
-    const skills = this.actor.data.data.skills
-    const abilities = this.actor.data.data.abilities
-    const actor = this.actor
-
-    html.find('.customRoll-dice2').change(ev => {
-      const li = $(ev.currentTarget).parents('.item')
-      const item = this.actor.getOwnedItem(li.data('itemId'))
-      item.update({ 'data.dice2': ev.target.value })
-    })
-    html.find('.customRoll-dice2').each(function () {
-      const optionList = this.options
-      Object.values(skills).forEach(value => optionList.add(
-        new Option(game.i18n.localize(value.name))
-      ))
-      const li = $(this).parents('.item')
-      const item = actor.getOwnedItem(li.data('itemId'))
-      this.value = item.data.data.dice2
-    })
-
-    html.find('.customRoll-dice1').change(ev => {
-      const li = $(ev.currentTarget).parents('.item')
-      const item = this.actor.getOwnedItem(li.data('itemId'))
-      item.update({ 'data.dice1': ev.target.value })
-    })
-    html.find('.customRoll-dice1').each(function () {
-      const optionList = this.options
-      Object.values(abilities).forEach(value => optionList.add(
-        new Option(game.i18n.localize(value.name))
-      ))
-      const li = $(this).parents('.item')
-      const item = actor.getOwnedItem(li.data('itemId'))
-      this.value = item.data.data.dice1
-    })
   }
 
   /**

@@ -1,3 +1,4 @@
+<!--htmlhint spec-char-escape:false -->
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
         <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" alt="Item Image" />
@@ -38,20 +39,7 @@
                 <label class="resource-label">{{localize "VTM5E.Discipline"}}: </label>
                 <select name="data.discipline" data-type="String">
                     {{#select data.discipline}}
-                    <option value="animalism">{{localize "VTM5E.Animalism"}}</option>
-                    <option value="auspex">{{localize "VTM5E.Auspex"}}</option>
-                    <option value="celerity">{{localize "VTM5E.Celerity"}}</option>
-                    <option value="dominate">{{localize "VTM5E.Dominate"}}</option>
-                    <option value="fortitude">{{localize "VTM5E.Fortitude"}}</option>
-                    <option value="obfuscate">{{localize "VTM5E.Obfuscate"}}</option>
-                    <option value="potence">{{localize "VTM5E.Potence"}}</option>
-                    <option value="presence">{{localize "VTM5E.Presence"}}</option>
-                    <option value="protean">{{localize "VTM5E.Protean"}}</option>
-                    <option value="sorcery">{{localize "VTM5E.BloodSorcery"}}</option>
-                    <option value="oblivion">{{localize "VTM5E.Oblivion"}}</option>
-                    <option value="alchemy">{{localize "VTM5E.ThinBloodAlchemy"}}</option>
-                    <option value="rituals">{{localize "VTM5E.Rituals"}}</option>
-                    <option value="ceremonies">{{localize "VTM5E.Ceremonies"}}</option>
+                    {{> "systems/vtm5e/templates/item/parts/disciplines.html"}}
                     {{/select}}
                 </select>
 
@@ -61,15 +49,7 @@
                 <label class="resource-label">{{localize "VTM5E.System"}}: </label>
                 <select name="data.dice1" data-type="String">
                     {{#select data.dice1}}
-                    <option value="strength">{{localize "VTM5E.Strength"}}</option>
-                    <option value="dexterity">{{localize "VTM5E.Dexterity"}}</option>
-                    <option value="stamina">{{localize "VTM5E.Stamina"}}</option>
-                    <option value="charisma">{{localize "VTM5E.Charisma"}}</option>
-                    <option value="manipulation">{{localize "VTM5E.Manipulation"}}</option>
-                    <option value="composure">{{localize "VTM5E.Composure"}}</option>
-                    <option value="intelligence">{{localize "VTM5E.Intelligence"}}</option>
-                    <option value="wits">{{localize "VTM5E.Wits"}}</option>
-                    <option value="resolve">{{localize "VTM5E.Resolve"}}</option>
+                    {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
                     <option value="discipline">{{localize (getDisciplineName item.data.discipline)}}</option>
                     {{/select}}
                 </select>
@@ -77,47 +57,13 @@
                 {{#if data.skill}}
                 <select name="data.dice2" data-type="String">
                     {{#select data.dice2}}
-                    <option value="academics">{{localize "VTM5E.Academics"}}</option>
-                    <option value="animal ken">{{localize "VTM5E.AnimalKen"}}</option>
-                    <option value="athletics">{{localize "VTM5E.Athletics"}}</option>
-                    <option value="awareness">{{localize "VTM5E.Awareness"}}</option>
-                    <option value="brawl">{{localize "VTM5E.Brawl"}}</option>
-                    <option value="craft">{{localize "VTM5E.Craft"}}</option>
-                    <option value="drive">{{localize "VTM5E.Drive"}}</option>
-                    <option value="etiquette">{{localize "VTM5E.Etiquette"}}</option>
-                    <option value="finance">{{localize "VTM5E.Finance"}}</option>
-                    <option value="firearms">{{localize "VTM5E.Firearms"}}</option>
-                    <option value="insight">{{localize "VTM5E.Insight"}}</option>
-                    <option value="intimidation">{{localize "VTM5E.Intimidation"}}</option>
-                    <option value="investigation">{{localize "VTM5E.Investigation"}}</option>
-                    <option value="larceny">{{localize "VTM5E.Larceny"}}</option>
-                    <option value="leadership">{{localize "VTM5E.Leadership"}}</option>
-                    <option value="medicine">{{localize "VTM5E.Medicine"}}</option>
-                    <option value="melee">{{localize "VTM5E.Melee"}}</option>
-                    <option value="occult">{{localize "VTM5E.Occult"}}</option>
-                    <option value="performance">{{localize "VTM5E.Performance"}}</option>
-                    <option value="persuasion">{{localize "VTM5E.Persuasion"}}</option>
-                    <option value="politics">{{localize "VTM5E.Politics"}}</option>
-                    <option value="science">{{localize "VTM5E.Science"}}</option>
-                    <option value="stealth">{{localize "VTM5E.Stealth"}}</option>
-                    <option value="streetwise">{{localize "VTM5E.Streetwise"}}</option>
-                    <option value="subterfuge">{{localize "VTM5E.Subterfuge"}}</option>
-                    <option value="survival">{{localize "VTM5E.Survival"}}</option>
-                    <option value="technology">{{localize "VTM5E.Technology"}}</option>
+                    {{> "systems/vtm5e/templates/item/parts/skills.html"}}
                     {{/select}}
                 </select>
                 {{else}}
                 <select name="data.dice2" data-type="String">
                     {{#select data.dice2}}
-                    <option value="strength">{{localize "VTM5E.Strength"}}</option>
-                    <option value="dexterity">{{localize "VTM5E.Dexterity"}}</option>
-                    <option value="stamina">{{localize "VTM5E.Stamina"}}</option>
-                    <option value="charisma">{{localize "VTM5E.Charisma"}}</option>
-                    <option value="manipulation">{{localize "VTM5E.Manipulation"}}</option>
-                    <option value="composure">{{localize "VTM5E.Composure"}}</option>
-                    <option value="intelligence">{{localize "VTM5E.Intelligence"}}</option>
-                    <option value="wits">{{localize "VTM5E.Wits"}}</option>
-                    <option value="resolve">{{localize "VTM5E.Resolve"}}</option>
+                     {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
                     <option value="discipline">{{localize (getDisciplineName item.data.discipline)}}</option>
                     {{/select}}
                 </select>
