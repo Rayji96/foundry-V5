@@ -37,7 +37,7 @@ Hooks.once('init', async function () {
   Items.unregisterSheet('core', ItemSheet)
   Items.registerSheet('vtm5e', VampireItemSheet, { makeDefault: true })
 
-  preloadHandlebarsTemplates();
+  preloadHandlebarsTemplates()
 
   // If you need to add Handlebars helpers, here are a few useful examples:
   Handlebars.registerHelper('concat', function () {
@@ -72,15 +72,12 @@ Hooks.once('init', async function () {
   }
 
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    
     return 'VTM5E.'.concat(capitalize(str))
   })
-  
-  Handlebars.registerHelper('generateSkillLabel', function (str) {
-    return 'VTM5E.'.concat( str.split(' ').flatMap( word => capitalize(word)).join(''));
-  })
 
-  ;
+  Handlebars.registerHelper('generateSkillLabel', function (str) {
+    return 'VTM5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
+  })
 
   // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
