@@ -15,10 +15,11 @@
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
+        {{log  data}}
 
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
-            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
         </div>
 
         {{!-- Attributes Tab --}}
@@ -27,34 +28,8 @@
             <div class="resource grid grid-2col flex-center">
                 <label class="resource-label">{{localize "VTM5E.Skill"}}: </label>
                 <select name="data.skill" data-type="String">
-                    {{#select data.skill}}
-                    <option value="{{localize 'VTM5E.Academics'}}">{{localize "VTM5E.Academics"}}</option>
-                    <option value="{{localize 'VTM5E.AnimalKen'}}">{{localize "VTM5E.AnimalKen"}}</option>
-                    <option value="{{localize 'VTM5E.Athletics'}}">{{localize "VTM5E.Athletics"}}</option>
-                    <option value="{{localize 'VTM5E.Awareness'}}">{{localize "VTM5E.Awareness"}}</option>
-                    <option value="{{localize 'VTM5E.Brawl'}}">{{localize "VTM5E.Brawl"}}</option>
-                    <option value="{{localize 'VTM5E.Craft'}}">{{localize "VTM5E.Craft"}}</option>
-                    <option value="{{localize 'VTM5E.Drive'}}">{{localize "VTM5E.Drive"}}</option>
-                    <option value="{{localize 'VTM5E.Etiquette'}}">{{localize "VTM5E.Etiquette"}}</option>
-                    <option value="{{localize 'VTM5E.Finance'}}">{{localize "VTM5E.Finance"}}</option>
-                    <option value="{{localize 'VTM5E.Firearms'}}">{{localize "VTM5E.Firearms"}}</option>
-                    <option value="{{localize 'VTM5E.Insight'}}">{{localize "VTM5E.Insight"}}</option>
-                    <option value="{{localize 'VTM5E.Intimidation'}}">{{localize "VTM5E.Intimidation"}}</option>
-                    <option value="{{localize 'VTM5E.Investigation'}}">{{localize "VTM5E.Investigation"}}</option>
-                    <option value="{{localize 'VTM5E.Larceny'}}">{{localize "VTM5E.Larceny"}}</option>
-                    <option value="{{localize 'VTM5E.Leadership'}}">{{localize "VTM5E.Leadership"}}</option>
-                    <option value="{{localize 'VTM5E.Medicine'}}">{{localize "VTM5E.Medicine"}}</option>
-                    <option value="{{localize 'VTM5E.Melee'}}">{{localize "VTM5E.Melee"}}</option>
-                    <option value="{{localize 'VTM5E.Occult'}}">{{localize "VTM5E.Occult"}}</option>
-                    <option value="{{localize 'VTM5E.Performance'}}">{{localize "VTM5E.Performance"}}</option>
-                    <option value="{{localize 'VTM5E.Persuasion'}}">{{localize "VTM5E.Persuasion"}}</option>
-                    <option value="{{localize 'VTM5E.Politics'}}">{{localize "VTM5E.Politics"}}</option>
-                    <option value="{{localize 'VTM5E.Science'}}">{{localize "VTM5E.Science"}}</option>
-                    <option value="{{localize 'VTM5E.Stealth'}}">{{localize "VTM5E.Stealth"}}</option>
-                    <option value="{{localize 'VTM5E.Streetwise'}}">{{localize "VTM5E.Streetwise"}}</option>
-                    <option value="{{localize 'VTM5E.Subterfuge'}}">{{localize "VTM5E.Subterfuge"}}</option>
-                    <option value="{{localize 'VTM5E.Survival'}}">{{localize "VTM5E.Survival"}}</option>
-                    <option value="{{localize 'VTM5E.Technology'}}">{{localize "VTM5E.Technology"}}</option>
+                    {{#select data.data.skill}}
+                     {{> "systems/vtm5e/templates/item/parts/skills.html"}}
                     {{/select}}
                 </select>
             </div>

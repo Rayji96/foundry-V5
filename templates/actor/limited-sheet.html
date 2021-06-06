@@ -1,0 +1,21 @@
+<form class="{{cssClass}} flexcol limited" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
+            alt="Profile Image" />
+
+        <section class="header-details flexrow">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'VTM5E.Name' }}"/>
+            </h1>
+        </section>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        <div class="tab biography">
+            {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
+        </div>
+    </section>
+</form>

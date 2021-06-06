@@ -1,16 +1,25 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
+<form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}}" autocomplete="off">
 
     {{!-- Sheet Header --}}
     <header class="sheet-header">
+        <div class="profile-img-zone">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
             alt="Profile Image" />
+        <button class="lock-btn">
+            {{#if locked}}
+            <i class="fa fa-lock"></i>
+            {{ else }}
+            <i class="fa fa-lock-open"></i>
+            {{/if}}
+        </button>
+        </div>
         <div class="header-fields">
             <div class="grid grid-3col flexrow">
                 <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
                         placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-                <h1 class="charname"><input name="data.clan.value" type="text" value="{{data.clan.value}}"
+                <h1 class="charname"><input name="data.clan.value" type="text" value="{{data.data.clan.value}}"
                         placeholder="{{localize 'VTM5E.Clan'}}" /></h1>
-                <h1 class="charname"><input name="data.headers.predator" type="text" value="{{data.headers.predator}}"
+                <h1 class="charname"><input name="data.headers.predator" type="text" value="{{data.data.headers.predator}}"
                         placeholder="{{localize 'VTM5E.Predator'}}" /></h1>
             </div>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
@@ -23,12 +32,12 @@
                 <div class="resource flex-group-center">
                     <div class="flexrow">
                         <i class="fas fa-minus resource-control resource-minus" data-resource="health" data-action="minus"></i>
-                        <label for="data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
+                        <label for="data.data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
                         <i class="fas fa-plus resource-control resource-plus" data-resource="health" data-action="plus"></i>
                     </div>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{data.health.max}}" data-superficial="{{data.health.superficial}}" data-aggravated="{{data.health.aggravated}}" data-name="data.health">
-                            {{#numLoop data.health.max}}
+                        <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{data.data.health.max}}" data-superficial="{{data.data.health.superficial}}" data-aggravated="{{data.data.health.aggravated}}" data-name="data.health">
+                            {{#numLoop data.data.health.max}}
                             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
                             {{/numLoop}}
                         </div>
@@ -37,22 +46,22 @@
                 <div class="resource flex-group-center">
                     <div class="flexrow">
                         <i class="fas fa-minus resource-control resource-minus" data-resource="willpower" data-action="minus"></i>
-                        <label for="data.willpower" class="resource-label rollable" data-roll="3" data-label="{{localize 'VTM5E.RollingWillpower'}}">{{localize "VTM5E.Willpower"}}</label>
+                        <label for="data.data.willpower" class="resource-label rollable" data-roll="3" data-label="{{localize 'VTM5E.RollingWillpower'}}">{{localize "VTM5E.Willpower"}}</label>
                         <i class="fas fa-plus resource-control resource-plus" data-resource="willpower" data-action="plus"></i>
                     </div> 
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{data.willpower.max}}" data-superficial="{{data.willpower.superficial}}" data-aggravated="{{data.willpower.aggravated}}" data-name="data.willpower">
-                            {{#numLoop data.willpower.max}}
+                        <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{data.data.willpower.max}}" data-superficial="{{data.data.willpower.superficial}}" data-aggravated="{{data.data.willpower.aggravated}}" data-name="data.willpower">
+                            {{#numLoop data.data.willpower.max}}
                             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
                             {{/numLoop}}
                         </div>
                     </div>
                 </div>
                 <div class="resource flex-group-center humanity">
-                    <label for="data.humanity.value" class="resource-label rollable" data-roll="{{remorse data.humanity.value data.humanity.stains}}"
+                    <label for="data.data.humanity.value" class="resource-label rollable" data-roll="{{remorse data.data.humanity.value data.data.humanity.stains}}"
                     data-label="{{localize 'VTM5E.RollingRemorse'}}">{{localize "VTM5E.Humanity"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="resource-counter" data-states="-:value,/:stains" data-value="{{data.humanity.value}}" data-stains="{{data.humanity.stains}}"  data-name="data.humanity">
+                        <div class="resource-counter" data-states="-:value,/:stains" data-value="{{data.data.humanity.value}}" data-stains="{{data.data.humanity.stains}}"  data-name="data.humanity">
                             {{#numLoop 10}}
                             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
                             {{/numLoop}}
@@ -65,17 +74,17 @@
             from 1 to 12 and will create that number of columns. --}}
             <div class="resources grid grid-4col">
                 <div class="resource flex-group-center exp">
-                    <label for="data.exp" class="resource-label">{{localize "VTM5E.Exp"}}</label>
+                    <label for="data.data.exp" class="resource-label">{{localize "VTM5E.Exp"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <input type="number" name="data.exp.value" value="{{data.exp.value}}" data-dtype="Number" />
+                        <input type="number" name="data.exp.value" value="{{data.data.exp.value}}" data-dtype="Number" />
                         /
-                        <input type="number" name="data.exp.max" value="{{data.exp.max}}" data-dtype="Number" />
+                        <input type="number" name="data.exp.max" value="{{data.data.exp.max}}" data-dtype="Number" />
                     </div>
                 </div>
                 <div class="resource flex-group-center">
-                    <label for="data.hunger.value" class="resource-label">{{localize "VTM5E.Hunger"}}</label>
+                    <label for="data.data.hunger.value" class="resource-label">{{localize "VTM5E.Hunger"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <div class="resource-value" data-value="{{data.hunger.value}}" data-name="data.hunger.value">
+                        <div class="resource-value" data-value="{{data.data.hunger.value}}" data-name="data.hunger.value">
                             <span class="resource-value-empty"></span>
                             {{#numLoop 5}}
                             <span class="resource-value-step" data-index="{{this}}"></span>
@@ -93,7 +102,7 @@
                 <div class="resource flex-group-center">
                     <label for="placeholder" class="resource-label">{{localize "VTM5E.Frenzy"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
-                        <button class="rollable" type="text" name="frenzy" data-roll="{{frenzy data.willpower.max data.willpower.superficial data.willpower.aggravated data.humanity.value}}"
+                        <button class="rollable" type="text" name="frenzy" data-roll="{{frenzy data.data.willpower.max data.data.willpower.superficial data.data.willpower.aggravated data.data.humanity.value}}"
                             data-label="{{localize 'VTM5E.ResistingFrenzy'}}...">{{localize "VTM5E.Roll"}}</button>
                     </div>
                 </div>
@@ -118,9 +127,9 @@
         <div class="tab flex-center" data-group="primary" data-tab="stats">
             <label class="resource-label">{{localize "VTM5E.Attributes"}}</label>
             <div class="abilities grid grid-3col flex-group-center">
-                {{#each data.abilities as |ability key|}}
+                {{#each data.data.abilities as |ability key|}}
                 <div class="ability flexrow flex-center">
-                    <label for="data.abilities.{{key}}.value" class="resource-label vrollable"
+                    <label for="data.data.abilities.{{key}}.value" class="resource-label vrollable"
                         data-roll="{{ability.value}}" data-label="{{localize ability.name}}">{{localize
                         ability.name}}</label>
                     <div class="resource-value" data-value="{{ability.value}}" data-name="data.abilities.{{key}}.value">
@@ -135,9 +144,9 @@
 
             <label class="resource-label">{{localize "VTM5E.Skills"}}</label>
             <div class="skills grid grid-3col flex-group-center">
-                {{#each data.skills as |skill key|}}
+                {{#each data.data.skills as |skill key|}}
                 <div class="skill flexrow flex-center">
-                    <label for="data.skills.{{key}}.value" class="resource-label vrollable" data-roll="{{skill.value}}"
+                    <label for="data.data.skills.{{key}}.value" class="resource-label vrollable" data-roll="{{skill.value}}"
                         data-label="{{localize skill.name}}">{{localize skill.name}}</label>
                     <div class="resource-value" data-value="{{skill.value}}" data-name="data.skills.{{key}}.value">
                         <span class="resource-value-empty"></span>
@@ -167,7 +176,7 @@
                         <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}" />
                     </div>
                     <h4 class="item-name">{{item.name}}</h4>
-                    <h4 class="item-name">{{item.data.skill}}</h4>
+                    <h4 class="item-name">{{localize (generateSkillLabel item.data.skill)}}</h4>
                     <div class="item-controls">
                         <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
                                 class="fas fa-edit"></i></a>
@@ -197,12 +206,8 @@
                         <img src="{{roll.img}}" title="{{roll.name}}" width="24" height="24" alt="{{roll.name}}" />
                     </div>
                     <h4 class="item-name">{{roll.name}}</h4>
-                    <select class="customRoll-dice1" id="dice1-data">
-                        <option value="" hidden selected>…</option>
-                    </select>
-                    <select class="customRoll-dice2" id="dice2-data">
-                        <option value="" hidden selected>…</option>
-                    </select>
+                    <h4 class="item-name">{{localize (generateSkillLabel roll.data.dice1)}}</h4>
+                    <h4 class="item-name">{{localize (generateSkillLabel roll.data.dice2)}}</h4>
                     <div class="item-controls">
                         <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
                                 class="fas fa-edit"></i></a>
@@ -227,7 +232,7 @@
                         </a>
                     </div>
                 </li>
-                {{#each data.disciplines as |discipline key|}}
+                {{#each data.data.disciplines as |discipline key|}}
                 {{#if discipline.visible}}
                 <li class="flexrow item-header">
                     {{#if (and (ne key "rituals") (ne key "ceremonies"))}}
@@ -372,7 +377,7 @@
             <div class="resource flexrow grid grid-2col">
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.BloodPotency"}}: </label>
-                    <div class="resource-value" data-value="{{data.blood.potency}}" data-name="data.blood.potency">
+                    <div class="resource-value" data-value="{{data.data.blood.potency}}" data-name="data.blood.potency">
                         <span class="resource-value-empty"></span>
                         {{#numLoop 10}}
                         <span class="resource-value-step" data-index="{{this}}"></span>
@@ -387,27 +392,27 @@
             <div class="resource flexrow grid grid-2col">
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.BloodSurge"}}:</label>
-                    <p>{{lookup (lookup blood_potency data.blood.potency) "surge"}}</p>
+                    <p>{{lookup (lookup blood_potency data.data.blood.potency) "surge"}}</p>
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.MendAmount"}}:</label>
-                    <p>{{lookup (lookup blood_potency data.blood.potency) "mend"}}</p>
+                    <p>{{lookup (lookup blood_potency data.data.blood.potency) "mend"}}</p>
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.PowerBonus"}}:</label>
-                    <p>{{lookup (lookup blood_potency data.blood.potency) "power"}}</p>
+                    <p>{{lookup (lookup blood_potency data.data.blood.potency) "power"}}</p>
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.RouseReRoll"}}:</label>
-                    <p>{{lookup (lookup blood_potency data.blood.potency) "rouse"}}</p>
+                    <p>{{lookup (lookup blood_potency data.data.blood.potency) "rouse"}}</p>
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.FeedingPenalty"}}:</label>
-                    <p>{{lookup (lookup blood_potency data.blood.potency) "feeding"}}</p>
+                    <p>{{lookup (lookup blood_potency data.data.blood.potency) "feeding"}}</p>
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.BaneSeverity"}}:</label>
-                    <p>{{lookup (lookup blood_potency data.blood.potency) "bane"}}</p>
+                    <p>{{lookup (lookup blood_potency data.data.blood.potency) "bane"}}</p>
                 </div>
             </div>
         </div>
@@ -417,54 +422,54 @@
             <div class="resource flexrow grid grid-3col">
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.Concept"}}</label>
-                    <input type="text" name="data.headers.concept" value="{{data.headers.concept}}" />
+                    <input type="text" name="data.headers.concept" value="{{data.data.headers.concept}}" />
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.Chronicle"}}</label>
-                    <input type="text" name="data.headers.chronicle" value="{{data.headers.chronicle}}" />
+                    <input type="text" name="data.headers.chronicle" value="{{data.data.headers.chronicle}}" />
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.Ambition"}}</label>
-                    <input type="text" name="data.headers.ambition" value="{{data.headers.ambition}}" />
+                    <input type="text" name="data.headers.ambition" value="{{data.data.headers.ambition}}" />
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.Sire"}}</label>
-                    <input type="text" name="data.headers.sire" value="{{data.headers.sire}}" />
+                    <input type="text" name="data.headers.sire" value="{{data.data.headers.sire}}" />
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.Desire"}}</label>
-                    <input type="text" name="data.headers.desire" value="{{data.headers.desire}}" />
+                    <input type="text" name="data.headers.desire" value="{{data.data.headers.desire}}" />
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.Generation"}}</label>
-                    <input type="text" name="data.headers.generation" value="{{data.headers.generation}}" />
+                    <input type="text" name="data.headers.generation" value="{{data.data.headers.generation}}" />
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.ChronicleTenets"}}</label>
-                    <textarea name="data.headers.tenets" rows="10">{{data.headers.tenets}}
+                    <textarea name="data.headers.tenets" rows="10">{{data.data.headers.tenets}}
 </textarea>
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.TouchstonesAndConvictions"}}</label>
-                    <textarea name="data.headers.touchstones" rows="10">{{data.headers.touchstones}}
+                    <textarea name="data.headers.touchstones" rows="10">{{data.data.headers.touchstones}}
 </textarea>
                 </div>
                 <div class="flex-group-center">
                     <label class="resource-label">{{localize "VTM5E.ClanBane"}}</label>
-                    <textarea name="data.headers.bane" rows="10">{{data.headers.bane}}
+                    <textarea name="data.headers.bane" rows="10">{{data.data.headers.bane}}
 </textarea>
                 </div>
             </div>
             <label class="resource-label flex-center">{{localize "VTM5E.Biography"}}</label>
-            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+            {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
 
         {{!-- Other Tab --}}
         <div class="tab other" data-group="primary" data-tab="other">
             <label class="resource-label flex-center">{{localize "VTM5E.Notes"}}</label>
-            {{editor content=data.notes target="data.notes" button=true owner=owner editable=editable}}
+            {{editor content=data.data.notes target="data.notes" button=true owner=owner editable=editable}}
             <label class="resource-label flex-center">{{localize "VTM5E.Equipment"}}</label>
-            {{editor content=data.equipment target="data.equipment" button=true owner=owner editable=editable}}
+            {{editor content=data.data.equipment target="data.equipment" button=true owner=owner editable=editable}}
         </div>
         
     </section>

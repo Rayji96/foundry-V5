@@ -1,6 +1,7 @@
 /* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui */
 
 // Import Modules
+import { preloadHandlebarsTemplates } from './templates.js'
 import { VampireActor } from './actor/actor.js'
 import { VampireActorSheet } from './actor/actor-sheet.js'
 import { VampireItem } from './item/item.js'
@@ -25,8 +26,8 @@ Hooks.once('init', async function () {
   }
 
   // Define custom Entity classes
-  CONFIG.Actor.entityClass = VampireActor
-  CONFIG.Item.entityClass = VampireItem
+  CONFIG.Actor.documentClass = VampireActor
+  CONFIG.Item.documentClass = VampireItem
   CONFIG.Dice.terms.v = VampireDie
   CONFIG.Dice.terms.h = VampireHungerDie
 
@@ -35,6 +36,8 @@ Hooks.once('init', async function () {
   Actors.registerSheet('vtm5e', VampireActorSheet, { makeDefault: true })
   Items.unregisterSheet('core', ItemSheet)
   Items.registerSheet('vtm5e', VampireItemSheet, { makeDefault: true })
+
+  preloadHandlebarsTemplates()
 
   // If you need to add Handlebars helpers, here are a few useful examples:
   Handlebars.registerHelper('concat', function () {
@@ -70,6 +73,10 @@ Hooks.once('init', async function () {
 
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
     return 'VTM5E.'.concat(capitalize(str))
+  })
+
+  Handlebars.registerHelper('generateSkillLabel', function (str) {
+    return 'VTM5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
   })
 
   // TODO: there exist math helpers for handlebars

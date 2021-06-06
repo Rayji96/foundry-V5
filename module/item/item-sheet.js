@@ -11,7 +11,11 @@ export class VampireItemSheet extends ItemSheet {
       classes: ['vtm5e', 'sheet', 'item'],
       width: 520,
       height: 480,
-      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'description' }]
+      tabs: [{
+        navSelector: '.sheet-tabs',
+        contentSelector: '.sheet-body',
+        initial: 'description'
+      }]
     })
   }
 

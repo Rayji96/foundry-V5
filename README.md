@@ -1,6 +1,6 @@
 # Vampire the Masquerade 5e System
 
-[![Foundry Shield 0.7.9]][Foundry URL]
+[![Foundry Shield 0.8.6]][Foundry URL]
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
@@ -24,15 +24,19 @@ Huge thanks to these folks for their contributions:
 
 * This sheet was initially based on the [boilerplate system] by @asacolips#1867
 * French localization started by @Lloyxide#6914
+* Help with french localization by [Lemantia]
 * Brazilian Portuguese localization started by [danielmalka]
 * German localization started by [tom959]
 * Spanish localization started by [erizocosmico]
 * Icons used with permissions from [cftarbay]
+* Features improvements and custom roll table by [Veichassur]
+* Limited character sheet by [pedroboh]
+* Character sheet lock by [Varkal]
 * CSS improvements by [lipefl]
 * Incredible work on dot and box counters by [erizocosmico]
 * Refactors and enhancements by [bmgraves]
+* Bugfixes and refactors by [Dakayl]
 * Feedback and fixes by [eisenfuchs]
-* Features improvements and custom roll table by [Veichassur]
 
 [Foundry Shield 0.7.9]: https://img.shields.io/badge/Foundry-0.7.9-informational
 [Foundry URL]: https://foundryvtt.com
@@ -52,3 +56,7 @@ Huge thanks to these folks for their contributions:
 [bmgraves]: https://github.com/bmgraves
 [eisenfuchs]: https://github.com/eisenfuchs
 [Veichassur]: https://github.com/Veichassur
+[pedroboh]: https://github.com/pedroboh
+[Lemantia]: https://github.com/Lemantia
+[Varkal]: https://github.com/Varkal
+[Dakayl]: https://github.com/Dakayl
