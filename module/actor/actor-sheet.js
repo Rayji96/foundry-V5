@@ -603,36 +603,8 @@ export class VampireActorSheet extends ActorSheet {
     } else {
       dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
     }
-    
-        let potency = this.actor.data.data.blood.potency
-    let discPower
-    switch (potency) {
-      case 0:
-      case 1:
-        discPower = 0
-        break;
-      case 2:
-      case 3:
-        discPower = 1
-        break;
-      case 4:
-      case 5:
-        discPower = 2
-        break;
-      case 6:
-      case 7:
-        discPower = 3
-        break;
-      case 8:
-      case 9:
-        discPower = 4
-        break;
-      case 10:
-        discPower = 5
-        break;
-    }
 
-    const dicePool = dice1 + dice2 + discPower
+    const dicePool = dice1 + dice2
     this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
 
