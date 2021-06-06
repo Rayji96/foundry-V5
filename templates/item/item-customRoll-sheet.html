@@ -1,4 +1,3 @@
-<!--htmlhint spec-char-escape:false -->
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
         <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" alt="Item Image" />
@@ -19,7 +18,7 @@
 
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
-            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
         </div>
 
         {{!-- Attributes Tab --}}
@@ -28,13 +27,13 @@
             <div class="resource grid grid-2col flex-center">
                 <label class="resource-label">{{localize "VTM5E.Attribute"}}: </label>
                 <select name="data.dice1" data-type="String">
-                    {{#select data.dice1}}
+                    {{#select data.data.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
                     {{/select}}
                 </select>
                 <label class="resource-label">{{localize "VTM5E.Skill"}}: </label>
                 <select name="data.dice2" data-type="String">
-                    {{#select data.dice2}}
+                    {{#select data.data.dice2}}
                     {{> "systems/vtm5e/templates/item/parts/skills.html"}}
                     {{/select}}
                 </select>

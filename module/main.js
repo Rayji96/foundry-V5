@@ -26,8 +26,8 @@ Hooks.once('init', async function () {
   }
 
   // Define custom Entity classes
-  CONFIG.Actor.entityClass = VampireActor
-  CONFIG.Item.entityClass = VampireItem
+  CONFIG.Actor.documentClass = VampireActor
+  CONFIG.Item.documentClass = VampireItem
   CONFIG.Dice.terms.v = VampireDie
   CONFIG.Dice.terms.h = VampireHungerDie
 

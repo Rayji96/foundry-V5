@@ -6,12 +6,12 @@
         "health": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 0
+          "max": 5
         },
         "willpower": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 0
+          "max": 5
         }
       }
     },

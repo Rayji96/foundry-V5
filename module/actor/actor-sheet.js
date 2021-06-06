@@ -12,7 +12,11 @@ export class VampireActorSheet extends ActorSheet {
       template: 'systems/vtm5e/templates/actor/actor-sheet.html',
       width: 800,
       height: 700,
-      tabs: [{ navSelector: '.sheet-tabs', contentSelector: '.sheet-body', initial: 'stats' }]
+      tabs: [{
+        navSelector: '.sheet-tabs',
+        contentSelector: '.sheet-body',
+        initial: 'stats'
+      }]
     })
   }
 
@@ -787,7 +791,7 @@ export class VampireActorSheet extends ActorSheet {
     if (dataset.action === 'plus') {
       actorData.data[resource].max++
     } else if (dataset.action === 'minus') {
-      actorData.data[resource].max--
+      actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
     }
 
     if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
