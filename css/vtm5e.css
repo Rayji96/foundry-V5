@@ -542,11 +542,11 @@
   max-width: 10%;
 }
 
-.vtm5e .locked .resource-value-empty{
+.vtm5e .locked .resource-value-empty {
   opacity: 0;
   cursor: default;
 }
 
-.vtm5e .locked .resource-value-step{
+.vtm5e .locked .resource-value-step {
   cursor: default;
 }
