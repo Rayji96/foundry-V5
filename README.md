@@ -38,7 +38,7 @@ Huge thanks to these folks for their contributions:
 * Bugfixes and refactors by [Dakayl]
 * Feedback and fixes by [eisenfuchs]
 
-[Foundry Shield 0.7.9]: https://img.shields.io/badge/Foundry-0.7.9-informational
+[Foundry Shield 0.8.6]: https://img.shields.io/badge/Foundry-0.8.6-informational
 [Foundry URL]: https://foundryvtt.com
 
 [MIT License]: https://img.shields.io/badge/License-MIT-green
