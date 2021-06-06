@@ -472,6 +472,7 @@
 }
 
 .vtm5e .resource-counter .resource-counter-step[data-state="/"] {
+  background-color: rgba(0, 0, 0, 0) !important;
   background:
     linear-gradient(
       135deg,
@@ -485,6 +486,7 @@
 }
 
 .vtm5e .resource-counter .resource-counter-step[data-state="x"] {
+  background-color: rgba(0, 0, 0, 0) !important;
   background:
     linear-gradient(
       45deg,
