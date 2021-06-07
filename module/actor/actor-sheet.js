@@ -640,10 +640,8 @@ export class VampireActorSheet extends ActorSheet {
     } else {
       dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
     }
-
-    let currPotency = parseFloat(this.actor.data.data.blood.potency)
-
-    const dicePool = dice1 + dice2 + this.actor.blood_potency[currPotency].power
+    
+    const dicePool = dice1 + dice2 + this.actor.blood_potency[parseFloat(this.actor.data.data.blood.potency)].power
     this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
 
