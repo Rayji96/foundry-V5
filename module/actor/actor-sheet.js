@@ -176,6 +176,7 @@ export class VampireActorSheet extends ActorSheet {
       ceremonies: [],
       alchemy: []
     }
+    const potencyNum = parseFloat(this.actor.data.data.blood.potency, 10)
 
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
@@ -249,7 +250,7 @@ export class VampireActorSheet extends ActorSheet {
     actorData.gear = gear
     actorData.features = features
     actorData.disciplines_list = disciplines
-    actorData.blood_potency = bloodPotency
+    actorData.blood_potency = bloodPotency[potencyNum]
   }
 
   /* -------------------------------------------- */
@@ -641,9 +642,7 @@ export class VampireActorSheet extends ActorSheet {
       dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
     }
     
-    let blood_power = this.actor.blood_potency[parseFloat(this.actor.data.data.blood.potency)].power
-    
-    const dicePool = dice1 + dice2 + blood_power
+    const dicePool = dice1 + dice2 + this.actor.blood_potency.power
     this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
 
