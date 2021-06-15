@@ -641,7 +641,7 @@ export class VampireActorSheet extends ActorSheet {
     } else {
       dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
     }
-    
+
     const dicePool = dice1 + dice2 + this.actor.blood_potency.power
     this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
