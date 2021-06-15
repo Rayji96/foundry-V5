@@ -33,9 +33,15 @@ Hooks.once('init', async function () {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
-  Actors.registerSheet('vtm5e', VampireActorSheet, { makeDefault: true })
+  Actors.registerSheet('vtm5e', VampireActorSheet, {
+    label: 'Vampire Sheet',
+    makeDefault: true
+  })
   Items.unregisterSheet('core', ItemSheet)
-  Items.registerSheet('vtm5e', VampireItemSheet, { makeDefault: true })
+  Items.registerSheet('vtm5e', VampireItemSheet, {
+    label: 'Item Sheet',
+    makeDefault: true
+  })
 
   preloadHandlebarsTemplates()
 
