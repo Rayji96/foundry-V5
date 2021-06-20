@@ -198,14 +198,14 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 
 // Create context menu option on selection
 // TODO: Add condition that it only shows up on willpower-able rolls
-Hooks.on("getChatLogEntryContext", function (html, options) {
+Hooks.on('getChatLogEntryContext', function (html, options) {
   options.push({
     name: 'Willpower Reroll',
     icon: '<i class="fas fa-redo"></i>',
     condition: li => {
       // Only show this context menu if the person is GM or author of the message
       const message = game.messages.get(li.attr('data-message-id'))
-      
+
       return game.user.isGM || message.isAuthor
     },
     callback: li => willpowerReroll(li)
@@ -214,17 +214,17 @@ Hooks.on("getChatLogEntryContext", function (html, options) {
 
 async function willpowerReroll (roll) {
   const dice = roll.find('.vampiredie')
-  let diceRolls = []
-  
+  const diceRolls = []
+
   // Go through the message's dice and add them to the diceRolls array
-  Object.keys(dice).forEach(function(i){
+  Object.keys(dice).forEach(function (i) {
     // This for some reason returns "prevObject" and "length"
     // Fixes will be attempted, but for now solved by just ensuring the index is a number
-    if(i > -1){
+    if (i > -1) {
       diceRolls.push(`<div class="die">${dice[i].outerHTML}</div>`)
     }
   })
-  
+
   // Create dialog for rerolling dice
   const template = `
     <form>
@@ -233,7 +233,7 @@ async function willpowerReroll (roll) {
             <hr>
             <span class="dice-tooltip">
               <ol class="dice-rolls willpowerReroll">
-                ${diceRolls.join("")}
+                ${diceRolls.join('')}
               </ol>
             </span>
         </div>
@@ -243,12 +243,12 @@ async function willpowerReroll (roll) {
   buttons = {
     draw: {
       icon: '<i class="fas fa-check"></i>',
-      label: "Reroll",
+      label: 'Reroll',
       callback: roll => rerollDie(roll)
     },
     cancel: {
       icon: '<i class="fas fa-times"></i>',
-      label: "Cancel"
+      label: 'Cancel'
     }
   }
 
@@ -264,7 +264,7 @@ async function willpowerReroll (roll) {
 // Handles selecting and de-selecting the die
 function dieSelect () {
   // If the die isn't already selected and there aren't 3 already selected, add selected to the die
-  if(!($(this).hasClass('selected')) && ($('.willpowerReroll .selected').length < 3)){
+  if (!($(this).hasClass('selected')) && ($('.willpowerReroll .selected').length < 3)) {
     $(this).addClass('selected')
   } else {
     $(this).removeClass('selected')
@@ -279,7 +279,7 @@ function rerollDie (actor) {
   const diceSelected = $('.willpowerReroll .selected').length
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-  if ((diceSelected > 0) && (diceSelected < 4)) {    
+  if ((diceSelected > 0) && (diceSelected < 4)) {
     rollDice(diceSelected, actor, 'Willpower Reroll', 0, false)
   }
 }
