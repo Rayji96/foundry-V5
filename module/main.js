@@ -198,13 +198,13 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 
 // Create context menu option on selection
 // TODO: Add condition that it only shows up on willpower-able rolls
-Hooks.on("getChatLogEntryContext", function(html, options){
+Hooks.on("getChatLogEntryContext", function (html, options) {
   options.push({
-    name: "Willpower Reroll",
+    name: 'Willpower Reroll',
     icon: '<i class="fas fa-redo"></i>',
     condition: li => {
       // Only show this context menu if the person is GM or author of the message
-      const message = game.messages.get(li.attr("data-message-id"))
+      const message = game.messages.get(li.attr('data-message-id'))
       
       return game.user.isGM || message.isAuthor
     },
@@ -212,7 +212,7 @@ Hooks.on("getChatLogEntryContext", function(html, options){
   })
 })
 
-async function willpowerReroll(roll){
+async function willpowerReroll (roll) {
   const dice = roll.find('.vampiredie')
   let diceRolls = []
   
@@ -253,21 +253,21 @@ async function willpowerReroll(roll){
   }
 
   new Dialog({
-    title: "Willpower Reroll",
+    title: 'Willpower Reroll',
     content: template,
     buttons: buttons,
-    render: html => $(".willpowerReroll .die").on("click", dieSelect),
+    render: html => $('.willpowerReroll .die').on('click', dieSelect),
     default: 'draw'
   }).render(true)
 }
 
 // Handles selecting and de-selecting the die
-function dieSelect() {
+function dieSelect () {
   // If the die isn't already selected and there aren't 3 already selected, add selected to the die
-  if(!($(this).hasClass("selected")) && ($(".willpowerReroll .selected").length < 3)){
-    $(this).addClass("selected")
+  if(!($(this).hasClass('selected')) && ($('.willpowerReroll .selected').length < 3)){
+    $(this).addClass('selected')
   } else {
-    $(this).removeClass("selected")
+    $(this).removeClass('selected')
   }
 }
 
@@ -275,15 +275,14 @@ function dieSelect() {
 // TODO: Make this function duplicate/replace the previous roll with the new results
 // TODO: Make this function able to tick superficial willpower damage
 // For now this works well enough as "roll three new dice"
-function rerollDie(actor) {
-  const diceSelected = $(".willpowerReroll .selected").length
-  
-  //If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-  if((diceSelected > 0) && (diceSelected < 4)){    
-    rollDice (diceSelected, actor, "Willpower Reroll", 0, false)
+function rerollDie (actor) {
+  const diceSelected = $('.willpowerReroll .selected').length
+
+  // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
+  if ((diceSelected > 0) && (diceSelected < 4)) {    
+    rollDice(diceSelected, actor, 'Willpower Reroll', 0, false)
   }
 }
-
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */
