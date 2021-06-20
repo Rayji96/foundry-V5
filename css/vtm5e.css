@@ -550,3 +550,22 @@
 .vtm5e .locked .resource-value-step {
   cursor: default;
 }
+
+.willpowerReroll .die {
+  margin-left: 3px;
+}
+
+.willpowerReroll .selected {
+  background-color: #C00;
+  background: black;
+  position: relative;
+}
+
+.willpowerReroll .selected:after {
+  position: absolute;
+  content: 'X';
+  font-size: 24px;
+  color: red;
+  margin-left: -20px;
+  margin-top: -2px
+}
