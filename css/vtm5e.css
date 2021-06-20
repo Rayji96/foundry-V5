@@ -555,17 +555,11 @@
   margin-left: 3px;
 }
 
-.willpowerReroll .selected {
-  background-color: #C00;
-  background: black;
-  position: relative;
-}
-
-.willpowerReroll .selected:after {
+.willpowerReroll .selected::after {
   position: absolute;
   content: 'X';
   font-size: 24px;
   color: red;
   margin-left: -20px;
-  margin-top: -2px
+  margin-top: -2px;
 }

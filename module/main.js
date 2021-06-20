@@ -1,4 +1,4 @@
-/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui */
+/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui */
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
@@ -262,7 +262,7 @@ async function willpowerReroll(roll){
 }
 
 // Handles selecting and de-selecting the die
-function dieSelect(event) {
+function dieSelect() {
   // If the die isn't already selected and there aren't 3 already selected, add selected to the die
   if(!($(this).hasClass("selected")) && ($(".willpowerReroll .selected").length < 3)){
     $(this).addClass("selected")
