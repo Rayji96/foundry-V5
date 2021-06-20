@@ -256,7 +256,9 @@ async function willpowerReroll (roll) {
     title: 'Willpower Reroll',
     content: template,
     buttons: buttons,
-    render: html => $('.willpowerReroll .die').on('click', dieSelect),
+    render: function () {
+      $('.willpowerReroll .die').on('click', dieSelect)
+    },
     default: 'draw'
   }).render(true)
 }
