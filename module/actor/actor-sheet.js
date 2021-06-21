@@ -1,9 +1,13 @@
 /* global DEFAULT_TOKEN, ActorSheet, ChatMessage, Dialog, Roll, duplicate, game, mergeObject */
 
+// Export this function to be used in other scripts
+export { rollDice }
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
+
 export class VampireActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions () {
@@ -443,117 +447,10 @@ export class VampireActorSheet extends ActorSheet {
     const numDice = dataset.roll
 
     if (useHunger === '1') {
-      this._rollDice(numDice, this.actor, `${dataset.label}`, 0, true)
+      rollDice(numDice, this.actor, `${dataset.label}`, 0, true)
     } else {
-      this._rollDice(numDice, this.actor, `${dataset.label}`, 0, false)
+      rollDice(numDice, this.actor, `${dataset.label}`, 0, false)
     }
-  }
-
-  _rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true) {
-    let hungerDice
-    if (useHunger) {
-      hungerDice = Math.min(actor.data.data.hunger.value, numDice)
-    } else {
-      hungerDice = 0
-    }
-    const dice = numDice - hungerDice
-    const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dhcs>5', actor.data.data)
-    const rollResult = roll.evaluate()
-
-    let difficultyResult = '<span></span>'
-    let success = 0
-    let hungerSuccess = 0
-    let critSuccess = 0
-    let hungerCritSuccess = 0
-    let fail = 0
-    let hungerFail = 0
-    let hungerCritFail = 0
-
-    rollResult.terms[0].results.forEach((dice) => {
-      if (dice.success) {
-        if (dice.result === 10) {
-          critSuccess++
-        } else {
-          success++
-        }
-      } else {
-        fail++
-      }
-    })
-
-    rollResult.terms[2].results.forEach((dice) => {
-      if (dice.success) {
-        if (dice.result === 10) {
-          hungerCritSuccess++
-        } else {
-          hungerSuccess++
-        }
-      } else {
-        if (dice.result === 1) {
-          hungerCritFail++
-        } else {
-          hungerFail++
-        }
-      }
-    })
-
-    let totalCritSuccess = 0
-    totalCritSuccess = Math.floor((critSuccess + hungerCritSuccess) / 2)
-    const totalSuccess = (totalCritSuccess * 2) + success + hungerSuccess + critSuccess + hungerCritSuccess
-    let successRoll = false
-    if (difficulty !== 0) {
-      successRoll = totalSuccess >= difficulty
-      difficultyResult = `( <span class="danger">${game.i18n.localize('VTM5E.Fail')}</span> )`
-      if (successRoll) {
-        difficultyResult = `( <span class="success">${game.i18n.localize('VTM5E.Success')}</span> )`
-      }
-    }
-
-    label = `<p class="roll-label uppercase">${label}</p>`
-
-    if (hungerCritSuccess && totalCritSuccess) {
-      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.MessyCritical')}</p>`
-    } else if (totalCritSuccess) {
-      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
-    }
-    if (hungerCritFail && !successRoll && difficulty > 0) {
-      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.BestialFailure')}</p>`
-    }
-    if (hungerCritFail && !successRoll && difficulty === 0) {
-      label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.PossibleBestialFailure')}</p>`
-    }
-
-    label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${totalSuccess} ${difficultyResult}</p>`
-
-    for (let i = 0, j = critSuccess; i < j; i++) {
-      label = label + '<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">'
-    }
-    for (let i = 0, j = success; i < j; i++) {
-      label = label + '<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img">'
-    }
-    for (let i = 0, j = fail; i < j; i++) {
-      label = label + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img">'
-    }
-
-    label = label + '<br>'
-
-    for (let i = 0, j = hungerCritSuccess; i < j; i++) {
-      label = label + '<img src="systems/vtm5e/assets/images/red-crit.png" alt="Hunger Crit" class="roll-img">'
-    }
-    for (let i = 0, j = hungerSuccess; i < j; i++) {
-      label = label + '<img src="systems/vtm5e/assets/images/red-success.png" alt="Hunger Success" class="roll-img">'
-    }
-    for (let i = 0, j = hungerCritFail; i < j; i++) {
-      label = label + '<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Bestial Fail" class="roll-img">'
-    }
-    for (let i = 0, j = hungerFail; i < j; i++) {
-      label = label + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img">'
-    }
-
-    rollResult.toMessage({
-      speaker: ChatMessage.getSpeaker({ actor: actor }),
-      flavor: label
-    })
   }
 
   /**
@@ -599,7 +496,7 @@ export class VampireActorSheet extends ActorSheet {
           const abilityVal = this.actor.data.data.abilities[ability].value
           const abilityName = game.i18n.localize(this.actor.data.data.abilities[ability].name)
           const numDice = abilityVal + parseInt(dataset.roll) + modifier
-          this._rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, true)
+          rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, true)
           // this._vampireRoll(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
         }
       },
@@ -665,7 +562,7 @@ export class VampireActorSheet extends ActorSheet {
       const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
       const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
-      this._rollDice(dicePool, this.actor, `${dataset.name}`)
+      rollDice(dicePool, this.actor, `${dataset.name}`)
     }
   }
 
@@ -841,6 +738,114 @@ export class VampireActorSheet extends ActorSheet {
     }
     this.actor.update(actorData)
   }
+}
+
+// Function to roll dice
+function rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true) {
+  let hungerDice
+  if (useHunger) {
+    hungerDice = Math.min(actor.data.data.hunger.value, numDice)
+  } else {
+    hungerDice = 0
+  }
+  const dice = numDice - hungerDice
+  const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dhcs>5', actor.data.data)
+  const rollResult = roll.evaluate()
+
+  let difficultyResult = '<span></span>'
+  let success = 0
+  let hungerSuccess = 0
+  let critSuccess = 0
+  let hungerCritSuccess = 0
+  let fail = 0
+  let hungerFail = 0
+  let hungerCritFail = 0
+
+  rollResult.terms[0].results.forEach((dice) => {
+    if (dice.success) {
+      if (dice.result === 10) {
+        critSuccess++
+      } else {
+        success++
+      }
+    } else {
+      fail++
+    }
+  })
+
+  rollResult.terms[2].results.forEach((dice) => {
+    if (dice.success) {
+      if (dice.result === 10) {
+        hungerCritSuccess++
+      } else {
+        hungerSuccess++
+      }
+    } else {
+      if (dice.result === 1) {
+        hungerCritFail++
+      } else {
+        hungerFail++
+      }
+    }
+  })
+
+  let totalCritSuccess = 0
+  totalCritSuccess = Math.floor((critSuccess + hungerCritSuccess) / 2)
+  const totalSuccess = (totalCritSuccess * 2) + success + hungerSuccess + critSuccess + hungerCritSuccess
+  let successRoll = false
+  if (difficulty !== 0) {
+    successRoll = totalSuccess >= difficulty
+    difficultyResult = `( <span class="danger">${game.i18n.localize('VTM5E.Fail')}</span> )`
+    if (successRoll) {
+      difficultyResult = `( <span class="success">${game.i18n.localize('VTM5E.Success')}</span> )`
+    }
+  }
+
+  label = `<p class="roll-label uppercase">${label}</p>`
+
+  if (hungerCritSuccess && totalCritSuccess) {
+    label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.MessyCritical')}</p>`
+  } else if (totalCritSuccess) {
+    label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
+  }
+  if (hungerCritFail && !successRoll && difficulty > 0) {
+    label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.BestialFailure')}</p>`
+  }
+  if (hungerCritFail && !successRoll && difficulty === 0) {
+    label = label + `<p class="roll-content">${game.i18n.localize('VTM5E.PossibleBestialFailure')}</p>`
+  }
+
+  label = label + `<p class="roll-label">${game.i18n.localize('VTM5E.Successes')}: ${totalSuccess} ${difficultyResult}</p>`
+
+  for (let i = 0, j = critSuccess; i < j; i++) {
+    label = label + '<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img">'
+  }
+  for (let i = 0, j = success; i < j; i++) {
+    label = label + '<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img">'
+  }
+  for (let i = 0, j = fail; i < j; i++) {
+    label = label + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img">'
+  }
+
+  label = label + '<br>'
+
+  for (let i = 0, j = hungerCritSuccess; i < j; i++) {
+    label = label + '<img src="systems/vtm5e/assets/images/red-crit.png" alt="Hunger Crit" class="roll-img">'
+  }
+  for (let i = 0, j = hungerSuccess; i < j; i++) {
+    label = label + '<img src="systems/vtm5e/assets/images/red-success.png" alt="Hunger Success" class="roll-img">'
+  }
+  for (let i = 0, j = hungerCritFail; i < j; i++) {
+    label = label + '<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Bestial Fail" class="roll-img">'
+  }
+  for (let i = 0, j = hungerFail; i < j; i++) {
+    label = label + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img">'
+  }
+
+  rollResult.toMessage({
+    speaker: ChatMessage.getSpeaker({ actor: actor }),
+    flavor: label
+  })
 }
 
 function parseCounterStates (states) {
