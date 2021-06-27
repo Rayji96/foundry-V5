@@ -1,6 +1,6 @@
 {
   "name": "vtm5e",
-  "version": "1.0.0",
+  "version": "1.6.0",
   "description": "CSS compiler for the Vampire 5e system",
   "scripts": {
     "build": "gulp",

@@ -2,7 +2,13 @@
     "VTM5E.Name": "Name",
     "VTM5E.Clan": "Clan",
     "VTM5E.Predator": "Predator",
-    
+
+    "VTM5E.Vampire": "Vampire",
+    "VTM5E.Coterie": "Coterie",
+    "VTM5E.Ghoul": "Ghoul",
+    "VTM5E.Mortal": "Mortal",
+    "VTM5E.Domitor": "Domitor",
+
     "VTM5E.Health": "Health",
     "VTM5E.Willpower": "Willpower",
     "VTM5E.Exp": "Exp",
@@ -150,6 +156,7 @@
     "VTM5E.TouchstonesAndConvictions": "Touchstones & Convictions",
     "VTM5E.ClanBane": "Clan Bane",
     "VTM5E.Biography": "Biography",
+    "VTM5E.History": "History",
 
     "VTM5E.Discipline": "Discipline",
     "VTM5E.System": "System",

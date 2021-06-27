@@ -250,6 +250,12 @@
   margin-bottom: 10px;
 }
 
+.vtm5e .coterie-sheet .sheet-header,
+.vtm5e .mortal-sheet .sheet-header,
+.vtm5e .ghoul-sheet .sheet-header {
+  flex: 0 0 155px;
+}
+
 .vtm5e .sheet-header .profile-img-zone {
   max-width: 100px; /* .profile-img width */
   display: flex;
@@ -276,6 +282,14 @@
   height: auto;
   width: 100px;
   margin-right: 0;
+}
+
+.vtm5e .sheet-header .profile-img-zone h1 {
+  color: #790813;
+  font-family: "cormorantlight", sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .vtm5e .sheet-header .header-fields {
@@ -540,6 +554,14 @@
 
 .roll-img {
   max-width: 10%;
+  margin: 1px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+}
+
+.roll-img.hunger-dice {
+  background: rgba(255, 230, 230, 0.5);
+  border-color: #790813;
 }
 
 .vtm5e .locked .resource-value-empty {
@@ -562,4 +584,8 @@
   color: red;
   margin-left: -20px;
   margin-top: -2px;
+}
+
+#sidebar.app {
+  background: rgba(20, 0, 0, 0.9);
 }
