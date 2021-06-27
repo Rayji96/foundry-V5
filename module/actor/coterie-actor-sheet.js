@@ -209,8 +209,18 @@ export class CoterieActorSheet extends ActorSheet {
     const type = header.dataset.type
     // Grab any data associated with this control.
     const data = duplicate(header.dataset)
+    if (type === 'specialty') {
+      data.skill = 'academics'
+    }
+    if (type === 'boon') {
+      data.boontype = 'Trivial'
+    }
+    if (type === 'customRoll') {
+      data.dice1 = 'strength'
+      data.dice2 = 'athletics'
+    }
     // Initialize a default name.
-    const name = `New ${type.capitalize()}`
+    const name = this.getItemDefaultName(type, data)
     // Prepare the item object.
     const itemData = {
       name: name,
@@ -222,6 +232,16 @@ export class CoterieActorSheet extends ActorSheet {
 
     // Finally, create the item!
     return this.actor.createOwnedItem(itemData)
+  }
+
+  getItemDefaultName (type, data) {
+    if (type === 'feature') {
+      return `${game.i18n.localize('VTM5E.' + data.featuretype.capitalize())}`
+    }
+    if (type === 'power') {
+      return `${game.i18n.localize('VTM5E.' + data.discipline.capitalize())}`
+    }
+    return `${game.i18n.localize('VTM5E.' + type.capitalize())}`
   }
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out

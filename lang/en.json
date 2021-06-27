@@ -84,7 +84,9 @@
     "VTM5E.Edit": "Edit",
     "VTM5E.Delete": "Delete",
     "VTM5E.CustomRolls": "Custom Rolls",
-
+    "VTM5E.CustomRoll": "Custom Roll",
+    "VTM5E.Boon": "Boon",
+    
     "VTM5E.Level": "Level",
     "VTM5E.Add": "Add",
     "VTM5E.AddPower": "Add",

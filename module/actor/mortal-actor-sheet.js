@@ -102,8 +102,6 @@ export class MortalActorSheet extends CoterieActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
-    html.find('.customRoll-create').click(this._onCustomRollCreate.bind(this))
-
     // Ressource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
@@ -118,10 +116,10 @@ export class MortalActorSheet extends CoterieActorSheet {
   }
 
   /**
-     * Handle clickable Vampire rolls.
-     * @param {Event} event   The originating click event
-     * @private
-     */
+   * Handle clickable Vampire rolls.
+   * @param {Event} event   The originating click event
+   * @private
+   */
   _onRollDialog (event) {
     event.preventDefault()
     const element = event.currentTarget
@@ -133,20 +131,20 @@ export class MortalActorSheet extends CoterieActorSheet {
     }
 
     const template = `
-        <form>
-            <div class="form-group">
-                <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
-                <select id="abilitySelect">${options}</select>
-            </div>  
-            <div class="form-group">
-                <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-                <input type="text" id="inputMod" value="0">
-            </div>  
-            <div class="form-group">
-                <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-                <input type="text" min="0" id="inputDif" value="0">
-            </div>
-        </form>`
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
+              <select id="abilitySelect">${options}</select>
+          </div>  
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
+              <input type="text" id="inputMod" value="0">
+          </div>  
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
+              <input type="text" min="0" id="inputDif" value="0">
+          </div>
+      </form>`
 
     let buttons = {}
     buttons = {
@@ -178,18 +176,6 @@ export class MortalActorSheet extends CoterieActorSheet {
     }).render(true)
   }
 
-  _onCustomRollCreate (event) {
-    event.preventDefault()
-    const actorData = duplicate(this.actor)
-    const rollData = {
-      name: 'Name',
-      dice1: 'Strength',
-      dice2: 'Athletics'
-    }
-    actorData.data.customRolls.push(rollData)
-    this.actor.update(actorData)
-  }
-
   /**
      * Handle clickable rolls.
      * @param {Event} event   The originating click event
@@ -216,7 +202,7 @@ export class MortalActorSheet extends CoterieActorSheet {
       const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
       dataset.roll = dice2 + 1 // specialty modifier
       dataset.label = dataset.name
-      this._onVampireRollDialog(event)
+      this._onRollDialog(event)
     } else {
       const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
       const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
@@ -323,40 +309,6 @@ export class MortalActorSheet extends CoterieActorSheet {
       }
     }
     this.actor.update(actorData)
-  }
-
-  /**
-   * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
-   * @param {Event} event   The originating click event
-   * @protected
-   * @override
-   */
-  _onItemCreate (event) {
-    event.preventDefault()
-    const header = event.currentTarget
-    // Get the type of item to create.
-    const type = header.dataset.type
-    // Grab any data associated with this control.
-    const data = duplicate(header.dataset)
-    if (type === 'specialty') {
-      data.skill = ''
-    }
-    if (type === 'boon') {
-      data.boontype = 'Trivial'
-    }
-    // Initialize a default name.
-    const name = `New ${type.capitalize()}`
-    // Prepare the item object.
-    const itemData = {
-      name: name,
-      type: type,
-      data: data
-    }
-    // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.data.type
-
-    // Finally, create the item!
-    return this.actor.createOwnedItem(itemData)
   }
 }
 
