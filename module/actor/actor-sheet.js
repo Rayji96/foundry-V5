@@ -180,6 +180,7 @@ export class VampireActorSheet extends ActorSheet {
       ceremonies: [],
       alchemy: []
     }
+    const potencyNum = parseFloat(this.actor.data.data.blood.potency, 10)
 
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
@@ -209,6 +210,42 @@ export class VampireActorSheet extends ActorSheet {
         }
       }
     }
+    // Blood Potency Table (Numbers)
+    const bloodPotency = [
+      {
+        surge: 1, mend: 1, power: 0, rouse: 0, bane: 0
+      },
+      {
+        surge: 2, mend: 1, power: 0, rouse: 1, bane: 2
+      },
+      {
+        surge: 2, mend: 2, power: 1, rouse: 1, bane: 2
+      },
+      {
+        surge: 3, mend: 2, power: 1, rouse: 2, bane: 3
+      },
+      {
+        surge: 3, mend: 3, power: 2, rouse: 2, bane: 3
+      },
+      {
+        surge: 4, mend: 3, power: 2, rouse: 3, bane: 4
+      },
+      {
+        surge: 4, mend: 3, power: 3, rouse: 3, bane: 4
+      },
+      {
+        surge: 5, mend: 3, power: 3, rouse: 4, bane: 5
+      },
+      {
+        surge: 5, mend: 4, power: 4, rouse: 4, bane: 5
+      },
+      {
+        surge: 6, mend: 4, power: 4, rouse: 5, bane: 6
+      },
+      {
+        surge: 6, mend: 5, power: 5, rouse: 5, bane: 6
+      }
+    ]
 
     // Assign and return
     actorData.specialties = specialties
@@ -217,6 +254,7 @@ export class VampireActorSheet extends ActorSheet {
     actorData.gear = gear
     actorData.features = features
     actorData.disciplines_list = disciplines
+    actorData.blood_potency = bloodPotency[potencyNum]
   }
 
   /* -------------------------------------------- */
@@ -501,8 +539,8 @@ export class VampireActorSheet extends ActorSheet {
       dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
     }
 
-    const dicePool = dice1 + dice2
-    rollDice(dicePool, this.actor, `${item.data.name}`)
+    const dicePool = dice1 + dice2 + this.actor.blood_potency.power
+    this._rollDice(dicePool, this.actor, `${item.data.name}`)
   }
 
   _onToggleLocked (event) {
