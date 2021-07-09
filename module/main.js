@@ -2,14 +2,28 @@
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
+import { migrateWorld } from './migration.js'
 import { VampireActor } from './actor/actor.js'
-import { VampireActorSheet, rollDice } from './actor/actor-sheet.js'
 import { VampireItem } from './item/item.js'
 import { VampireItemSheet } from './item/item-sheet.js'
 import { VampireDie, VampireHungerDie } from './dice/dice.js'
+import { rollDice } from './actor/roll-dice.js'
+import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
+import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
+import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
+import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
 
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
+
+  game.settings.register('vtm5e', 'worldVersion', {
+    name: 'world Version',
+    hint: 'Automatically upgrades data when the system.json is upgraded.',
+    scope: 'world',
+    config: true,
+    default: '1.5',
+    type: String
+  })
 
   game.vtm5e = {
     VampireActor,
@@ -33,8 +47,25 @@ Hooks.once('init', async function () {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
+
   Actors.registerSheet('vtm5e', VampireActorSheet, {
     label: 'Vampire Sheet',
+    types: ['vampire', 'character'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', GhoulActorSheet, {
+    label: 'Ghoul Sheet',
+    types: ['ghoul'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', MortalActorSheet, {
+    label: 'Mortal Sheet',
+    types: ['mortal'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', CoterieActorSheet, {
+    label: 'Coterie Sheet',
+    types: ['coterie'],
     makeDefault: true
   })
   Items.unregisterSheet('core', ItemSheet)
@@ -88,6 +119,10 @@ Hooks.once('init', async function () {
   // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
     return ((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3))
+  })
+
+  Handlebars.registerHelper('willpower', function (willpowerMax, willpowerAgg, willpowerSup) {
+    return (willpowerMax - willpowerAgg - willpowerSup)
   })
 
   // TODO: there exist math helpers for handlebars
@@ -210,6 +245,10 @@ Hooks.on('getChatLogEntryContext', function (html, options) {
     },
     callback: li => willpowerReroll(li)
   })
+})
+
+Hooks.once('ready', function () {
+  migrateWorld()
 })
 
 async function willpowerReroll (roll) {

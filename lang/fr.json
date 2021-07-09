@@ -2,6 +2,12 @@
     "VTM5E.Name": "Nom",
     "VTM5E.Clan": "Clan",
     "VTM5E.Predator": "Prédateur",
+
+    "VTM5E.Vampire": "Vampire",
+    "VTM5E.Coterie": "Coterie",
+    "VTM5E.Ghoul": "Goule",
+    "VTM5E.Mortal": "Mortel",
+    "VTM5E.Domitor": "Domitor",
     
     "VTM5E.Health": "Santé",
     "VTM5E.Willpower": "Volonté",
@@ -77,7 +83,9 @@
     "VTM5E.AddItem": "Ajouter",
     "VTM5E.Edit": "Éditer",
     "VTM5E.Delete": "Supprimer",
-    "VTM5E.CustomRolls": "Jetes Personnalisés",
+    "VTM5E.CustomRolls": "Jets Personnalisés",
+    "VTM5E.CustomRoll": "Jet Personnalisé",
+    "VTM5E.Boon": "Dette",
 
     "VTM5E.Level": "Niveau",
     "VTM5E.Add": "Ajouter",
@@ -150,6 +158,7 @@
     "VTM5E.TouchstonesAndConvictions": "Attaches et Convictions",
     "VTM5E.ClanBane": "Fléau de clan",
     "VTM5E.Biography": "Biographie",
+    "VTM5E.History": "Histoire",
 
     "VTM5E.Discipline": "Discipline",
     "VTM5E.System": "Système",
