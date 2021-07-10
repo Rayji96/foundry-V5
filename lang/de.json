@@ -3,9 +3,15 @@
     "VTM5E.Clan": "Clan",
     "VTM5E.Predator": "Jagdverhalten",
 
+    "VTM5E.Vampire": "Vampir",
+    "VTM5E.Coterie": "Klüngel",
+    "VTM5E.Ghoul": "Ghoul",
+    "VTM5E.Mortal": "Sterblicher",
+    "VTM5E.Domitor": "Domitor",
+
     "VTM5E.Health": "Gesundheit",
     "VTM5E.Willpower": "Willenskraft",
-    "VTM5E.Exp": "Erf",
+    "VTM5E.Exp": "EP",
     "VTM5E.Humanity": "Menschlichkeit",
     "VTM5E.Hunger": "Hunger",
     "VTM5E.Rouse": "Wallung",
@@ -73,12 +79,14 @@
 
     "VTM5E.Specialties": "Spezialisierungen",
     "VTM5E.Specialty": "Spezialisierung",
-    "VTM5E.Skill": "FÄHIGKEITEN",
+    "VTM5E.Skill": "Fähigkeiten",
     "VTM5E.AddItem": "Hinzufügen",
     "VTM5E.Edit": "Bearbeiten",
     "VTM5E.Delete": "Löschen",
-    "VTM5E.CustomRolls": "Benutzerdefinierter Wurf",
-    
+    "VTM5E.CustomRolls": "Benutzerdefinierte Würfe",
+    "VTM5E.CustomRoll": "Benutzerdefinierter Wurf",
+    "VTM5E.Boon": "Gefallen",
+
     "VTM5E.Level": "Level",
     "VTM5E.Add": "Hinzufügen",
     "VTM5E.AddPower": "Hinzufügen",
@@ -150,6 +158,7 @@
     "VTM5E.TouchstonesAndConvictions": "Anker & Überzeugungen",
     "VTM5E.ClanBane": "Clansfluch",
     "VTM5E.Biography": "Geschichte",
+    "VTM5E.History": "Geschichte",
 
     "VTM5E.Discipline": "Disziplin",
     "VTM5E.System": "System",
