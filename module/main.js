@@ -235,7 +235,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 // TODO: Add condition that it only shows up on willpower-able rolls
 Hooks.on('getChatLogEntryContext', function (html, options) {
   options.push({
-    name: 'Willpower Reroll',
+    name: game.i18n.localize('VTM5E.WillpowerReroll'),
     icon: '<i class="fas fa-redo"></i>',
     condition: li => {
       // Only show this context menu if the person is GM or author of the message
@@ -252,7 +252,7 @@ Hooks.once('ready', function () {
 })
 
 async function willpowerReroll (roll) {
-  const dice = roll.find('.vampiredie')
+  const dice = roll.find('.normal-dice')
   const diceRolls = []
 
   // Go through the message's dice and add them to the diceRolls array
@@ -271,9 +271,9 @@ async function willpowerReroll (roll) {
             <label><b>Select dice to reroll (Max 3)</b></label>
             <hr>
             <span class="dice-tooltip">
-              <ol class="dice-rolls willpowerReroll">
-                ${diceRolls.join('')}
-              </ol>
+              <div class="dice-rolls willpowerReroll flexrow">
+                ${diceRolls.reverse().join('')}
+              </div>
             </span>
         </div>
     </form>`
