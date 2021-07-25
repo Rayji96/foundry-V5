@@ -28,6 +28,7 @@ Huge thanks to these folks for their contributions:
 * Brazilian Portuguese localization started by [danielmalka]
 * German localization started by [tom959]
 * Spanish localization started by [erizocosmico]
+* Spanish localization help by [Musrha]
 * Icons used with permissions from [cftarbay]
 * Features improvements and custom roll table by [Veichassur]
 * Limited character sheet by [pedroboh]
@@ -35,10 +36,12 @@ Huge thanks to these folks for their contributions:
 * CSS improvements by [lipefl]
 * Incredible work on dot and box counters by [erizocosmico]
 * Refactors and enhancements by [bmgraves]
-* Bugfixes and refactors by [Dakayl]
+* Partial HTML, character types, migrations, bugfixes, and refactors by [Dakayl]
+* In-chat willpower rerolling started by [thalissas]
+* Adding blood potency bonus to discipline rolls by [MarkusOzgur]
 * Feedback and fixes by [eisenfuchs]
 
-[Foundry Shield 0.8.6]: https://img.shields.io/badge/Foundry-0.8.6-informational
+[Foundry Shield 0.8.8]: https://img.shields.io/badge/Foundry-0.8.8-informational
 [Foundry URL]: https://foundryvtt.com
 
 [MIT License]: https://img.shields.io/badge/License-MIT-green
@@ -60,3 +63,6 @@ Huge thanks to these folks for their contributions:
 [Lemantia]: https://github.com/Lemantia
 [Varkal]: https://github.com/Varkal
 [Dakayl]: https://github.com/Dakayl
+[thalissas]: https://github.com/thalissa
+[MarkusOzgur]: https://github.com/MarkusOzgur
+[Musrha]: https://github.com/Musrha
