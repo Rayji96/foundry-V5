@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ActorSheet, game, mergeObject, duplicate */
+/* global DEFAULT_TOKEN, ActorSheet, game, mergeObject, duplicate, renderTemplate, ChatMessage */
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -105,6 +105,21 @@ export class CoterieActorSheet extends ActorSheet {
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this))
 
+    // Send Inventory Item to Chat
+    html.find('.item-chat').click(ev => {
+      const li = $(ev.currentTarget).parents('.item')
+      const item = this.actor.getOwnedItem(li.data('itemId'))
+      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+        name: item.data.name,
+        img: item.data.img,
+        description: item.data.data.description
+      }).then(html => {
+        ChatMessage.create({
+          content: html
+        })
+      })
+    })
+
     // Update Inventory Item
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
@@ -163,7 +178,6 @@ export class CoterieActorSheet extends ActorSheet {
 
   _onDotCounterChange (event) {
     event.preventDefault()
-    if (this.locked) return
     const element = event.currentTarget
     const dataset = element.dataset
     const index = Number(dataset.index)
@@ -171,6 +185,9 @@ export class CoterieActorSheet extends ActorSheet {
     const fieldStrings = parent[0].dataset.name
     const fields = fieldStrings.split('.')
     const steps = parent.find('.resource-value-step')
+
+    if (this.locked && !parent.has('.hunger-value').length) return
+
     if (index < 0 || index > steps.length) {
       return
     }
@@ -186,12 +203,13 @@ export class CoterieActorSheet extends ActorSheet {
 
   _onDotCounterEmpty (event) {
     event.preventDefault()
-    if (this.locked) return
     const element = event.currentTarget
     const parent = $(element.parentNode)
     const fieldStrings = parent[0].dataset.name
     const fields = fieldStrings.split('.')
     const steps = parent.find('.resource-value-empty')
+
+    if (this.locked && !parent.has('.hunger-value').length) return
 
     steps.removeClass('active')
     this._assignToActorField(fields, 0)

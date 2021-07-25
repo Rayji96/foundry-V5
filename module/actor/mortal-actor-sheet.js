@@ -186,9 +186,6 @@ export class MortalActorSheet extends CoterieActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const useHunger = this.hunger && (dataset.useHunger === '1')
-    console.log(this.hunger)
-    console.log(dataset)
-    console.log(useHunger)
     const numDice = dataset.roll
 
     rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger)

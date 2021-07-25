@@ -103,8 +103,8 @@ export function rollDice (numDice, actor, label = '', difficulty = 0, useHunger 
     label = label + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img hunger-dice" />'
   }
 
-  rollResult.toMessage({
+  ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor: actor }),
-    flavor: label
+    content: label
   })
 }

@@ -404,14 +404,14 @@
   text-align: right;
 }
 
-.vtm5e .items-list .collapsible:hover,
-.vtm5e .items-list .collapsible:focus {
+.vtm5e .collapsible:hover,
+.vtm5e .collapsible:focus {
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
 
-.vtm5e .items-list .content {
+.vtm5e .collapsible-content {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
@@ -564,12 +564,12 @@
   border-color: #790813;
 }
 
-.vtm5e .locked .resource-value-empty {
+.vtm5e .locked .resource-value-empty:not(.hunger-value) {
   opacity: 0;
   cursor: default;
 }
 
-.vtm5e .locked .resource-value-step {
+.vtm5e .locked .resource-value-step:not(.hunger-value) {
   cursor: default;
 }
 
