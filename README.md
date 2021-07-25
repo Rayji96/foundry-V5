@@ -1,6 +1,6 @@
 # Vampire the Masquerade 5e System
 
-[![Foundry Shield 0.8.6]][Foundry URL]
+[![Foundry Shield 0.8.8]][Foundry URL]
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
