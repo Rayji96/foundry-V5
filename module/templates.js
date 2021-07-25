@@ -7,6 +7,22 @@ export const preloadHandlebarsTemplates = async function () {
   console.log('Schrecknet : loading subroutines')
   // Define template paths to load
   const templatePaths = [
+    // Actor Sheet Partials
+    'systems/vtm5e/templates/actor/parts/biography.html',
+    'systems/vtm5e/templates/actor/parts/blood.html',
+    'systems/vtm5e/templates/actor/parts/disciplines.html',
+    'systems/vtm5e/templates/actor/parts/exp.html',
+    'systems/vtm5e/templates/actor/parts/features.html',
+    'systems/vtm5e/templates/actor/parts/frenzy.html',
+    'systems/vtm5e/templates/actor/parts/health.html',
+    'systems/vtm5e/templates/actor/parts/humanity.html',
+    'systems/vtm5e/templates/actor/parts/hunger.html',
+    'systems/vtm5e/templates/actor/parts/profile-img.html',
+    'systems/vtm5e/templates/actor/parts/other.html',
+    'systems/vtm5e/templates/actor/parts/rouse.html',
+    'systems/vtm5e/templates/actor/parts/stats.html',
+    'systems/vtm5e/templates/actor/parts/willpower.html',
+
     // Item Sheet Partials
     'systems/vtm5e/templates/item/parts/skills.html',
     'systems/vtm5e/templates/item/parts/disciplines.html',

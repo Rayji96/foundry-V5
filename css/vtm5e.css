@@ -250,6 +250,12 @@
   margin-bottom: 10px;
 }
 
+.vtm5e .coterie-sheet .sheet-header,
+.vtm5e .mortal-sheet .sheet-header,
+.vtm5e .ghoul-sheet .sheet-header {
+  flex: 0 0 155px;
+}
+
 .vtm5e .sheet-header .profile-img-zone {
   max-width: 100px; /* .profile-img width */
   display: flex;
@@ -276,6 +282,14 @@
   height: auto;
   width: 100px;
   margin-right: 0;
+}
+
+.vtm5e .sheet-header .profile-img-zone h1 {
+  color: #790813;
+  font-family: "cormorantlight", sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .vtm5e .sheet-header .header-fields {
@@ -390,14 +404,14 @@
   text-align: right;
 }
 
-.vtm5e .items-list .collapsible:hover,
-.vtm5e .items-list .collapsible:focus {
+.vtm5e .collapsible:hover,
+.vtm5e .collapsible:focus {
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
 }
 
-.vtm5e .items-list .content {
+.vtm5e .collapsible-content {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
@@ -540,13 +554,38 @@
 
 .roll-img {
   max-width: 10%;
+  margin: 1px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
 }
 
-.vtm5e .locked .resource-value-empty {
+.roll-img.hunger-dice {
+  background: rgba(255, 230, 230, 0.5);
+  border-color: #790813;
+}
+
+.vtm5e .locked .resource-value-empty:not(.hunger-value) {
   opacity: 0;
   cursor: default;
 }
 
-.vtm5e .locked .resource-value-step {
+.vtm5e .locked .resource-value-step:not(.hunger-value) {
   cursor: default;
+}
+
+.willpowerReroll .die {
+  margin-left: 3px;
+}
+
+.willpowerReroll .selected::after {
+  position: absolute;
+  content: 'X';
+  font-size: 24px;
+  color: red;
+  margin-left: -20px;
+  margin-top: -2px;
+}
+
+#sidebar.app {
+  background: rgba(20, 0, 0, 0.9);
 }

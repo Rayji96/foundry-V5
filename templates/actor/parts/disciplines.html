@@ -1,0 +1,64 @@
+<div class="tab disciplines" data-group="primary" data-tab="disciplines">
+    <ol class="items-list">
+        <li class="item flexrow item-header">
+            <div class="item-name">{{localize "VTM5E.Name"}}</div>
+            <div class="item-name">{{localize "VTM5E.Level"}}</div>
+            <div class="item-controls">
+                <a class="item-control discipline-create" title="{{localize 'VTM5E.Add'}}">
+                    <i class="fas fa-plus"></i>
+                    {{localize "VTM5E.Add"}}
+                </a>
+            </div>
+        </li>
+        {{#each data.data.disciplines as |discipline key|}}
+        {{#if discipline.visible}}
+        <li class="flexrow item-header">
+            {{#if (and (ne key "rituals") (ne key "ceremonies"))}}
+            <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="{{key}}">{{localize
+                discipline.name}}</div>
+            <div class="resource-value" data-value="{{discipline.value}}" data-name="data.disciplines.{{key}}.value">
+                <span class="resource-value-empty"></span>
+                {{#numLoop 5}}
+                <span class="resource-value-step" data-index="{{this}}"></span>
+                {{/numLoop}}
+            </div>
+            {{else}}
+            <div class="item-name" data-roll="{{discipline.value}}" data-label="{{key}}">{{localize discipline.name}}
+            </div>
+            {{/if}}
+            <div class="item-controls">
+                <a class="item-control item-create" title="{{localize 'VTM5E.AddPower'}}" data-type="power"
+                    data-discipline="{{key}}"><i class="fas fa-plus"></i> {{localize "VTM5E.AddPower"}}</a>
+                <a class="item-control discipline-delete" title="{{localize 'VTM5E.Delete'}}"
+                    data-discipline="{{key}}"><i class="fas fa-trash"></i></a>
+            </div>
+        </li>
+        {{#each (lookup ../actor.disciplines_list key) as |item id|}}
+        <li class="item flexcol" data-item-id="{{item._id}}">
+            <div class="flexrow">
+                {{#if item.data.rollable}}
+                <div class="item-image power-rollable" data-id="{{item._id}}" data-use-hunger="1"><img src="{{item.img}}"
+                        title="{{item.name}}" width="24" height="24" alt="{{item.name}}" /></div>
+                {{else}}
+                <div class="item-image" data-id="{{item._id}}"><img src="{{item.img}}" title="{{item.name}}"
+                        width="24" height="24" alt="{{item.name}}" /></div>
+                {{/if}}
+                <h4 class="item-name collapsible">{{item.name}}</h4>
+                <div class="item-controls">
+                    <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}"><i
+                        class="fas fa-comment-alt"></i></a>
+                    <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
+                            class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}"><i
+                            class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            <div class="collapsible-content">
+                {{{item.data.description}}}
+            </div>
+        </li>
+        {{/each}}
+        {{/if}}
+        {{/each}}
+    </ol>
+</div>

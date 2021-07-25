@@ -1,0 +1,93 @@
+<div class="tab features" data-group="primary" data-tab="features">
+    {{#if isCharacter}}
+    <label class="resource-label flex-center">{{localize "VTM5E.Boons"}}</label>
+    <ol class="items-list flex-left">
+        <li class="item flexrow item-header">
+            <div class="item-name">{{localize "VTM5E.Name"}}</div>
+            <div class="item-image"></div>
+            <div class="item-name">{{localize "VTM5E.Type"}}</div>
+            <div class="item-controls">
+                <a class="item-control item-create" title="{{localize 'VTM5E.AddItem'}}"
+                    data-type="boon"><i class="fas fa-plus"></i> {{localize "VTM5E.AddItem"}}
+                </a>
+            </div>
+        </li>
+        {{#each actor.boons as |item id|}}
+        <li class="item flexcol" data-item-id="{{item._id}}">
+            <div class="flexrow">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"
+                    alt="{{item.name}}" />
+                </div>
+                <h4 class="item-name collapsible">{{item.name}}</h4>
+                <h4 class="item-name">{{item.data.boontype}}</h4>
+                <div class="item-controls">
+                    <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}"><i
+                        class="fas fa-comment-alt"></i></a>
+                    <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
+                            class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}"><i
+                            class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            <div class="collapsible-content">
+                {{{item.data.description}}}
+            </div>
+        </li>
+        {{/each}}
+    </ol>
+    <br/>
+    {{/if}}
+    <label class="resource-label flex-center">{{localize "VTM5E.Features"}}</label>
+    <ol class="items-list">
+        <li class="item flexrow item-header">
+            <div class="item-name-header">{{localize "VTM5E.Name"}}</div>
+            <div class="item-image"></div>
+            <div class="item-name-header">{{localize "VTM5E.Points"}}</div>
+            <div class="item-controls"></div>
+        </li>
+        {{#each actor.features as |feature key|}}
+        <li class="flexrow item-header">
+            <div class="item-name">{{localize (generateFeatureLabel key)}}</div>
+            <div class="item-controls">
+                <a class="item-control item-create" title="{{localize 'VTM5E.AddFeat'}}" data-type="feature"
+                    data-featuretype="{{key}}"><i class="fas fa-plus"></i> {{localize "VTM5E.AddFeat"}}</a>
+            </div>
+        </li>
+        {{#each feature as |item id|}}
+        <li class="item flexcol" data-item-id="{{item._id}}">
+            <div class="flexrow">
+                <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"
+                        alt="{{item.name}}" />
+                </div>
+                <h4 class="item-name collapsible">{{item.name}}</h4>
+                {{#if (ne key "background")}}
+                <div class="resource-value-static" data-value="{{item.data.points}}" data-name="items.{{item._id}}">
+                    {{#numLoop 5}}
+                    <span class="resource-value-static-step" data-index="{{this}}"></span>
+                    {{/numLoop}}
+                </div>
+                {{else}}
+                <div class="resource-value" data-value="{{item.data.points}}" data-name="items.{{item._id}}">
+                    <span class="resource-value-empty"></span>
+                    {{#numLoop 5}}
+                    <span class="resource-value-step" data-index="{{this}}"></span>
+                    {{/numLoop}}
+                </div>
+                {{/if}}
+                <div class="item-controls">
+                    <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}"><i
+                        class="fas fa-comment-alt"></i></a>
+                    <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
+                            class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}"><i
+                            class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            <div class="collapsible-content">
+                {{{item.data.description}}}
+            </div>
+        </li>
+        {{/each}}
+        {{/each}}
+    </ol>
+</div>

@@ -1,15 +1,29 @@
-/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui */
+/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui */
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
+import { migrateWorld } from './migration.js'
 import { VampireActor } from './actor/actor.js'
-import { VampireActorSheet } from './actor/actor-sheet.js'
 import { VampireItem } from './item/item.js'
 import { VampireItemSheet } from './item/item-sheet.js'
 import { VampireDie, VampireHungerDie } from './dice/dice.js'
+import { rollDice } from './actor/roll-dice.js'
+import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
+import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
+import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
+import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
 
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
+
+  game.settings.register('vtm5e', 'worldVersion', {
+    name: 'world Version',
+    hint: 'Automatically upgrades data when the system.json is upgraded.',
+    scope: 'world',
+    config: true,
+    default: '1.5',
+    type: String
+  })
 
   game.vtm5e = {
     VampireActor,
@@ -33,9 +47,32 @@ Hooks.once('init', async function () {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
-  Actors.registerSheet('vtm5e', VampireActorSheet, { makeDefault: true })
+
+  Actors.registerSheet('vtm5e', VampireActorSheet, {
+    label: 'Vampire Sheet',
+    types: ['vampire', 'character'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', GhoulActorSheet, {
+    label: 'Ghoul Sheet',
+    types: ['ghoul'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', MortalActorSheet, {
+    label: 'Mortal Sheet',
+    types: ['mortal'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', CoterieActorSheet, {
+    label: 'Coterie Sheet',
+    types: ['coterie'],
+    makeDefault: true
+  })
   Items.unregisterSheet('core', ItemSheet)
-  Items.registerSheet('vtm5e', VampireItemSheet, { makeDefault: true })
+  Items.registerSheet('vtm5e', VampireItemSheet, {
+    label: 'Item Sheet',
+    makeDefault: true
+  })
 
   preloadHandlebarsTemplates()
 
@@ -82,6 +119,10 @@ Hooks.once('init', async function () {
   // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
     return ((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3))
+  })
+
+  Handlebars.registerHelper('willpower', function (willpowerMax, willpowerAgg, willpowerSup) {
+    return (willpowerMax - willpowerAgg - willpowerSup)
   })
 
   // TODO: there exist math helpers for handlebars
@@ -185,6 +226,104 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     system: 'vtm5e'
   })
 })
+
+/* -------------------------------------------- */
+/*  Add willpower reroll                        */
+/* -------------------------------------------- */
+
+// Create context menu option on selection
+// TODO: Add condition that it only shows up on willpower-able rolls
+Hooks.on('getChatLogEntryContext', function (html, options) {
+  options.push({
+    name: 'Willpower Reroll',
+    icon: '<i class="fas fa-redo"></i>',
+    condition: li => {
+      // Only show this context menu if the person is GM or author of the message
+      const message = game.messages.get(li.attr('data-message-id'))
+
+      return game.user.isGM || message.isAuthor
+    },
+    callback: li => willpowerReroll(li)
+  })
+})
+
+Hooks.once('ready', function () {
+  migrateWorld()
+})
+
+async function willpowerReroll (roll) {
+  const dice = roll.find('.vampiredie')
+  const diceRolls = []
+
+  // Go through the message's dice and add them to the diceRolls array
+  Object.keys(dice).forEach(function (i) {
+    // This for some reason returns "prevObject" and "length"
+    // Fixes will be attempted, but for now solved by just ensuring the index is a number
+    if (i > -1) {
+      diceRolls.push(`<div class="die">${dice[i].outerHTML}</div>`)
+    }
+  })
+
+  // Create dialog for rerolling dice
+  const template = `
+    <form>
+        <div class="window-content">
+            <label><b>Select dice to reroll (Max 3)</b></label>
+            <hr>
+            <span class="dice-tooltip">
+              <ol class="dice-rolls willpowerReroll">
+                ${diceRolls.join('')}
+              </ol>
+            </span>
+        </div>
+    </form>`
+
+  let buttons = {}
+  buttons = {
+    draw: {
+      icon: '<i class="fas fa-check"></i>',
+      label: 'Reroll',
+      callback: roll => rerollDie(roll)
+    },
+    cancel: {
+      icon: '<i class="fas fa-times"></i>',
+      label: 'Cancel'
+    }
+  }
+
+  new Dialog({
+    title: 'Willpower Reroll',
+    content: template,
+    buttons: buttons,
+    render: function () {
+      $('.willpowerReroll .die').on('click', dieSelect)
+    },
+    default: 'draw'
+  }).render(true)
+}
+
+// Handles selecting and de-selecting the die
+function dieSelect () {
+  // If the die isn't already selected and there aren't 3 already selected, add selected to the die
+  if (!($(this).hasClass('selected')) && ($('.willpowerReroll .selected').length < 3)) {
+    $(this).addClass('selected')
+  } else {
+    $(this).removeClass('selected')
+  }
+}
+
+// Handles rerolling the number of dice selected
+// TODO: Make this function duplicate/replace the previous roll with the new results
+// TODO: Make this function able to tick superficial willpower damage
+// For now this works well enough as "roll three new dice"
+function rerollDie (actor) {
+  const diceSelected = $('.willpowerReroll .selected').length
+
+  // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
+  if ((diceSelected > 0) && (diceSelected < 4)) {
+    rollDice(diceSelected, actor, 'Willpower Reroll', 0, false)
+  }
+}
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */

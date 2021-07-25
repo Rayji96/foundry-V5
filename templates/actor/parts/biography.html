@@ -1,0 +1,56 @@
+<div class="tab" data-group="primary" data-tab="description">
+    {{#if isCharacter}}   
+    <div class="resource flexrow grid grid-3col">
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.Concept"}}</label>
+            <input type="text" name="data.headers.concept" value="{{data.data.headers.concept}}" />
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.Chronicle"}}</label>
+            <input type="text" name="data.headers.chronicle" value="{{data.data.headers.chronicle}}" />
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.Ambition"}}</label>
+            <input type="text" name="data.headers.ambition" value="{{data.data.headers.ambition}}" />
+        </div>
+    </div>
+    <div class="resource flexrow grid grid-3col">
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.Desire"}}</label>
+            <input type="text" name="data.headers.desire" value="{{data.data.headers.desire}}" />
+        </div>
+        {{#if data.data.clan.value}}
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.Sire"}}</label>
+            <input type="text" name="data.headers.sire" value="{{data.data.headers.sire}}" />
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.Generation"}}</label>
+            <input type="text" name="data.headers.generation" value="{{data.data.headers.generation}}" />
+        </div>
+        {{/if}}
+    </div> 
+    <div class="resource flexrow grid grid-3col">
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.ChronicleTenets"}}</label>
+            <textarea name="data.headers.tenets" rows="10">{{data.data.headers.tenets}}</textarea>
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.TouchstonesAndConvictions"}}</label>
+            <textarea name="data.headers.touchstones" rows="10">{{data.data.headers.touchstones}}</textarea>
+        </div>
+        {{#if data.data.clan.value}}
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "VTM5E.ClanBane"}}</label>
+            <textarea name="data.headers.bane" rows="10">{{data.data.headers.bane}}</textarea>
+        </div>
+        {{/if}}
+    </div>
+    {{/if}}
+    {{#if isCharacter}}   
+    <label class="resource-label flex-center">{{localize "VTM5E.Biography"}}</label>
+    {{else}}
+    <label class="resource-label flex-center">{{localize "VTM5E.History"}}</label>
+    {{/if}}
+    {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
+</div>
