@@ -241,7 +241,11 @@ Hooks.on('getChatLogEntryContext', function (html, options) {
       // Only show this context menu if the person is GM or author of the message
       const message = game.messages.get(li.attr('data-message-id'))
 
-      return game.user.isGM || message.isAuthor
+      // Only show this context menu if there are re-rollable dice in the message
+      const rerollableDice = li.find('.normal-dice').length
+
+      // All must be true to show the reroll dialogue
+      return (game.user.isGM || message.isAuthor) && (rerollableDice > 0)
     },
     callback: li => willpowerReroll(li)
   })
