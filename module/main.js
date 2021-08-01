@@ -232,7 +232,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 /* -------------------------------------------- */
 
 // Create context menu option on selection
-// TODO: Add condition that it only shows up on willpower-able rolls
 Hooks.on('getChatLogEntryContext', function (html, options) {
   options.push({
     name: game.i18n.localize('VTM5E.WillpowerReroll'),
