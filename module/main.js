@@ -271,7 +271,7 @@ async function willpowerReroll (roll) {
             <label><b>Select dice to reroll (Max 3)</b></label>
             <hr>
             <span class="dice-tooltip">
-              <div class="dice-rolls willpowerReroll flexrow">
+              <div class="dice-rolls flexrow willpowerReroll">
                 ${diceRolls.reverse().join('')}
               </div>
             </span>
