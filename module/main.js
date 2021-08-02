@@ -232,7 +232,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 /* -------------------------------------------- */
 
 // Create context menu option on selection
-// TODO: Add condition that it only shows up on willpower-able rolls
 Hooks.on('getChatLogEntryContext', function (html, options) {
   options.push({
     name: game.i18n.localize('VTM5E.WillpowerReroll'),
@@ -241,7 +240,11 @@ Hooks.on('getChatLogEntryContext', function (html, options) {
       // Only show this context menu if the person is GM or author of the message
       const message = game.messages.get(li.attr('data-message-id'))
 
-      return game.user.isGM || message.isAuthor
+      // Only show this context menu if there are re-rollable dice in the message
+      const rerollableDice = li.find('.normal-dice').length
+
+      // All must be true to show the reroll dialogue
+      return (game.user.isGM || message.isAuthor) && (rerollableDice > 0)
     },
     callback: li => willpowerReroll(li)
   })
@@ -271,7 +274,7 @@ async function willpowerReroll (roll) {
             <label><b>Select dice to reroll (Max 3)</b></label>
             <hr>
             <span class="dice-tooltip">
-              <div class="dice-rolls willpowerReroll flexrow">
+              <div class="dice-rolls flexrow willpowerReroll">
                 ${diceRolls.reverse().join('')}
               </div>
             </span>
