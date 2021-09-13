@@ -11,6 +11,7 @@
     "VTM5E.Hunger": "Ansia",
     "VTM5E.Rouse": "Enardecimiento",
     "VTM5E.Frenzy": "Frenesí",
+    "VTM5E.Remorse": "Remordimiento",
     "VTM5E.Roll": "Tirar",
 
     "VTM5E.Superficial": "Superficial",
@@ -158,6 +159,15 @@
     "VTM5E.Rollable": "Tirable",
     "VTM5E.UseSkill": "Usar Habilidades",
     "VTM5E.FeatureType": "Tipo de rasgo",
+
+    "VTM5E.AttributeShortLabel": "A",
+    "VTM5E.SkillShortLabel": "H",
+    "VTM5E.DisciplineShortLabel": "D",
+    "VTM5E.NothingShortLabel": "⊘",
+    "VTM5E.RollRouse": "Prueba de Enardeciendo",
+    "VTM5E.RollWillpower": "Prueba de Fuerza de Voluntad",
+    "VTM5E.RollFrenzy": "Prueba de Frenesí",
+    "VTM5E.RollRemorse": "Prueba de Remordimiento",
 
     "VTM5E.RollingWillpower": "Tirando Fuerza de Voluntad",
     "VTM5E.RollingRemorse": "Tirando Remordimiento",
