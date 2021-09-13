@@ -1,0 +1,23 @@
+<label class="dice-tray__label" for="selectedCharacterInput">
+    Character: 
+</label>
+<div class="dice-tray__searchable-select">
+    <select id="selectedCharacter" class="dice-tray__select" name="selectedCharacter">
+        {{#each characters key="name" as |character|}}
+            <option value="{{character.id}}" {{attrIf "selected" @root.selectedCharacter.id character.id }}>
+                {{character.name}}
+            </option>  
+        {{/each}}
+    </select>
+    <div id="selectedCharacterCover" class="dice-tray__searchable-select-cover">
+        <div class="dice-tray__searchable-select-hover"></div>
+        <div id="selectedCharacterFields" class="dice-tray__searchable-select-fields">
+            <ul class="dice-tray__searchable-select-options">
+                {{#each characters key="name" as |character|}}
+                <li tabindex="-1" value="{{character.id}}">{{character.name}}</li>  
+                {{/each}}
+            </ul>
+            <input id="selectedCharacterInput" class="dice-tray__input dice-tray__searchable-select-input" />
+        </div>
+    </div>
+</div>

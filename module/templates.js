@@ -26,7 +26,17 @@ export const preloadHandlebarsTemplates = async function () {
     // Item Sheet Partials
     'systems/vtm5e/templates/item/parts/skills.html',
     'systems/vtm5e/templates/item/parts/disciplines.html',
-    'systems/vtm5e/templates/item/parts/attributes.html'
+    'systems/vtm5e/templates/item/parts/attributes.html',
+
+    // Dice Tray Partials
+    'systems/vtm5e/templates/ui/parts/select-character.html',
+    'systems/vtm5e/templates/ui/parts/pool1-select-attribute.html',
+    'systems/vtm5e/templates/ui/parts/pool1-select-skill.html',
+    'systems/vtm5e/templates/ui/parts/pool1-select-discipline.html',
+    'systems/vtm5e/templates/ui/parts/pool2-select-attribute.html',
+    'systems/vtm5e/templates/ui/parts/pool2-select-skill.html',
+    'systems/vtm5e/templates/ui/parts/pool2-select-discipline.html',
+    'systems/vtm5e/templates/ui/parts/pool2-nothing.html'
   ]
 
   /* Load the template parts

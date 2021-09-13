@@ -1,0 +1,18 @@
+<div class="dice-tray__searchable-select">
+    <select id="pool1" class="dice-tray__select" name="pool1">
+        {{#each (sortAbilities selectedCharacter.data.data.abilities) as |attribute|}}
+            <option value="{{@key}}" {{attrIf "selected" @root.pool1 @key }}>{{localize attribute.name}}</option>  
+        {{/each}}
+    </select>
+    <div id="pool1Cover" class="dice-tray__searchable-select-cover">
+        <div class="dice-tray__searchable-select-hover"></div>
+        <div id="pool1Fields" class="dice-tray__searchable-select-fields">
+            <ul class="dice-tray__searchable-select-options">
+                {{#each (sortAbilities selectedCharacter.data.data.abilities) as |attribute|}}
+                    <li tabindex="-1" value="{{@key}}" title="{{localize attribute.name}}">{{localize attribute.name}}</li>  
+                {{/each}}
+            </ul>
+            <input id="pool1Input" class="dice-tray__input dice-tray__searchable-select-input" />
+        </div>
+    </div>
+</div>
