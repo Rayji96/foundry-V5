@@ -1,3 +1,5 @@
+/* global game */
+
 import { rollDice } from '../actor/roll-dice.js'
 
 export function prepareSearchableSelection(id, $content, data, callback) {
@@ -9,7 +11,7 @@ export function prepareSearchableSelection(id, $content, data, callback) {
     const options = `#${id}Fields li`;
     const visibleOptions = `${options}:visible`;
 
-    $content.find(cover).on('click', event => {
+    $content.find(cover).on('click', () => {
         if ($content.find(fields).is(":hidden")) {
             $content.find(select).css("visibility", "hidden");
             $content.find(options).show();
@@ -118,7 +120,7 @@ export function prepareCustomRollButton($content, data) {
         } else {
             rollTitle = pool1.name
         }
-        + game.i18n.localize('VTM5E.RousingBlood');;
+        + game.i18n.localize('VTM5E.RousingBlood');
         
         rollDice(poolSize, data.selectedCharacter, rollTitle, 0, true);
     });
