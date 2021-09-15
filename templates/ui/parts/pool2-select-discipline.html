@@ -1,7 +1,11 @@
 <div class="dice-tray__searchable-select">
     <select id="pool2" class="dice-tray__select" name="pool2">
         {{#each (sortAbilities (visibleDisciplines selectedCharacter.data.data.disciplines)) as |discipline|}}
-            <option value="{{@key}}" {{attrIf "selected" @root.pool2 @key }}>{{localize discipline.name}}</option>
+            {{#if (eq @root.pool2 @key)}}
+                <option value="{{@key}}" selected>{{localize discipline.name}}</option>
+            {{else}}
+                <option value="{{@key}}">{{localize discipline.name}}</option>
+            {{/if}}
         {{else}}
             <option value="" selected>No Disciplines</option>
         {{/each}}

@@ -304,7 +304,6 @@ Hooks.on('renderSidebarTab', (app, html) => {
     pool1: null,
     pool2Type: 'skills',
     pool2: null,
-    selectedKey: 'selected',
     updateDiceTray: (options) => {
       renderTemplate(template, options).then((c) => {
         if (c.length > 0) {
