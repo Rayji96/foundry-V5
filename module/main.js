@@ -166,7 +166,7 @@ Hooks.once('init', async function () {
 
   Handlebars.registerHelper('visibleDisciplines', function (disciplines) {
     return Object.keys(disciplines).reduce(
-      (obj, key) => { 
+      (obj, key) => {
         if (disciplines[key].visible) {
           obj[key] = disciplines[key]
         }
@@ -181,7 +181,7 @@ Hooks.once('init', async function () {
       return unordered
     }
     return Object.keys(unordered).sort().reduce(
-      (obj, key) => { 
+      (obj, key) => {
         obj[key] = unordered[key]
         return obj
       },
@@ -304,25 +304,26 @@ Hooks.on('renderSidebarTab', (app, html) => {
     pool1: null,
     pool2Type: 'skills',
     pool2: null,
+    selectedKey: 'selected',
     updateDiceTray: (options) => {
       renderTemplate(template, options).then((c) => {
         if (c.length > 0) {
           const $content = $(c)
           html.find('.dice-tray').remove()
           $chatForm.after($content)
-  
+
           prepareSearchableSelection('selectedCharacter', $content, options, (event) => game.actors.get(event.target.value))
-  
+
           prepareSearchableSelection('pool1', $content, options, (event) => event.target.value)
-  
+
           watchPool1Filters($content, options)
           options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find('#pool1 option').attr('value')
           prepareSearchableSelection('pool2', $content, options, (event) => event.target.value)
           options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find('#pool2 option').attr('value')
           watchPool2Filters($content, options)
-  
+
           prepareCustomRollButton($content, options)
-  
+
           prepareRouseShortcut($content, options)
           prepareWillpowerShortcut($content, options)
           prepareFrenzyShortcut($content, options)
