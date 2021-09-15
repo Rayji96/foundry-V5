@@ -1,4 +1,4 @@
-/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui */
+/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui, renderTemplate */
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
@@ -288,7 +288,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 /* -------------------------------------------- */
 /*  Add chat dicebox                            */
 /* -------------------------------------------- */
-Hooks.on('renderSidebarTab', (app, html, data) => {
+Hooks.on('renderSidebarTab', (app, html) => {
   if (!game.settings.get('vtm5e', 'useChatRoller')) {
     return;
   }
