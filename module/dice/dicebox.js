@@ -19,27 +19,27 @@ export function prepareSearchableSelection (id, $content, data, callback) {
       $content.find(hover).hide()
       $content.find(input).val('').focus()
     }
-  });
+  })
   $content.find(fields).on('focusout', event => {
     event.preventDefault()
     setTimeout(() => {
-    if ($content.find(fields).has($(document.activeElement)).length == 0) {
-      $content.find(select).css('visibility', 'visible')
-      $content.find(fields).hide()
-      $content.find(hover).show()
-    }
-    }, 0);
-  });
+      if ($content.find(fields).has($(document.activeElement)).length === 0) {
+        $content.find(select).css('visibility', 'visible')
+        $content.find(fields).hide()
+        $content.find(hover).show()
+      }
+    }, 0)
+  })
   $content.find(input).on('input', event => {
     const searchTerm = event.target.value.toLowerCase()
-    $content.find(options).each(function() {
+    $content.find(options).each(function () {
       if ($(this).text().toLowerCase().indexOf(searchTerm) === 0) {
         $(this).show()
         return
       }
       $(this).hide()
-    });
-  });
+    })
+  })
   $content.find(options).on('click', event => {
     event.preventDefault()
     const selectedValue = $(event.target).attr('value')
@@ -50,12 +50,12 @@ export function prepareSearchableSelection (id, $content, data, callback) {
       $content.find(hover).show()
       $content.find(select).css('visibility', 'visible')
     }, 1)
-  });
+  })
   $content.find(select).on('change', event => {
     event.preventDefault()
     data[id] = callback(event)
     data.updateDiceTray(data)
-  });
+  })
   $content.find(fields).on('keydown', event => {
     if (event.code === 'Enter') {
       if ($(event.target).is(input)) {
@@ -68,7 +68,7 @@ export function prepareSearchableSelection (id, $content, data, callback) {
       $content.find(fields).hide()
       $content.find(hover).show()
       $content.find(select).css('visibility', 'visible')
-      return;
+      return
     }
     if (event.code === 'Escape') {
       $content.find(fields).hide()
@@ -76,7 +76,7 @@ export function prepareSearchableSelection (id, $content, data, callback) {
       $content.find(select).css('visibility', 'visible')
       return
     }
-    const selectableElements = $content.find(`${input}, ${visibleOptions}`);
+    const selectableElements = $content.find(`${input}, ${visibleOptions}`)
     if (event.code === 'ArrowUp') {
       const activeIndex = selectableElements.index($(':focus'))
       selectableElements.eq((activeIndex + selectableElements.length - 1) % selectableElements.length).focus()
@@ -85,18 +85,16 @@ export function prepareSearchableSelection (id, $content, data, callback) {
     if (event.code === 'ArrowDown') {
       const activeIndex = selectableElements.index($(':focus'))
       selectableElements.eq((activeIndex + selectableElements.length + 1) % selectableElements.length).focus()
-      return
     }
-  });
+  })
 }
-
 
 export function watchPool1Filters ($content, data) {
   $content.find('.pool1Filters input[type=radio]').on('change', event => {
     event.preventDefault()
     data.pool1Type = event.target.value
     data.updateDiceTray(data)
-  });
+  })
 }
 
 export function watchPool2Filters ($content, data) {
@@ -104,7 +102,7 @@ export function watchPool2Filters ($content, data) {
     event.preventDefault()
     data.pool2Type = event.target.value
     data.updateDiceTray(data)
-  });
+  })
 }
 
 export function prepareCustomRollButton ($content, data) {
@@ -120,10 +118,9 @@ export function prepareCustomRollButton ($content, data) {
     } else {
       rollTitle = pool1.name
     }
-    + game.i18n.localize('VTM5E.RousingBlood')
 
     rollDice(poolSize, data.selectedCharacter, rollTitle, 0, true)
-  });
+  })
 }
 
 function describePool (poolNumber, data) {
@@ -140,9 +137,9 @@ function describePool (poolNumber, data) {
     return poolDesciption
   }
 
-  poolDesciption.name = game.i18n.localize(poolVars.name);
+  poolDesciption.name = game.i18n.localize(poolVars.name)
   poolDesciption.size = poolVars.value
-  
+
   return poolDesciption
 }
 
@@ -155,7 +152,7 @@ export function prepareRouseShortcut ($content, data) {
 
 export function prepareWillpowerShortcut ($content, data) {
   $content.find('.dice-tray__button[data=rollWill]').on('click', event => {
-    event.preventDefault();
+    event.preventDefault()
     const actor = data.character
     const actorData = actor.data.data
     const dicepool = (actorData.willpower.max - actorData.willpower.aggravated - actorData.willpower.superficial)
