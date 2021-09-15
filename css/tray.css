@@ -9,6 +9,7 @@
   border: 2px solid #1e5e35;
   border-radius: 5px 5px 0 0;
 }
+
 .dice-tray > * {
   margin: 2px;
 }
@@ -22,11 +23,12 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
+
 .dice-tray__custom-rolls {
   display: grid;
   margin: 0.5em 0;
   grid-template-columns: 2fr 15px 2fr 1fr;
-  grid-template-areas: 
+  grid-template-areas:
     "pool1 concat pool2 roll"
     "opts1 .      opts2 roll";
 }
@@ -79,8 +81,8 @@
 }
 
 .dice-tray__button.smallButton {
-    height: 20px;
-    width: 20px;
+  height: 20px;
+  width: 20px;
 }
 
 .dice-tray__pool-filters label,
@@ -102,17 +104,10 @@
   z-index: 2;
 }
 
-.dice-tray__pool-filters input[type="radio"]:checked + label {
-  color: #ff6400;
-  border-color: #ff6400;
-  -webkit-box-shadow: 0 0 6px inset #ff6400;
-  box-shadow: 0 0 6px inset #ff6400;
-}
-
 .dice-tray__pool-filters label {
-  padding:5px;
-  cursor:pointer;
-  z-index:1;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .dice-tray__filter-spacer {
@@ -156,7 +151,7 @@
   padding-left: 6px;
   width: 100%;
 }
-  
+
 .dice-tray__searchable-select-options {
   max-height: 500px;
   list-style: none;
@@ -165,7 +160,7 @@
   background: white;
   color: black;
   overflow-y: scroll;
-} 
+}
 
 .dice-tray__searchable-select-options li {
   padding-left: 5px;
@@ -227,7 +222,8 @@
   position: relative;
 }
 
-.dice-tray button:hover {
+.dice-tray button:hover,
+.dice-tray__pool-filters input[type="radio"]:checked + label {
   color: #ff6400;
   border-color: #ff6400;
   -webkit-box-shadow: 0 0 6px inset #ff6400;

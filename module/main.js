@@ -12,18 +12,18 @@ import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
 import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
 import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
-import { 
-  prepareSearchableSelection, 
-  prepareRouseShortcut, 
-  prepareWillpowerShortcut, 
-  prepareFrenzyShortcut, 
-  prepareHumanityShortcut, 
-  watchPool1Filters, 
+import {
+  prepareSearchableSelection,
+  prepareRouseShortcut,
+  prepareWillpowerShortcut,
+  prepareFrenzyShortcut,
+  prepareHumanityShortcut,
+  watchPool1Filters,
   watchPool2Filters,
   prepareCustomRollButton
 } from './dice/dicebox.js'
 
-const OWNED_PERMISSION = 3;
+const OWNED_PERMISSION = 3
 
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
@@ -35,24 +35,24 @@ Hooks.once('init', async function () {
     config: true,
     default: '1.5',
     type: String
-  });
-  game.settings.register("vtm5e", "useChatRoller", {
-    name: "Chat Roller",
-    hint: "Display dice roller in chat window",
-    scope: "world",
+  })
+  game.settings.register('vtm5e', 'useChatRoller', {
+    name: 'Chat Roller',
+    hint: 'Display dice roller in chat window',
+    scope: 'world',
     config: true,
     default: false,
     type: Boolean
-  });
+  })
 
-  game.settings.register("vtm5e", "chatRollerSortAbilities", {
-    name: "Sort Abilities in Chat Roller",
-    hint: "Sort abilities (Attributes, Skills, Disciplines) alphabetically in the chat roller. Disable to sort in the order on the character sheet (grouping physical, social, and mental).",
-    scope: "client",
+  game.settings.register('vtm5e', 'chatRollerSortAbilities', {
+    name: 'Sort Abilities in Chat Roller',
+    hint: 'Sort abilities (Attributes, Skills, Disciplines) alphabetically in the chat roller. Disable to sort in the order on the character sheet (grouping physical, social, and mental).',
+    scope: 'client',
     config: true,
     default: true,
     type: Boolean
-  });
+  })
 
   game.vtm5e = {
     VampireActor,
@@ -159,34 +159,34 @@ Hooks.once('init', async function () {
     return (10 - humanity - stain)
   })
 
-  Handlebars.registerHelper('attrIf', function(attr, value, test) {
-    if (value === undefined) return "";
-    return value === test ? attr : "";
+  Handlebars.registerHelper('attrIf', function (attr, value, test) {
+    if (value === undefined) return ''
+    return value === test ? attr : ''
   })
 
-  Handlebars.registerHelper('visibleDisciplines', function(disciplines) {
+  Handlebars.registerHelper('visibleDisciplines', function (disciplines) {
     return Object.keys(disciplines).reduce(
       (obj, key) => { 
         if (disciplines[key].visible) {
-          obj[key] = disciplines[key]; 
+          obj[key] = disciplines[key]
         }
-        return obj;
-      }, 
+        return obj
+      },
       {}
-    );
+    )
   })
 
-  Handlebars.registerHelper('sortAbilities', function(unordered = {}) {
+  Handlebars.registerHelper('sortAbilities', function (unordered = {}) {
     if (!game.settings.get('vtm5e', 'chatRollerSortAbilities')) {
-      return unordered;
+      return unordered
     }
     return Object.keys(unordered).sort().reduce(
       (obj, key) => { 
-        obj[key] = unordered[key]; 
-        return obj;
-      }, 
+        obj[key] = unordered[key]
+        return obj
+      },
       {}
-    );
+    )
   })
 
   Handlebars.registerHelper('numLoop', function (num, options) {
@@ -290,51 +290,49 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 /* -------------------------------------------- */
 Hooks.on('renderSidebarTab', (app, html) => {
   if (!game.settings.get('vtm5e', 'useChatRoller')) {
-    return;
+    return
   }
 
-  let $chat_form = html.find('#chat-form');
-  const template = 'systems/VTM5E/templates/ui/tray.html';
+  const $chatForm = html.find('#chat-form')
+  const template = 'systems/VTM5E/templates/ui/tray.html'
   const ownedCharacters = Array.from(game.actors)
-    .filter((c) => c.permission === OWNED_PERMISSION);
+    .filter((c) => c.permission === OWNED_PERMISSION)
   const options = {
     characters: ownedCharacters,
     selectedCharacter: ownedCharacters[0],
-    pool1Type: "abilities",
+    pool1Type: 'abilities',
     pool1: null,
-    pool2Type: "skills",
+    pool2Type: 'skills',
     pool2: null,
     updateDiceTray: (options) => {
       renderTemplate(template, options).then((c) => {
         if (c.length > 0) {
-          let $content = $(c);
-          html.find(".dice-tray").remove();
-          $chat_form.after($content);
+          const $content = $(c)
+          html.find('.dice-tray').remove()
+          $chatForm.after($content)
   
-          prepareSearchableSelection("selectedCharacter", $content, options, (event) => game.actors.get(event.target.value));
+          prepareSearchableSelection('selectedCharacter', $content, options, (event) => game.actors.get(event.target.value))
   
-          prepareSearchableSelection("pool1", $content, options, (event) => event.target.value);
+          prepareSearchableSelection('pool1', $content, options, (event) => event.target.value)
   
-          watchPool1Filters($content, options);
-          options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find("#pool1 option").attr("value");
-          prepareSearchableSelection("pool2", $content, options, (event) => event.target.value);
-          options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find("#pool2 option").attr("value");
-          watchPool2Filters($content, options);
+          watchPool1Filters($content, options)
+          options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find('#pool1 option').attr('value')
+          prepareSearchableSelection('pool2', $content, options, (event) => event.target.value)
+          options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find('#pool2 option').attr('value')
+          watchPool2Filters($content, options)
   
-          prepareCustomRollButton($content, options);
+          prepareCustomRollButton($content, options)
   
-          prepareRouseShortcut($content, options);
-          prepareWillpowerShortcut($content, options);
-          prepareFrenzyShortcut($content, options);
-          prepareHumanityShortcut($content, options);
-  
+          prepareRouseShortcut($content, options)
+          prepareWillpowerShortcut($content, options)
+          prepareFrenzyShortcut($content, options)
+          prepareHumanityShortcut($content, options)
         }
-      });
+      })
     }
   }
-  options.updateDiceTray(options);
-});
-
+  options.updateDiceTray(options)
+})
 
 /* -------------------------------------------- */
 /*  Add willpower reroll                        */
