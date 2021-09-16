@@ -11,6 +11,7 @@
     "VTM5E.Hunger": "Fome",
     "VTM5E.Rouse": "Despertar o Sangue",
     "VTM5E.Frenzy": "Frenesi",
+    "VTM5E.Remorse": "Remorso",
     "VTM5E.Roll": "Rolar",
 
     "VTM5E.Superficial": "Superficial",
@@ -158,6 +159,15 @@
     "VTM5E.Rollable": "Rolável",
     "VTM5E.UseSkill": "Usar Habilidades",
     "VTM5E.FeatureType": "Tipo de Vantagem",
+
+    "VTM5E.AttributeShortLabel": "A",
+    "VTM5E.SkillShortLabel": "P",
+    "VTM5E.DisciplineShortLabel": "D",
+    "VTM5E.NothingShortLabel": "⊘",
+    "VTM5E.RollRouse": "Teste Despertando",
+    "VTM5E.RollWillpower": "Teste Força de Vontade",
+    "VTM5E.RollFrenzy": "Teste Frenesi",
+    "VTM5E.RollRemorse": "Teste Remorso",
 
     "VTM5E.RollingWillpower": "Rolando Força de Vontade",
     "VTM5E.RollingRemorse": "Rolando Remorso",
