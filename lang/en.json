@@ -183,5 +183,11 @@
     "VTM5E.Difficulty": "Difficulty?",
     "VTM5E.Rolling": "Rolling",
     "VTM5E.Cancel": "Cancel",
-    "VTM5E.SelectAbility": "Select Ability"
+    "VTM5E.SelectAbility": "Select Ability",
+
+    "VTM5E.SimpleMortal": "SimpleMortal",
+    "VTM5E.StandardPools": "Standard Dice Pools",
+    "VTM5E.Physical": "Physical",
+    "VTM5E.Social": "Social",
+    "VTM5E.Mental": "Mental"
 }
