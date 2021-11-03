@@ -177,6 +177,13 @@
   font-weight: bold;
 }
 
+.vtm5e .description-content {
+  background: white;
+  border: 1px solid #e0dede;
+  padding: 5px;
+  height: 95%;
+}
+
 .vtm5e .window-content .resource-label {
   text-transform: initial;
   font-size: 16px;
@@ -321,9 +328,12 @@
 .vtm5e .sheet-body,
 .vtm5e .sheet-body .tab,
 .vtm5e .sheet-body .tab .editor {
-  height: 100%;
+  /* height: 100%; */
+  min-height: 100px;
+}
 
-  /* min-height: 100px; */
+.vtm5e .sheet-body .tab .tox-tinymce {
+  min-height: 100px;
 }
 
 .vtm5e .sheet-body .tab .half-height {
@@ -572,6 +582,16 @@
 
 .vtm5e .locked .resource-value-step:not(.hunger-value) {
   cursor: default;
+}
+
+.vtm5e .locked .resource-minus{
+  opacity: 0;
+  cursor: default !important;
+}
+
+.vtm5e .locked .resource-plus{
+  opacity: 0;
+  cursor: default !important;
 }
 
 .willpowerReroll .die {
