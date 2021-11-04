@@ -16,6 +16,8 @@
 
 .rollable:hover,
 .rollable:focus,
+.rollable-with-mod:hover,
+.rollable-with-mod:focus,
 .vrollable:hover,
 .vrollable:focus,
 .power-rollable:hover,
@@ -165,7 +167,8 @@
   border: 1px solid #e0dede;
 }
 
-.vtm5e button.rollable {
+.vtm5e button.rollable,
+.vtm5e button.rollable-with-mod {
   background: #790813;
   color: white;
   font-family: "cormorantlight", sans-serif;
@@ -258,6 +261,26 @@
   margin-bottom: 10px;
 }
 
+.vtm5e .limited .sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 160px;
+  flex: 0 0 160px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-bottom: 0px;
+}
+
 .vtm5e .coterie-sheet .sheet-header,
 .vtm5e .mortal-sheet .sheet-header,
 .vtm5e .ghoul-sheet .sheet-header {
@@ -313,6 +336,14 @@
   border-bottom: 0;
 }
 
+.vtm5e .sheet-header h2.limited-charname {
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+  flex: 0;
+  width: 100%;
+}
+
 .vtm5e .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
@@ -328,12 +359,13 @@
 .vtm5e .sheet-body,
 .vtm5e .sheet-body .tab,
 .vtm5e .sheet-body .tab .editor {
-  /* height: 100%; */
-  min-height: 100px;
+  height: 100%;
+  min-height: 160px;
 }
 
 .vtm5e .sheet-body .tab .tox-tinymce {
-  min-height: 100px;
+  min-height: 160px;
+  height: 100%;
 }
 
 .vtm5e .sheet-body .tab .half-height {
@@ -584,12 +616,12 @@
   cursor: default;
 }
 
-.vtm5e .locked .resource-minus{
+.vtm5e .locked .resource-minus {
   opacity: 0;
   cursor: default !important;
 }
 
-.vtm5e .locked .resource-plus{
+.vtm5e .locked .resource-plus {
   opacity: 0;
   cursor: default !important;
 }

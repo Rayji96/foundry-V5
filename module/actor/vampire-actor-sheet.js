@@ -93,6 +93,8 @@ export class VampireActorSheet extends GhoulActorSheet {
       dice2 = disciplineValue
     } else if (item.data.data.skill) {
       dice2 = this.actor.data.data.skills[item.data.data.dice2].value
+    } else if (item.data.data.amalgam) {
+      dice2 = this.actor.data.data.disciplines[item.data.data.dice2].value
     } else {
       dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
     }
