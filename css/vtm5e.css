@@ -278,7 +278,7 @@
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .vtm5e .coterie-sheet .sheet-header,

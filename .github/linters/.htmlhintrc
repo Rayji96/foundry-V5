@@ -8,7 +8,7 @@
   "tag-pair": true,
   "tag-self-close": false,
   "spec-char-escape": false,
-  "id-unique": true,
+  "id-unique": false,
   "src-not-empty": true,
   "title-require": true,
   "alt-require": true,
