@@ -1,6 +1,6 @@
 # Vampire the Masquerade 5e System
 
-[![Foundry Shield 0.8.8]][Foundry URL]
+[![Foundry Shield 0.8.9]][Foundry URL]
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
@@ -24,6 +24,7 @@ Huge thanks to these folks for their contributions:
 
 * This sheet was initially based on the [boilerplate system] by @asacolips#1867
 * French localization started by @Lloyxide#6914
+* Italian localization started by @Arcadio21#8780
 * Help with french localization by [Lemantia]
 * Brazilian Portuguese localization started by [danielmalka]
 * German localization started by [tom959]
@@ -39,9 +40,10 @@ Huge thanks to these folks for their contributions:
 * Partial HTML, character types, migrations, bugfixes, and refactors by [Dakayl]
 * In-chat willpower rerolling started by [thalissas]
 * Adding blood potency bonus to discipline rolls by [MarkusOzgur]
+* Dicebox by [crcroberts]
 * Feedback and fixes by [eisenfuchs]
 
-[Foundry Shield 0.8.8]: https://img.shields.io/badge/Foundry-0.8.8-informational
+[Foundry Shield 0.8.9]: https://img.shields.io/badge/Foundry-0.8.9-informational
 [Foundry URL]: https://foundryvtt.com
 
 [MIT License]: https://img.shields.io/badge/License-MIT-green
@@ -66,3 +68,4 @@ Huge thanks to these folks for their contributions:
 [thalissas]: https://github.com/thalissa
 [MarkusOzgur]: https://github.com/MarkusOzgur
 [Musrha]: https://github.com/Musrha
+[crcroberts]: https://github.com/crcroberts
