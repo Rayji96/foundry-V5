@@ -37,6 +37,11 @@
       "name": "German",
       "path": "lang/de.json"
     }
+    {
+      "lang": "it",
+      "name": "Italian",
+      "path": "lang/it.json"
+    }
   ],
   "gridDistance": 5,
   "gridUnits": "ft",

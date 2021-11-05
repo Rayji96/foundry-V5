@@ -2,6 +2,12 @@
     "VTM5E.Name": "Nombre",
     "VTM5E.Clan": "Clan",
     "VTM5E.Predator": "Depredador",
+
+    "VTM5E.Vampire": "Vampiro",
+    "VTM5E.Coterie": "Grupo",
+    "VTM5E.Ghoul": "Demonio Necrófago",
+    "VTM5E.Mortal": "Mortal",
+    "VTM5E.Domitor": "Domitor",
     
     "VTM5E.Health": "Salud",
     "VTM5E.Willpower": "Fuerza de Voluntad",
@@ -81,6 +87,8 @@
     "VTM5E.Edit": "Editar",
     "VTM5E.Delete": "Borrar",
     "VTM5E.CustomRolls": "Tiradas Personalizadas",
+    "VTM5E.CustomRoll": "Tirada Personalizadas",
+    "VTM5E.Boon": "Bendición",
 
     "VTM5E.Level": "Nivel",
     "VTM5E.Add": "Añadir",
@@ -153,6 +161,8 @@
     "VTM5E.TouchstonesAndConvictions": "Piedras de Toque y Convicciones",
     "VTM5E.ClanBane": "Prohibición del Clan",
     "VTM5E.Biography": "Biografía",
+    "VTM5E.Appearance": "Apariencia",
+    "VTM5E.History": "Historia",
 
     "VTM5E.Discipline": "Disciplina",
     "VTM5E.System": "Sistema",

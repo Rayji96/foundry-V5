@@ -2,6 +2,12 @@
     "VTM5E.Name": "Nome",
     "VTM5E.Clan": "Clã",
     "VTM5E.Predator": "Predador",
+
+    "VTM5E.Vampire": "Vampiro",
+    "VTM5E.Coterie": "Círculo",
+    "VTM5E.Ghoul": "Canibal",
+    "VTM5E.Mortal": "Mortal",
+    "VTM5E.Domitor": "Dominador",
     
     "VTM5E.Health": "Vitalidade",
     "VTM5E.Willpower": "Força de Vontade",
@@ -81,6 +87,8 @@
     "VTM5E.Edit": "Editar",
     "VTM5E.Delete": "Apagar",
     "VTM5E.CustomRolls": "Rolos Personalizados",
+    "VTM5E.CustomRoll": "Rolar Personalizados",
+    "VTM5E.Boon": "Benção",
 
     "VTM5E.Level": "Nível",
     "VTM5E.Add": "Adicionar",
@@ -153,6 +161,8 @@
     "VTM5E.TouchstonesAndConvictions": "Pilares e Convicções",
     "VTM5E.ClanBane": "Maldição do Clã",
     "VTM5E.Biography": "Biografia",
+    "VTM5E.Appearance": "Aparência",
+    "VTM5E.History": "História",
 
     "VTM5E.Discipline": "Disciplina",
     "VTM5E.System": "Sistema",
