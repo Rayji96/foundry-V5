@@ -17,6 +17,7 @@
     "VTM5E.Hunger": "Hunger",
     "VTM5E.Rouse": "Wallung",
     "VTM5E.Frenzy": "Raserei",
+    "VTM5E.Remorse": "Reue",
     "VTM5E.Roll": "Wurf",
 
     "VTM5E.Superficial": "Leichter",
@@ -75,7 +76,7 @@
     "VTM5E.Streetwise": "Szenekenntnis",
     "VTM5E.Science": "Naturwissenschaften",
     "VTM5E.Survival": "Überleben",
-    "VTM5E.Subterfuge": "Einschüchtern",
+    "VTM5E.Subterfuge": "Ausflüchte",
     "VTM5E.Technology": "Technologie",
 
     "VTM5E.Specialties": "Spezialisierungen",
@@ -160,13 +161,24 @@
     "VTM5E.TouchstonesAndConvictions": "Anker & Überzeugungen",
     "VTM5E.ClanBane": "Clansfluch",
     "VTM5E.Biography": "Geschichte",
+    "VTM5E.Appearance": "Aussehen",
     "VTM5E.History": "Geschichte",
 
     "VTM5E.Discipline": "Disziplin",
     "VTM5E.System": "System",
     "VTM5E.Rollable": "Würfelbar",
     "VTM5E.UseSkill": "Fähigkeiten Einsetzen",
+    "VTM5E.Amalgam": "Amalgam",
     "VTM5E.FeatureType": "Merkmal Typ",
+
+    "VTM5E.AttributeShortLabel": "A",
+    "VTM5E.SkillShortLabel": "F",
+    "VTM5E.DisciplineShortLabel": "D",
+    "VTM5E.NothingShortLabel": "⊘",
+    "VTM5E.RollRouse": "Wallung Rollen",
+    "VTM5E.RollWillpower": "Willpower Rollen",
+    "VTM5E.RollFrenzy": "Raserei Rollen",
+    "VTM5E.RollRemorse": "Reue Rollen",
 
     "VTM5E.RollingWillpower": "Rolle Willenskraft",
     "VTM5E.RollingRemorse": "Rolle Reue",

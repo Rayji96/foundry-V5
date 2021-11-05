@@ -4,6 +4,7 @@
     "templates": {
       "base": {
         "biography": "",
+        "appearance": "",
         "equipment": "",
         "notes": "",
         "headers":{
@@ -347,7 +348,8 @@
       "dice2": "discipline",
       "cost": "",
       "rollable": false,
-      "skill": false
+      "skill": false,
+      "amalgam": false
     },
     "specialty": {
       "templates": ["base"],

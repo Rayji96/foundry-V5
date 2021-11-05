@@ -109,6 +109,7 @@ export class MortalActorSheet extends CoterieActorSheet {
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this))
+    html.find('.rollable-with-mod').click(this._onRollWithMod.bind(this))
     html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
     html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
     // Rollable abilities.
@@ -189,6 +190,50 @@ export class MortalActorSheet extends CoterieActorSheet {
     const numDice = dataset.roll
 
     rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger)
+  }
+
+  _onRollWithMod (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const useHunger = this.hunger && (dataset.useHunger === '1')
+
+    const template = `
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
+              <input type="text" id="inputMod" value="0">
+          </div>  
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
+              <input type="text" min="0" id="inputDif" value="0">
+          </div>
+      </form>`
+
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Roll'),
+        callback: async (html) => {
+          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
+          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
+          const numDice = parseInt(dataset.roll) + modifier
+          rollDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger)
+        }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
+      }
+    }
+
+    new Dialog({
+      title: `${dataset.label}`,
+      content: template,
+      buttons: buttons,
+      default: 'draw'
+    }).render(true)
   }
 
   _onCustomVampireRoll (event) {
@@ -292,9 +337,9 @@ export class MortalActorSheet extends CoterieActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const resource = dataset.resource
-    if (dataset.action === 'plus') {
+    if (dataset.action === 'plus' && !this.locked) {
       actorData.data[resource].max++
-    } else if (dataset.action === 'minus') {
+    } else if (dataset.action === 'minus' && !this.locked) {
       actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
     }
 

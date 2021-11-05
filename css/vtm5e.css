@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
+@import url("./tray.css");
 
 /* Fonts */
 @font-face {
@@ -15,6 +16,8 @@
 
 .rollable:hover,
 .rollable:focus,
+.rollable-with-mod:hover,
+.rollable-with-mod:focus,
 .vrollable:hover,
 .vrollable:focus,
 .power-rollable:hover,
@@ -164,7 +167,8 @@
   border: 1px solid #e0dede;
 }
 
-.vtm5e button.rollable {
+.vtm5e button.rollable,
+.vtm5e button.rollable-with-mod {
   background: #790813;
   color: white;
   font-family: "cormorantlight", sans-serif;
@@ -174,6 +178,13 @@
 
 .vtm5e .resource-label {
   font-weight: bold;
+}
+
+.vtm5e .description-content {
+  background: white;
+  border: 1px solid #e0dede;
+  padding: 5px;
+  height: 95%;
 }
 
 .vtm5e .window-content .resource-label {
@@ -250,6 +261,26 @@
   margin-bottom: 10px;
 }
 
+.vtm5e .limited .sheet-header {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 160px;
+  flex: 0 0 160px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+
 .vtm5e .coterie-sheet .sheet-header,
 .vtm5e .mortal-sheet .sheet-header,
 .vtm5e .ghoul-sheet .sheet-header {
@@ -305,6 +336,14 @@
   border-bottom: 0;
 }
 
+.vtm5e .sheet-header h2.limited-charname {
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+  flex: 0;
+  width: 100%;
+}
+
 .vtm5e .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
@@ -321,8 +360,12 @@
 .vtm5e .sheet-body .tab,
 .vtm5e .sheet-body .tab .editor {
   height: 100%;
+  min-height: 160px;
+}
 
-  /* min-height: 100px; */
+.vtm5e .sheet-body .tab .tox-tinymce {
+  min-height: 160px;
+  height: 100%;
 }
 
 .vtm5e .sheet-body .tab .half-height {
@@ -553,7 +596,7 @@
 }
 
 .roll-img {
-  max-width: 80%;
+  max-width: 30px;
   margin: 1px;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 3px;
@@ -562,10 +605,6 @@
 .roll-img.hunger-dice {
   background: rgba(255, 230, 230, 0.5);
   border-color: #790813;
-}
-
-.chat-message .roll-img {
-  max-width: 10%;
 }
 
 .vtm5e .locked .resource-value-empty:not(.hunger-value) {
@@ -577,16 +616,26 @@
   cursor: default;
 }
 
+.vtm5e .locked .resource-minus {
+  opacity: 0;
+  cursor: default !important;
+}
+
+.vtm5e .locked .resource-plus {
+  opacity: 0;
+  cursor: default !important;
+}
+
 .willpowerReroll .die {
-  margin-left: 3px;
+  flex: 0;
 }
 
 .willpowerReroll .selected::after {
   position: absolute;
   content: 'X';
-  font-size: 24px;
+  font-size: 30px;
   color: red;
-  margin-left: -20px;
+  margin-left: -25px;
   margin-top: -2px;
 }
 

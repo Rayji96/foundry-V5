@@ -17,6 +17,7 @@
     "VTM5E.Hunger": "Soif",
     "VTM5E.Rouse": "Exaltation",
     "VTM5E.Frenzy": "Frénésie",
+    "VTM5E.Remorse": "Remords",
     "VTM5E.Roll": "Jet",
 
     "VTM5E.Superficial": "Superficiel",
@@ -160,13 +161,24 @@
     "VTM5E.TouchstonesAndConvictions": "Attaches et Convictions",
     "VTM5E.ClanBane": "Fléau de clan",
     "VTM5E.Biography": "Biographie",
+    "VTM5E.Appearance": "Apparence",
     "VTM5E.History": "Histoire",
 
     "VTM5E.Discipline": "Discipline",
     "VTM5E.System": "Système",
     "VTM5E.Rollable": "Jet de dés",
     "VTM5E.UseSkill": "Utiliser des Compétences",
+    "VTM5E.Amalgam": "Amalgame",
     "VTM5E.FeatureType": "Type d'Atout",
+
+    "VTM5E.AttributeShortLabel": "A",
+    "VTM5E.SkillShortLabel": "C",
+    "VTM5E.DisciplineShortLabel": "D",
+    "VTM5E.NothingShortLabel": "⊘",
+    "VTM5E.RollRouse": "Test la Exaltation",
+    "VTM5E.RollWillpower": "Test la volonté",
+    "VTM5E.RollFrenzy": "Test à la frénésie",
+    "VTM5E.RollRemorse": "Test à la Remords",
 
     "VTM5E.RollingWillpower": "Jet de Volonté",
     "VTM5E.RollingRemorse": "Jet de Remords",
