@@ -1,9 +1,17 @@
 <div class="resource flex-group-center humanity">
-    <label for="data.data.humanity.value" class="resource-label rollable" data-roll="{{remorse data.data.humanity.value data.data.humanity.stains}}"
+    <div class="flexrow">
+        <i class="fas fa-minus resource-control resource-minus" data-resource="humanity" data-action="minus"></i>
+        <label for="data.data.humanity.value" class="resource-label rollable" data-roll="{{remorse data.data.humanity.value data.data.humanity.stains}}"
     data-label="{{localize 'VTM5E.RollingRemorse'}}">{{localize "VTM5E.Humanity"}}</label>
+        <i class="fas fa-plus resource-control resource-plus" data-resource="humanity" data-action="plus"></i>
+    </div>
+
     <div class="resource-content flexrow flex-center flex-between">
-        <div class="resource-counter" data-states="-:value,/:stains" data-value="{{data.data.humanity.value}}" data-stains="{{data.data.humanity.stains}}"  data-name="data.humanity">
-            {{#numLoop 10}}
+        <div class="resource-counter" data-states="/:stains" data-value="{{data.data.humanity.value}}" data-stains="{{data.data.humanity.stains}}"  data-name="data.humanity">
+            {{#numLoop data.data.humanity.value}}
+            <span class="resource-counter-step blocked" data-state="blocked"></span>
+            {{/numLoop}}
+            {{#numLoop (minus 10 data.data.humanity.value)}}
             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
             {{/numLoop}}
         </div>

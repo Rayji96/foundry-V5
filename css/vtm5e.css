@@ -524,8 +524,9 @@
   cursor: pointer;
 }
 
-.vtm5e .resource-counter .resource-counter-step[data-state="-"] {
+.vtm5e .resource-counter .resource-counter-step.blocked {
   background-color: #790813;
+  pointer-events: none;
 }
 
 .vtm5e .resource-counter .resource-counter-step[data-state="/"] {

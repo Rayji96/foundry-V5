@@ -5,7 +5,7 @@
 
     "VTM5E.Vampire": "Vampiro",
     "VTM5E.Coterie": "Grupo",
-    "VTM5E.Ghoul": "Demonio Necrófago",
+    "VTM5E.Ghoul": "Ghoul",
     "VTM5E.Mortal": "Mortal",
     "VTM5E.Domitor": "Domitor",
     
@@ -175,10 +175,10 @@
     "VTM5E.SkillShortLabel": "H",
     "VTM5E.DisciplineShortLabel": "D",
     "VTM5E.NothingShortLabel": "⊘",
-    "VTM5E.RollRouse": "Prueba de Enardeciendo",
+    "VTM5E.RollRouse": "Control de Enardeciendo",
     "VTM5E.RollWillpower": "Prueba de Fuerza de Voluntad",
-    "VTM5E.RollFrenzy": "Prueba de Frenesí",
-    "VTM5E.RollRemorse": "Prueba de Remordimiento",
+    "VTM5E.RollFrenzy": "Control de Frenesí",
+    "VTM5E.RollRemorse": "Control de Remordimiento",
 
     "VTM5E.RollingWillpower": "Tirando Fuerza de Voluntad",
     "VTM5E.RollingRemorse": "Tirando Remordimiento",

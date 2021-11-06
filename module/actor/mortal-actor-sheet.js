@@ -136,11 +136,11 @@ export class MortalActorSheet extends CoterieActorSheet {
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
               <select id="abilitySelect">${options}</select>
-          </div>  
+          </div>
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
-          </div>  
+          </div>
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
               <input type="text" min="0" id="inputDif" value="0">
@@ -203,7 +203,7 @@ export class MortalActorSheet extends CoterieActorSheet {
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
-          </div>  
+          </div>
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
               <input type="text" min="0" id="inputDif" value="0">
@@ -308,15 +308,12 @@ export class MortalActorSheet extends CoterieActorSheet {
       const states = parseCounterStates(data.states)
       const humanity = data.name === 'data.humanity'
 
-      const fulls = Number(data[states['-']]) || 0
       const halfs = Number(data[states['/']]) || 0
       const crossed = Number(data[states.x]) || 0
-
-      const values = humanity ? new Array(fulls + halfs) : new Array(halfs + crossed)
+      const values = humanity ? new Array(halfs) : new Array(halfs + crossed)
 
       if (humanity) {
-        values.fill('-', 0, fulls)
-        values.fill('/', fulls, fulls + halfs)
+        values.fill('/', 0, halfs)
       } else {
         values.fill('/', 0, halfs)
         values.fill('x', halfs, halfs + crossed)
@@ -324,7 +321,7 @@ export class MortalActorSheet extends CoterieActorSheet {
 
       $(this).find('.resource-counter-step').each(function () {
         this.dataset.state = ''
-        if (this.dataset.index < values.length) {
+        if (this.dataset.index < values.length && this.dataset.state !== 'blocked') {
           this.dataset.state = values[this.dataset.index]
         }
       })
@@ -337,19 +334,30 @@ export class MortalActorSheet extends CoterieActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const resource = dataset.resource
-    if (dataset.action === 'plus' && !this.locked) {
-      actorData.data[resource].max++
-    } else if (dataset.action === 'minus' && !this.locked) {
-      actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
-    }
 
-    if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
-      actorData.data[resource].aggravated = actorData.data[resource].max - actorData.data[resource].superficial
-      if (actorData.data[resource].aggravated <= 0) {
-        actorData.data[resource].aggravated = 0
-        actorData.data[resource].superficial = actorData.data[resource].max
+    if (resource === 'humanity') {
+      if (dataset.action === 'plus' && !this.locked) {
+        actorData.data[resource].value = Math.min(actorData.data[resource].value + 1, 10)
+        actorData.data[resource].stains = Math.min(actorData.data[resource].stains, 10 - actorData.data[resource].value)
+      } else if (dataset.action === 'minus' && !this.locked) {
+        actorData.data[resource].value = Math.max(actorData.data[resource].value - 1, 0)
+      }
+    } else {
+      if (dataset.action === 'plus' && !this.locked) {
+        actorData.data[resource].max++
+      } else if (dataset.action === 'minus' && !this.locked) {
+        actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
+      }
+
+      if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
+        actorData.data[resource].aggravated = actorData.data[resource].max - actorData.data[resource].superficial
+        if (actorData.data[resource].aggravated <= 0) {
+          actorData.data[resource].aggravated = 0
+          actorData.data[resource].superficial = actorData.data[resource].max
+        }
       }
     }
+
     this.actor.update(actorData)
   }
 }

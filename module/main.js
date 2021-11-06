@@ -61,9 +61,9 @@ Hooks.once('init', async function () {
   }
 
   /**
-     * Set an initiative formula for the system
-     * @type {String}
-     */
+   * Set an initiative formula for the system
+   * @type {String}
+   */
   CONFIG.Combat.initiative = {
     formula: '1d20'
   }
@@ -123,6 +123,8 @@ Hooks.once('init', async function () {
   Handlebars.registerHelper('and', function (bool1, bool2) {
     return bool1 && bool2
   })
+
+  Handlebars.registerHelper('minus', (a, b) => a - b)
 
   Handlebars.registerHelper('toLowerCase', function (str) {
     return str.toLowerCase()
