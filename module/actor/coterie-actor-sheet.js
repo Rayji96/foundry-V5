@@ -108,7 +108,7 @@ export class CoterieActorSheet extends ActorSheet {
     // Send Inventory Item to Chat
     html.find('.item-chat').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
-      const item = this.actor.getOwnedItem(li.data('itemId'))
+      const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
       renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
         name: item.data.name,
         img: item.data.img,
@@ -123,14 +123,14 @@ export class CoterieActorSheet extends ActorSheet {
     // Update Inventory Item
     html.find('.item-edit').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
-      const item = this.actor.getOwnedItem(li.data('itemId'))
+      const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
       item.sheet.render(true)
     })
 
     // Delete Inventory Item
     html.find('.item-delete').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
-      this.actor.deleteOwnedItem(li.data('itemId'))
+      this.actor.deleteEmbeddedDocuments('Item', [li.data('itemId')])
       li.slideUp(200, () => this.render(false))
     })
 
@@ -249,7 +249,7 @@ export class CoterieActorSheet extends ActorSheet {
     delete itemData.data.type
 
     // Finally, create the item!
-    return this.actor.createOwnedItem(itemData)
+    return this.actor.createEmbeddedDocuments('Item', [itemData])
   }
 
   getItemDefaultName (type, data) {
