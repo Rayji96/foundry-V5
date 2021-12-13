@@ -41,6 +41,11 @@
       "lang": "it",
       "name": "Italian",
       "path": "lang/it.json"
+    },
+	{
+      "lang": "pl",
+      "name": "Polish",
+      "path": "lang/pl.json"
     }
   ],
   "gridDistance": 5,
