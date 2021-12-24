@@ -205,7 +205,7 @@
   height: 41px;
 }
 
-.vtm5e .window-content nav.sheet-tabs a.item.active {
+.vtm5e .window-content nav.sheet-tabs .item.active {
   background: #faf5ed;
   text-decoration: none;
 }
@@ -389,6 +389,8 @@
 .vtm5e .tabs .item {
   line-height: 40px;
   font-weight: bold;
+  flex: 1;
+  cursor: pointer;
 }
 
 .vtm5e .tabs .item.active {
