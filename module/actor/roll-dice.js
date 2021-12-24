@@ -2,7 +2,7 @@
 /* global ChatMessage, Roll, game */
 
 // Function to roll dice
-export function rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true) {
+export async function rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true) {
   let hungerDice
   if (useHunger) {
     hungerDice = Math.min(actor.data.data.hunger.value, numDice)
@@ -11,7 +11,7 @@ export function rollDice (numDice, actor, label = '', difficulty = 0, useHunger 
   }
   const dice = numDice - hungerDice
   const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dhcs>5', actor.data.data)
-  const rollResult = roll.evaluate()
+  await roll.evaluate()
 
   let difficultyResult = '<span></span>'
   let success = 0
@@ -22,7 +22,7 @@ export function rollDice (numDice, actor, label = '', difficulty = 0, useHunger 
   let hungerFail = 0
   let hungerCritFail = 0
 
-  rollResult.terms[0].results.forEach((dice) => {
+  roll.terms[0].results.forEach((dice) => {
     if (dice.success) {
       if (dice.result === 10) {
         critSuccess++
@@ -34,7 +34,7 @@ export function rollDice (numDice, actor, label = '', difficulty = 0, useHunger 
     }
   })
 
-  rollResult.terms[2].results.forEach((dice) => {
+  roll.terms[2].results.forEach((dice) => {
     if (dice.success) {
       if (dice.result === 10) {
         hungerCritSuccess++
@@ -103,7 +103,7 @@ export function rollDice (numDice, actor, label = '', difficulty = 0, useHunger 
     label = label + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img hunger-dice" />'
   }
 
-  rollResult.toMessage({
+  roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor: actor }),
     content: label
   })

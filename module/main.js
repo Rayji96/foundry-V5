@@ -294,7 +294,7 @@ Hooks.on('renderSidebarTab', (app, html) => {
   }
 
   const $chatForm = html.find('#chat-form')
-  const template = 'systems/VTM5E/templates/ui/tray.html'
+  const template = 'systems/vtm5e/templates/ui/tray.html'
   const ownedCharacters = Array.from(game.actors)
     .filter((c) => c.permission === OWNED_PERMISSION)
   const options = {
