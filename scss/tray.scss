@@ -1,22 +1,19 @@
 .dice-tray {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
   flex: 0;
   padding: 5px;
   margin: 3px;
-  background: url("/systems/vtm5e/assets/images/background-green-marble.jpg"), #153b23;
+  background: url("/systems/vtm5e/assets/images/background-green-marble.jpg"),
+    #153b23;
   background-size: cover;
   border: 2px solid #1e5e35;
   border-radius: 5px 5px 0 0;
+  .flexrow {
+    flex-wrap: nowrap;
+  }
 }
 
 .dice-tray > * {
   margin: 2px;
-}
-
-.dice-tray .flexrow {
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
 }
 
 .dice-tray__character {
