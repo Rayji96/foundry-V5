@@ -49,8 +49,8 @@
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
   &-6col {
-    grid-column: span 5 / span 5;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-column: span 6 / span 6;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
   &-7col {
     grid-column: span 7 / span 7;
@@ -148,6 +148,12 @@
     font-family: initial;
     background: white;
     border: 1px solid #e0dede;
+  }
+  .item-name h3 {
+    line-height: 18px;
+    font-weight: bold;
+    flex: 4 0 0;
+    text-align: center;
   }
   .window-content {
     background: #faf5ed;
@@ -482,30 +488,13 @@
 }
 
 .vtm5e .resource-value .resource-value-empty {
+  @include fadeOut;
   height: 14px;
   width: 14px;
   border: 1px solid black;
   display: inline-block;
   border-radius: 50%;
   cursor: pointer;
-  background: linear-gradient(
-      45deg,
-      transparent 0%,
-      transparent 43%,
-      black 45%,
-      black 55%,
-      transparent 57%,
-      transparent 100%
-    ),
-    linear-gradient(
-      135deg,
-      transparent 0%,
-      transparent 43%,
-      black 45%,
-      black 55%,
-      transparent 57%,
-      transparent 100%
-    );
 }
 
 .vtm5e .resource-counter .resource-counter-step {
@@ -533,24 +522,7 @@
 }
 
 .vtm5e .resource-counter .resource-counter-step[data-state="x"] {
-  background: linear-gradient(
-      45deg,
-      transparent 0%,
-      transparent 43%,
-      black 45%,
-      black 55%,
-      transparent 57%,
-      transparent 100%
-    ),
-    linear-gradient(
-      135deg,
-      transparent 0%,
-      transparent 43%,
-      black 45%,
-      black 55%,
-      transparent 57%,
-      transparent 100%
-    );
+  @include fadeOut;
 }
 
 .vtm5e .flex-group-center:not(.flexrow) .resource-value,

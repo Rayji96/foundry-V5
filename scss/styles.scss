@@ -8,9 +8,27 @@
   font-style: normal;
 }
 
-// Colours 
+// Colours
+$accent: #790813;
 
 // Mixins
 @mixin fadeOut {
-  // linear-gradient etc etc
+  background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
 }
