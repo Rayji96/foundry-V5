@@ -2,7 +2,7 @@
     Character: 
 </label>
 <div class="dice-tray-searchable-select">
-    <select id="selectedCharacter" class="dice-tray-select" name="selectedCharacter">
+    <select id="selectedCharacter" class="dice-tray-select selected-character" name="selectedCharacter">
         {{#each characters key="name" as |character|}}
             {{#if (eq @root.selectedCharacter.id character.id)}}
                 <option value="{{character.id}}" selected>{{character.name}}</option>

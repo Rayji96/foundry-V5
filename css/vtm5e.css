@@ -552,12 +552,12 @@
 .roll-img {
   max-width: 30px;
   margin: 1px;
-  background: rgba(255, 255, 255, 50%);
+  background: rgb(255 255 255 / 0.50);
   border-radius: 3px;
 }
 
 .roll-img.hunger-dice {
-  background: rgba(255, 230, 230, 50%);
+  background: rgb(255 230 230 / 0.5);
   border-color: #790813;
 }
 
@@ -580,11 +580,11 @@
   cursor: default !important;
 }
 
-.willpowerReroll .die {
+.willpower-reroll .die {
   flex: 0;
 }
 
-.willpowerReroll .selected::after {
+.willpower-reroll .selected::after {
   position: absolute;
   content: "X";
   font-size: 30px;
@@ -594,5 +594,5 @@
 }
 
 #sidebar.app {
-  background: rgba(20, 0, 0, 90%);
+  background: rgb(20 0 0 / 0.9);
 }

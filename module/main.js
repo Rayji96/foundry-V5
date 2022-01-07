@@ -381,7 +381,7 @@ async function willpowerReroll (roll) {
             <label><b>Select dice to reroll (Max 3)</b></label>
             <hr>
             <span class="dice-tooltip">
-              <div class="dice-rolls flexrow willpowerReroll">
+              <div class="dice-rolls flexrow willpower-reroll">
                 ${diceRolls.reverse().join('')}
               </div>
             </span>
@@ -406,7 +406,7 @@ async function willpowerReroll (roll) {
     content: template,
     buttons: buttons,
     render: function () {
-      $('.willpowerReroll .die').on('click', dieSelect)
+      $('.willpower-reroll .die').on('click', dieSelect)
     },
     default: 'draw'
   }).render(true)
@@ -415,7 +415,7 @@ async function willpowerReroll (roll) {
 // Handles selecting and de-selecting the die
 function dieSelect () {
   // If the die isn't already selected and there aren't 3 already selected, add selected to the die
-  if (!($(this).hasClass('selected')) && ($('.willpowerReroll .selected').length < 3)) {
+  if (!($(this).hasClass('selected')) && ($('.willpower-reroll .selected').length < 3)) {
     $(this).addClass('selected')
   } else {
     $(this).removeClass('selected')
@@ -427,7 +427,7 @@ function dieSelect () {
 // TODO: Make this function able to tick superficial willpower damage
 // For now this works well enough as "roll three new dice"
 function rerollDie (actor) {
-  const diceSelected = $('.willpowerReroll .selected').length
+  const diceSelected = $('.willpower-reroll .selected').length
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
   if ((diceSelected > 0) && (diceSelected < 4)) {

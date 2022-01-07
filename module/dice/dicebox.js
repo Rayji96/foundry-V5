@@ -5,7 +5,7 @@ import { rollDice } from '../actor/roll-dice.js'
 export function prepareSearchableSelection (id, $content, data, callback) {
   const select = `#${id}`
   const cover = `#${id}Cover`
-  const hover = `#${id}Cover .dice-tray__searchable-select-hover`
+  const hover = `#${id}Cover .dice-tray-searchable-select-hover`
   const input = `#${id}Input`
   const fields = `#${id}Fields`
   const options = `#${id}Fields li`
@@ -106,7 +106,7 @@ export function watchPool2Filters ($content, data) {
 }
 
 export function prepareCustomRollButton ($content, data) {
-  $content.find('.dice-tray__button.rollButton').on('click', event => {
+  $content.find('.dice-tray-button.roll-button').on('click', event => {
     event.preventDefault()
     const pool1 = describePool('1', data)
     const pool2 = describePool('2', data)
@@ -144,14 +144,14 @@ function describePool (poolNumber, data) {
 }
 
 export function prepareRouseShortcut ($content, data) {
-  $content.find('.dice-tray__button[data=rollRouse]').on('click', event => {
+  $content.find('.dice-tray-button[data=rollRouse]').on('click', event => {
     event.preventDefault()
     rollDice(1, data.selectedCharacter, game.i18n.localize('VTM5E.RousingBlood'), 1, true)
   })
 }
 
 export function prepareWillpowerShortcut ($content, data) {
-  $content.find('.dice-tray__button[data=rollWill]').on('click', event => {
+  $content.find('.dice-tray-button[data=rollWill]').on('click', event => {
     event.preventDefault()
     const actor = data.selectedCharacter
     const actorData = actor.data.data
@@ -161,7 +161,7 @@ export function prepareWillpowerShortcut ($content, data) {
 }
 
 export function prepareFrenzyShortcut ($content, data) {
-  $content.find('.dice-tray__button[data=rollFrenzy]').on('click', event => {
+  $content.find('.dice-tray-button[data=rollFrenzy]').on('click', event => {
     event.preventDefault()
     const actor = data.selectedCharacter
     const actorData = actor.data.data
@@ -171,7 +171,7 @@ export function prepareFrenzyShortcut ($content, data) {
 }
 
 export function prepareHumanityShortcut ($content, data) {
-  $content.find('.dice-tray__button[data=rollHumanity]').on('click', event => {
+  $content.find('.dice-tray-button[data=rollHumanity]').on('click', event => {
     event.preventDefault()
     const actor = data.selectedCharacter
     const actorData = actor.data.data
