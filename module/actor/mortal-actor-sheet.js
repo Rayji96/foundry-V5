@@ -13,7 +13,7 @@ export class MortalActorSheet extends CoterieActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    let classList = ['vtm5e', 'sheet', 'actor', 'mortal']
+    const classList = ['vtm5e', 'sheet', 'actor', 'mortal']
 
     // If the user's enabled darkmode, then push it to the class list
     if(game.settings.get('vtm5e', 'darkTheme')){

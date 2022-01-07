@@ -17,6 +17,7 @@
   color: #ff0119;
   border-bottom: 1px solid #790813;
 }
+
 .vtm5e.dark-theme .tox .tox-editor-container {
   background: #fff;
 }
@@ -43,29 +44,44 @@
 }
 
 .vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="-"] {
-background-color: #790813;
+  background-color: #790813;
+}
+
+.vtm5e.dark-theme select {
+  background: #fff;
 }
 
 .vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="/"] {
-  background: linear-gradient(
+  background:
+  linear-gradient(
     135deg,
     transparent 0%,
     transparent 43%,
-    black 45%,
-    black 55%,
+    red 45%,
+    red 55%,
     transparent 57%,
     transparent 100%
   );
 }
 
-.vtm5e.dark-theme select {
-  background: #FFF;
-}
-
-.vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="/"] {
-  background: linear-gradient( 135deg, transparent 0%, transparent 43%, red 45%, red 55%, transparent 57%, transparent 100% );
-}
-
 .vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="x"] {
-  background: linear-gradient( 45deg, transparent 0%, transparent 43%, red 45%, red 55%, transparent 57%, transparent 100% ), linear-gradient( 135deg, transparent 0%, transparent 43%, red 45%, red 55%, transparent 57%, transparent 100% );
+  background:
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      red 45%,
+      red 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      red 45%,
+      red 55%,
+      transparent 57%,
+      transparent 100%
+    );
 }
