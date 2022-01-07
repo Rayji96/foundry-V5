@@ -11,7 +11,7 @@ export class VampireItemSheet extends ItemSheet {
     const classList = ['vtm5e', 'sheet', 'item']
 
     // If the user's enabled darkmode, then push it to the class list
-    if(game.settings.get('vtm5e', 'darkTheme')){
+    if (game.settings.get('vtm5e', 'darkTheme')) { // eslint-disable-line
       classList.push('dark-theme')
     }
 

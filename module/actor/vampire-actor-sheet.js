@@ -16,7 +16,7 @@ export class VampireActorSheet extends GhoulActorSheet {
     const classList = ['vtm5e', 'sheet', 'actor', 'vampire']
 
     // If the user's enabled darkmode, then push it to the class list
-    if(game.settings.get('vtm5e', 'darkTheme')){
+    if (game.settings.get('vtm5e', 'darkTheme')) {
       classList.push('dark-theme')
     }
 

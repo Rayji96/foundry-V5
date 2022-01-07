@@ -53,15 +53,15 @@
 
 .vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="/"] {
   background:
-  linear-gradient(
-    135deg,
-    transparent 0%,
-    transparent 43%,
-    red 45%,
-    red 55%,
-    transparent 57%,
-    transparent 100%
-  );
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      red 45%,
+      red 55%,
+      transparent 57%,
+      transparent 100%
+    );
 }
 
 .vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="x"] {
