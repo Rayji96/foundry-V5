@@ -36,10 +36,20 @@ Hooks.once('init', async function () {
     default: '1.5',
     type: String
   })
+
   game.settings.register('vtm5e', 'useChatRoller', {
     name: 'Chat Roller',
     hint: 'Display dice roller in chat window',
     scope: 'world',
+    config: true,
+    default: false,
+    type: Boolean
+  })
+
+  game.settings.register('vtm5e', 'darkTheme', {
+    name: 'Dark Theme',
+    hint: 'Display sheets using a darker theme on a per-user basis.',
+    scope: 'client',
     config: true,
     default: false,
     type: Boolean
