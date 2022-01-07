@@ -1,7 +1,15 @@
 /* New Styles */
 .vtm5e.dark-theme .window-content {
   background: #313131;
-  color: #ffc2c2;
+  color: #e0e0e0;
+}
+
+.vtm5e.dark-theme.actor.sheet .editor-content {
+  color: #000;
+}
+
+.vtm5e.dark-theme.item.sheet .editor-content {
+  color: #e0e0e0;
 }
 
 .vtm5e.dark-theme .window-content nav.sheet-tabs {
@@ -9,13 +17,22 @@
   color: #ff0019;
 }
 
-.vtm5e.dark-theme .window-content nav.sheet-tabs a.item.active {
-  background: #434343;
+.vtm5e.dark-theme .window-content nav.sheet-tabs .item.active {
+  background: #3c3c3c;
+  color: #ff0000;
 }
 
 .vtm5e.dark-theme .window-content .sheet-body .tab > .resource-label {
   color: #ff0119;
   border-bottom: 1px solid #790813;
+}
+
+.vtm5e.dark-theme .sheet-header .profile-img-zone h1 {
+  color: #cc0014;
+}
+
+.vtm5e.dark-theme .items-list .item-header {
+  color: #f6f6f6;
 }
 
 .vtm5e.dark-theme .tox .tox-editor-container {

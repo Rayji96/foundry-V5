@@ -48,7 +48,7 @@ Hooks.once('init', async function () {
 
   game.settings.register('vtm5e', 'darkTheme', {
     name: 'Dark Theme',
-    hint: 'Display sheets using a darker theme on a per-user basis.',
+    hint: 'Display sheets using a darker theme on a per-user basis. (But it does require a refresh of the page to apply!)',
     scope: 'client',
     config: true,
     default: false,
