@@ -1,6 +1,4 @@
 .dice-tray {
-  -webkit-box-flex: 0;
-  -ms-flex: 0;
   flex: 0;
   padding: 5px;
   margin: 3px;
@@ -48,10 +46,7 @@
   width: 100%;
   background-color: rgba(250, 250, 250, 0.15);
   border: 1px solid #000;
-  -webkit-box-shadow: 0 0 6px inset #fff;
   box-shadow: 0 0 6px inset #fff;
-  -webkit-transition: all ease-in-out 0.25s, visibility 0s;
-  -o-transition: all ease-in-out 0.25s, visibility 0s;
   transition: all ease-in-out 0.25s, visibility 0s;
 }
 
@@ -133,8 +128,6 @@
 .dice-tray__searchable-select-hover {
   width: 100%;
   height: 31px;
-  -webkit-transition: all ease-in-out 0.25s;
-  -o-transition: all ease-in-out 0.25s;
   transition: all ease-in-out 0.25s;
 }
 
@@ -186,7 +179,6 @@
 .dice-tray .dice-tray__select:focus,
 .dice-tray__searchable-select-hover:hover {
   border: 1px solid #ff6400;
-  -webkit-box-shadow: 0 0 6px inset #ff6400;
   box-shadow: 0 0 6px inset #ff6400;
 }
 
@@ -201,23 +193,16 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
   color: #fff;
   font-weight: bold;
   font-size: 14px;
-  -webkit-box-shadow: 0 0 6px inset #8d9ea7;
   box-shadow: 0 0 6px inset #8d9ea7;
-  -webkit-transition: all ease-in-out 0.25s;
-  -o-transition: all ease-in-out 0.25s;
   transition: all ease-in-out 0.25s;
   position: relative;
 }
@@ -226,6 +211,5 @@
 .dice-tray__pool-filters input[type="radio"]:checked + label {
   color: #ff6400;
   border-color: #ff6400;
-  -webkit-box-shadow: 0 0 6px inset #ff6400;
   box-shadow: 0 0 6px inset #ff6400;
 }

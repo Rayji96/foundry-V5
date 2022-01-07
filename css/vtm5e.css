@@ -97,10 +97,8 @@
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
-  -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
@@ -110,41 +108,34 @@
 }
 
 .flex-group-left {
-  -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
   text-align: left;
 }
 
 .flex-group-right {
-  -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
   text-align: right;
 }
 
 .flex-center {
-  -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
   text-align: center;
 }
 
 .flex-left {
-  -webkit-box-align: left;
   -ms-flex-align: left;
   align-items: left;
-  -webkit-box-pack: left;
   -ms-flex-pack: left;
   justify-content: left;
   text-align: left;
 }
 
 .flex-between {
-  -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
 }
@@ -242,40 +233,28 @@
 } */
 
 .vtm5e .sheet-header {
-  -webkit-box-flex: 0;
   -ms-flex: 0 0 215px;
   flex: 0 0 215px;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
 
 .vtm5e .limited .sheet-header {
-  -webkit-box-flex: 0;
   -ms-flex: 0 0 160px;
   flex: 0 0 160px;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 0;
@@ -305,7 +284,6 @@
 }
 
 .vtm5e .sheet-header .profile-img {
-  -webkit-box-flex: 0;
   -ms-flex: 0 0 100px;
   flex: 0 0 100px;
   min-height: 50px;
@@ -324,7 +302,6 @@
 }
 
 .vtm5e .sheet-header .header-fields {
-  -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
@@ -351,7 +328,6 @@
 }
 
 .vtm5e .sheet-tabs {
-  -webkit-box-flex: 0;
   -ms-flex: 0;
   flex: 0;
 }
@@ -422,7 +398,6 @@
 }
 
 .vtm5e .items-list .item .item-image {
-  -webkit-box-flex: 0;
   -ms-flex: 0 0 24px;
   flex: 0 0 24px;
   margin-right: 5px;
@@ -443,7 +418,6 @@
 }
 
 .vtm5e .items-list .item-controls {
-  -webkit-box-flex: 0;
   -ms-flex: 0 0 86px;
   flex: 0 0 86px;
   text-align: right;
