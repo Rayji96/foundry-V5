@@ -3,7 +3,7 @@
 
 /* Fonts */
 @font-face {
-  font-family: "cormorantLight";
+  font-family: cormorantLight;
   src: url("../assets/fonts/Cormorant-Light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -11,7 +11,7 @@
 
 /* Global styles */
 .window-app {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 .rollable:hover,
@@ -134,7 +134,7 @@
 /* New Styles */
 .vtm5e .window-content {
   background: #faf5ed;
-  font-family: "cormorantLight", sans-serif;
+  font-family: cormorantLight, sans-serif;
   font-weight: 600;
 }
 
@@ -153,7 +153,7 @@
 .vtm5e button.rollable-with-mod {
   background: #790813;
   color: white;
-  font-family: "cormorantlight", sans-serif;
+  font-family: cormorantlight, sans-serif;
   font-weight: bold;
   border: none;
 }
@@ -185,6 +185,11 @@
   font-size: 16px;
   margin-bottom: 20px;
   height: 41px;
+}
+
+.vtm5e .tabs .item.active {
+  text-decoration: underline;
+  text-shadow: none;
 }
 
 .vtm5e .window-content nav.sheet-tabs .item.active {
@@ -228,7 +233,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
@@ -238,7 +243,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   justify-content: flex-start;
   margin-bottom: 0;
 }
@@ -261,7 +266,7 @@
 .vtm5e .sheet-header .profile-img-zone button {
   background: #790813;
   color: white;
-  font-family: "cormorantlight", sans-serif;
+  font-family: cormorantlight, sans-serif;
   font-weight: bold;
   border: none;
 }
@@ -277,7 +282,7 @@
 
 .vtm5e .sheet-header .profile-img-zone h1 {
   color: #790813;
-  font-family: "cormorantlight", sans-serif;
+  font-family: cormorantlight, sans-serif;
   text-transform: uppercase;
   font-size: 20px;
   font-weight: bold;
@@ -347,11 +352,6 @@
   font-weight: bold;
   flex: 1;
   cursor: pointer;
-}
-
-.vtm5e .tabs .item.active {
-  text-decoration: underline;
-  text-shadow: none;
 }
 
 .vtm5e .items-list {
@@ -552,12 +552,12 @@
 .roll-img {
   max-width: 30px;
   margin: 1px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 50%);
   border-radius: 3px;
 }
 
 .roll-img.hunger-dice {
-  background: rgba(255, 230, 230, 0.5);
+  background: rgba(255, 230, 230, 50%);
   border-color: #790813;
 }
 
@@ -586,7 +586,7 @@
 
 .willpowerReroll .selected::after {
   position: absolute;
-  content: 'X';
+  content: "X";
   font-size: 30px;
   color: red;
   margin-left: -25px;
@@ -594,5 +594,5 @@
 }
 
 #sidebar.app {
-  background: rgba(20, 0, 0, 0.9);
+  background: rgba(20, 0, 0, 90%);
 }
