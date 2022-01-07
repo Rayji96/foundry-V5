@@ -424,7 +424,7 @@ async function willpowerReroll (roll) {
     submit: {
       icon: '<i class="fas fa-check"></i>',
       label: 'Reroll',
-      callback: submit => rerollDie(roll)
+      callback: () => rerollDie(roll)
     },
     cancel: {
       icon: '<i class="fas fa-times"></i>',
