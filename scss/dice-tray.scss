@@ -4,39 +4,38 @@
   flex: 0;
   padding: 5px;
   margin: 3px;
-  background: url("/systems/vtm5e/assets/images/background-green-marble.jpg"), #153b23;
+  background: url("/systems/vtm5e/assets/images/background-green-marble.jpg"),
+    #153b23;
   background-size: cover;
   border: 2px solid #1e5e35;
   border-radius: 5px 5px 0 0;
+  &__character {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  &__custom-rolls {
+    display: grid;
+    margin: 0.5em 0;
+    grid-template-columns: 2fr 15px 2fr 1fr;
+    grid-template-areas:
+      "pool1 concat pool2 roll"
+      "opts1 .      opts2 roll";
+  }
+  .flexrow {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+  .dice-tray {
+    &__label {
+      display: block;
+      height: 31px;
+      line-height: 31px;
+    }
+  }
 }
 
 .dice-tray > * {
   margin: 2px;
-}
-
-.dice-tray .flexrow {
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-}
-
-.dice-tray__character {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
-.dice-tray__custom-rolls {
-  display: grid;
-  margin: 0.5em 0;
-  grid-template-columns: 2fr 15px 2fr 1fr;
-  grid-template-areas:
-    "pool1 concat pool2 roll"
-    "opts1 .      opts2 roll";
-}
-
-.dice-tray .dice-tray__label {
-  display: block;
-  height: 31px;
-  line-height: 31px;
 }
 
 .dice-tray .dice-tray__input,
@@ -69,7 +68,7 @@
 
 .dice-tray__button .rollImage {
   border: 0;
-  filter: invert();
+  //filter: invert();
 }
 
 .dice-tray__pool-filters.pool1Filters {

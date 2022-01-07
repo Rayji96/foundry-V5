@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
+
+/* Fonts */
+@font-face {
+  font-family: "cormorantLight";
+  src: url("../assets/fonts/Cormorant-Light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Colours */ 
+$redVtm: hsl(354, 88%, 25%);
+$bgVtm: hsla(0, 0%, 100%, 0.502);
+$success: hsl(109, 76%, 18%);
+$failure: hsl(0, 72%, 30%);
+
+/* Mixins */
+@mixin fadeBlack {
+  background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
