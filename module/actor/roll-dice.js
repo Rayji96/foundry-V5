@@ -21,7 +21,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
   // Roll defining and evaluating
   const dice = numDice - hungerDice
   const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dhcs>5', actor.data.data)
-  await roll.evaluate({"async": true})
+  await roll.evaluate({ 'async': true })
 
   // Variable defining
   let difficultyResult = '<span></span>'
@@ -132,27 +132,27 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
   })
 
   // Automatically add hunger to the actor on a failure (for rouse checks)
-  if (increaseHunger && totalSuccess == 0 && game.settings.get("vtm5e", "automatedRouse")) {
+  if (increaseHunger && totalSuccess === 0 && game.settings.get('vtm5e', 'automatedRouse')) {
     const actorHunger = actor.data.data.hunger.value
 
     // If hunger is greater than 4 (5, or somehow higher)
     // then display that in the chat and don't increase hunger
-    if(actorHunger > 4) {
+    if (actorHunger > 4) {
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        content: game.i18n.localize("VTM5E.HungerFull")
+        content: game.i18n.localize('VTM5E.HungerFull')
       })
     } else {
       // Define the new number of hunger points
       let newHunger = actor.data.data.hunger.value + 1
 
       // Push it to the actor's sheet
-      actor.update({"data.hunger.value": newHunger})
+      actor.update({ 'data.hunger.value': newHunger })
     }
   }
 
   // Automatically track willpower damage as a result of willpower rerolls
-  if (subtractWillpower && game.settings.get("vtm5e", "automatedWillpower")) {
+  if (subtractWillpower && game.settings.get('vtm5e', 'automatedWillpower')) {
     // Get the actor's willpower and define it for convenience
     const actorWillpower = actor.data.data.willpower
     const maxWillpower = actorWillpower.max
@@ -161,33 +161,33 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
 
     // If the willpower boxes are fully ticked with aggravated damage
     // then tell the chat and don't increase any values.
-    if(aggrWillpower >= maxWillpower) {
+    if (aggrWillpower >= maxWillpower) {
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        content: game.i18n.localize("VTM5E.WillpowerFull")
+        content: game.i18n.localize('VTM5E.WillpowerFull')
       })
     } else {
       // If the superficial willpower ticket isn't completely full, then add a point
-      if((superWillpower + aggrWillpower) < maxWillpower){
+      if ((superWillpower + aggrWillpower) < maxWillpower) {
         // If there are still superficial willpower boxes to tick, add it here
 
         // Define the new number of superficial willpower damage
-        let newWillpower = superWillpower + 1
+        const newWillpower = superWillpower + 1
 
         // Update the actor sheet
-        actor.update({"data.willpower.superficial": newWillpower})
+        actor.update({ 'data.willpower.superficial': newWillpower })
       } else {
         // If there aren't any superficial boxes left, add an aggravated one
 
         // Define the new number of aggravated willpower damage
         // Superficial damage needs to be subtracted by 1 each time
         // a point of aggravated is added
-        let newSuperWillpower = superWillpower - 1
-        let newAggrWillpower = aggrWillpower + 1
+        const newSuperWillpower = superWillpower - 1
+        const newAggrWillpower = aggrWillpower + 1
 
         // Update the actor sheet
-        actor.update({"data.willpower.superficial": newSuperWillpower})
-        actor.update({"data.willpower.aggravated": newAggrWillpower})
+        actor.update({ 'data.willpower.superficial': newSuperWillpower })
+        actor.update({ 'data.willpower.aggravated': newAggrWillpower })
       }
     }
   }
