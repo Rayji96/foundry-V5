@@ -97,9 +97,7 @@
 .flex-group-center,
 .flex-group-left,
 .flex-group-right {
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   text-align: center;
   padding: 5px;
@@ -108,35 +106,28 @@
 }
 
 .flex-group-left {
-  -ms-flex-pack: start;
   justify-content: flex-start;
   text-align: left;
 }
 
 .flex-group-right {
-  -ms-flex-pack: end;
   justify-content: flex-end;
   text-align: right;
 }
 
 .flex-center {
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-pack: center;
   justify-content: center;
   text-align: center;
 }
 
 .flex-left {
-  -ms-flex-align: left;
   align-items: left;
-  -ms-flex-pack: left;
   justify-content: left;
   text-align: left;
 }
 
 .flex-between {
-  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -233,29 +224,21 @@
 } */
 
 .vtm5e .sheet-header {
-  -ms-flex: 0 0 215px;
   flex: 0 0 215px;
   overflow: hidden;
   display: flex;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
 
 .vtm5e .limited .sheet-header {
-  -ms-flex: 0 0 160px;
   flex: 0 0 160px;
   overflow: hidden;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 0;
 }
@@ -284,7 +267,6 @@
 }
 
 .vtm5e .sheet-header .profile-img {
-  -ms-flex: 0 0 100px;
   flex: 0 0 100px;
   min-height: 50px;
   max-height: 205px;
@@ -302,7 +284,6 @@
 }
 
 .vtm5e .sheet-header .header-fields {
-  -ms-flex: 1;
   flex: 1;
 }
 
@@ -328,7 +309,6 @@
 }
 
 .vtm5e .sheet-tabs {
-  -ms-flex: 0;
   flex: 0;
 }
 
@@ -398,7 +378,6 @@
 }
 
 .vtm5e .items-list .item .item-image {
-  -ms-flex: 0 0 24px;
   flex: 0 0 24px;
   margin-right: 5px;
 }
@@ -418,7 +397,6 @@
 }
 
 .vtm5e .items-list .item-controls {
-  -ms-flex: 0 0 86px;
   flex: 0 0 86px;
   text-align: right;
 }
