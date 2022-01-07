@@ -233,7 +233,6 @@
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  flex-flow: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
@@ -243,7 +242,6 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex-flow: wrap;
   justify-content: flex-start;
   margin-bottom: 0;
 }
@@ -552,12 +550,12 @@
 .roll-img {
   max-width: 30px;
   margin: 1px;
-  background: rgb(255 255 255 / 0.50);
+  background: rgb(255 255 255 / 50%);
   border-radius: 3px;
 }
 
 .roll-img.hunger-dice {
-  background: rgb(255 230 230 / 0.5);
+  background: rgb(255 230 230 / 50%);
   border-color: #790813;
 }
 
@@ -594,5 +592,5 @@
 }
 
 #sidebar.app {
-  background: rgb(20 0 0 / 0.9);
+  background: rgb(20 0 0 / 90%);
 }
