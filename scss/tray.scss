@@ -1,14 +1,137 @@
+@use 'styles.scss' as *;
+
+/* Dice Tray */
 .dice-tray {
   flex: 0;
   padding: 5px;
   margin: 3px;
+
   background: url("/systems/vtm5e/assets/images/background-green-marble.jpg"),
     #153b23;
   background-size: cover;
   border: 2px solid #1e5e35;
   border-radius: 5px 5px 0 0;
+
   .flexrow {
     flex-wrap: nowrap;
+  }
+
+  &__button {
+    .rollImage {
+      border: 0;
+      //filter: invert();
+    }
+
+    &.rollButton {
+      height: 100%;
+      grid-area: roll;
+    }
+
+    &.smallButton {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &__character {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  &__custom-rolls {
+    display: grid;
+    margin: 0.5em 0;
+    grid-template-columns: 2fr 15px 2fr 1fr;
+    grid-template-areas:
+      "pool1 concat pool2 roll"
+      "opts1 .      opts2 roll";
+  }
+
+  &__filter-spacer {
+    padding: 6px;
+  }
+
+  &__pool-filters {
+    input {
+      display: block;
+      position: absolute;
+      font-size: 11px;
+      line-height: 10px;
+      padding: 1px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 3px;
+      &input[type="radio"] {
+        opacity: 0.011;
+        z-index: 2;
+      }
+    }
+    label {
+      @extend input;
+      padding: 5px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    &.pool1Filters {
+      grid-area: opts1;
+    }
+    &.pool2Filters {
+      grid-area: opts2;
+    }
+  }
+
+  &__searchable {
+    &-select {
+      height: 31px;
+      position: relative;
+      &-cover {
+        min-height: 31px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      &-hover {
+        width: 100%;
+        height: 31px;
+        transition: all ease-in-out 0.25s;
+      }
+      &-fields {
+        border: 1px solid #767676;
+        border-bottom: 0;
+        z-index: 3;
+        position: relative;
+        display: none;
+      }
+    }
+  }
+
+  .dice-tray {
+    &__label {
+      display: block;
+      height: 31px;
+      line-height: 31px;
+    }
+    &__input,
+    &__select {
+      display: block;
+      color: $borderLight;
+      font-size: 14px;
+      height: 31px;
+      width: 100%;
+      background-color: rgba(250, 250, 250, 0.15);
+      border: 1px solid $borderDark;
+      box-shadow: 0 0 6px inset $borderLight;
+      transition: all ease-in-out 0.25s, visibility 0s;
+    }
+    &__concatenate {
+      display: block;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+    }
   }
 }
 
@@ -16,131 +139,8 @@
   margin: 2px;
 }
 
-.dice-tray__character {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
-.dice-tray__custom-rolls {
-  display: grid;
-  margin: 0.5em 0;
-  grid-template-columns: 2fr 15px 2fr 1fr;
-  grid-template-areas:
-    "pool1 concat pool2 roll"
-    "opts1 .      opts2 roll";
-}
-
-.dice-tray .dice-tray__label {
-  display: block;
-  height: 31px;
-  line-height: 31px;
-}
-
-.dice-tray .dice-tray__input,
-.dice-tray .dice-tray__select {
-  display: block;
-  color: #fff;
-  font-size: 14px;
-  height: 31px;
-  width: 100%;
-  background-color: rgba(250, 250, 250, 0.15);
-  border: 1px solid #000;
-  -webkit-box-shadow: 0 0 6px inset #fff;
-  box-shadow: 0 0 6px inset #fff;
-  -webkit-transition: all ease-in-out 0.25s, visibility 0s;
-  -o-transition: all ease-in-out 0.25s, visibility 0s;
-  transition: all ease-in-out 0.25s, visibility 0s;
-}
-
-.dice-tray .dice-tray__concatenate {
-  display: block;
-  height: 25px;
-  line-height: 25px;
-  text-align: center;
-}
-
-.dice-tray__button.rollButton {
-  height: 100%;
-  grid-area: roll;
-}
-
-.dice-tray__button .rollImage {
-  border: 0;
-  //filter: invert();
-}
-
-.dice-tray__pool-filters.pool1Filters {
-  grid-area: opts1;
-}
-
-.dice-tray__pool-filters.pool2Filters {
-  grid-area: opts2;
-}
-
-.dice-tray__button.smallButton {
-  height: 20px;
-  width: 20px;
-}
-
-.dice-tray__pool-filters label,
-.dice-tray__pool-filters input {
-  display: block;
-  position: absolute;
-  font-size: 11px;
-  line-height: 10px;
-  padding: 1px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 3px;
-}
-
-.dice-tray__pool-filters input[type="radio"] {
-  opacity: 0.011;
-  z-index: 2;
-}
-
-.dice-tray__pool-filters label {
-  padding: 5px;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.dice-tray__filter-spacer {
-  padding: 6px;
-}
-
 #selectedCharacter {
   width: 200px;
-}
-
-.dice-tray__searchable-select {
-  height: 31px;
-  position: relative;
-}
-
-.dice-tray__searchable-select-cover {
-  min-height: 31px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.dice-tray__searchable-select-hover {
-  width: 100%;
-  height: 31px;
-  -webkit-transition: all ease-in-out 0.25s;
-  -o-transition: all ease-in-out 0.25s;
-  transition: all ease-in-out 0.25s;
-}
-
-.dice-tray__searchable-select-fields {
-  border: 1px solid #767676;
-  border-bottom: 0;
-  z-index: 3;
-  position: relative;
-  display: none;
 }
 
 .dice-tray__searchable-select-input {

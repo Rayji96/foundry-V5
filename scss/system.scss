@@ -1,3 +1,5 @@
+@use "styles.scss" as *;
+
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
@@ -12,7 +14,7 @@
 .power-rollable:hover,
 .power-rollable:focus {
   color: #000;
-  text-shadow: 0 0 10px red;
+  text-shadow: 0 0 10px $accent;
   cursor: pointer;
 }
 
@@ -20,15 +22,14 @@
   &:hover,
   &:focus {
     color: #000;
-    text-shadow: 0 0 10px red;
+    text-shadow: 0 0 10px $accent;
     cursor: pointer;
   }
 }
 
 .grid {
+  @include grid(2);
   display: grid;
-  grid-column: span 2 / span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin: 10px 0;
   padding: 0;
@@ -37,44 +38,34 @@
     @extend .grid;
   }
   &-3col {
-    grid-column: span 3 / span 3;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    @include grid(3);
   }
   &-4col {
-    grid-column: span 4 / span 4;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    @include grid(4);
   }
   &-5col {
-    grid-column: span 5 / span 5;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    @include grid(5);
   }
   &-6col {
-    grid-column: span 6 / span 6;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    @include grid(6);
   }
   &-7col {
-    grid-column: span 7 / span 7;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    @include grid(7);
   }
   &-8col {
-    grid-column: span 8 / span 8;
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    @include grid(8);
   }
   &-9col {
-    grid-column: span 9 / span 9;
-    grid-template-columns: repeat(9, minmax(0, 1fr));
+    @include grid(9);
   }
   &-10col {
-    grid-column: span 10 / span 10;
-    grid-template-columns: repeat(10, minmax(0, 1fr));
+    @include grid(10);
   }
   &-11col {
-    grid-column: span 11 / span 11;
-    grid-template-columns: repeat(11, minmax(0, 1fr));
+    @include grid(11);
   }
   &-12col {
-    grid-column: span 12 / span 12;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    @include grid(12);
   }
 }
 
@@ -147,22 +138,24 @@
   button {
     &.rollable,
     &.rollable-with-mod {
-      background: #790813;
-      color: white;
-      font-family: "cormorantlight", sans-serif;
+      background: $accent;
+      color: var(--color-text-light-0);
+      font-family: "Cormorant Light", sans-serif;
       font-weight: bold;
       border: none;
     }
   }
+
   input {
     font-family: initial;
-    background: white;
-    border: 1px solid #e0dede;
+    background: var(--color-text-light-0);
+    border: 1px solid var(--color-border-light-primary);
   }
+
   .description {
     &-content {
-      background: white;
-      border: 1px solid #e0dede;
+      background: var(--color-text-light-0);
+      border: 1px solid var(--color-border-light-primary);
       padding: 5px;
       height: 95%;
     }
@@ -191,7 +184,7 @@
 
   .profile-img,
   .item-image img {
-    background: #790813;
+    background: $accent;
   }
   .coterie-sheet,
   .mortal-sheet,
@@ -271,13 +264,13 @@
           button {
             background: #790813;
             color: white;
-            font-family: "cormorantlight", sans-serif;
+            font-family: "Cormorant Light", sans-serif;
             font-weight: bold;
             border: none;
           }
           h1 {
             color: #790813;
-            font-family: "cormorantlight", sans-serif;
+            font-family: "Cormorant Light", sans-serif;
             text-transform: uppercase;
             font-size: 20px;
             font-weight: bold;
@@ -318,8 +311,8 @@
 
   .tabs {
     height: 40px;
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
+    border-top: 1px solid $borderLight;
+    border-bottom: 1px solid $borderLight;
     .item {
       line-height: 40px;
       font-weight: bold;
@@ -333,7 +326,7 @@
   .tox {
     .tox {
       &-editor-container {
-        background: #fff;
+        background: $bg;
       }
       &-edit-area {
         padding: 0 8px;
@@ -343,7 +336,7 @@
 
   .window-content {
     background: #faf5ed;
-    font-family: "cormorantLight", sans-serif;
+    font-family: "Cormorant Light", sans-serif;
     font-weight: 600;
     nav.sheet-tabs {
       background: #e6ded0;
@@ -417,15 +410,15 @@
   min-height: 30px;
   line-height: 24px;
   padding: 3px 0;
-  border-bottom: 1px solid #790813;
-  color: #790813;
+  border-bottom: 1px solid $accent;
+  color: $accent;
 }
 
 .vtm5e .items-list .item {
   min-height: 30px;
   line-height: 24px;
   padding: 3px 0;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid $borderLight;
 }
 
 .vtm5e .items-list .item .item-image {
@@ -459,7 +452,7 @@
 .vtm5e .collapsible:hover,
 .vtm5e .collapsible:focus {
   color: #000;
-  text-shadow: 0 0 10px red;
+  text-shadow: 0 0 10px $accent;
   cursor: pointer;
 }
 
@@ -475,33 +468,33 @@
 .vtm5e .resource-value .resource-value-step {
   height: 14px;
   width: 14px;
-  border: 1px solid black;
+  border: 1px solid $borderDark;
   display: inline-block;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .vtm5e .resource-value .resource-value-step.active {
-  background-color: #790813;
+  background-color: $accent;
 }
 
 .vtm5e .resource-value-static .resource-value-static-step {
   height: 14px;
   width: 14px;
-  border: 1px solid black;
+  border: 1px solid $borderDark;
   display: inline-block;
   border-radius: 50%;
 }
 
 .vtm5e .resource-value-static .resource-value-static-step.active {
-  background-color: #790813;
+  background-color: $accent;
 }
 
 .vtm5e .resource-value .resource-value-empty {
   @include fadeOut;
   height: 14px;
   width: 14px;
-  border: 1px solid black;
+  border: 1px solid $borderDark;
   display: inline-block;
   border-radius: 50%;
   cursor: pointer;
@@ -510,13 +503,13 @@
 .vtm5e .resource-counter .resource-counter-step {
   height: 14px;
   width: 14px;
-  border: 1px solid black;
+  border: 1px solid $borderDark;
   display: inline-block;
   cursor: pointer;
 }
 
 .vtm5e .resource-counter .resource-counter-step[data-state="-"] {
-  background-color: #790813;
+  background-color: $accent;
 }
 
 .vtm5e .resource-counter .resource-counter-step[data-state="/"] {
@@ -552,11 +545,11 @@
 }
 
 .roll-label .danger {
-  color: #831515;
+  color: $danger;
 }
 
 .roll-label .success {
-  color: #18520b;
+  color: $success;
 }
 
 .roll-content {
@@ -576,7 +569,7 @@
 
 .roll-img.hunger-dice {
   background: rgba(255, 230, 230, 0.5);
-  border-color: #790813;
+  border-color: $accent;
 }
 
 .vtm5e .locked .resource-value-empty:not(.hunger-value) {
@@ -606,7 +599,7 @@
   position: absolute;
   content: "X";
   font-size: 30px;
-  color: red;
+  color: $accent;
   margin-left: -25px;
   margin-top: -2px;
 }

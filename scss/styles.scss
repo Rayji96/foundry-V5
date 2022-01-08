@@ -1,15 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
 
-/* Fonts */
+// Fonts
 @font-face {
-  font-family: "cormorantLight";
+  font-family: "Cormorant Light";
   src: url("../assets/fonts/Cormorant-Light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 // Colours
-$accent: #790813;
+$accent: hsl(354, 88%, 25%);
+$bg: hsl(0, 0%, 100%);
+$borderLight: hsl(0, 0%, 67%);
+$borderDark: hsl(0, 0%, 0%);
+$danger: hsl(0, 72%, 30%);
+$success: hsl(109, 76%, 18%);
 
 // Mixins
 @mixin fadeOut {
@@ -31,4 +36,9 @@ $accent: #790813;
       transparent 57%,
       transparent 100%
     );
+}
+
+@mixin grid($column) {
+  grid-column: span $column / span $column;
+  grid-template-columns: repeat($column, minmax(0, 1fr));
 }
