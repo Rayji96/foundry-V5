@@ -71,61 +71,36 @@
 
 .flex {
   &-center {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    text-align: center;
+    @include flexAlign(center, center, center);
   }
   &-left {
-    -webkit-box-align: left;
-    -ms-flex-align: left;
-    align-items: left;
-    -webkit-box-pack: left;
-    -ms-flex-pack: left;
-    justify-content: left;
-    text-align: left;
+    @include flexAlign(left, left, left);
   }
   &-between {
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
     justify-content: space-between;
   }
   &-group {
     &-center {
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      text-align: center;
+      @include flexAlign(center, center, center);
       padding: 5px;
       border: 1px solid #790813;
       border-radius: 5px;
+
+      &:not(.flexrow) {
+        .resource-counter,
+        .resource-value {
+          margin-top: 5px;
+        }
+      }
     }
     &-left {
-      -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      text-align: left;
+      @include flexAlign(center, flex-start, left);
       padding: 5px;
       border: 1px solid #790813;
       border-radius: 5px;
     }
     &-right {
-      -webkit-box-pack: end;
-      -ms-flex-pack: end;
-      justify-content: flex-end;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      text-align: right;
+      @include flexAlign(center, flex-end, right);
       padding: 5px;
       border: 1px solid #790813;
       border-radius: 5px;
@@ -133,7 +108,43 @@
   }
 }
 
-/* New Styles */
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* ChatMessage CSS */
+.roll {
+  &-content {
+    font-size: 120%;
+  }
+
+  &-img {
+    max-width: 30px;
+    margin: 1px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+
+    &.hunger-dice {
+      background: rgba(255, 230, 230, 0.5);
+      border-color: $accent;
+    }
+  }
+
+  &-label {
+    font-weight: bold;
+    font-size: 130%;
+
+    .danger {
+      color: $danger;
+    }
+
+    .success {
+      color: $success;
+    }
+  }
+}
+
+/* .vtm5e System Class */
 .vtm5e {
   button {
     &.rollable,
@@ -150,6 +161,63 @@
     font-family: initial;
     background: var(--color-text-light-0);
     border: 1px solid var(--color-border-light-primary);
+  }
+
+  &.items-list {
+    .item {
+      min-height: 30px;
+      line-height: 24px;
+      padding: 3px 0;
+      border-bottom: 1px solid $borderLight;
+
+      img {
+        display: block;
+      }
+
+      &-controls {
+        flex: 0 0 86px;
+        text-align: right;
+      }
+
+      &-header {
+        font-weight: bold;
+        min-height: 30px;
+        line-height: 24px;
+        padding: 3px 0;
+        border-bottom: 1px solid $accent;
+        color: $accent;
+      }
+
+      &-image {
+        flex: 0 0 24px;
+        margin-right: 5px;
+      }
+
+      &-name {
+        margin: 0;
+        font-weight: 600;
+        &-header {
+          margin: 0;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .collpasible {
+    &:hover,
+    &:focus {
+      color: #000;
+      text-shadow: 0 0 10px $accent;
+      cursor: pointer;
+    }
+
+    &-content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
   }
 
   .description {
@@ -178,8 +246,71 @@
     }
   }
 
-  .resource-label {
-    font-weight: bold;
+  /* Resource Boxes */
+  .resource {
+    &-counter {
+      .resource-counter-step {
+        height: 14px;
+        width: 14px;
+        border: 1px solid $borderDark;
+        display: inline-block;
+        cursor: pointer;
+        &[data-state="-"] {
+          background-color: $accent;
+        }
+        &[data-state="/"] {
+          background: linear-gradient(
+            135deg,
+            transparent 0%,
+            transparent 43%,
+            black 45%,
+            black 55%,
+            transparent 57%,
+            transparent 100%
+          );
+        }
+        &[data-state="x"] {
+          @include fadeOut;
+        }
+      }
+    }
+    &-label {
+      font-weight: bold;
+    }
+
+    &-value {
+      &-static {
+        .resource-value-static-step {
+          @extend .resource-value-step;
+          &.active {
+            background-color: $accent;
+          }
+        }
+      }
+
+      .resource-value-step {
+        height: 14px;
+        width: 14px;
+        border: 1px solid $borderDark;
+        display: inline-block;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &.active {
+          background-color: $accent;
+        }
+      }
+
+      .resource-value-empty {
+        @include fadeOut;
+        height: 14px;
+        width: 14px;
+        border: 1px solid $borderDark;
+        display: inline-block;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
   }
 
   .profile-img,
@@ -191,6 +322,21 @@
   .ghoul-sheet {
     .sheet-header {
       flex: 0 0 155px;
+    }
+  }
+
+  .locked {
+    .resource {
+      &-value-empty:hot(.hungervalue),
+      &-value-step:hot(.hungervalue) {
+        opacity: 0;
+        cursor: default;
+      }
+      &-minus,
+      &-plus {
+        opacity: 0;
+        cursor: default !important;
+      }
     }
   }
 
@@ -309,6 +455,14 @@
     }
   }
 
+  .tab {
+    &.disciplines {
+      .resource-value {
+        margin-top: 2px;
+      }
+    }
+  }
+
   .tabs {
     height: 40px;
     border-top: 1px solid $borderLight;
@@ -405,203 +559,23 @@
   }
 }
 
-.vtm5e .items-list .item-header {
-  font-weight: bold;
-  min-height: 30px;
-  line-height: 24px;
-  padding: 3px 0;
-  border-bottom: 1px solid $accent;
-  color: $accent;
-}
-
-.vtm5e .items-list .item {
-  min-height: 30px;
-  line-height: 24px;
-  padding: 3px 0;
-  border-bottom: 1px solid $borderLight;
-}
-
-.vtm5e .items-list .item .item-image {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 24px;
-  flex: 0 0 24px;
-  margin-right: 5px;
-}
-
-.vtm5e .items-list .item img {
-  display: block;
-}
-
-.vtm5e .items-list .item-name {
-  margin: 0;
-  font-weight: 600;
-}
-
-.vtm5e .items-list .item-name-header {
-  margin: 0;
-  font-weight: bold;
-}
-
-.vtm5e .items-list .item-controls {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 86px;
-  flex: 0 0 86px;
-  text-align: right;
-}
-
-.vtm5e .collapsible:hover,
-.vtm5e .collapsible:focus {
-  color: #000;
-  text-shadow: 0 0 10px $accent;
-  cursor: pointer;
-}
-
-.vtm5e .collapsible-content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-
-/* Resource boxes CSS */
-
-.vtm5e .resource-value .resource-value-step {
-  height: 14px;
-  width: 14px;
-  border: 1px solid $borderDark;
-  display: inline-block;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.vtm5e .resource-value .resource-value-step.active {
-  background-color: $accent;
-}
-
-.vtm5e .resource-value-static .resource-value-static-step {
-  height: 14px;
-  width: 14px;
-  border: 1px solid $borderDark;
-  display: inline-block;
-  border-radius: 50%;
-}
-
-.vtm5e .resource-value-static .resource-value-static-step.active {
-  background-color: $accent;
-}
-
-.vtm5e .resource-value .resource-value-empty {
-  @include fadeOut;
-  height: 14px;
-  width: 14px;
-  border: 1px solid $borderDark;
-  display: inline-block;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.vtm5e .resource-counter .resource-counter-step {
-  height: 14px;
-  width: 14px;
-  border: 1px solid $borderDark;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.vtm5e .resource-counter .resource-counter-step[data-state="-"] {
-  background-color: $accent;
-}
-
-.vtm5e .resource-counter .resource-counter-step[data-state="/"] {
-  background: linear-gradient(
-    135deg,
-    transparent 0%,
-    transparent 43%,
-    black 45%,
-    black 55%,
-    transparent 57%,
-    transparent 100%
-  );
-}
-
-.vtm5e .resource-counter .resource-counter-step[data-state="x"] {
-  @include fadeOut;
-}
-
-.vtm5e .flex-group-center:not(.flexrow) .resource-value,
-.vtm5e .flex-group-center:not(.flexrow) .resource-counter {
-  margin-top: 5px;
-}
-
-.vtm5e .tab.disciplines .resource-value {
-  margin-top: 2px;
-}
-
-/* ChatMessage CSS */
-
-.roll-label {
-  font-weight: bold;
-  font-size: 130%;
-}
-
-.roll-label .danger {
-  color: $danger;
-}
-
-.roll-label .success {
-  color: $success;
-}
-
-.roll-content {
-  font-size: 120%;
-}
-
 .uppercase {
   text-transform: uppercase;
 }
 
-.roll-img {
-  max-width: 30px;
-  margin: 1px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 3px;
-}
+.willpowerReroll {
+  .die {
+    flex: 0;
+  }
 
-.roll-img.hunger-dice {
-  background: rgba(255, 230, 230, 0.5);
-  border-color: $accent;
-}
-
-.vtm5e .locked .resource-value-empty:not(.hunger-value) {
-  opacity: 0;
-  cursor: default;
-}
-
-.vtm5e .locked .resource-value-step:not(.hunger-value) {
-  cursor: default;
-}
-
-.vtm5e .locked .resource-minus {
-  opacity: 0;
-  cursor: default !important;
-}
-
-.vtm5e .locked .resource-plus {
-  opacity: 0;
-  cursor: default !important;
-}
-
-.willpowerReroll .die {
-  flex: 0;
-}
-
-.willpowerReroll .selected::after {
-  position: absolute;
-  content: "X";
-  font-size: 30px;
-  color: $accent;
-  margin-left: -25px;
-  margin-top: -2px;
+  .selected::after {
+    position: absolute;
+    content: "X";
+    font-size: 30px;
+    color: $accent;
+    margin-left: -25px;
+    margin-top: -2px;
+  }
 }
 
 #sidebar.app {
