@@ -73,6 +73,15 @@ Hooks.once('init', async function () {
     type: Boolean
   })
 
+  game.settings.register('vtm5e', 'darkTheme', {
+    name: 'Dark Theme',
+    hint: 'Display sheets using a darker theme on a per-user basis.',
+    scope: 'client',
+    config: true,
+    default: false,
+    type: Boolean
+  })
+
   game.vtm5e = {
     VampireActor,
     VampireItem,
