@@ -594,12 +594,49 @@
   height: 31px;
   transition: all ease-in-out 0.25s;
 }
+.dice-tray__searchable-select-hover:hover {
+  border: 1px solid #ff6400;
+  box-shadow: 0 0 6px inset #ff6400;
+}
+.dice-tray__searchable-select-hover:hover li:not(:hover) {
+  background: white;
+  color: black;
+}
 .dice-tray__searchable-select-fields {
   border: 1px solid #767676;
   border-bottom: 0;
   z-index: 3;
   position: relative;
   display: none;
+}
+.dice-tray__searchable-select-input {
+  box-sizing: border-box;
+  padding-left: 6px;
+  width: 100%;
+}
+.dice-tray__searchable-select-options {
+  max-height: 500px;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  background: white;
+  color: black;
+  overflow-y: scroll;
+}
+.dice-tray__searchable-select-options li {
+  padding-left: 5px;
+  height: 29px;
+  font-size: 14px;
+  line-height: 29px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.dice-tray__searchable-select-options li:hover, .dice-tray__searchable-select-options li:focus {
+  background: #1e90ff;
+  cursor: pointer;
+  color: white;
+  outline: none;
 }
 .dice-tray .dice-tray__label {
   display: block;
@@ -617,6 +654,10 @@
   box-shadow: 0 0 6px inset #ababab;
   transition: all ease-in-out 0.25s, visibility 0s;
 }
+.dice-tray .dice-tray__input:hover, .dice-tray .dice-tray__input:focus, .dice-tray .dice-tray__select:hover, .dice-tray .dice-tray__select:focus {
+  border: 1px solid #ff6400;
+  box-shadow: 0 0 6px inset #ff6400;
+}
 .dice-tray .dice-tray__concatenate {
   display: block;
   height: 25px;
@@ -630,49 +671,6 @@
 
 #selectedCharacter {
   width: 200px;
-}
-
-.dice-tray__searchable-select-input {
-  box-sizing: border-box;
-  padding-left: 6px;
-  width: 100%;
-}
-
-.dice-tray__searchable-select-options {
-  max-height: 500px;
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  background: white;
-  color: black;
-  overflow-y: scroll;
-}
-
-.dice-tray__searchable-select-options li {
-  padding-left: 5px;
-  height: 29px;
-  font-size: 14px;
-  line-height: 29px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.dice-tray__searchable-select-options li:hover,
-.dice-tray__searchable-select-options li:focus {
-  background: #1e90ff;
-  cursor: pointer;
-  color: white;
-  outline: none;
-}
-
-.dice-tray .dice-tray__input:hover,
-.dice-tray .dice-tray__input:focus,
-.dice-tray .dice-tray__select:hover,
-.dice-tray .dice-tray__select:focus,
-.dice-tray__searchable-select-hover:hover {
-  border: 1px solid #ff6400;
-  box-shadow: 0 0 6px inset #ff6400;
 }
 
 .dice-tray__searchable-select-options:hover li:not(:hover) {

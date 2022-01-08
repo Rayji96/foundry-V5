@@ -1,4 +1,4 @@
-@use 'styles.scss' as *;
+@use "styles.scss" as *;
 
 /* Dice Tray */
 .dice-tray {
@@ -67,6 +67,12 @@
         opacity: 0.011;
         z-index: 2;
       }
+      &input[type="radio"]:checked + label {
+        color: #ff6400;
+        border-color: #ff6400;
+        -webkit-box-shadow: 0 0 6px inset #ff6400;
+        box-shadow: 0 0 6px inset #ff6400;
+      }
     }
     label {
       @extend input;
@@ -97,6 +103,17 @@
         width: 100%;
         height: 31px;
         transition: all ease-in-out 0.25s;
+        &:hover {
+          border: 1px solid #ff6400;
+          box-shadow: 0 0 6px inset #ff6400;
+
+          li {
+            &:not(:hover) {
+              background: $bg;
+              color: $borderDark;
+            }
+          }
+        }
       }
       &-fields {
         border: 1px solid #767676;
@@ -105,6 +122,57 @@
         position: relative;
         display: none;
       }
+      &-input {
+        box-sizing: border-box;
+        padding-left: 6px;
+        width: 100%;
+      }
+      &-options {
+        max-height: 500px;
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+        background: white;
+        color: black;
+        overflow-y: scroll;
+
+        li {
+          padding-left: 5px;
+          height: 29px;
+          font-size: 14px;
+          line-height: 29px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          &:hover,
+          &:focus {
+            background: #1e90ff;
+            cursor: pointer;
+            color: white;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    background: transparent;
+    border: 1px solid $borderDark;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: $bg;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 0 6px inset #8d9ea7;
+    transition: all ease-in-out 0.25s;
+    position: relative;
+    &:hover {
+      color: #ff6400;
+      border-color: #ff6400;
+      box-shadow: 0 0 6px inset #ff6400;
     }
   }
 
@@ -125,6 +193,11 @@
       border: 1px solid $borderDark;
       box-shadow: 0 0 6px inset $borderLight;
       transition: all ease-in-out 0.25s, visibility 0s;
+      &:hover,
+      &:focus {
+        border: 1px solid #ff6400;
+        box-shadow: 0 0 6px inset #ff6400;
+      }
     }
     &__concatenate {
       display: block;
@@ -141,88 +214,4 @@
 
 #selectedCharacter {
   width: 200px;
-}
-
-.dice-tray__searchable-select-input {
-  box-sizing: border-box;
-  padding-left: 6px;
-  width: 100%;
-}
-
-.dice-tray__searchable-select-options {
-  max-height: 500px;
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  background: white;
-  color: black;
-  overflow-y: scroll;
-}
-
-.dice-tray__searchable-select-options li {
-  padding-left: 5px;
-  height: 29px;
-  font-size: 14px;
-  line-height: 29px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.dice-tray__searchable-select-options li:hover,
-.dice-tray__searchable-select-options li:focus {
-  background: #1e90ff;
-  cursor: pointer;
-  color: white;
-  outline: none;
-}
-
-.dice-tray .dice-tray__input:hover,
-.dice-tray .dice-tray__input:focus,
-.dice-tray .dice-tray__select:hover,
-.dice-tray .dice-tray__select:focus,
-.dice-tray__searchable-select-hover:hover {
-  border: 1px solid #ff6400;
-  -webkit-box-shadow: 0 0 6px inset #ff6400;
-  box-shadow: 0 0 6px inset #ff6400;
-}
-
-.dice-tray__searchable-select-options:hover li:not(:hover) {
-  background: white;
-  color: black;
-}
-
-.dice-tray button {
-  background: transparent;
-  border: 1px solid #000;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: bold;
-  font-size: 14px;
-  -webkit-box-shadow: 0 0 6px inset #8d9ea7;
-  box-shadow: 0 0 6px inset #8d9ea7;
-  -webkit-transition: all ease-in-out 0.25s;
-  -o-transition: all ease-in-out 0.25s;
-  transition: all ease-in-out 0.25s;
-  position: relative;
-}
-
-.dice-tray button:hover,
-.dice-tray__pool-filters input[type="radio"]:checked + label {
-  color: #ff6400;
-  border-color: #ff6400;
-  -webkit-box-shadow: 0 0 6px inset #ff6400;
-  box-shadow: 0 0 6px inset #ff6400;
 }
