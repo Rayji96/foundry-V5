@@ -5,6 +5,7 @@
   font-family: "Roboto", sans-serif;
 }
 
+/* Rollable */
 .rollable:hover,
 .rollable:focus,
 .rollable-with-mod:hover,
@@ -83,7 +84,7 @@
     &-center {
       @include flexAlign(center, center, center);
       padding: 5px;
-      border: 1px solid #790813;
+      border: 1px solid $accent;
       border-radius: 5px;
 
       &:not(.flexrow) {
@@ -96,13 +97,13 @@
     &-left {
       @include flexAlign(center, flex-start, left);
       padding: 5px;
-      border: 1px solid #790813;
+      border: 1px solid $accent;
       border-radius: 5px;
     }
     &-right {
       @include flexAlign(center, flex-end, right);
       padding: 5px;
-      border: 1px solid #790813;
+      border: 1px solid $accent;
       border-radius: 5px;
     }
   }
@@ -408,14 +409,14 @@
           flex-direction: column;
           margin-right: 10px;
           button {
-            background: #790813;
+            background: $accent;
             color: white;
             font-family: "Cormorant Light", sans-serif;
             font-weight: bold;
             border: none;
           }
           h1 {
-            color: #790813;
+            color: $accent;
             font-family: "Cormorant Light", sans-serif;
             text-transform: uppercase;
             font-size: 20px;
@@ -494,7 +495,7 @@
     font-weight: 600;
     nav.sheet-tabs {
       background: #e6ded0;
-      color: #790813;
+      color: $accent;
       font-size: 16px;
       margin-bottom: 20px;
       height: 41px;
@@ -516,8 +517,8 @@
       }
       &-body {
         .tab > .resource-label {
-          color: #790813;
-          border-bottom: 1px solid #790813;
+          color: $accent;
+          border-bottom: 1px solid $accent;
           width: 100%;
           display: block;
           text-transform: uppercase;
