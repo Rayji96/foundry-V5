@@ -12,7 +12,7 @@ There is integration with Dice So Nice! To roll regular vampire dice, roll `1dv`
 
 ## Feedback
 
-Bugs reported as issues to this repo are greatly appreciate.
+Bugs reported as issues to this repository are greatly appreciate.
 
 Please reach out to me at weinerdolphin#3175 on Discord with issues, feature requests, etc.
 
