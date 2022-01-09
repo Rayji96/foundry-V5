@@ -4,6 +4,7 @@
         <li class="item flexrow item-header">
             <div class="item-name">{{localize "VTM5E.Name"}}</div>
             <div class="item-name">{{localize "VTM5E.Level"}}</div>
+            <!-- Item controls for adding new discipline lists -->
             <div class="item-controls">
                 <a class="item-control discipline-create" title="{{localize 'VTM5E.Add'}}">
                     <i class="fas fa-plus"></i>
@@ -15,6 +16,7 @@
         {{#each data.data.disciplines as |discipline key|}}
             {{#if discipline.visible}}
                 <li class="flexrow item-header">
+                    <!-- All non-ritual/ceremony powers need dots displayed in the middle -->
                     {{#if (and (ne key "rituals") (ne key "ceremonies"))}}
                         <div class="item-name vrollable" data-roll="{{discipline.value}}" data-label="{{key}}">
                             {{localize discipline.name}}
@@ -47,6 +49,7 @@
                 {{#each (lookup ../actor.disciplines_list key) as |item id|}}
                     <li class="item flexcol" data-item-id="{{item._id}}">
                         <div class="flexrow">
+                            <!-- Whether the button is clickable or not to post the power in chat -->
                             {{#if item.data.rollable}}
                                 <div class="item-image power-rollable" data-id="{{item._id}}" data-use-hunger="1">
                                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
@@ -56,6 +59,7 @@
                                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                                 </div>
                             {{/if}}
+                            <!-- Discipline power name -->
                             <h4 class="item-name collapsible">{{item.name}}</h4>
                             <!-- Item controls for discipline powers -->
                             <div class="item-controls">
