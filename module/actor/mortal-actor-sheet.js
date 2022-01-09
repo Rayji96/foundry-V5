@@ -195,9 +195,11 @@ export class MortalActorSheet extends CoterieActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const useHunger = this.hunger && (dataset.useHunger === '1')
+    const increaseHunger = dataset.increaseHunger
+    const subtractWillpower = dataset.subtractWillpower
     const numDice = dataset.roll
 
-    rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger)
+    rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger, increaseHunger, subtractWillpower)
   }
 
   _onRollWithMod (event) {
@@ -205,6 +207,8 @@ export class MortalActorSheet extends CoterieActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const useHunger = this.hunger && (dataset.useHunger === '1')
+    const increaseHunger = dataset.increaseHunger
+    const subtractWillpower = dataset.subtractWillpower
 
     const template = `
       <form>
@@ -227,7 +231,7 @@ export class MortalActorSheet extends CoterieActorSheet {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
           const numDice = parseInt(dataset.roll) + modifier
-          rollDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger)
+          rollDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger, increaseHunger, subtractWillpower)
         }
       },
       cancel: {

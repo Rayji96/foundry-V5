@@ -146,7 +146,7 @@ function describePool (poolNumber, data) {
 export function prepareRouseShortcut ($content, data) {
   $content.find('.dice-tray-button[data=rollRouse]').on('click', event => {
     event.preventDefault()
-    rollDice(1, data.selectedCharacter, game.i18n.localize('VTM5E.RousingBlood'), 1, true)
+    rollDice(1, data.selectedCharacter, game.i18n.localize('VTM5E.RousingBlood'), 1, false, true, false)
   })
 }
 
@@ -156,7 +156,7 @@ export function prepareWillpowerShortcut ($content, data) {
     const actor = data.selectedCharacter
     const actorData = actor.data.data
     const dicepool = (actorData.willpower.max - actorData.willpower.aggravated - actorData.willpower.superficial)
-    rollDice(dicepool, actor, game.i18n.localize('VTM5E.RollingWillpower'), 0, false)
+    rollDice(dicepool, actor, game.i18n.localize('VTM5E.RollingWillpower'), 0, false, false, true)
   })
 }
 
