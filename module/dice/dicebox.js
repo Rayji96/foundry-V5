@@ -166,7 +166,7 @@ export function prepareFrenzyShortcut ($content, data) {
     const actor = data.selectedCharacter
     const actorData = actor.data.data
     const dicepool = (actorData.willpower.max - actorData.willpower.aggravated - actorData.willpower.superficial) + Math.floor(actorData.humanity.value / 3)
-    rollDice(dicepool, actor, `${game.i18n.localize('VTM5E.ResistingFrenzy')}...`, 0, false)
+    rollDice(dicepool, actor, `${game.i18n.localize('VTM5E.ResistingFrenzy')}`, 0, false)
   })
 }
 

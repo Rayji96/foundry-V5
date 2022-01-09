@@ -114,9 +114,25 @@
 }
 
 /* ChatMessage CSS */
+#chat-form {
+  textarea {
+    background: $bg;
+  }
+}
+.chat-message {
+  background: $bg;
+}
+
 .roll {
   &-content {
     font-size: 120%;
+
+    &.result-bestial {
+      &.result-possible {
+        font-family: "Cormorant Light", sans-serif;
+        font-weight: bold;
+      }
+    }
   }
 
   &-img {
@@ -134,6 +150,7 @@
   &-label {
     font-weight: bold;
     font-size: 130%;
+    font-family: "Cormorant Light", sans-serif;
 
     .danger {
       color: $danger;
@@ -314,7 +331,11 @@
     }
   }
 
-  .profile-img,
+  .profile-img {
+    background: $accent;
+    border-radius: 2px 2px 0px px;
+  }
+
   .item-image img {
     background: $accent;
   }
@@ -400,9 +421,11 @@
         height: auto;
         width: 100px;
         margin-right: 0;
+        border-color: $accent;
+        border-radius: 2px 2px 0px 0px;
 
         &-zone {
-          max-width: 100px; /* .profile-img width */
+          max-width: 100px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -413,7 +436,8 @@
             color: white;
             font-family: "Cormorant Light", sans-serif;
             font-weight: bold;
-            border: none;
+            border: 1px solid $accent;
+            border-radius: 0px 0px 2px 2px;
           }
           h1 {
             color: $accent;
@@ -490,17 +514,17 @@
   }
 
   .window-content {
-    background: #faf5ed;
+    background: $bg;
     font-family: "Cormorant Light", sans-serif;
     font-weight: 600;
     nav.sheet-tabs {
-      background: #e6ded0;
+      background: $bg;
       color: $accent;
       font-size: 16px;
       margin-bottom: 20px;
       height: 41px;
       a.item.active {
-        background: #faf5ed;
+        background: $bg;
         text-decoration: none;
       }
     }
@@ -527,7 +551,7 @@
     }
     .header-fields {
       .resource {
-        border: 1px solid #d6d6d2;
+        border: 1px solid $borderLight;
         border-radius: 5px;
       }
     }
@@ -546,7 +570,7 @@
             &:hover,
             &:focus {
               color: #000;
-              text-shadow: 0 0 10px red;
+              text-shadow: 0 0 10px $accent;
               cursor: pointer;
             }
           }
@@ -561,6 +585,7 @@
 }
 
 .uppercase {
+  font-family: "Cormorant Light", sans-serif;
   text-transform: uppercase;
 }
 
