@@ -7,11 +7,9 @@
             <div class="grid grid-3col flexrow">
                 <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
                         placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-                <h1 class="charname"><input name="data.headers.domitor" type="text" value="{{data.data.headers.domitor}}"
-                        placeholder="{{localize 'VTM5E.Domitor'}}" /></h1>
-                <div class="resource flex-group-center exp">
-                    {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
-                </div>
+                <h1 class="charname"><input name="data.headers.domitor" type="text"
+                        value="{{data.data.headers.domitor}}" placeholder="{{localize 'VTM5E.Domitor'}}" /></h1>
+                {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
             </div>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -22,9 +20,9 @@
                 center all of its child elements content and text. --}}
 
                 {{> "systems/vtm5e/templates/actor/parts/health.html"}}
-                   
+
                 {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
-                
+
                 {{> "systems/vtm5e/templates/actor/parts/humanity.html"}}
             </div>
         </div>
@@ -41,10 +39,10 @@
 
     {{!-- Ghoul Sheet Body --}}
     <section class="sheet-body">
-        
+
         {{!-- Stats Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/stats.html"}}
-    
+
         {{!-- Owned Powers Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/disciplines.html"}}
 
@@ -56,6 +54,6 @@
 
         {{!-- Other Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/other.html"}}
-        
+
     </section>
 </form>

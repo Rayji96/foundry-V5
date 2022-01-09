@@ -8,6 +8,7 @@
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
+  font-size: 1em;
 }
 
 /* Rollable */
@@ -80,7 +81,7 @@
 }
 
 .flex-center {
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   text-align: center;
 }
@@ -90,15 +91,24 @@
   text-align: left;
 }
 .flex-between {
+  align-items: center;
   justify-content: space-between;
+  margin: 2px auto 2px auto;
 }
 .flex-group-center {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5px;
+  padding: 2px;
   border: 1px solid #780813;
   border-radius: 5px;
+}
+.flex-group-center input[type=number] {
+  margin: auto 2px auto 2px;
+}
+.flex-group-center input[type=text] {
+  display: inline;
+  border: 1px solid transparent;
 }
 .flex-group-center:not(.flexrow) .resource-counter,
 .flex-group-center:not(.flexrow) .resource-value {
@@ -108,7 +118,7 @@
   align-items: center;
   justify-content: flex-start;
   text-align: left;
-  padding: 5px;
+  padding: 2px;
   border: 1px solid #780813;
   border-radius: 5px;
 }
@@ -116,7 +126,7 @@
   align-items: center;
   justify-content: flex-end;
   text-align: right;
-  padding: 5px;
+  padding: 2px;
   border: 1px solid #780813;
   border-radius: 5px;
 }
@@ -168,31 +178,32 @@
   /* Resource Boxes */
 }
 .vtm5e button.rollable, .vtm5e button.rollable-with-mod {
-  background: #780813;
   color: var(--color-text-light-0);
+  background: #780813;
+  border: none;
   font-family: "Cormorant Light", sans-serif;
   font-weight: bold;
-  border: none;
+  margin: auto 2px auto 2px;
 }
 .vtm5e input {
   font-family: initial;
   background: var(--color-text-light-0);
   border: 1px solid var(--color-border-light-primary);
 }
-.vtm5e.items-list .item {
+.vtm5e .items-list .item {
   min-height: 30px;
   line-height: 24px;
   padding: 3px 0;
   border-bottom: 1px solid #ababab;
 }
-.vtm5e.items-list .item img {
+.vtm5e .items-list .item img {
   display: block;
 }
-.vtm5e.items-list .item-controls {
+.vtm5e .items-list .item-controls {
   flex: 0 0 86px;
   text-align: right;
 }
-.vtm5e.items-list .item-header {
+.vtm5e .items-list .item-header {
   font-weight: bold;
   min-height: 30px;
   line-height: 24px;
@@ -200,15 +211,16 @@
   border-bottom: 1px solid #780813;
   color: #780813;
 }
-.vtm5e.items-list .item-image {
+.vtm5e .items-list .item-image {
   flex: 0 0 24px;
   margin-right: 5px;
 }
-.vtm5e.items-list .item-name {
+.vtm5e .items-list .item-name {
+  color: inherit;
   margin: 0;
   font-weight: 600;
 }
-.vtm5e.items-list .item-name-header {
+.vtm5e .items-list .item-name-header {
   margin: 0;
   font-weight: bold;
 }
@@ -224,8 +236,9 @@
   transition: max-height 0.2s ease-out;
 }
 .vtm5e .description-content {
+  display: inline;
   background: var(--color-text-light-0);
-  border: 1px solid var(--color-border-light-primary);
+  border: 1px solid transparent;
   padding: 5px;
   height: 95%;
 }
@@ -289,11 +302,15 @@
 }
 .vtm5e .item-image img {
   background: #780813;
+  border-radius: 2px;
 }
 .vtm5e .coterie-sheet .sheet-header,
 .vtm5e .mortal-sheet .sheet-header,
 .vtm5e .ghoul-sheet .sheet-header {
   flex: 0 0 155px;
+}
+.vtm5e .ghoul-sheet .window-content .header-fields .resource {
+  border: none;
 }
 .vtm5e .locked .resource-value-empty:hot(.hungervalue), .vtm5e .locked .resource-value-step:hot(.hungervalue), .vtm5e .locked .resource-value-static .resource-value-static-step:hot(.hungervalue), .vtm5e .resource-value-static .locked .resource-value-static-step:hot(.hungervalue) {
   opacity: 0;
@@ -322,7 +339,6 @@
   margin-bottom: 10px;
 }
 .vtm5e .sheet-header h1.charname {
-  height: 50px;
   padding: 0;
   margin: 5px 0;
   border-bottom: 0;
@@ -330,7 +346,7 @@
 .vtm5e .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
-  margin: 0;
+  margin: 0px;
 }
 .vtm5e .sheet-header h2.limited-charname {
   font-weight: bold;
@@ -348,19 +364,25 @@
   max-height: 205px;
   height: auto;
   width: 100px;
-  margin-right: 0;
   border-color: #780813;
   border-radius: 2px 2px 0px 0px;
 }
+.vtm5e .sheet-header .profile-img img {
+  flex: 0 0 64px;
+  height: 64px;
+  margin-right: 6px;
+}
 .vtm5e .sheet-header .profile-img-zone {
-  max-width: 100px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   flex-direction: column;
+  flex-wrap: nowrap;
+  max-width: 100px;
   margin-right: 10px;
 }
 .vtm5e .sheet-header .profile-img-zone button {
+  align-self: center;
   background: #780813;
   color: white;
   font-family: "Cormorant Light", sans-serif;
@@ -369,6 +391,7 @@
   border-radius: 0px 0px 2px 2px;
 }
 .vtm5e .sheet-header .profile-img-zone h1 {
+  align-self: center;
   color: #780813;
   font-family: "Cormorant Light", sans-serif;
   text-transform: uppercase;
@@ -405,8 +428,8 @@
 }
 .vtm5e .tabs {
   height: 40px;
-  border-top: 1px solid #ababab;
-  border-bottom: 1px solid #ababab;
+  border-top: 1px solid #780813;
+  border-bottom: 1px solid #780813;
 }
 .vtm5e .tabs .item {
   line-height: 40px;
@@ -414,7 +437,7 @@
 }
 .vtm5e .tabs .item.active {
   text-decoration: underline;
-  text-shadow: none;
+  text-shadow: 0px 0px 5px rgba(96, 41, 48, 0.5);
 }
 .vtm5e .tox .tox-editor-container {
   background: #faf4eb;
@@ -437,6 +460,7 @@
 .vtm5e .window-content nav.sheet-tabs a.item.active {
   background: #faf4eb;
   text-decoration: none;
+  text-shadow: 0px 0px 5px rgba(96, 41, 48, 0.5);
 }
 .vtm5e .window-content .sheet-header {
   flex: 0 0 215px;
@@ -494,6 +518,11 @@
 
 #sidebar.app {
   background: rgba(20, 0, 0, 0.9);
+}
+
+#data.exp.value,
+#data.exp.max {
+  margin: 2px;
 }
 
 /* Dice Tray */
