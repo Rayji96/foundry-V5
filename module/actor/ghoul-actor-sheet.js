@@ -1,4 +1,4 @@
-/* global Dialog, game, mergeObject */
+/* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
 import { MortalActorSheet } from './mortal-actor-sheet.js'
 
@@ -222,30 +222,30 @@ export class GhoulActorSheet extends MortalActorSheet {
     // and the power's level
     // Potency 0 never rolls additional rouse dice for disciplines
     if (potency === 0) {
-      return(1)
+      return (1)
     } else
     // Potency of 9 and 10 always roll additional rouse dice for disciplines
     if (potency > 8) {
-      return(2)
+      return (2)
     } else
     // Potency 7 and 8 roll additional rouse dice on discipline powers below 5
     if (potency > 6 && level < 5) {
-      return(2)
+      return (2)
     } else
     // Potency 5 and 6 roll additional rouse dice on discipline powers below 4
     if (potency > 4 && level < 4) {
-      return(2)
+      return (2)
     } else
     // Potency 3 and 4 roll additional rouse dice on discipline powers below 3
     if (potency > 2 && level < 3) {
-      return(2)
+      return (2)
     } else
     // Potency 1 and 2 roll additional rouse dice on discipline powers below 2
     if (potency > 0 && level < 2) {
-      return(2)
+      return (2)
     }
 
     // If none of the above are true, just roll 1 dice for the rouse check
-    return(1)
+    return (1)
   }
 }

@@ -221,6 +221,12 @@
   align-self: center;
 }
 
+.vtm5e .sheet-header h1.charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
 .vtm5e .window-content .header-fields .level input {
   max-width: 35px;
   float: left;
@@ -320,12 +326,6 @@
   text-align: center;
   flex: 0;
   width: 100%;
-}
-
-.vtm5e .sheet-header h1.charname input {
-  width: 100%;
-  height: 100%;
-  margin: 0;
 }
 
 .vtm5e .sheet-tabs {

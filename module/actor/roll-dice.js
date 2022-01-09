@@ -135,7 +135,6 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
   if (increaseHunger && game.settings.get('vtm5e', 'automatedRouse')) {
     // Check if the roll failed (matters for discipline
     // power-based rouse checks that roll 2 dice instead of 1)
-    console.log(difficulty + " - " + totalSuccess)
     if ((difficulty === 0 && totalSuccess === 0) || (totalSuccess < difficulty)) {
       const actorHunger = actor.data.data.hunger.value
 
@@ -149,7 +148,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
       } else {
         // Define the new number of hunger points
         const newHunger = actor.data.data.hunger.value + 1
-  
+
         // Push it to the actor's sheet
         actor.update({ 'data.hunger.value': newHunger })
       }
