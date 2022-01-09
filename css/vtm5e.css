@@ -224,12 +224,12 @@
   margin: 0;
   font-weight: bold;
 }
-.vtm5e .collpasible:hover, .vtm5e .collpasible:focus {
+.vtm5e .collapsible:hover, .vtm5e .collapsible:focus {
   color: #000;
   text-shadow: 0 0 10px #780813;
   cursor: pointer;
 }
-.vtm5e .collpasible-content {
+.vtm5e .collapsible-content {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
