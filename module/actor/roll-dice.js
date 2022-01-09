@@ -132,22 +132,27 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
   })
 
   // Automatically add hunger to the actor on a failure (for rouse checks)
-  if (increaseHunger && totalSuccess === 0 && game.settings.get('vtm5e', 'automatedRouse')) {
-    const actorHunger = actor.data.data.hunger.value
+  if (increaseHunger && game.settings.get('vtm5e', 'automatedRouse')) {
+    // Check if the roll failed (matters for discipline
+    // power-based rouse checks that roll 2 dice instead of 1)
+    console.log(difficulty + " - " + totalSuccess)
+    if ((difficulty === 0 && totalSuccess === 0) || (totalSuccess < difficulty)) {
+      const actorHunger = actor.data.data.hunger.value
 
-    // If hunger is greater than 4 (5, or somehow higher)
-    // then display that in the chat and don't increase hunger
-    if (actorHunger > 4) {
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: actor }),
-        content: game.i18n.localize('VTM5E.HungerFull')
-      })
-    } else {
-      // Define the new number of hunger points
-      const newHunger = actor.data.data.hunger.value + 1
-
-      // Push it to the actor's sheet
-      actor.update({ 'data.hunger.value': newHunger })
+      // If hunger is greater than 4 (5, or somehow higher)
+      // then display that in the chat and don't increase hunger
+      if (actorHunger > 4) {
+        roll.toMessage({
+          speaker: ChatMessage.getSpeaker({ actor: actor }),
+          content: game.i18n.localize('VTM5E.HungerFull')
+        })
+      } else {
+        // Define the new number of hunger points
+        const newHunger = actor.data.data.hunger.value + 1
+  
+        // Push it to the actor's sheet
+        actor.update({ 'data.hunger.value': newHunger })
+      }
     }
   }
 

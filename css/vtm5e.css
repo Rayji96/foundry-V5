@@ -210,6 +210,22 @@
   border-radius: 5px;
 }
 
+.vtm5e .window-content .header-fields select {
+  max-width: 150px;
+  float: right;
+}
+
+.vtm5e .window-content .header-fields .level {
+  flex-grow: 0;
+  margin-left: 10px;
+  align-self: center;
+}
+
+.vtm5e .window-content .header-fields .level input {
+  max-width: 35px;
+  float: left;
+}
+
 .vtm5e .window-content .abilities,
 .vtm5e.sheet.actor .window-content .skills {
   border: none;
@@ -369,6 +385,10 @@
   color: #790813;
 }
 
+.vtm5e .items-list .item-header .header-level {
+  text-align: center;
+}
+
 .vtm5e .items-list .item {
   min-height: 30px;
   line-height: 24px;
@@ -396,7 +416,6 @@
 }
 
 .vtm5e .items-list .item-controls {
-  flex: 0 0 86px;
   text-align: right;
 }
 
@@ -412,6 +431,11 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+.vtm5e .discipline-description {
+  width: 100%;
+  resize: none;
 }
 
 /* Resource boxes CSS */
@@ -523,6 +547,7 @@
 
 .vtm5e .tab.disciplines .resource-value {
   margin-top: 2px;
+  text-align: center;
 }
 
 /* ChatMessage CSS */

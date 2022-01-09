@@ -39,6 +39,10 @@
   background: #fff;
 }
 
+.vtm5e.dark-theme .discipline-description {
+  color: #ccc;
+}
+
 /* Resource boxes CSS */
 .vtm5e.dark-theme .resource-value .resource-value-step {
   border: 1px solid #cdcdcd;
