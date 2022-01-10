@@ -151,11 +151,11 @@
   &-img {
     max-width: 30px;
     margin: 1px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 50%);
     border-radius: 3px;
 
     &.hunger-dice {
-      background: rgba(255, 230, 230, 0.5);
+      background: rgba(255, 230, 230, 50%);
       border-color: $accent;
     }
   }
@@ -293,18 +293,10 @@
           background-color: $accent;
         }
         &[data-state="/"] {
-          background: linear-gradient(
-            135deg,
-            transparent 0%,
-            transparent 43%,
-            black 45%,
-            black 55%,
-            transparent 57%,
-            transparent 100%
-          );
+          @include fadeOut();
         }
         &[data-state="x"] {
-          @include fadeOut;
+          @include fadeOut();
         }
       }
     }
@@ -336,7 +328,7 @@
       }
 
       .resource-value-empty {
-        @include fadeOut;
+        @include fadeOut();
         height: 14px;
         width: 14px;
         border: 1px solid $borderDark;
@@ -463,7 +455,6 @@
           justify-content: center;
           flex-direction: column;
           flex-wrap: nowrap;
-          
           max-width: 100px;
           margin-right: 10px;
 
@@ -476,7 +467,6 @@
             font-weight: bold;
             border: 1px solid $accent;
             border-radius: 0px 0px 2px 2px;
-
           }
 
           h1 {
@@ -538,7 +528,7 @@
       font-weight: bold;
       &.active {
         text-decoration: underline;
-        text-shadow: 0px 0px 5px hsla(353, 40%, 27%, 0.5);
+        text-shadow: 0px 0px 5px hsla(353, 40%, 27%, 50%);
       }
     }
   }
@@ -567,7 +557,7 @@
       a.item.active {
         background: $bg;
         text-decoration: none;
-        text-shadow: 0px 0px 5px rgba(96, 41, 48, 0.5);
+        text-shadow: 0px 0px 5px rgba(96, 41, 48, 50%);
       }
     }
 
@@ -631,7 +621,7 @@
   text-transform: uppercase;
 }
 
-.willpowerReroll {
+.willpower-reroll {
   .die {
     flex: 0;
   }
@@ -647,7 +637,7 @@
 }
 
 #sidebar.app {
-  background: rgba(20, 0, 0, 0.9);
+  background: rgba(20, 0, 0, 90%);
 }
 
 #data.exp.value,

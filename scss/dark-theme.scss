@@ -1,0 +1,106 @@
+@use "styles.scss" as *;
+
+/* Dark Theme */
+.vtm5e {
+  &.dark-theme {
+    &.actor {
+      &.sheet {
+        .editor-content {
+          color: #000;
+        }
+      }
+    }
+
+    &.item {
+      &.sheet {
+        .editor-content {
+          color: #e0e0e0;
+        }
+      }
+    }
+
+    select {
+      background: #fff;
+    }
+
+    .items {
+      &-list {
+        .item-header {
+          color: #f6f6f6;
+        }
+      }
+    }
+
+    .resource {
+      &-value {
+        .resource-counter {
+          .resource-counter-step {
+            border: 1px solid white;
+
+            &[data-state="-"] {
+              background-color: $accent;
+            }
+            &[data-state="/"] {
+              @include fadeOut(red);
+            }
+            &[data-state="x"] {
+              @include fadeOut(red);
+            }
+          }
+        }
+        .resource-value {
+          &-step {
+            border: 1px solid #cdcdcd;
+            &.active {
+              background-color: $accent;
+            }
+          }
+          &-static-step {
+            border: 1px solid black;
+
+            &.active {
+              background-color: $accent;
+            }
+          }
+        }
+      }
+    }
+
+    .sheet {
+      &-header {
+        .profile-img-zone {
+          h1 {
+            color: #cc0014;
+          }
+        }
+      }
+    }
+
+    .tox {
+      .tox {
+        &-editor-container {
+          background: #fff;
+        }
+      }
+    }
+    .window-content {
+      background: #313131;
+      color: #e0e0e0;
+
+      .sheet-body .tab > .resource-label {
+        color: #ff0119;
+        border-bottom: 1px solid #790813;
+      }
+
+      nav.sheet-tabs {
+        background: #121212;
+        color: #ff0019;
+
+        .item.active {
+          background: #3c3c3c;
+          color: #f00;
+        }
+      }
+    }
+  }
+}

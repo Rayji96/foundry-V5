@@ -80,6 +80,8 @@
     </div>  
     {{else}}
     <label class="resource-label flex-center">{{localize "VTM5E.History"}}</label>
-    {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
+    <div class="description-content">
+        {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
+    </div>
     {{/if}}
 </div>

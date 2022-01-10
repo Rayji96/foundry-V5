@@ -6,7 +6,8 @@
     "build": "gulp",
     "compile": "gulp css",
     "watch": "gulp",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "eslint": "eslint -c .github/linters/.eslintrc.yml *"
   },
   "browserslist": [
     "last 3 versions"

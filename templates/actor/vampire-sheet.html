@@ -20,9 +20,9 @@
                 and it will add a small amount of padding, a border, and will
                 center all of its child elements content and text. --}}
                 {{> "systems/vtm5e/templates/actor/parts/health.html"}}
-                   
+
                 {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
-                
+
                 {{> "systems/vtm5e/templates/actor/parts/humanity.html"}}
             </div>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
@@ -32,9 +32,9 @@
                 {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
 
                 {{> "systems/vtm5e/templates/actor/parts/hunger.html"}}
-     
+
                 {{> "systems/vtm5e/templates/actor/parts/rouse.html"}}
-                
+
                 {{> "systems/vtm5e/templates/actor/parts/frenzy.html"}}
             </div>
         </div>
@@ -42,12 +42,12 @@
 
     {{!-- Vampire Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</a>
-        <a class="item" data-tab="disciplines">{{localize "VTM5E.Disciplines"}}</a>
-        <a class="item" data-tab="features">{{localize "VTM5E.Features"}}</a>
-        <a class="item" data-tab="blood">{{localize "VTM5E.Blood"}}</a>
-        <a class="item" data-tab="description">{{localize "VTM5E.Description"}}</a>
-        <a class="item" data-tab="other">{{localize "VTM5E.Other"}}</a>
+        <div class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</div>
+        <div class="item" data-tab="disciplines">{{localize "VTM5E.Disciplines"}}</div>
+        <div class="item" data-tab="features">{{localize "VTM5E.Features"}}</div>
+        <div class="item" data-tab="blood">{{localize "VTM5E.Blood"}}</div>
+        <div class="item" data-tab="description">{{localize "VTM5E.Description"}}</div>
+        <div class="item" data-tab="other">{{localize "VTM5E.Other"}}</div>
     </nav>
 
     {{!-- Vampire Sheet Body --}}
@@ -70,6 +70,6 @@
 
         {{!-- Other Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/other.html"}}
-        
+
     </section>
 </form>
