@@ -16,7 +16,7 @@
     flex-wrap: nowrap;
   }
 
-  &__button {
+  &-button {
     .rollImage {
       border: 0;
       //filter: invert();
@@ -33,12 +33,12 @@
     }
   }
 
-  &__character {
+  &-character {
     display: grid;
     grid-template-columns: 1fr 2fr;
   }
 
-  &__custom-rolls {
+  &-custom-rolls {
     display: grid;
     margin: 0.5em 0;
     grid-template-columns: 2fr 15px 2fr 1fr;
@@ -47,11 +47,11 @@
       "opts1 .      opts2 roll";
   }
 
-  &__filter-spacer {
+  &-filter-spacer {
     padding: 6px;
   }
 
-  &__pool-filters {
+  &-pool-filters {
     input {
       display: block;
       position: absolute;
@@ -89,7 +89,7 @@
     }
   }
 
-  &__searchable {
+  &-searchable {
     &-select {
       height: 31px;
       position: relative;
@@ -176,13 +176,13 @@
   }
 
   .dice-tray {
-    &__label {
+    &-label {
       display: block;
       height: 31px;
       line-height: 31px;
     }
-    &__input,
-    &__select {
+    &-input,
+    &-select {
       display: block;
       color: $borderLight;
       font-size: 14px;
@@ -198,7 +198,7 @@
         box-shadow: 0 0 6px inset var(--color-text-hyperlink);
       }
     }
-    &__concatenate {
+    &-concatenate {
       display: block;
       height: 25px;
       line-height: 25px;
