@@ -1,0 +1,15 @@
+{
+  "eslint.enable": false,
+  "jshint.enable": false,
+  "liveSassCompile.settings.watchOnLaunch": true,
+    "liveSassCompile.settings.formats": [
+      {
+        "format": "expanded",
+        "extensionName": ".css",
+        "savePath": "/css"
+      },
+    ],
+    "liveSassCompile.settings.includeItems": [
+      "scss/vtm5e.scss",
+    ]
+  }

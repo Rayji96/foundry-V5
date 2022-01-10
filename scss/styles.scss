@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
+
+// Fonts
+@font-face {
+  font-family: "Cormorant Light";
+  src: url("../assets/fonts/Cormorant-Light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Colours
+$accent: hsl(354, 88%, 25%);
+$bg: hsl(37, 57%, 95%);
+$borderLight: hsl(0, 0%, 67%);
+$borderDark: hsl(0, 0%, 0%);
+
+$textLight: white;
+$textDark: black;
+
+$danger: hsl(0, 72%, 30%);
+$success: hsl(109, 76%, 18%);
+
+// Mixins
+@mixin fadeOut($color: black) {
+  background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      $color 45%,
+      $color 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      $color 45%,
+      $color 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+@mixin grid($column) {
+  grid-column: span $column / span $column;
+  grid-template-columns: repeat($column, minmax(0, 1fr));
+}
+
+@mixin flexAlign($items, $justify, $text) {
+  align-items: $items;
+  justify-content: $justify;
+  text-align: $text;
+}
