@@ -165,7 +165,6 @@
             color: var(--color-text-light-0);
             outline: none;
           }
-
         }
       }
     }
@@ -213,9 +212,9 @@
       color: $borderLight;
 
       transition: all ease-in-out 0.25s, visibility 0s;
-      
+
       font-size: 14px;
-      
+
       &:hover,
       &:focus {
         border: 1px solid var(--color-text-hyperlink);

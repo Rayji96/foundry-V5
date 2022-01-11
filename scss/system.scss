@@ -12,54 +12,19 @@
 
 /* Grids and Flexboxes */
 .grid {
-  @include grid(2);
   display: grid;
   gap: 10px;
   margin: 10px 0;
   padding: 0;
 
-  &-2col {
-    @extend .grid;
-  }
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  &-3col {
-    @include grid(3);
-  }
-
-  &-4col {
-    @include grid(4);
-  }
-
-  &-5col {
-    @include grid(5);
-  }
-
-  &-6col {
-    @include grid(6);
-  }
-
-  &-7col {
-    @include grid(7);
-  }
-
-  &-8col {
-    @include grid(8);
-  }
-
-  &-9col {
-    @include grid(9);
-  }
-
-  &-10col {
-    @include grid(10);
-  }
-
-  &-11col {
-    @include grid(11);
-  }
-
-  &-12col {
-    @include grid(12);
+  @for $i from 2 through 12 {
+    &-#{$i}col {
+      grid-column: span $i / span $i;
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
   }
 }
 
@@ -81,6 +46,7 @@
     &-center {
       @include flexAlign(center, center, center);
       padding: 2px;
+
       border: 1px solid $accent;
       border-radius: 5px;
 
@@ -118,20 +84,11 @@
 }
 
 /* Rollable */
-.rollable:hover,
-.rollable:focus,
-.rollable-with-mod:hover,
-.rollable-with-mod:focus,
-.vrollable:hover,
-.vrollable:focus,
-.power-rollable:hover,
-.power-rollable:focus {
-  color: #000;
-  text-shadow: 0 0 10px $accent;
-  cursor: pointer;
-}
-
-.custom-rollable {
+.custom-rollable,
+.power-rollable,
+.rollable,
+.rollable-with-mod,
+.vrollable {
   &:hover,
   &:focus {
     color: #000;
@@ -214,16 +171,17 @@
       color: var(--color-text-light-0);
       background: $accent;
       border: none;
+      margin: auto 2px;
+
       font-family: "Cormorant Light", sans-serif;
       font-weight: bold;
-      margin: auto 2px;
     }
   }
 
   input {
-    font-family: initial;
     background: var(--color-text-light-0);
     border: 1px solid var(--color-border-light-primary);
+    font-family: initial;
   }
 
   .items-list {
@@ -243,12 +201,14 @@
       }
 
       &-header {
-        font-weight: bold;
-        min-height: 30px;
-        line-height: 24px;
-        padding: 3px 0;
-        border-bottom: 1px solid $accent;
         color: $accent;
+        border-bottom: 1px solid $accent;
+
+        padding: 3px 0;
+        min-height: 30px;
+
+        font-weight: bold;
+        line-height: 24px;
       }
 
       &-image {
@@ -265,7 +225,6 @@
           margin: 0;
           font-weight: bold;
         }
-        
       }
     }
   }
@@ -353,11 +312,13 @@
       }
 
       .resource-value-step {
+        display: inline-block;
         height: 14px;
         width: 14px;
+
         border: 1px solid $borderDark;
-        display: inline-block;
         border-radius: 50%;
+
         cursor: pointer;
 
         &.active {
@@ -367,19 +328,20 @@
 
       .resource-value-empty {
         @include fadeOut();
+        display: inline-block;
         height: 14px;
         width: 14px;
-        border: 1px solid $borderDark;
-        display: inline-block;
-        border-radius: 50%;
         cursor: pointer;
+
+        border: 1px solid $borderDark;
+        border-radius: 50%;
       }
     }
   }
 
   .profile-img {
     background: $accent;
-    border-radius: 2px 2px 0px px;
+    border-radius: 2px 2px 0px 0px;
   }
 
   .item-image img {
@@ -396,7 +358,7 @@
 
   .ghoul-sheet {
     .sheet-header {
-      flex: 0 0 155px;
+      @extend .sheet-header;
     }
 
     .window-content {
@@ -427,12 +389,11 @@
   .limited {
     .sheet {
       &-header {
-        flex: 0 0 215px;
-        overflow: hidden;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex: 0 0 215px;
+        flex-flow: row wrap;
         justify-content: flex-start;
+        overflow: hidden;
         margin-bottom: 10px;
       }
     }
@@ -440,12 +401,11 @@
 
   .sheet {
     &-header {
-      flex: 0 0 215px;
-      overflow: hidden;
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex: 0 0 215px;
+      flex-flow: row wrap;
       justify-content: flex-start;
+      overflow: hidden;
       margin-bottom: 10px;
 
       h1 {
@@ -453,6 +413,7 @@
           padding: 0;
           margin: 5px 0;
           border-bottom: 0;
+
           input {
             width: 100%;
             height: 100%;
@@ -463,11 +424,12 @@
 
       h2 {
         &.limited-charname {
+          flex: 0;
+          width: 100%;
+
           font-weight: bold;
           font-size: 50px;
           text-align: center;
-          flex: 0;
-          width: 100%;
         }
       }
 
@@ -477,10 +439,12 @@
 
       .profile-img {
         flex: 0 0 100px;
-        min-height: 50px;
-        max-height: 205px;
+
         height: auto;
         width: 100px;
+        min-height: 50px;
+        max-height: 205px;
+
         border-color: $accent;
         border-radius: 2px 2px 0px 0px;
 
@@ -494,6 +458,7 @@
           @include flexAlign(stretch, center);
           display: flex;
           flex-flow: column nowrap;
+
           max-width: 100px;
           margin-right: 10px;
 
@@ -502,10 +467,12 @@
 
             background: $accent;
             color: white;
-            font-family: "Cormorant Light", sans-serif;
-            font-weight: bold;
             border: 1px solid $accent;
             border-radius: 0px 0px 2px 2px;
+
+            font-family: "Cormorant Light", sans-serif;
+            font-weight: bold;
+            
           }
 
           h1 {
@@ -534,13 +501,11 @@
         }
 
         .editor {
-          height: 100%;
-          min-height: 160px;
+          @extend .tab;
         }
 
         .tox-tinymce {
-          min-height: 160px;
-          height: 100%;
+          @extend .tab;
         }
       }
     }
@@ -596,18 +561,22 @@
 
   .window-content {
     background: $bg;
+
     font-family: "Cormorant Light", sans-serif;
     font-weight: 600;
 
     nav.sheet-tabs {
       background: $bg;
       color: $accent;
-      font-size: 16px;
-      margin-bottom: 20px;
+
       height: 41px;
+      margin-bottom: 20px;
+
+      font-size: 16px;
 
       a.item.active {
         background: $bg;
+
         text-decoration: none;
         text-shadow: 0px 0px 5px rgba(96, 41, 48, 50%);
       }
@@ -615,21 +584,22 @@
 
     .sheet {
       &-header {
-        flex: 0 0 215px;
-        overflow: hidden;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex: 0 0 215px;
+        flex-flow: row wrap;
         justify-content: flex-start;
+        overflow: hidden;
         margin-bottom: 10px;
       }
 
       &-body {
         .tab > .resource-label {
+          display: block;
+          width: 100%;
+
           color: $accent;
           border-bottom: 1px solid $accent;
-          width: 100%;
-          display: block;
+
           text-transform: uppercase;
         }
       }
@@ -644,8 +614,8 @@
 
     .resource {
       &-label {
-        text-transform: initial;
         font-size: 16px;
+        text-transform: initial;
       }
     }
     .abilities {

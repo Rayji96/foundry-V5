@@ -16,13 +16,17 @@
 }
 
 /* Grids and Flexboxes */
-.grid, .grid-2col {
-  grid-column: span 2/span 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.grid {
   display: grid;
   gap: 10px;
   margin: 10px 0;
   padding: 0;
+  grid-column: span 2/span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.grid-2col {
+  grid-column: span 2/span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .grid-3col {
   grid-column: span 3/span 3;
@@ -141,20 +145,15 @@
 }
 
 /* Rollable */
+.custom-rollable:hover, .custom-rollable:focus,
+.power-rollable:hover,
+.power-rollable:focus,
 .rollable:hover,
 .rollable:focus,
 .rollable-with-mod:hover,
 .rollable-with-mod:focus,
 .vrollable:hover,
-.vrollable:focus,
-.power-rollable:hover,
-.power-rollable:focus {
-  color: #000;
-  text-shadow: 0 0 10px #780813;
-  cursor: pointer;
-}
-
-.custom-rollable:hover, .custom-rollable:focus {
+.vrollable:focus {
   color: #000;
   text-shadow: 0 0 10px #780813;
   cursor: pointer;
@@ -220,14 +219,14 @@
   color: var(--color-text-light-0);
   background: #780813;
   border: none;
+  margin: auto 2px;
   font-family: "Cormorant Light", sans-serif;
   font-weight: bold;
-  margin: auto 2px;
 }
 .vtm5e input {
-  font-family: initial;
   background: var(--color-text-light-0);
   border: 1px solid var(--color-border-light-primary);
+  font-family: initial;
 }
 .vtm5e .items-list .item {
   min-height: 30px;
@@ -245,12 +244,12 @@
   text-align: right;
 }
 .vtm5e .items-list .item-header {
-  font-weight: bold;
-  min-height: 30px;
-  line-height: 24px;
-  padding: 3px 0;
-  border-bottom: 1px solid #780813;
   color: #780813;
+  border-bottom: 1px solid #780813;
+  padding: 3px 0;
+  min-height: 30px;
+  font-weight: bold;
+  line-height: 24px;
 }
 .vtm5e .items-list .item-image {
   -webkit-box-flex: 0;
@@ -323,10 +322,10 @@
   background-color: #780813;
 }
 .vtm5e .resource-value .resource-value-step, .vtm5e .resource-value .resource-value-static .resource-value-static-step, .vtm5e .resource-value-static .resource-value .resource-value-static-step {
+  display: inline-block;
   height: 14px;
   width: 14px;
   border: 1px solid black;
-  display: inline-block;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -335,16 +334,16 @@
 }
 .vtm5e .resource-value .resource-value-empty {
   background: linear-gradient(45deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), linear-gradient(135deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
+  display: inline-block;
   height: 14px;
   width: 14px;
-  border: 1px solid black;
-  display: inline-block;
-  border-radius: 50%;
   cursor: pointer;
+  border: 1px solid black;
+  border-radius: 50%;
 }
 .vtm5e .profile-img {
   background: #780813;
-  border-radius: 2px 2px 0px px;
+  border-radius: 2px 2px 0px 0px;
 }
 .vtm5e .item-image img {
   background: #780813;
@@ -352,11 +351,6 @@
 }
 .vtm5e .coterie-sheet .sheet-header,
 .vtm5e .mortal-sheet .sheet-header {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 155px;
-          flex: 0 0 155px;
-}
-.vtm5e .ghoul-sheet .sheet-header {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 155px;
           flex: 0 0 155px;
@@ -373,41 +367,37 @@
   cursor: default !important;
 }
 .vtm5e .limited .sheet-header {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 215px;
-          flex: 0 0 215px;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 215px;
+          flex: 0 0 215px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  overflow: hidden;
   margin-bottom: 10px;
 }
-.vtm5e .sheet-header {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 215px;
-          flex: 0 0 215px;
-  overflow: hidden;
+.vtm5e .sheet-header, .vtm5e .ghoul-sheet .sheet-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 215px;
+          flex: 0 0 215px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  overflow: hidden;
   margin-bottom: 10px;
 }
 .vtm5e .sheet-header h1.charname {
@@ -421,13 +411,13 @@
   margin: 0px;
 }
 .vtm5e .sheet-header h2.limited-charname {
-  font-weight: bold;
-  font-size: 50px;
-  text-align: center;
   -webkit-box-flex: 0;
       -ms-flex: 0;
           flex: 0;
   width: 100%;
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
 }
 .vtm5e .sheet-header .header-fields {
   -webkit-box-flex: 1;
@@ -438,10 +428,10 @@
   -webkit-box-flex: 0;
       -ms-flex: 0 0 100px;
           flex: 0 0 100px;
-  min-height: 50px;
-  max-height: 205px;
   height: auto;
   width: 100px;
+  min-height: 50px;
+  max-height: 205px;
   border-color: #780813;
   border-radius: 2px 2px 0px 0px;
 }
@@ -474,10 +464,10 @@
       align-self: center;
   background: #780813;
   color: white;
-  font-family: "Cormorant Light", sans-serif;
-  font-weight: bold;
   border: 1px solid #780813;
   border-radius: 0px 0px 2px 2px;
+  font-family: "Cormorant Light", sans-serif;
+  font-weight: bold;
 }
 .vtm5e .sheet-header .profile-img-zone h1 {
   -ms-flex-item-align: center;
@@ -492,20 +482,12 @@
   height: 100%;
   min-height: 160px;
 }
-.vtm5e .sheet-body .tab {
+.vtm5e .sheet-body .tab, .vtm5e .sheet-body .tab .tox-tinymce, .vtm5e .sheet-body .tab .editor {
   height: 100%;
   min-height: 160px;
 }
 .vtm5e .sheet-body .tab .half-height {
   height: 50%;
-}
-.vtm5e .sheet-body .tab .editor {
-  height: 100%;
-  min-height: 160px;
-}
-.vtm5e .sheet-body .tab .tox-tinymce {
-  min-height: 160px;
-  height: 100%;
 }
 .vtm5e .sheet-tabs {
   -webkit-box-flex: 0;
@@ -515,7 +497,7 @@
 .vtm5e .sheet.actor .window-content .skills {
   border: none;
 }
-.vtm5e .tab.disciplines .resource-value {
+.vtm5e .tab.disciplines .resource-value, .vtm5e .sheet-body .tab .disciplines.editor .resource-value, .vtm5e .sheet-body .tab .disciplines.tox-tinymce .resource-value {
   margin-top: 2px;
 }
 .vtm5e .tabs {
@@ -545,9 +527,9 @@
 .vtm5e .window-content nav.sheet-tabs {
   background: #faf4eb;
   color: #780813;
-  font-size: 16px;
-  margin-bottom: 20px;
   height: 41px;
+  margin-bottom: 20px;
+  font-size: 16px;
 }
 .vtm5e .window-content nav.sheet-tabs a.item.active {
   background: #faf4eb;
@@ -555,29 +537,27 @@
   text-shadow: 0px 0px 5px rgba(96, 41, 48, 0.5);
 }
 .vtm5e .window-content .sheet-header {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 215px;
-          flex: 0 0 215px;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 215px;
+          flex: 0 0 215px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  overflow: hidden;
   margin-bottom: 10px;
 }
-.vtm5e .window-content .sheet-body .tab > .resource-label {
+.vtm5e .window-content .sheet-body .tab > .resource-label, .vtm5e .window-content .sheet-body .tab .editor > .resource-label, .vtm5e .window-content .sheet-body .tab .tox-tinymce > .resource-label, .vtm5e .window-content .sheet-body .tab .tox-tinymce .editor > .resource-label, .vtm5e .window-content .sheet-body .tab .tox-tinymce .tox-tinymce > .resource-label {
+  display: block;
+  width: 100%;
   color: #780813;
   border-bottom: 1px solid #780813;
-  width: 100%;
-  display: block;
   text-transform: uppercase;
 }
 .vtm5e .window-content .header-fields .resource {
@@ -585,8 +565,8 @@
   border-radius: 5px;
 }
 .vtm5e .window-content .resource-label {
-  text-transform: initial;
   font-size: 16px;
+  text-transform: initial;
 }
 .vtm5e .window-content .abilities {
   border: none;
