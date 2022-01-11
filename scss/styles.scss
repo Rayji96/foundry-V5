@@ -31,6 +31,7 @@ $success: hsl(109, 76%, 18%);
       transparent 57%,
       transparent 100%
     ),
+
     linear-gradient(
       135deg,
       transparent 0%,
@@ -47,7 +48,7 @@ $success: hsl(109, 76%, 18%);
   grid-template-columns: repeat($column, minmax(0, 1fr));
 }
 
-@mixin flexAlign($items, $justify, $text) {
+@mixin flexAlign($items: null, $justify: null, $text: null) {
   align-items: $items;
   justify-content: $justify;
   text-align: $text;

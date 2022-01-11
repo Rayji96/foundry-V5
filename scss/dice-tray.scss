@@ -19,7 +19,7 @@
   &-button {
     .roll-image {
       border: 0;
-      //filter: invert();
+      filter: invert(100%);
     }
 
     &.roll-button {
@@ -55,25 +55,29 @@
     input {
       display: block;
       position: absolute;
-      font-size: 11px;
-      line-height: 10px;
-      padding: 1px;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
+      padding: 1px;
+
       border-radius: 3px;
+
+      font-size: 11px;
+      line-height: 10px;
+
       &input[type="radio"] {
         opacity: 0.011;
         z-index: 2;
       }
+
       &input[type="radio"]:checked + label {
         color: var(--color-text-hyperlink);
         border-color: var(--color-text-hyperlink);
-        -webkit-box-shadow: 0 0 6px inset var(--color-text-hyperlink);
         box-shadow: 0 0 6px inset var(--color-text-hyperlink);
       }
     }
+
     label {
       @extend input;
       padding: 5px;
@@ -93,16 +97,19 @@
     &-select {
       height: 31px;
       position: relative;
+
       &-cover {
         min-height: 31px;
         position: absolute;
         bottom: 0;
         width: 100%;
       }
+
       &-hover {
         width: 100%;
         height: 31px;
         transition: all ease-in-out 0.25s;
+
         &:hover {
           border: 1px solid var(--color-text-hyperlink);
           box-shadow: 0 0 6px inset var(--color-text-hyperlink);
@@ -115,34 +122,42 @@
           }
         }
       }
+
       &-fields {
+        display: none;
+        position: relative;
+        z-index: 3;
+
         border: 1px solid var(--color-border-dark-tertiary);
         border-bottom: 0;
-        z-index: 3;
-        position: relative;
-        display: none;
       }
+
       &-input {
         box-sizing: border-box;
         padding-left: 6px;
         width: 100%;
       }
+
       &-options {
         max-height: 500px;
         list-style: none;
-        padding-left: 0;
-        margin: 0;
-        background: var(--color-text-light-0);
-        color: var(--color-text-dark-1);
         overflow-y: scroll;
 
+        background: var(--color-text-light-0);
+        color: var(--color-text-dark-1);
+
+        padding-left: 0;
+        margin: 0;
+
         li {
-          padding-left: 5px;
           height: 29px;
+          overflow: hidden;
+          padding-left: 5px;
+
           font-size: 14px;
           line-height: 29px;
           text-overflow: ellipsis;
-          overflow: hidden;
+
           &:hover,
           &:focus {
             background: #1e90ff;
@@ -150,24 +165,28 @@
             color: var(--color-text-light-0);
             outline: none;
           }
+
         }
       }
     }
   }
 
   button {
+    @include flexAlign(center, center);
+
+    display: flex;
+    position: relative;
+    flex-direction: row;
+
     background: transparent;
     border: 1px solid $borderDark;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     color: $bg;
+
+    box-shadow: 0 0 6px inset var(--color-border-dark-tertiary);
     font-weight: bold;
     font-size: 14px;
-    box-shadow: 0 0 6px inset var(--color-border-dark-tertiary);
     transition: all ease-in-out 0.25s;
-    position: relative;
+
     &:hover {
       color: var(--color-text-hyperlink);
       border-color: var(--color-text-hyperlink);
@@ -181,23 +200,29 @@
       height: 31px;
       line-height: 31px;
     }
+
     &-input,
     &-select {
       display: block;
-      color: $borderLight;
-      font-size: 14px;
       height: 31px;
       width: 100%;
+
       background-color: hsla(0, 0%, 98%, 15%);
       border: 1px solid $borderDark;
       box-shadow: 0 0 6px inset $borderLight;
+      color: $borderLight;
+
       transition: all ease-in-out 0.25s, visibility 0s;
+      
+      font-size: 14px;
+      
       &:hover,
       &:focus {
         border: 1px solid var(--color-text-hyperlink);
         box-shadow: 0 0 6px inset var(--color-text-hyperlink);
       }
     }
+
     &-concatenate {
       display: block;
       height: 25px;
