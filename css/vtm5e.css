@@ -159,7 +159,7 @@
   cursor: pointer;
 }
 
-/* ChatMessage CSS */
+/* Chat Messages */
 #chat-form textarea {
   background: #faf4eb;
 }
@@ -212,9 +212,6 @@
 }
 
 /* .vtm5e System Class */
-.vtm5e {
-  /* Resource Boxes */
-}
 .vtm5e button.rollable, .vtm5e button.rollable-with-mod {
   color: var(--color-text-light-0);
   background: #780813;
@@ -230,9 +227,9 @@
 }
 .vtm5e .items-list .item {
   min-height: 30px;
-  line-height: 24px;
   padding: 3px 0;
   border-bottom: 1px solid #ababab;
+  line-height: 24px;
 }
 .vtm5e .items-list .item img {
   display: block;
@@ -268,8 +265,8 @@
 }
 .vtm5e .collapsible:hover, .vtm5e .collapsible:focus {
   color: #000;
-  text-shadow: 0 0 10px #780813;
   cursor: pointer;
+  text-shadow: 0 0 10px #780813;
 }
 .vtm5e .collapsible-content {
   padding: 0 18px;
@@ -280,10 +277,10 @@
 }
 .vtm5e .description-content {
   display: inline;
+  height: 95%;
   background: var(--color-text-light-0);
   border: 1px solid transparent;
   padding: 5px;
-  height: 95%;
 }
 .vtm5e .item-name h3 {
   line-height: 18px;
@@ -300,10 +297,10 @@
   overflow-y: auto;
 }
 .vtm5e .resource-counter .resource-counter-step {
+  display: inline-block;
   height: 14px;
   width: 14px;
   border: 1px solid black;
-  display: inline-block;
   cursor: pointer;
 }
 .vtm5e .resource-counter .resource-counter-step[data-state="-"] {
@@ -337,9 +334,9 @@
   display: inline-block;
   height: 14px;
   width: 14px;
-  cursor: pointer;
   border: 1px solid black;
   border-radius: 50%;
+  cursor: pointer;
 }
 .vtm5e .profile-img {
   background: #780813;
@@ -350,6 +347,7 @@
   border-radius: 2px;
 }
 .vtm5e .coterie-sheet .sheet-header,
+.vtm5e .ghoul-sheet .sheet-header,
 .vtm5e .mortal-sheet .sheet-header {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 155px;
@@ -383,7 +381,7 @@
   overflow: hidden;
   margin-bottom: 10px;
 }
-.vtm5e .sheet-header, .vtm5e .ghoul-sheet .sheet-header {
+.vtm5e .sheet-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -511,7 +509,7 @@
 }
 .vtm5e .tabs .item.active {
   text-decoration: underline;
-  text-shadow: 0px 0px 5px rgba(96, 41, 48, 0.5);
+  text-shadow: 0px 0px 2px rgba(96, 41, 48, 0.5);
 }
 .vtm5e .tox .tox-editor-container {
   background: #faf4eb;
@@ -573,12 +571,12 @@
 }
 .vtm5e .window-content .abilities .ability .resource-control:hover, .vtm5e .window-content .abilities .ability .resource-control:focus {
   color: #000;
-  text-shadow: 0 0 10px #780813;
   cursor: pointer;
+  text-shadow: 0 0 10px #780813;
 }
 .vtm5e .window-content .abilities .ability .resource-label {
-  font-weight: bold;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .uppercase {
@@ -588,6 +586,10 @@
 
 #data.exp.max, #data.exp.value {
   margin: 2px;
+}
+
+#selected-character {
+  width: 200px;
 }
 
 /* Dark Theme */
@@ -661,6 +663,9 @@
   background-size: cover;
   border: 2px solid #18510b;
   border-radius: 5px 5px 0 0;
+}
+.dice-tray > * {
+  margin: 2px;
 }
 .dice-tray .flexrow {
   -ms-flex-wrap: nowrap;
@@ -845,12 +850,4 @@
   height: 25px;
   line-height: 25px;
   text-align: center;
-}
-
-.dice-tray > * {
-  margin: 2px;
-}
-
-#selected-character {
-  width: 200px;
 }/*# sourceMappingURL=vtm5e.css.map */

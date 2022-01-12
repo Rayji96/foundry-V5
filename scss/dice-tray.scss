@@ -12,6 +12,10 @@
   border: 2px solid $success;
   border-radius: 5px 5px 0 0;
 
+  > * {
+    margin: 2px;
+  }
+
   .flexrow {
     flex-wrap: nowrap;
   }
@@ -229,12 +233,4 @@
       text-align: center;
     }
   }
-}
-
-.dice-tray > * {
-  margin: 2px;
-}
-
-#selected-character {
-  width: 200px;
 }

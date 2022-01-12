@@ -97,7 +97,7 @@
   }
 }
 
-/* ChatMessage CSS */
+/* Chat Messages */
 #chat-form {
   textarea {
     background: $bg;
@@ -187,9 +187,10 @@
   .items-list {
     .item {
       min-height: 30px;
-      line-height: 24px;
       padding: 3px 0;
       border-bottom: 1px solid $borderLight;
+
+      line-height: 24px;
 
       img {
         display: block;
@@ -233,8 +234,8 @@
     &:hover,
     &:focus {
       color: #000;
-      text-shadow: 0 0 10px $accent;
       cursor: pointer;
+      text-shadow: 0 0 10px $accent;
     }
 
     &-content {
@@ -248,10 +249,11 @@
   .description {
     &-content {
       display: inline;
+      height: 95%;
+
       background: var(--color-text-light-0);
       border: 1px solid transparent;
       padding: 5px;
-      height: 95%;
     }
   }
 
@@ -273,14 +275,15 @@
     }
   }
 
-  /* Resource Boxes */
   .resource {
+    // Resource Boxes
     &-counter {
       .resource-counter-step {
+        display: inline-block;
         height: 14px;
         width: 14px;
+
         border: 1px solid $borderDark;
-        display: inline-block;
         cursor: pointer;
 
         &[data-state="-"] {
@@ -305,6 +308,7 @@
       &-static {
         .resource-value-static-step {
           @extend .resource-value-step;
+
           &.active {
             background-color: $accent;
           }
@@ -331,10 +335,10 @@
         display: inline-block;
         height: 14px;
         width: 14px;
-        cursor: pointer;
 
         border: 1px solid $borderDark;
         border-radius: 50%;
+        cursor: pointer;
       }
     }
   }
@@ -350,6 +354,7 @@
   }
 
   .coterie-sheet,
+  .ghoul-sheet,
   .mortal-sheet {
     .sheet-header {
       flex: 0 0 155px;
@@ -357,10 +362,6 @@
   }
 
   .ghoul-sheet {
-    .sheet-header {
-      @extend .sheet-header;
-    }
-
     .window-content {
       .header-fields {
         .resource {
@@ -402,9 +403,11 @@
   .sheet {
     &-header {
       display: flex;
+      
       flex: 0 0 215px;
       flex-flow: row wrap;
       justify-content: flex-start;
+
       overflow: hidden;
       margin-bottom: 10px;
 
@@ -472,7 +475,6 @@
 
             font-family: "Cormorant Light", sans-serif;
             font-weight: bold;
-            
           }
 
           h1 {
@@ -542,7 +544,7 @@
 
       &.active {
         text-decoration: underline;
-        text-shadow: 0px 0px 5px hsla(353, 40%, 27%, 50%);
+        text-shadow: 0px 0px 2px hsla(353, 40%, 27%, 50%);
       }
     }
   }
@@ -588,7 +590,9 @@
         flex: 0 0 215px;
         flex-flow: row wrap;
         justify-content: flex-start;
+
         overflow: hidden;
+
         margin-bottom: 10px;
       }
 
@@ -627,14 +631,14 @@
             &:hover,
             &:focus {
               color: #000;
-              text-shadow: 0 0 10px $accent;
               cursor: pointer;
+              text-shadow: 0 0 10px $accent;
             }
           }
 
           &-label {
-            font-weight: bold;
             font-size: 18px;
+            font-weight: bold;
           }
         }
       }
@@ -652,4 +656,8 @@
   &.value {
     margin: 2px;
   }
+}
+
+#selected-character {
+  width: 200px;
 }
