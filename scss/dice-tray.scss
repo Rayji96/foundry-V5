@@ -70,12 +70,12 @@
       font-size: 11px;
       line-height: 10px;
 
-      &input[type="radio"] {
+      &[type="radio"] {
         opacity: 0.011;
         z-index: 2;
       }
 
-      &input[type="radio"]:checked + label {
+      &[type="radio"]:checked + label {
         color: var(--color-text-hyperlink);
         border-color: var(--color-text-hyperlink);
         box-shadow: 0 0 6px inset var(--color-text-hyperlink);

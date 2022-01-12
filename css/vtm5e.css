@@ -384,6 +384,9 @@
   color: #780813;
   cursor: pointer;
 }
+.vtm5e .locked .resource-minus:before:hover, .vtm5e .locked .resource-plus:before:hover {
+  cursor: pointer;
+}
 .vtm5e .limited .sheet-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -577,6 +580,10 @@
   font-size: 16px;
   text-transform: initial;
 }
+.vtm5e .window-content .resource-label.rollable:hover {
+  background: transparent;
+  text-shadow: 0 0 5px #780813;
+}
 .vtm5e .window-content .sheet-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -766,11 +773,11 @@
   font-size: 11px;
   line-height: 10px;
 }
-.dice-tray-pool-filters inputinput[type=radio] {
+.dice-tray-pool-filters input[type=radio], .dice-tray-pool-filters label[type=radio] {
   opacity: 0.011;
   z-index: 2;
 }
-.dice-tray-pool-filters inputinput[type=radio]:checked + label {
+.dice-tray-pool-filters input[type=radio]:checked + label, .dice-tray-pool-filters label[type=radio]:checked + label {
   color: var(--color-text-hyperlink);
   border-color: var(--color-text-hyperlink);
   -webkit-box-shadow: 0 0 6px inset var(--color-text-hyperlink);
