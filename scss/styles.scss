@@ -31,7 +31,6 @@ $success: hsl(109, 76%, 18%);
       transparent 57%,
       transparent 100%
     ),
-
     linear-gradient(
       135deg,
       transparent 0%,
@@ -47,4 +46,11 @@ $success: hsl(109, 76%, 18%);
   align-items: $items;
   justify-content: $justify;
   text-align: $text;
+}
+
+@mixin buttonHover($colorValue: $accent) {
+  cursor: pointer;
+  background: scale-color($color: $colorValue, $saturation: -20%);
+  border-color: scale-color($color: $colorValue, $saturation: -20%);
+  box-shadow: none;
 }

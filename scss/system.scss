@@ -13,10 +13,10 @@
 /* Grids and Flexboxes */
 .grid {
   display: grid;
-  gap: 10px;
   margin: 10px 0;
   padding: 0;
 
+  gap: 10px;
   grid-column: span 2 / span 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
@@ -45,11 +45,9 @@
   &-group {
     &-center {
       @include flexAlign(center, center, center);
-      // TODO: What the fuck is this
       padding: 2px;
-
-      border: 1px solid $accent;
       border-radius: 5px;
+      border: 1px solid $accent;
 
       input[type="number"] {
         margin: auto 2px;
@@ -92,18 +90,7 @@
 .vrollable {
   &:hover,
   &:focus {
-    color: #000;
-    text-shadow: 0 0 10px $accent;
-    cursor: pointer;
-  }
-}
-
-.rollable-with-mod {
-  button {
-    &:hover {
-     background: adjust-color($color: $accent, $blackness: 25%);
-     box-shadow: 0 0 2px $accent;
-    }
+    @include buttonHover();
   }
 }
 
@@ -185,6 +172,11 @@
 
       font-family: "Cormorant Light", sans-serif;
       font-weight: bold;
+
+      &:hover,
+      &:active {
+        @include buttonHover();
+      }
     }
   }
 
@@ -195,6 +187,10 @@
   }
 
   .items-list {
+    .flex-left {
+      padding-right: 21px;
+    }
+
     .item {
       min-height: 30px;
       min-width: 100%;
@@ -396,6 +392,11 @@
       &-plus {
         opacity: 0;
         cursor: default !important;
+
+        &:before {
+          color: $accent;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -488,6 +489,10 @@
 
             font-family: "Cormorant Light", sans-serif;
             font-weight: bold;
+
+            &:hover {
+              @include buttonHover();
+            }
           }
 
           h1 {
@@ -552,12 +557,15 @@
     border-bottom: 1px solid $accent;
 
     .item {
-      line-height: 40px;
+      width: calc(100% / 2);
+
       font-weight: bold;
+      line-height: 40px;
 
       &.active {
-        text-decoration: underline;
-        text-shadow: 0px 0px 2px hsla(353, 40%, 27%, 50%);
+        @include buttonHover();
+        color: $textLight;
+        text-shadow: 0px 0px 2px black;
       }
     }
   }
@@ -590,11 +598,25 @@
 
       font-size: 16px;
 
-      a.item.active {
-        background: $bg;
+      .item {
+        width: calc(100% / 2);
+
+        &:hover {
+          cursor: pointer;
+          color: $textLight;
+          background: scale-color($color: $accent, $alpha: -10%);
+        }
+      }
+
+      .item.active {
+        background: $accent;
 
         text-decoration: none;
-        text-shadow: 0px 0px 5px rgba(96, 41, 48, 50%);
+        text-shadow: 0px 0px 2px black;
+
+        &:hover {
+          @include buttonHover();
+        }
       }
     }
 
@@ -617,7 +639,6 @@
 
           color: $accent;
           border-bottom: 1px solid $accent;
-
           text-transform: uppercase;
         }
       }
@@ -658,6 +679,11 @@
       }
     }
   }
+}
+
+/* Other */
+.skills.grid.grid-3col.flex-group-center {
+  border-color: transparent;
 }
 
 .uppercase {
