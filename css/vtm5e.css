@@ -555,33 +555,27 @@
   font-family: "Cormorant Light", sans-serif;
   font-weight: 600;
 }
-.vtm5e .window-content nav.sheet-tabs {
-  background: #faf4eb;
-  border-color: #780813;
-  color: #780813;
-  height: 41px;
-  margin-bottom: 20px;
+.vtm5e .window-content .abilities {
+  border: none;
+}
+.vtm5e .window-content .abilities .ability .resource-control:hover, .vtm5e .window-content .abilities .ability .resource-control:focus {
+  color: #000;
+  cursor: pointer;
+  text-shadow: 0 0 10px #780813;
+}
+.vtm5e .window-content .abilities .ability .resource-label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.vtm5e .window-content .header-fields .resource {
+  border: 1px solid #ababab;
+  border-radius: 5px;
+}
+.vtm5e .window-content .resource-label {
+  -ms-flex-item-align: center;
+      align-self: center;
   font-size: 16px;
-}
-.vtm5e .window-content nav.sheet-tabs .item {
-  width: calc(100% / 2);
-}
-.vtm5e .window-content nav.sheet-tabs .item:hover {
-  cursor: pointer;
-  color: white;
-  background: rgba(120, 8, 19, 0.9);
-}
-.vtm5e .window-content nav.sheet-tabs .item.active {
-  background: #780813;
-  text-decoration: none;
-  text-shadow: 0px 0px 2px black;
-}
-.vtm5e .window-content nav.sheet-tabs .item.active:hover {
-  cursor: pointer;
-  background: #6d131c;
-  border-color: #6d131c;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  text-transform: initial;
 }
 .vtm5e .window-content .sheet-header {
   display: -webkit-box;
@@ -607,25 +601,34 @@
   border-bottom: 1px solid #780813;
   text-transform: uppercase;
 }
-.vtm5e .window-content .header-fields .resource {
-  border: 1px solid #ababab;
-  border-radius: 5px;
-}
-.vtm5e .window-content .resource-label {
+.vtm5e .window-content nav.sheet-tabs {
+  background: #faf4eb;
+  border-color: #780813;
+  color: #780813;
+  height: 41px;
+  margin-bottom: 20px;
   font-size: 16px;
-  text-transform: initial;
 }
-.vtm5e .window-content .abilities {
-  border: none;
+.vtm5e .window-content nav.sheet-tabs .item {
+  width: calc(100% / 2);
 }
-.vtm5e .window-content .abilities .ability .resource-control:hover, .vtm5e .window-content .abilities .ability .resource-control:focus {
-  color: #000;
+.vtm5e .window-content nav.sheet-tabs .item:hover {
   cursor: pointer;
-  text-shadow: 0 0 10px #780813;
+  color: white;
+  background: rgba(120, 8, 19, 0.9);
+  text-shadow: 0px 0px 2px black;
 }
-.vtm5e .window-content .abilities .ability .resource-label {
-  font-size: 18px;
-  font-weight: bold;
+.vtm5e .window-content nav.sheet-tabs .item.active {
+  background: #780813;
+  text-decoration: none;
+  text-shadow: 0px 0px 2px black;
+}
+.vtm5e .window-content nav.sheet-tabs .item.active:hover {
+  cursor: pointer;
+  background: #6d131c;
+  border-color: #6d131c;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 /* Other */

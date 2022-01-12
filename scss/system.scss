@@ -588,35 +588,40 @@
     font-family: "Cormorant Light", sans-serif;
     font-weight: 600;
 
-    nav.sheet-tabs {
-      background: $bg;
-      border-color: $accent;
-      color: $accent;
+    .abilities {
+      border: none;
 
-      height: 41px;
-      margin-bottom: 20px;
+      .ability {
+        .resource {
+          &-control {
+            &:hover,
+            &:focus {
+              color: #000;
+              cursor: pointer;
+              text-shadow: 0 0 10px $accent;
+            }
+          }
 
-      font-size: 16px;
-
-      .item {
-        width: calc(100% / 2);
-
-        &:hover {
-          cursor: pointer;
-          color: $textLight;
-          background: scale-color($color: $accent, $alpha: -10%);
+          &-label {
+            font-size: 18px;
+            font-weight: bold;
+          }
         }
       }
+    }
 
-      .item.active {
-        background: $accent;
+    .header-fields {
+      .resource {
+        border: 1px solid $borderLight;
+        border-radius: 5px;
+      }
+    }
 
-        text-decoration: none;
-        text-shadow: 0px 0px 2px black;
-
-        &:hover {
-          @include buttonHover();
-        }
+    .resource {
+      &-label {
+        align-self: center;
+        font-size: 16px;
+        text-transform: initial;
       }
     }
 
@@ -644,37 +649,35 @@
       }
     }
 
-    .header-fields {
-      .resource {
-        border: 1px solid $borderLight;
-        border-radius: 5px;
+    nav.sheet-tabs {
+      background: $bg;
+      border-color: $accent;
+      color: $accent;
+
+      height: 41px;
+      margin-bottom: 20px;
+
+      font-size: 16px;
+
+      .item {
+        width: calc(100% / 2);
+
+        &:hover {
+          cursor: pointer;
+          color: $textLight;
+          background: scale-color($color: $accent, $alpha: -10%);
+          text-shadow: 0px 0px 2px black;
+        }
       }
-    }
 
-    .resource {
-      &-label {
-        font-size: 16px;
-        text-transform: initial;
-      }
-    }
-    .abilities {
-      border: none;
+      .item.active {
+        background: $accent;
 
-      .ability {
-        .resource {
-          &-control {
-            &:hover,
-            &:focus {
-              color: #000;
-              cursor: pointer;
-              text-shadow: 0 0 10px $accent;
-            }
-          }
+        text-decoration: none;
+        text-shadow: 0px 0px 2px black;
 
-          &-label {
-            font-size: 18px;
-            font-weight: bold;
-          }
+        &:hover {
+          @include buttonHover();
         }
       }
     }
