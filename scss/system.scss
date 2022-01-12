@@ -45,6 +45,7 @@
   &-group {
     &-center {
       @include flexAlign(center, center, center);
+      // TODO: What the fuck is this
       padding: 2px;
 
       border: 1px solid $accent;
@@ -94,6 +95,15 @@
     color: #000;
     text-shadow: 0 0 10px $accent;
     cursor: pointer;
+  }
+}
+
+.rollable-with-mod {
+  button {
+    &:hover {
+     background: adjust-color($color: $accent, $blackness: 25%);
+     box-shadow: 0 0 2px $accent;
+    }
   }
 }
 
@@ -187,6 +197,7 @@
   .items-list {
     .item {
       min-height: 30px;
+      min-width: 100%;
       padding: 3px 0;
       border-bottom: 1px solid $borderLight;
 
@@ -199,6 +210,7 @@
       &-controls {
         flex: 0 0 86px;
         text-align: right;
+        color: $accent;
       }
 
       &-header {
@@ -251,13 +263,15 @@
       display: inline;
       height: 95%;
 
-      background: var(--color-text-light-0);
+      background: transparent;
       border: 1px solid transparent;
       padding: 5px;
     }
   }
 
   .item {
+    width: calc(100% / 6);
+
     &-name {
       h3 {
         line-height: 18px;
@@ -375,7 +389,6 @@
     .resource {
       &-value-empty:not(.hungervalue),
       &-value-step:not(.hungervalue) {
-        opacity: 0;
         cursor: default;
       }
 
@@ -403,7 +416,7 @@
   .sheet {
     &-header {
       display: flex;
-      
+
       flex: 0 0 215px;
       flex-flow: row wrap;
       justify-content: flex-start;
@@ -569,6 +582,7 @@
 
     nav.sheet-tabs {
       background: $bg;
+      border-color: $accent;
       color: $accent;
 
       height: 41px;

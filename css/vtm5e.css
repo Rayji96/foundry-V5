@@ -159,6 +159,12 @@
   cursor: pointer;
 }
 
+.rollable-with-mod button:hover {
+  background: #38080d;
+  -webkit-box-shadow: 0 0 2px #780813;
+          box-shadow: 0 0 2px #780813;
+}
+
 /* Chat Messages */
 #chat-form textarea {
   background: #faf4eb;
@@ -227,6 +233,7 @@
 }
 .vtm5e .items-list .item {
   min-height: 30px;
+  min-width: 100%;
   padding: 3px 0;
   border-bottom: 1px solid #ababab;
   line-height: 24px;
@@ -239,6 +246,7 @@
       -ms-flex: 0 0 86px;
           flex: 0 0 86px;
   text-align: right;
+  color: #780813;
 }
 .vtm5e .items-list .item-header {
   color: #780813;
@@ -278,9 +286,12 @@
 .vtm5e .description-content {
   display: inline;
   height: 95%;
-  background: var(--color-text-light-0);
+  background: transparent;
   border: 1px solid transparent;
   padding: 5px;
+}
+.vtm5e .item {
+  width: calc(100% / 6);
 }
 .vtm5e .item-name h3 {
   line-height: 18px;
@@ -357,7 +368,6 @@
   border: none;
 }
 .vtm5e .locked .resource-value-empty:not(.hungervalue), .vtm5e .locked .resource-value-step:not(.hungervalue), .vtm5e .locked .resource-value-static .resource-value-static-step:not(.hungervalue), .vtm5e .resource-value-static .locked .resource-value-static-step:not(.hungervalue) {
-  opacity: 0;
   cursor: default;
 }
 .vtm5e .locked .resource-minus, .vtm5e .locked .resource-plus {
@@ -524,6 +534,7 @@
 }
 .vtm5e .window-content nav.sheet-tabs {
   background: #faf4eb;
+  border-color: #780813;
   color: #780813;
   height: 41px;
   margin-bottom: 20px;
