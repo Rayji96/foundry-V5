@@ -1,7 +1,15 @@
 /* global game */
 
+// NOTE: The blood potency table uses the updated rules from the v5 Companion
+
+// surge: Amount of dice added on a blood surge
+// mend: Amount mended on expenditure of vitae
+// power: Bonus to discipline powers
+// rouse: Max level of powers that can be rouse-rerolled
+// bane: Bane severity number
 export function getBloodPotencyValues (level) {
   const BLOOD_POTENCY_VALUES = [
+    // Potency 0
     {
       surge: 1,
       mend: 1,
@@ -9,6 +17,7 @@ export function getBloodPotencyValues (level) {
       rouse: 0,
       bane: 0
     },
+    // Potency 1
     {
       surge: 2,
       mend: 1,
@@ -16,6 +25,7 @@ export function getBloodPotencyValues (level) {
       rouse: 1,
       bane: 2
     },
+    // Potency 2
     {
       surge: 2,
       mend: 2,
@@ -23,6 +33,7 @@ export function getBloodPotencyValues (level) {
       rouse: 1,
       bane: 2
     },
+    // Potency 3
     {
       surge: 3,
       mend: 2,
@@ -30,6 +41,7 @@ export function getBloodPotencyValues (level) {
       rouse: 2,
       bane: 3
     },
+    // Potency 4
     {
       surge: 3,
       mend: 3,
@@ -37,6 +49,7 @@ export function getBloodPotencyValues (level) {
       rouse: 2,
       bane: 3
     },
+    // Potency 5
     {
       surge: 4,
       mend: 3,
@@ -44,6 +57,7 @@ export function getBloodPotencyValues (level) {
       rouse: 3,
       bane: 4
     },
+    // Potency 6
     {
       surge: 4,
       mend: 3,
@@ -51,6 +65,7 @@ export function getBloodPotencyValues (level) {
       rouse: 3,
       bane: 4
     },
+    // Potency 7
     {
       surge: 5,
       mend: 3,
@@ -58,6 +73,7 @@ export function getBloodPotencyValues (level) {
       rouse: 4,
       bane: 5
     },
+    // Potency 8
     {
       surge: 5,
       mend: 4,
@@ -65,6 +81,7 @@ export function getBloodPotencyValues (level) {
       rouse: 4,
       bane: 5
     },
+    // Potency 9
     {
       surge: 6,
       mend: 4,
@@ -72,6 +89,7 @@ export function getBloodPotencyValues (level) {
       rouse: 5,
       bane: 6
     },
+    // Potency 10
     {
       surge: 6,
       mend: 5,

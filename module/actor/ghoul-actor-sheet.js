@@ -1,4 +1,4 @@
-/* global Dialog, game, mergeObject */
+/* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
 import { MortalActorSheet } from './mortal-actor-sheet.js'
 
@@ -117,6 +117,34 @@ export class GhoulActorSheet extends MortalActorSheet {
       this.actor.update({ [`data.disciplines.${data.discipline}.visible`]: false })
     })
 
+    // Post Discipline description to the chat
+    html.find('.discipline-chat').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      const discipline = this.actor.data.data.disciplines[data.discipline]
+
+      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+        name: game.i18n.localize(discipline.name),
+        img: 'icons/svg/dice-target.svg',
+        description: discipline.description
+      }).then(html => {
+        ChatMessage.create({
+          content: html
+        })
+      })
+    })
+
+    // Roll a rouse check for an item
+    html.find('.item-rouse').click(ev => {
+      const li = $(ev.currentTarget).parents('.item')
+      const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
+      const level = item.data.data.level
+      const potency = this.actor.data.data.blood.potency
+
+      const dicepool = this.potencyToRouse(potency, level)
+
+      rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, false, true, false)
+    })
+
     // Rollable Vampire/Ghouls powers
     html.find('.power-rollable').click(this._onVampireRoll.bind(this))
   }
@@ -187,5 +215,37 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     const dicePool = dice1 + dice2
     rollDice(dicePool, this.actor, `${item.data.name}`, 0, this.hunger)
+  }
+
+  potencyToRouse (potency, level) {
+    // Define the number of dice to roll based on the user's blood potency
+    // and the power's level
+    // Potency 0 never rolls additional rouse dice for disciplines
+    if (potency === 0) {
+      return (1)
+    } else
+    // Potency of 9 and 10 always roll additional rouse dice for disciplines
+    if (potency > 8) {
+      return (2)
+    } else
+    // Potency 7 and 8 roll additional rouse dice on discipline powers below 5
+    if (potency > 6 && level < 5) {
+      return (2)
+    } else
+    // Potency 5 and 6 roll additional rouse dice on discipline powers below 4
+    if (potency > 4 && level < 4) {
+      return (2)
+    } else
+    // Potency 3 and 4 roll additional rouse dice on discipline powers below 3
+    if (potency > 2 && level < 3) {
+      return (2)
+    } else
+    // Potency 1 and 2 roll additional rouse dice on discipline powers below 2
+    if (potency > 0 && level < 2) {
+      return (2)
+    }
+
+    // If none of the above are true, just roll 1 dice for the rouse check
+    return (1)
   }
 }
