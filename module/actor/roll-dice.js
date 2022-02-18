@@ -21,7 +21,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
   // Roll defining and evaluating
   const dice = numDice - hungerDice
   const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dhcs>5', actor.data.data)
-  roll.evaluate()
+  await roll.evaluate()
 
   // Variable defining
   let difficultyResult = '<span></span>'
