@@ -1,0 +1,108 @@
+/* New Styles */
+.vtm5e.dark-theme .window-content {
+  background: #313131;
+  color: #e0e0e0;
+}
+
+.vtm5e.dark-theme.actor.sheet .editor-content {
+  color: #000;
+}
+
+.vtm5e.dark-theme.item.sheet .editor-content {
+  color: #e0e0e0;
+}
+
+.vtm5e.dark-theme .window-content nav.sheet-tabs {
+  background: #121212;
+  color: #ff0019;
+}
+
+.vtm5e.dark-theme .window-content nav.sheet-tabs .item.active {
+  background: #3c3c3c;
+  color: #f00;
+}
+
+.vtm5e.dark-theme .window-content .sheet-body .tab > .resource-label {
+  color: #ff0119;
+  border-bottom: 1px solid #790813;
+}
+
+.vtm5e.dark-theme .sheet-header .profile-img-zone h1 {
+  color: #cc0014;
+}
+
+.vtm5e.dark-theme .items-list .item-header {
+  color: #f6f6f6;
+}
+
+.vtm5e.dark-theme .tox .tox-editor-container {
+  background: #fff;
+}
+
+.vtm5e.dark-theme .discipline-description {
+  color: #ccc;
+}
+
+/* Resource boxes CSS */
+.vtm5e.dark-theme .resource-value .resource-value-step {
+  border: 1px solid #cdcdcd;
+}
+
+.vtm5e.dark-theme .resource-value .resource-value-step.active {
+  background-color: #790813;
+}
+
+.vtm5e.dark-theme .resource-value-static .resource-value-static-step {
+  border: 1px solid black;
+}
+
+.vtm5e.dark-theme .resource-value-static .resource-value-static-step.active {
+  background-color: #790813;
+}
+
+.vtm5e.dark-theme .resource-counter .resource-counter-step {
+  border: 1px solid white;
+}
+
+.vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="-"] {
+  background-color: #790813;
+}
+
+.vtm5e.dark-theme select {
+  background: #fff;
+}
+
+.vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="/"] {
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      red 45%,
+      red 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+.vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="x"] {
+  background:
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      red 45%,
+      red 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      red 45%,
+      red 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}

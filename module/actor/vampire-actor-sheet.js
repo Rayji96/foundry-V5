@@ -12,8 +12,16 @@ import { rollDice } from './roll-dice.js'
 export class VampireActorSheet extends GhoulActorSheet {
   /** @override */
   static get defaultOptions () {
+    // Define the base list of CSS classes
+    const classList = ['vtm5e', 'sheet', 'actor', 'vampire']
+
+    // If the user's enabled darkmode, then push it to the class list
+    if (game.settings.get('vtm5e', 'darkTheme')) {
+      classList.push('dark-theme')
+    }
+
     return mergeObject(super.defaultOptions, {
-      classes: ['vtm5e', 'sheet', 'actor', 'vampire'],
+      classes: classList,
       template: 'systems/vtm5e/templates/actor/vampire-sheet.html',
       width: 800,
       height: 700,

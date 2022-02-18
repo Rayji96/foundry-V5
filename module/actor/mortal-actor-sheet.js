@@ -12,8 +12,16 @@ import { rollDice } from './roll-dice.js'
 export class MortalActorSheet extends CoterieActorSheet {
   /** @override */
   static get defaultOptions () {
+    // Define the base list of CSS classes
+    const classList = ['vtm5e', 'sheet', 'actor', 'mortal']
+
+    // If the user's enabled darkmode, then push it to the class list
+    if (game.settings.get('vtm5e', 'darkTheme')) {
+      classList.push('dark-theme')
+    }
+
     return mergeObject(super.defaultOptions, {
-      classes: ['vtm5e', 'sheet', 'actor', 'mortal'],
+      classes: classList,
       template: 'systems/vtm5e/templates/actor/mortal-sheet.html',
       width: 800,
       height: 700,
@@ -187,9 +195,11 @@ export class MortalActorSheet extends CoterieActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const useHunger = this.hunger && (dataset.useHunger === '1')
+    const increaseHunger = dataset.increaseHunger
+    const subtractWillpower = dataset.subtractWillpower
     const numDice = dataset.roll
 
-    rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger)
+    rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger, increaseHunger, subtractWillpower)
   }
 
   _onRollWithMod (event) {
@@ -197,6 +207,8 @@ export class MortalActorSheet extends CoterieActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const useHunger = this.hunger && (dataset.useHunger === '1')
+    const increaseHunger = dataset.increaseHunger
+    const subtractWillpower = dataset.subtractWillpower
 
     const template = `
       <form>
@@ -219,7 +231,7 @@ export class MortalActorSheet extends CoterieActorSheet {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
           const numDice = parseInt(dataset.roll) + modifier
-          rollDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger)
+          rollDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger, increaseHunger, subtractWillpower)
         }
       },
       cancel: {

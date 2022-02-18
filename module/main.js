@@ -36,6 +36,7 @@ Hooks.once('init', async function () {
     default: '1.5',
     type: String
   })
+
   game.settings.register('vtm5e', 'useChatRoller', {
     name: 'Chat Roller',
     hint: 'Display dice roller in chat window',
@@ -51,6 +52,33 @@ Hooks.once('init', async function () {
     scope: 'client',
     config: true,
     default: true,
+    type: Boolean
+  })
+
+  game.settings.register('vtm5e', 'automatedWillpower', {
+    name: 'Willpower Damage On Willpower Reroll',
+    hint: 'If enabled, using the Willpower Reroll (right click on a chat message) feature will deal willpower damage to the associated actor.',
+    scope: 'client',
+    config: true,
+    default: true,
+    type: Boolean
+  })
+
+  game.settings.register('vtm5e', 'automatedRouse', {
+    name: 'Increase Hunger With Rouse Checks',
+    hint: 'If enabled, rolling a rouse check and failing will automatically increase the hunger of the associated actor.',
+    scope: 'client',
+    config: true,
+    default: true,
+    type: Boolean
+  })
+
+  game.settings.register('vtm5e', 'darkTheme', {
+    name: 'Dark Theme',
+    hint: 'Display sheets using a darker theme on a per-user basis.',
+    scope: 'client',
+    config: true,
+    default: false,
     type: Boolean
   })
 
@@ -147,16 +175,25 @@ Hooks.once('init', async function () {
 
   // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
-    return ((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3))
+    // Return the result of the stain, or 1 at minimum.
+    const stainDice = Math.max((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3), 1)
+
+    return stainDice
   })
 
   Handlebars.registerHelper('willpower', function (willpowerMax, willpowerAgg, willpowerSup) {
-    return (willpowerMax - willpowerAgg - willpowerSup)
+    // Return the result of the willpower, or 1 at minimum.
+    const willpowerDice = Math.max((willpowerMax - willpowerAgg - willpowerSup), 1)
+
+    return willpowerDice
   })
 
   // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('remorse', function (humanity, stain) {
-    return (10 - humanity - stain)
+    // Return the result of the stain, or 1 at minimum.
+    const remorseDice = Math.max((10 - humanity - stain), 1)
+
+    return remorseDice
   })
 
   Handlebars.registerHelper('attrIf', function (attr, value, test) {
@@ -362,6 +399,7 @@ Hooks.once('ready', function () {
 })
 
 async function willpowerReroll (roll) {
+  // Variables
   const dice = roll.find('.normal-dice')
   const diceRolls = []
 
@@ -375,25 +413,27 @@ async function willpowerReroll (roll) {
   })
 
   // Create dialog for rerolling dice
+  // HTML of the dialog
   const template = `
     <form>
         <div class="window-content">
             <label><b>Select dice to reroll (Max 3)</b></label>
             <hr>
             <span class="dice-tooltip">
-              <div class="dice-rolls flexrow willpowerReroll">
+              <div class="dice-rolls flexrow willpower-reroll">
                 ${diceRolls.reverse().join('')}
               </div>
             </span>
         </div>
     </form>`
 
+  // Button defining
   let buttons = {}
   buttons = {
-    draw: {
+    submit: {
       icon: '<i class="fas fa-check"></i>',
       label: 'Reroll',
-      callback: roll => rerollDie(roll)
+      callback: () => rerollDie(roll)
     },
     cancel: {
       icon: '<i class="fas fa-times"></i>',
@@ -401,21 +441,22 @@ async function willpowerReroll (roll) {
     }
   }
 
+  // Dialog object
   new Dialog({
-    title: 'Willpower Reroll',
+    title: game.i18n.localize('VTM5E.WillpowerReroll'),
     content: template,
     buttons: buttons,
     render: function () {
-      $('.willpowerReroll .die').on('click', dieSelect)
+      $('.willpower-reroll .die').on('click', dieSelect)
     },
-    default: 'draw'
+    default: 'submit'
   }).render(true)
 }
 
 // Handles selecting and de-selecting the die
 function dieSelect () {
   // If the die isn't already selected and there aren't 3 already selected, add selected to the die
-  if (!($(this).hasClass('selected')) && ($('.willpowerReroll .selected').length < 3)) {
+  if (!($(this).hasClass('selected')) && ($('.willpower-reroll .selected').length < 3)) {
     $(this).addClass('selected')
   } else {
     $(this).removeClass('selected')
@@ -424,14 +465,20 @@ function dieSelect () {
 
 // Handles rerolling the number of dice selected
 // TODO: Make this function duplicate/replace the previous roll with the new results
-// TODO: Make this function able to tick superficial willpower damage
 // For now this works well enough as "roll three new dice"
-function rerollDie (actor) {
-  const diceSelected = $('.willpowerReroll .selected').length
+function rerollDie (roll) {
+  // Variables
+  const diceSelected = $('.willpower-reroll .selected').length
+
+  // Get the actor associated with the message
+  // Theoretically I should error-check this, but there shouldn't be any
+  // messages that call for a WillpowerReroll without an associated actor
+  const message = game.messages.get(roll.attr('data-message-id'))
+  const speaker = game.actors.get(message.data.speaker.actor)
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
   if ((diceSelected > 0) && (diceSelected < 4)) {
-    rollDice(diceSelected, actor, 'Willpower Reroll', 0, false)
+    rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
   }
 }
 
