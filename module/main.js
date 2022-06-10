@@ -12,6 +12,7 @@ import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
 import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
 import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
+import { EaterActorSheet } from './actor/eater-actor-sheet.js'
 import {
   prepareSearchableSelection,
   prepareRouseShortcut,
@@ -108,6 +109,11 @@ Hooks.once('init', async function () {
   Actors.registerSheet('vtm5e', VampireActorSheet, {
     label: 'Vampire Sheet',
     types: ['vampire', 'character'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', EaterActorSheet, {
+    label: "Sin Eater Sheet",
+    types: ['eater', 'character'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', GhoulActorSheet, {

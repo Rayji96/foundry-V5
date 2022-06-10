@@ -21,6 +21,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/actor/parts/other.html',
     'systems/vtm5e/templates/actor/parts/rouse.html',
     'systems/vtm5e/templates/actor/parts/stats.html',
+    'systems/vtm5e/templates/actor/parts/synergy.html',
     'systems/vtm5e/templates/actor/parts/willpower.html',
 
     // Item Sheet Partials

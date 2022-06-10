@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "vampire", "ghoul", "mortal", "coterie"],
+    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "eater"],
     "templates": {
       "base": {
         "biography": "",
@@ -339,6 +339,24 @@
       "notes": "",
       "headers":{
         "concept": ""
+      }
+    },
+    "eater": {
+      "templates": ["base","disciplines"],
+      "headers":{
+        "predator":"",
+        "sire":"",
+        "generation":"",
+        "bane":""
+      },
+      "synergy": {
+        "value": 0
+      },
+      "clan": {
+        "value": ""
+      },
+      "hunger": {
+        "value": 0
       }
     }
   },
