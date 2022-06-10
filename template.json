@@ -268,32 +268,6 @@
             "visible": false
           }
         }
-      },
-      "simple": {
-        "health": {
-          "aggravated": 0,
-          "superficial": 0,
-          "max": 5
-        },
-        "willpower": {
-          "aggravated": 0,
-          "superficial": 0,
-          "max": 5
-        },
-        "standardPools": {
-          "physical": {
-            "value": 1,
-            "name": "VTM5E.Physical"
-          },
-          "social": {
-            "value": 1,
-            "name": "VTM5E.Social"
-          },
-          "mental": {
-            "value": 1,
-            "name": "VTM5E.Mental"
-          }
-        }
       }
     },
    
@@ -343,9 +317,6 @@
     },
     "mortal": {
       "templates": ["base"]
-    },
-    "simpleMortal": {
-      "templates": ["simple"]
     },
     "coterie" : {
       "biography": "",
