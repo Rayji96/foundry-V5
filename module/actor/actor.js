@@ -1,7 +1,7 @@
 /* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry */
 
 /**
- * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
+ * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
 export class VampireActor extends Actor {
@@ -45,19 +45,19 @@ export class VampireActor extends Actor {
   static async createDialog (data = {}, options = {}) {
     // Collect data
     const documentName = this.metadata.name
-    const types = game.system.entityTypes[documentName]
+    const types = game.system.documentTypes[documentName]
     const folders = game.folders.filter(f => (f.data.type === documentName) && f.displayed)
     const label = game.i18n.localize(this.metadata.label)
-    const title = game.i18n.format('ENTITY.Create', { entity: label })
+    const title = game.i18n.format('DOCUMENT.Create', { type: label })
 
     const index = types.indexOf('character')
     if (index !== -1) {
       types.splice(index, 1)
     }
 
-    // Render the entity creation form
-    const html = await renderTemplate('templates/sidebar/entity-create.html', {
-      name: data.name || game.i18n.format('ENTITY.New', { entity: label }),
+    // Render the document creation form
+    const html = await renderTemplate('templates/sidebar/document-create.html', {
+      name: data.name || game.i18n.format('DOCUMENT.New', { type: label }),
       folder: data.folder,
       folders: folders,
       hasFolders: folders.length > 1,

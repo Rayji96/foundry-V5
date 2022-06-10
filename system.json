@@ -2,10 +2,10 @@
   "name": "vtm5e",
   "title": "Vampire the Masquerade 5e",
   "description": "Vampire 5e system for Foundry VTT!",
-  "version": "1.6.2",
-  "minimumCoreVersion": "0.8.0",
-  "compatibleCoreVersion": "0.8.8",
-  "templateVersion": 3,
+  "version": "1.8.2",
+  "minimumCoreVersion": "9.0",
+  "compatibleCoreVersion": "9.0",
+  "templateVersion": 4,
   "author": "Ray Ji",
   "esmodules": ["module/main.js"],
   "styles": ["css/vtm5e.css"],
@@ -36,6 +36,16 @@
       "lang": "de",
       "name": "German",
       "path": "lang/de.json"
+    },
+    {
+      "lang": "it",
+      "name": "Italian",
+      "path": "lang/it.json"
+    },
+	{
+      "lang": "pl",
+      "name": "Polish",
+      "path": "lang/pl.json"
     }
   ],
   "gridDistance": 5,
@@ -44,6 +54,6 @@
   "secondaryTokenAttribute": "",
   "url": "https://github.com/Rayji96/foundry-V5/",
   "manifest": "https://raw.githubusercontent.com/Rayji96/foundry-V5/main/system.json",
-  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v1.6.2.zip",
+  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v1.8.2.zip",
   "license": "LICENSE.txt"
 }

@@ -1,0 +1,79 @@
+<section class="dice-tray">
+    <div class="dice-tray-character">
+        {{> "systems/vtm5e/templates/ui/parts/select-character.html"}}
+    </div>
+    <div class="dice-tray-custom-rolls">
+        <div>
+            {{#if (eq pool1Type "abilities")}}
+                {{> "systems/vtm5e/templates/ui/parts/pool1-select-attribute.html"}}
+            {{else if (eq pool1Type "skills")}}
+                {{> "systems/vtm5e/templates/ui/parts/pool1-select-skill.html"}}
+            {{else if (eq pool1Type "disciplines")}}
+                {{> "systems/vtm5e/templates/ui/parts/pool1-select-discipline.html"}}
+            {{/if}}
+        </div>
+        <span class="dice-tray-concatenate">+</span>
+        <div>
+            {{#if (eq pool2Type "abilities")}}
+                {{> "systems/vtm5e/templates/ui/parts/pool2-select-attribute.html"}}
+            {{else if (eq pool2Type "skills")}}
+                {{> "systems/vtm5e/templates/ui/parts/pool2-select-skill.html"}}
+            {{else if (eq pool2Type "disciplines")}}
+                {{> "systems/vtm5e/templates/ui/parts/pool2-select-discipline.html"}}
+            {{else if (eq pool2Type "nothing")}}
+                {{> "systems/vtm5e/templates/ui/parts/pool2-nothing.html"}}
+            {{/if}}
+        </div>
+        <button class="dice-tray-button roll-button" title="{{localize 'VTM5E.Roll'}}">
+            <img class="roll-image" alt="{{localize 'VTM5E.Roll'}}" src="/systems/vtm5e/assets/images/dice.svg" />
+        </button>
+        {{text value=pool1Selection}}
+        <div class="dice-tray-pool-filters flexrow pool1-filters">
+            <button class="dice-tray-button small-button" title="{{localize 'VTM5E.Attributes'}}">
+                <input type="radio" id="pool1Attr" name="pool1Type" value="abilities" {{attrIf "checked" pool1Type 'abilities' }} />
+                <label for="pool1Attr">{{localize 'VTM5E.AttributeShortLabel'}}</label>
+            </button>
+            <button class="dice-tray-button small-button" title="{{localize 'VTM5E.Skills'}}">
+                <input type="radio" id="pool1Skill" name="pool1Type" value="skills" {{attrIf "checked" pool1Type 'skills' }} />
+                <label for="pool1Skill">{{localize 'VTM5E.SkillShortLabel'}}</label>
+            </button>
+            <button class="dice-tray-button small-button" title="{{localize 'VTM5E.Disciplines'}}">
+                <input type="radio" id="pool1Disc" name="pool1Type" value="disciplines" {{attrIf "checked" pool1Type 'disciplines' }} />
+                <label for="pool1Disc">{{localize 'VTM5E.DisciplineShortLabel'}}</label>
+            </button>
+            <div class="dice-tray-filter-spacer"></div>
+        </div>
+        <div class="dice-tray-pool-filters flexrow pool2-filters">
+            <button class="dice-tray-button small-button" title="{{localize 'VTM5E.Attributes'}}">
+                <input type="radio" id="pool2Attr" name="pool2Type" value="abilities" {{attrIf "checked" pool2Type 'abilities' }} />
+                <label for="pool2Attr">{{localize 'VTM5E.AttributeShortLabel'}}</label>
+            </button>
+            <button class="dice-tray-button small-button" title="{{localize 'VTM5E.Skills'}}">
+                <input type="radio" id="pool2Skill" name="pool2Type" value="skills" {{attrIf "checked" pool2Type 'skills' }} />
+                <label for="pool2Skill">{{localize 'VTM5E.SkillShortLabel'}}</label>
+            </button>
+            <button class="dice-tray-button small-button" title="{{localize 'VTM5E.Disciplines'}}">
+                <input type="radio" id="pool2Disc" name="pool2Type" value="disciplines" {{attrIf "checked" pool2Type 'disciplines' }} />
+                <label for="pool2Disc">{{localize 'VTM5E.DisciplineShortLabel'}}</label>
+            </button>
+            <button class="dice-tray-button small-button" title="{{localize 'VTM5E.None'}}">
+                <input type="radio" id="pool2None" name="pool2Type" value="nothing" {{attrIf "checked" pool2Type 'nothing' }} />
+                <label for="pool2None">{{localize 'VTM5E.NothingShortLabel'}}</label>
+            </button>
+        </div>
+    </div>
+    <div class="dice-tray-preset-rolls flexrow">
+        <button class="dice-tray-button" data="rollRouse" title="{{localize 'VTM5E.RollRouse'}}">
+            {{localize 'VTM5E.Rouse'}}
+        </button>
+        <button class="dice-tray-button" data="rollWill" title="{{localize 'VTM5E.RollWillpower'}}">
+            {{localize 'VTM5E.Willpower'}}
+        </button>
+        <button class="dice-tray-button" data="rollFrenzy" title="{{localize 'VTM5E.RollFrenzy'}}">
+            {{localize 'VTM5E.Frenzy'}}
+        </button>
+        <button class="dice-tray-button" data="rollHumanity" title="{{localize 'VTM5E.RollRemorse'}}">
+            {{localize 'VTM5E.Remorse'}}
+        </button>
+    </div>
+</section>

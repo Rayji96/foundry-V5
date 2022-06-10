@@ -1,0 +1,22 @@
+<div class="dice-tray-searchable-select">
+    <select id="pool1" class="dice-tray-select" name="pool1">
+        {{#each (sortAbilities selectedCharacter.data.data.skills) as |skill|}}
+            {{#if (eq @root.pool1 @key)}}
+                <option value="{{@key}}" selected>{{localize skill.name}}</option>
+            {{else}}
+                <option value="{{@key}}">{{localize skill.name}}</option>
+            {{/if}}
+        {{/each}}
+    </select>
+    <div id="pool1Cover" class="dice-tray-searchable-select-cover">
+        <div class="dice-tray-searchable-select-hover"></div>
+        <div id="pool1Fields" class="dice-tray-searchable-select-fields">
+            <ul class="dice-tray-searchable-select-options">
+                {{#each (sortAbilities selectedCharacter.data.data.skills) as |skill|}}
+                    <li tabindex="-1" value="{{@key}}" title="{{localize skill.name}}">{{localize skill.name}}</li>  
+                {{/each}}
+            </ul>
+            <input id="pool1Input" class="dice-tray-input dice-tray-searchable-select-input" />
+        </div>
+    </div>
+</div>

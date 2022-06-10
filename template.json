@@ -4,6 +4,7 @@
     "templates": {
       "base": {
         "biography": "",
+        "appearance": "",
         "equipment": "",
         "notes": "",
         "headers":{
@@ -185,84 +186,98 @@
         "disciplines": {
           "animalism": {
             "name": "VTM5E.Animalism",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "auspex": {
             "name": "VTM5E.Auspex",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "celerity": {
             "name": "VTM5E.Celerity",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "dominate": {
             "name": "VTM5E.Dominate",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "fortitude": {
             "name": "VTM5E.Fortitude",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "obfuscate": {
             "name": "VTM5E.Obfuscate",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "potence": {
             "name": "VTM5E.Potence",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "presence": {
             "name": "VTM5E.Presence",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "protean": {
             "name": "VTM5E.Protean",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "sorcery": {
             "name": "VTM5E.BloodSorcery",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "oblivion": {
             "name": "VTM5E.Oblivion",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "alchemy": {
             "name": "VTM5E.ThinBloodAlchemy",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "rituals": {
             "name": "VTM5E.Rituals",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "ceremonies": {
             "name": "VTM5E.Ceremonies",
+            "description": "",
             "value": 0,
             "powers": [],
             "visible": false
@@ -343,11 +358,14 @@
       "templates": ["base"],
       "discipline": "rituals",
       "duration": "",
+      "level": 1,
       "dice1": "discipline",
       "dice2": "discipline",
       "cost": "",
       "rollable": false,
-      "skill": false
+      "skill": false,
+      "amalgam": false,
+      "rouse": false
     },
     "specialty": {
       "templates": ["base"],

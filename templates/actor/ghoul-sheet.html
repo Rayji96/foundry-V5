@@ -22,9 +22,9 @@
                 center all of its child elements content and text. --}}
 
                 {{> "systems/vtm5e/templates/actor/parts/health.html"}}
-                   
+
                 {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
-                
+
                 {{> "systems/vtm5e/templates/actor/parts/humanity.html"}}
             </div>
         </div>
@@ -32,19 +32,19 @@
 
     {{!-- Ghoul Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</a>
-        <a class="item" data-tab="disciplines">{{localize "VTM5E.Disciplines"}}</a>
-        <a class="item" data-tab="features">{{localize "VTM5E.Features"}}</a>
-        <a class="item" data-tab="description">{{localize "VTM5E.Description"}}</a>
-        <a class="item" data-tab="other">{{localize "VTM5E.Other"}}</a>
+        <div class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</div>
+        <div class="item" data-tab="disciplines">{{localize "VTM5E.Disciplines"}}</div>
+        <div class="item" data-tab="features">{{localize "VTM5E.Features"}}</div>
+        <div class="item" data-tab="description">{{localize "VTM5E.Description"}}</div>
+        <div class="item" data-tab="other">{{localize "VTM5E.Other"}}</div>
     </nav>
 
     {{!-- Ghoul Sheet Body --}}
     <section class="sheet-body">
-        
+
         {{!-- Stats Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/stats.html"}}
-    
+
         {{!-- Owned Powers Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/disciplines.html"}}
 
@@ -56,6 +56,6 @@
 
         {{!-- Other Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/other.html"}}
-        
+
     </section>
 </form>
