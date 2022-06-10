@@ -23,6 +23,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/actor/parts/stats.html',
     'systems/vtm5e/templates/actor/parts/synergy.html',
     'systems/vtm5e/templates/actor/parts/willpower.html',
+    'systems/vtm5e/templates/actor/parts/plasma.html',
 
     // Item Sheet Partials
     'systems/vtm5e/templates/item/parts/skills.html',

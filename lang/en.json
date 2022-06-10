@@ -197,5 +197,12 @@
     "VTM5E.Difficulty": "Difficulty?",
     "VTM5E.Rolling": "Rolling",
     "VTM5E.Cancel": "Cancel",
-    "VTM5E.SelectAbility": "Select Ability"
+    "VTM5E.SelectAbility": "Select Ability",
+
+    "VTM5E.Synergy": "Synergy",
+    "VTM5E.HauntBonus": "Haunt Bonus",
+    "VTM5E.HauntReRoll": "Haunt Re-Roll",
+    "VTM5E.PlasmaReserve": "Plasma Reserve",
+    "VTM5E.Plasma": "Plasma",
+    "VTM5E.Haunts": "Haunts"
 }

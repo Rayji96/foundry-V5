@@ -35,7 +35,7 @@ export class EaterActorSheet extends GhoulActorSheet {
 
   constructor (actor, options) {
     super(actor, options)
-    this.hunger = true
+    this.hunger = false
   }
 
   /** @override */

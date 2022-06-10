@@ -15,27 +15,30 @@
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number
             from 1 to 12 and will create that number of columns. --}}
-            <div class="resources grid grid-3col">
-                {{!-- "flex-group-center" is also defined in the _grid.scss file
-                and it will add a small amount of padding, a border, and will
-                center all of its child elements content and text. --}}
-                {{> "systems/vtm5e/templates/actor/parts/health.html"}}
-
-                {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
-
-                {{> "systems/vtm5e/templates/actor/parts/humanity.html"}}
-            </div>
-            {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-            use both the "grid" and "grid-Ncol" class where "N" can be any number
-            from 1 to 12 and will create that number of columns. --}}
-            <div class="resources grid grid-4col">
-                {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
-
-                {{> "systems/vtm5e/templates/actor/parts/hunger.html"}}
-
-                {{> "systems/vtm5e/templates/actor/parts/rouse.html"}}
-
-                {{> "systems/vtm5e/templates/actor/parts/frenzy.html"}}
+            <div class="resources grid grid-2col">
+                <div class="column" style="width: 125%;">
+                    <div class="resources grid grid-2col">
+                        {{!-- "flex-group-center" is also defined in the _grid.scss file
+                        and it will add a small amount of padding, a border, and will
+                        center all of its child elements content and text. --}}
+                        {{> "systems/vtm5e/templates/actor/parts/health.html"}}
+        
+                        {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
+                    </div>
+                    {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+                    use both the "grid" and "grid-Ncol" class where "N" can be any number
+                    from 1 to 12 and will create that number of columns. --}}
+                    <div class="resources grid grid-3col">
+                        {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
+        
+                        {{> "systems/vtm5e/templates/actor/parts/plasma.html"}}
+        
+                        {{> "systems/vtm5e/templates/actor/parts/rouse.html"}}
+                    </div>
+                </div>
+                <div class="column" style="width: 75%; justify-self: end; padding-top: 10px;">
+                    {{> "systems/vtm5e/templates/actor/parts/humanity.html"}}
+                </div>
             </div>
         </div>
     </header>
@@ -43,9 +46,9 @@
     {{!-- Vampire Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <div class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</div>
-        <div class="item" data-tab="disciplines">{{localize "VTM5E.Disciplines"}}</div>
+        <div class="item" data-tab="disciplines">{{localize "VTM5E.Haunts"}}</div>
         <div class="item" data-tab="features">{{localize "VTM5E.Features"}}</div>
-        <div class="item" data-tab="blood">{{localize "VTM5E.Blood"}}</div>
+        <div class="item" data-tab="blood">{{localize "VTM5E.Plasma"}}</div>
         <div class="item" data-tab="description">{{localize "VTM5E.Description"}}</div>
         <div class="item" data-tab="other">{{localize "VTM5E.Other"}}</div>
     </nav>
