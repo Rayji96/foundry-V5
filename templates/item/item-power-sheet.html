@@ -1,0 +1,110 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" alt="Item Image" />
+        <div class="header-fields flexcol">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}"
+                    placeholder="{{localize 'VTM5E.Name'}}" /></h1>
+            <div class="flexrow">
+                <!-- Input the level of the discipline -->
+                <div class="flexrow level">
+                    <label>{{localize "VTM5E.Level"}}</label>
+                    <input name="data.level" value="{{item.data.data.level}}" type="number" min="0" max="5"/>
+                </div>
+                <!-- Select the discipline this power belongs to -->
+                <div class="discipline">
+                    <select name="data.discipline" data-type="String">
+                        {{#select data.data.discipline}}
+                        {{> "systems/vtm5e/templates/item/parts/disciplines.html"}}
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "VTM5E.Description"}}</a>
+        <a class="item" data-tab="attributes">{{localize "VTM5E.Attributes"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            <!-- it's a bit clunky trying to break things up. Easier to implement expanding powers with just one description too-->
+            <!-- <label class="resource-label">{{localize "VTM5E.Cost"}}: </label>
+            <div class="half-height">
+            {{editor content=data.cost target="data.cost" button=true owner=owner editable=editable}}
+            </div>
+            <label class="resource-label">{{localize "VTM5E.Duration"}}: </label>
+            <div class="half-height">
+            {{editor content=data.duration target="data.duration" button=true owner=owner editable=editable}}
+            </div> -->
+            <!-- <label class="resource-label">{{localize "VTM5E.System"}}: </label> -->
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            {{!-- As you add new fields, add them in here! --}}
+            <div class="resource grid grid-4col flex-center">
+                <!-- Define the system that the power uses -->
+                <label class="resource-label">{{localize "VTM5E.System"}}: </label>
+                <select name="data.dice1" data-type="String">
+                    {{#select data.data.dice1}}
+                    {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
+                    <option value="discipline">{{localize (getDisciplineName item.data.data.discipline)}}</option>
+                    {{/select}}
+                </select>
+                <label class="resource-label">+</label>
+                {{#if data.data.skill}}
+                    <select name="data.dice2" data-type="String">
+                        {{#select data.data.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/skills.html"}}
+                        {{/select}}
+                    </select>
+                {{else if data.data.amalgam}}
+                    <select name="data.dice2" data-type="String">
+                        {{#select data.data.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/disciplines.html"}}
+                        {{/select}}
+                    </select>
+                {{else}}
+                    <select name="data.dice2" data-type="String">
+                        {{#select data.data.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
+                        <option value="discipline">{{localize (getDisciplineName item.data.data.discipline)}}</option>
+                        {{/select}}
+                    </select>
+                {{/if}}
+
+                <!-- Rollable or not -->
+                <label class="resource-label">{{localize "VTM5E.Rollable"}}: </label>
+                <input type="checkbox" id="data.rollable" name="data.rollable" {{checked data.data.rollable}}>
+
+                <!-- Whether the "system" option uses skills or not -->
+                <label class="resource-label">{{localize "VTM5E.UseSkill"}}: </label>
+                {{#if data.data.amalgam}}
+                    <input type="checkbox" id="data.skill" name="data.skill" disabled {{checked data.data.skill}}>
+                {{else}}
+                    <input type="checkbox" id="data.skill" name="data.skill" {{checked data.data.skill}}>
+                {{/if}}
+
+                <!-- Adds other discipline options to the "system" option -->
+                <label class="resource-label">{{localize "VTM5E.Amalgam"}}: </label>
+                {{#if data.data.skill}}
+                    <input type="checkbox" id="data.amalgam" name="data.amalgam" disabled {{checked data.data.amalgam}}>
+                {{else}}
+                  <input type="checkbox" id="data.amalgam" name="data.amalgam" {{checked data.data.amalgam}}>
+                {{/if}}
+
+                <!-- If the item has a rouse check to roll or not -->
+                <label class="resource-label">{{localize "VTM5E.Rouse"}}: </label>
+                <input type="checkbox" id="data.rouse" name="data.rouse" {{checked data.data.rouse}}>
+
+            </div>
+        </div>
+    </section>
+</form>

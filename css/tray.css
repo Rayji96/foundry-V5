@@ -1,0 +1,209 @@
+.dice-tray {
+  flex: 0;
+  padding: 5px;
+  margin: 3px;
+  background: url("/systems/vtm5e/assets/images/background-green-marble.jpg"), #153b23;
+  background-size: cover;
+  border: 2px solid #1e5e35;
+  border-radius: 5px 5px 0 0;
+}
+
+.dice-tray > * {
+  margin: 2px;
+}
+
+.dice-tray .flexrow {
+  flex-wrap: nowrap;
+}
+
+.dice-tray-character {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.dice-tray-custom-rolls {
+  display: grid;
+  margin: 0.5em 0;
+  grid-template-columns: 2fr 15px 2fr 1fr;
+  grid-template-areas:
+    "pool1 concat pool2 roll"
+    "opts1 .      opts2 roll";
+}
+
+.dice-tray .dice-tray-label {
+  display: block;
+  height: 31px;
+  line-height: 31px;
+}
+
+.dice-tray .dice-tray-input,
+.dice-tray .dice-tray-select {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  height: 31px;
+  width: 100%;
+  background-color: rgb(250 250 250 / 15%);
+  border: 1px solid #000;
+  box-shadow: 0 0 6px inset #fff;
+  transition: all ease-in-out 0.25s, visibility 0s;
+}
+
+.dice-tray .dice-tray-concatenate {
+  display: block;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+}
+
+.dice-tray-button.roll-button {
+  height: 100%;
+  grid-area: roll;
+}
+
+.dice-tray-button .roll-image {
+  border: 0;
+  filter: invert();
+}
+
+.dice-tray-pool-filters.pool1-filters {
+  grid-area: opts1;
+}
+
+.dice-tray-pool-filters.pool2-filters {
+  grid-area: opts2;
+}
+
+.dice-tray-button.small-button {
+  height: 20px;
+  width: 20px;
+}
+
+.dice-tray-pool-filters label,
+.dice-tray-pool-filters input {
+  display: block;
+  position: absolute;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 1px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 3px;
+}
+
+.dice-tray-pool-filters input[type="radio"] {
+  opacity: 0.011;
+  z-index: 2;
+}
+
+.dice-tray-pool-filters label {
+  padding: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.dice-tray-filter-spacer {
+  padding: 6px;
+}
+
+.selected-character {
+  width: 200px;
+}
+
+.dice-tray-searchable-select {
+  height: 31px;
+  position: relative;
+}
+
+.dice-tray-searchable-select-cover {
+  min-height: 31px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.dice-tray-searchable-select-hover {
+  width: 100%;
+  height: 31px;
+  transition: all ease-in-out 0.25s;
+}
+
+.dice-tray-searchable-select-fields {
+  border: 1px solid #767676;
+  border-bottom: 0;
+  z-index: 3;
+  position: relative;
+  display: none;
+}
+
+.dice-tray-searchable-select-input {
+  box-sizing: border-box;
+  padding-left: 6px;
+  width: 100%;
+}
+
+.dice-tray-searchable-select-options {
+  max-height: 500px;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  background: white;
+  color: black;
+  overflow-y: scroll;
+}
+
+.dice-tray-searchable-select-options li {
+  padding-left: 5px;
+  height: 29px;
+  font-size: 14px;
+  line-height: 29px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.dice-tray-searchable-select-options li:hover,
+.dice-tray-searchable-select-options li:focus {
+  background: #1e90ff;
+  cursor: pointer;
+  color: white;
+  outline: none;
+}
+
+.dice-tray .dice-tray-input:hover,
+.dice-tray .dice-tray-input:focus,
+.dice-tray .dice-tray-select:hover,
+.dice-tray .dice-tray-select:focus,
+.dice-tray-searchable-select-hover:hover {
+  border: 1px solid #ff6400;
+  box-shadow: 0 0 6px inset #ff6400;
+}
+
+.dice-tray-searchable-select-options:hover li:not(:hover) {
+  background: white;
+  color: black;
+}
+
+.dice-tray button {
+  background: transparent;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 0 6px inset #8d9ea7;
+  transition: all ease-in-out 0.25s;
+  position: relative;
+}
+
+.dice-tray button:hover,
+.dice-tray-pool-filters input[type="radio"]:checked + label {
+  color: #ff6400;
+  border-color: #ff6400;
+  box-shadow: 0 0 6px inset #ff6400;
+}

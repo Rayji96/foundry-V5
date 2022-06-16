@@ -1,0 +1,19 @@
+<form class="{{cssClass}} flexcol limited" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
+            alt="Profile Image" />
+        <h2 class="limited-charname">{{actor.name}}</h2>
+    </header>
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        <div class="tab appearance description-content">
+            {{#if isCharacter}}
+            {{editor content=data.data.appearance target="data.appearance" button=true owner=owner editable=editable}}
+            {{else}}
+            {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
+            {{/if}}
+        </div>
+    </section>
+</form>

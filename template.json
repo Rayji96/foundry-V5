@@ -1,0 +1,384 @@
+{
+  "Actor": {
+    "types": ["character", "vampire", "ghoul", "mortal", "coterie"],
+    "templates": {
+      "base": {
+        "biography": "",
+        "appearance": "",
+        "equipment": "",
+        "notes": "",
+        "headers":{
+          "concept":"",
+          "chronicle":"",
+          "ambition":"",
+          "desire":"",
+          "touchstones":"",
+          "tenets":""
+        },
+        "exp": {
+          "value": 0,
+          "max": 0
+        },
+        "humanity": {
+          "value": 0,
+          "stains": 0
+        },
+        "health": {
+          "aggravated": 0,
+          "superficial": 0,
+          "max": 5
+        },
+        "willpower": {
+          "aggravated": 0,
+          "superficial": 0,
+          "max": 5
+        },
+        "abilities": {
+          "strength": {
+            "value": 1,
+            "name": "VTM5E.Strength"
+          },
+          "charisma": {
+            "value": 1,
+            "name": "VTM5E.Charisma"
+          },
+          "intelligence": {
+            "value": 1,
+            "name": "VTM5E.Intelligence"
+          },
+          "dexterity": {
+            "value": 1,
+            "name": "VTM5E.Dexterity"
+          },
+          "manipulation": {
+            "value": 1,
+            "name": "VTM5E.Manipulation"
+          },
+          "wits": {
+            "value": 1,
+            "name": "VTM5E.Wits"
+          },
+          "stamina": {
+            "value": 1,
+            "name": "VTM5E.Stamina"
+          },
+          "composure": {
+            "value": 1,
+            "name": "VTM5E.Composure"
+          },
+          "resolve": {
+            "value": 1,
+            "name": "VTM5E.Resolve"
+          }
+        },
+        "skills": {
+          "athletics": {
+            "value": 0,
+            "name": "VTM5E.Athletics"
+          },
+          "animal ken": {
+            "value": 0,
+            "name": "VTM5E.AnimalKen"
+          },
+          "academics": {
+            "value": 0,
+            "name": "VTM5E.Academics"
+          },
+          "brawl": {
+            "value": 0,
+            "name": "VTM5E.Brawl"
+          },
+          "etiquette": {
+            "value": 0,
+            "name": "VTM5E.Etiquette"
+          },
+          "awareness": {
+            "value": 0,
+            "name": "VTM5E.Awareness"
+          },
+          "craft": {
+            "value": 0,
+            "name": "VTM5E.Craft"
+          },
+          "insight": {
+            "value": 0,
+            "name": "VTM5E.Insight"
+          },
+          "finance": {
+            "value": 0,
+            "name": "VTM5E.Finance"
+          },
+          "drive": {
+            "value": 0,
+            "name": "VTM5E.Drive"
+          },
+          "intimidation": {
+            "value": 0,
+            "name": "VTM5E.Intimidation"
+          },
+          "investigation": {
+            "value": 0,
+            "name": "VTM5E.Investigation"
+          },
+          "firearms": {
+            "value": 0,
+            "name": "VTM5E.Firearms"
+          },
+          "leadership": {
+            "value": 0,
+            "name": "VTM5E.Leadership"
+          },
+          "medicine": {
+            "value": 0,
+            "name": "VTM5E.Medicine"
+          },
+          "larceny": {
+            "value": 0,
+            "name": "VTM5E.Larceny"
+          },
+          "performance": {
+            "value": 0,
+            "name": "VTM5E.Performance"
+          },
+          "occult": {
+            "value": 0,
+            "name": "VTM5E.Occult"
+          },
+          "melee": {
+            "value": 0,
+            "name": "VTM5E.Melee"
+          },
+          "persuasion": {
+            "value": 0,
+            "name": "VTM5E.Persuasion"
+          },
+          "politics": {
+            "value": 0,
+            "name": "VTM5E.Politics"
+          },
+          "stealth": {
+            "value": 0,
+            "name": "VTM5E.Stealth"
+          },
+          "streetwise": {
+            "value": 0,
+            "name": "VTM5E.Streetwise"
+          },
+          "science": {
+            "value": 0,
+            "name": "VTM5E.Science"
+          },
+          "survival": {
+            "value": 0,
+            "name": "VTM5E.Survival"
+          },
+          "subterfuge": {
+            "value": 0,
+            "name": "VTM5E.Subterfuge"
+          },
+          "technology": {
+            "value": 0,
+            "name": "VTM5E.Technology"
+          }
+        }
+      },
+      "disciplines": {
+        "disciplines": {
+          "animalism": {
+            "name": "VTM5E.Animalism",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "auspex": {
+            "name": "VTM5E.Auspex",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "celerity": {
+            "name": "VTM5E.Celerity",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "dominate": {
+            "name": "VTM5E.Dominate",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "fortitude": {
+            "name": "VTM5E.Fortitude",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "obfuscate": {
+            "name": "VTM5E.Obfuscate",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "potence": {
+            "name": "VTM5E.Potence",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "presence": {
+            "name": "VTM5E.Presence",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "protean": {
+            "name": "VTM5E.Protean",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "sorcery": {
+            "name": "VTM5E.BloodSorcery",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "oblivion": {
+            "name": "VTM5E.Oblivion",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "alchemy": {
+            "name": "VTM5E.ThinBloodAlchemy",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "rituals": {
+            "name": "VTM5E.Rituals",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "ceremonies": {
+            "name": "VTM5E.Ceremonies",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          }
+        }
+      }
+    },
+   
+    "character": {
+      "templates": ["base","disciplines"],
+      "headers":{
+        "predator":"",
+        "sire":"",
+        "generation":"",
+        "bane":""
+      },
+      "blood": {
+        "potency": 0,
+        "resonance": ""
+      },
+      "clan": {
+        "value": ""
+      },
+      "hunger": {
+        "value": 1
+      }
+    },
+    "vampire": {
+      "templates": ["base","disciplines"],
+      "headers":{
+        "predator":"",
+        "sire":"",
+        "generation":"",
+        "bane":""
+      },
+      "blood": {
+        "potency": 0,
+        "resonance": ""
+      },
+      "clan": {
+        "value": ""
+      },
+      "hunger": {
+        "value": 1
+      }
+    },
+    "ghoul": {
+      "templates": ["base","disciplines"],
+      "headers":{
+        "domitor":""
+      }
+    },
+    "mortal": {
+      "templates": ["base"]
+    },
+    "coterie" : {
+      "biography": "",
+      "equipment": "",
+      "notes": "",
+      "headers":{
+        "concept": ""
+      }
+    }
+  },
+  "Item": {
+    "types": ["feature", "power", "specialty", "boon", "customRoll"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "feature": {
+      "templates": ["base"],
+      "featuretype":"merit",
+      "points": 0
+    },
+    "power": {
+      "templates": ["base"],
+      "discipline": "rituals",
+      "duration": "",
+      "level": 1,
+      "dice1": "discipline",
+      "dice2": "discipline",
+      "cost": "",
+      "rollable": false,
+      "skill": false,
+      "amalgam": false,
+      "rouse": false
+    },
+    "specialty": {
+      "templates": ["base"],
+      "skill": "athletics"
+    },
+    "boon": {
+      "templates": ["base"],
+      "boontype": "Trivial"
+    },
+    "customRoll": {
+      "templates": ["base"],
+      "dice1" : "",
+      "dice2" : ""
+    }
+  }
+}

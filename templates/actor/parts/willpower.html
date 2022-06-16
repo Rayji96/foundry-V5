@@ -1,0 +1,14 @@
+<div class="resource flex-group-center willpower">
+    <div class="flexrow">
+        <i class="fas fa-minus resource-control resource-minus" data-resource="willpower" data-action="minus"></i>
+        <label for="data.data.willpower" class="resource-label rollable" data-roll="{{willpower data.data.willpower.max data.data.willpower.superficial data.data.willpower.aggravated}}" data-use-hunger="0" data-label="{{localize 'VTM5E.RollingWillpower'}}">{{localize "VTM5E.Willpower"}}</label>
+        <i class="fas fa-plus resource-control resource-plus" data-resource="willpower" data-action="plus"></i>
+    </div> 
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{data.data.willpower.max}}" data-superficial="{{data.data.willpower.superficial}}" data-aggravated="{{data.data.willpower.aggravated}}" data-name="data.willpower">
+            {{#numLoop data.data.willpower.max}}
+            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+            {{/numLoop}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "name": "vtm5e",
+  "version": "1.6.0",
+  "description": "CSS compiler for the Vampire 5e system",
+  "scripts": {
+    "build": "gulp",
+    "compile": "gulp css",
+    "watch": "gulp",
+    "gulp": "gulp",
+    "eslint": "eslint -c .github/linters/.eslintrc.yml *"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "Ray Ji",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "standard": "^16.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.17.0",
+    "htmlhint": "^0.14.2",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "$"
+    ]
+  }
+}

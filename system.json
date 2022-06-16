@@ -1,0 +1,59 @@
+{
+  "name": "wod5e",
+  "title": "World of Darkness 5e",
+  "description": "World of Darkness 5e system for Foundry VTT",
+  "version": "0.0.1",
+  "minimumCoreVersion": "9.0",
+  "compatibleCoreVersion": "9.0",
+  "templateVersion": 1,
+  "author": "MrDionysus",
+  "esmodules": ["module/main.js"],
+  "styles": ["css/vtm5e.css"],
+  "scripts": [],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "fr",
+      "name": "French",
+      "path": "lang/fr.json"
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Brazilian Portuguese",
+      "path": "lang/pt-BR.json"
+    },
+    {
+      "lang": "es",
+      "name": "Spanish",
+      "path": "lang/es.json"
+    },
+    {
+      "lang": "de",
+      "name": "German",
+      "path": "lang/de.json"
+    },
+    {
+      "lang": "it",
+      "name": "Italian",
+      "path": "lang/it.json"
+    },
+	{
+      "lang": "pl",
+      "name": "Polish",
+      "path": "lang/pl.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "",
+  "secondaryTokenAttribute": "",
+  "url": "https://github.com/MrDionysus/foundry-WOD5/",
+  "manifest": "https://raw.githubusercontent.com/MrDionysus/foundry-WOD5/main/system.json",
+  "download": "https://github.com/MrDionysus/foundry-WOD5/archive/refs/heads/master.zip",
+  "license": "LICENSE.txt"
+}

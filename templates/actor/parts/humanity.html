@@ -1,0 +1,11 @@
+<div class="resource flex-group-center humanity">
+    <label for="data.data.humanity.value" class="resource-label rollable" data-roll="{{remorse data.data.humanity.value data.data.humanity.stains}}"
+    data-label="{{localize 'VTM5E.RollingRemorse'}}">{{localize "VTM5E.Humanity"}}</label>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-counter" data-states="/:stains,-:value" data-value="{{data.data.humanity.value}}" data-stains="{{data.data.humanity.stains}}"  data-name="data.humanity">
+            {{#numLoop 10}}
+            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+            {{/numLoop}}
+        </div>
+    </div>
+</div>

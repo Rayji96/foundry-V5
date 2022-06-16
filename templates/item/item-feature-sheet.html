@@ -1,0 +1,40 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" alt="Item Image" />
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}"
+                    placeholder="{{localize 'VTM5E.Name'}}" /></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "VTM5E.Description"}}</a>
+        <a class="item" data-tab="attributes">{{localize "VTM5E.Attributes"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            <div class="resource grid grid-4col flex-center">
+                <label class="resource-label">{{localize "VTM5E.FeatureType"}}: </label>
+                <select name="data.featuretype" data-type="String">
+                    {{#select data.data.featuretype}}
+                    <option value="merit">{{localize "VTM5E.Merit"}}</option>
+                    <option value="flaw">{{localize "VTM5E.Flaw"}}</option>
+                    <option value="background">{{localize "VTM5E.Background"}}</option>
+                    {{/select}}
+                </select>
+                <label class="resource-label">{{localize "VTM5E.Points"}}: </label>
+                <input type="number" name="data.points" value="{{data.data.points}}" />
+            </div>
+        </div>
+    </section>
+</form>

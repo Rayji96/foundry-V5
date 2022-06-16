@@ -1,0 +1,11 @@
+<div class="resource flex-group-center hunger">
+    <label for="data.data.hunger.value" class="resource-label">{{localize "VTM5E.Hunger"}}</label>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-value" data-value="{{data.data.hunger.value}}" data-name="data.hunger.value">
+            <span class="resource-value-empty hunger-value"></span>
+            {{#numLoop 5}}
+            <span class="resource-value-step hunger-value" data-index="{{this}}"></span>
+            {{/numLoop}}
+        </div>
+    </div>    
+</div>
