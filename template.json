@@ -283,6 +283,152 @@
             "visible": false
           }
         }
+      },
+      "haunts": {
+        "haunts": {
+          "boneyard": {
+            "name": "VTM5E.Boneyard",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "caul": {
+            "name": "VTM5E.Caul",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "curse": {
+            "name": "VTM5E.Curse",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "dirge": {
+            "name": "VTM5E.Dirge",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "marionette": {
+            "name": "VTM5E.Marionette",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "memoria": {
+            "name": "VTM5E.Memoria",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "oracle": {
+            "name": "VTM5E.Oracle",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "rage": {
+            "name": "VTM5E.Rage",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "shroud": {
+            "name": "VTM5E.Shroud",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "tomb": {
+            "name": "VTM5E.Tomb",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "void": {
+            "name": "VTM5E.Void",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "well": {
+            "name": "VTM5E.Well",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          }
+        }
+      },
+      "keys": {
+        "keys": {
+          "beasts": {
+            "name": "VTM5E.KeyBeasts",
+            "ability": "VTM5E.Wits",
+            "instances": [],
+            "visible": false
+          },          
+          "blood": {
+            "name": "VTM5E.KeyBlood",
+            "ability": "VTM5E.Charisma",
+            "instances": [],
+            "visible": false
+          },
+          "chance": {
+            "name": "VTM5E.KeyChance",
+            "ability": "VTM5E.Dexterity",
+            "instances": [],
+            "visible": false
+          },
+          "coldWind": {
+            "name": "VTM5E.KeyWind",
+            "ability": "VTM5E.Resolve",
+            "instances": [],
+            "visible": false
+          },
+          "deepWaters": {
+            "name": "VTM5E.KeyWaters",
+            "ability": "VTM5E.Manipulation",
+            "instances": [],
+            "visible": false
+          },
+          "disease": {
+            "name": "VTM5E.KeyDisease",
+            "ability": "VTM5E.Stamina",
+            "instances": [],
+            "visible": false
+          },
+          "graveDirt": {
+            "name": "VTM5E.KeyDirt",
+            "ability": "VTM5E.Strength",
+            "instances": [],
+            "visible": false
+          },
+          "pyreFlame": {
+            "name": "VTM5E.KeyFlame",
+            "ability": "VTM5E.Intelligence",
+            "instances": [],
+            "visible": false
+          },
+          "stillness": {
+            "name": "VTM5E.KeStillness",
+            "ability": "VTM5E.Composure",
+            "instances": [],
+            "visible": false
+          }
+        }
       }
     },
    
@@ -342,17 +488,16 @@
       }
     },
     "eater": {
-      "templates": ["base","disciplines"],
+      "templates": ["base","haunts"],
       "headers":{
-        "predator":"",
-        "sire":"",
-        "generation":"",
-        "bane":""
+        "geist":"",
+        "root":"",
+        "bloom":""
       },
       "synergy": {
         "value": 0
       },
-      "clan": {
+      "burden": {
         "value": ""
       },
       "hunger": {
@@ -361,7 +506,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "boon", "customRoll"],
+    "types": ["feature", "power", "eaterPower", "specialty", "boon", "customRoll"],
     "templates": {
       "base": {
         "description": ""
@@ -384,6 +529,21 @@
       "skill": false,
       "amalgam": false,
       "rouse": false
+    },
+    "eaterPower": {
+      "templates": ["base"],
+      "haunt": "boneyard",
+      "duration": "",
+      "level": 1,
+      "dice1": "haunt",
+      "cost": "",
+      "rollable": false,
+      "rouse": false
+    },
+    "keyInstance": {
+      "templates": ["base"],
+      "key": "beasts",
+      "source": ""
     },
     "specialty": {
       "templates": ["base"],

@@ -1,0 +1,86 @@
+<div class="tab keys" data-group="primary" data-tab="keys">
+    <ol class="items-list">
+        <!-- Header of the keys lists -->
+        <li class="item flexrow item-header">
+            <div class="item-name">{{localize "VTM5E.Name"}}</div>
+            <div class="item-name header-attribute">{{localize "VTM5E.Attribute"}}</div>
+            <!-- Item controls for adding new key lists -->
+            <div class="item-controls">
+                <a class="item-control key-create" title="{{localize 'VTM5E.AddKey'}}">
+                    <i class="fas fa-plus"></i>
+                    {{localize "VTM5E.AddKey"}}
+                </a>
+            </div>
+        </li>
+        <!-- Iterate through each of the key lists -->
+        {{#each data.data.keys as |keys key|}}
+            {{#if key.visible}}
+                <li class="flexrow item-header">
+                    <div class="item-name collapsible">
+                        {{localize keys.name}}
+                    </div>
+                    <div class="item-ability">
+                        {{localize keys.ability}}
+                    </div>
+                    <!-- Item controls for key sections -->
+                    <div class="item-controls">
+                        <!-- Add new key -->
+                        <a class="item-control item-create" title="{{localize 'VTM5E.AddKey'}}" data-type="keyInstance" data-key="{{key}}">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        <!-- Icon to show the key description to the chat-->
+                        <a class="item-control key-chat" title="{{localize 'VTM5E.ShowToChat'}}" data-type="keyInstance" data-key="{{key}}">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
+                        <!-- Icon to delete the key (as long as it doesn't have any powers) -->
+                        <a class="item-control key-delete" title="{{localize 'VTM5E.Delete'}}" data-key="{{key}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </li>
+                <!-- key description -->
+                <div class="collapsible-content">
+                    <textarea class="key-description" name="data.keys.{{key}}.description">{{key.description}}</textarea>
+                </div>
+                <!-- Iterate through each of the key powers -->
+                {{#each (lookup ../actor.key_list key) as |item id|}}
+                    <li class="item flexcol" data-item-id="{{item._id}}">
+                        <div class="flexrow">
+                            <!-- Whether the button is clickable or not to post the power in chat -->
+                            {{#if item.data.rollable}}
+                                <div class="item-image power-rollable" data-id="{{item._id}}" data-use-hunger="1">
+                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                </div>
+                            {{else}}
+                                <div class="item-image" data-id="{{item._id}}">
+                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                </div>
+                            {{/if}}
+                            <!-- key power name -->
+                            <h4 class="item-name collapsible">{{item.name}}</h4>
+                            <!-- Item controls for key powers -->
+                            <div class="item-controls">
+                                <!-- Icon to edit the power-->
+                                <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <!-- Icon to display the power in chat -->
+                                <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}">
+                                    <i class="fas fa-comment-alt"></i>
+                                </a>
+                                <!-- Icon to delete the power -->
+                                <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Power description, expandable by a collapse -->
+                        <div class="collapsible-content">
+                            {{{item.data.description}}}
+                        </div>
+                    </li>
+                {{/each}}
+            {{/if}}
+        {{/each}}
+    </ol>
+</div>

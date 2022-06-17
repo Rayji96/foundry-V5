@@ -1,0 +1,103 @@
+<div class="tab haunts" data-group="primary" data-tab="haunts">
+    <ol class="items-list">
+        <!-- Header of the haunts lists -->
+        <li class="item flexrow item-header">
+            <div class="item-name">{{localize "VTM5E.Name"}}</div>
+            <div class="item-name header-level">{{localize "VTM5E.Level"}}</div>
+            <!-- Item controls for adding new haunt lists -->
+            <div class="item-controls">
+                <a class="item-control haunt-create" title="{{localize 'VTM5E.AddHaunt'}}">
+                    <i class="fas fa-plus"></i>
+                    {{localize "VTM5E.AddHaunt"}}
+                </a>
+            </div>
+        </li>
+        <!-- Iterate through each of the haunt lists -->
+        {{#each data.data.haunts as |haunt key|}}
+            {{#if haunt.visible}}
+                <li class="flexrow item-header">
+                    <div class="item-name collapsible">
+                        {{localize haunt.name}}
+                    </div>
+                    <!-- All non-ritual/ceremony powers need dots displayed in the middle -->
+                    {{#if (and (ne key "rituals") (ne key "ceremonies"))}}
+                        <div class="resource-value" data-value="{{haunt.value}}" data-name="data.haunts.{{key}}.value">
+                            <!-- Empty box (for setting back to 0), and then iterate through the rest of the haunt dots -->
+                            <span class="resource-value-empty"></span>
+                            {{#numLoop 5}}
+                                <span class="resource-value-step" data-index="{{this}}"></span>
+                            {{/numLoop}}
+                        </div>
+                    {{/if}}
+                    <!-- Item controls for haunt sections -->
+                    <div class="item-controls">
+                        <!-- Add new haunt power -->
+                        <a class="item-control item-create" title="{{localize 'VTM5E.AddPower'}}" data-type="eaterPower" data-haunt="{{key}}">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        <!-- Icon to roll the haunt with an attribute -->
+                        <a class="vrollable haunt-dice" title="{{localize 'VTM5E.Roll'}}" data-roll="{{haunt.value}}" data-label="{{key}}">
+                            <i class="fas fa-dice-d20"></i>
+                        </a>
+                        <!-- Icon to show the haunt description to the chat-->
+                        <a class="item-control haunt-chat" title="{{localize 'VTM5E.ShowToChat'}}" data-type="eaterPower" data-haunt="{{key}}">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
+                        <!-- Icon to delete the haunt (as long as it doesn't have any powers) -->
+                        <a class="item-control haunt-delete" title="{{localize 'VTM5E.Delete'}}" data-haunt="{{key}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </li>
+                <!-- haunt description -->
+                <div class="collapsible-content">
+                    <textarea class="haunt-description" name="data.haunts.{{key}}.description">{{haunt.description}}</textarea>
+                </div>
+                <!-- Iterate through each of the haunt powers -->
+                {{#each (lookup ../actor.haunt_list key) as |item id|}}
+                    <li class="item flexcol" data-item-id="{{item._id}}">
+                        <div class="flexrow">
+                            <!-- Whether the button is clickable or not to post the power in chat -->
+                            {{#if item.data.rollable}}
+                                <div class="item-image power-rollable" data-id="{{item._id}}" data-use-hunger="1">
+                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                </div>
+                            {{else}}
+                                <div class="item-image" data-id="{{item._id}}">
+                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                </div>
+                            {{/if}}
+                            <!-- haunt power name -->
+                            <h4 class="item-name collapsible">{{item.name}}</h4>
+                            <!-- Item controls for haunt powers -->
+                            <div class="item-controls">
+                                <!-- Icon to roll the power's rouse check, if applicable -->
+                                {{#if item.data.rouse}}
+                                    <a class="item-control item-rouse" title="{{localize 'VTM5E.RollRouse'}}" data-roll="{{haunt.value}}">
+                                        <i class="fas fa-dice-d20"></i>
+                                    </a>
+                                {{/if}}
+                                <!-- Icon to edit the power-->
+                                <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <!-- Icon to display the power in chat -->
+                                <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}">
+                                    <i class="fas fa-comment-alt"></i>
+                                </a>
+                                <!-- Icon to delete the power -->
+                                <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Power description, expandable by a collapse -->
+                        <div class="collapsible-content">
+                            {{{item.data.description}}}
+                        </div>
+                    </li>
+                {{/each}}
+            {{/if}}
+        {{/each}}
+    </ol>
+</div>

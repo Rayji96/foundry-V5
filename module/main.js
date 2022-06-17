@@ -268,6 +268,24 @@ Hooks.once('init', async function () {
     }
     return disciplines[key]
   })
+
+  Handlebars.registerHelper('getHauntName', function (key, roll = false) {
+    const disciplines = {
+      boneyard: 'VTM5E.Boneyard',
+      caul: 'VTM5E.Caul',
+      curse: 'VTM5E.Curse',
+      dirge: 'VTM5E.Dirge',
+      marionette: 'VTM5E.Marionette',
+      memoria: 'VTM5E.Memoria',
+      oracle: 'VTM5E.Oracle',
+      rage: 'VTM5E.Rage',
+      shroud: 'VTM5E.Shroud',
+      tomb: 'VTM5E.Tomb',
+      void: 'VTM5E.Void',
+      well: 'VTM5E.Well',
+    }
+    return disciplines[key]
+  })
 })
 
 Hooks.once('ready', async function () {

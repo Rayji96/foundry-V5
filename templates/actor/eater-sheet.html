@@ -1,16 +1,16 @@
-<form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} vampire-sheet" autocomplete="off">
+<form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} eater-sheet" autocomplete="off">
 
-    {{!-- Vampire Sheet Header --}}
+    {{!-- Eater Sheet Header --}}
     <header class="sheet-header">
         {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
         <div class="header-fields">
             <div class="grid grid-3col flexrow">
                 <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
                         placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-                <h1 class="charname"><input name="data.clan.value" type="text" value="{{data.data.clan.value}}"
-                        placeholder="{{localize 'VTM5E.Clan'}}" /></h1>
-                <h1 class="charname"><input name="data.headers.predator" type="text" value="{{data.data.headers.predator}}"
-                        placeholder="{{localize 'VTM5E.Predator'}}" /></h1>
+                <h1 class="charname"><input name="data.burden.value" type="text" value="{{data.data.burden.value}}"
+                    placeholder="{{localize 'VTM5E.Burden'}}" /></h1>
+                <h1 class="charname"><input name="data.headers.geist" type="text" value="{{data.data.headers.geist}}"
+                        placeholder="{{localize 'VTM5E.Geist'}}" /></h1>
             </div>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -33,11 +33,11 @@
         
                         {{> "systems/vtm5e/templates/actor/parts/plasma.html"}}
         
-                        {{> "systems/vtm5e/templates/actor/parts/rouse.html"}}
+                        {{> "systems/vtm5e/templates/actor/parts/rousePlasma.html"}}
                     </div>
                 </div>
-                <div class="column" style="width: 75%; justify-self: end; padding-top: 10px;">
-                    {{> "systems/vtm5e/templates/actor/parts/humanity.html"}}
+                <div class="column" style="width: 75%; justify-self: end; padding-top: 9px;">
+                    {{> "systems/vtm5e/templates/actor/parts/synergy.html"}}
                 </div>
             </div>
         </div>
@@ -46,9 +46,9 @@
     {{!-- Vampire Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <div class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</div>
-        <div class="item" data-tab="disciplines">{{localize "VTM5E.Haunts"}}</div>
+        <div class="item" data-tab="haunts">{{localize "VTM5E.Haunts"}}</div>
+        <div class="item" data-tab="keys">{{localize "VTM5E.Keys"}}</div>
         <div class="item" data-tab="features">{{localize "VTM5E.Features"}}</div>
-        <div class="item" data-tab="blood">{{localize "VTM5E.Plasma"}}</div>
         <div class="item" data-tab="description">{{localize "VTM5E.Description"}}</div>
         <div class="item" data-tab="other">{{localize "VTM5E.Other"}}</div>
     </nav>
@@ -60,13 +60,13 @@
         {{> "systems/vtm5e/templates/actor/parts/stats.html"}}
 
         {{!-- Owned Powers Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/disciplines.html"}}
+        {{> "systems/vtm5e/templates/actor/parts/haunts.html"}}
+
+        {{!-- Owned Keys Tab --}}
+        {{> "systems/vtm5e/templates/actor/parts/keys.html"}}
 
         {{!-- Owned Features Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/features.html"}}
-
-        {{!-- Blood Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/synergy.html"}}
 
         {{!-- Biography Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/biography.html"}}

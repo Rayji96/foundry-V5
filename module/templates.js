@@ -24,11 +24,15 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/actor/parts/synergy.html',
     'systems/vtm5e/templates/actor/parts/willpower.html',
     'systems/vtm5e/templates/actor/parts/plasma.html',
+    'systems/vtm5e/templates/actor/parts/haunts.html',
+    'systems/vtm5e/templates/actor/parts/keys.html',
+    'systems/vtm5e/templates/actor/parts/rousePlasma.html',
 
     // Item Sheet Partials
     'systems/vtm5e/templates/item/parts/skills.html',
     'systems/vtm5e/templates/item/parts/disciplines.html',
     'systems/vtm5e/templates/item/parts/attributes.html',
+    'systems/vtm5e/templates/item/parts/haunts.html',
 
     // Dice Tray Partials
     'systems/vtm5e/templates/ui/parts/select-character.html',

@@ -36,6 +36,16 @@
 }
 
 .grid,
+.grid-1col {
+  display: grid;
+  grid-column: span 1 / span 1;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.grid,
 .grid-2col {
   display: grid;
   grid-column: span 2 / span 2;
@@ -546,7 +556,7 @@
   margin-top: 5px;
 }
 
-.vtm5e .tab.disciplines .resource-value {
+.vtm5e .tab.disciplines .tab.haunts .resource-value {
   margin-top: 2px;
   text-align: center;
 }
