@@ -275,7 +275,7 @@ export class HunterActorSheet extends CoterieActorSheet {
     const states = parseCounterStates(data.states)
     const fields = data.name.split('.')
     const steps = parent.find('.resource-counter-step')
-    const humanity = data.name === 'data.humanity'
+    const despair = data.name === 'data.despair'
     const fulls = Number(data[states['-']]) || 0
     const halfs = Number(data[states['/']]) || 0
     const crossed = Number(data[states.x]) || 0
@@ -293,12 +293,12 @@ export class HunterActorSheet extends CoterieActorSheet {
     const newState = allStates[(currentState + 1) % allStates.length]
     steps[index].dataset.state = newState
 
-    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && humanity)) {
+    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && despair)) {
       data[states[oldState]] = Number(data[states[oldState]]) - 1
     }
 
     // If the step was removed we also need to subtract from the maximum.
-    if (oldState !== '' && newState === '' && !humanity) {
+    if (oldState !== '' && newState === '' && !despair) {
       data[states['-']] = Number(data[states['-']]) - 1
     }
 
@@ -318,15 +318,15 @@ export class HunterActorSheet extends CoterieActorSheet {
     html.find('.resource-counter').each(function () {
       const data = this.dataset
       const states = parseCounterStates(data.states)
-      const humanity = data.name === 'data.humanity'
+      const despair = data.name === 'data.despair'
 
       const fulls = Number(data[states['-']]) || 0
       const halfs = Number(data[states['/']]) || 0
       const crossed = Number(data[states.x]) || 0
 
-      const values = humanity ? new Array(fulls + halfs) : new Array(halfs + crossed)
+      const values = despair ? new Array(fulls + halfs) : new Array(halfs + crossed)
 
-      if (humanity) {
+      if (despair) {
         values.fill('-', 0, fulls)
         values.fill('/', fulls, fulls + halfs)
       } else {

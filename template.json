@@ -23,6 +23,9 @@
           "value": 0,
           "stains": 0
         },
+        "despair": {
+          "value": 0
+        },
         "health": {
           "aggravated": 0,
           "superficial": 0,
