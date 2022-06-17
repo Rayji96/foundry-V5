@@ -29,6 +29,20 @@
             <input type="text" name="data.headers.generation" value="{{data.data.headers.generation}}" />
         </div>
         {{/if}}
+        {{#if data.data.cell.value}}
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "HTR5E.Creed"}}</label>
+            <input type="text" name="data.creed.value" value="{{data.data.creed.value}}" />
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "HTR5E.Drive"}}</label>
+            <input type="text" name="data.drive.value" value="{{data.data.drive.value}}" />
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "HTR5E.Redemption"}}</label>
+            <input type="text" name="data.redemption.value" value="{{data.data.redemption.value}}" />
+        </div>
+        {{/if}}
     </div> 
     <div class="resource flexrow grid grid-3col" style="min-height: 264px;">
         <div class="flex-group-left">
@@ -54,6 +68,16 @@
             </div>
             <div class="description-content">
                 {{editor content=data.data.headers.bane target="data.headers.bane" button=true owner=owner editable=editable}}
+            </div>
+        </div>
+        {{/if}}
+        {{#if data.data.cell.value}}
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "HTR5E.CreedFields"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor content=data.data.headers.creedfields target="data.headers.creedfields" button=true owner=owner editable=editable}}
             </div>
         </div>
         {{/if}}

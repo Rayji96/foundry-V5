@@ -123,7 +123,7 @@ Hooks.once('init', async function () {
   })
   Actors.registerSheet('vtm5e', HunterActorSheet, {
     label: 'Hunter Sheet',
-    types: ['hunter'],
+    types: ['hunter', 'character'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', CoterieActorSheet, {

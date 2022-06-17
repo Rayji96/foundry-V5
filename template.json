@@ -418,14 +418,21 @@
     "ghoul": {
       "templates": ["base","disciplines"],
       "headers":{
-        "domitor":""
+        "domitor":"",
+        "creedfields":""
       }
     },
     "mortal": {
       "templates": ["base"]
     },
     "hunter": {
-      "templates": ["base","edges"]
+      "templates": ["base","edges"],
+      "headers":{
+        "cell":""
+      },
+      "creed": {
+        "value": ""
+      }
     },
     "coterie" : {
       "biography": "",
