@@ -9,11 +9,11 @@ import { rollDice } from './roll-dice.js'
  * @extends {CoterieActorSheet}
  */
 
-export class MortalActorSheet extends CoterieActorSheet {
+export class HunterActorSheet extends CoterieActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'mortal']
+    const classList = ['vtm5e', 'sheet', 'actor', 'hunter']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -22,7 +22,7 @@ export class MortalActorSheet extends CoterieActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/wod5e/templates/actor/mortal-sheet.html',
+      template: 'systems/wod5e/templates/actor/hunter-sheet.html',
       width: 800,
       height: 700,
       tabs: [{
@@ -42,7 +42,7 @@ export class MortalActorSheet extends CoterieActorSheet {
   /** @override */
   get template () {
     if (!game.user.isGM && this.actor.limited) return 'systems/wod5e/templates/actor/limited-sheet.html'
-    return 'systems/wod5e/templates/actor/mortal-sheet.html'
+    return 'systems/wod5e/templates/actor/hunter-sheet.html'
   }
 
   /* -------------------------------------------- */
@@ -51,10 +51,10 @@ export class MortalActorSheet extends CoterieActorSheet {
   getData () {
     const data = super.getData()
     // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('VTM5E.Mortal')}`
+    data.sheetType = `${game.i18n.localize('HTR5E.Hunter')}`
 
     // Prepare items.
-    if (this.actor.data.type === 'mortal') {
+    if (this.actor.data.type === 'hunter') {
       this._prepareItems(data)
     }
 

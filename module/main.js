@@ -12,6 +12,7 @@ import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
 import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
 import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
+import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
 import {
   prepareSearchableSelection,
   prepareRouseShortcut,
@@ -118,6 +119,11 @@ Hooks.once('init', async function () {
   Actors.registerSheet('vtm5e', MortalActorSheet, {
     label: 'Mortal Sheet',
     types: ['mortal'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', HunterActorSheet, {
+    label: 'Hunter Sheet',
+    types: ['hunter'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', CoterieActorSheet, {
@@ -274,16 +280,16 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   dice3d.addDicePreset({
     type: 'dv',
     labels: [
-      'systems/vtm5e/assets/images/normal-fail-dsn.png',
-      'systems/vtm5e/assets/images/normal-fail-dsn.png',
-      'systems/vtm5e/assets/images/normal-fail-dsn.png',
-      'systems/vtm5e/assets/images/normal-fail-dsn.png',
-      'systems/vtm5e/assets/images/normal-fail-dsn.png',
-      'systems/vtm5e/assets/images/normal-success-dsn.png',
-      'systems/vtm5e/assets/images/normal-success-dsn.png',
-      'systems/vtm5e/assets/images/normal-success-dsn.png',
-      'systems/vtm5e/assets/images/normal-success-dsn.png',
-      'systems/vtm5e/assets/images/normal-crit-dsn.png'
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-success-dsn.png',
+      'systems/wod5e/assets/images/normal-success-dsn.png',
+      'systems/wod5e/assets/images/normal-success-dsn.png',
+      'systems/wod5e/assets/images/normal-success-dsn.png',
+      'systems/wod5e/assets/images/normal-crit-dsn.png'
     ],
     colorset: 'black',
     fontScale: 0.5,
@@ -307,16 +313,16 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   dice3d.addDicePreset({
     type: 'dh',
     labels: [
-      'systems/vtm5e/assets/images/bestial-fail-dsn.png',
-      'systems/vtm5e/assets/images/red-fail-dsn.png',
-      'systems/vtm5e/assets/images/red-fail-dsn.png',
-      'systems/vtm5e/assets/images/red-fail-dsn.png',
-      'systems/vtm5e/assets/images/red-fail-dsn.png',
-      'systems/vtm5e/assets/images/red-success-dsn.png',
-      'systems/vtm5e/assets/images/red-success-dsn.png',
-      'systems/vtm5e/assets/images/red-success-dsn.png',
-      'systems/vtm5e/assets/images/red-success-dsn.png',
-      'systems/vtm5e/assets/images/red-crit-dsn.png'
+      'systems/wod5e/assets/images/bestial-fail-dsn.png',
+      'systems/wod5e/assets/images/red-fail-dsn.png',
+      'systems/wod5e/assets/images/red-fail-dsn.png',
+      'systems/wod5e/assets/images/red-fail-dsn.png',
+      'systems/wod5e/assets/images/red-fail-dsn.png',
+      'systems/wod5e/assets/images/red-success-dsn.png',
+      'systems/wod5e/assets/images/red-success-dsn.png',
+      'systems/wod5e/assets/images/red-success-dsn.png',
+      'systems/wod5e/assets/images/red-success-dsn.png',
+      'systems/wod5e/assets/images/red-crit-dsn.png'
     ],
     colorset: 'hunger',
     system: 'vtm5e'
@@ -331,7 +337,7 @@ Hooks.on('renderSidebarTab', (app, html) => {
   }
 
   const $chatForm = html.find('#chat-form')
-  const template = 'systems/vtm5e/templates/ui/tray.html'
+  const template = 'systems/wod5e/templates/ui/tray.html'
   const ownedCharacters = Array.from(game.actors)
     .filter((c) => c.permission === OWNED_PERMISSION)
   const options = {

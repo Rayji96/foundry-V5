@@ -8,6 +8,7 @@
     "VTM5E.Ghoul": "Ghoul",
     "VTM5E.Mortal": "Mortal",
     "VTM5E.Domitor": "Domitor",
+    "HTR5E.Hunter": "Hunter",
 
     "VTM5E.Health": "Health",
     "VTM5E.Willpower": "Willpower",
@@ -197,5 +198,18 @@
     "VTM5E.Difficulty": "Difficulty?",
     "VTM5E.Rolling": "Rolling",
     "VTM5E.Cancel": "Cancel",
-    "VTM5E.SelectAbility": "Select Ability"
+    "VTM5E.SelectAbility": "Select Ability",
+
+    "HTR5E.Arsenal": "Arsenal",
+    "HTR5E.Fleet": "Fleet",
+    "HTR5E.Ordnance": "Ordnanace",
+    "HTR5E.Library": "Library",
+    "HTR5E.ImprovisedGear": "Improvised Gear",
+    "HTR5E.GlobalAccess": "Global Access",
+    "HTR5E.DroneJockey": "Drone Jockey",
+    "HTR5E.BeastWhisperer": "Beast Whisperer",
+    "HTR5E.SenseTheUnnatural": "Sense the Unnatural",
+    "HTR5E.RepelTheUnnatural": "Repel the Unnatural",
+    "HTR5E.ThwartTheUnnatural": "Thwart the Unnatural",
+    "HTR5E.Artifact": "Artifact"
 }

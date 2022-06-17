@@ -99,13 +99,13 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img normal-dice" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img normal-dice" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img normal-dice" />'
   }
 
   // Separator
@@ -113,16 +113,16 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
 
   // Run through displaying hunger dice
   for (let i = 0, j = hungerCritSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-crit.png" alt="Hunger Crit" class="roll-img hunger-dice" />'
+    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/red-crit.png" alt="Hunger Crit" class="roll-img hunger-dice" />'
   }
   for (let i = 0, j = hungerSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-success.png" alt="Hunger Success" class="roll-img hunger-dice" />'
+    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/red-success.png" alt="Hunger Success" class="roll-img hunger-dice" />'
   }
   for (let i = 0, j = hungerCritFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Bestial Fail" class="roll-img hunger-dice" />'
+    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/bestial-fail.png" alt="Bestial Fail" class="roll-img hunger-dice" />'
   }
   for (let i = 0, j = hungerFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img hunger-dice" />'
+    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img hunger-dice" />'
   }
 
   // Post the message to the chat

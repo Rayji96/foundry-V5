@@ -2,13 +2,13 @@
 
     {{!-- Mortal Sheet Header --}}
     <header class="sheet-header">
-        {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
+        {{> "systems/wod5e/templates/actor/parts/profile-img.html"}}
         <div class="header-fields">
             <div class="grid grid-3col flexrow">
                 <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
                         placeholder="{{localize 'VTM5E.Name'}}" /></h1>
                 <div class="resource flex-group-center exp">
-                    {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
+                    {{> "systems/wod5e/templates/actor/parts/exp.html"}}
                 </div>
             </div>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
@@ -19,11 +19,11 @@
                 and it will add a small amount of padding, a border, and will
                 center all of its child elements content and text. --}}
 
-                {{> "systems/vtm5e/templates/actor/parts/health.html"}}
+                {{> "systems/wod5e/templates/actor/parts/health.html"}}
 
-                {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
+                {{> "systems/wod5e/templates/actor/parts/willpower.html"}}
 
-                {{> "systems/vtm5e/templates/actor/parts/humanity.html"}}
+                {{> "systems/wod5e/templates/actor/parts/humanity.html"}}
             </div>
         </div>
     </header>
@@ -40,16 +40,16 @@
     <section class="sheet-body">
 
         {{!-- Stats Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/stats.html"}}
+        {{> "systems/wod5e/templates/actor/parts/stats.html"}}
 
         {{!-- Owned Features Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/features.html"}}
+        {{> "systems/wod5e/templates/actor/parts/features.html"}}
 
         {{!-- Biography Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/biography.html"}}
+        {{> "systems/wod5e/templates/actor/parts/biography.html"}}
 
         {{!-- Other Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/other.html"}}
+        {{> "systems/wod5e/templates/actor/parts/other.html"}}
 
     </section>
 </form>

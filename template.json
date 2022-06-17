@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "vampire", "ghoul", "mortal", "coterie"],
+    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter"],
     "templates": {
       "base": {
         "biography": "",
@@ -283,6 +283,94 @@
             "visible": false
           }
         }
+      },
+      "edges": {
+        "edges": {
+          "arsenal": {
+            "name": "HTR5E.Arsenal",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "fleet": {
+            "name": "HTR5E.Fleet",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "ordnance": {
+            "name": "HTR5E.Ordnance",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "library": {
+            "name": "HTR5E.Library",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "improvisedgear": {
+            "name": "HTR5E.ImprovisedGear",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "globalaccess": {
+            "name": "HTR5E.GlobalAccess",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "dronejockey": {
+            "name": "HTR5E.DroneJockey",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "beastwhisperer": {
+            "name": "HTR5E.BeastWhisperer",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "sensetheunnatural": {
+            "name": "HTR5E.SenseTheUnnatural",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "repeltheunnatural": {
+            "name": "HTR5E.RepelTheUnnatural",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "thwarttheunnatural": {
+            "name": "HTR5E.ThwartTheUnnatural",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          },
+          "artifact": {
+            "name": "HTR5E.Artifact",
+            "description": "",
+            "value": 0,
+            "powers": [],
+            "visible": false
+          }
+        }
       }
     },
    
@@ -332,6 +420,9 @@
     },
     "mortal": {
       "templates": ["base"]
+    },
+    "hunter": {
+      "templates": ["base","edges"]
     },
     "coterie" : {
       "biography": "",
