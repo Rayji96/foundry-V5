@@ -428,7 +428,7 @@
     "hunter": {
       "templates": ["base","edges"],
       "headers":{
-        "cell":""
+        "cellname":""
       },
       "creed": {
         "value": ""
