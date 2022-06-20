@@ -14,7 +14,7 @@
         </li>
         <!-- Iterate through each of the key lists -->
         {{#each data.data.keys as |keys key|}}
-            {{#if key.visible}}
+            {{#if keys.visible}}
                 <li class="flexrow item-header">
                     <div class="item-name collapsible">
                         {{localize keys.name}}
@@ -47,15 +47,9 @@
                     <li class="item flexcol" data-item-id="{{item._id}}">
                         <div class="flexrow">
                             <!-- Whether the button is clickable or not to post the power in chat -->
-                            {{#if item.data.rollable}}
-                                <div class="item-image power-rollable" data-id="{{item._id}}" data-use-hunger="1">
-                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
-                                </div>
-                            {{else}}
-                                <div class="item-image" data-id="{{item._id}}">
-                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
-                                </div>
-                            {{/if}}
+                            <div class="item-image" data-id="{{item._id}}">
+                                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                            </div>
                             <!-- key power name -->
                             <h4 class="item-name collapsible">{{item.name}}</h4>
                             <!-- Item controls for key powers -->

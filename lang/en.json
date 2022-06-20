@@ -232,5 +232,16 @@
     "VTM5E.Void": "Void",
     "VTM5E.Well": "Well",
 
-    "VTM5E.AddKey": "Add Key"
+    "VTM5E.SelectKey": "Select Key",
+    "VTM5E.AddKey": "Add Key",
+    "VTM5E.Source": "Source",
+    "VTM5E.KeyBeasts": "Key of Beasts",
+    "VTM5E.KeyBlood": "Key of Blood",
+    "VTM5E.KeyChance": "Key of Chance",
+    "VTM5E.KeyColdWind": "Key of Cold Wind",
+    "VTM5E.KeyDeepWaters": "Key of Deep Waters",
+    "VTM5E.KeyDisease": "Key of Disease",
+    "VTM5E.KeyGraveDirt": "Key of Grave Dirt",
+    "VTM5E.KeyPyreFlame": "Key of Pyre Flame",
+    "VTM5E.KeyStillness": "Key of Stillness"
 }

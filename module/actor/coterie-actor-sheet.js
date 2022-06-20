@@ -270,6 +270,9 @@ export class CoterieActorSheet extends ActorSheet {
     if (type === "eaterPower") {
       return `${game.i18n.localize('VTM5E.' + data.haunt.capitalize())}`
     }
+    if (type === "keyInstance") {
+      return `${game.i18n.localize('VTM5E.' + data.key.capitalize())}`
+    }
     return `${game.i18n.localize('VTM5E.' + type.capitalize())}`
   }
 

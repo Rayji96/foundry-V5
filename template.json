@@ -374,56 +374,56 @@
       },
       "keys": {
         "keys": {
-          "beasts": {
+          "keyBeasts": {
             "name": "VTM5E.KeyBeasts",
             "ability": "VTM5E.Wits",
             "instances": [],
             "visible": false
           },          
-          "blood": {
+          "keyBlood": {
             "name": "VTM5E.KeyBlood",
             "ability": "VTM5E.Charisma",
             "instances": [],
             "visible": false
           },
-          "chance": {
+          "keyChance": {
             "name": "VTM5E.KeyChance",
             "ability": "VTM5E.Dexterity",
             "instances": [],
             "visible": false
           },
-          "coldWind": {
-            "name": "VTM5E.KeyWind",
+          "keyColdWind": {
+            "name": "VTM5E.KeyColdWind",
             "ability": "VTM5E.Resolve",
             "instances": [],
             "visible": false
           },
-          "deepWaters": {
-            "name": "VTM5E.KeyWaters",
+          "jeyDeepWaters": {
+            "name": "VTM5E.KeyDeepWaters",
             "ability": "VTM5E.Manipulation",
             "instances": [],
             "visible": false
           },
-          "disease": {
+          "keyDisease": {
             "name": "VTM5E.KeyDisease",
             "ability": "VTM5E.Stamina",
             "instances": [],
             "visible": false
           },
-          "graveDirt": {
-            "name": "VTM5E.KeyDirt",
+          "keyGraveDirt": {
+            "name": "VTM5E.KeyGraveDirt",
             "ability": "VTM5E.Strength",
             "instances": [],
             "visible": false
           },
-          "pyreFlame": {
-            "name": "VTM5E.KeyFlame",
+          "keyPyreFlame": {
+            "name": "VTM5E.KeyPyreFlame",
             "ability": "VTM5E.Intelligence",
             "instances": [],
             "visible": false
           },
-          "stillness": {
-            "name": "VTM5E.KeStillness",
+          "keyStillness": {
+            "name": "VTM5E.KeyStillness",
             "ability": "VTM5E.Composure",
             "instances": [],
             "visible": false
@@ -488,7 +488,7 @@
       }
     },
     "eater": {
-      "templates": ["base","haunts"],
+      "templates": ["base","haunts", "keys"],
       "headers":{
         "geist":"",
         "root":"",
@@ -506,7 +506,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "eaterPower", "specialty", "boon", "customRoll"],
+    "types": ["feature", "power", "eaterPower", "keyInstance", "specialty", "boon", "customRoll"],
     "templates": {
       "base": {
         "description": ""
@@ -542,7 +542,7 @@
     },
     "keyInstance": {
       "templates": ["base"],
-      "key": "beasts",
+      "key": "keyBeasts",
       "source": ""
     },
     "specialty": {

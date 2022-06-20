@@ -92,15 +92,15 @@ export class EaterActorSheet extends MortalActorSheet {
     }
 
     const keys = {
-      beasts: [],
-      blood: [],
-      chance: [],
-      coldWind: [],
-      deepWaters: [],
-      disease: [],
-      graveDirt: [],
-      pyreFlame: [],
-      stillness: []
+      keyBeasts: [],
+      keyBlood: [],
+      keyChance: [],
+      keyColdWind: [],
+      keyDeepWaters: [],
+      keyDisease: [],
+      keyGraveDirt: [],
+      keyPyreFlame: [],
+      keyStillness: []
     }
 
     // Iterate through items, allocating to containers
@@ -176,6 +176,31 @@ export class EaterActorSheet extends MortalActorSheet {
 
     // Rollable Eater powers
     html.find('.power-rollable').click(this._onEaterRoll.bind(this))
+
+    // Make key visible
+    html.find('.key-create').click(this._onShowKey.bind(this))
+
+    // Make key hidden
+    html.find('.key-delete').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      this.actor.update({ [`data.keys.${data.key}.visible`]: false })
+    })
+
+    // Post key description to the chat
+    html.find('.key-chat').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      const key = this.actor.data.data.keys[data.key]
+
+      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+        name: game.i18n.localize(key.name),
+        img: 'icons/svg/dice-target.svg',
+        description: key.description
+      }).then(html => {
+        ChatMessage.create({
+          content: html
+        })
+      })
+    })
   }
 
   /**
@@ -224,11 +249,56 @@ export class EaterActorSheet extends MortalActorSheet {
   }
 
   /**
- * Handle clickable Vampire rolls.
- * @param {Event} event   The originating click event
- * @override
- */
-    _onRollDialog (event) {
+  * Handle making a key visible
+  * @param {Event} event   The originating click event
+  * @private
+  * @override
+  */
+  _onShowKey (event) {
+    event.preventDefault()
+    let options = ''
+    for (const [key, value] of Object.entries(this.actor.data.data.keys)) {
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
+    }
+
+    const template = `
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.SelectKey')}</label>
+              <select id="keySelect">${options}</select>
+          </div>
+      </form>`
+
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Add'),
+        callback: async (html) => {
+          const key = html.find('#keySelect')[0].value
+          this.actor.update({ [`data.keys.${key}.visible`]: true })
+        }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
+      }
+    }
+
+    new Dialog({
+      title: game.i18n.localize('VTM5E.AddKey'),
+      content: template,
+      buttons: buttons,
+      default: 'draw'
+    }).render(true)
+  }
+
+  /**
+  * Handle clickable Vampire rolls.
+  * @param {Event} event   The originating click event
+  * @override
+  */
+  _onRollDialog (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
