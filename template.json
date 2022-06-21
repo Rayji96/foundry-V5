@@ -444,7 +444,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "boon", "customRoll"],
+    "types": ["feature", "power", "specialty", "boon", "customRoll", "edge"],
     "templates": {
       "base": {
         "description": ""
@@ -480,6 +480,19 @@
       "templates": ["base"],
       "dice1" : "",
       "dice2" : ""
+    },
+    "edge": {
+      "templates": ["base"],
+      "edge": "arsenal",
+      "duration": "",
+      "level": 1,
+      "dice1": "edge",
+      "dice2": "edge",
+      "cost": "",
+      "rollable": false,
+      "skill": false,
+      "amalgam": false,
+      "rouse": false
     }
   }
 }

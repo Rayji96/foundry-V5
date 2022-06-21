@@ -12,6 +12,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/wod5e/templates/actor/parts/blood.html',
     'systems/wod5e/templates/actor/parts/despair.html',
     'systems/wod5e/templates/actor/parts/disciplines.html',
+    'systems/wod5e/templates/actor/parts/edges.html',
     'systems/wod5e/templates/actor/parts/exp.html',
     'systems/wod5e/templates/actor/parts/features.html',
     'systems/wod5e/templates/actor/parts/frenzy.html',
@@ -27,6 +28,7 @@ export const preloadHandlebarsTemplates = async function () {
     // Item Sheet Partials
     'systems/wod5e/templates/item/parts/skills.html',
     'systems/wod5e/templates/item/parts/disciplines.html',
+    'systems/wod5e/templates/item/parts/edges.html',
     'systems/wod5e/templates/item/parts/attributes.html',
 
     // Dice Tray Partials

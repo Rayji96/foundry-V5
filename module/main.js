@@ -49,7 +49,7 @@ Hooks.once('init', async function () {
 
   game.settings.register('vtm5e', 'chatRollerSortAbilities', {
     name: 'Sort Abilities in Chat Roller',
-    hint: 'Sort abilities (Attributes, Skills, Disciplines) alphabetically in the chat roller. Disable to sort in the order on the character sheet (grouping physical, social, and mental).',
+    hint: 'Sort abilities (Attributes, Skills, Disciplines, Edges) alphabetically in the chat roller. Disable to sort in the order on the character sheet (grouping physical, social, and mental).',
     scope: 'client',
     config: true,
     default: true,
@@ -219,6 +219,18 @@ Hooks.once('init', async function () {
     )
   })
 
+  Handlebars.registerHelper('visibleEdges', function (edges) {
+    return Object.keys(edges).reduce(
+      (obj, key) => {
+        if (edges[key].visible) {
+          obj[key] = edges[key]
+        }
+        return obj
+      },
+      {}
+    )
+  })
+
   Handlebars.registerHelper('sortAbilities', function (unordered = {}) {
     if (!game.settings.get('vtm5e', 'chatRollerSortAbilities')) {
       return unordered
@@ -267,6 +279,23 @@ Hooks.once('init', async function () {
       }
     }
     return disciplines[key]
+  })
+
+  Handlebars.registerHelper('getEdgeName', function (key, roll = false) {
+    const edges = {
+      arsenal: 'HTR5E.Arsenal',
+      ordnance: 'HTR5E.Ordnance',
+      library: 'HTR5E.Libraryy',
+      improvisedgear: 'HTR5E.ImprovisedGear',
+      globalaccess: 'HTR5E.GlobalAccess',
+      dronejockey: 'HTR5E.DroneJockey',
+      beastwhisperer: 'HTR5E.BeastWhisperer',
+      sensetheunnatural: 'HTR5E.SenseTheUnnatural',
+      repeltheunnatural: 'HTR5E.RepelTheUnnatural',
+      thwarttheunnatural: 'HTR5E.ThwartTheUnnatural',
+      artifact: 'HTR5E.Artifact'
+    }
+    return edges[key]
   })
 })
 

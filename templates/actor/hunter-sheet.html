@@ -33,6 +33,7 @@
     {{!-- Hunter Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <div class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</div>
+        <div class="item" data-tab="edges">{{localize "VTM5E.Edges"}}</div>
         <div class="item" data-tab="features">{{localize "VTM5E.Features"}}</div>
         <div class="item" data-tab="description">{{localize "VTM5E.Description"}}</div>
         <div class="item" data-tab="other">{{localize "VTM5E.Other"}}</div>
@@ -43,6 +44,9 @@
 
         {{!-- Stats Tab --}}
         {{> "systems/wod5e/templates/actor/parts/stats.html"}}
+
+        {{!-- Edges Tab --}}
+        {{> "systems/wod5e/templates/actor/parts/edges.html"}}
 
         {{!-- Owned Features Tab --}}
         {{> "systems/wod5e/templates/actor/parts/features.html"}}

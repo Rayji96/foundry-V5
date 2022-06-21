@@ -72,6 +72,21 @@ export class HunterActorSheet extends CoterieActorSheet {
     super._prepareItems(sheetData)
     const actorData = sheetData.actor
 
+    const edges = {
+      arsenal: [],
+      fleet: [],
+      ordnance: [],
+      library: [],
+      improvisedgear: [],
+      globalaccess: [],
+      dronejockey: [],
+      beastwhisperer: [],
+      sensetheunnatural: [],
+      repeltheunnatural: [],
+      thwarttheunnatural: [],
+      artifact: []
+    }
+
     // Initialize containers.
     const specialties = []
     const boons = []
@@ -89,6 +104,14 @@ export class HunterActorSheet extends CoterieActorSheet {
       } else if (i.type === 'customRoll') {
         // Append to custom rolls.
         customRolls.push(i)
+      } else if (i.type === 'edge') {
+        // Append to edges.
+        if (i.data.edge !== undefined) {
+          edges[i.data.edge].push(i)
+          if (!this.actor.data.data.edges[i.data.edge].visible) {
+            this.actor.update({ [`data.edges.${i.data.edge}.visible`]: true })
+          }
+        }
       }
     }
 
@@ -96,7 +119,9 @@ export class HunterActorSheet extends CoterieActorSheet {
     actorData.specialties = specialties
     actorData.boons = boons
     actorData.customRolls = customRolls
+    actorData.edges_list = edges
   }
+  
 
   /* -------------------------------------------- */
 
@@ -110,6 +135,31 @@ export class HunterActorSheet extends CoterieActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
+    // Make Edge visible
+    html.find('.edge-create').click(this._onShowEdge.bind(this))
+    
+    // Make Edge hidden
+    html.find('.edge-delete').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      this.actor.update({ [`data.edges.${data.edge}.visible`]: false })
+    })
+
+    // Post Edge description to the chat
+    html.find('.edge-chat').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      const edge = this.actor.data.data.edges[data.edge]
+
+      renderTemplate('systems/wod5e/templates/actor/parts/chat-message.html', {
+        name: game.i18n.localize(edge.name),
+        img: 'icons/svg/dice-target.svg',
+        description: edge.description
+      }).then(html => {
+        ChatMessage.create({
+          content: html
+        })
+      })
+    })
+  
     // Ressource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
@@ -122,6 +172,7 @@ export class HunterActorSheet extends CoterieActorSheet {
     html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
     // Rollable abilities.
     html.find('.vrollable').click(this._onRollDialog.bind(this))
+    html.find('.edge-rollable').click(this._onVampireRoll.bind(this))
   }
 
   /**
@@ -363,6 +414,74 @@ export class HunterActorSheet extends CoterieActorSheet {
       }
     }
     this.actor.update(actorData)
+  }
+
+  /**
+     * Handle making a edge visible
+     * @param {Event} event   The originating click event
+     * @private
+     */
+  _onShowEdge (event) {
+    event.preventDefault()
+    let options = ''
+    for (const [key, value] of Object.entries(this.actor.data.data.edges)) {
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
+    }
+
+    const template = `
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.SelectEdge')}</label>
+              <select id="edgeSelect">${options}</select>
+          </div>
+      </form>`
+
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Add'),
+        callback: async (html) => {
+          const edge = html.find('#edgeSelect')[0].value
+          this.actor.update({ [`data.edges.${edge}.visible`]: true })
+        }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
+      }
+    }
+
+    new Dialog({
+      title: game.i18n.localize('VTM5E.AddEdge'),
+      content: template,
+      buttons: buttons,
+      default: 'draw'
+    }).render(true)
+  }
+
+  _onVampireRoll (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const item = this.actor.items.get(dataset.id)
+    const edgeValue = 1
+
+    const dice1 = item.data.data.dice1 === 'edge' ? edgeValue : this.actor.data.data.abilities[item.data.data.dice1].value
+
+    let dice2
+    if (item.data.data.dice2 === 'edge') {
+      dice2 = edgeValue
+    } else if (item.data.data.skill) {
+      dice2 = this.actor.data.data.skills[item.data.data.dice2].value
+    } else if (item.data.data.amalgam) {
+      dice2 = this.actor.data.data.edges[item.data.data.dice2].value
+    } else {
+      dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
+    }
+
+    const dicePool = dice1 + dice2
+    rollDice(dicePool, this.actor, `${item.data.name}`, 0, this.hunger)
   }
 }
 

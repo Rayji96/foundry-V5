@@ -30,6 +30,10 @@
     "HTR5E.Cell": "Cell",
     "HTR5E.Drive": "Drive",
     "HTR5E.Redemption": "Redemption",
+    "VTM5E.Edges": "Edges",
+    "VTM5E.AddEdge": "Add Edge",
+    "VTM5E.SelectEdge": "Select Edge",
+    "VTM5E.AddPerk": "Add Perk",
     
     "VTM5E.Superficial": "Superficial",
     "VTM5E.Aggravated": "Aggravated",
@@ -210,7 +214,7 @@
 
     "HTR5E.Arsenal": "Arsenal",
     "HTR5E.Fleet": "Fleet",
-    "HTR5E.Ordnance": "Ordnanace",
+    "HTR5E.Ordnance": "Ordnance",
     "HTR5E.Library": "Library",
     "HTR5E.ImprovisedGear": "Improvised Gear",
     "HTR5E.GlobalAccess": "Global Access",

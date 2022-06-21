@@ -552,6 +552,11 @@
   text-align: center;
 }
 
+.vtm5e .tab.edges .resource-value {
+  margin-top: 2px;
+  text-align: center;
+}
+
 /* ChatMessage CSS */
 
 .roll-label {
