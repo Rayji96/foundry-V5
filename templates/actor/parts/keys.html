@@ -13,14 +13,14 @@
             </div>
         </li>
         <!-- Iterate through each of the key lists -->
-        {{#each data.data.keys as |keys key|}}
-            {{#if keys.visible}}
+        {{#each data.data.keys as |kay key|}}
+            {{#if kay.visible}}
                 <li class="flexrow item-header">
                     <div class="item-name collapsible">
-                        {{localize keys.name}}
+                        {{localize kay.name}}
                     </div>
                     <div class="item-ability">
-                        {{localize keys.ability}}
+                        {{localize kay.ability}}
                     </div>
                     <!-- Item controls for key sections -->
                     <div class="item-controls">
@@ -42,35 +42,40 @@
                 <div class="collapsible-content">
                     <textarea class="key-description" name="data.keys.{{key}}.description">{{key.description}}</textarea>
                 </div>
-                <!-- Iterate through each of the key powers -->
+                <!-- Iterate through each of the key instances -->
                 {{#each (lookup ../actor.key_list key) as |item id|}}
                     <li class="item flexcol" data-item-id="{{item._id}}">
                         <div class="flexrow">
-                            <!-- Whether the button is clickable or not to post the power in chat -->
+                            <!-- Whether the button is clickable or not to post the key instance in chat -->
                             <div class="item-image" data-id="{{item._id}}">
                                 <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                             </div>
-                            <!-- key power name -->
+                            <!-- key instance name -->
                             <h4 class="item-name collapsible">{{item.name}}</h4>
-                            <!-- Item controls for key powers -->
+                            <div class="row key-unlock" data-item-id="{{item._id}}" data-id="{{item._id}}">
+                                <label class="resource-label">{{localize "VTM5E.Unlocked"}}: </label>
+                                <input class="key-unlocked-controls" type="checkbox" id="{{item._id}}" {{checked item.data.unlocked}}>
+                            </div>
+                            <!-- Item controls for key instance -->
                             <div class="item-controls">
-                                <!-- Icon to edit the power-->
+                                <!-- Icon to edit the key instance-->
                                 <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <!-- Icon to display the power in chat -->
+                                <!-- Icon to display the key instance in chat -->
                                 <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}">
                                     <i class="fas fa-comment-alt"></i>
                                 </a>
-                                <!-- Icon to delete the power -->
+                                <!-- Icon to delete the key instance -->
                                 <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
                         </div>
-                        <!-- Power description, expandable by a collapse -->
+                        <!-- Key description & source, expandable by a collapse -->
                         <div class="collapsible-content">
                             {{{item.data.description}}}
+                            {{{item.data.source}}}
                         </div>
                     </li>
                 {{/each}}

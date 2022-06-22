@@ -203,7 +203,7 @@
     "VTM5E.Cancel": "Cancel",
     "VTM5E.SelectAbility": "Select Ability",
 
-    "VTM5E.SinEater": "Sin-Eater",
+    "VTM5E.Eater": "Sin-Eater",
     "VTM5E.Burden": "Burden",
     "VTM5E.Geist": "Geist",
     "VTM5E.Root": "Root",
@@ -233,6 +233,7 @@
     "VTM5E.Well": "Well",
 
     "VTM5E.SelectKey": "Select Key",
+    "VTM5E.Unlocked": "Unlocked",
     "VTM5E.AddKey": "Add Key",
     "VTM5E.Source": "Source",
     "VTM5E.KeyBeasts": "Key of Beasts",

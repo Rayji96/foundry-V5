@@ -398,7 +398,7 @@
             "instances": [],
             "visible": false
           },
-          "jeyDeepWaters": {
+          "keyDeepWaters": {
             "name": "VTM5E.KeyDeepWaters",
             "ability": "VTM5E.Manipulation",
             "instances": [],
@@ -543,7 +543,8 @@
     "keyInstance": {
       "templates": ["base"],
       "key": "keyBeasts",
-      "source": ""
+      "source": "",
+      "unlocked": true
     },
     "specialty": {
       "templates": ["base"],

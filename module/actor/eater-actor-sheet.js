@@ -201,6 +201,19 @@ export class EaterActorSheet extends MortalActorSheet {
         })
       })
     })
+
+    html.find(".key-unlocked-controls").click(this._keyUnlockedControls.bind(this))
+  }
+
+  async _keyUnlockedControls(event) {
+    const keyUnlock = $(event.currentTarget).parents(".key-unlock");
+    const itemId = keyUnlock.data("id");
+
+    const item = this.actor.getEmbeddedDocument("Item", itemId)
+    console.log("eater-actor-sheet.js _keyUnlockedControls", itemId, keyUnlock, { event }, item);
+    let unlocked = !item.data.data.unlocked
+
+    await item.update({ 'data.unlocked': unlocked })
   }
 
   /**
