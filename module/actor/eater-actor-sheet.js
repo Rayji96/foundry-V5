@@ -49,7 +49,7 @@ export class EaterActorSheet extends MortalActorSheet {
   getData () {
     const data = super.getData()
 
-    data.sheetType = `${game.i18n.localize('VTM5E.SinEater')}`
+    data.sheetType = `${game.i18n.localize('VTM5E.Eater')}`
 
     // Prepare items.
     if (this.actor.data.type === 'eater' ||
