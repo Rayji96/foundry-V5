@@ -19,6 +19,12 @@ Please reach out to me at MrDionysus#9673 on Discord with issues, feature reques
 
 Please check the issues list before suggesting new features. :smiley:
 
+## Todo
+* Remove attributes tab and rolls from Perks
+* Add attributes and rolls to Edges
+* Create Cell tracking sheet with Desperation and Danger ratings
+* Create Desperation Dice rolls somewhere
+
 ## Credits
 
 All the work for the Vampire 5th edition content was initially performed by weinerdolphin#3175.  At this point I've just added Hunter sheets and released this project as a comprehensive 5e module instead of a Vampire-Specific module.
