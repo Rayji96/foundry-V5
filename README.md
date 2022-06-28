@@ -23,6 +23,7 @@ Please check the issues list before suggesting new features. :smiley:
 * Remove attributes tab and rolls from Perks
 * Add attributes and rolls to Edges
 * Create Cell tracking sheet with Desperation and Danger ratings
+* Add Hunter-specific dice rolls to the dice roller
 * Create Desperation Dice rolls somewhere
 
 ## Credits
