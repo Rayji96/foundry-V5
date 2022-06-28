@@ -104,7 +104,7 @@ export class HunterActorSheet extends CoterieActorSheet {
       } else if (i.type === 'customRoll') {
         // Append to custom rolls.
         customRolls.push(i)
-      } else if (i.type === 'edge') {
+      } else if (i.type === 'perk') {
         // Append to edges.
         if (i.data.edge !== undefined) {
           edges[i.data.edge].push(i)
@@ -172,7 +172,7 @@ export class HunterActorSheet extends CoterieActorSheet {
     html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
     // Rollable abilities.
     html.find('.vrollable').click(this._onRollDialog.bind(this))
-    html.find('.edge-rollable').click(this._onVampireRoll.bind(this))
+    html.find('.perk-rollable').click(this._onVampireRoll.bind(this))
   }
 
   /**
