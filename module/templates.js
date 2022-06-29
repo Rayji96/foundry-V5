@@ -10,7 +10,9 @@ export const preloadHandlebarsTemplates = async function () {
     // Actor Sheet Partials
     'systems/wod5e/templates/actor/parts/biography.html',
     'systems/wod5e/templates/actor/parts/blood.html',
+    'systems/wod5e/templates/actor/parts/danger.html',
     'systems/wod5e/templates/actor/parts/despair.html',
+    'systems/wod5e/templates/actor/parts/desperation.html',
     'systems/wod5e/templates/actor/parts/disciplines.html',
     'systems/wod5e/templates/actor/parts/edges.html',
     'systems/wod5e/templates/actor/parts/exp.html',

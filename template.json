@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter"],
+    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter", "cell"],
     "templates": {
       "base": {
         "biography": "",
@@ -25,6 +25,12 @@
         },
         "despair": {
           "value": 0
+        },
+        "desperation": {
+          "value": 0
+        },
+        "danger": {
+          "value": 0        
         },
         "health": {
           "aggravated": 0,
@@ -435,6 +441,14 @@
       }
     },
     "coterie" : {
+      "biography": "",
+      "equipment": "",
+      "notes": "",
+      "headers":{
+        "concept": ""
+      }
+    },
+    "cell" : {
       "biography": "",
       "equipment": "",
       "notes": "",

@@ -1,15 +1,15 @@
 /* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject */
 
 // Export this function to be used in other scripts
-import { CoterieActorSheet } from './coterie-actor-sheet.js'
+import { CellActorSheet } from './cell-actor-sheet.js'
 import { rollDice } from './roll-dice.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {CoterieActorSheet}
+ * @extends {CellActorSheet}
  */
 
-export class HunterActorSheet extends CoterieActorSheet {
+export class HunterActorSheet extends CellActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
@@ -160,7 +160,7 @@ export class HunterActorSheet extends CoterieActorSheet {
       })
     })
   
-    // Ressource squares (Health, Willpower)
+    // Resource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
     html.find('.resource-minus').click(this._onResourceChange.bind(this))
@@ -170,7 +170,6 @@ export class HunterActorSheet extends CoterieActorSheet {
     html.find('.rollable-with-mod').click(this._onRollWithMod.bind(this))
     html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
     html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
-    // Rollable abilities.
     html.find('.vrollable').click(this._onRollDialog.bind(this))
     html.find('.perk-rollable').click(this._onVampireRoll.bind(this))
   }
