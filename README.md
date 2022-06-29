@@ -20,8 +20,6 @@ Please reach out to me at MrDionysus#9673 on Discord with issues, feature reques
 Please check the issues list before suggesting new features. :smiley:
 
 ## Todo
-
-* Create Cell tracking sheet with Desperation and Danger ratings
 * Add Hunter-specific dice rolls to the dice roller
 * Create Desperation Dice rolls somewhere
 
