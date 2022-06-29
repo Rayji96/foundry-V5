@@ -37,6 +37,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     super(actor, options)
     this.isCharacter = true
     this.hunger = false
+    this.hasBoons = true
   }
 
   /** @override */

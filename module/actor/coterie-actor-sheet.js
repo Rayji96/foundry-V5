@@ -48,6 +48,7 @@ export class CoterieActorSheet extends ActorSheet {
     const data = super.getData()
     data.locked = this.locked
     data.isCharacter = this.isCharacter
+    data.hasBoons = this.hasBoons
     data.sheetType = `${game.i18n.localize('VTM5E.Coterie')}`
 
     data.dtypes = ['String', 'Number', 'Boolean']

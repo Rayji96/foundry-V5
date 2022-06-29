@@ -37,6 +37,7 @@ export class HunterActorSheet extends CellActorSheet {
     super(actor, options)
     this.isCharacter = true
     this.hunger = false
+    this.hasBoons = false
   }
 
   /** @override */
