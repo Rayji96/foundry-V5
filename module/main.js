@@ -7,6 +7,7 @@ import { VampireActor } from './actor/actor.js'
 import { VampireItem } from './item/item.js'
 import { VampireItemSheet } from './item/item-sheet.js'
 import { VampireDie, VampireHungerDie } from './dice/dice.js'
+import { HunterDie, HunterDesperationDie } from './dice/dice.js'
 import { rollDice } from './actor/roll-dice.js'
 import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
@@ -102,7 +103,9 @@ Hooks.once('init', async function () {
   CONFIG.Actor.documentClass = VampireActor
   CONFIG.Item.documentClass = VampireItem
   CONFIG.Dice.terms.v = VampireDie
-  CONFIG.Dice.terms.h = VampireHungerDie
+  CONFIG.Dice.terms.vh = VampireHungerDie
+  CONFIG.Dice.terms.h = HunterDie
+  CONFIG.Dice.terms.hd = HunterDesperationDie
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
@@ -346,7 +349,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     }
   }, 'default')
   dice3d.addDicePreset({
-    type: 'dh',
+    type: 'dvh',
     labels: [
       'systems/wod5e/assets/images/bestial-fail-dsn.png',
       'systems/wod5e/assets/images/red-fail-dsn.png',
@@ -361,6 +364,57 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     colorset: 'hunger',
     system: 'vtm5e'
+  })
+  dice3d.addSystem({ id: 'htr5e', name: 'HtR5e' }, true)
+  dice3d.addDicePreset({
+    type: 'dh',
+    labels: [
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/normal-fail-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    colorset: 'black',
+    fontScale: 0.5,
+    system: 'htr5e'
+  })
+  dice3d.addColorset({
+    name: 'desperation',
+    description: 'V5 Desperation Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#ee7e1f',
+    texture: 'none',
+    edge: '#000000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5
+    }
+  }, 'default')
+  dice3d.addDicePreset({
+    type: 'dhd',
+    labels: [
+      'systems/wod5e/assets/images/desperation-fail-dsn.png',
+      'systems/wod5e/assets/images/red-fail-dsn.png',
+      'systems/wod5e/assets/images/red-fail-dsn.png',
+      'systems/wod5e/assets/images/red-fail-dsn.png',
+      'systems/wod5e/assets/images/red-fail-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/wod5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    colorset: 'desperation',
+    system: 'htr5e'
   })
 })
 /* -------------------------------------------- */

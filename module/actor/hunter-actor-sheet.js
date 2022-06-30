@@ -218,8 +218,7 @@ export class HunterActorSheet extends CellActorSheet {
           const abilityVal = this.actor.data.data.abilities[ability].value
           const abilityName = game.i18n.localize(this.actor.data.data.abilities[ability].name)
           const numDice = abilityVal + parseInt(dataset.roll) + modifier
-          rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, this.hunger)
-          // this._vampireRoll(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
+          rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
         }
       },
       cancel: {
@@ -245,21 +244,15 @@ export class HunterActorSheet extends CellActorSheet {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
-    const useHunger = this.hunger && (dataset.useHunger === '1')
-    const increaseHunger = dataset.increaseHunger
-    const subtractWillpower = dataset.subtractWillpower
     const numDice = dataset.roll
 
-    rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger, increaseHunger, subtractWillpower)
+    rollDice(numDice, this.actor, `${dataset.label}`, 0)
   }
 
   _onRollWithMod (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
-    const useHunger = this.hunger && (dataset.useHunger === '1')
-    const increaseHunger = dataset.increaseHunger
-    const subtractWillpower = dataset.subtractWillpower
 
     const template = `
       <form>
@@ -282,7 +275,7 @@ export class HunterActorSheet extends CellActorSheet {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
           const numDice = parseInt(dataset.roll) + modifier
-          rollDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger, increaseHunger, subtractWillpower)
+          rollDice(numDice, this.actor, `${dataset.label}`, difficulty)
         }
       },
       cancel: {
@@ -312,7 +305,7 @@ export class HunterActorSheet extends CellActorSheet {
       const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
       const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
-      rollDice(dicePool, this.actor, `${dataset.name}`, 0, this.hunger)
+      rollDice(dicePool, this.actor, `${dataset.name}`, 0)
     }
   }
 
@@ -481,7 +474,7 @@ export class HunterActorSheet extends CellActorSheet {
     }
 
     const dicePool = dice1 + dice2
-    rollDice(dicePool, this.actor, `${item.data.name}`, 0, this.hunger)
+    rollDice(dicePool, this.actor, `${item.data.name}`, 0)
   }
 }
 
