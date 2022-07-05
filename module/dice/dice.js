@@ -91,7 +91,7 @@ export class VampireHungerDie extends Die {
 }
 
 /**
- * Extend the basic Die to show custom vampire icons on a d10.
+ * Extend the basic Die to show custom Hunter Desperation icons on a d10.
  * @extends {Die}
  */
 export class HunterDesperationDie extends Die {

@@ -9,7 +9,7 @@
 // useHunger = Will roll hunger dice, if true
 // increaseHunger = Will increase the actor's hunger if no successes are rolled, if true
 // subtractWillpower = Subtracts a point of willpower, always, if true
-export async function rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true, increaseHunger = false, subtractWillpower = false) {
+export async function rollHunterDice (numDice, actor, label = '', difficulty = 0, useHunger = true, increaseHunger = false, subtractWillpower = false) {
   // Define the actor's current hunger
   let hungerDice
   if (useHunger) {
@@ -20,7 +20,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
 
   // Roll defining and evaluating
   const dice = numDice - hungerDice
-  const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dvhcs>5', actor.data.data)
+  const roll = new Roll(dice + 'dhcs>5 + ' + hungerDice + 'dhdcs>5', actor.data.data)
   await roll.evaluate()
 
   // Variable defining
