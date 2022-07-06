@@ -111,7 +111,7 @@ export class CellActorSheet extends ActorSheet {
     // lock button
     html.find('.lock-btn').click(this._onToggleLocked.bind(this))
 
-    // ressource dots
+    // resource dots
     html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
     html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
 
