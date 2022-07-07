@@ -100,13 +100,13 @@ export class CellActorSheet extends ActorSheet {
   activateListeners (html) {
     super.activateListeners(html)
     this._setupDotCounters(html)
-    this._setupSquareCounters(html)
+    this._setupCellSquareCounters(html)
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
     // Desperation and Danger trackers
-    html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
+    html.find('.cell-resource-counter > .cell-resource-counter-step').click(this._onCellSquareCounterChange.bind(this))
 
     // lock button
     html.find('.lock-btn').click(this._onToggleLocked.bind(this))
@@ -164,9 +164,9 @@ export class CellActorSheet extends ActorSheet {
     }
   }
   
-  // Added for Desperation Counter
+  // Added for Desperation and Danger Counters
   
-  _onSquareCounterChange (event) {
+  _onCellSquareCounterChange (event) {
     event.preventDefault()
     const element = event.currentTarget
     const index = Number(element.dataset.index)
@@ -175,7 +175,7 @@ export class CellActorSheet extends ActorSheet {
     const data = parent[0].dataset
     const states = parseCounterStates(data.states)
     const fields = data.name.split('.')
-    const steps = parent.find('.resource-counter-step')
+    const steps = parent.find('.cell-resource-counter-step')
     const desperation = data.name === 'data.desperation'
     const danger = data.name === 'data.danger'
     const fulls = Number(data[states['-']]) || 0
@@ -195,20 +195,12 @@ export class CellActorSheet extends ActorSheet {
     const newState = allStates[(currentState + 1) % allStates.length]
     steps[index].dataset.state = newState
 
-    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && desperation)) {
-      data[states[oldState]] = Number(data[states[oldState]]) - 1
-    }
-
-    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && danger)) {
+    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && desperation) || (oldState !== '' && danger)) {
       data[states[oldState]] = Number(data[states[oldState]]) - 1
     }
 
     // If the step was removed we also need to subtract from the maximum.
-    if (oldState !== '' && newState === '' && !desperation) {
-      data[states['-']] = Number(data[states['-']]) - 1
-    }
-
-    if (oldState !== '' && newState === '' && !danger) {
+    if (oldState !== '' && newState === '' && !desperation && !danger) {
       data[states['-']] = Number(data[states['-']]) - 1
     }
 
@@ -224,8 +216,8 @@ export class CellActorSheet extends ActorSheet {
     this._assignToActorField(fields, newValue)
   }
 
-  _setupSquareCounters (html) {
-    html.find('.resource-counter').each(function () {
+  _setupCellSquareCounters (html) {
+    html.find('.cell-resource-counter').each(function () {
       const data = this.dataset
       const states = parseCounterStates(data.states)
       const desperation = data.name === 'data.desperation'
@@ -235,18 +227,48 @@ export class CellActorSheet extends ActorSheet {
       const halfs = Number(data[states['/']]) || 0
       const crossed = Number(data[states.x]) || 0
 
-      const values = new Array(fulls + halfs)
+      const values = desperation ? new Array(fulls + halfs) : danger ? new Array(fulls + halfs) : new Array(halfs + crossed)
 
-      values.fill('-', 0, fulls)
-      values.fill('/', fulls, fulls + halfs)
+      if (desperation) {
+        values.fill('-', 0, fulls)
+        values.fill('/', fulls, fulls + halfs)
+      } else if (danger) {
+        values.fill('-', 0, fulls)
+        values.fill('/', fulls, fulls + halfs)
+      } else {
+        values.fill('/', 0, halfs)
+        values.fill('x', halfs, halfs + crossed)
+      }
 
-      $(this).find('.resource-counter-step').each(function () {
+      $(this).find('.cell-resource-counter-step').each(function () {
         this.dataset.state = ''
         if (this.dataset.index < values.length) {
           this.dataset.state = values[this.dataset.index]
         }
       })
     })
+  }
+
+  _onResourceChange (event) {
+    event.preventDefault()
+    const actorData = duplicate(this.actor)
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const resource = dataset.resource
+    if (dataset.action === 'plus' && !this.locked) {
+      actorData.data[resource].max++
+    } else if (dataset.action === 'minus' && !this.locked) {
+      actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
+    }
+
+    if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
+      actorData.data[resource].aggravated = actorData.data[resource].max - actorData.data[resource].superficial
+      if (actorData.data[resource].aggravated <= 0) {
+        actorData.data[resource].aggravated = 0
+        actorData.data[resource].superficial = actorData.data[resource].max
+      }
+    }
+    this.actor.update(actorData)
   }
 
   _setupDotCounters (html) {
@@ -312,6 +334,8 @@ export class CellActorSheet extends ActorSheet {
     steps.removeClass('active')
     this._assignToActorField(fields, 0)
   }
+
+  
 
   /**
    * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset

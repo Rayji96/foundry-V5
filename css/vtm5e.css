@@ -548,6 +548,58 @@
   margin-top: 5px;
 }
 
+.vtm5e .cell-resource-counter .cell-resource-counter-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.vtm5e .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+  background-color: #cc6d28;
+}
+
+.vtm5e .cell-resource-counter .cell-resource-counter-step[data-state="/"] {
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+.vtm5e .cell-resource-counter .cell-resource-counter-step[data-state="x"] {
+  background:
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+.vtm5e .flex-group-center:not(.flexrow) .resource-value,
+.vtm5e .flex-group-center:not(.flexrow) .cell-resource-counter {
+  margin-top: 5px;
+}
+
 .vtm5e .tab.disciplines .resource-value {
   margin-top: 2px;
   text-align: center;

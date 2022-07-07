@@ -111,7 +111,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
-    // Ressource squares (Health, Willpower)
+    // Resource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
     html.find('.resource-minus').click(this._onResourceChange.bind(this))

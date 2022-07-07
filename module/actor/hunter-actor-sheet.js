@@ -371,11 +371,10 @@ export class HunterActorSheet extends CellActorSheet {
       const halfs = Number(data[states['/']]) || 0
       const crossed = Number(data[states.x]) || 0
 
-      const values = despair ? new Array(fulls + halfs) : new Array(halfs + crossed)
+      const values = despair ? new Array(fulls) : new Array(halfs + crossed)
 
       if (despair) {
         values.fill('-', 0, fulls)
-        values.fill('/', fulls, fulls + halfs)
       } else {
         values.fill('/', 0, halfs)
         values.fill('x', halfs, halfs + crossed)
