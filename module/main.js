@@ -293,17 +293,17 @@ Hooks.once('init', async function () {
 
   Handlebars.registerHelper('getEdgeName', function (key, roll = false) {
     const edges = {
-      arsenal: 'HTR5E.Arsenal',
-      ordnance: 'HTR5E.Ordnance',
-      library: 'HTR5E.Libraryy',
-      improvisedgear: 'HTR5E.ImprovisedGear',
-      globalaccess: 'HTR5E.GlobalAccess',
-      dronejockey: 'HTR5E.DroneJockey',
-      beastwhisperer: 'HTR5E.BeastWhisperer',
-      sensetheunnatural: 'HTR5E.SenseTheUnnatural',
-      repeltheunnatural: 'HTR5E.RepelTheUnnatural',
-      thwarttheunnatural: 'HTR5E.ThwartTheUnnatural',
-      artifact: 'HTR5E.Artifact'
+      arsenal: 'VTM5E.Arsenal',
+      ordnance: 'VTM5E.Ordnance',
+      library: 'VTM5E.Libraryy',
+      improvisedgear: 'VTM5E.ImprovisedGear',
+      globalaccess: 'VTM5E.GlobalAccess',
+      dronejockey: 'VTM5E.DroneJockey',
+      beastwhisperer: 'VTM5E.BeastWhisperer',
+      sensetheunnatural: 'VTM5E.SenseTheUnnatural',
+      repeltheunnatural: 'VTM5E.RepelTheUnnatural',
+      thwarttheunnatural: 'VTM5E.ThwartTheUnnatural',
+      artifact: 'VTM5E.Artifact'
     }
     return edges[key]
   })

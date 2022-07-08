@@ -13,18 +13,18 @@ There is integration with Dice So Nice!
 To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dvh`. Replace the 1s with however many dice you want to roll for each type.
 To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1dhd`. Replace the 1s with however many dice you want to roll for each type.
 
-
 ## Feedback
 
 Bugs reported as issues to this repository are greatly appreciated.
 
 Please reach out to me at MrDionysus#9673 on Discord with issues, feature requests, etc.
 
+The Hunter-specific translations were provided by Google Translate, and I'm sure many of them are wrong, especially "Edges" and "Drive".  If you can help translate/localize for a particular language, please let me know!
+
 Please check the issues list before suggesting new features. :smiley:
 
 ## Todo
 * Add Hunter-specific dice rolls to the dice roller
-* Create Desperation Dice rolls somewhere
 
 * Add attributes and rolls to Edges - Not feasible without reworking Edges to be items.  For now, create a rollable perk named after the roll you want to save
 * Remove attributes tab and rolls from Perks  - Left as a workaround for the Edge rolls above

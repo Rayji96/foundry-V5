@@ -49,7 +49,7 @@ export class CellActorSheet extends ActorSheet {
     data.locked = this.locked
     data.isCharacter = this.isCharacter
     data.hasBoons = this.hasBoons
-    data.sheetType = `${game.i18n.localize('HTR5E.Cell')}`
+    data.sheetType = `${game.i18n.localize('VTM5E.Cell')}`
 
     data.dtypes = ['String', 'Number', 'Boolean']
 
@@ -382,7 +382,7 @@ export class CellActorSheet extends ActorSheet {
       return `${game.i18n.localize('VTM5E.' + data.discipline.capitalize())}`
     }
     if (type === 'perk') {
-      return `${game.i18n.localize('HTR5E.' + data.edge.capitalize())}`
+      return `${game.i18n.localize('VTM5E.' + data.edge.capitalize())}`
     }
     return `${game.i18n.localize('VTM5E.' + type.capitalize())}`
   }

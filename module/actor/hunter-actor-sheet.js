@@ -52,7 +52,7 @@ export class HunterActorSheet extends CellActorSheet {
   getData () {
     const data = super.getData()
     // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('HTR5E.Hunter')}`
+    data.sheetType = `${game.i18n.localize('VTM5E.Hunter')}`
 
     // Prepare items.
     if (this.actor.data.type === 'hunter') {
