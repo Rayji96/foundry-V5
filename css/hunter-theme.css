@@ -1,0 +1,43 @@
+/* New Styles */
+.vtm5e.hunter-theme .profile-img,
+.vtm5e.hunter-theme .item-image img {
+  background: #cc6d28;
+}
+
+.vtm5e.hunter-theme button.rollable,
+.vtm5e.hunter-theme button.rollable-with-mod {
+  background: #cc6d28;
+}
+
+.vtm5e.hunter-theme .sheet-header .profile-img-zone button {
+  background: #cc6d28;
+}
+
+.vtm5e.hunter-theme .sheet-header .profile-img-zone h1 {
+  color: #cc6d28;
+}
+
+
+.vtm5e.hunter-theme .resource-value .resource-value-step.active {
+  background-color: #cc6d28;
+}
+
+.vtm5e.hunter-theme .resource-value-static .resource-value-static-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.vtm5e.hunter-theme .resource-value-static .resource-value-static-step.active {
+  background-color: #cc6d28;
+}
+
+.vtm5e.hunter-theme .resource-counter .resource-counter-step[data-state="-"] {
+  background-color: #cc6d28;
+}
+
+.vtm5e.hunter-theme .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+  background-color: #cc6d28;
+}

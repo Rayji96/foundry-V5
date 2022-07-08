@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
 @import url("./tray.css");
 @import url("./dark-theme.css");
+@import url("./hunter-theme.css");
 
 /* Fonts */
 @font-face {
@@ -182,7 +183,7 @@
 
 .vtm5e .window-content nav.sheet-tabs {
   background: #e6ded0;
-  color: #790813;
+  color: #000;
   font-size: 16px;
   margin-bottom: 20px;
   height: 41px;
@@ -239,8 +240,8 @@
 }
 
 .vtm5e .window-content .sheet-body .tab > .resource-label {
-  color: #790813;
-  border-bottom: 1px solid #790813;
+  color: #000;
+  border-bottom: 1px solid #000;
   width: 100%;
   display: block;
   text-transform: uppercase;
@@ -384,8 +385,8 @@
   min-height: 30px;
   line-height: 24px;
   padding: 3px 0;
-  border-bottom: 1px solid #790813;
-  color: #790813;
+  border-bottom: 1px solid #000;
+  color: #000;
 }
 
 .vtm5e .items-list .item-header .header-level {

@@ -2,7 +2,7 @@
   "name": "wod5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "minimumCoreVersion": "9.0",
   "compatibleCoreVersion": "9.0",
   "templateVersion": 1,

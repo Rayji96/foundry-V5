@@ -13,7 +13,7 @@ export class HunterActorSheet extends CellActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'hunter']
+    const classList = ['vtm5e', 'hunter-theme','sheet', 'actor', 'hunter']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
