@@ -570,12 +570,17 @@ function rerollDie (roll) {
   // Theoretically I should error-check this, but there shouldn't be any
   // messages that call for a WillpowerReroll without an associated actor
   const message = game.messages.get(roll.attr('data-message-id'))
-  const speaker = game.actors.get(message.data.speaker.actor)
+  const speaker = game.actors.get(message.data.speaker.actor, {strict: true})
+  const charactertype = getProperty(speaker, 'data.type', {strict: true})
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-  if ((diceSelected > 0) && (diceSelected < 4)) {
+  if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== "hunter") {
     rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
+  } else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === "hunter") {
+    rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
   }
+
+  //const summonerMod = getProperty(tokenD.actor, `data.data.abilities.${getProperty(tokenD.actor, 'data.data.attributes.spellcasting')}.mod`);
 }
 
 /* -------------------------------------------- */

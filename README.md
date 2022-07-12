@@ -34,6 +34,8 @@ Please check the issues list before suggesting new features. :smiley:
 
 All the work for the Vampire 5th edition content was initially performed by weinerdolphin#3175.  At this point I've just added Hunter sheets and released this project as a comprehensive 5e module instead of a Vampire-Specific module.
 
+* Initial testing and DiceSoNice feedback by [Clement]
+
 Credits from weinerdolphin#3175 are as follows:
 Huge thanks to these folks for their contributions:
 

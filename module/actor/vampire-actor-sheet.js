@@ -76,6 +76,7 @@ export class VampireActorSheet extends GhoulActorSheet {
     actorData.bloodPotencyValue = parseInt(this.actor.data.data.blood.potency)
     sheetData.blood_potency_text = getBloodPotencyText(actorData.bloodPotencyValue)
     actorData.bloodPotency = getBloodPotencyValues(actorData.bloodPotencyValue)
+    actorData.data.data.gamesystem = "vampire"
   }
 
   /** @override */
