@@ -646,6 +646,11 @@
   border-color: #790813;
 }
 
+.roll-img.desperation-dice {
+  background: rgb(255 230 230 / 50%);
+  border-color: #cc6d28;
+}
+
 .vtm5e .locked .resource-value-empty:not(.hunger-value) {
   opacity: 0;
   cursor: default;

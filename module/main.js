@@ -582,7 +582,7 @@ function rerollDie (roll) {
   if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== "hunter") {
     rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
   } else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === "hunter") {
-    rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
+    rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
   }
 
   //const summonerMod = getProperty(tokenD.actor, `data.data.abilities.${getProperty(tokenD.actor, 'data.data.attributes.spellcasting')}.mod`);

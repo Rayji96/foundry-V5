@@ -22,6 +22,8 @@
     "VTM5E.Desperation": "Desperation",
     "VTM5E.Danger": "Danger",
     "VTM5E.DesperationDice": "Desperation Dice?",
+    "VTM5E.DesperationFailure": "Overreach or Despair Failure!",
+    "VTM5E.PossibleDesperationFailure": "Possible Overreach or Despair Failure!",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Fleet",
