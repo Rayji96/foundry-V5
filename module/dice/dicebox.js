@@ -1,6 +1,7 @@
 /* global game */
 
 import { rollDice } from '../actor/roll-dice.js'
+import { rollHunterDice } from '../actor/roll-hunter-dice.js'
 
 export function prepareSearchableSelection (id, $content, data, callback) {
   const select = `#${id}`

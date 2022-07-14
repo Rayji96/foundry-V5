@@ -30,10 +30,6 @@ export class VampireDie extends Die {
     }
 }
 
-/**
- * Extend the basic Die to show custom vampire icons on a d10.
- * @extends {Die}
- */
 export class VampireHungerDie extends Die {
   constructor (termData) {
     termData.faces = 10
@@ -41,7 +37,7 @@ export class VampireHungerDie extends Die {
   }
 
     /** @override */
-    static DENOMINATION = 'vh';
+    static DENOMINATION = 'g';
 
     /** @override */
     static getResultLabel (result) {
@@ -60,10 +56,6 @@ export class VampireHungerDie extends Die {
     }
 }
 
-/**
- * Extend the basic Die to show custom Hunter icons on a d10.
- * @extends {Die}
- */
  export class HunterDie extends Die {
   constructor (termData) {
     termData.faces = 10
@@ -90,10 +82,6 @@ export class VampireHungerDie extends Die {
     }
 }
 
-/**
- * Extend the basic Die to show custom Hunter Desperation icons on a d10.
- * @extends {Die}
- */
 export class HunterDesperationDie extends Die {
   constructor (termData) {
     termData.faces = 10
@@ -101,7 +89,7 @@ export class HunterDesperationDie extends Die {
   }
 
     /** @override */
-    static DENOMINATION = 'hd';
+    static DENOMINATION = 's';
 
     /** @override */
     static getResultLabel (result) {

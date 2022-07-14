@@ -10,8 +10,8 @@ This system is for playing multiple World of Darkness 5th edition systems on the
 Licensed WoD 5e materials will NOT be provided, as this is a system provided for public use for free.  I have made every effort to observe the Dark Pack guidelines as posted at https://www.worldofdarkness.com/dark-pack. 
 
 There is integration with Dice So Nice! 
-To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dvh`. Replace the 1s with however many dice you want to roll for each type.
-To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1dhd`. Replace the 1s with however many dice you want to roll for each type.
+To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`. Replace the 1s with however many dice you want to roll for each type.
+To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`. Replace the 1s with however many dice you want to roll for each type.
 
 ## Feedback
 

@@ -20,7 +20,7 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
 
   // Roll defining and evaluating
   const dice = numDice - hungerDice
-  const roll = new Roll(dice + 'dhcs>5 + ' + hungerDice + 'dhdcs>5', actor.data.data)
+  const roll = new Roll(dice + 'dhcs>5 + ' + hungerDice + 'dscs>5', actor.data.data)
   await roll.evaluate()
 
   // Variable defining

@@ -6,8 +6,7 @@ import { migrateWorld } from './migration.js'
 import { VampireActor } from './actor/actor.js'
 import { VampireItem } from './item/item.js'
 import { VampireItemSheet } from './item/item-sheet.js'
-import { VampireDie, VampireHungerDie } from './dice/dice.js'
-import { HunterDie, HunterDesperationDie } from './dice/dice.js'
+import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie } from './dice/dice.js'
 import { rollDice } from './actor/roll-dice.js'
 import { rollHunterDice } from './actor/roll-hunter-dice.js'
 import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
@@ -104,9 +103,9 @@ Hooks.once('init', async function () {
   CONFIG.Actor.documentClass = VampireActor
   CONFIG.Item.documentClass = VampireItem
   CONFIG.Dice.terms.v = VampireDie
-  CONFIG.Dice.terms.vh = VampireHungerDie
+  CONFIG.Dice.terms.g = VampireHungerDie
   CONFIG.Dice.terms.h = HunterDie
-  CONFIG.Dice.terms.hd = HunterDesperationDie
+  CONFIG.Dice.terms.s = HunterDesperationDie
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
@@ -315,7 +314,8 @@ Hooks.once('ready', async function () {
 })
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
-  dice3d.addSystem({ id: 'vtm5e', name: 'VtM5e' }, true)
+  dice3d.addSystem({id: 'wod5e', name: 'WoD5e'}, true)
+
   dice3d.addDicePreset({
     type: 'dv',
     labels: [
@@ -332,8 +332,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     colorset: 'black',
     fontScale: 0.5,
-    system: 'vtm5e'
+    system: 'wod5e'
   })
+
   dice3d.addColorset({
     name: 'hunger',
     description: 'V5 Hunger Dice',
@@ -349,8 +350,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       df: 2.5
     }
   }, 'default')
+
   dice3d.addDicePreset({
-    type: 'dvh',
+    type: 'dg',
     labels: [
       'systems/wod5e/assets/images/bestial-fail-dsn.png',
       'systems/wod5e/assets/images/red-fail-dsn.png',
@@ -364,9 +366,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/wod5e/assets/images/red-crit-dsn.png'
     ],
     colorset: 'hunger',
-    system: 'vtm5e'
+    system: 'wod5e'
   })
-  dice3d.addSystem({ id: 'htr5e', name: 'HtR5e' }, true)
+
   dice3d.addDicePreset({
     type: 'dh',
     labels: [
@@ -383,8 +385,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     colorset: 'black',
     fontScale: 0.5,
-    system: 'htr5e'
+    system: 'wod5e'
   })
+
   dice3d.addColorset({
     name: 'desperation',
     description: 'V5 Desperation Dice',
@@ -400,8 +403,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       df: 2.5
     }
   }, 'default')
+
   dice3d.addDicePreset({
-    type: 'dhd',
+    type: 'ds',
     labels: [
       'systems/wod5e/assets/images/desperation-fail-dsn.png',
       'systems/wod5e/assets/images/red-fail-dsn.png',
@@ -415,9 +419,10 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/wod5e/assets/images/hunter-normal-crit-dsn.png'
     ],
     colorset: 'desperation',
-    system: 'htr5e'
+    system: 'wod5e'
   })
 })
+
 /* -------------------------------------------- */
 /*  Add chat dicebox                            */
 /* -------------------------------------------- */
