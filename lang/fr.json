@@ -21,6 +21,9 @@
     "VTM5E.AddPerk": "Ajouter un avantage",
     "VTM5E.Desperation": "Désespoir",
     "VTM5E.Danger": "Danger",
+    "VTM5E.DesperationDice": "Désespoir de désespoir?",
+    "VTM5E.DesperationFailure": "Échec exagéré ou désespéré!",
+    "VTM5E.PossibleDesperationFailure": "Possible de dépassion ou de désespoir!",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Flotte",

@@ -21,6 +21,9 @@
     "VTM5E.AddPerk": "Adicione vantagem",
     "VTM5E.Desperation": "Desespero",
     "VTM5E.Danger": "Perigo",
+    "VTM5E.DesperationDice": "Dados de desespero?",
+    "VTM5E.DesperationFailure": "Ultrapassar ou desespero fracasso!",
+    "VTM5E.PossibleDesperationFailure": "Possível alcance ou falha de desespero!",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Frota",

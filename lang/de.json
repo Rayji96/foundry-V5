@@ -21,6 +21,9 @@
     "VTM5E.AddPerk": "Fügen Sie Perk hinzu",
     "VTM5E.Desperation": "Verzweiflung",
     "VTM5E.Danger": "Achtung",
+    "VTM5E.DesperationDice": "Würfel der Verzweiflung?",
+    "VTM5E.DesperationFailure": "Overreach oder Verzweiflung Misserfolg!",
+    "VTM5E.PossibleDesperationFailure": "Möglicher Overreach- oder Despair-Fehler!",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Flotte",

@@ -21,6 +21,9 @@
     "VTM5E.AddPerk": "Agregar ventaja",
     "VTM5E.Desperation": "Desesperación",
     "VTM5E.Danger": "Peligro",
+    "VTM5E.DesperationDice": "Dados de desesperación?",
+    "VTM5E.DesperationFailure": "Examinar o falla de desesperación!",
+    "VTM5E.PossibleDesperationFailure": "Posible extralimitación o falla de desesperación!",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Flota",

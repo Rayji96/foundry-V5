@@ -21,6 +21,9 @@
     "VTM5E.AddPerk": "Dodaj Perk",
     "VTM5E.Desperation": "Desperacja",
     "VTM5E.Danger": "Zagrożenie",
+    "VTM5E.DesperationDice": "Kostnie desperacyjne?",
+    "VTM5E.DesperationFailure": "Przekroczenie lub rozpaczenie porażki!",
+    "VTM5E.PossibleDesperationFailure": "Możliwe przesadne lub rozpaczenie porażki!",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Flota",
