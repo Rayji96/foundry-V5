@@ -199,7 +199,11 @@ export class HunterActorSheet extends CellActorSheet {
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
-          </div>  
+          </div>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
+              <input type="text" min="0" id="inputDespMod" value="0">
+          </div>
           <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
               <input type="text" min="0" id="inputDif" value="0">
@@ -214,12 +218,12 @@ export class HunterActorSheet extends CellActorSheet {
         callback: async (html) => {
           const ability = html.find('#abilitySelect')[0].value
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
+          const desperationDice = parseInt(html.find('#inputDespMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
           const abilityVal = this.actor.data.data.abilities[ability].value
           const abilityName = game.i18n.localize(this.actor.data.data.abilities[ability].name)
           const numDice = abilityVal + parseInt(dataset.roll) + modifier
-          rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, this.hunger)
-          // this._vampireRoll(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
+          rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, desperationDice, this.hunger)
         }
       },
       cancel: {
@@ -264,6 +268,10 @@ export class HunterActorSheet extends CellActorSheet {
               <input type="text" id="inputMod" value="0">
           </div>  
           <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
+              <input type="text" min="0" id="inputDespMod" value="0">
+          </div>
+          <div class="form-group">
               <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
               <input type="text" min="0" id="inputDif" value="0">
           </div>
@@ -277,8 +285,9 @@ export class HunterActorSheet extends CellActorSheet {
         callback: async (html) => {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
+          const desperationDice = parseInt(html.find('#inputDespMod')[0].value || 0)
           const numDice = parseInt(dataset.roll) + modifier
-          rollHunterDice(numDice, this.actor, `${dataset.label}`, difficulty, subtractWillpower)
+          rollHunterDice(numDice, this.actor, `${dataset.label}`, difficulty, desperationDice, subtractWillpower)
         }
       },
       cancel: {
@@ -308,7 +317,7 @@ export class HunterActorSheet extends CellActorSheet {
       const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
       const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
-      rollHunterDice(dicePool, this.actor, `${dataset.name}`, 0, this.hunger)
+      rollHunterDice(dicePool, this.actor, `${dataset.name}`, 0, desperationDice, this.hunger)
     }
   }
 
@@ -476,7 +485,7 @@ export class HunterActorSheet extends CellActorSheet {
     }
 
     const dicePool = dice1 + dice2
-    rollHunterDice(dicePool, this.actor, `${item.data.name}`, 0, this.hunger)
+    rollHunterDice(dicePool, this.actor, `${item.data.name}`, 0, desperationDice, this.hunger)
   }
 }
 

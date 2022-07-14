@@ -6,10 +6,11 @@
 // actor = Actor's data
 // label = Text that appears at the head of the ChatMessage
 // difficulty = The amount of successes required for a given roll
+// desperationDice = Additional desperation dice for the roll
 // useHunger = Will roll hunger dice, if true
 // increaseHunger = Will increase the actor's hunger if no successes are rolled, if true
 // subtractWillpower = Subtracts a point of willpower, always, if true
-export async function rollHunterDice (numDice, actor, label = '', difficulty = 0, useHunger = true, increaseHunger = false, subtractWillpower = false) {
+export async function rollHunterDice (numDice, actor, label = '', difficulty = 0, desperationDice = 0, useHunger = true, increaseHunger = false, subtractWillpower = false) {
   // Define the actor's current hunger
   let hungerDice
   if (useHunger) {
@@ -20,7 +21,7 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
 
   // Roll defining and evaluating
   const dice = numDice - hungerDice
-  const roll = new Roll(dice + 'dhcs>5 + ' + hungerDice + 'dscs>5', actor.data.data)
+  const roll = new Roll(dice + 'dhcs>5 + ' + hungerDice + 'dgcs>5 + ' + desperationDice + 'dscs>5', actor.data.data)
   await roll.evaluate()
 
   // Variable defining
