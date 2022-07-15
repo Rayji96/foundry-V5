@@ -22,8 +22,9 @@
     "VTM5E.Desperation": "Verzweiflung",
     "VTM5E.Danger": "Achtung",
     "VTM5E.DesperationDice": "Würfel der Verzweiflung?",
-    "VTM5E.DesperationFailure": "Overreach oder Verzweiflung Misserfolg!",
+    "VTM5E.DesperationSuccess": "Erfolg übertreiben oder verzweifeln!",
     "VTM5E.PossibleDesperationFailure": "Möglicher Overreach- oder Despair-Fehler!",
+    "VTM5E.DespairFailure": "Verzweiflung Scheitern!",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Flotte",

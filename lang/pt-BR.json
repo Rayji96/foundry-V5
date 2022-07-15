@@ -22,8 +22,9 @@
     "VTM5E.Desperation": "Desespero",
     "VTM5E.Danger": "Perigo",
     "VTM5E.DesperationDice": "Dados de desespero?",
-    "VTM5E.DesperationFailure": "Ultrapassar ou desespero fracasso!",
+    "VTM5E.DesperationSuccess": "Sucesso Exagerado ou Desesperado!",
     "VTM5E.PossibleDesperationFailure": "Possível alcance ou falha de desespero!",
+    "VTM5E.DespairFailure": "Desespero Falha!",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Frota",

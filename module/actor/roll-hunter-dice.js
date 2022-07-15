@@ -77,8 +77,11 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
   if (totalCritSuccess && successRoll) {
     chatMessage = chatMessage + `<p class="roll-content result-critical">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
   }
+  if (desperationCritFail && successRoll && difficulty > 0) {
+    chatMessage = chatMessage + `<p class="roll-content result-desperation">${game.i18n.localize('VTM5E.DesperationSuccess')}</p>`
+  }
   if (desperationCritFail && !successRoll && difficulty > 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-desperation">${game.i18n.localize('VTM5E.DesperationFailure')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-desperation">${game.i18n.localize('VTM5E.DespairFailure')}</p>`
   }
   if (desperationCritFail && !successRoll && difficulty === 0) {
     chatMessage = chatMessage + `<p class="roll-content result-desperation result-possible">${game.i18n.localize('VTM5E.PossibleDesperationFailure')}</p>`
