@@ -22,9 +22,9 @@
     "VTM5E.Desperation": "Désespoir",
     "VTM5E.Danger": "Danger",
     "VTM5E.DesperationDice": "Dés de désespoir ?",
-    "VTM5E.DesperationSuccess": "Succès excessif ou désespoir!",
-    "VTM5E.PossibleDesperationFailure": "Possible succès excessif ou échec despéré!",
-    "VTM5E.DespairFailure": "Échec du désespoir!",
+    "VTM5E.DesperationSuccess": "Succès excessif ou échec desespéré!",
+    "VTM5E.PossibleDesperationFailure": "Possible succès excessif ou échec desespéré!",
+    "VTM5E.DespairFailure": "Échec desespéré!",
 
     "VTM5E.Arsenal": "Armurerie",
     "VTM5E.Fleet": "Véhicules",
