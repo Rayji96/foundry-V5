@@ -25,6 +25,7 @@
     "VTM5E.DesperationSuccess": "Erfolg übertreiben oder verzweifeln!",
     "VTM5E.PossibleDesperationFailure": "Möglicher Overreach- oder Despair-Fehler!",
     "VTM5E.DespairFailure": "Verzweiflung Scheitern!",
+    "VTM5E.DesperationUnavailable": "Verzweiflung nicht verfügbar, während man sich in Verzweiflung befindet",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Flotte",
