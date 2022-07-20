@@ -168,7 +168,6 @@ export class HunterActorSheet extends CellActorSheet {
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this))
-    html.find('.rollable-with-mod').click(this._onRollWithMod.bind(this))
     html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
     html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
     html.find('.vrollable').click(this._onRollDialog.bind(this))
@@ -190,25 +189,52 @@ export class HunterActorSheet extends CellActorSheet {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
-              <select id="abilitySelect">${options}</select>
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-              <input type="text" id="inputMod" value="0">
-          </div>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
-              <input type="text" min="0" id="inputDespMod" value="0">
-          </div>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-              <input type="text" min="0" id="inputDif" value="0">
-          </div>
-      </form>`
+    const despair = Object.values(this.actor.data.data.despair)
+    const despairstring = despair.toString()
+    
+    if (despairstring === '1') {
+      var despairoutcome = true
+    } else {
+      var despairoutcome = false
+    }
+    
+    const template = despairoutcome ? 
+    `<form>
+        <div class="form-group">
+            <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
+            <select id="abilitySelect">${options}</select>
+        </div>  
+        <div class="form-group">
+            <label>${game.i18n.localize('VTM5E.Modifier')}</label>
+            <input type="text" id="inputMod" value="0">
+        </div>
+        <div class="form-group">
+            <label>${game.i18n.localize('VTM5E.DesperationUnavailable')}</label>
+            <input type="text" min="0" id="inputDespMod" disabled value="0">
+        </div>
+        <div class="form-group">
+            <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
+            <input type="text" min="0" id="inputDif" value="0">
+        </div>
+    </form>` :
+    `<form>
+        <div class="form-group">
+            <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
+            <select id="abilitySelect">${options}</select>
+        </div>  
+        <div class="form-group">
+            <label>${game.i18n.localize('VTM5E.Modifier')}</label>
+            <input type="text" id="inputMod" value="0">
+        </div>
+        <div class="form-group">
+            <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
+            <input type="text" min="0" id="inputDespMod" value="0">
+        </div>
+        <div class="form-group">
+            <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
+            <input type="text" min="0" id="inputDif" value="0">
+        </div>
+    </form>`
 
     let buttons = {}
     buttons = {
@@ -255,54 +281,6 @@ export class HunterActorSheet extends CellActorSheet {
     rollHunterDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
   }
 
-  _onRollWithMod (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const subtractWillpower = dataset.subtractWillpower
-
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-              <input type="text" id="inputMod" value="0">
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
-              <input type="text" min="0" id="inputDespMod" value="0">
-          </div>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-              <input type="text" min="0" id="inputDif" value="0">
-          </div>
-      </form>`
-
-    let buttons = {}
-    buttons = {
-      draw: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Roll'),
-        callback: async (html) => {
-          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
-          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const desperationDice = parseInt(html.find('#inputDespMod')[0].value || 0)
-          const numDice = parseInt(dataset.roll) + modifier
-          rollHunterDice(numDice, this.actor, `${dataset.label}`, difficulty, desperationDice, subtractWillpower)
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
-      }
-    }
-
-    new Dialog({
-      title: `${dataset.label}`,
-      content: template,
-      buttons: buttons,
-      default: 'draw'
-    }).render(true)
-  }
 
   _onCustomVampireRoll (event) {
     event.preventDefault()

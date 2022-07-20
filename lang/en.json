@@ -25,6 +25,7 @@
     "VTM5E.DesperationSuccess": "Success with Overreach, or Despair Failure!",
     "VTM5E.PossibleDesperationFailure": "Possible Overreach or Despair Failure!",
     "VTM5E.DespairFailure": "Despair Failure!",
+    "VTM5E.DesperationUnavailable": "Desperation unavailable while in Despair",
 
     "VTM5E.Arsenal": "Arsenal",
     "VTM5E.Fleet": "Fleet",
