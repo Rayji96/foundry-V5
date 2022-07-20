@@ -345,7 +345,7 @@ export class HunterActorSheet extends CellActorSheet {
       return obj
     }, {})
 
-    this.actor.update({ 'data.despair': newValue })
+    this._assignToActorField(fields, newValue)
   }
 
   _setupSquareCounters (html) {
