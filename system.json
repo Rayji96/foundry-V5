@@ -2,15 +2,21 @@
   "name": "wod5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "1.2.0",
-  "minimumCoreVersion": "9.0",
-  "compatibleCoreVersion": "9.0",
-  "templateVersion": 1,
   "author": "MrDionysus",
-  "esmodules": ["module/main.js"],
-  "styles": ["css/vtm5e.css"],
+  "authors": [],
+  "url": "https://github.com/MrDionysus/foundry-WOD5/",
+  "license": "LICENSE.txt",
+  "flags": {},
+  "version": "1.2.1",
+  "minimumCoreVersion": "9.0",
+  "compatibleCoreVersion": "9.269",
   "scripts": [],
-  "packs": [],
+  "esmodules": [
+    "module/main.js"
+  ],
+  "styles": [
+    "css/vtm5e.css"
+  ],
   "languages": [
     {
       "lang": "en",
@@ -42,18 +48,19 @@
       "name": "Italian",
       "path": "lang/it.json"
     },
-	{
+    {
       "lang": "pl",
       "name": "Polish",
       "path": "lang/pl.json"
     }
   ],
-  "gridDistance": 5,
-  "gridUnits": "ft",
-  "primaryTokenAttribute": "",
-  "secondaryTokenAttribute": "",
-  "url": "https://github.com/MrDionysus/foundry-WOD5/",
+  "packs": [],
+  "system": [],
+  "dependencies": [],
+  "socket": false,
   "manifest": "https://raw.githubusercontent.com/MrDionysus/foundry-WOD5/main/system.json",
   "download": "https://github.com/MrDionysus/foundry-WOD5/archive/refs/heads/master.zip",
-  "license": "LICENSE.txt"
+  "protected": false,
+  "gridDistance": 5,
+  "gridUnits": "ft"
 }
