@@ -351,11 +351,11 @@ Hooks.on('renderSidebarTab', (app, html) => {
           prepareSearchableSelection('selectedCharacter', $content, options, (event) => game.actors.get(event.target.value))
 
           prepareSearchableSelection('pool1', $content, options, (event) => event.target.value)
-
-          watchPool1Filters($content, options)
           options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find('#pool1 option').attr('value')
           prepareSearchableSelection('pool2', $content, options, (event) => event.target.value)
           options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find('#pool2 option').attr('value')
+          
+          watchPool1Filters($content, options)
           watchPool2Filters($content, options)
 
           prepareCustomRollButton($content, options)
