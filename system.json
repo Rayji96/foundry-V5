@@ -7,7 +7,7 @@
   "url": "https://github.com/LRemplakowski/foundry-V5/",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "1.8.3g",
+  "version": "1.8.4g",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9.0",
   "scripts": [],
@@ -29,7 +29,7 @@
   "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/LRemplakowski/foundry-V5/main/system.json",
-  "download": "https://github.com/LRemplakowski/foundry-V5/archive/foundryvtt_v5_v1.8.3g.zip",
+  "download": "https://github.com/LRemplakowski/foundry-V5/archive/foundryvtt_v5_v1.8.4g.zip",
   "protected": false,
   "gridDistance": 5,
   "gridUnits": "ft"
