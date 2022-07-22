@@ -133,6 +133,7 @@ export class EaterActorSheet extends MortalActorSheet {
   /** @override */
   activateListeners (html) {
     super.activateListeners(html)
+    html.find('.hrollable').click(this._onRollHauntDialog.bind(this))
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
@@ -309,9 +310,8 @@ export class EaterActorSheet extends MortalActorSheet {
   /**
   * Handle clickable Vampire rolls.
   * @param {Event} event   The originating click event
-  * @override
   */
-  _onRollDialog (event) {
+  _onRollHauntDialog (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
@@ -320,7 +320,7 @@ export class EaterActorSheet extends MortalActorSheet {
     for (const [key, value] of Object.entries(this.actor.data.data.abilities)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
-
+    
     const template = `
       <form>  
           <div class="form-group">
