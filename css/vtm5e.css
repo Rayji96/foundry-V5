@@ -181,6 +181,11 @@
   font-size: 18px;
 }
 
+.vtm5e .window-content .standarddicepools .ability .resource-label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .vtm5e .window-content nav.sheet-tabs {
   background: #e6ded0;
   color: #000;
@@ -275,6 +280,7 @@
 .vtm5e .mortal-sheet .sheet-header,
 .vtm5e .hunter-sheet .sheet-header,
 .vtm5e .cell-sheet .sheet-header,
+.vtm5e .spc-sheet .sheet-header,
 .vtm5e .ghoul-sheet .sheet-header {
   flex: 0 0 155px;
 }
@@ -341,6 +347,13 @@
 .vtm5e .sheet-body .tab .editor {
   height: 100%;
   min-height: 160px;
+}
+
+.vtm5e .single-sheet-body,
+.vtm5e .single-sheet-body .tab,
+.vtm5e .single-sheet-body .tab .editor {
+  height: 100%;
+  min-height: 30px;
 }
 
 .vtm5e .sheet-body .tab .tox-tinymce {

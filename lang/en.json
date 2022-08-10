@@ -40,6 +40,16 @@
     "VTM5E.ThwartTheUnnatural": "Thwart the Unnatural",
     "VTM5E.Artifact": "Artifact",
 
+    "VTM5E.SPC": "SPC",
+    "VTM5E.GeneralDifficulty": "General Difficulty",
+    "VTM5E.StandardDicePools": "Standard Dice Pools",
+    "VTM5E.ExceptionalDicePools": "Exceptional Dice Pools",
+    "VTM5E.Physical": "Physical",
+    "VTM5E.Mental": "Mental",
+    "VTM5E.Social": "Social",
+    "VTM5E.AddSkill": "Add Skill",
+    "VTM5E.SelectSkill": "Select Skill",
+
     "VTM5E.Health": "Health",
     "VTM5E.Willpower": "Willpower",
     "VTM5E.WillpowerReroll": "Willpower Reroll",

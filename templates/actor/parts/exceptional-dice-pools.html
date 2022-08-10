@@ -1,0 +1,35 @@
+<div class="tab flex-center" data-group="primary">
+    <label class="resource-label">{{localize "VTM5E.ExceptionalDicePools"}}</label> 
+      <div class="item-controls">
+        <a class="item-control exceptionalskill-create" title="{{localize 'VTM5E.AddSkill'}}">
+            <i class="fas fa-plus"></i>
+            {{localize "VTM5E.AddSkill"}}
+        </a>
+      </div>
+    <ol class="items-list">
+        <!-- Iterate through each of the skill lists -->
+        {{#each data.data.exceptionaldicepools as |exceptionalskill key|}}
+            {{#if exceptionalskill.visible}}
+                <li class="flexrow item-header">
+                    <label for="{{exceptionalskill.name}}" 
+                      class="resource-label rollable"
+                      data-roll="{{exceptionalskill.value}}" 
+                      data-label="{{localize exceptionalskill.name}}">{{localize exceptionalskill.name}} 
+                    </label>
+                    <div class="resource-value">
+                        <input type="number" name="data.exceptionaldicepools.{{key}}.value" 
+                        value="{{exceptionalskill.value}}" data-name="data.exceptionaldicepools.{{key}}.value" />
+                    </div>
+                    <!-- Item controls for Exceptional Skill sections -->
+                    <div class="item-controls">
+                        <!-- Icon to delete the exceptionalskill -->
+                        <a class="item-control exceptionalskill-delete" title="{{localize 'VTM5E.Delete'}}" data-exceptionalskill="{{key}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </li>
+            {{/if}}
+        {{/each}}
+    </ol>
+</div>
+

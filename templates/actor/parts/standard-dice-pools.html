@@ -1,0 +1,12 @@
+<div class="tab flex-center" data-group="primary">
+    <label class="resource-label">{{localize "VTM5E.StandardDicePools"}}</label>
+    <div class="abilities grid grid-3col flex-group-center">
+        {{#each data.data.standarddicepools as |ability key|}}
+        <div class="resource-content flexrow flex-center flex-between">
+            <label for="{{ability.name}}" class="resource-label rollable"
+                data-roll="{{ability.value}}" data-label="{{localize ability.name}}">{{localize ability.name}} </label>
+            <input type="number" name="data.standarddicepools.{{key}}.value" value="{{ability.value}}" data-dtype="Number" />
+        </div>
+        {{/each}}
+    </div>
+</div>

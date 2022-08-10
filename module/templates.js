@@ -26,6 +26,11 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/wod5e/templates/actor/parts/rouse.html',
     'systems/wod5e/templates/actor/parts/stats.html',
     'systems/wod5e/templates/actor/parts/willpower.html',
+    'systems/wod5e/templates/actor/parts/standard-dice-pools.html',
+    'systems/wod5e/templates/actor/parts/exceptional-dice-pools.html',
+    'systems/wod5e/templates/actor/parts/generaldifficulty.html',
+    'systems/wod5e/templates/actor/parts/notes.html',
+    'systems/wod5e/templates/actor/parts/spc-disciplines.html',
 
     // Item Sheet Partials
     'systems/wod5e/templates/item/parts/skills.html',
