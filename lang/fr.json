@@ -40,6 +40,16 @@
     "VTM5E.ThwartTheUnnatural": "Déjouer le contre-nature",
     "VTM5E.Artifact": "Artéfact",
     
+    "VTM5E.SPC": "SPC",
+    "VTM5E.GeneralDifficulty": "Difficulté générale",
+    "VTM5E.StandardDicePools": "Piscines de dés standard",
+    "VTM5E.ExceptionalDicePools": "Piscines de dés exceptionnelles",
+    "VTM5E.Physical": "Physique",
+    "VTM5E.Mental": "Mental",
+    "VTM5E.Social": "Social",
+    "VTM5E.AddSkill": "Ajouter des compétences",
+    "VTM5E.SelectSkill": "Sélectionnez les compétences",
+
     "VTM5E.Health": "Santé",
     "VTM5E.Willpower": "Volonté",
     "VTM5E.WillpowerReroll": "Relance du test de Volonté",

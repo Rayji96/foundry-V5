@@ -40,6 +40,16 @@
     "VTM5E.ThwartTheUnnatural": "Contrastare il sovrannaturale",
     "VTM5E.Artifact": "Artefatti",
 
+    "VTM5E.SPC": "SPC",
+    "VTM5E.GeneralDifficulty": "Difficoltà generale",
+    "VTM5E.StandardDicePools": "Pool di dadi standard",
+    "VTM5E.ExceptionalDicePools": "Pool di dadi eccezionali",
+    "VTM5E.Physical": "Fisico",
+    "VTM5E.Mental": "Mentale",
+    "VTM5E.Social": "Sociale",
+    "VTM5E.AddSkill": "Aggiungi abilità",
+    "VTM5E.SelectSkill": "Seleziona abilità",
+
     "VTM5E.Health": "Salute",
     "VTM5E.Willpower": "Volontà",
     "VTM5E.WillpowerReroll": "Ritira con Volontà",

@@ -40,6 +40,16 @@
     "VTM5E.ThwartTheUnnatural": "Udaremnij nienaturalne",
     "VTM5E.Artifact": "Artefakt",
 
+    "VTM5E.SPC": "SPC",
+    "VTM5E.GeneralDifficulty": "Ogólna trudność",
+    "VTM5E.StandardDicePools": "Standardowe baseny kostki",
+    "VTM5E.ExceptionalDicePools": "Wyjątkowe baseny kości",
+    "VTM5E.Physical": "Fizyczny",
+    "VTM5E.Mental": "Psychiczny",
+    "VTM5E.Social": "Społeczny",
+    "VTM5E.AddSkill": "Dodaj umiejętności",
+    "VTM5E.SelectSkill": "Wybierz umiejętności",
+
     "VTM5E.Health": "Zdrowie",
     "VTM5E.Willpower": "Siła Woli",
     "VTM5E.WillpowerReroll": "Przerzut Siły Woli",

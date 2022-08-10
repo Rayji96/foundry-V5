@@ -72,26 +72,6 @@ export class SPCActorSheet extends CoterieActorSheet {
   _prepareItems (sheetData) {
     super._prepareItems(sheetData)
     const actorData = sheetData.actor
-    
-    const disciplines = {
-      animalism: [],
-      auspex: [],
-      celerity: [],
-      dominate: [],
-      fortitude: [],
-      obfuscate: [],
-      potence: [],
-      presence: [],
-      protean: [],
-      sorcery: [],
-      oblivion: [],
-      rituals: [],
-      ceremonies: [],
-      alchemy: []
-    }
-
-    // Assign and return
-    actorData.disciplines_list = disciplines
   }
 
   /* -------------------------------------------- */
@@ -113,11 +93,6 @@ export class SPCActorSheet extends CoterieActorSheet {
 
     // Rollable standarddicepools.
     html.find('.rollable').click(this._onRoll.bind(this))
-    html.find('.rollable-with-mod').click(this._onRollWithMod.bind(this))
-    html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
-    html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
-    // Rollable standarddicepools.
-    html.find('.vrollable').click(this._onRollDialog.bind(this))
 
     // Make Exceptional Skill visible
     html.find('.exceptionalskill-create').click(this._onShowExceptionalSkill.bind(this))
@@ -135,22 +110,6 @@ export class SPCActorSheet extends CoterieActorSheet {
     html.find('.discipline-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
       this.actor.update({ [`data.disciplines.${data.discipline}.visible`]: false })
-    })
-
-    // Post Discipline description to the chat
-    html.find('.discipline-chat').click(ev => {
-      const data = $(ev.currentTarget)[0].dataset
-      const discipline = this.actor.data.data.disciplines[data.discipline]
-
-      renderTemplate('systems/wod5e/templates/actor/parts/chat-message.html', {
-        name: game.i18n.localize(discipline.name),
-        img: 'icons/svg/dice-target.svg',
-        description: discipline.description
-      }).then(html => {
-        ChatMessage.create({
-          content: html
-        })
-      })
     })
   }
 
@@ -246,69 +205,6 @@ export class SPCActorSheet extends CoterieActorSheet {
     }).render(true)
   }
 
-  
-  
-
-  /**
-   * Handle clickable Vampire rolls.
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onRollDialog (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    let options = ''
-
-    for (const [key, value] of Object.entries(this.actor.data.data.standarddicepools)) {
-      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
-    }
-
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
-              <select id="abilitySelect">${options}</select>
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-              <input type="text" id="inputMod" value="0">
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-              <input type="text" min="0" id="inputDif" value="0">
-          </div>
-      </form>`
-
-    let buttons = {}
-    buttons = {
-      draw: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Roll'),
-        callback: async (html) => {
-          const ability = html.find('#abilitySelect')[0].value
-          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
-          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const abilityVal = this.actor.data.data.standarddicepools[ability].value
-          const abilityName = game.i18n.localize(this.actor.data.data.standarddicepools[ability].name)
-          const numDice = abilityVal + parseInt(dataset.roll) + modifier
-          rollBasicDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
-      }
-    }
-
-    new Dialog({
-      title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
-      content: template,
-      buttons: buttons,
-      default: 'draw'
-    }).render(true)
-  }
-
   /**
      * Handle clickable rolls.
      * @param {Event} event   The originating click event
@@ -322,69 +218,6 @@ export class SPCActorSheet extends CoterieActorSheet {
     const numDice = dataset.roll
 
     rollBasicDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
-  }
-
-  _onRollWithMod (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const useHunger = this.hunger && (dataset.useHunger === '1')
-    const increaseHunger = dataset.increaseHunger
-    const subtractWillpower = dataset.subtractWillpower
-
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-              <input type="text" id="inputMod" value="0">
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-              <input type="text" min="0" id="inputDif" value="0">
-          </div>
-      </form>`
-
-    let buttons = {}
-    buttons = {
-      draw: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Roll'),
-        callback: async (html) => {
-          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
-          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const numDice = parseInt(dataset.roll) + modifier
-          rollBasicDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger, increaseHunger, subtractWillpower)
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
-      }
-    }
-
-    new Dialog({
-      title: `${dataset.label}`,
-      content: template,
-      buttons: buttons,
-      default: 'draw'
-    }).render(true)
-  }
-
-  _onCustomVampireRoll (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    if (dataset.dice1 === '') {
-      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
-      dataset.roll = dice2 + 1 // specialty modifier
-      dataset.label = dataset.name
-      this._onRollDialog(event)
-    } else {
-      const dice1 = this.actor.data.data.standarddicepools[dataset.dice1.toLowerCase()].value
-      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
-      const dicePool = dice1 + dice2
-      rollBasicDice(dicePool, this.actor, `${dataset.name}`, 0, this.hunger)
-    }
   }
 
   _onSquareCounterChange (event) {

@@ -39,6 +39,16 @@
     "VTM5E.RepelTheUnnatural": "Repeler lo antinatural",
     "VTM5E.ThwartTheUnnatural": "Frustrar lo antinatural",
     "VTM5E.Artifact": "Artefacto",
+
+    "VTM5E.SPC": "SPC",
+    "VTM5E.GeneralDifficulty": "Dificultad general",
+    "VTM5E.StandardDicePools": "Grupos de dados estándar",
+    "VTM5E.ExceptionalDicePools": "Piscinas de dados excepcionales",
+    "VTM5E.Physical": "Físico",
+    "VTM5E.Mental": "Mental",
+    "VTM5E.Social": "Social",
+    "VTM5E.AddSkill": "Agregar habilidad",
+    "VTM5E.SelectSkill": "Seleccionar habilidad",
     
     "VTM5E.Health": "Salud",
     "VTM5E.Willpower": "Fuerza de Voluntad",

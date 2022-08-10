@@ -40,6 +40,16 @@
     "VTM5E.ThwartTheUnnatural": "Die unnatürliche vereiteln",
     "VTM5E.Artifact": "Artefakt",
 
+    "VTM5E.SPC": "SPC",
+    "VTM5E.GeneralDifficulty": "Allgemeine Schwierigkeit",
+    "VTM5E.StandardDicePools": "Standardwürfelpools",
+    "VTM5E.ExceptionalDicePools": "Außergewöhnliche Würfelpools",
+    "VTM5E.Physical": "Physisch",
+    "VTM5E.Mental": "Mental",
+    "VTM5E.Social": "Sozial",
+    "VTM5E.AddSkill": "Fühe Fertigkeit hinzufügen",
+    "VTM5E.SelectSkill": "Wählen Sie Fähigkeiten",
+
     "VTM5E.Health": "Gesundheit",
     "VTM5E.Willpower": "Willenskraft",
     "VTM5E.WillpowerReroll": "Willenskraft Wiederholung",
