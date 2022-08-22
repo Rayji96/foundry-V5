@@ -46,7 +46,7 @@ export class VampireActor extends Actor {
     // Collect data
     const documentName = this.metadata.name
     const types = game.system.documentTypes[documentName]
-    const folders = game.folders.filter(f => (f.data.type === documentName) && f.displayed)
+    const folders = game.folders.filter(f => (f.type === documentName) && f.displayed)
     const label = game.i18n.localize(this.metadata.label)
     const title = game.i18n.format('DOCUMENT.Create', { type: label })
 
