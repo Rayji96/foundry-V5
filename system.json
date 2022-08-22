@@ -1,10 +1,12 @@
 {
-  "name": "vtm5e",
+  "id": "vtm5e",
   "title": "Vampire the Masquerade 5e",
   "description": "Vampire 5e system for Foundry VTT!",
   "version": "1.8.2",
-  "minimumCoreVersion": "9.0",
-  "compatibleCoreVersion": "9.0",
+  "compatibility": {
+    "minimum": 10,
+    "verified": "10.0"
+  },
   "templateVersion": 4,
   "author": "Ray Ji",
   "esmodules": ["module/main.js"],
