@@ -1,12 +1,12 @@
 <div class="resource flex-group-center health">
     <div class="flexrow">
         <i class="fas fa-minus resource-control resource-minus" data-resource="health" data-action="minus"></i>
-        <label for="data.data.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
+        <label for="actor.system.health" class="resource-label">{{localize "VTM5E.Health"}}</label>
         <i class="fas fa-plus resource-control resource-plus" data-resource="health" data-action="plus"></i>
     </div>
     <div class="resource-content flexrow flex-center flex-between">
-        <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{data.data.health.max}}" data-superficial="{{data.data.health.superficial}}" data-aggravated="{{data.data.health.aggravated}}" data-name="data.health">
-            {{#numLoop data.data.health.max}}
+        <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{actor.system.health.max}}" data-superficial="{{actor.system.health.superficial}}" data-aggravated="{{actor.system.health.aggravated}}" data-name="system.health">
+            {{#numLoop actor.system.health.max}}
             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
             {{/numLoop}}
         </div>
