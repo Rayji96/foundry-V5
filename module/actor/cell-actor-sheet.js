@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ActorSheet, game, mergeObject, duplicate, renderTemplate, ChatMessage */
+/* global DEFAULT_TOKEN, ActorSheet, game, mergeObject, duplicate, renderTemplate, ChatMessage, TextEditor */
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -44,8 +44,8 @@ export class CellActorSheet extends ActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData () {
-    const data = super.getData()
+  async getData () {
+    const data = await super.getData()
     data.locked = this.locked
     data.isCharacter = this.isCharacter
     data.hasBoons = this.hasBoons
@@ -53,8 +53,18 @@ export class CellActorSheet extends ActorSheet {
 
     data.dtypes = ['String', 'Number', 'Boolean']
 
+    // Encrich editor content
+    data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })
+    data.enrichedTouchstones = await TextEditor.enrichHTML(this.object.system.headers.touchstones, { async: true })
+    data.enrichedBane = await TextEditor.enrichHTML(this.object.system.headers.bane, { async: true })
+    data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, { async: true })
+    data.enrichedAppearance = await TextEditor.enrichHTML(this.object.system.appearance, { async: true })
+
+    data.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, { async: true })
+    data.enrichedEquipment = await TextEditor.enrichHTML(this.object.system.equipment, { async: true })
+
     // Prepare items.
-    if (this.actor.data.type === 'cell') {
+    if (this.actor.type === 'cell') {
       this._prepareItems(data)
     }
 
@@ -86,7 +96,7 @@ export class CellActorSheet extends ActorSheet {
         gear.push(i)
       } else if (i.type === 'feature') {
         // Append to features.
-        features[i.data.featuretype].push(i)
+        features[i.system.featuretype].push(i)
       }
     }
 
@@ -123,9 +133,9 @@ export class CellActorSheet extends ActorSheet {
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
       renderTemplate('systems/wod5e/templates/actor/parts/chat-message.html', {
-        name: item.data.name,
-        img: item.data.img,
-        description: item.data.data.description
+        name: item.name,
+        img: item.img,
+        description: item.system.description
       }).then(html => {
         ChatMessage.create({
           content: html
@@ -176,7 +186,7 @@ export class CellActorSheet extends ActorSheet {
     const states = parseCounterStates(data.states)
     const fields = data.name.split('.')
     const steps = parent.find('.cell-resource-counter-step')
-    const desperation = data.name === 'data.desperation'
+    const desperation = data.name === 'system.desperation'
     const danger = data.name === 'data.danger'
     const fulls = Number(data[states['-']]) || 0
     const halfs = Number(data[states['/']]) || 0
@@ -220,7 +230,7 @@ export class CellActorSheet extends ActorSheet {
     html.find('.cell-resource-counter').each(function () {
       const data = this.dataset
       const states = parseCounterStates(data.states)
-      const desperation = data.name === 'data.desperation'
+      const desperation = data.name === 'system.desperation'
       const danger = data.name === 'data.danger'
 
       const fulls = Number(data[states['-']]) || 0
@@ -256,16 +266,16 @@ export class CellActorSheet extends ActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-      actorData.data[resource].max++
+     actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-      actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
+     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
-    if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
-      actorData.data[resource].aggravated = actorData.data[resource].max - actorData.data[resource].superficial
-      if (actorData.data[resource].aggravated <= 0) {
-        actorData.data[resource].aggravated = 0
-        actorData.data[resource].superficial = actorData.data[resource].max
+    if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
+     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
+      if (actorData.system[resource].aggravated <= 0) {
+       actorData.system[resource].aggravated = 0
+       actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)
@@ -365,10 +375,10 @@ export class CellActorSheet extends ActorSheet {
     const itemData = {
       name: name,
       type: type,
-      data: data
+      system: data
     }
     // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.data.type
+    delete itemData.system.type
 
     // Finally, create the item!
     return this.actor.createEmbeddedDocuments('Item', [itemData])
@@ -379,7 +389,7 @@ export class CellActorSheet extends ActorSheet {
       return `${game.i18n.localize('VTM5E.' + data.featuretype.capitalize())}`
     }
     if (type === 'power') {
-      return `${game.i18n.localize('VTM5E.' + data.discipline.capitalize())}`
+      return `${game.i18n.localize('VTM5E.' + system.discipline.capitalize())}`
     }
     if (type === 'perk') {
       return `${game.i18n.localize('VTM5E.' + data.edge.capitalize())}`
@@ -392,9 +402,9 @@ export class CellActorSheet extends ActorSheet {
     const actorData = duplicate(this.actor)
     // update actor owned items
     if (fields.length === 2 && fields[0] === 'items') {
-      for (const i of actorData.items) {
-        if (fields[1] === i._id) {
-          i.data.points = value
+      for (const item of actorData.items) {
+        if (fields[1] === item._id) {
+          item.system.points = value
           break
         }
       }

@@ -8,7 +8,7 @@
       </div>
     <ol class="items-list">
         <!-- Iterate through each of the discipline lists -->
-        {{#each data.data.disciplines as |discipline key|}}
+        {{#each system.disciplines as |discipline key|}}
             {{#if discipline.visible}}
                 <li class="flexrow item-header">
                     <label for="{{discipline.name}}" 
@@ -17,8 +17,8 @@
                       data-label="{{localize discipline.name}}">{{localize discipline.name}} 
                     </label>
                     <div class="resource-value">
-                        <input type="number" name="data.disciplines.{{key}}.value" 
-                        value="{{discipline.value}}" data-name="data.disciplines.{{key}}.value" />
+                        <input type="number" name="system.disciplines.{{key}}.value" 
+                        value="{{discipline.value}}" data-name="system.disciplines.{{key}}.value" />
                     </div>
                     <!-- Item controls for Discipline sections -->
                     <div class="item-controls">

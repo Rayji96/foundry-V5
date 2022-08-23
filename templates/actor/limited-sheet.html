@@ -10,9 +10,9 @@
     <section class="sheet-body">
         <div class="tab appearance description-content">
             {{#if isCharacter}}
-            {{editor content=data.data.appearance target="data.appearance" button=true owner=owner editable=editable}}
+            {{editor content=system.appearance target="system.appearance" button=true owner=owner editable=editable}}
             {{else}}
-            {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
+            {{editor content=system.biography target="system.biography" button=true owner=owner editable=editable}}
             {{/if}}
         </div>
     </section>

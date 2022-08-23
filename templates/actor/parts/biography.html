@@ -3,44 +3,44 @@
     <div class="resource flexrow grid grid-4col">
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Concept"}}</label>
-            <input type="text" name="data.headers.concept" value="{{data.data.headers.concept}}" />
+            <input type="text" name="system.headers.concept" value="{{system.headers.concept}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Chronicle"}}</label>
-            <input type="text" name="data.headers.chronicle" value="{{data.data.headers.chronicle}}" />
+            <input type="text" name="system.headers.chronicle" value="{{system.headers.chronicle}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Ambition"}}</label>
-            <input type="text" name="data.headers.ambition" value="{{data.data.headers.ambition}}" />
+            <input type="text" name="system.headers.ambition" value="{{system.headers.ambition}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Desire"}}</label>
-            <input type="text" name="data.headers.desire" value="{{data.data.headers.desire}}" />
+            <input type="text" name="system.headers.desire" value="{{system.headers.desire}}" />
         </div>
     </div>
     <div class="resource flexrow grid grid-3col">
-        {{#if data.data.clan.value}}
+        {{#if actor.system.clan.value}}
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Sire"}}</label>
-            <input type="text" name="data.headers.sire" value="{{data.data.headers.sire}}" />
+            <input type="text" name="system.headers.sire" value="{{system.headers.sire}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Generation"}}</label>
-            <input type="text" name="data.headers.generation" value="{{data.data.headers.generation}}" />
+            <input type="text" name="system.headers.generation" value="{{system.headers.generation}}" />
         </div>
         {{/if}}
-        {{#if data.data.headers.cellname}}
+        {{#if system.headers.cellname}}
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Creed"}}</label>
-            <input type="text" name="data.creed.value" value="{{data.data.creed.value}}" />
+            <input type="text" name="data.creed.value" value="{{system.creed.value}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Drive"}}</label>
-            <input type="text" name="data.drive.value" value="{{data.data.drive.value}}" />
+            <input type="text" name="data.drive.value" value="{{system.drive.value}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.Redemption"}}</label>
-            <input type="text" name="data.redemption.value" value="{{data.data.redemption.value}}" />
+            <input type="text" name="data.redemption.value" value="{{system.redemption.value}}" />
         </div>
         {{/if}}
     </div> 
@@ -50,7 +50,7 @@
                 <label class="resource-label ">{{localize "VTM5E.ChronicleTenets"}}</label>
             </div>
             <div class="description-content">
-                {{editor content=data.data.headers.tenets target="data.headers.tenets" button=true owner=owner editable=editable}}
+                {{editor content=system.headers.tenets target="system.headers.tenets" button=true owner=owner editable=editable}}
             </div>
         </div>
         <div class="flex-group-left">
@@ -58,26 +58,26 @@
                 <label class="resource-label">{{localize "VTM5E.TouchstonesAndConvictions"}}</label>
             </div>
             <div class="description-content">
-                {{editor content=data.data.headers.touchstones target="data.headers.touchstones" button=true owner=owner editable=editable}}
+                {{editor content=system.headers.touchstones target="system.headers.touchstones" button=true owner=owner editable=editable}}
             </div>
         </div>
-        {{#if data.data.clan.value}}
+        {{#if actor.system.clan.value}}
         <div class="flex-group-left">
             <div class="flex-center">
                 <label class="resource-label">{{localize "VTM5E.ClanBane"}}</label>
             </div>
             <div class="description-content">
-                {{editor content=data.data.headers.bane target="data.headers.bane" button=true owner=owner editable=editable}}
+                {{editor content=system.headers.bane target="system.headers.bane" button=true owner=owner editable=editable}}
             </div>
         </div>
         {{/if}}
-        {{#if data.data.headers.cellname}}
+        {{#if system.headers.cellname}}
         <div class="flex-group-left">
             <div class="flex-center">
                 <label class="resource-label">{{localize "VTM5E.CreedFields"}}</label>
             </div>
             <div class="description-content">
-                {{editor content=data.data.headers.creedfields target="data.headers.creedfields" button=true owner=owner editable=editable}}
+                {{editor content=system.headers.creedfields target="system.headers.creedfields" button=true owner=owner editable=editable}}
             </div>
         </div>
         {{/if}}
@@ -90,7 +90,7 @@
                 <label class="resource-label">{{localize "VTM5E.Biography"}}</label>
             </div>
             <div class="description-content">
-                {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
+                {{editor content=system.biography target="system.biography" button=true owner=owner editable=editable}}
             </div>
         </div>
         <div class="flex-group-left">
@@ -98,14 +98,14 @@
                 <label class="resource-label">{{localize "VTM5E.Appearance"}}</label>
             </div>
             <div class="description-content">
-                {{editor content=data.data.appearance target="data.appearance" button=true owner=owner editable=editable}}
+                {{editor content=system.appearance target="system.appearance" button=true owner=owner editable=editable}}
             </div>
         </div>
     </div>  
     {{else}}
     <label class="resource-label flex-center">{{localize "VTM5E.History"}}</label>
     <div class="description-content">
-        {{editor content=data.data.biography target="data.biography" button=true owner=owner editable=editable}}
+        {{editor content=system.biography target="system.biography" button=true owner=owner editable=editable}}
     </div>
     {{/if}}
 </div>

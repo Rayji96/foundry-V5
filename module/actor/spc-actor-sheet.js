@@ -49,13 +49,13 @@ export class SPCActorSheet extends CoterieActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData () {
-    const data = super.getData()
+  async getData () {
+    const data = await super.getData()
     // TODO: confirm that I can finish and use this list
     data.sheetType = `${game.i18n.localize('VTM5E.SPC')}`
 
     // Prepare items.
-    if (this.actor.data.type === 'spc') {
+    if (this.actor.type === 'spc') {
       this._prepareItems(data)
     }
 
@@ -100,7 +100,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Make Exceptional Skill hidden
     html.find('.exceptionalskill-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`data.exceptionaldicepools.${data.exceptionalskill}.visible`]: false })
+      this.actor.update({ [`system.exceptionaldicepools.${data.exceptionalskill}.visible`]: false })
     })
 
     // Make Discipline visible
@@ -109,7 +109,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Make Discipline hidden
     html.find('.discipline-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`data.disciplines.${data.discipline}.visible`]: false })
+      this.actor.update({ [`system.disciplines.${system.discipline}.visible`]: false })
     })
   }
 
@@ -121,7 +121,7 @@ export class SPCActorSheet extends CoterieActorSheet {
   _onShowExceptionalSkill (event) {
     event.preventDefault()
     let options = ''
-    for (const [key, value] of Object.entries(this.actor.data.data.exceptionaldicepools)) {
+    for (const [key, value] of Object.entries(this.actor.system.exceptionaldicepools)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
@@ -140,7 +140,7 @@ export class SPCActorSheet extends CoterieActorSheet {
         label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
           const exceptionalskill = html.find('#skillSelect')[0].value
-          this.actor.update({ [`data.exceptionaldicepools.${exceptionalskill}.visible`]: true })
+          this.actor.update({ [`system.exceptionaldicepools.${exceptionalskill}.visible`]: true })
         }
       },
       cancel: {
@@ -169,7 +169,7 @@ export class SPCActorSheet extends CoterieActorSheet {
   _onShowDiscipline (event) {
     event.preventDefault()
     let options = ''
-    for (const [key, value] of Object.entries(this.actor.data.data.disciplines)) {
+    for (const [key, value] of Object.entries(this.actor.system.disciplines)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
@@ -188,7 +188,7 @@ export class SPCActorSheet extends CoterieActorSheet {
         label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
           const discipline = html.find('#disciplineSelect')[0].value
-          this.actor.update({ [`data.disciplines.${discipline}.visible`]: true })
+          this.actor.update({ [`system.disciplines.${discipline}.visible`]: true })
         }
       },
       cancel: {
@@ -230,7 +230,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     const states = parseCounterStates(data.states)
     const fields = data.name.split('.')
     const steps = parent.find('.resource-counter-step')
-    const humanity = data.name === 'data.humanity'
+    const humanity = data.name === 'system.humanity'
     const fulls = Number(data[states['-']]) || 0
     const halfs = Number(data[states['/']]) || 0
     const crossed = Number(data[states.x]) || 0
@@ -273,7 +273,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     html.find('.resource-counter').each(function () {
       const data = this.dataset
       const states = parseCounterStates(data.states)
-      const humanity = data.name === 'data.humanity'
+      const humanity = data.name === 'system.humanity'
 
       const fulls = Number(data[states['-']]) || 0
       const halfs = Number(data[states['/']]) || 0
@@ -305,16 +305,16 @@ export class SPCActorSheet extends CoterieActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-      actorData.data[resource].max++
+     actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-      actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
+     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
-    if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
-      actorData.data[resource].aggravated = actorData.data[resource].max - actorData.data[resource].superficial
-      if (actorData.data[resource].aggravated <= 0) {
-        actorData.data[resource].aggravated = 0
-        actorData.data[resource].superficial = actorData.data[resource].max
+    if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
+     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
+      if (actorData.system[resource].aggravated <= 0) {
+       actorData.system[resource].aggravated = 0
+       actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)

@@ -581,8 +581,8 @@ function rerollDie (roll) {
   // Theoretically I should error-check this, but there shouldn't be any
   // messages that call for a WillpowerReroll without an associated actor
   const message = game.messages.get(roll.attr('data-message-id'))
-  const speaker = game.actors.get(message.data.speaker.actor, {strict: true})
-  const charactertype = getProperty(speaker, 'data.type', {strict: true})
+  const speaker = game.actors.get(message.speaker.actor, {strict: true})
+  const charactertype = getProperty(speaker, 'type', {strict: true})
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
   if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== "hunter") {
@@ -591,7 +591,7 @@ function rerollDie (roll) {
     rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
   }
 
-  //const summonerMod = getProperty(tokenD.actor, `data.data.abilities.${getProperty(tokenD.actor, 'data.data.attributes.spellcasting')}.mod`);
+  //const summonerMod = getProperty(tokenD.actor, `system.abilities.${getProperty(tokenD.actor, 'system.attributes.spellcasting')}.mod`);
 }
 
 /* -------------------------------------------- */
@@ -608,7 +608,7 @@ function rerollDie (roll) {
 async function createVampireMacro (data, slot) {
   if (data.type !== 'Item') return
   if (!('data' in data)) return ui.notifications.warn('You can only create macro buttons for owned Items')
-  const item = data.data
+  const item = system
 
   // Create the macro command
   const command = `game.vtm5e.rollItemMacro("${item.name}");`

@@ -49,13 +49,13 @@ export class HunterActorSheet extends CellActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData () {
-    const data = super.getData()
+  async getData () {
+    const data = await super.getData()
     // TODO: confirm that I can finish and use this list
     data.sheetType = `${game.i18n.localize('VTM5E.Hunter')}`
 
     // Prepare items.
-    if (this.actor.data.type === 'hunter') {
+    if (this.actor.type === 'hunter') {
       this._prepareItems(data)
     }
 
@@ -107,10 +107,10 @@ export class HunterActorSheet extends CellActorSheet {
         customRolls.push(i)
       } else if (i.type === 'perk') {
         // Append to edges.
-        if (i.data.edge !== undefined) {
-          edges[i.data.edge].push(i)
-          if (!this.actor.data.data.edges[i.data.edge].visible) {
-            this.actor.update({ [`data.edges.${i.data.edge}.visible`]: true })
+        if (i.system.edge !== undefined) {
+          edges[i.system.edge].push(i)
+          if (!this.actor.system.edges[i.system.edge].visible) {
+            this.actor.update({ [`system.edges.${i.system.edge}.visible`]: true })
           }
         }
       }
@@ -142,13 +142,13 @@ export class HunterActorSheet extends CellActorSheet {
     // Make Edge hidden
     html.find('.edge-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`data.edges.${data.edge}.visible`]: false })
+      this.actor.update({ [`system.edges.${data.edge}.visible`]: false })
     })
 
     // Post Edge description to the chat
     html.find('.edge-chat').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      const edge = this.actor.data.data.edges[data.edge]
+      const edge = this.actor.system.edges[data.edge]
 
       renderTemplate('systems/wod5e/templates/actor/parts/chat-message.html', {
         name: game.i18n.localize(edge.name),
@@ -185,11 +185,11 @@ export class HunterActorSheet extends CellActorSheet {
     const dataset = element.dataset
     let options = ''
 
-    for (const [key, value] of Object.entries(this.actor.data.data.abilities)) {
+    for (const [key, value] of Object.entries(this.actor.system.abilities)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
-    const despair = Object.values(this.actor.data.data.despair)
+    const despair = Object.values(this.actor.system.despair)
     const despairstring = despair.toString()
     
     if (despairstring === '1') {
@@ -246,8 +246,8 @@ export class HunterActorSheet extends CellActorSheet {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const desperationDice = parseInt(html.find('#inputDespMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const abilityVal = this.actor.data.data.abilities[ability].value
-          const abilityName = game.i18n.localize(this.actor.data.data.abilities[ability].name)
+          const abilityVal = this.actor.system.abilities[ability].value
+          const abilityName = game.i18n.localize(this.actor.system.abilities[ability].name)
           const numDice = abilityVal + parseInt(dataset.roll) + modifier
           rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, desperationDice, this.hunger)
         }
@@ -287,13 +287,13 @@ export class HunterActorSheet extends CellActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     if (dataset.dice1 === '') {
-      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       dataset.roll = dice2 + 1 // specialty modifier
       dataset.label = dataset.name
       this._onRollDialog(event)
     } else {
-      const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
-      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      const dice1 = this.actor.system.abilities[dataset.dice1.toLowerCase()].value
+      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
       rollHunterDice(dicePool, this.actor, `${dataset.name}`, 0, desperationDice, this.hunger)
     }
@@ -309,7 +309,7 @@ export class HunterActorSheet extends CellActorSheet {
     const states = parseCounterStates(data.states)
     const fields = data.name.split('.')
     const steps = parent.find('.resource-counter-step')
-    const despair = data.name === 'data.despair'
+    const despair = data.name === 'system.despair'
     const fulls = Number(data[states['-']]) || 0
     const halfs = Number(data[states['/']]) || 0
     const crossed = Number(data[states.x]) || 0
@@ -352,7 +352,7 @@ export class HunterActorSheet extends CellActorSheet {
     html.find('.resource-counter').each(function () {
       const data = this.dataset
       const states = parseCounterStates(data.states)
-      const despair = data.name === 'data.despair'
+      const despair = data.name === 'system.despair'
 
       const fulls = Number(data[states['-']]) || 0
       const halfs = Number(data[states['/']]) || 0
@@ -383,16 +383,16 @@ export class HunterActorSheet extends CellActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-      actorData.data[resource].max++
+     actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-      actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
+     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
-    if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
-      actorData.data[resource].aggravated = actorData.data[resource].max - actorData.data[resource].superficial
-      if (actorData.data[resource].aggravated <= 0) {
-        actorData.data[resource].aggravated = 0
-        actorData.data[resource].superficial = actorData.data[resource].max
+    if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
+     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
+      if (actorData.system[resource].aggravated <= 0) {
+       actorData.system[resource].aggravated = 0
+       actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)
@@ -406,7 +406,7 @@ export class HunterActorSheet extends CellActorSheet {
   _onShowEdge (event) {
     event.preventDefault()
     let options = ''
-    for (const [key, value] of Object.entries(this.actor.data.data.edges)) {
+    for (const [key, value] of Object.entries(this.actor.system.edges)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
@@ -425,7 +425,7 @@ export class HunterActorSheet extends CellActorSheet {
         label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
           const edge = html.find('#edgeSelect')[0].value
-          this.actor.update({ [`data.edges.${edge}.visible`]: true })
+          this.actor.update({ [`system.edges.${edge}.visible`]: true })
         }
       },
       cancel: {
@@ -449,21 +449,21 @@ export class HunterActorSheet extends CellActorSheet {
     const item = this.actor.items.get(dataset.id)
     const edgeValue = 1
 
-    const dice1 = item.data.data.dice1 === 'edge' ? edgeValue : this.actor.data.data.abilities[item.data.data.dice1].value
+    const dice1 = item.system.dice1 === 'edge' ? edgeValue : this.actor.system.abilities[item.system.dice1].value
 
     let dice2
-    if (item.data.data.dice2 === 'edge') {
+    if (item.system.dice2 === 'edge') {
       dice2 = edgeValue
-    } else if (item.data.data.skill) {
-      dice2 = this.actor.data.data.skills[item.data.data.dice2].value
-    } else if (item.data.data.amalgam) {
-      dice2 = this.actor.data.data.edges[item.data.data.dice2].value
+    } else if (item.system.skill) {
+      dice2 = this.actor.system.skills[item.system.dice2].value
+    } else if (item.system.amalgam) {
+      dice2 = this.actor.system.edges[item.system.dice2].value
     } else {
-      dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
+      dice2 = this.actor.system.abilities[item.system.dice2].value
     }
 
     const dicePool = dice1 + dice2
-    rollHunterDice(dicePool, this.actor, `${item.data.name}`, 0)
+    rollHunterDice(dicePool, this.actor, `${item.name}`, 0)
   }
 }
 

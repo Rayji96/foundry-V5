@@ -11,8 +11,8 @@
 export async function rollBasicDice (numDice, actor, label = '', difficulty = 0, subtractWillpower = false) {
   // Roll defining and evaluating
   const dice = numDice
-  const roll = new Roll(dice + 'dvcs>5', actor.data.data)
-  await roll.evaluate()
+  const roll = new Roll(dice + 'dvcs>5', actor.system)
+ await roll.evaluate({ async: true })
 
   // Variable defining
   let difficultyResult = '<span></span>'
@@ -82,7 +82,7 @@ export async function rollBasicDice (numDice, actor, label = '', difficulty = 0,
   // Automatically track willpower damage as a result of willpower rerolls
   if (subtractWillpower && game.settings.get('vtm5e', 'automatedWillpower')) {
     // Get the actor's willpower and define it for convenience
-    const actorWillpower = actor.data.data.willpower
+    const actorWillpower = actor.system.willpower
     const maxWillpower = actorWillpower.max
     const aggrWillpower = actorWillpower.aggravated
     const superWillpower = actorWillpower.superficial
@@ -103,7 +103,7 @@ export async function rollBasicDice (numDice, actor, label = '', difficulty = 0,
         const newWillpower = superWillpower + 1
 
         // Update the actor sheet
-        actor.update({ 'data.willpower.superficial': newWillpower })
+        actor.update({ 'system.willpower.superficial': newWillpower })
       } else {
         // If there aren't any superficial boxes left, add an aggravated one
 
@@ -114,8 +114,8 @@ export async function rollBasicDice (numDice, actor, label = '', difficulty = 0,
         const newAggrWillpower = aggrWillpower + 1
 
         // Update the actor sheet
-        actor.update({ 'data.willpower.superficial': newSuperWillpower })
-        actor.update({ 'data.willpower.aggravated': newAggrWillpower })
+        actor.update({ 'system.willpower.superficial': newSuperWillpower })
+        actor.update({ 'system.willpower.aggravated': newAggrWillpower })
       }
     }
   }

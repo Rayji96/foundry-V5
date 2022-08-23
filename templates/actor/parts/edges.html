@@ -12,7 +12,7 @@
             </div>
         </li>
         <!-- Iterate through each of the edge lists -->
-        {{#each data.data.edges as |edge key|}}
+        {{#each system.edges as |edge key|}}
             {{#if edge.visible}}
                 <li class="flexrow item-header">
                     <div class="item-name collapsible">
@@ -43,7 +43,7 @@
                     <li class="item flexcol" data-item-id="{{item._id}}">
                         <div class="flexrow">
                             <!-- Whether the button is clickable or not to post the perk in chat -->
-                            {{#if item.data.rollable}}
+                            {{#if item.system.rollable}}
                                 <div class="item-image perk-rollable" data-id="{{item._id}}" data-use-hunger="1">
                                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                                 </div>
@@ -72,7 +72,7 @@
                         </div>
                         <!-- Perk description, expandable by a collapse -->
                         <div class="collapsible-content">
-                            {{{item.data.description}}}
+                            {{{item.system.description}}}
                         </div>
                     </li>
                 {{/each}}

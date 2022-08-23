@@ -49,13 +49,13 @@ export class MortalActorSheet extends CoterieActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData () {
-    const data = super.getData()
+  async getData () {
+    const data = await super.getData()
     // TODO: confirm that I can finish and use this list
     data.sheetType = `${game.i18n.localize('VTM5E.Mortal')}`
 
     // Prepare items.
-    if (this.actor.data.type === 'mortal') {
+    if (this.actor.type === 'mortal') {
       this._prepareItems(data)
     }
 
@@ -136,7 +136,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     const dataset = element.dataset
     let options = ''
 
-    for (const [key, value] of Object.entries(this.actor.data.data.abilities)) {
+    for (const [key, value] of Object.entries(this.actor.system.abilities)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
@@ -165,8 +165,8 @@ export class MortalActorSheet extends CoterieActorSheet {
           const ability = html.find('#abilitySelect')[0].value
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const abilityVal = this.actor.data.data.abilities[ability].value
-          const abilityName = game.i18n.localize(this.actor.data.data.abilities[ability].name)
+          const abilityVal = this.actor.system.abilities[ability].value
+          const abilityName = game.i18n.localize(this.actor.system.abilities[ability].name)
           const numDice = abilityVal + parseInt(dataset.roll) + modifier
           rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, this.hunger)
           // this._vampireRoll(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
@@ -254,13 +254,13 @@ export class MortalActorSheet extends CoterieActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     if (dataset.dice1 === '') {
-      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       dataset.roll = dice2 + 1 // specialty modifier
       dataset.label = dataset.name
       this._onRollDialog(event)
     } else {
-      const dice1 = this.actor.data.data.abilities[dataset.dice1.toLowerCase()].value
-      const dice2 = this.actor.data.data.skills[dataset.dice2.toLowerCase()].value
+      const dice1 = this.actor.system.abilities[dataset.dice1.toLowerCase()].value
+      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
       rollDice(dicePool, this.actor, `${dataset.name}`, 0, this.hunger)
     }
@@ -276,7 +276,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     const states = parseCounterStates(data.states)
     const fields = data.name.split('.')
     const steps = parent.find('.resource-counter-step')
-    const humanity = data.name === 'data.humanity'
+    const humanity = data.name === 'system.humanity'
     const fulls = Number(data[states['-']]) || 0
     const halfs = Number(data[states['/']]) || 0
     const crossed = Number(data[states.x]) || 0
@@ -319,7 +319,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     html.find('.resource-counter').each(function () {
       const data = this.dataset
       const states = parseCounterStates(data.states)
-      const humanity = data.name === 'data.humanity'
+      const humanity = data.name === 'system.humanity'
 
       const fulls = Number(data[states['-']]) || 0
       const halfs = Number(data[states['/']]) || 0
@@ -351,16 +351,16 @@ export class MortalActorSheet extends CoterieActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-      actorData.data[resource].max++
+     actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-      actorData.data[resource].max = Math.max(actorData.data[resource].max - 1, 0)
+     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
-    if (actorData.data[resource].aggravated + actorData.data[resource].superficial > actorData.data[resource].max) {
-      actorData.data[resource].aggravated = actorData.data[resource].max - actorData.data[resource].superficial
-      if (actorData.data[resource].aggravated <= 0) {
-        actorData.data[resource].aggravated = 0
-        actorData.data[resource].superficial = actorData.data[resource].max
+    if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
+     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
+      if (actorData.system[resource].aggravated <= 0) {
+       actorData.system[resource].aggravated = 0
+       actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)

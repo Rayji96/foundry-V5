@@ -12,7 +12,7 @@ export class VampireActor extends Actor {
     super.prepareData()
 
     // const actorData = this.data
-    // const data = actorData.data;
+    // const data = actorData.system;
     // const flags = actorData.flags;
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
@@ -24,7 +24,7 @@ export class VampireActor extends Actor {
      * Prepare Character type specific data
      */
   // _prepareCharacterData(actorData) {
-  //     const data = actorData.data;
+  //     const data = actorData.system;
 
   //     // Make modifications to data here. For example:
 
@@ -46,7 +46,7 @@ export class VampireActor extends Actor {
     // Collect data
     const documentName = this.metadata.name
     const types = game.system.documentTypes[documentName]
-    const folders = game.folders.filter(f => (f.data.type === documentName) && f.displayed)
+    const folders = game.folders.filter(f => (f.type === documentName) && f.displayed)
     const label = game.i18n.localize(this.metadata.label)
     const title = game.i18n.format('DOCUMENT.Create', { type: label })
 
