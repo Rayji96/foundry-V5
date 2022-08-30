@@ -92,13 +92,13 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/hunter-normal-crit.png" alt="Normal Crit" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-crit.png" alt="Normal Crit" class="roll-img normal-dice" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/hunter-normal-success.png" alt="Normal Success" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" alt="Normal Success" class="roll-img normal-dice" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img normal-dice" />'
   }
 
   // Separator
@@ -106,16 +106,16 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
 
   // Run through displaying Desperation dice
   for (let i = 0, j = desperationCritSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/hunter-orange-crit.png" alt="Desperation Crit" class="roll-img desperation-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-orange-crit.png" alt="Desperation Crit" class="roll-img desperation-dice" />'
   }
   for (let i = 0, j = desperationSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/hunter-orange-success.png" alt="Desperation Success" class="roll-img desperation-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-orange-success.png" alt="Desperation Success" class="roll-img desperation-dice" />'
   }
   for (let i = 0, j = desperationCritFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/desperation-fail.png" alt="Desperation Critical Fail" class="roll-img desperation-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/desperation-fail.png" alt="Desperation Critical Fail" class="roll-img desperation-dice" />'
   }
   for (let i = 0, j = desperationFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/wod5e/assets/images/red-fail.png" alt="Desperation Fail" class="roll-img desperation-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Desperation Fail" class="roll-img desperation-dice" />'
   }
 
   // Post the message to the chat
