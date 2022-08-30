@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject */
+/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject, TextEditor */
 
 // Export this function to be used in other scripts
 import { CoterieActorSheet } from './coterie-actor-sheet.js'
@@ -22,7 +22,7 @@ export class MortalActorSheet extends CoterieActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/wod5e/templates/actor/mortal-sheet.html',
+      template: 'systems/vtm5e/templates/actor/mortal-sheet.html',
       width: 800,
       height: 700,
       tabs: [{
@@ -42,8 +42,8 @@ export class MortalActorSheet extends CoterieActorSheet {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/wod5e/templates/actor/limited-sheet.html'
-    return 'systems/wod5e/templates/actor/mortal-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
+    return 'systems/vtm5e/templates/actor/mortal-sheet.html'
   }
 
   /* -------------------------------------------- */
@@ -111,7 +111,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
-    // Resource squares (Health, Willpower)
+    // Ressource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
     html.find('.resource-minus').click(this._onResourceChange.bind(this))
@@ -351,16 +351,16 @@ export class MortalActorSheet extends CoterieActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-     actorData.system[resource].max++
+      actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
+      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
     if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
-     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
+      actorData.system[resource].aggravated = actorData.system[resource].max - actorData.system[resource].superficial
       if (actorData.system[resource].aggravated <= 0) {
-       actorData.system[resource].aggravated = 0
-       actorData.system[resource].superficial = actorData.system[resource].max
+        actorData.system[resource].aggravated = 0
+        actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)

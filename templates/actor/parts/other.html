@@ -5,7 +5,7 @@
                 <label class="resource-label">{{localize "VTM5E.Notes"}}</label>
             </div>
             <div class="description-content">
-                {{editor content=system.notes target="data.notes" button=true owner=owner editable=editable}}
+                {{editor enrichedNotes target="system.notes" button=true editable=editable}}
             </div>
         </div>
         <div class="flex-group-left">
@@ -13,7 +13,7 @@
                 <label class="resource-label">{{localize "VTM5E.Equipment"}}</label>
             </div>
             <div class="description-content">
-                {{editor content=system.equipment target="data.equipment" button=true owner=owner editable=editable}}
+                {{editor enrichedEquipment target="system.equipment" button=true editable=editable}}
             </div>
         </div>
     </div>

@@ -91,7 +91,7 @@ export function prepareSearchableSelection (id, $content, data, callback) {
 }
 
 export function watchPool1Filters ($content, data) {
-  $content.find('.pool1Filters input[type=radio]').on('change', event => {
+  $content.find('.pool1-filters input[type=radio]').on('change', event => {
     event.preventDefault()
     data.pool1Type = event.target.value
     data.updateDiceTray(data)
@@ -99,7 +99,7 @@ export function watchPool1Filters ($content, data) {
 }
 
 export function watchPool2Filters ($content, data) {
-  $content.find('.pool2Filters input[type=radio]').on('change', event => {
+  $content.find('.pool2-filters input[type=radio]').on('change', event => {
     event.preventDefault()
     data.pool2Type = event.target.value
     data.updateDiceTray(data)

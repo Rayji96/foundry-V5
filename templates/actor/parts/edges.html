@@ -36,7 +36,7 @@
                 </li>
                 <!-- Edge description -->
                 <div class="collapsible-content">
-                    <textarea class="edge-description" name="data.edges.{{key}}.description">{{edge.description}}</textarea>
+                    <textarea class="edge-description" name="system.edges.{{key}}.description">{{edge.description}}</textarea>
                 </div>
                 <!-- Iterate through each of the edge perks -->
                 {{#each (lookup ../actor.edges_list key) as |item id|}}

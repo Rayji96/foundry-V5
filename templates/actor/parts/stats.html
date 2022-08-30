@@ -1,12 +1,12 @@
 <div class="tab flex-center" data-group="primary" data-tab="stats">
     <label class="resource-label">{{localize "VTM5E.Attributes"}}</label>
     <div class="abilities grid grid-3col flex-group-center">
-        {{#each system.abilities as |ability key|}}
+        {{#each actor.system.abilities as |ability key|}}
         <div class="ability flexrow flex-center">
-            <label for="system.abilities.{{key}}.value" class="resource-label vrollable"
+            <label for="actor.system.abilities.{{key}}.value" class="resource-label vrollable"
                 data-roll="{{ability.value}}" data-label="{{localize ability.name}}">{{localize
                 ability.name}}</label>
-            <div class="resource-value" data-value="{{ability.value}}" data-name="data.abilities.{{key}}.value">
+            <div class="resource-value" data-value="{{ability.value}}" data-name="system.abilities.{{key}}.value">
                 <span class="resource-value-empty"></span>
                 {{#numLoop 5}}
                 <span class="resource-value-step" data-index="{{this}}"></span>
@@ -18,9 +18,9 @@
 
     <label class="resource-label">{{localize "VTM5E.Skills"}}</label>
     <div class="skills grid grid-3col flex-group-center">
-        {{#each system.skills as |skill key|}}
+        {{#each actor.system.skills as |skill key|}}
         <div class="skill flexrow flex-center">
-            <label for="system.skills.{{key}}.value" class="resource-label vrollable" data-roll="{{skill.value}}"
+            <label for="actor.system.skills.{{key}}.value" class="resource-label vrollable" data-roll="{{skill.value}}"
                 data-label="{{localize skill.name}}">{{localize skill.name}}</label>
             <div class="resource-value" data-value="{{skill.value}}" data-name="system.skills.{{key}}.value">
                 <span class="resource-value-empty"></span>
@@ -76,12 +76,12 @@
         </li>
         {{#each actor.customRolls as |roll id|}}
         <li class="item flexrow" data-item-id="{{roll._id}}">
-            <div class="item-image custom-rollable" data-dice1="{{roll.data.dice1}}" data-dice2="{{roll.data.dice2}}" data-name="{{roll.name}}">
+            <div class="item-image custom-rollable" data-dice1="{{roll.system.dice1}}" data-dice2="{{roll.system.dice2}}" data-name="{{roll.name}}">
                 <img src="{{roll.img}}" title="{{roll.name}}" width="24" height="24" alt="{{roll.name}}" />
             </div>
             <h4 class="item-name">{{roll.name}}</h4>
-            <h4 class="item-name">{{localize (generateSkillLabel roll.data.dice1)}}</h4>
-            <h4 class="item-name">{{localize (generateSkillLabel roll.data.dice2)}}</h4>
+            <h4 class="item-name">{{localize (generateSkillLabel roll.system.dice1)}}</h4>
+            <h4 class="item-name">{{localize (generateSkillLabel roll.system.dice2)}}</h4>
             <div class="item-controls">
                 <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}"><i
                         class="fas fa-edit"></i></a>

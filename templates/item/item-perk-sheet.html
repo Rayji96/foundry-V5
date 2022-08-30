@@ -8,8 +8,8 @@
                 <!-- Select the edge this perk belongs to -->
                 <div class="edge">
                     <select name="data.edge" data-type="String">
-                        {{#select system.edge}}
-                        {{> "systems/wod5e/templates/item/parts/edges.html"}}
+                        {{#select item.system.edge}}
+                        {{> "systems/vtm5e/templates/item/parts/edges.html"}}
                         {{/select}}
                     </select>
                 </div>
@@ -28,17 +28,17 @@
 
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
-            <!-- it's a bit clunky trying to break things up. Easier to implement expanding perks with just one description too-->
+            <!-- it's a bit clunky trying to break things up. Easier to implement expanding powers with just one description too-->
             <!-- <label class="resource-label">{{localize "VTM5E.Cost"}}: </label>
             <div class="half-height">
-            {{editor content=data.cost target="data.cost" button=true owner=owner editable=editable}}
+            {{editor endirchedCost target="data.cost" button=true editable=editable}}
             </div>
             <label class="resource-label">{{localize "VTM5E.Duration"}}: </label>
             <div class="half-height">
-            {{editor content=data.duration target="data.duration" button=true owner=owner editable=editable}}
+            {{editor enrichedDuration target="data.duration" button=true editable=editable}}
             </div> -->
             <!-- <label class="resource-label">{{localize "VTM5E.System"}}: </label> -->
-            {{editor content=system.description target="system.description" button=true owner=owner editable=editable}}
+            {{editor enrichedDescription target="system.description" button=true editable=editable}}
         </div>
 
         {{!-- Attributes Tab --}}
@@ -48,48 +48,48 @@
                 <!-- Define the system that the perk uses -->
                 <label class="resource-label">{{localize "VTM5E.System"}}: </label>
                 <select name="data.dice1" data-type="String">
-                    {{#select system.dice1}}
-                    {{> "systems/wod5e/templates/item/parts/attributes.html"}}
-                    <option value="edge">{{localize (getEdgeName item.system.edge)}}</option>
+                    {{#select item.system.dice1}}
+                    {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
+                    <option value="edge">{{localize (getEdgeName item.item.system.edge)}}</option>
                     {{/select}}
                 </select>
                 <label class="resource-label">+</label>
-                {{#if system.skill}}
+                {{#if item.system.skill}}
                     <select name="data.dice2" data-type="String">
                         {{#select system.dice2}}
-                        {{> "systems/wod5e/templates/item/parts/skills.html"}}
+                        {{> "systems/vtm5e/templates/item/parts/skills.html"}}
                         {{/select}}
                     </select>
-                {{else if system.amalgam}}
+                {{else if item.system.amalgam}}
                     <select name="data.dice2" data-type="String">
                         {{#select system.dice2}}
-                        {{> "systems/wod5e/templates/item/parts/edges.html"}}
+                        {{> "systems/vtm5e/templates/item/parts/edges.html"}}
                         {{/select}}
                     </select>
                 {{else}}
                     <select name="data.dice2" data-type="String">
-                        {{#select system.dice2}}
-                        {{> "systems/wod5e/templates/item/parts/attributes.html"}}
-                        <option value="edge">{{localize (getEdgeName item.system.edge)}}</option>
+                        {{#select item.system.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
+                        <option value="edge">{{localize (getEdgeName item.item.system.edge)}}</option>
                         {{/select}}
                     </select>
                 {{/if}}
 
                 <!-- Rollable or not -->
                 <label class="resource-label">{{localize "VTM5E.Rollable"}}: </label>
-                <input type="checkbox" id="data.rollable" name="data.rollable" {{checked system.rollable}}>
+                <input type="checkbox" id="system.rollable" name="system.rollable" {{checked system.rollable}}>
 
                 <!-- Whether the "system" option uses skills or not -->
                 <label class="resource-label">{{localize "VTM5E.UseSkill"}}: </label>
-                {{#if system.amalgam}}
-                    <input type="checkbox" id="data.skill" name="data.skill" disabled {{checked system.skill}}>
+                {{#if item.system.amalgam}}
+                    <input type="checkbox" id="system.skill" name="system.skill" disabled {{checked system.skill}}>
                 {{else}}
-                    <input type="checkbox" id="data.skill" name="data.skill" {{checked system.skill}}>
+                    <input type="checkbox" id="system.skill" name="system.skill" {{checked system.skill}}>
                 {{/if}}
 
                 <!-- Adds other edge options to the "system" option -->
                 <label class="resource-label">{{localize "VTM5E.Amalgam"}}: </label>
-                {{#if system.skill}}
+                {{#if item.system.skill}}
                     <input type="checkbox" id="system.amalgam" name="system.amalgam" disabled {{checked system.amalgam}}>
                 {{else}}
                   <input type="checkbox" id="system.amalgam" name="system.amalgam" {{checked system.amalgam}}>

@@ -245,8 +245,8 @@
 }
 
 .vtm5e .window-content .sheet-body .tab > .resource-label {
-  color: #000;
-  border-bottom: 1px solid #000;
+  color: #790813;
+  border-bottom: 1px solid #790813;
   width: 100%;
   display: block;
   text-transform: uppercase;
@@ -398,8 +398,8 @@
   min-height: 30px;
   line-height: 24px;
   padding: 3px 0;
-  border-bottom: 1px solid #000;
-  color: #000;
+  border-bottom: 1px solid #790813;
+  color: #790813;
 }
 
 .vtm5e .items-list .item-header .header-level {
@@ -697,5 +697,6 @@
 }
 
 #sidebar.app {
-  background: rgb(0 0 0 / 60%);
+  background: rgb(20 0 0 / 90%);
+
 }

@@ -1,6 +1,6 @@
 <div class="dice-tray-searchable-select">
     <select id="pool2" class="dice-tray-select" name="pool2">
-        {{#each (sortAbilities (visibleDisciplines selectedCharacter.system.disciplines)) as |discipline|}}
+        {{#each (sortAbilities (visibleDisciplines selectedCharacter.actor.system.disciplines)) as |discipline|}}
             {{#if (eq @root.pool2 @key)}}
                 <option value="{{@key}}" selected>{{localize discipline.name}}</option>
             {{else}}
@@ -14,7 +14,7 @@
         <div class="dice-tray-searchable-select-hover"></div>
         <div id="pool2Fields" class="dice-tray-searchable-select-fields">
             <ul class="dice-tray-searchable-select-options">
-                {{#each (sortAbilities (visibleDisciplines selectedCharacter.system.disciplines)) as |discipline|}}
+                {{#each (sortAbilities (visibleDisciplines selectedCharacter.actor.system.disciplines)) as |discipline|}}
                     <li tabindex="-1" value="{{@key}}" title="{{localize discipline.name}}">
                         {{localize discipline.name}}
                     </li>

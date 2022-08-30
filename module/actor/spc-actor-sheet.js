@@ -22,7 +22,7 @@ export class SPCActorSheet extends CoterieActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/wod5e/templates/actor/spc-sheet.html',
+      template: 'systems/vtm5e/templates/actor/spc-sheet.html',
       width: 800,
       height: 700,
       tabs: [{
@@ -42,8 +42,8 @@ export class SPCActorSheet extends CoterieActorSheet {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/wod5e/templates/actor/limited-sheet.html'
-    return 'systems/wod5e/templates/actor/spc-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
+    return 'systems/vtm5e/templates/actor/spc-sheet.html'
   }
 
   /* -------------------------------------------- */

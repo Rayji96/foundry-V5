@@ -320,27 +320,25 @@ Hooks.once('ready', async function () {
 })
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
-  dice3d.addSystem({id: 'wod5e', name: 'WoD5e'}, true)
-
+  dice3d.addSystem({ id: 'vtm5e', name: 'VtM5e' }, true)
   dice3d.addDicePreset({
     type: 'dv',
     labels: [
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-success-dsn.png',
-      'systems/wod5e/assets/images/normal-success-dsn.png',
-      'systems/wod5e/assets/images/normal-success-dsn.png',
-      'systems/wod5e/assets/images/normal-success-dsn.png',
-      'systems/wod5e/assets/images/normal-crit-dsn.png'
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
     colorset: 'black',
     fontScale: 0.5,
-    system: 'wod5e'
+    system: 'vtm5e'
   })
-
   dice3d.addColorset({
     name: 'hunger',
     description: 'V5 Hunger Dice',
@@ -360,38 +358,38 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   dice3d.addDicePreset({
     type: 'dg',
     labels: [
-      'systems/wod5e/assets/images/bestial-fail-dsn.png',
-      'systems/wod5e/assets/images/red-fail-dsn.png',
-      'systems/wod5e/assets/images/red-fail-dsn.png',
-      'systems/wod5e/assets/images/red-fail-dsn.png',
-      'systems/wod5e/assets/images/red-fail-dsn.png',
-      'systems/wod5e/assets/images/red-success-dsn.png',
-      'systems/wod5e/assets/images/red-success-dsn.png',
-      'systems/wod5e/assets/images/red-success-dsn.png',
-      'systems/wod5e/assets/images/red-success-dsn.png',
-      'systems/wod5e/assets/images/red-crit-dsn.png'
+      'systems/vtm5e/assets/images/bestial-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-crit-dsn.png'
     ],
     colorset: 'hunger',
-    system: 'wod5e'
+    system: 'vtm5e'
   })
 
   dice3d.addDicePreset({
     type: 'dh',
     labels: [
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/normal-fail-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-crit-dsn.png'
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
     colorset: 'black',
     fontScale: 0.5,
-    system: 'wod5e'
+    system: 'vtm5e'
   })
 
   dice3d.addColorset({
@@ -413,21 +411,22 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   dice3d.addDicePreset({
     type: 'ds',
     labels: [
-      'systems/wod5e/assets/images/desperation-fail-dsn.png',
-      'systems/wod5e/assets/images/red-fail-dsn.png',
-      'systems/wod5e/assets/images/red-fail-dsn.png',
-      'systems/wod5e/assets/images/red-fail-dsn.png',
-      'systems/wod5e/assets/images/red-fail-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/wod5e/assets/images/hunter-normal-crit-dsn.png'
+      'systems/vtm5e/assets/images/desperation-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
     colorset: 'desperation',
-    system: 'wod5e'
+    system: 'vtm5e'
   })
 })
+
 
 /* -------------------------------------------- */
 /*  Add chat dicebox                            */
@@ -438,7 +437,7 @@ Hooks.on('renderSidebarTab', (app, html) => {
   }
 
   const $chatForm = html.find('#chat-form')
-  const template = 'systems/wod5e/templates/ui/tray.html'
+  const template = 'systems/vtm5e/templates/ui/tray.html'
   const ownedCharacters = Array.from(game.actors)
     .filter((c) => c.permission === OWNED_PERMISSION)
   const options = {
@@ -458,11 +457,11 @@ Hooks.on('renderSidebarTab', (app, html) => {
           prepareSearchableSelection('selectedCharacter', $content, options, (event) => game.actors.get(event.target.value))
 
           prepareSearchableSelection('pool1', $content, options, (event) => event.target.value)
-
-          watchPool1Filters($content, options)
           options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find('#pool1 option').attr('value')
           prepareSearchableSelection('pool2', $content, options, (event) => event.target.value)
           options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find('#pool2 option').attr('value')
+          
+          watchPool1Filters($content, options)
           watchPool2Filters($content, options)
 
           prepareCustomRollButton($content, options)
@@ -581,17 +580,16 @@ function rerollDie (roll) {
   // Theoretically I should error-check this, but there shouldn't be any
   // messages that call for a WillpowerReroll without an associated actor
   const message = game.messages.get(roll.attr('data-message-id'))
-  const speaker = game.actors.get(message.speaker.actor, {strict: true})
+  const speaker = game.actors.get(message.speaker.actor)
   const charactertype = getProperty(speaker, 'type', {strict: true})
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
   if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== "hunter") {
     rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
-  } else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === "hunter") {
+  }
+  else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === "hunter") {
     rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
   }
-
-  //const summonerMod = getProperty(tokenD.actor, `system.abilities.${getProperty(tokenD.actor, 'system.attributes.spellcasting')}.mod`);
 }
 
 /* -------------------------------------------- */
@@ -608,7 +606,7 @@ function rerollDie (roll) {
 async function createVampireMacro (data, slot) {
   if (data.type !== 'Item') return
   if (!('data' in data)) return ui.notifications.warn('You can only create macro buttons for owned Items')
-  const item = system
+  const item = data.system
 
   // Create the macro command
   const command = `game.vtm5e.rollItemMacro("${item.name}");`

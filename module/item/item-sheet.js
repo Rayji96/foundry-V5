@@ -1,4 +1,4 @@
-/* global ItemSheet, mergeObject */
+/* global ItemSheet, mergeObject, TextEditor */
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
@@ -29,7 +29,7 @@ export class VampireItemSheet extends ItemSheet {
 
   /** @override */
   get template () {
-    const path = 'systems/wod5e/templates/item'
+    const path = 'systems/vtm5e/templates/item'
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.html`;
 
@@ -42,7 +42,11 @@ export class VampireItemSheet extends ItemSheet {
 
   /** @override */
   async getData () {
-    const data = await super.getData()
+    const data = super.getData()
+
+    // Encrich editor content
+    data.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description, { async: true })
+
     return data
   }
 
@@ -67,27 +71,27 @@ export class VampireItemSheet extends ItemSheet {
     if (!this.options.editable) return
 
     // Rollable Checkbox Handler.
-    const rollCheckbox = document.querySelector('input[type="checkbox"][name="data.rollable"]')
+    const rollCheckbox = document.querySelector('input[type="checkbox"][name="system.rollable"]')
 
     if (rollCheckbox != null) {
       rollCheckbox.addEventListener('change', () => {
         if (rollCheckbox.checked) {
-          this.item.update({ 'data.rollable': true })
+          this.item.update({ 'system.rollable': true })
         } else {
-          this.item.update({ 'data.rollable': false })
+          this.item.update({ 'system.rollable': false })
         }
       })
     }
 
     // Skill Checkbox Handler.
-    const skillCheckbox = document.querySelector('input[type="checkbox"][name="data.skill"]')
+    const skillCheckbox = document.querySelector('input[type="checkbox"][name="system.skill"]')
 
     if (skillCheckbox != null) {
       skillCheckbox.addEventListener('change', () => {
         if (skillCheckbox.checked) {
-          this.item.update({ 'data.skill': true })
+          this.item.update({ 'system.skill': true })
         } else {
-          this.item.update({ 'data.skill': false })
+          this.item.update({ 'system.skill': false })
         }
       })
     }

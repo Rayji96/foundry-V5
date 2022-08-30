@@ -20,7 +20,7 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/wod5e/templates/actor/ghoul-sheet.html',
+      template: 'systems/vtm5e/templates/actor/ghoul-sheet.html',
       width: 800,
       height: 700,
       tabs: [{
@@ -33,8 +33,8 @@ export class GhoulActorSheet extends MortalActorSheet {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/wod5e/templates/actor/limited-sheet.html'
-    return 'systems/wod5e/templates/actor/ghoul-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
+    return 'systems/vtm5e/templates/actor/ghoul-sheet.html'
   }
 
   /* -------------------------------------------- */
@@ -113,15 +113,15 @@ export class GhoulActorSheet extends MortalActorSheet {
     // Make Discipline hidden
     html.find('.discipline-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`system.disciplines.${system.discipline}.visible`]: false })
+      this.actor.update({ [`system.disciplines.${data.discipline}.visible`]: false })
     })
 
     // Post Discipline description to the chat
     html.find('.discipline-chat').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      const discipline = this.actor.system.disciplines[system.discipline]
+      const discipline = this.actor.system.disciplines[data.discipline]
 
-      renderTemplate('systems/wod5e/templates/actor/parts/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
         name: game.i18n.localize(discipline.name),
         img: 'icons/svg/dice-target.svg',
         description: discipline.description

@@ -12,7 +12,7 @@ export class VampireActor extends Actor {
     super.prepareData()
 
     // const actorData = this.data
-    // const data = actorData.system;
+    // const data = actorData.data;
     // const flags = actorData.flags;
 
     // Make separate methods for each Actor type (character, npc, etc.) to keep
@@ -24,7 +24,7 @@ export class VampireActor extends Actor {
      * Prepare Character type specific data
      */
   // _prepareCharacterData(actorData) {
-  //     const data = actorData.system;
+  //     const data = actorData.data;
 
   //     // Make modifications to data here. For example:
 

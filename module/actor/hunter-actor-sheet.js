@@ -22,7 +22,7 @@ export class HunterActorSheet extends CellActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/wod5e/templates/actor/hunter-sheet.html',
+      template: 'systems/vtm5e/templates/actor/hunter-sheet.html',
       width: 800,
       height: 700,
       tabs: [{
@@ -42,8 +42,8 @@ export class HunterActorSheet extends CellActorSheet {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/wod5e/templates/actor/limited-sheet.html'
-    return 'systems/wod5e/templates/actor/hunter-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
+    return 'systems/vtm5e/templates/actor/hunter-sheet.html'
   }
 
   /* -------------------------------------------- */
@@ -150,7 +150,7 @@ export class HunterActorSheet extends CellActorSheet {
       const data = $(ev.currentTarget)[0].dataset
       const edge = this.actor.system.edges[data.edge]
 
-      renderTemplate('systems/wod5e/templates/actor/parts/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
         name: game.i18n.localize(edge.name),
         img: 'icons/svg/dice-target.svg',
         description: edge.description

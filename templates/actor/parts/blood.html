@@ -2,7 +2,7 @@
     <div class="resource flexrow grid grid-2col">
         <div class="flex-group-center">
             <label class="resource-label">{{localize "VTM5E.BloodPotency"}}: </label>
-            <div class="resource-value" data-value="{{system.blood.potency}}" data-name="data.blood.potency">
+            <div class="resource-value" data-value="{{actor.system.blood.potency}}" data-name="system.blood.potency">
                 <span class="resource-value-empty"></span>
                 {{#numLoop 10}}
                 <span class="resource-value-step" data-index="{{this}}"></span>
@@ -11,7 +11,7 @@
         </div>
         <div class="flex-group-center flexrow">
             <label class="resource-label">{{localize "VTM5E.BloodResonance"}}: </label>
-            <input type="text" name="data.blood.resonance" value="{{system.blood.resonance}}" />
+            <input type="text" name="system.blood.resonance" value="{{actor.system.blood.resonance}}" />
         </div>
     </div>
     <div class="resource flexrow grid grid-2col">

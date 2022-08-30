@@ -2,23 +2,21 @@
   "name": "wod5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "author": "MrDionysus",
+  "author": "Ray Ji",
   "authors": [],
-  "url": "https://github.com/MrDionysus/foundry-WOD5/",
+  "url": "https://github.com/Rayji96/foundry-V5",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "1.3.0",
+  "version": "2.0.0",
   "compatibility": {
     "minimum": 10,
     "verified": "10.0"
   },
+  "templateVersion": 4,
+  "esmodules": ["module/main.js"],
+  "styles": ["css/vtm5e.css"],
   "scripts": [],
-  "esmodules": [
-    "module/main.js"
-  ],
-  "styles": [
-    "css/vtm5e.css"
-  ],
+  "packs": [],
   "languages": [
     {
       "lang": "en",
@@ -56,13 +54,14 @@
       "path": "lang/pl.json"
     }
   ],
-  "packs": [],
   "system": [],
   "dependencies": [],
   "socket": false,
-  "manifest": "https://raw.githubusercontent.com/MrDionysus/foundry-WOD5/main/system.json",
-  "download": "https://github.com/MrDionysus/foundry-WOD5/archive/refs/heads/master.zip",
   "protected": false,
   "gridDistance": 5,
-  "gridUnits": "ft"
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "",
+  "secondaryTokenAttribute": "",
+  "manifest": "https://raw.githubusercontent.com/Rayji96/foundry-V5/main/system.json",
+  "download": "https://github.com/Rayji96/foundry-V5/archive/CHANGE.zip"
 }

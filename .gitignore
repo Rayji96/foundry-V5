@@ -1,0 +1,12 @@
+# IDE
+.idea/
+.vs/
+
+# Node Modules
+node_modules/
+npm-debug.log
+
+# Local Linter Configs
+/.stylelintrc*
+/.htmlhintrc*
+/.eslintrc*

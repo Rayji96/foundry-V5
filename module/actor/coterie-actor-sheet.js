@@ -18,7 +18,7 @@ export class CoterieActorSheet extends ActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/wod5e/templates/actor/coterie-sheet.html',
+      template: 'systems/vtm5e/templates/actor/coterie-sheet.html',
       width: 800,
       height: 700,
       tabs: [{
@@ -37,8 +37,8 @@ export class CoterieActorSheet extends ActorSheet {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/wod5e/templates/actor/limited-sheet.html'
-    return 'systems/wod5e/templates/actor/coterie-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
+    return 'systems/vtm5e/templates/actor/coterie-sheet.html'
   }
 
   /* -------------------------------------------- */
@@ -49,6 +49,7 @@ export class CoterieActorSheet extends ActorSheet {
     data.locked = this.locked
     data.isCharacter = this.isCharacter
     data.hasBoons = this.hasBoons
+
     data.sheetType = `${game.i18n.localize('VTM5E.Coterie')}`
 
     data.dtypes = ['String', 'Number', 'Boolean']
@@ -117,7 +118,7 @@ export class CoterieActorSheet extends ActorSheet {
     // lock button
     html.find('.lock-btn').click(this._onToggleLocked.bind(this))
 
-    // resource dots
+    // ressource dots
     html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
     html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
 
@@ -128,7 +129,7 @@ export class CoterieActorSheet extends ActorSheet {
     html.find('.item-chat').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
-      renderTemplate('systems/wod5e/templates/actor/parts/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
         name: item.name,
         img: item.img,
         description: item.system.description
@@ -287,6 +288,7 @@ export class CoterieActorSheet extends ActorSheet {
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
+    
     // update actor owned items
     if (fields.length === 2 && fields[0] === 'items') {
       for (const item of actorData.items) {
