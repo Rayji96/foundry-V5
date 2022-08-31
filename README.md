@@ -30,6 +30,7 @@ Huge thanks to these folks for their contributions:
 * German localization started and maintained by [tom959]
 * Spanish localization started by [erizocosmico]
 * Spanish localization help by [Musrha]
+* Polish localization help by [gburrson]
 * Icons used with permissions from [cftarbay]
 * Features improvements and custom roll table by [Veichassur]
 * Limited character sheet by [pedroboh]
@@ -69,3 +70,4 @@ Huge thanks to these folks for their contributions:
 [MarkusOzgur]: https://github.com/MarkusOzgur
 [Musrha]: https://github.com/Musrha
 [crcroberts]: https://github.com/crcroberts
+[gbursson]: https://github.com/gbursson
