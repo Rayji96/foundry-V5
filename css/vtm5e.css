@@ -6,7 +6,7 @@
 @font-face {
   font-family: cormorantLight;
   src: url("../assets/fonts/Cormorant-Light-webfont.woff") format("woff");
-  font-weight: normal;
+  h1, h2, h3, h4, h5, h6, p { font-weight : normal;  }
   font-style: normal;
 }
 
