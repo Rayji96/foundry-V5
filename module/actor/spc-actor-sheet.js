@@ -1,19 +1,19 @@
-/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject, TextEditor */
+/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject */
 
 // Export this function to be used in other scripts
 import { CoterieActorSheet } from './coterie-actor-sheet.js'
-import { rollDice } from './roll-dice.js'
+import { rollBasicDice } from './roll-basic-dice.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {CoterieActorSheet}
  */
 
-export class MortalActorSheet extends CoterieActorSheet {
+export class SPCActorSheet extends CoterieActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'mortal']
+    const classList = ['vtm5e', 'sheet', 'actor', 'spc']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -22,7 +22,7 @@ export class MortalActorSheet extends CoterieActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/vtm5e/templates/actor/mortal-sheet.html',
+      template: 'systems/vtm5e/templates/actor/spc-sheet.html',
       width: 800,
       height: 700,
       tabs: [{
@@ -43,7 +43,7 @@ export class MortalActorSheet extends CoterieActorSheet {
   /** @override */
   get template () {
     if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
-    return 'systems/vtm5e/templates/actor/mortal-sheet.html'
+    return 'systems/vtm5e/templates/actor/spc-sheet.html'
   }
 
   /* -------------------------------------------- */
@@ -52,10 +52,10 @@ export class MortalActorSheet extends CoterieActorSheet {
   async getData () {
     const data = await super.getData()
     // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('VTM5E.Mortal')}`
+    data.sheetType = `${game.i18n.localize('VTM5E.SPC')}`
 
     // Prepare items.
-    if (this.actor.type === 'mortal') {
+    if (this.actor.type === 'spc') {
       this._prepareItems(data)
     }
 
@@ -72,31 +72,6 @@ export class MortalActorSheet extends CoterieActorSheet {
   _prepareItems (sheetData) {
     super._prepareItems(sheetData)
     const actorData = sheetData.actor
-
-    // Initialize containers.
-    const specialties = []
-    const boons = []
-    const customRolls = []
-
-    // Iterate through items, allocating to containers
-    for (const i of sheetData.items) {
-      i.img = i.img || DEFAULT_TOKEN
-      if (i.type === 'specialty') {
-        // Append to specialties.
-        specialties.push(i)
-      } else if (i.type === 'boon') {
-        // Append to boons.
-        boons.push(i)
-      } else if (i.type === 'customRoll') {
-        // Append to custom rolls.
-        customRolls.push(i)
-      }
-    }
-
-    // Assign and return
-    actorData.specialties = specialties
-    actorData.boons = boons
-    actorData.customRolls = customRolls
   }
 
   /* -------------------------------------------- */
@@ -111,48 +86,50 @@ export class MortalActorSheet extends CoterieActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
-    // Ressource squares (Health, Willpower)
+    // Resource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
     html.find('.resource-minus').click(this._onResourceChange.bind(this))
 
-    // Rollable abilities.
+    // Rollable standarddicepools.
     html.find('.rollable').click(this._onRoll.bind(this))
-    html.find('.rollable-with-mod').click(this._onRollWithMod.bind(this))
-    html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
-    html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
-    // Rollable abilities.
-    html.find('.vrollable').click(this._onRollDialog.bind(this))
+
+    // Make Exceptional Skill visible
+    html.find('.exceptionalskill-create').click(this._onShowExceptionalSkill.bind(this))
+
+    // Make Exceptional Skill hidden
+    html.find('.exceptionalskill-delete').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      this.actor.update({ [`system.exceptionaldicepools.${data.exceptionalskill}.visible`]: false })
+    })
+
+    // Make Discipline visible
+    html.find('.discipline-create').click(this._onShowDiscipline.bind(this))
+
+    // Make Discipline hidden
+    html.find('.discipline-delete').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      this.actor.update({ [`system.disciplines.${system.discipline}.visible`]: false })
+    })
   }
 
   /**
-   * Handle clickable Vampire rolls.
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onRollDialog (event) {
+     * Handle making a exceptionalskill visible
+     * @param {Event} event   The originating click event
+     * @private
+     */
+  _onShowExceptionalSkill (event) {
     event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
     let options = ''
-
-    for (const [key, value] of Object.entries(this.actor.system.abilities)) {
+    for (const [key, value] of Object.entries(this.actor.system.exceptionaldicepools)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
-              <select id="abilitySelect">${options}</select>
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-              <input type="text" id="inputMod" value="0">
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-              <input type="text" min="0" id="inputDif" value="0">
+              <label>${game.i18n.localize('VTM5E.SelectSkill')}</label>
+              <select id="skillSelect">${options}</select>
           </div>
       </form>`
 
@@ -160,16 +137,10 @@ export class MortalActorSheet extends CoterieActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Roll'),
+        label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
-          const ability = html.find('#abilitySelect')[0].value
-          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
-          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const abilityVal = this.actor.system.abilities[ability].value
-          const abilityName = game.i18n.localize(this.actor.system.abilities[ability].name)
-          const numDice = abilityVal + parseInt(dataset.roll) + modifier
-          rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, this.hunger)
-          // this._vampireRoll(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
+          const exceptionalskill = html.find('#skillSelect')[0].value
+          this.actor.update({ [`system.exceptionaldicepools.${exceptionalskill}.visible`]: true })
         }
       },
       cancel: {
@@ -179,7 +150,55 @@ export class MortalActorSheet extends CoterieActorSheet {
     }
 
     new Dialog({
-      title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
+      title: game.i18n.localize('VTM5E.AddSkill'),
+      content: template,
+      buttons: buttons,
+      default: 'draw'
+    }).render(true)
+
+
+    // Rollable Vampire/Ghouls powers
+    html.find('.power-rollable').click(this._onVampireRoll.bind(this))
+  }
+
+  /**
+     * Handle making a discipline visible
+     * @param {Event} event   The originating click event
+     * @private
+     */
+  _onShowDiscipline (event) {
+    event.preventDefault()
+    let options = ''
+    for (const [key, value] of Object.entries(this.actor.system.disciplines)) {
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
+    }
+
+    const template = `
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.SelectDiscipline')}</label>
+              <select id="disciplineSelect">${options}</select>
+          </div>
+      </form>`
+
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Add'),
+        callback: async (html) => {
+          const discipline = html.find('#disciplineSelect')[0].value
+          this.actor.update({ [`system.disciplines.${discipline}.visible`]: true })
+        }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
+      }
+    }
+
+    new Dialog({
+      title: game.i18n.localize('VTM5E.AddDiscipline'),
       content: template,
       buttons: buttons,
       default: 'draw'
@@ -195,75 +214,10 @@ export class MortalActorSheet extends CoterieActorSheet {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
-    const useHunger = this.hunger && (dataset.useHunger === '1')
-    const increaseHunger = dataset.increaseHunger
     const subtractWillpower = dataset.subtractWillpower
     const numDice = dataset.roll
 
-    rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger, increaseHunger, subtractWillpower)
-  }
-
-  _onRollWithMod (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const useHunger = this.hunger && (dataset.useHunger === '1')
-    const increaseHunger = dataset.increaseHunger
-    const subtractWillpower = dataset.subtractWillpower
-
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-              <input type="text" id="inputMod" value="0">
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-              <input type="text" min="0" id="inputDif" value="0">
-          </div>
-      </form>`
-
-    let buttons = {}
-    buttons = {
-      draw: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Roll'),
-        callback: async (html) => {
-          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
-          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const numDice = parseInt(dataset.roll) + modifier
-          rollDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger, increaseHunger, subtractWillpower)
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
-      }
-    }
-
-    new Dialog({
-      title: `${dataset.label}`,
-      content: template,
-      buttons: buttons,
-      default: 'draw'
-    }).render(true)
-  }
-
-  _onCustomVampireRoll (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    if (dataset.dice1 === '') {
-      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
-      dataset.roll = dice2 + 1 // specialty modifier
-      dataset.label = dataset.name
-      this._onRollDialog(event)
-    } else {
-      const dice1 = this.actor.system.abilities[dataset.dice1.toLowerCase()].value
-      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
-      const dicePool = dice1 + dice2
-      rollDice(dicePool, this.actor, `${dataset.name}`, 0, this.hunger)
-    }
+    rollBasicDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
   }
 
   _onSquareCounterChange (event) {
@@ -351,16 +305,16 @@ export class MortalActorSheet extends CoterieActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-      actorData.system[resource].max++
+     actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
+     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
     if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
-      actorData.system[resource].aggravated = actorData.system[resource].max - actorData.system[resource].superficial
+     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
       if (actorData.system[resource].aggravated <= 0) {
-        actorData.system[resource].aggravated = 0
-        actorData.system[resource].superficial = actorData.system[resource].max
+       actorData.system[resource].aggravated = 0
+       actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)
