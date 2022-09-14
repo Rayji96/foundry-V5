@@ -54,6 +54,12 @@ export class MortalActorSheet extends CoterieActorSheet {
     // TODO: confirm that I can finish and use this list
     data.sheetType = `${game.i18n.localize('VTM5E.Mortal')}`
 
+    // Encrich editor content
+    data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })
+    data.enrichedTouchstones = await TextEditor.enrichHTML(this.object.system.headers.touchstones, { async: true })
+    data.enrichedBane = await TextEditor.enrichHTML(this.object.system.headers.bane, { async: true })
+    data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, { async: true })
+
     // Prepare items.
     if (this.actor.type === 'mortal') {
       this._prepareItems(data)

@@ -3,16 +3,20 @@
 
 [![Dark Pack]][Dark Pack URL]
 
-[![Foundry Shield 9]][Foundry URL]
+[![Foundry Shield 10]][Foundry URL]
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
 This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System.
 
-Licensed WoD 5e materials will NOT be provided, as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pact License].
+Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pact License].
+
+## Dice
 
 There is integration with Dice So Nice!
+
 To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`. Replace the 1s with however many dice you want to roll for each type.
+
 To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`. Replace the 1s with however many dice you want to roll for each type.
 
 ## Feedback
@@ -51,7 +55,7 @@ Huge thanks to these folks for their contributions:
 * Feedback and fixes by [eisenfuchs]
 * Initial testing and DiceSoNice feedback by [Clement]
 
-[Foundry Shield 9]: https://img.shields.io/badge/Foundry-9-informational
+[Foundry Shield 10]: https://img.shields.io/badge/Foundry-10-informational
 [Foundry URL]: https://foundryvtt.com
 
 [MIT License]: https://img.shields.io/badge/License-MIT-green
