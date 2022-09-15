@@ -8,7 +8,7 @@
       </div>
     <ol class="items-list">
         <!-- Iterate through each of the skill lists -->
-        {{#each system.exceptionaldicepools as |exceptionalskill key|}}
+        {{#each actor.system.exceptionaldicepools as |exceptionalskill key|}}
             {{#if exceptionalskill.visible}}
                 <li class="flexrow item-header">
                     <label for="{{exceptionalskill.name}}" 

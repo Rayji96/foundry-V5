@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject */
+/* global Dialog, duplicate, game, mergeObject */
 
 // Export this function to be used in other scripts
 import { CoterieActorSheet } from './coterie-actor-sheet.js'
@@ -71,7 +71,6 @@ export class SPCActorSheet extends CoterieActorSheet {
      */
   _prepareItems (sheetData) {
     super._prepareItems(sheetData)
-    const actorData = sheetData.actor
   }
 
   /* -------------------------------------------- */
@@ -109,7 +108,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Make Discipline hidden
     html.find('.discipline-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`system.disciplines.${system.discipline}.visible`]: false })
+      this.actor.update({ [`system.disciplines.${data.discipline}.visible`]: false })
     })
   }
 
@@ -155,10 +154,6 @@ export class SPCActorSheet extends CoterieActorSheet {
       buttons: buttons,
       default: 'draw'
     }).render(true)
-
-
-    // Rollable Vampire/Ghouls powers
-    html.find('.power-rollable').click(this._onVampireRoll.bind(this))
   }
 
   /**
@@ -305,16 +300,16 @@ export class SPCActorSheet extends CoterieActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-     actorData.system[resource].max++
+      actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
+      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
     if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
-     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
+      actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
       if (actorData.system[resource].aggravated <= 0) {
-       actorData.system[resource].aggravated = 0
-       actorData.system[resource].superficial = actorData.system[resource].max
+        actorData.system[resource].aggravated = 0
+        actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)

@@ -8,7 +8,7 @@
       </div>
     <ol class="items-list">
         <!-- Iterate through each of the discipline lists -->
-        {{#each system.disciplines as |discipline key|}}
+        {{#each actor.system.disciplines as |discipline key|}}
             {{#if discipline.visible}}
                 <li class="flexrow item-header">
                     <label for="{{discipline.name}}" 
