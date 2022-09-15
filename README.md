@@ -53,7 +53,7 @@ Huge thanks to these folks for their contributions:
 * Adding blood potency bonus to discipline rolls by [MarkusOzgur]
 * Dicebox by [crcroberts]
 * Feedback and fixes by [eisenfuchs]
-* Initial testing and DiceSoNice feedback by [Clement]
+* Initial testing and DiceSoNice feedback by Clement#1490
 
 [Foundry Shield 10]: https://img.shields.io/badge/Foundry-10-informational
 [Foundry URL]: https://foundryvtt.com
