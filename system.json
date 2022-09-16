@@ -2,7 +2,11 @@
   "id": "vtm5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "author": "Ray Ji",
+  "version": "2.0.0",
+  "compatibility": {
+    "minimum": 10,
+    "verified": "10.0"
+  },
   "authors": [
     {
       "name": "Ray",
@@ -15,19 +19,13 @@
       "url": "https://github.com/MrDionysus"
     }
   ],
-  "url": "https://github.com/Rayji96/foundry-V5",
-  "license": "LICENSE.txt",
-  "flags": {},
-  "version": "2.0.0",
-  "compatibility": {
-    "minimum": 10,
-    "verified": "10.0"
-  },
-  "templateVersion": 4,
-  "esmodules": ["module/main.js"],
-  "styles": ["css/vtm5e.css"],
-  "scripts": [],
-  "packs": [],
+  "relationships": {},
+  "esmodules": [
+    "module/main.js"
+  ],
+  "styles": [
+    "css/vtm5e.css"
+  ],
   "languages": [
     {
       "lang": "en",
@@ -65,14 +63,10 @@
       "path": "lang/pl.json"
     }
   ],
-  "system": [],
-  "dependencies": [],
-  "socket": false,
-  "protected": false,
   "gridDistance": 5,
   "gridUnits": "ft",
-  "primaryTokenAttribute": "",
-  "secondaryTokenAttribute": "",
+  "license": "LICENSE.txt",
+  "url": "https://github.com/Rayji96/foundry-V5",
   "manifest": "https://raw.githubusercontent.com/Rayji96/foundry-V5/main/system.json",
   "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v2.0.0.zip"
 }
