@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
-@import url("./tray.css");
-@import url("./dark-theme.css");
-@import url("./hunter-theme.css");
+@import "https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap";
+@import "./tray.css";
+@import "./dark-theme.css";
+@import "./hunter-theme.css";
 
 /* Fonts */
 @font-face {
@@ -698,5 +698,4 @@
 
 #sidebar.app {
   background: rgb(20 0 0 / 90%);
-
 }

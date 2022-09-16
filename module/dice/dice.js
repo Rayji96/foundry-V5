@@ -60,7 +60,7 @@ export class VampireHungerDie extends Die {
     }
 }
 
- export class HunterDie extends Die {
+export class HunterDie extends Die {
   constructor (termData) {
     termData.faces = 10
     super(termData)

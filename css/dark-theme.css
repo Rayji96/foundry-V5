@@ -115,10 +115,6 @@
   background-color: #790813;
 }
 
-.vtm5e.dark-theme select {
-  background: #fff;
-}
-
 .vtm5e.dark-theme .cell-resource-counter .cell-resource-counter-step[data-state="/"] {
   background:
     linear-gradient(

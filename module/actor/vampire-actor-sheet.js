@@ -1,4 +1,4 @@
-/* global game, mergeObject, TextEditor */
+/* global game, mergeObject */
 
 import { GhoulActorSheet } from './ghoul-actor-sheet.js'
 import { getBloodPotencyValues, getBloodPotencyText } from './blood-potency.js'

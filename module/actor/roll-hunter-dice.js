@@ -12,7 +12,7 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
   // Roll defining and evaluating
   const dice = numDice
   const roll = new Roll(dice + 'dhcs>5 + ' + desperationDice + 'dscs>5', actor.system)
- await roll.evaluate({ async: true })
+  await roll.evaluate({ async: true })
 
   // Variable defining
   let difficultyResult = '<span></span>'
@@ -54,7 +54,6 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
     }
   })
 
-  
   // Success canculating
   let totalCritSuccess = 0
   totalCritSuccess = Math.floor((critSuccess + desperationCritSuccess) / 2)

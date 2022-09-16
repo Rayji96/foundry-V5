@@ -1,4 +1,4 @@
-/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui, renderTemplate */
+/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui, renderTemplate, getProperty */
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
@@ -42,8 +42,9 @@ Hooks.once('init', async function () {
   })
 
   game.settings.register('vtm5e', 'useChatRoller', {
+    // TODO: fix Chat Roller
     name: 'Chat Roller',
-    hint: 'Display dice roller in chat window',
+    hint: 'Display dice roller in chat window. WARNING: Currently not working properly with Hunter changes.',
     scope: 'world',
     config: true,
     default: false,
@@ -296,7 +297,7 @@ Hooks.once('init', async function () {
     return disciplines[key]
   })
 
-  Handlebars.registerHelper('getEdgeName', function (key, roll = false) {
+  Handlebars.registerHelper('getEdgeName', function (key) {
     const edges = {
       arsenal: 'VTM5E.Arsenal',
       ordnance: 'VTM5E.Ordnance',
@@ -427,7 +428,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   })
 })
 
-
 /* -------------------------------------------- */
 /*  Add chat dicebox                            */
 /* -------------------------------------------- */
@@ -460,7 +460,7 @@ Hooks.on('renderSidebarTab', (app, html) => {
           options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find('#pool1 option').attr('value')
           prepareSearchableSelection('pool2', $content, options, (event) => event.target.value)
           options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find('#pool2 option').attr('value')
-          
+
           watchPool1Filters($content, options)
           watchPool2Filters($content, options)
 
@@ -581,13 +581,12 @@ function rerollDie (roll) {
   // messages that call for a WillpowerReroll without an associated actor
   const message = game.messages.get(roll.attr('data-message-id'))
   const speaker = game.actors.get(message.speaker.actor)
-  const charactertype = getProperty(speaker, 'type', {strict: true})
+  const charactertype = getProperty(speaker, 'type', { strict: true })
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-  if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== "hunter") {
+  if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== 'hunter') {
     rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
-  }
-  else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === "hunter") {
+  } else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === 'hunter') {
     rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
   }
 }
