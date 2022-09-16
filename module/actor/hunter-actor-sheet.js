@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject */
+/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject, renderTemplate, ChatMessage */
 
 // Export this function to be used in other scripts
 import { CellActorSheet } from './cell-actor-sheet.js'
@@ -13,7 +13,7 @@ export class HunterActorSheet extends CellActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'hunter-theme','sheet', 'actor', 'hunter']
+    const classList = ['vtm5e', 'hunter-theme', 'sheet', 'actor', 'hunter']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -36,7 +36,6 @@ export class HunterActorSheet extends CellActorSheet {
   constructor (actor, options) {
     super(actor, options)
     this.isCharacter = true
-    this.hunger = false
     this.hasBoons = false
   }
 
@@ -122,8 +121,6 @@ export class HunterActorSheet extends CellActorSheet {
     actorData.customRolls = customRolls
     actorData.edges_list = edges
   }
-  
-
   /* -------------------------------------------- */
 
   /** @override */
@@ -138,7 +135,7 @@ export class HunterActorSheet extends CellActorSheet {
 
     // Make Edge visible
     html.find('.edge-create').click(this._onShowEdge.bind(this))
-    
+
     // Make Edge hidden
     html.find('.edge-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
@@ -160,7 +157,7 @@ export class HunterActorSheet extends CellActorSheet {
         })
       })
     })
-  
+
     // Resource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(this._onResourceChange.bind(this))
@@ -168,14 +165,14 @@ export class HunterActorSheet extends CellActorSheet {
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this))
-    html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
-    html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
+    html.find('.custom-rollable').click(this._onCustomHunterRoll.bind(this))
+    html.find('.specialty-rollable').click(this._onCustomHunterRoll.bind(this))
     html.find('.vrollable').click(this._onRollDialog.bind(this))
     html.find('.perk-rollable').click(this._onPerkRoll.bind(this))
   }
 
   /**
-   * Handle clickable Vampire rolls.
+   * Handle clickable Hunter rolls.
    * @param {Event} event   The originating click event
    * @private
    */
@@ -191,15 +188,15 @@ export class HunterActorSheet extends CellActorSheet {
 
     const despair = Object.values(this.actor.system.despair)
     const despairstring = despair.toString()
-    
+
+    let despairoutcome
     if (despairstring === '1') {
-      var despairoutcome = true
+      despairoutcome = true
     } else {
-      var despairoutcome = false
+      despairoutcome = false
     }
-    
-    const template = despairoutcome ? 
-    `<form>
+
+    const template = `<form>
         <div class="form-group">
             <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
             <select id="abilitySelect">${options}</select>
@@ -208,28 +205,15 @@ export class HunterActorSheet extends CellActorSheet {
             <label>${game.i18n.localize('VTM5E.Modifier')}</label>
             <input type="text" id="inputMod" value="0">
         </div>
-        <div class="form-group">
-            <label>${game.i18n.localize('VTM5E.DesperationUnavailable')}</label>
-            <input type="text" min="0" id="inputDespMod" disabled value="0">
-        </div>
-        <div class="form-group">
-            <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-            <input type="text" min="0" id="inputDif" value="0">
-        </div>
-    </form>` :
-    `<form>
-        <div class="form-group">
-            <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
-            <select id="abilitySelect">${options}</select>
-        </div>  
-        <div class="form-group">
-            <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-            <input type="text" id="inputMod" value="0">
-        </div>
-        <div class="form-group">
-            <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
-            <input type="text" min="0" id="inputDespMod" value="0">
-        </div>
+        <div class="form-group">` +
+      (
+        despairoutcome
+          ? `<label>${game.i18n.localize('VTM5E.DesperationUnavailable')}</label>
+             <input type="text" min="0" id="inputDespMod" disabled value="0">`
+          : `<label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
+             <input type="text" min="0" id="inputDespMod" value="0">`
+      ) +
+       `</div>
         <div class="form-group">
             <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
             <input type="text" min="0" id="inputDif" value="0">
@@ -249,7 +233,7 @@ export class HunterActorSheet extends CellActorSheet {
           const abilityVal = this.actor.system.abilities[ability].value
           const abilityName = game.i18n.localize(this.actor.system.abilities[ability].name)
           const numDice = abilityVal + parseInt(dataset.roll) + modifier
-          rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, desperationDice, this.hunger)
+          rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, desperationDice, false)
         }
       },
       cancel: {
@@ -281,8 +265,7 @@ export class HunterActorSheet extends CellActorSheet {
     rollHunterDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
   }
 
-
-  _onCustomVampireRoll (event) {
+  _onCustomHunterRoll (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
@@ -295,7 +278,7 @@ export class HunterActorSheet extends CellActorSheet {
       const dice1 = this.actor.system.abilities[dataset.dice1.toLowerCase()].value
       const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
-      rollHunterDice(dicePool, this.actor, `${dataset.name}`, 0, desperationDice, this.hunger)
+      rollHunterDice(dicePool, this.actor, `${dataset.name}`, 0, 0, false)
     }
   }
 
@@ -383,16 +366,16 @@ export class HunterActorSheet extends CellActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-     actorData.system[resource].max++
+      actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
+      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
     if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
-     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
+      actorData.system[resource].aggravated = actorData.system[resource].max - actorData.system[resource].superficial
       if (actorData.system[resource].aggravated <= 0) {
-       actorData.system[resource].aggravated = 0
-       actorData.system[resource].superficial = actorData.system[resource].max
+        actorData.system[resource].aggravated = 0
+        actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)

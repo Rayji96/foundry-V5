@@ -173,9 +173,8 @@ export class CellActorSheet extends ActorSheet {
       })
     }
   }
-  
+
   // Added for Desperation and Danger Counters
-  
   _onCellSquareCounterChange (event) {
     event.preventDefault()
     const element = event.currentTarget
@@ -266,16 +265,16 @@ export class CellActorSheet extends ActorSheet {
     const dataset = element.dataset
     const resource = dataset.resource
     if (dataset.action === 'plus' && !this.locked) {
-     actorData.system[resource].max++
+      actorData.system[resource].max++
     } else if (dataset.action === 'minus' && !this.locked) {
-     actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
+      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
     if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
-     actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
+      actorData.system[resource].aggravated = actorData.system[resource].max -actorData.system[resource].superficial
       if (actorData.system[resource].aggravated <= 0) {
-       actorData.system[resource].aggravated = 0
-       actorData.system[resource].superficial = actorData.system[resource].max
+        actorData.system[resource].aggravated = 0
+        actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
     this.actor.update(actorData)
@@ -345,8 +344,6 @@ export class CellActorSheet extends ActorSheet {
     this._assignToActorField(fields, 0)
   }
 
-  
-
   /**
    * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
    * @param {Event} event   The originating click event
@@ -389,7 +386,7 @@ export class CellActorSheet extends ActorSheet {
       return `${game.i18n.localize('VTM5E.' + data.featuretype.capitalize())}`
     }
     if (type === 'power') {
-      return `${game.i18n.localize('VTM5E.' + system.discipline.capitalize())}`
+      return `${game.i18n.localize('VTM5E.' + data.discipline.capitalize())}`
     }
     if (type === 'perk') {
       return `${game.i18n.localize('VTM5E.' + data.edge.capitalize())}`
@@ -400,7 +397,7 @@ export class CellActorSheet extends ActorSheet {
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
-    
+
     // update actor owned items
     if (fields.length === 2 && fields[0] === 'items') {
       for (const item of actorData.items) {

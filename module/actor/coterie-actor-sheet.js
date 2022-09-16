@@ -271,7 +271,7 @@ export class CoterieActorSheet extends ActorSheet {
       return `${game.i18n.localize('VTM5E.' + data.featuretype.capitalize())}`
     }
     if (type === 'power') {
-      return `${game.i18n.localize('VTM5E.' + system.discipline.capitalize())}`
+      return `${game.i18n.localize('VTM5E.' + data.discipline.capitalize())}`
     }
     if (type === 'perk') {
       return `${game.i18n.localize('VTM5E.' + data.edge.capitalize())}`
@@ -282,7 +282,7 @@ export class CoterieActorSheet extends ActorSheet {
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
     const actorData = duplicate(this.actor)
-    
+
     // update actor owned items
     if (fields.length === 2 && fields[0] === 'items') {
       for (const item of actorData.items) {
