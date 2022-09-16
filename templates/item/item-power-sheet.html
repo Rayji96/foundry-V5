@@ -8,7 +8,7 @@
                 <!-- Input the level of the discipline -->
                 <div class="flexrow level">
                     <label>{{localize "VTM5E.Level"}}</label>
-                    <input name="system.level" value="{{item.item.system.level}}" type="number" min="0" max="5"/>
+                    <input name="system.level" value="{{item.system.level}}" type="number" min="0" max="5"/>
                 </div>
                 <!-- Select the discipline this power belongs to -->
                 <div class="discipline">
@@ -55,7 +55,7 @@
                 <select name="system.dice1" data-type="String">
                     {{#select item.system.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
-                    <option value="discipline">{{localize (getDisciplineName item.item.system.discipline)}}</option>
+                    <option value="discipline">{{localize (getDisciplineName item.system.discipline)}}</option>
                     {{/select}}
                 </select>
                 <label class="resource-label">+</label>
@@ -75,7 +75,7 @@
                     <select name="system.dice2" data-type="String">
                         {{#select item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
-                        <option value="discipline">{{localize (getDisciplineName item.item.system.discipline)}}</option>
+                        <option value="discipline">{{localize (getDisciplineName item.system.discipline)}}</option>
                         {{/select}}
                     </select>
                 {{/if}}
