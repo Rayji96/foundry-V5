@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap");
-@import url("./tray.css");
-@import url("./dark-theme.css");
+@import "https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap";
+@import "./tray.css";
+@import "./dark-theme.css";
+@import "./hunter-theme.css";
 
 /* Fonts */
 @font-face {
@@ -180,9 +181,14 @@
   font-size: 18px;
 }
 
+.vtm5e .window-content .standarddicepools .ability .resource-label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .vtm5e .window-content nav.sheet-tabs {
   background: #e6ded0;
-  color: #790813;
+  color: #000;
   font-size: 16px;
   margin-bottom: 20px;
   height: 41px;
@@ -272,6 +278,9 @@
 
 .vtm5e .coterie-sheet .sheet-header,
 .vtm5e .mortal-sheet .sheet-header,
+.vtm5e .hunter-sheet .sheet-header,
+.vtm5e .cell-sheet .sheet-header,
+.vtm5e .spc-sheet .sheet-header,
 .vtm5e .ghoul-sheet .sheet-header {
   flex: 0 0 155px;
 }
@@ -338,6 +347,13 @@
 .vtm5e .sheet-body .tab .editor {
   height: 100%;
   min-height: 160px;
+}
+
+.vtm5e .single-sheet-body,
+.vtm5e .single-sheet-body .tab,
+.vtm5e .single-sheet-body .tab .editor {
+  height: 100%;
+  min-height: 30px;
 }
 
 .vtm5e .sheet-body .tab .tox-tinymce {
@@ -546,7 +562,64 @@
   margin-top: 5px;
 }
 
+.vtm5e .cell-resource-counter .cell-resource-counter-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.vtm5e .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+  background-color: #cc6d28;
+}
+
+.vtm5e .cell-resource-counter .cell-resource-counter-step[data-state="/"] {
+  background:
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+.vtm5e .cell-resource-counter .cell-resource-counter-step[data-state="x"] {
+  background:
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
+.vtm5e .flex-group-center:not(.flexrow) .resource-value,
+.vtm5e .flex-group-center:not(.flexrow) .cell-resource-counter {
+  margin-top: 5px;
+}
+
 .vtm5e .tab.disciplines .resource-value {
+  margin-top: 2px;
+  text-align: center;
+}
+
+.vtm5e .tab.edges .resource-value {
   margin-top: 2px;
   text-align: center;
 }
@@ -584,6 +657,11 @@
 .roll-img.hunger-dice {
   background: rgb(255 230 230 / 50%);
   border-color: #790813;
+}
+
+.roll-img.desperation-dice {
+  background: rgb(255 230 230 / 50%);
+  border-color: #cc6d28;
 }
 
 .vtm5e .locked .resource-value-empty:not(.hunger-value) {

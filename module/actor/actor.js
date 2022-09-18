@@ -78,7 +78,7 @@ export class VampireActor extends Actor {
       callback: html => {
         const form = html[0].querySelector('form')
         const fd = new FormDataExtended(form)
-        data = foundry.utils.mergeObject(data, fd.toObject())
+        data = foundry.utils.mergeObject(data, fd.object)
         if (!data.folder) delete data.folder
         if (types.length === 1) data.type = types[0]
         return this.create(data, { renderSheet: true })

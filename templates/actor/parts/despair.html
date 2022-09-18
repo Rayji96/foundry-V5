@@ -1,0 +1,10 @@
+<div class="resource flex-group-center despair">
+    <label for="system.despair.value" class="resource-label">{{localize "VTM5E.Despair"}}</label>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-counter" data-states="-:value" data-value="{{actor.system.despair.value}}" data-name="system.despair">
+            {{#numLoop 1}}
+            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+            {{/numLoop}}
+        </div>
+    </div>
+</div>

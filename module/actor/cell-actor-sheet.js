@@ -5,11 +5,11 @@
  * @extends {ActorSheet}
  */
 
-export class CoterieActorSheet extends ActorSheet {
+export class CellActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'coterie']
+    const classList = ['vtm5e', 'hunter-theme', 'sheet', 'actor', 'cell']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -18,7 +18,7 @@ export class CoterieActorSheet extends ActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/vtm5e/templates/actor/coterie-sheet.html',
+      template: 'systems/vtm5e/templates/actor/cell-sheet.html',
       width: 800,
       height: 700,
       tabs: [{
@@ -38,7 +38,7 @@ export class CoterieActorSheet extends ActorSheet {
   /** @override */
   get template () {
     if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
-    return 'systems/vtm5e/templates/actor/coterie-sheet.html'
+    return 'systems/vtm5e/templates/actor/cell-sheet.html'
   }
 
   /* -------------------------------------------- */
@@ -49,17 +49,22 @@ export class CoterieActorSheet extends ActorSheet {
     data.locked = this.locked
     data.isCharacter = this.isCharacter
     data.hasBoons = this.hasBoons
-
-    data.sheetType = `${game.i18n.localize('VTM5E.Coterie')}`
+    data.sheetType = `${game.i18n.localize('VTM5E.Cell')}`
 
     data.dtypes = ['String', 'Number', 'Boolean']
 
     // Encrich editor content
+    data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })
+    data.enrichedTouchstones = await TextEditor.enrichHTML(this.object.system.headers.touchstones, { async: true })
+    data.enrichedCreedFields = await TextEditor.enrichHTML(this.object.system.headers.creedfields, { async: true })
+    data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, { async: true })
+    data.enrichedAppearance = await TextEditor.enrichHTML(this.object.system.appearance, { async: true })
+
     data.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, { async: true })
     data.enrichedEquipment = await TextEditor.enrichHTML(this.object.system.equipment, { async: true })
 
     // Prepare items.
-    if (this.actor.type === 'coterie') {
+    if (this.actor.type === 'cell') {
       this._prepareItems(data)
     }
 
@@ -105,14 +110,18 @@ export class CoterieActorSheet extends ActorSheet {
   activateListeners (html) {
     super.activateListeners(html)
     this._setupDotCounters(html)
+    this._setupCellSquareCounters(html)
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
+    // Desperation and Danger trackers
+    html.find('.cell-resource-counter > .cell-resource-counter-step').click(this._onCellSquareCounterChange.bind(this))
+
     // lock button
     html.find('.lock-btn').click(this._onToggleLocked.bind(this))
 
-    // ressource dots
+    // resource dots
     html.find('.resource-value > .resource-value-step').click(this._onDotCounterChange.bind(this))
     html.find('.resource-value > .resource-value-empty').click(this._onDotCounterEmpty.bind(this))
 
@@ -163,6 +172,112 @@ export class CoterieActorSheet extends ActorSheet {
         }
       })
     }
+  }
+
+  // Added for Desperation and Danger Counters
+  _onCellSquareCounterChange (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const index = Number(element.dataset.index)
+    const oldState = element.dataset.state || ''
+    const parent = $(element.parentNode)
+    const data = parent[0].dataset
+    const states = parseCounterStates(data.states)
+    const fields = data.name.split('.')
+    const steps = parent.find('.cell-resource-counter-step')
+    const desperation = data.name === 'system.desperation'
+    const danger = data.name === 'system.danger'
+    const fulls = Number(data[states['-']]) || 0
+    const halfs = Number(data[states['/']]) || 0
+    const crossed = Number(data[states.x]) || 0
+
+    if (index < 0 || index > steps.length) {
+      return
+    }
+
+    const allStates = ['', ...Object.keys(states)]
+    const currentState = allStates.indexOf(oldState)
+    if (currentState < 0) {
+      return
+    }
+
+    const newState = allStates[(currentState + 1) % allStates.length]
+    steps[index].dataset.state = newState
+
+    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && desperation) || (oldState !== '' && danger)) {
+      data[states[oldState]] = Number(data[states[oldState]]) - 1
+    }
+
+    // If the step was removed we also need to subtract from the maximum.
+    if (oldState !== '' && newState === '' && !desperation && !danger) {
+      data[states['-']] = Number(data[states['-']]) - 1
+    }
+
+    if (newState !== '') {
+      data[states[newState]] = Number(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
+    }
+
+    const newValue = Object.values(states).reduce(function (obj, k) {
+      obj[k] = Number(data[k]) || 0
+      return obj
+    }, {})
+
+    this._assignToActorField(fields, newValue)
+  }
+
+  _setupCellSquareCounters (html) {
+    html.find('.cell-resource-counter').each(function () {
+      const data = this.dataset
+      const states = parseCounterStates(data.states)
+      const desperation = data.name === 'system.desperation'
+      const danger = data.name === 'system.danger'
+
+      const fulls = Number(data[states['-']]) || 0
+      const halfs = Number(data[states['/']]) || 0
+      const crossed = Number(data[states.x]) || 0
+
+      const values = desperation ? new Array(fulls + halfs) : danger ? new Array(fulls + halfs) : new Array(halfs + crossed)
+
+      if (desperation) {
+        values.fill('-', 0, fulls)
+        values.fill('/', fulls, fulls + halfs)
+      } else if (danger) {
+        values.fill('-', 0, fulls)
+        values.fill('/', fulls, fulls + halfs)
+      } else {
+        values.fill('/', 0, halfs)
+        values.fill('x', halfs, halfs + crossed)
+      }
+
+      $(this).find('.cell-resource-counter-step').each(function () {
+        this.dataset.state = ''
+        if (this.dataset.index < values.length) {
+          this.dataset.state = values[this.dataset.index]
+        }
+      })
+    })
+  }
+
+  _onResourceChange (event) {
+    event.preventDefault()
+    const actorData = duplicate(this.actor)
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const resource = dataset.resource
+    if (dataset.action === 'plus' && !this.locked) {
+      actorData.system[resource].max++
+    } else if (dataset.action === 'minus' && !this.locked) {
+      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
+    }
+
+    if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
+      actorData.system[resource].aggravated = actorData.system[resource].max - actorData.system[resource].superficial
+      if (actorData.system[resource].aggravated <= 0) {
+        actorData.system[resource].aggravated = 0
+        actorData.system[resource].superficial = actorData.system[resource].max
+      }
+    }
+    this.actor.update(actorData)
   }
 
   _setupDotCounters (html) {
@@ -297,4 +412,12 @@ export class CoterieActorSheet extends ActorSheet {
     }
     this.actor.update(actorData)
   }
+}
+
+function parseCounterStates (states) {
+  return states.split(',').reduce((obj, state) => {
+    const [k, v] = state.split(':')
+    obj[k] = v
+    return obj
+  }, {})
 }

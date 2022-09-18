@@ -1,18 +1,31 @@
 {
   "id": "vtm5e",
-  "title": "Vampire the Masquerade 5e",
-  "description": "Vampire 5e system for Foundry VTT!",
-  "version": "1.8.3",
+  "title": "World of Darkness 5e",
+  "description": "World of Darkness 5e system for Foundry VTT",
+  "version": "2.0.0",
   "compatibility": {
     "minimum": 10,
     "verified": "10.0"
   },
-  "templateVersion": 4,
-  "author": "Ray Ji",
-  "esmodules": ["module/main.js"],
-  "styles": ["css/vtm5e.css"],
-  "scripts": [],
-  "packs": [],
+  "authors": [
+    {
+      "name": "Ray",
+      "url": "https://github.com/Rayji96",
+      "email": "rayji96@gmail.com",
+      "discord": "weinerdolphin#3175"
+    },
+    {
+      "name": "MrDionysus",
+      "url": "https://github.com/MrDionysus"
+    }
+  ],
+  "relationships": {},
+  "esmodules": [
+    "module/main.js"
+  ],
+  "styles": [
+    "css/vtm5e.css"
+  ],
   "languages": [
     {
       "lang": "en",
@@ -44,7 +57,7 @@
       "name": "Italian",
       "path": "lang/it.json"
     },
-	{
+    {
       "lang": "pl",
       "name": "Polish",
       "path": "lang/pl.json"
@@ -52,10 +65,8 @@
   ],
   "gridDistance": 5,
   "gridUnits": "ft",
-  "primaryTokenAttribute": "",
-  "secondaryTokenAttribute": "",
-  "url": "https://github.com/Rayji96/foundry-V5/",
+  "license": "LICENSE.txt",
+  "url": "https://github.com/Rayji96/foundry-V5",
   "manifest": "https://raw.githubusercontent.com/Rayji96/foundry-V5/main/system.json",
-  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v1.8.3.zip",
-  "license": "LICENSE.txt"
+  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v2.0.0.zip"
 }

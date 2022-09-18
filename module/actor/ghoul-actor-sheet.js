@@ -1,7 +1,6 @@
-/* global Dialog, game, mergeObject, renderTemplate, ChatMessage, TextEditor */
+/* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
 import { MortalActorSheet } from './mortal-actor-sheet.js'
-
 import { rollDice } from './roll-dice.js'
 /**
  * Extend the basic ActorSheet with some very simple modifications
