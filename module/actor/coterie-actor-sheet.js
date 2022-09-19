@@ -55,6 +55,7 @@ export class CoterieActorSheet extends ActorSheet {
     data.dtypes = ['String', 'Number', 'Boolean']
 
     // Encrich editor content
+    data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, { async: true })
     data.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, { async: true })
     data.enrichedEquipment = await TextEditor.enrichHTML(this.object.system.equipment, { async: true })
 
