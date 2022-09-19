@@ -58,7 +58,6 @@ export class MortalActorSheet extends CoterieActorSheet {
     data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })
     data.enrichedTouchstones = await TextEditor.enrichHTML(this.object.system.headers.touchstones, { async: true })
     data.enrichedBane = await TextEditor.enrichHTML(this.object.system.headers.bane, { async: true })
-    data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, { async: true })
 
     // Prepare items.
     if (this.actor.type === 'mortal') {
