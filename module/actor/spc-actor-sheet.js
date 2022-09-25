@@ -52,7 +52,7 @@ export class SPCActorSheet extends CoterieActorSheet {
   async getData () {
     const data = await super.getData()
     // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('VTM5E.SPC')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.SPC')}`
 
     // Prepare items.
     if (this.actor.type === 'spc') {
@@ -127,7 +127,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectSkill')}</label>
+              <label>${game.i18n.localize('WOD5E.SelectSkill')}</label>
               <select id="skillSelect">${options}</select>
           </div>
       </form>`
@@ -136,7 +136,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Add'),
+        label: game.i18n.localize('WOD5E.Add'),
         callback: async (html) => {
           const exceptionalskill = html.find('#skillSelect')[0].value
           this.actor.update({ [`system.exceptionaldicepools.${exceptionalskill}.visible`]: true })
@@ -144,12 +144,12 @@ export class SPCActorSheet extends CoterieActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
+        label: game.i18n.localize('WOD5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('VTM5E.AddSkill'),
+      title: game.i18n.localize('WOD5E.AddSkill'),
       content: template,
       buttons: buttons,
       default: 'draw'
@@ -171,7 +171,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectDiscipline')}</label>
+              <label>${game.i18n.localize('WOD5E.SelectDiscipline')}</label>
               <select id="disciplineSelect">${options}</select>
           </div>
       </form>`
@@ -180,7 +180,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Add'),
+        label: game.i18n.localize('WOD5E.Add'),
         callback: async (html) => {
           const discipline = html.find('#disciplineSelect')[0].value
           this.actor.update({ [`system.disciplines.${discipline}.visible`]: true })
@@ -188,12 +188,12 @@ export class SPCActorSheet extends CoterieActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
+        label: game.i18n.localize('WOD5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('VTM5E.AddDiscipline'),
+      title: game.i18n.localize('WOD5E.AddDiscipline'),
       content: template,
       buttons: buttons,
       default: 'draw'
