@@ -1,0 +1,91 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" alt="Item Image" />
+        <div class="header-fields flexcol">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}"
+                    placeholder="{{localize 'VTM5E.Name'}}" /></h1>
+            <div class="flexrow">
+                <!-- Select the edge this perk belongs to -->
+                <div class="edge">
+                    <select name="system.edge" data-type="String">
+                        {{#select item.system.edge}}
+                        {{> "systems/vtm5e/templates/item/parts/edges.html"}}
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "VTM5E.Description"}}</a>
+        <a class="item" data-tab="attributes">{{localize "VTM5E.Attributes"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor enrichedDescription target="system.description" button=true editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            {{!-- As you add new fields, add them in here! --}}
+            <div class="resource grid grid-4col flex-center">
+                <!-- Define the system that the perk uses -->
+                <label class="resource-label">{{localize "VTM5E.System"}}: </label>
+                <select name="system.dice1" data-type="String">
+                    {{#select item.system.dice1}}
+                    {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
+                    <option value="edge">{{localize (getEdgeName item.system.edge)}}</option>
+                    {{/select}}
+                </select>
+                <label class="resource-label">+</label>
+                {{#if item.system.skill}}
+                    <select name="system.dice2" data-type="String">
+                        {{#select item.system.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/skills.html"}}
+                        {{/select}}
+                    </select>
+                {{else if item.system.amalgam}}
+                    <select name="system.dice2" data-type="String">
+                        {{#select item.system.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/edges.html"}}
+                        {{/select}}
+                    </select>
+                {{else}}
+                    <select name="system.dice2" data-type="String">
+                        {{#select item.system.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
+                        <option value="edge">{{localize (getEdgeName item.system.edge)}}</option>
+                        {{/select}}
+                    </select>
+                {{/if}}
+
+                <!-- Rollable or not -->
+                <label class="resource-label">{{localize "VTM5E.Rollable"}}: </label>
+                <input type="checkbox" id="system.rollable" name="system.rollable" {{checked item.system.rollable}}>
+
+                <!-- Whether the "system" option uses skills or not -->
+                <label class="resource-label">{{localize "VTM5E.UseSkill"}}: </label>
+                {{#if item.system.amalgam}}
+                    <input type="checkbox" id="system.skill" name="system.skill" disabled {{checked item.system.skill}}>
+                {{else}}
+                    <input type="checkbox" id="system.skill" name="system.skill" {{checked item.system.skill}}>
+                {{/if}}
+
+                <!-- Adds other edge options to the "system" option -->
+                <label class="resource-label">{{localize "VTM5E.Amalgam"}}: </label>
+                {{#if item.system.skill}}
+                    <input type="checkbox" id="system.amalgam" name="system.amalgam" disabled {{checked item.system.amalgam}}>
+                {{else}}
+                  <input type="checkbox" id="system.amalgam" name="system.amalgam" {{checked item.system.amalgam}}>
+                {{/if}}
+
+            </div>
+        </div>
+    </section>
+</form>

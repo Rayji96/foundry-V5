@@ -1,5 +1,5 @@
 <div class="tab features" data-group="primary" data-tab="features">
-    {{#if isCharacter}}
+    {{#if (or hasBoons isCharacter)}}
     <label class="resource-label flex-center">{{localize "VTM5E.Boons"}}</label>
     <ol class="items-list flex-left">
         <li class="item flexrow item-header">
@@ -19,7 +19,7 @@
                     alt="{{item.name}}" />
                 </div>
                 <h4 class="item-name collapsible">{{item.name}}</h4>
-                <h4 class="item-name">{{item.data.boontype}}</h4>
+                <h4 class="item-name">{{item.system.boontype}}</h4>
                 <div class="item-controls">
                     <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}"><i
                         class="fas fa-comment-alt"></i></a>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="collapsible-content">
-                {{{item.data.description}}}
+                {{{item.system.description}}}
             </div>
         </li>
         {{/each}}
@@ -61,13 +61,13 @@
                 </div>
                 <h4 class="item-name collapsible">{{item.name}}</h4>
                 {{#if (ne key "background")}}
-                <div class="resource-value-static" data-value="{{item.data.points}}" data-name="items.{{item._id}}">
+                <div class="resource-value-static" data-value="{{item.system.points}}" data-name="items.{{item._id}}">
                     {{#numLoop 5}}
                     <span class="resource-value-static-step" data-index="{{this}}"></span>
                     {{/numLoop}}
                 </div>
                 {{else}}
-                <div class="resource-value" data-value="{{item.data.points}}" data-name="items.{{item._id}}">
+                <div class="resource-value" data-value="{{item.system.points}}" data-name="items.{{item._id}}">
                     <span class="resource-value-empty"></span>
                     {{#numLoop 5}}
                     <span class="resource-value-step" data-index="{{this}}"></span>
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="collapsible-content">
-                {{{item.data.description}}}
+                {{{item.system.description}}}
             </div>
         </li>
         {{/each}}

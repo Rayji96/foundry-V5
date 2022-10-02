@@ -13,15 +13,15 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
   // Define the actor's current hunger
   let hungerDice
   if (useHunger) {
-    hungerDice = Math.min(actor.data.data.hunger.value, numDice)
+    hungerDice = Math.min(actor.system.hunger.value, numDice)
   } else {
     hungerDice = 0
   }
 
   // Roll defining and evaluating
   const dice = numDice - hungerDice
-  const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dhcs>5', actor.data.data)
-  await roll.evaluate()
+  const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dgcs>5', actor.system)
+  await roll.evaluate({ async: true })
 
   // Variable defining
   let difficultyResult = '<span></span>'
@@ -136,7 +136,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
     // Check if the roll failed (matters for discipline
     // power-based rouse checks that roll 2 dice instead of 1)
     if ((difficulty === 0 && totalSuccess === 0) || (totalSuccess < difficulty)) {
-      const actorHunger = actor.data.data.hunger.value
+      const actorHunger = actor.system.hunger.value
 
       // If hunger is greater than 4 (5, or somehow higher)
       // then display that in the chat and don't increase hunger
@@ -147,10 +147,10 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
         })
       } else {
         // Define the new number of hunger points
-        const newHunger = actor.data.data.hunger.value + 1
+        const newHunger = actor.system.hunger.value + 1
 
         // Push it to the actor's sheet
-        actor.update({ 'data.hunger.value': newHunger })
+        actor.update({ 'system.hunger.value': newHunger })
       }
     }
   }
@@ -158,7 +158,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
   // Automatically track willpower damage as a result of willpower rerolls
   if (subtractWillpower && game.settings.get('vtm5e', 'automatedWillpower')) {
     // Get the actor's willpower and define it for convenience
-    const actorWillpower = actor.data.data.willpower
+    const actorWillpower = actor.system.willpower
     const maxWillpower = actorWillpower.max
     const aggrWillpower = actorWillpower.aggravated
     const superWillpower = actorWillpower.superficial
@@ -179,7 +179,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
         const newWillpower = superWillpower + 1
 
         // Update the actor sheet
-        actor.update({ 'data.willpower.superficial': newWillpower })
+        actor.update({ 'system.willpower.superficial': newWillpower })
       } else {
         // If there aren't any superficial boxes left, add an aggravated one
 
@@ -190,8 +190,8 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
         const newAggrWillpower = aggrWillpower + 1
 
         // Update the actor sheet
-        actor.update({ 'data.willpower.superficial': newSuperWillpower })
-        actor.update({ 'data.willpower.aggravated': newAggrWillpower })
+        actor.update({ 'system.willpower.superficial': newSuperWillpower })
+        actor.update({ 'system.willpower.aggravated': newAggrWillpower })
       }
     }
   }

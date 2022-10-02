@@ -1,15 +1,27 @@
 {
   "name": "vtm5e",
   "title": "Vampire the Masquerade 5e",
-  "description": "Vampire 5e system for Foundry VTT!",
+  "description": "World of Darkness 5e system for Foundry VTT + Geist: The Sin Eaters addon",
   "author": "Ray Ji, Geist support by LRemplakowski",
-  "authors": [],
+  "authors": [
+    {
+      "name": "Ray",
+      "url": "https://github.com/Rayji96",
+      "email": "rayji96@gmail.com",
+      "discord": "weinerdolphin#3175"
+    },
+    {
+      "name": "MrDionysus",
+      "url": "https://github.com/MrDionysus"
+    }
+  ],
+  "relationships": {},
   "url": "https://github.com/LRemplakowski/foundry-V5/",
   "license": "LICENSE.txt",
   "flags": {},
-  "version": "1.8.4g",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9.0",
+  "version": "2.0.2g",
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion": "10.0",
   "scripts": [],
   "esmodules": [
     "module/main.js"
@@ -32,5 +44,9 @@
   "download": "https://github.com/LRemplakowski/foundry-V5/archive/foundryvtt_v5_v1.8.4g.zip",
   "protected": false,
   "gridDistance": 5,
-  "gridUnits": "ft"
+  "gridUnits": "ft",
+  "license": "LICENSE.txt",
+  "url": "https://github.com/Rayji96/foundry-V5",
+  "manifest": "https://raw.githubusercontent.com/Rayji96/foundry-V5/main/system.json",
+  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v2.0.2.zip"
 }

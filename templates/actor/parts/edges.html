@@ -1,0 +1,82 @@
+<div class="tab edges" data-group="primary" data-tab="edges">
+    <ol class="items-list">
+        <!-- Header of the edges lists -->
+        <li class="item flexrow item-header">
+            <div class="item-name">{{localize "VTM5E.Name"}}</div>
+            <!-- Item controls for adding new edge lists -->
+            <div class="item-controls">
+                <a class="item-control edge-create" title="{{localize 'VTM5E.AddEdge'}}">
+                    <i class="fas fa-plus"></i>
+                    {{localize "VTM5E.AddEdge"}}
+                </a>
+            </div>
+        </li>
+        <!-- Iterate through each of the edge lists -->
+        {{#each actor.system.edges as |edge key|}}
+            {{#if edge.visible}}
+                <li class="flexrow item-header">
+                    <div class="item-name collapsible">
+                        {{localize edge.name}}
+                    </div>
+                    <!-- Item controls for Edge sections -->
+                    <div class="item-controls">
+                        <!-- Add new edge perk -->
+                        <a class="item-control item-create" title="{{localize 'VTM5E.AddPerk'}}" data-type="perk" data-edge="{{key}}">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        <!-- Icon to show the edge description to the chat-->
+                        <a class="item-control edge-chat" title="{{localize 'VTM5E.ShowToChat'}}" data-type="perk" data-edge="{{key}}">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
+                        <!-- Icon to delete the edge (as long as it doesn't have any perks) -->
+                        <a class="item-control edge-delete" title="{{localize 'VTM5E.Delete'}}" data-edge="{{key}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </li>
+                <!-- Edge description -->
+                <div class="collapsible-content">
+                    <textarea class="edge-description" name="system.edges.{{key}}.description">{{edge.description}}</textarea>
+                </div>
+                <!-- Iterate through each of the edge perks -->
+                {{#each (lookup ../actor.edges_list key) as |item id|}}
+                    <li class="item flexcol" data-item-id="{{item._id}}">
+                        <div class="flexrow">
+                            <!-- Whether the button is clickable or not to post the perk in chat -->
+                            {{#if item.system.rollable}}
+                                <div class="item-image perk-rollable" data-id="{{item._id}}" data-use-hunger="1">
+                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                </div>
+                            {{else}}
+                                <div class="item-image" data-id="{{item._id}}">
+                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                </div>
+                            {{/if}}
+                            <!-- Edge perk name -->
+                            <h4 class="item-name collapsible">{{item.name}}</h4>
+                            <!-- Item controls for edge perks -->
+                            <div class="item-controls">
+                                <!-- Icon to edit the perk-->
+                                <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <!-- Icon to display the perk in chat -->
+                                <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}">
+                                    <i class="fas fa-comment-alt"></i>
+                                </a>
+                                <!-- Icon to delete the perk -->
+                                <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Perk description, expandable by a collapse -->
+                        <div class="collapsible-content">
+                            {{{item.system.description}}}
+                        </div>
+                    </li>
+                {{/each}}
+            {{/if}}
+        {{/each}}
+    </ol>
+</div>

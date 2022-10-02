@@ -1,6 +1,8 @@
 /* global game */
 
 import { rollDice } from '../actor/roll-dice.js'
+// TODO: add Hunter Dice
+// import { rollHunterDice } from '../actor/roll-hunter-dice.js'
 
 export function prepareSearchableSelection (id, $content, data, callback) {
   const select = `#${id}`
@@ -90,7 +92,7 @@ export function prepareSearchableSelection (id, $content, data, callback) {
 }
 
 export function watchPool1Filters ($content, data) {
-  $content.find('.pool1Filters input[type=radio]').on('change', event => {
+  $content.find('.pool1-filters input[type=radio]').on('change', event => {
     event.preventDefault()
     data.pool1Type = event.target.value
     data.updateDiceTray(data)
@@ -98,7 +100,7 @@ export function watchPool1Filters ($content, data) {
 }
 
 export function watchPool2Filters ($content, data) {
-  $content.find('.pool2Filters input[type=radio]').on('change', event => {
+  $content.find('.pool2-filters input[type=radio]').on('change', event => {
     event.preventDefault()
     data.pool2Type = event.target.value
     data.updateDiceTray(data)
@@ -125,7 +127,7 @@ export function prepareCustomRollButton ($content, data) {
 
 function describePool (poolNumber, data) {
   const poolType = data[`pool${poolNumber}Type`]
-  const actordata = data.selectedCharacter.data.data
+  const actordata = data.selectedCharacter.system
   const poolVars = actordata[poolType][data[`pool${poolNumber}`]]
 
   const poolDesciption = {
@@ -154,7 +156,7 @@ export function prepareWillpowerShortcut ($content, data) {
   $content.find('.dice-tray-button[data=rollWill]').on('click', event => {
     event.preventDefault()
     const actor = data.selectedCharacter
-    const actorData = actor.data.data
+    const actorData = actor.system
     const dicepool = (actorData.willpower.max - actorData.willpower.aggravated - actorData.willpower.superficial)
     rollDice(dicepool, actor, game.i18n.localize('VTM5E.RollingWillpower'), 0, false, false, true)
   })
@@ -164,7 +166,7 @@ export function prepareFrenzyShortcut ($content, data) {
   $content.find('.dice-tray-button[data=rollFrenzy]').on('click', event => {
     event.preventDefault()
     const actor = data.selectedCharacter
-    const actorData = actor.data.data
+    const actorData = actor.system
     const dicepool = (actorData.willpower.max - actorData.willpower.aggravated - actorData.willpower.superficial) + Math.floor(actorData.humanity.value / 3)
     rollDice(dicepool, actor, `${game.i18n.localize('VTM5E.ResistingFrenzy')}...`, 0, false)
   })
@@ -174,7 +176,7 @@ export function prepareHumanityShortcut ($content, data) {
   $content.find('.dice-tray-button[data=rollHumanity]').on('click', event => {
     event.preventDefault()
     const actor = data.selectedCharacter
-    const actorData = actor.data.data
+    const actorData = actor.system
     const dicepool = (10 - actorData.humanity.value - actorData.humanity.stains)
     rollDice(dicepool, actor, game.i18n.localize('VTM5E.RollingRemorse'), 0, false)
   })

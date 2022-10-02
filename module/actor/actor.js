@@ -46,7 +46,7 @@ export class VampireActor extends Actor {
     // Collect data
     const documentName = this.metadata.name
     const types = game.system.documentTypes[documentName]
-    const folders = game.folders.filter(f => (f.data.type === documentName) && f.displayed)
+    const folders = game.folders.filter(f => (f.type === documentName) && f.displayed)
     const label = game.i18n.localize(this.metadata.label)
     const title = game.i18n.format('DOCUMENT.Create', { type: label })
 
@@ -78,7 +78,7 @@ export class VampireActor extends Actor {
       callback: html => {
         const form = html[0].querySelector('form')
         const fd = new FormDataExtended(form)
-        data = foundry.utils.mergeObject(data, fd.toObject())
+        data = foundry.utils.mergeObject(data, fd.object)
         if (!data.folder) delete data.folder
         if (types.length === 1) data.type = types[0]
         return this.create(data, { renderSheet: true })

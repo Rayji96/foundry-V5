@@ -1,7 +1,6 @@
 /* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
 import { MortalActorSheet } from './mortal-actor-sheet.js'
-
 import { rollDice } from './roll-dice.js'
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -41,13 +40,13 @@ export class GhoulActorSheet extends MortalActorSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData () {
-    const data = super.getData()
+  async getData () {
+    const data = await super.getData()
 
     data.sheetType = `${game.i18n.localize('VTM5E.Ghoul')}`
 
     // Prepare items.
-    if (this.actor.data.type === 'ghoul') {
+    if (this.actor.type === 'ghoul') {
       this._prepareItems(data)
     }
 
@@ -86,10 +85,10 @@ export class GhoulActorSheet extends MortalActorSheet {
     for (const i of sheetData.items) {
       if (i.type === 'power') {
         // Append to disciplines.
-        if (i.data.discipline !== undefined) {
-          disciplines[i.data.discipline].push(i)
-          if (!this.actor.data.data.disciplines[i.data.discipline].visible) {
-            this.actor.update({ [`data.disciplines.${i.data.discipline}.visible`]: true })
+        if (i.system.discipline !== undefined) {
+          disciplines[i.system.discipline].push(i)
+          if (!this.actor.system.disciplines[i.system.discipline].visible) {
+            this.actor.update({ [`system.disciplines.${i.system.discipline}.visible`]: true })
           }
         }
       }
@@ -114,13 +113,13 @@ export class GhoulActorSheet extends MortalActorSheet {
     // Make Discipline hidden
     html.find('.discipline-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`data.disciplines.${data.discipline}.visible`]: false })
+      this.actor.update({ [`system.disciplines.${data.discipline}.visible`]: false })
     })
 
     // Post Discipline description to the chat
     html.find('.discipline-chat').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      const discipline = this.actor.data.data.disciplines[data.discipline]
+      const discipline = this.actor.system.disciplines[data.discipline]
 
       renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
         name: game.i18n.localize(discipline.name),
@@ -137,8 +136,8 @@ export class GhoulActorSheet extends MortalActorSheet {
     html.find('.item-rouse').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
-      const level = item.data.data.level
-      const potency = this.actor.data.data.blood.potency
+      const level = item.system.level
+      const potency = this.actor.system.blood.potency
 
       const dicepool = this.potencyToRouse(potency, level)
 
@@ -157,7 +156,7 @@ export class GhoulActorSheet extends MortalActorSheet {
   _onShowDiscipline (event) {
     event.preventDefault()
     let options = ''
-    for (const [key, value] of Object.entries(this.actor.data.data.disciplines)) {
+    for (const [key, value] of Object.entries(this.actor.system.disciplines)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
@@ -176,7 +175,7 @@ export class GhoulActorSheet extends MortalActorSheet {
         label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
           const discipline = html.find('#disciplineSelect')[0].value
-          this.actor.update({ [`data.disciplines.${discipline}.visible`]: true })
+          this.actor.update({ [`system.disciplines.${discipline}.visible`]: true })
         }
       },
       cancel: {
@@ -200,21 +199,21 @@ export class GhoulActorSheet extends MortalActorSheet {
     const item = this.actor.items.get(dataset.id)
     const disciplineValue = 1
 
-    const dice1 = item.data.data.dice1 === 'discipline' ? disciplineValue : this.actor.data.data.abilities[item.data.data.dice1].value
+    const dice1 = item.system.dice1 === 'discipline' ? disciplineValue : this.actor.system.abilities[item.system.dice1].value
 
     let dice2
-    if (item.data.data.dice2 === 'discipline') {
+    if (item.system.dice2 === 'discipline') {
       dice2 = disciplineValue
-    } else if (item.data.data.skill) {
-      dice2 = this.actor.data.data.skills[item.data.data.dice2].value
-    } else if (item.data.data.amalgam) {
-      dice2 = this.actor.data.data.disciplines[item.data.data.dice2].value
+    } else if (item.system.skill) {
+      dice2 = this.actor.system.skills[item.system.dice2].value
+    } else if (item.system.amalgam) {
+      dice2 = this.actor.system.disciplines[item.system.dice2].value
     } else {
-      dice2 = this.actor.data.data.abilities[item.data.data.dice2].value
+      dice2 = this.actor.system.abilities[item.system.dice2].value
     }
 
     const dicePool = dice1 + dice2
-    rollDice(dicePool, this.actor, `${item.data.name}`, 0, this.hunger)
+    rollDice(dicePool, this.actor, `${item.name}`, 0, this.hunger)
   }
 
   potencyToRouse (potency, level) {

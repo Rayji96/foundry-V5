@@ -1,14 +1,23 @@
-# Vampire the Masquerade 5e System
 
-[![Foundry Shield 9]][Foundry URL]
+# World of Darkness 5e System
+
+[![Dark Pack]][Dark Pack URL]
+
+[![Foundry Shield 10]][Foundry URL]
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
-This system is for playing Vampire the Masquerade 5th edition on the Foundry Virtual Tabletop System.
+This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System.
 
-Licensed VtM5e materials will NOT be provided (list of disciplines, clans, etc.) as this is a system provided for public use for free.
+Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pact License].
 
-There is integration with Dice So Nice! To roll regular vampire dice, roll `1dv`. To roll Hunger dice, roll `1dh`. Replace the 1s with however many dice you want to roll for each type.
+## Dice
+
+There is integration with Dice So Nice!
+
+To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`. Replace the 1s with however many dice you want to roll for each type.
+
+To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`. Replace the 1s with however many dice you want to roll for each type.
 
 ## Feedback
 
@@ -16,13 +25,14 @@ Bugs reported as issues to this repository are greatly appreciate.
 
 Please reach out to me at weinerdolphin#3175 on Discord with issues, feature requests, etc.
 
-Please check the issues list before suggesting new features. :smiley:
+Please check the issues list before suggesting new features.
 
 ## Credits
 
 Huge thanks to these folks for their contributions:
 
 * This sheet was initially based on the [boilerplate system] by @asacolips#1867
+* Addition of Hunter sheets and SPC sheets by [MrDionysus] (MrDionysus#9673)
 * French localization started by @Lloyxide#6914
 * Italian localization started by @Arcadio21#8780
 * Help with french localization by [Lemantia]
@@ -30,6 +40,7 @@ Huge thanks to these folks for their contributions:
 * German localization started and maintained by [tom959]
 * Spanish localization started by [erizocosmico]
 * Spanish localization help by [Musrha]
+* Polish localization help by [gbursson]
 * Icons used with permissions from [cftarbay]
 * Features improvements and custom roll table by [Veichassur]
 * Limited character sheet by [pedroboh]
@@ -42,8 +53,10 @@ Huge thanks to these folks for their contributions:
 * Adding blood potency bonus to discipline rolls by [MarkusOzgur]
 * Dicebox by [crcroberts]
 * Feedback and fixes by [eisenfuchs]
+* Feedback and fixes by @OldMightyFriendlyGamer#0832
+* Initial testing and DiceSoNice feedback by Clement#1490
 
-[Foundry Shield 9]: https://img.shields.io/badge/Foundry-9-informational
+[Foundry Shield 10]: https://img.shields.io/badge/Foundry-10-informational
 [Foundry URL]: https://foundryvtt.com
 
 [MIT License]: https://img.shields.io/badge/License-MIT-green
@@ -51,6 +64,9 @@ Huge thanks to these folks for their contributions:
 
 [GitHub Super-Linter]: https://github.com/Rayji96/foundry-V5/workflows/Super-Linter/badge.svg
 [Super-Linter URL]: https://github.com/marketplace/actions/super-linter
+
+[Dark Pack]: https://s3-eu-north-1.amazonaws.com/pdx-campaign-wp-data/uploads/sites/10/2021/10/05102936/darkpack_logo2-300x300.png
+[Dark Pack URL]: https://www.worldofdarkness.com/dark-pack
 
 [boilerplate system]: https://gitlab.com/asacolips-projects/foundry-mods/foundryvtt-system-tutorial
 [danielmalka]: https://github.com/danielmalka
@@ -69,3 +85,5 @@ Huge thanks to these folks for their contributions:
 [MarkusOzgur]: https://github.com/MarkusOzgur
 [Musrha]: https://github.com/Musrha
 [crcroberts]: https://github.com/crcroberts
+[gbursson]: https://github.com/gbursson
+[MrDionysus]: https://github.com/MrDionysus

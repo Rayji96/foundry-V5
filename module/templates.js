@@ -10,7 +10,11 @@ export const preloadHandlebarsTemplates = async function () {
     // Actor Sheet Partials
     'systems/vtm5e/templates/actor/parts/biography.html',
     'systems/vtm5e/templates/actor/parts/blood.html',
+    'systems/vtm5e/templates/actor/parts/danger.html',
+    'systems/vtm5e/templates/actor/parts/despair.html',
+    'systems/vtm5e/templates/actor/parts/desperation.html',
     'systems/vtm5e/templates/actor/parts/disciplines.html',
+    'systems/vtm5e/templates/actor/parts/edges.html',
     'systems/vtm5e/templates/actor/parts/exp.html',
     'systems/vtm5e/templates/actor/parts/features.html',
     'systems/vtm5e/templates/actor/parts/frenzy.html',
@@ -27,10 +31,16 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/actor/parts/haunts.html',
     'systems/vtm5e/templates/actor/parts/keys.html',
     'systems/vtm5e/templates/actor/parts/rousePlasma.html',
+    'systems/vtm5e/templates/actor/parts/standard-dice-pools.html',
+    'systems/vtm5e/templates/actor/parts/exceptional-dice-pools.html',
+    'systems/vtm5e/templates/actor/parts/generaldifficulty.html',
+    'systems/vtm5e/templates/actor/parts/notes.html',
+    'systems/vtm5e/templates/actor/parts/spc-disciplines.html',
 
     // Item Sheet Partials
     'systems/vtm5e/templates/item/parts/skills.html',
     'systems/vtm5e/templates/item/parts/disciplines.html',
+    'systems/vtm5e/templates/item/parts/edges.html',
     'systems/vtm5e/templates/item/parts/attributes.html',
     'systems/vtm5e/templates/item/parts/haunts.html',
     'systems/vtm5e/templates/item/parts/keys.html',

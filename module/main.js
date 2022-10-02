@@ -1,4 +1,4 @@
-/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui, renderTemplate */
+/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui, renderTemplate, getProperty */
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
@@ -6,13 +6,17 @@ import { migrateWorld } from './migration.js'
 import { VampireActor } from './actor/actor.js'
 import { VampireItem } from './item/item.js'
 import { VampireItemSheet } from './item/item-sheet.js'
-import { VampireDie, VampireHungerDie } from './dice/dice.js'
+import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie } from './dice/dice.js'
 import { rollDice } from './actor/roll-dice.js'
+import { rollHunterDice } from './actor/roll-hunter-dice.js'
 import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
 import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
 import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
 import { EaterActorSheet } from './actor/eater-actor-sheet.js'
+import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
+import { CellActorSheet } from './actor/cell-actor-sheet.js'
+import { SPCActorSheet } from './actor/spc-actor-sheet.js'
 import {
   prepareSearchableSelection,
   prepareRouseShortcut,
@@ -39,8 +43,9 @@ Hooks.once('init', async function () {
   })
 
   game.settings.register('vtm5e', 'useChatRoller', {
+    // TODO: fix Chat Roller
     name: 'Chat Roller',
-    hint: 'Display dice roller in chat window',
+    hint: 'Display dice roller in chat window. WARNING: Currently not working properly with Hunter changes.',
     scope: 'world',
     config: true,
     default: false,
@@ -49,7 +54,7 @@ Hooks.once('init', async function () {
 
   game.settings.register('vtm5e', 'chatRollerSortAbilities', {
     name: 'Sort Abilities in Chat Roller',
-    hint: 'Sort abilities (Attributes, Skills, Disciplines) alphabetically in the chat roller. Disable to sort in the order on the character sheet (grouping physical, social, and mental).',
+    hint: 'Sort abilities (Attributes, Skills, Disciplines, Edges) alphabetically in the chat roller. Disable to sort in the order on the character sheet (grouping physical, social, and mental).',
     scope: 'client',
     config: true,
     default: true,
@@ -101,7 +106,9 @@ Hooks.once('init', async function () {
   CONFIG.Actor.documentClass = VampireActor
   CONFIG.Item.documentClass = VampireItem
   CONFIG.Dice.terms.v = VampireDie
-  CONFIG.Dice.terms.h = VampireHungerDie
+  CONFIG.Dice.terms.g = VampireHungerDie
+  CONFIG.Dice.terms.h = HunterDie
+  CONFIG.Dice.terms.s = HunterDesperationDie
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
@@ -126,9 +133,24 @@ Hooks.once('init', async function () {
     types: ['mortal'],
     makeDefault: true
   })
+  Actors.registerSheet('vtm5e', HunterActorSheet, {
+    label: 'Hunter Sheet',
+    types: ['hunter', 'character'],
+    makeDefault: true
+  })
   Actors.registerSheet('vtm5e', CoterieActorSheet, {
     label: 'Coterie Sheet',
     types: ['coterie'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', CellActorSheet, {
+    label: 'Cell Sheet',
+    types: ['cell'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', SPCActorSheet, {
+    label: 'SPC Sheet',
+    types: ['spc'],
     makeDefault: true
   })
   Items.unregisterSheet('core', ItemSheet)
@@ -219,6 +241,18 @@ Hooks.once('init', async function () {
     )
   })
 
+  Handlebars.registerHelper('visibleEdges', function (edges) {
+    return Object.keys(edges).reduce(
+      (obj, key) => {
+        if (edges[key].visible) {
+          obj[key] = edges[key]
+        }
+        return obj
+      },
+      {}
+    )
+  })
+
   Handlebars.registerHelper('sortAbilities', function (unordered = {}) {
     if (!game.settings.get('vtm5e', 'chatRollerSortAbilities')) {
       return unordered
@@ -285,6 +319,21 @@ Hooks.once('init', async function () {
       well: 'VTM5E.Well',
     }
     return disciplines[key]
+  Handlebars.registerHelper('getEdgeName', function (key) {
+    const edges = {
+      arsenal: 'VTM5E.Arsenal',
+      ordnance: 'VTM5E.Ordnance',
+      library: 'VTM5E.Libraryy',
+      improvisedgear: 'VTM5E.ImprovisedGear',
+      globalaccess: 'VTM5E.GlobalAccess',
+      dronejockey: 'VTM5E.DroneJockey',
+      beastwhisperer: 'VTM5E.BeastWhisperer',
+      sensetheunnatural: 'VTM5E.SenseTheUnnatural',
+      repeltheunnatural: 'VTM5E.RepelTheUnnatural',
+      thwarttheunnatural: 'VTM5E.ThwartTheUnnatural',
+      artifact: 'VTM5E.Artifact'
+    }
+    return edges[key]
   })
 })
 
@@ -328,8 +377,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       df: 2.5
     }
   }, 'default')
+
   dice3d.addDicePreset({
-    type: 'dh',
+    type: 'dg',
     labels: [
       'systems/vtm5e/assets/images/bestial-fail-dsn.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
@@ -345,7 +395,61 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     colorset: 'hunger',
     system: 'vtm5e'
   })
+
+  dice3d.addDicePreset({
+    type: 'dh',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    colorset: 'black',
+    fontScale: 0.5,
+    system: 'vtm5e'
+  })
+
+  dice3d.addColorset({
+    name: 'desperation',
+    description: 'V5 Desperation Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#ee7e1f',
+    texture: 'none',
+    edge: '#000000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'ds',
+    labels: [
+      'systems/vtm5e/assets/images/desperation-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    colorset: 'desperation',
+    system: 'vtm5e'
+  })
 })
+
 /* -------------------------------------------- */
 /*  Add chat dicebox                            */
 /* -------------------------------------------- */
@@ -375,11 +479,11 @@ Hooks.on('renderSidebarTab', (app, html) => {
           prepareSearchableSelection('selectedCharacter', $content, options, (event) => game.actors.get(event.target.value))
 
           prepareSearchableSelection('pool1', $content, options, (event) => event.target.value)
-
-          watchPool1Filters($content, options)
           options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find('#pool1 option').attr('value')
           prepareSearchableSelection('pool2', $content, options, (event) => event.target.value)
           options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find('#pool2 option').attr('value')
+
+          watchPool1Filters($content, options)
           watchPool2Filters($content, options)
 
           prepareCustomRollButton($content, options)
@@ -498,11 +602,14 @@ function rerollDie (roll) {
   // Theoretically I should error-check this, but there shouldn't be any
   // messages that call for a WillpowerReroll without an associated actor
   const message = game.messages.get(roll.attr('data-message-id'))
-  const speaker = game.actors.get(message.data.speaker.actor)
+  const speaker = game.actors.get(message.speaker.actor)
+  const charactertype = getProperty(speaker, 'type', { strict: true })
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-  if ((diceSelected > 0) && (diceSelected < 4)) {
+  if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== 'hunter') {
     rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
+  } else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === 'hunter') {
+    rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
   }
 }
 
@@ -520,7 +627,7 @@ function rerollDie (roll) {
 async function createVampireMacro (data, slot) {
   if (data.type !== 'Item') return
   if (!('data' in data)) return ui.notifications.warn('You can only create macro buttons for owned Items')
-  const item = data.data
+  const item = data.system
 
   // Create the macro command
   const command = `game.vtm5e.rollItemMacro("${item.name}");`

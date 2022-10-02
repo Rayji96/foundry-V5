@@ -1,0 +1,12 @@
+<div class="resource flex-group-center danger">
+    <div class="flexrow">
+        <label for="system.danger.value" class="resource-label">{{localize "VTM5E.Danger"}}</label>
+    </div>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="cell-resource-counter" data-states="-:value" data-value="{{actor.system.danger.value}}" data-name="system.danger">
+            {{#numLoop 5}}
+            <span class="cell-resource-counter-step" data-index="{{this}}" data-state=""></span>
+            {{/numLoop}}
+        </div>
+    </div>
+</div>
