@@ -12,7 +12,7 @@
         <div class="dice-tray-searchable-select-hover"></div>
         <div id="pool1Fields" class="dice-tray-searchable-select-fields">
             <ul class="dice-tray-searchable-select-options">
-                {{#each (sortAbilities selectedCharacter.actor.system.abilities) as |attribute|}}
+                {{#each (sortAbilities selectedCharacter.system.abilities) as |attribute|}}
                     <li tabindex="-1" value="{{@key}}" title="{{localize attribute.name}}">{{localize attribute.name}}</li>  
                 {{/each}}
             </ul>
