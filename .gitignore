@@ -10,3 +10,6 @@ npm-debug.log
 /.stylelintrc*
 /.htmlhintrc*
 /.eslintrc*
+dist/
+vtm5e.lock
+pnpm-lock.yaml
