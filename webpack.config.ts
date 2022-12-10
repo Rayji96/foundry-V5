@@ -43,6 +43,10 @@ const [outDir, foundryUri] = ((): [string, string] => {
 })();
 
 const config: Configuration = {
+  // ignore big assets
+  performance: {
+    hints: false,
+  },
   mode: "production",
   entry: "./src/module/main.js",
   output: {
