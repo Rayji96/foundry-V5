@@ -20,12 +20,8 @@
     }
   ],
   "relationships": {},
-  "esmodules": [
-    "module/main.js"
-  ],
-  "styles": [
-    "css/vtm5e.css"
-  ],
+  "esmodules": ["main.bundle.js"],
+  "styles": ["css/main.css"],
   "languages": [
     {
       "lang": "en",

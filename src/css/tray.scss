@@ -2,7 +2,7 @@
   flex: 0;
   padding: 5px;
   margin: 3px;
-  background: url("/systems/vtm5e/assets/images/background-green-marble.jpg"), #153b23;
+  background: url("../../static/assets/images/background-green-marble.jpg"), #153b23;
   background-size: cover;
   border: 2px solid #1e5e35;
   border-radius: 5px 5px 0 0;
@@ -63,7 +63,6 @@
 
 .dice-tray-button .roll-image {
   border: 0;
-  filter: invert();
 }
 
 .dice-tray-pool-filters.pool1-filters {

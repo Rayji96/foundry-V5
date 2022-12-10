@@ -1,12 +1,12 @@
 @import "https://fonts.googleapis.com/css2?family=Martel:wght@400;800&family=Roboto:wght@300;400;500&display=swap";
-@import "./tray.css";
-@import "./dark-theme.css";
-@import "./hunter-theme.css";
+@import "tray";
+@import "dark-theme";
+@import "hunter-theme";
 
 /* Fonts */
 @font-face {
   font-family: cormorantLight;
-  src: url("../assets/fonts/Cormorant-Light-webfont.woff") format("woff");
+  src: url("../../static/assets/fonts/Cormorant-Light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }

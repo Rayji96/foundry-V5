@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    // "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "module": "CommonJS",
+    "target": "ES2018",
+    "allowJs": true
+  },
+  "watchOptions": {
+    "excludeDirectories": [
+      "packs/data/",
+      "static/packs/",
+      "dist/"
+    ]
+  }
+}

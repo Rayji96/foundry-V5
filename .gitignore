@@ -13,3 +13,4 @@ npm-debug.log
 dist/
 vtm5e.lock
 pnpm-lock.yaml
+foundryconfig.json
