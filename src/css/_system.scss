@@ -1,0 +1,717 @@
+@use "styles.scss" as *;
+
+/* Global styles */
+.window-app {
+  font-family: "Roboto", sans-serif;
+  font-size: 1em;
+}
+
+#sidebar.app {
+  background: rgba(20, 0, 0, 90%);
+}
+
+/* Grids and Flexboxes */
+.grid {
+  display: grid;
+  margin: 10px 0;
+  padding: 0;
+
+  gap: 10px;
+  grid-column: span 2 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  @for $i from 2 through 12 {
+    &-#{$i}col {
+      grid-column: span $i / span $i;
+      grid-template-columns: repeat($i, minmax(0, 1fr));
+    }
+  }
+}
+
+.flex {
+  &-center {
+    @include flexAlign(stretch, center, center);
+  }
+
+  &-left {
+    @include flexAlign(left, left, left);
+  }
+
+  &-between {
+    @include flexAlign(center, space-between);
+    margin: 2px auto;
+  }
+
+  &-group {
+    &-center {
+      @include flexAlign(center, center, center);
+      padding: 2px;
+      border-radius: 5px;
+      border: 1px solid $accent;
+
+      input[type="number"] {
+        margin: auto 2px;
+      }
+
+      input[type="text"] {
+        display: inline;
+        border: 1px solid transparent;
+      }
+
+      &:not(.flexrow) {
+        .resource-counter,
+        .resource-value {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    &-left {
+      @include flexAlign(center, flex-start, left);
+      padding: 2px;
+      border: 1px solid $accent;
+      border-radius: 5px;
+    }
+
+    &-right {
+      @include flexAlign(center, flex-end, right);
+      padding: 2px;
+      border: 1px solid $accent;
+      border-radius: 5px;
+    }
+  }
+}
+
+/* Rollable */
+.custom-rollable,
+.power-rollable,
+.rollable,
+.rollable-with-mod,
+.vrollable {
+  &:hover,
+  &:focus {
+    @include buttonHover();
+  }
+}
+
+/* Chat Messages */
+#chat-form {
+  textarea {
+    background: $bg;
+  }
+}
+
+.chat-message {
+  background: $bg;
+}
+
+.roll {
+  &-content {
+    font-size: 120%;
+
+    &.result-bestial {
+      &.result-possible {
+        font-family: "Cormorant Light", sans-serif;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-img {
+    max-width: 30px;
+    margin: 1px;
+    background: rgba(255, 255, 255, 50%);
+    border-radius: 3px;
+
+    &.hunger-dice {
+      background: rgba(255, 230, 230, 50%);
+      border-color: $accent;
+    }
+  }
+
+  &-label {
+    font-family: "Cormorant Light", sans-serif;
+    font-size: 130%;
+    font-weight: bold;
+
+    .danger {
+      color: $danger;
+    }
+
+    .success {
+      color: $success;
+    }
+  }
+}
+
+.willpower-reroll {
+  .die {
+    flex: 0;
+  }
+
+  .selected::after {
+    content: "X";
+    position: absolute;
+
+    color: $accent;
+    font-size: 30px;
+    margin-left: -25px;
+    margin-top: -2px;
+  }
+}
+
+/* .vtm5e System Class */
+.vtm5e {
+  button {
+    &.rollable,
+    &.rollable-with-mod {
+      color: var(--color-text-light-0);
+      background: $accent;
+      border: none;
+      margin: auto 2px;
+
+      font-family: "Cormorant Light", sans-serif;
+      font-weight: bold;
+
+      &:hover,
+      &:active {
+        @include buttonHover();
+      }
+    }
+  }
+
+  input {
+    background: var(--color-text-light-0);
+    border: 1px solid var(--color-border-light-primary);
+    font-family: initial;
+  }
+
+  .items-list {
+    .flex-left {
+      padding-right: 21px;
+    }
+
+    .item {
+      min-height: 30px;
+      min-width: 100%;
+      padding: 3px 0;
+      border-bottom: 1px solid $borderLight;
+
+      line-height: 24px;
+
+      img {
+        display: block;
+      }
+
+      &-controls {
+        flex: 0 0 86px;
+        text-align: right;
+        color: $accent;
+      }
+
+      &-header {
+        color: $accent;
+        border-bottom: 1px solid $accent;
+
+        padding: 3px 0;
+        min-height: 30px;
+
+        font-weight: bold;
+        line-height: 24px;
+      }
+
+      &-image {
+        flex: 0 0 24px;
+        margin-right: 5px;
+      }
+
+      &-name {
+        color: inherit;
+        margin: 0;
+        font-weight: 600;
+
+        &-header {
+          margin: 0;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .collapsible {
+    &:hover,
+    &:focus {
+      color: #000;
+      cursor: pointer;
+      text-shadow: 0 0 10px $accent;
+    }
+
+    &-content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+    }
+  }
+
+  .description {
+    &-content {
+      display: inline;
+      height: 95%;
+
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 5px;
+    }
+  }
+
+  .item {
+    width: calc(100% / 6);
+
+    &-name {
+      h3 {
+        line-height: 18px;
+        font-weight: bold;
+        flex: 4 0 0;
+        text-align: center;
+      }
+    }
+
+    &-list {
+      list-style: none;
+      margin: 7px 0;
+      padding: 0;
+      overflow-y: auto;
+    }
+  }
+
+  .resource {
+    // Resource Boxes
+    &-counter {
+      .resource-counter-step {
+        display: inline-block;
+        height: 14px;
+        width: 14px;
+
+        border: 1px solid $borderDark;
+        cursor: pointer;
+
+        &[data-state="-"] {
+          background-color: $accent;
+        }
+
+        &[data-state="/"] {
+          @include fadeOut();
+        }
+
+        &[data-state="x"] {
+          @include fadeOut();
+        }
+      }
+    }
+
+    &-label {
+      font-weight: bold;
+    }
+
+    &-value {
+      &-static {
+        .resource-value-static-step {
+          @extend .resource-value-step;
+
+          &.active {
+            background-color: $accent;
+          }
+        }
+      }
+
+      .resource-value-step {
+        display: inline-block;
+        height: 14px;
+        width: 14px;
+
+        border: 1px solid $borderDark;
+        border-radius: 50%;
+
+        cursor: pointer;
+
+        &.active {
+          background-color: $accent;
+        }
+      }
+
+      .resource-value-empty {
+        @include fadeOut();
+        display: inline-block;
+        height: 14px;
+        width: 14px;
+
+        border: 1px solid $borderDark;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .profile-img {
+    background: $accent;
+    border-radius: 2px 2px 0px 0px;
+  }
+
+  .item-image img {
+    background: $accent;
+    border-radius: 2px;
+  }
+
+  .coterie-sheet,
+  .ghoul-sheet,
+  .mortal-sheet {
+    .sheet-header {
+      flex: 0 0 155px;
+    }
+  }
+
+  .ghoul-sheet {
+    .window-content {
+      .header-fields {
+        .resource {
+          border: none;
+        }
+      }
+    }
+  }
+
+  .locked {
+    .resource {
+      &-value-empty:not(.hungervalue),
+      &-value-step:not(.hungervalue) {
+        cursor: default;
+      }
+
+      &-minus,
+      &-plus {
+        opacity: 0;
+        cursor: default !important;
+
+        &:before {
+          color: $accent;
+          cursor: pointer;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .limited {
+    .sheet {
+      &-header {
+        display: flex;
+        flex: 0 0 215px;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .sheet {
+    &-header {
+      display: flex;
+
+      flex: 0 0 215px;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+
+      overflow: hidden;
+      margin-bottom: 10px;
+
+      h1 {
+        &.charname {
+          padding: 0;
+          margin: 5px 0;
+          border-bottom: 0;
+
+          input {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+          }
+        }
+      }
+
+      h2 {
+        &.limited-charname {
+          flex: 0;
+          width: 100%;
+
+          font-weight: bold;
+          font-size: 50px;
+          text-align: center;
+        }
+      }
+
+      .header-fields {
+        flex: 1;
+      }
+
+      .profile-img {
+        flex: 0 0 100px;
+
+        height: auto;
+        width: 100px;
+        min-height: 50px;
+        max-height: 205px;
+
+        border-color: $accent;
+        border-radius: 2px 2px 0px 0px;
+
+        img {
+          flex: 0 0 64px;
+          height: 64px;
+          margin-right: 6px;
+        }
+
+        &-zone {
+          @include flexAlign(stretch, center);
+          display: flex;
+          flex-flow: column nowrap;
+
+          max-width: 100px;
+          margin-right: 10px;
+
+          button {
+            align-self: center;
+
+            background: $accent;
+            color: white;
+            border: 1px solid $accent;
+            border-radius: 0px 0px 2px 2px;
+
+            font-family: "Cormorant Light", sans-serif;
+            font-weight: bold;
+
+            &:hover {
+              @include buttonHover();
+            }
+          }
+
+          h1 {
+            align-self: center;
+            color: $accent;
+
+            font-family: "Cormorant Light", sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+
+    &-body {
+      height: 100%;
+      min-height: 160px;
+
+      .tab {
+        height: 100%;
+        min-height: 160px;
+
+        .half-height {
+          height: 50%;
+        }
+
+        .editor {
+          @extend .tab;
+        }
+
+        .tox-tinymce {
+          @extend .tab;
+        }
+      }
+    }
+
+    &-tabs {
+      flex: 0;
+    }
+
+    &.actor {
+      .window-content {
+        .skills {
+          border: none;
+        }
+      }
+    }
+  }
+
+  .tab {
+    &.disciplines {
+      .resource-value {
+        margin-top: 2px;
+      }
+    }
+  }
+
+  .tabs {
+    height: 40px;
+    border-top: 1px solid $accent;
+    border-bottom: 1px solid $accent;
+
+    .item {
+      width: calc(100% / 2);
+
+      font-weight: bold;
+      line-height: 40px;
+
+      &.active {
+        @include buttonHover();
+        color: $textLight;
+        text-shadow: 0px 0px 2px black;
+      }
+    }
+  }
+
+  .tox {
+    .tox {
+      &-editor-container {
+        background: $bg;
+      }
+
+      &-edit-area {
+        padding: 0 8px;
+      }
+    }
+  }
+
+  .window-content {
+    background: $bg;
+
+    font-family: "Cormorant Light", sans-serif;
+    font-weight: 600;
+
+    .abilities {
+      border: none;
+
+      .ability {
+        .resource {
+          &-control {
+            &:hover,
+            &:focus {
+              color: #000;
+              cursor: pointer;
+              text-shadow: 0 0 10px $accent;
+            }
+          }
+
+          &-label {
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .header-fields {
+      .resource {
+        border: 1px solid $borderLight;
+        border-radius: 5px;
+      }
+    }
+
+    .resource {
+      &-label {
+        align-self: center;
+        font-size: 16px;
+        text-transform: initial;
+
+        &.rollable {
+          &:hover {
+            background: transparent;
+            text-shadow: 0 0 5px $accent;
+          }
+        }
+      }
+    }
+
+    .sheet {
+      &-header {
+        display: flex;
+        flex: 0 0 215px;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+
+        overflow: hidden;
+
+        margin-bottom: 10px;
+      }
+
+      &-body {
+        .tab > .resource-label {
+          display: block;
+          width: 100%;
+
+          color: $accent;
+          border-bottom: 1px solid $accent;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    nav.sheet-tabs {
+      background: $bg;
+      border-color: $accent;
+      color: $accent;
+
+      height: 41px;
+      margin-bottom: 20px;
+
+      font-size: 16px;
+
+      .item {
+        width: calc(100% / 2);
+
+        &:hover {
+          cursor: pointer;
+          color: $textLight;
+          background: scale-color($color: $accent, $alpha: -10%);
+          text-shadow: 0px 0px 2px black;
+        }
+      }
+
+      .item.active {
+        background: $accent;
+
+        text-decoration: none;
+        text-shadow: 0px 0px 2px black;
+
+        &:hover {
+          @include buttonHover();
+        }
+      }
+    }
+  }
+}
+
+/* Other */
+.skills.grid.grid-3col.flex-group-center {
+  border-color: transparent;
+}
+
+.uppercase {
+  font-family: "Cormorant Light", sans-serif;
+  text-transform: uppercase;
+}
+
+#data.exp {
+  &.max,
+  &.value {
+    margin: 2px;
+  }
+}
+
+#selected-character {
+  width: 200px;
+}
