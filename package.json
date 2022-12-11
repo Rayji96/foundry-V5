@@ -3,7 +3,8 @@
   "version": "1.6.0",
   "description": "CSS compiler for the Vampire 5e system",
   "scripts": {
-    "dev": "webpack serve --hot",
+    "dev": "webpack",
+    "serve": "webpack serve --hot",
     "build:dev": "npm run dev",
     "build": "webpack --mode=production --node-env=production",
     "build:prod": "npm run build",

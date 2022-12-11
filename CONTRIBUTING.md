@@ -16,7 +16,7 @@ This project is based upon [pf2e] system for FoundryVTT, so we have many code to
 
 * Run `npm run build` to perform a one off compile/build
 
-* Run `npm run dev` to keep the vtm5e system in your Foundry User Data Folder up to date with any coding changes you make in your dev environment.
+* Run `npm run serve` to keep the vtm5e system in your Foundry User Data Folder up to date with any coding changes you make in your dev environment.
 
 * Start editing code and webpack is going to watch for changes and reload the folder 👍
 

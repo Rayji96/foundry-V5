@@ -49,12 +49,6 @@ const config: Configuration = {
   },
   mode: "production",
   entry: "./src/module/main.js",
-  output: {
-    clean: true,
-    path: outDir,
-    filename: "[name].bundle.js",
-    publicPath: "/systems/vtm5e",
-  },
   watch: !isProductionBuild,
   plugins: [
     // Add your plugins here
@@ -85,10 +79,10 @@ const config: Configuration = {
         exclude: ["/node_modules/"],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          { loader: "css-loader" },
+          { loader: "css-loader", options: { url: false, sourceMap: true } },
           { loader: "sass-loader" },
         ],
       },
@@ -102,7 +96,13 @@ const config: Configuration = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
+    extensions: [".ts", ".js"],
+  },
+  output: {
+    clean: true,
+    path: outDir,
+    filename: "[name].bundle.js",
+    publicPath: "/systems/vtm5e",
   },
 };
 
