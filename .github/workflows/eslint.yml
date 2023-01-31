@@ -27,6 +27,9 @@ jobs:
       # Install packages
       #- name: Install modules
       #  run: yarn
+      # Install @microsoft/eslint-formatter-sarif
+      - name: Install @microsoft/eslint-formatter-sarif
+        run: npm install @microsoft/eslint-formatter-sarif
 
       # Run Eslint and Fix
       - name: Run ESLint
