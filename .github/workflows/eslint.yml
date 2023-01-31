@@ -1,0 +1,57 @@
+# This is a basic workflow to help you get started with Actions
+
+name: ESLint
+
+# Controls when the workflow will run
+# on:
+#    push
+# Triggers the workflow on push or pull request events but only for the main branch
+on: [push, pull_request]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "run-linters"
+  run-eslint:
+    name: Run ESLint
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+      # to work with pull request
+      #   with:
+      #         ref: ${{ github.head_ref }}
+      # Install packages
+      #- name: Install modules
+      #  run: yarn
+
+      # Run Eslint and Fix
+      - name: Run ESLint
+        run: npx eslint .
+          --config .github/linters/.eslintrc.yml
+          --ext .js,.jsx,.ts,.tsx
+          --format @microsoft/eslint-formatter-sarif
+          --output-file eslint-results.sarif
+
+        #      - name: Extract branch name
+        #        shell: bash
+        #        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        #        id: extract_branch
+
+        #      - name: Commit changes
+        #        uses: stefanzweifel/git-auto-commit-action@v4
+        #        with:
+        #          commit_message: Fix eslint styling
+        #          branch: ${{ steps.extract_branch.outputs.branch }}
+        #          commit_options: "--no-verify"
+        #          commit_user_name: GitHub Actions Bot # defaults to "GitHub Actions"
+        #          commit_user_email: github-actions-bot@chillpills.io # defaults to "actions@github.com"
+        #          commit_author: GitHub Actions Bot <github-actions-bot@chillpills.io> # defaults to author of the commit that triggered the run
+        #          # Optional. Disable dirty check and always try to create a commit and push
+        #          skip_dirty_check: true
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
