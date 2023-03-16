@@ -1,5 +1,3 @@
-/* global CONFIG, Handlebars, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui, renderTemplate, getProperty */
-
 // Import Modules
 import { preloadHandlebarsTemplates } from "./templates.js";
 import { migrateWorld } from "./migration.js";
@@ -32,13 +30,17 @@ import {
   prepareCustomRollButton,
 } from "./dice/dicebox.js";
 import "../css/vtm5e.scss";
+import { SYSTEM_NAME } from "./constants.js";
+
+// define the game instance of the Game type
+declare let game: Game;
 
 const OWNED_PERMISSION = 3;
 
 Hooks.once("init", async function () {
   console.log("Initializing Schrecknet...");
 
-  game.settings.register("vtm5e", "worldVersion", {
+  game.settings.register(SYSTEM_NAME, "worldVersion", {
     name: "World Version",
     hint: "Automatically upgrades data when the system.json is upgraded.",
     scope: "world",
@@ -47,7 +49,7 @@ Hooks.once("init", async function () {
     type: String,
   });
 
-  game.settings.register("vtm5e", "useChatRoller", {
+  game.settings.register(SYSTEM_NAME, "useChatRoller", {
     // TODO: fix Chat Roller
     name: "Chat Roller",
     hint: "Display dice roller in chat window. WARNING: Currently not working properly with Hunter changes.",
@@ -57,7 +59,7 @@ Hooks.once("init", async function () {
     type: Boolean,
   });
 
-  game.settings.register("vtm5e", "chatRollerSortAbilities", {
+  game.settings.register(SYSTEM_NAME, "chatRollerSortAbilities", {
     name: "Sort Abilities in Chat Roller",
     hint: "Sort abilities (Attributes, Skills, Disciplines, Edges) alphabetically in the chat roller. Disable to sort in the order on the character sheet (grouping physical, social, and mental).",
     scope: "client",
@@ -93,7 +95,7 @@ Hooks.once("init", async function () {
     type: Boolean,
   });
 
-  game.vtm5e = {
+  game["vtm5e"] = {
     VampireActor,
     VampireItem,
     rollItemMacro,
@@ -105,6 +107,7 @@ Hooks.once("init", async function () {
    */
   CONFIG.Combat.initiative = {
     formula: "1d20",
+    decimals: 2,
   };
 
   // Define custom Entity classes
@@ -188,7 +191,7 @@ Hooks.once("init", async function () {
     return str.charAt(0).toUpperCase() + str.slice(1);
   });
 
-  const capitalize = (s) => {
+  const capitalize = (s: string) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
   };
@@ -201,7 +204,7 @@ Hooks.once("init", async function () {
     return "VTM5E.".concat(
       str
         .split(" ")
-        .flatMap((word) => capitalize(word))
+        .flatMap((word: string) => capitalize(word))
         .join("")
     );
   });

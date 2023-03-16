@@ -48,7 +48,7 @@ const config: Configuration = {
     hints: false,
   },
   mode: "production",
-  entry: "./src/module/main.js",
+  entry: "./src/module/main.ts",
   watch: !isProductionBuild,
   plugins: [
     // Add your plugins here

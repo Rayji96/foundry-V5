@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "types": [
+      "@league-of-foundry-developers/foundry-vtt-types"
+    ],
+    "moduleResolution": "node",
+    "strictNullChecks": true,
     "outDir": "./dist/",
     // "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
