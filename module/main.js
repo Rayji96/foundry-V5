@@ -425,7 +425,215 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     colorset: 'desperation',
     system: 'vtm5e'
+  })  
+})
+
+Hooks.once('diceSoNiceReady', (dice3d) => {
+  dice3d.addSystem({ id: 'vtm5x', name: 'VtM5e Custom' }, true)
+  dice3d.addDicePreset({
+    type: 'dv',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-crit-dsn.png'
+    ],
+    fontScale: 0.5,
+    system: 'vtm5x'
   })
+  dice3d.addColorset({
+    name: 'hunger',
+    description: 'V5 Hunger Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#450000',
+    texture: 'none',
+    edge: '#450000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'dg',
+    labels: [
+      'systems/vtm5e/assets/images/bestial-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-crit-dsn.png'
+    ],
+    system: 'vtm5x'
+  })
+
+  dice3d.addDicePreset({
+    type: 'dh',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    fontScale: 0.5,
+    system: 'vtm5x'
+  })
+
+  dice3d.addColorset({
+    name: 'desperation',
+    description: 'V5 Desperation Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#ee7e1f',
+    texture: 'none',
+    edge: '#000000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'ds',
+    labels: [
+      'systems/vtm5e/assets/images/desperation-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    system: 'vtm5x'
+  })  
+})
+
+Hooks.once('diceSoNiceReady', (dice3d) => {
+  dice3d.addSystem({ id: 'vtm5y', name: 'VtM5e Colors' }, true)
+  dice3d.addDicePreset({
+    type: 'dv',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-crit-dsn.png'
+    ],
+    fontScale: 0.5,
+    system: 'vtm5y'
+  })
+  dice3d.addColorset({
+    name: 'hunger',
+    description: 'V5 Hunger Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#450000',
+    texture: 'none',
+    edge: '#450000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'dg',
+    labels: [
+      'systems/vtm5e/assets/images/bestial-fail-dsnc.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsnc.png',
+      'systems/vtm5e/assets/images/red-success-dsnc.png',
+      'systems/vtm5e/assets/images/red-success-dsnc.png',
+      'systems/vtm5e/assets/images/red-success-dsnc.png',
+      'systems/vtm5e/assets/images/red-crit-dsnc.png'
+    ],
+    system: 'vtm5y'
+  })
+
+  dice3d.addDicePreset({
+    type: 'dh',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    fontScale: 0.5,
+    system: 'vtm5y'
+  })
+
+  dice3d.addColorset({
+    name: 'desperation',
+    description: 'V5 Desperation Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#ee7e1f',
+    texture: 'none',
+    edge: '#000000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'ds',
+    labels: [
+      'systems/vtm5e/assets/images/desperation-fail-dsnc.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsnc.png'
+    ],
+    system: 'vtm5y'
+  })  
 })
 
 /* -------------------------------------------- */
