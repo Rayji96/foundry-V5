@@ -337,7 +337,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
     colorset: 'black',
-    fontScale: 0.5,
+    fontScale: 0.35,
     system: 'vtm5e'
   })
   dice3d.addColorset({
@@ -352,7 +352,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
-      df: 2.5
+      df: 2.2,
+	  dv: 0.8,
+	  dg: 0.8
     }
   }, 'default')
 
@@ -371,6 +373,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/red-crit-dsn.png'
     ],
     colorset: 'hunger',
+	fontScale: 0.35,
     system: 'vtm5e'
   })
 
@@ -405,7 +408,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
-      df: 2.5
+      df: 2.2,
+	  dv: 0.8,
+	  dg: 0.8
     }
   }, 'default')
 
@@ -444,7 +449,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/normal-success-dsn.png',
       'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
-    fontScale: 0.5,
+    fontScale: 0.35,
     system: 'vtm5x'
   })
   dice3d.addColorset({
@@ -459,7 +464,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
-      df: 2.5
+      df: 2.2,
+	  dv: 0.8,
+	  dg: 0.8
     }
   }, 'default')
 
@@ -494,7 +501,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
-    fontScale: 0.5,
+    fontScale: 0.35,
     system: 'vtm5x'
   })
 
@@ -510,7 +517,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
-      df: 2.5
+      df: 2.2,
+	  dv: 0.8,
+	  dg: 0.8
     }
   }, 'default')
 
@@ -548,7 +557,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/normal-success-dsn.png',
       'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
-    fontScale: 0.5,
+    fontScale: 0.35,
     system: 'vtm5y'
   })
   dice3d.addColorset({
@@ -563,7 +572,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
-      df: 2.5
+      df: 2.2,
+	  dv: 0.8,
+	  dg: 0.8
     }
   }, 'default')
 
@@ -598,7 +609,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
-    fontScale: 0.5,
+    fontScale: 0.35,
     system: 'vtm5y'
   })
 
@@ -614,7 +625,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
-      df: 2.5
+      df: 2.5,
+	  dv: 0.8,
+	  dg: 0.8
     }
   }, 'default')
 
