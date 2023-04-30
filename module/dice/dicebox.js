@@ -126,18 +126,19 @@ export function prepareCustomRollButton ($content, data) {
 }
 
 function describePool (poolNumber, data) {
-  const poolType = data[`pool${poolNumber}Type`]
-  const actordata = data.selectedCharacter.system
-  const poolVars = actordata[poolType][data[`pool${poolNumber}`]]
-
   const poolDesciption = {
     name: null,
     size: 0
   }
 
-  if (poolType === 'nothing' || !poolVars) {
+  const poolType = data[`pool${poolNumber}Type`]
+
+  if (poolType.toLowerCase() === 'nothing') {
     return poolDesciption
   }
+
+  const actordata = data.selectedCharacter.system
+  const poolVars = actordata[poolType][data[`pool${poolNumber}`]]
 
   poolDesciption.name = game.i18n.localize(poolVars.name)
   poolDesciption.size = poolVars.value
