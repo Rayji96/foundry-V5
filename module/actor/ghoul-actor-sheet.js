@@ -141,7 +141,7 @@ export class GhoulActorSheet extends MortalActorSheet {
 
       const dicepool = this.potencyToRouse(potency, level)
 
-      rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, true, true, false)
+      rollDice(dicepool, this.actor, game.i18n.localize('WOD5E.RousingBlood'), 1, true, true, false)
     })
 
     // Rollable Vampire/Ghouls powers

@@ -148,7 +148,7 @@ function describePool (poolNumber, data) {
 export function prepareRouseShortcut ($content, data) {
   $content.find('.dice-tray-button[data=rollRouse]').on('click', event => {
     event.preventDefault()
-    rollDice(1, data.selectedCharacter, game.i18n.localize('VTM5E.RousingBlood'), 1, true, true, false)
+    rollDice(1, data.selectedCharacter, game.i18n.localize('WOD5E.RousingBlood'), 1, true, true, false)
   })
 }
 
