@@ -4,26 +4,23 @@
   "description": "World of Darkness 5e system for Foundry VTT",
   "version": "2.0.2",
   "compatibility": {
-    "minimum": 10,
-    "verified": "10.0"
+    "minimum": "10",
+    "verified": "11"
   },
   "authors": [
     {
       "name": "Ray",
       "url": "https://github.com/Rayji96",
       "email": "rayji96@gmail.com",
-      "discord": "weinerdolphin#3175"
+      "discord": "weinerdolphin#3175",
+      "flags": {}
     },
     {
       "name": "MrDionysus",
-      "url": "https://github.com/MrDionysus"
-    },
-    {
-      "name": "LorduFreeman",
-      "discord": "LorduFreeman#8747"
+      "url": "https://github.com/MrDionysus",
+      "flags": {}
     }
   ],
-  "relationships": {},
   "esmodules": [
     "module/main.js"
   ],
@@ -34,37 +31,44 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     },
     {
       "lang": "fr",
       "name": "French",
-      "path": "lang/fr.json"
+      "path": "lang/fr.json",
+      "flags": {}
     },
     {
       "lang": "pt-BR",
       "name": "Brazilian Portuguese",
-      "path": "lang/pt-BR.json"
+      "path": "lang/pt-BR.json",
+      "flags": {}
     },
     {
       "lang": "es",
       "name": "Spanish",
-      "path": "lang/es.json"
+      "path": "lang/es.json",
+      "flags": {}
     },
     {
       "lang": "de",
       "name": "German",
-      "path": "lang/de.json"
+      "path": "lang/de.json",
+      "flags": {}
     },
     {
       "lang": "it",
       "name": "Italian",
-      "path": "lang/it.json"
+      "path": "lang/it.json",
+      "flags": {}
     },
     {
       "lang": "pl",
       "name": "Polish",
-      "path": "lang/pl.json"
+      "path": "lang/pl.json",
+      "flags": {}
     }
   ],
   "gridDistance": 5,
