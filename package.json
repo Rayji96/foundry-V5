@@ -23,6 +23,7 @@
     "standard": "^16.0.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.5",
     "@babel/core": "^7.22.5",
     "@babel/eslint-parser": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
@@ -31,9 +32,9 @@
     "stylelint": "^13.8.0",
     "stylelint-config-standard": "^20.0.0"
   },
+  "babel": {},
   "standard": {
     "parser": "@babel/eslint-parser",
-    "requireConfigFile": false,
     "globals": [
       "$"
     ]
