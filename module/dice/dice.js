@@ -11,7 +11,7 @@ export class VampireDie extends Die {
   }
 
   /** @override */
-  static DENOMINATION = 'v';
+  static DENOMINATION = 'v'
 
   /** @override */
   static getResultLabel (result) {
@@ -41,7 +41,7 @@ export class VampireHungerDie extends Die {
   }
 
   /** @override */
-  static DENOMINATION = 'g';
+  static DENOMINATION = 'g'
 
   /** @override */
   static getResultLabel (result) {
@@ -67,7 +67,7 @@ export class HunterDie extends Die {
   }
 
   /** @override */
-  static DENOMINATION = 'h';
+  static DENOMINATION = 'h'
 
   /** @override */
   static getResultLabel (result) {
@@ -93,7 +93,7 @@ export class HunterDesperationDie extends Die {
   }
 
   /** @override */
-  static DENOMINATION = 's';
+  static DENOMINATION = 's'
 
   /** @override */
   static getResultLabel (result) {
