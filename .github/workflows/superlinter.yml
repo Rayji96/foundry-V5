@@ -2,7 +2,7 @@
 name: Super-Linter
 
 # Run this workflow every time a new commit pushed to your repository
-on: [push, pull_request]
+on: push
 
 jobs:
   # Set the job key. The key is displayed as the job name
