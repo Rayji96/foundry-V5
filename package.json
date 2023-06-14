@@ -25,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.22.5",
     "@babel/eslint-parser": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
     "eslint": "^7.17.0",
     "htmlhint": "^0.14.2",
     "stylelint": "^13.8.0",
@@ -32,6 +33,7 @@
   },
   "standard": {
     "parser": "@babel/eslint-parser",
+    "requireConfigFile": false,
     "globals": [
       "$"
     ]
