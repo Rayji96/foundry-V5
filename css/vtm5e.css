@@ -664,6 +664,10 @@ optgroup {
 .uppercase {
     text-transform: uppercase;
 }
+p.roll-label.uppercase {
+    letter-spacing: 0.03rem;
+    line-height: 1.4rem;
+}
 .roll-img {
     max-width: 30px;
     margin: 1px;
