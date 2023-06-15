@@ -1087,6 +1087,9 @@ optgroup {
 .grid-2col {
     margin: 0;
 }
+.sheet-header .grid-2col {
+    margin-bottom: 10px;
+}
 .sheet-header .grid-3col {
     margin-bottom: 10px;
 }
