@@ -299,6 +299,25 @@ optgroup {
     height: 100%;
     margin: 0;
 }
+
+.compendium.directory.flexcol {
+    color: black;
+}
+
+.sheet.journal-entry .journal-sidebar {
+    flex-basis: var(--sidebar-width-expanded);
+    background: transparent;
+    color: black;
+}
+
+.sheet.journal-entry .journal-entry-content {
+    flex: 1;
+    height: 100%;
+    background: #f9f5ed;
+    border: 4px double #740510;
+    border-radius: 0;
+}
+
 .vtm5e .window-content .header-fields .level input {
     max-width: 35px;
     float: left;
