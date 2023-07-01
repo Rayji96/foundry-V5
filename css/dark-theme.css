@@ -20,7 +20,7 @@
 .vtm5e.dark-theme .window-content nav.sheet-tabs {
   background: #121212;
   color: #790813;
-  font-family: "Vollkorn";
+  font-family: Vollkorn, serif;
   font-size: 1.2em;
   border-top: 1px solid #790813;
   border-bottom: 1px solid #790813;
@@ -37,7 +37,7 @@
   color: #790813;
   padding-bottom: 0.1em;
   border-bottom: 1px solid #790813;
-  font-family: "Vollkorn";
+  font-family: Vollkorn, serif;
   font-weight: 700;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .vtm5e.dark-theme .discipline-description {
-  color: hwb(0 7% 98% / 1);
+  color: hwb(0deg 7% 98% / 100%);
   background: #eeece8;
 }
 
@@ -68,6 +68,7 @@
 .vtm5e.dark-theme .power-rollable:focus {
     color: #f7f7f7;
 }
+
 .vtm5e.dark-theme .custom-rollable:hover,
 .vtm5e.dark-theme .custom-rollable:focus {
     color: #f7f7f7;

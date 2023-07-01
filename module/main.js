@@ -352,8 +352,8 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     fontScale: {
       d6: 1.1,
       df: 2.2,
-	  dv: 0.8,
-	  dg: 0.8
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -407,8 +407,8 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     fontScale: {
       d6: 1.1,
       df: 2.2,
-	  dv: 0.8,
-	  dg: 0.8
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -428,7 +428,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     colorset: 'desperation',
     system: 'vtm5e'
-  })  
+  })
 })
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
@@ -462,8 +462,8 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     fontScale: {
       d6: 1.1,
       df: 2.2,
-	  dv: 0.8,
-	  dg: 0.8
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -514,8 +514,8 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     fontScale: {
       d6: 1.1,
       df: 2.2,
-	  dv: 0.8,
-	  dg: 0.8
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -534,7 +534,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
     system: 'vtm5x'
-  })  
+  })
 })
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
@@ -568,8 +568,8 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     fontScale: {
       d6: 1.1,
       df: 2.2,
-	  dv: 0.8,
-	  dg: 0.8
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -620,8 +620,8 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     fontScale: {
       d6: 1.1,
       df: 2.5,
-	  dv: 0.8,
-	  dg: 0.8
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -640,7 +640,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/hunter-normal-crit-dsnc.png'
     ],
     system: 'vtm5y'
-  })  
+  })
 })
 
 /* -------------------------------------------- */
