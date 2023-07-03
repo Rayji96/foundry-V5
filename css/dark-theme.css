@@ -1,11 +1,16 @@
 /* New Styles */
+.vtm5e.dark-theme .window-app {
+    background: #faf5ed;
+    color: #121212;
+}
+
 .vtm5e.dark-theme .window-content {
-  background: #313131;
-  color: #e0e0e0;
+  background: #121212;
+  color: #f7f7f7;
 }
 
 .vtm5e.dark-theme.actor.sheet .editor-content {
-  color: #000;
+  color: inherit;
 }
 
 .vtm5e.dark-theme.item.sheet .editor-content {
@@ -14,17 +19,26 @@
 
 .vtm5e.dark-theme .window-content nav.sheet-tabs {
   background: #121212;
-  color: #ff0019;
+  color: #790813;
+  font-family: Vollkorn, serif;
+  font-size: 1.2em;
+  border-top: 1px solid #790813;
+  border-bottom: 1px solid #790813;
+  margin-bottom: 10px;
 }
 
 .vtm5e.dark-theme .window-content nav.sheet-tabs .item.active {
   background: #3c3c3c;
-  color: #f00;
+  color: #f7f7f7;
+  border-bottom: 2px solid #f7f7f7;
 }
 
 .vtm5e.dark-theme .window-content .sheet-body .tab > .resource-label {
-  color: #ff0119;
+  color: #790813;
+  padding-bottom: 0.1em;
   border-bottom: 1px solid #790813;
+  font-family: Vollkorn, serif;
+  font-weight: 700;
 }
 
 .vtm5e.dark-theme .sheet-header .profile-img-zone h1 {
@@ -32,7 +46,7 @@
 }
 
 .vtm5e.dark-theme .items-list .item-header {
-  color: #f6f6f6;
+  color: #bb1020;
 }
 
 .vtm5e.dark-theme .tox .tox-editor-container {
@@ -40,10 +54,50 @@
 }
 
 .vtm5e.dark-theme .discipline-description {
-  color: #ccc;
+  color: hwb(0deg 7% 98% / 100%);
+  background: #eeece8;
+}
+
+.vtm5e.dark-theme .rollable:hover,
+.vtm5e.dark-theme .rollable:focus,
+.vtm5e.dark-theme .rollable-with-mod:hover,
+.vtm5e.dark-theme .rollable-with-mod:focus,
+.vtm5e.dark-theme .vrollable:hover,
+.vtm5e.dark-theme .vrollable:focus,
+.vtm5e.dark-theme .power-rollable:hover,
+.vtm5e.dark-theme .power-rollable:focus {
+    color: #f7f7f7;
+}
+
+.vtm5e.dark-theme .custom-rollable:hover,
+.vtm5e.dark-theme .custom-rollable:focus {
+    color: #f7f7f7;
 }
 
 /* Resource boxes CSS */
+
+.vtm5e.dark-theme .resource-value .resource-value-empty {
+  border: 1px solid #f7f7f7;
+  background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 43%,
+      #f7f7f7 45%,
+      #f7f7f7 55%,
+      transparent 57%,
+      transparent 100%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      #f7f7f7 45%,
+      #f7f7f7 55%,
+      transparent 57%,
+      transparent 100%
+    );
+}
+
 .vtm5e.dark-theme .resource-value .resource-value-step {
   border: 1px solid #cdcdcd;
 }
@@ -69,7 +123,7 @@
 }
 
 .vtm5e.dark-theme select {
-  background: #fff;
+  background: #f7f7f7;
 }
 
 .vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="/"] {
@@ -148,4 +202,35 @@
       transparent 57%,
       transparent 100%
     );
+}
+
+.vtm5e.dark-theme .tabs .item {
+  color: #8f8f8f;
+}
+
+.vtm5e.dark-theme input {
+  color: #f7f7f7;
+}
+
+.vtm5e.dark-theme .vtm5e input {
+  color: #f7f7f7;
+}
+
+.vtm5e.dark-theme input[name="system.blood.resonance"] {
+  color: #bb1020;
+}
+
+.vtm5e.dark-theme .sheet-header h1.charname input {
+  color: #f7f7f7;
+}
+
+.vtm5e.dark-theme .description-content {
+  background: none;
+  border: 0;
+  padding: 5px;
+  height: 95%;
+}
+
+.vtm5e.dark-theme .tab.blood.active p {
+  color: #bb1020;
 }

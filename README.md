@@ -11,9 +11,11 @@ This system is for playing multiple World of Darkness 5th edition systems on the
 
 Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pact License].
 
+![preview](https://github.com/LorduFreeman/foundry-WoDV5/blob/main/image.png)
+
 ## Dice
 
-There is integration with Dice So Nice!
+There is integration with Dice So Nice! Customizing the dice is possible.
 
 To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`. Replace the 1s with however many dice you want to roll for each type.
 

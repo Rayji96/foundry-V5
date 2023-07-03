@@ -49,7 +49,7 @@ export class CellActorSheet extends ActorSheet {
     data.locked = this.locked
     data.isCharacter = this.isCharacter
     data.hasBoons = this.hasBoons
-    data.sheetType = `${game.i18n.localize('VTM5E.Cell')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.Cell')}`
 
     data.dtypes = ['String', 'Number', 'Boolean']
 
@@ -383,15 +383,15 @@ export class CellActorSheet extends ActorSheet {
 
   getItemDefaultName (type, data) {
     if (type === 'feature') {
-      return `${game.i18n.localize('VTM5E.' + data.featuretype.capitalize())}`
+      return `${game.i18n.localize('WOD5E.' + data.featuretype.capitalize())}`
     }
     if (type === 'power') {
-      return `${game.i18n.localize('VTM5E.' + data.discipline.capitalize())}`
+      return `${game.i18n.localize('WOD5E.' + data.discipline.capitalize())}`
     }
     if (type === 'perk') {
-      return `${game.i18n.localize('VTM5E.' + data.edge.capitalize())}`
+      return `${game.i18n.localize('WOD5E.' + data.edge.capitalize())}`
     }
-    return `${game.i18n.localize('VTM5E.' + type.capitalize())}`
+    return `${game.i18n.localize('WOD5E.' + type.capitalize())}`
   }
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out

@@ -188,11 +188,11 @@ Hooks.once('init', async function () {
   }
 
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    return 'VTM5E.'.concat(capitalize(str))
+    return 'WOD5E.'.concat(capitalize(str))
   })
 
   Handlebars.registerHelper('generateSkillLabel', function (str) {
-    return 'VTM5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
+    return 'WOD5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
   })
 
   // TODO: there exist math helpers for handlebars
@@ -272,20 +272,20 @@ Hooks.once('init', async function () {
 
   Handlebars.registerHelper('getDisciplineName', function (key, roll = false) {
     const disciplines = {
-      animalism: 'VTM5E.Animalism',
-      auspex: 'VTM5E.Auspex',
-      celerity: 'VTM5E.Celerity',
-      dominate: 'VTM5E.Dominate',
-      fortitude: 'VTM5E.Fortitude',
-      obfuscate: 'VTM5E.Obfuscate',
-      potence: 'VTM5E.Potence',
-      presence: 'VTM5E.Presence',
-      protean: 'VTM5E.Protean',
-      sorcery: 'VTM5E.BloodSorcery',
-      oblivion: 'VTM5E.Oblivion',
-      alchemy: 'VTM5E.ThinBloodAlchemy',
-      rituals: 'VTM5E.Rituals',
-      ceremonies: 'VTM5E.Ceremonies'
+      animalism: 'WOD5E.Animalism',
+      auspex: 'WOD5E.Auspex',
+      celerity: 'WOD5E.Celerity',
+      dominate: 'WOD5E.Dominate',
+      fortitude: 'WOD5E.Fortitude',
+      obfuscate: 'WOD5E.Obfuscate',
+      potence: 'WOD5E.Potence',
+      presence: 'WOD5E.Presence',
+      protean: 'WOD5E.Protean',
+      sorcery: 'WOD5E.BloodSorcery',
+      oblivion: 'WOD5E.Oblivion',
+      alchemy: 'WOD5E.ThinBloodAlchemy',
+      rituals: 'WOD5E.Rituals',
+      ceremonies: 'WOD5E.Ceremonies'
     }
     if (roll) {
       if (key === 'rituals') {
@@ -299,17 +299,17 @@ Hooks.once('init', async function () {
 
   Handlebars.registerHelper('getEdgeName', function (key) {
     const edges = {
-      arsenal: 'VTM5E.Arsenal',
-      ordnance: 'VTM5E.Ordnance',
-      library: 'VTM5E.Libraryy',
-      improvisedgear: 'VTM5E.ImprovisedGear',
-      globalaccess: 'VTM5E.GlobalAccess',
-      dronejockey: 'VTM5E.DroneJockey',
-      beastwhisperer: 'VTM5E.BeastWhisperer',
-      sensetheunnatural: 'VTM5E.SenseTheUnnatural',
-      repeltheunnatural: 'VTM5E.RepelTheUnnatural',
-      thwarttheunnatural: 'VTM5E.ThwartTheUnnatural',
-      artifact: 'VTM5E.Artifact'
+      arsenal: 'WOD5E.Arsenal',
+      ordnance: 'WOD5E.Ordnance',
+      library: 'WOD5E.Libraryy',
+      improvisedgear: 'WOD5E.ImprovisedGear',
+      globalaccess: 'WOD5E.GlobalAccess',
+      dronejockey: 'WOD5E.DroneJockey',
+      beastwhisperer: 'WOD5E.BeastWhisperer',
+      sensetheunnatural: 'WOD5E.SenseTheUnnatural',
+      repeltheunnatural: 'WOD5E.RepelTheUnnatural',
+      thwarttheunnatural: 'WOD5E.ThwartTheUnnatural',
+      artifact: 'WOD5E.Artifact'
     }
     return edges[key]
   })
@@ -337,7 +337,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
     colorset: 'black',
-    fontScale: 0.5,
     system: 'vtm5e'
   })
   dice3d.addColorset({
@@ -352,7 +351,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
-      df: 2.5
+      df: 2.2,
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -405,7 +406,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
-      df: 2.5
+      df: 2.2,
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -425,6 +428,218 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     colorset: 'desperation',
     system: 'vtm5e'
+  })
+})
+
+Hooks.once('diceSoNiceReady', (dice3d) => {
+  dice3d.addSystem({ id: 'vtm5x', name: 'VtM5e Custom' }, true)
+  dice3d.addDicePreset({
+    type: 'dv',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-crit-dsn.png'
+    ],
+    system: 'vtm5x'
+  })
+  dice3d.addColorset({
+    name: 'hunger',
+    description: 'V5 Hunger Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#450000',
+    texture: 'none',
+    edge: '#450000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.2,
+      dv: 0.8,
+      dg: 0.8
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'dg',
+    labels: [
+      'systems/vtm5e/assets/images/bestial-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsn.png',
+      'systems/vtm5e/assets/images/red-crit-dsn.png'
+    ],
+    system: 'vtm5x'
+  })
+
+  dice3d.addDicePreset({
+    type: 'dh',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    system: 'vtm5x'
+  })
+
+  dice3d.addColorset({
+    name: 'desperation',
+    description: 'V5 Desperation Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#ee7e1f',
+    texture: 'none',
+    edge: '#000000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.2,
+      dv: 0.8,
+      dg: 0.8
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'ds',
+    labels: [
+      'systems/vtm5e/assets/images/desperation-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    system: 'vtm5x'
+  })
+})
+
+Hooks.once('diceSoNiceReady', (dice3d) => {
+  dice3d.addSystem({ id: 'vtm5y', name: 'VtM5e Colors' }, true)
+  dice3d.addDicePreset({
+    type: 'dv',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-success-dsn.png',
+      'systems/vtm5e/assets/images/normal-crit-dsn.png'
+    ],
+    system: 'vtm5y'
+  })
+  dice3d.addColorset({
+    name: 'hunger',
+    description: 'V5 Hunger Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#450000',
+    texture: 'none',
+    edge: '#450000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.2,
+      dv: 0.8,
+      dg: 0.8
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'dg',
+    labels: [
+      'systems/vtm5e/assets/images/bestial-fail-dsnc.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-success-dsnc.png',
+      'systems/vtm5e/assets/images/red-success-dsnc.png',
+      'systems/vtm5e/assets/images/red-success-dsnc.png',
+      'systems/vtm5e/assets/images/red-success-dsnc.png',
+      'systems/vtm5e/assets/images/red-crit-dsnc.png'
+    ],
+    system: 'vtm5y'
+  })
+
+  dice3d.addDicePreset({
+    type: 'dh',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+    ],
+    system: 'vtm5y'
+  })
+
+  dice3d.addColorset({
+    name: 'desperation',
+    description: 'V5 Desperation Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#ee7e1f',
+    texture: 'none',
+    edge: '#000000',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5,
+      dv: 0.8,
+      dg: 0.8
+    }
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'ds',
+    labels: [
+      'systems/vtm5e/assets/images/desperation-fail-dsnc.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/red-fail-dsn.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsnc.png'
+    ],
+    system: 'vtm5y'
   })
 })
 
@@ -484,7 +699,7 @@ Hooks.on('renderSidebarTab', (app, html) => {
 // Create context menu option on selection
 Hooks.on('getChatLogEntryContext', function (html, options) {
   options.push({
-    name: game.i18n.localize('VTM5E.WillpowerReroll'),
+    name: game.i18n.localize('WOD5E.WillpowerReroll'),
     icon: '<i class="fas fa-redo"></i>',
     condition: li => {
       // Only show this context menu if the person is GM or author of the message
@@ -549,7 +764,7 @@ async function willpowerReroll (roll) {
 
   // Dialog object
   new Dialog({
-    title: game.i18n.localize('VTM5E.WillpowerReroll'),
+    title: game.i18n.localize('WOD5E.WillpowerReroll'),
     content: template,
     buttons: buttons,
     render: function () {
@@ -585,9 +800,9 @@ function rerollDie (roll) {
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
   if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== 'hunter') {
-    rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
+    rollDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, false, false, true)
   } else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === 'hunter') {
-    rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
+    rollHunterDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, true)
   }
 }
 
