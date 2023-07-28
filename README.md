@@ -23,7 +23,7 @@ To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`. R
 
 ## Feedback
 
-Bugs or feature requests created to this repository are greatly appreciate. Please use the Issues tab on Github.
+Bugs or feature requests created to this repository are greatly appreciate. Please use the Issues tab on GitHub.
 
 Please reach out to me at weinerdolphin#3175 on Discord with any pressing issues, I'd love to help you get your game running smoothly!
 
