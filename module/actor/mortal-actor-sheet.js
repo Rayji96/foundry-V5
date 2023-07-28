@@ -52,7 +52,7 @@ export class MortalActorSheet extends CoterieActorSheet {
   async getData () {
     const data = await super.getData()
     // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('WOD5E.Mortal')}`
+    data.sheetType = `${game.i18n.localize('VTM5E.Mortal')}`
 
     // Encrich editor content
     data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })
@@ -148,15 +148,15 @@ export class MortalActorSheet extends CoterieActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectAbility')}</label>
+              <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
               <select id="abilitySelect">${options}</select>
           </div>  
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.Modifier')}</label>
+              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
           </div>  
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.Difficulty')}</label>
+              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
               <input type="text" min="0" id="inputDif" value="0">
           </div>
       </form>`
@@ -165,7 +165,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Roll'),
+        label: game.i18n.localize('VTM5E.Roll'),
         callback: async (html) => {
           const ability = html.find('#abilitySelect')[0].value
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
@@ -179,12 +179,12 @@ export class MortalActorSheet extends CoterieActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
+        label: game.i18n.localize('VTM5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('WOD5E.Rolling') + ` ${dataset.label}...`,
+      title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
       content: template,
       buttons: buttons,
       default: 'draw'
@@ -219,11 +219,11 @@ export class MortalActorSheet extends CoterieActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.Modifier')}</label>
+              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
           </div>  
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.Difficulty')}</label>
+              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
               <input type="text" min="0" id="inputDif" value="0">
           </div>
       </form>`
@@ -232,7 +232,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Roll'),
+        label: game.i18n.localize('VTM5E.Roll'),
         callback: async (html) => {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
@@ -242,7 +242,7 @@ export class MortalActorSheet extends CoterieActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
+        label: game.i18n.localize('VTM5E.Cancel')
       }
     }
 

@@ -235,7 +235,7 @@ button:focus {
 
 .vtm5e input {
     font-family: Amarante, serif;
-    background: none;
+    background: white;
     border: 0;
 }
 
@@ -284,10 +284,10 @@ optgroup {
 }
 
 .vtm5e .description-content {
-    background: #fff0;
+    background: white;
     border: 1px solid #e0dede;
     padding: 5px;
-    height: 95%;
+    height: 90%;
 }
 
 .vtm5e .window-content .resource-label {
@@ -918,6 +918,7 @@ button.dialog-button:hover {
 
 .flex-group-center input[type="text"] {
     font-family: Vollkorn, serif;
+    background: white
 }
 
 input[name="system.blood.resonance"] {

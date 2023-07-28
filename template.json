@@ -45,149 +45,149 @@
         "abilities": {
           "strength": {
             "value": 1,
-            "name": "WOD5E.Strength"
+            "name": "VTM5E.Strength"
           },
           "charisma": {
             "value": 1,
-            "name": "WOD5E.Charisma"
+            "name": "VTM5E.Charisma"
           },
           "intelligence": {
             "value": 1,
-            "name": "WOD5E.Intelligence"
+            "name": "VTM5E.Intelligence"
           },
           "dexterity": {
             "value": 1,
-            "name": "WOD5E.Dexterity"
+            "name": "VTM5E.Dexterity"
           },
           "manipulation": {
             "value": 1,
-            "name": "WOD5E.Manipulation"
+            "name": "VTM5E.Manipulation"
           },
           "wits": {
             "value": 1,
-            "name": "WOD5E.Wits"
+            "name": "VTM5E.Wits"
           },
           "stamina": {
             "value": 1,
-            "name": "WOD5E.Stamina"
+            "name": "VTM5E.Stamina"
           },
           "composure": {
             "value": 1,
-            "name": "WOD5E.Composure"
+            "name": "VTM5E.Composure"
           },
           "resolve": {
             "value": 1,
-            "name": "WOD5E.Resolve"
+            "name": "VTM5E.Resolve"
           }
         },
         "skills": {
           "athletics": {
             "value": 0,
-            "name": "WOD5E.Athletics"
+            "name": "VTM5E.Athletics"
           },
           "animal ken": {
             "value": 0,
-            "name": "WOD5E.AnimalKen"
+            "name": "VTM5E.AnimalKen"
           },
           "academics": {
             "value": 0,
-            "name": "WOD5E.Academics"
+            "name": "VTM5E.Academics"
           },
           "brawl": {
             "value": 0,
-            "name": "WOD5E.Brawl"
+            "name": "VTM5E.Brawl"
           },
           "etiquette": {
             "value": 0,
-            "name": "WOD5E.Etiquette"
+            "name": "VTM5E.Etiquette"
           },
           "awareness": {
             "value": 0,
-            "name": "WOD5E.Awareness"
+            "name": "VTM5E.Awareness"
           },
           "craft": {
             "value": 0,
-            "name": "WOD5E.Craft"
+            "name": "VTM5E.Craft"
           },
           "insight": {
             "value": 0,
-            "name": "WOD5E.Insight"
+            "name": "VTM5E.Insight"
           },
           "finance": {
             "value": 0,
-            "name": "WOD5E.Finance"
+            "name": "VTM5E.Finance"
           },
           "drive": {
             "value": 0,
-            "name": "WOD5E.Drive"
+            "name": "VTM5E.Drive"
           },
           "intimidation": {
             "value": 0,
-            "name": "WOD5E.Intimidation"
+            "name": "VTM5E.Intimidation"
           },
           "investigation": {
             "value": 0,
-            "name": "WOD5E.Investigation"
+            "name": "VTM5E.Investigation"
           },
           "firearms": {
             "value": 0,
-            "name": "WOD5E.Firearms"
+            "name": "VTM5E.Firearms"
           },
           "leadership": {
             "value": 0,
-            "name": "WOD5E.Leadership"
+            "name": "VTM5E.Leadership"
           },
           "medicine": {
             "value": 0,
-            "name": "WOD5E.Medicine"
+            "name": "VTM5E.Medicine"
           },
           "larceny": {
             "value": 0,
-            "name": "WOD5E.Larceny"
+            "name": "VTM5E.Larceny"
           },
           "performance": {
             "value": 0,
-            "name": "WOD5E.Performance"
+            "name": "VTM5E.Performance"
           },
           "occult": {
             "value": 0,
-            "name": "WOD5E.Occult"
+            "name": "VTM5E.Occult"
           },
           "melee": {
             "value": 0,
-            "name": "WOD5E.Melee"
+            "name": "VTM5E.Melee"
           },
           "persuasion": {
             "value": 0,
-            "name": "WOD5E.Persuasion"
+            "name": "VTM5E.Persuasion"
           },
           "politics": {
             "value": 0,
-            "name": "WOD5E.Politics"
+            "name": "VTM5E.Politics"
           },
           "stealth": {
             "value": 0,
-            "name": "WOD5E.Stealth"
+            "name": "VTM5E.Stealth"
           },
           "streetwise": {
             "value": 0,
-            "name": "WOD5E.Streetwise"
+            "name": "VTM5E.Streetwise"
           },
           "science": {
             "value": 0,
-            "name": "WOD5E.Science"
+            "name": "VTM5E.Science"
           },
           "survival": {
             "value": 0,
-            "name": "WOD5E.Survival"
+            "name": "VTM5E.Survival"
           },
           "subterfuge": {
             "value": 0,
-            "name": "WOD5E.Subterfuge"
+            "name": "VTM5E.Subterfuge"
           },
           "technology": {
             "value": 0,
-            "name": "WOD5E.Technology"
+            "name": "VTM5E.Technology"
           }
         }
       },
@@ -212,151 +212,151 @@
         "standarddicepools": {
           "physical": {
             "value": 1,
-            "name": "WOD5E.Physical"
+            "name": "VTM5E.Physical"
           },
           "social": {
             "value": 1,
-            "name": "WOD5E.Social"
+            "name": "VTM5E.Social"
           },
           "mental": {
             "value": 1,
-            "name": "WOD5E.Mental"
+            "name": "VTM5E.Mental"
           }
         },
         "exceptionaldicepools": {
           "athletics": {
             "value": 0,
-            "name": "WOD5E.Athletics",
+            "name": "VTM5E.Athletics",
             "visible": false
           },
           "animal ken": {
             "value": 0,
-            "name": "WOD5E.AnimalKen",
+            "name": "VTM5E.AnimalKen",
             "visible": false
           },
           "academics": {
             "value": 0,
-            "name": "WOD5E.Academics",
+            "name": "VTM5E.Academics",
             "visible": false
           },
           "brawl": {
             "value": 0,
-            "name": "WOD5E.Brawl",
+            "name": "VTM5E.Brawl",
             "visible": false
           },
           "etiquette": {
             "value": 0,
-            "name": "WOD5E.Etiquette",
+            "name": "VTM5E.Etiquette",
             "visible": false
           },
           "awareness": {
             "value": 0,
-            "name": "WOD5E.Awareness",
+            "name": "VTM5E.Awareness",
             "visible": false
           },
           "craft": {
             "value": 0,
-            "name": "WOD5E.Craft",
+            "name": "VTM5E.Craft",
             "visible": false
           },
           "insight": {
             "value": 0,
-            "name": "WOD5E.Insight",
+            "name": "VTM5E.Insight",
             "visible": false
           },
           "finance": {
             "value": 0,
-            "name": "WOD5E.Finance",
+            "name": "VTM5E.Finance",
             "visible": false
           },
           "drive": {
             "value": 0,
-            "name": "WOD5E.Drive",
+            "name": "VTM5E.Drive",
             "visible": false
           },
           "intimidation": {
             "value": 0,
-            "name": "WOD5E.Intimidation",
+            "name": "VTM5E.Intimidation",
             "visible": false
           },
           "investigation": {
             "value": 0,
-            "name": "WOD5E.Investigation",
+            "name": "VTM5E.Investigation",
             "visible": false
           },
           "firearms": {
             "value": 0,
-            "name": "WOD5E.Firearms",
+            "name": "VTM5E.Firearms",
             "visible": false
           },
           "leadership": {
             "value": 0,
-            "name": "WOD5E.Leadership",
+            "name": "VTM5E.Leadership",
             "visible": false
           },
           "medicine": {
             "value": 0,
-            "name": "WOD5E.Medicine",
+            "name": "VTM5E.Medicine",
             "visible": false
           },
           "larceny": {
             "value": 0,
-            "name": "WOD5E.Larceny",
+            "name": "VTM5E.Larceny",
             "visible": false
           },
           "performance": {
             "value": 0,
-            "name": "WOD5E.Performance",
+            "name": "VTM5E.Performance",
             "visible": false
           },
           "occult": {
             "value": 0,
-            "name": "WOD5E.Occult",
+            "name": "VTM5E.Occult",
             "visible": false
           },
           "melee": {
             "value": 0,
-            "name": "WOD5E.Melee",
+            "name": "VTM5E.Melee",
             "visible": false
           },
           "persuasion": {
             "value": 0,
-            "name": "WOD5E.Persuasion",
+            "name": "VTM5E.Persuasion",
             "visible": false
           },
           "politics": {
             "value": 0,
-            "name": "WOD5E.Politics",
+            "name": "VTM5E.Politics",
             "visible": false
           },
           "stealth": {
             "value": 0,
-            "name": "WOD5E.Stealth",
+            "name": "VTM5E.Stealth",
             "visible": false
           },
           "streetwise": {
             "value": 0,
-            "name": "WOD5E.Streetwise",
+            "name": "VTM5E.Streetwise",
             "visible": false
           },
           "science": {
             "value": 0,
-            "name": "WOD5E.Science",
+            "name": "VTM5E.Science",
             "visible": false
           },
           "survival": {
             "value": 0,
-            "name": "WOD5E.Survival",
+            "name": "VTM5E.Survival",
             "visible": false
           },
           "subterfuge": {
             "value": 0,
-            "name": "WOD5E.Subterfuge",
+            "name": "VTM5E.Subterfuge",
             "visible": false
           },
           "technology": {
             "value": 0,
-            "name": "WOD5E.Technology",
+            "name": "VTM5E.Technology",
             "visible": false
           }
         }
@@ -364,98 +364,98 @@
       "disciplines": {
         "disciplines": {
           "animalism": {
-            "name": "WOD5E.Animalism",
+            "name": "VTM5E.Animalism",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "auspex": {
-            "name": "WOD5E.Auspex",
+            "name": "VTM5E.Auspex",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "celerity": {
-            "name": "WOD5E.Celerity",
+            "name": "VTM5E.Celerity",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "dominate": {
-            "name": "WOD5E.Dominate",
+            "name": "VTM5E.Dominate",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "fortitude": {
-            "name": "WOD5E.Fortitude",
+            "name": "VTM5E.Fortitude",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "obfuscate": {
-            "name": "WOD5E.Obfuscate",
+            "name": "VTM5E.Obfuscate",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "potence": {
-            "name": "WOD5E.Potence",
+            "name": "VTM5E.Potence",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "presence": {
-            "name": "WOD5E.Presence",
+            "name": "VTM5E.Presence",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "protean": {
-            "name": "WOD5E.Protean",
+            "name": "VTM5E.Protean",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "sorcery": {
-            "name": "WOD5E.BloodSorcery",
+            "name": "VTM5E.BloodSorcery",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "oblivion": {
-            "name": "WOD5E.Oblivion",
+            "name": "VTM5E.Oblivion",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "alchemy": {
-            "name": "WOD5E.ThinBloodAlchemy",
+            "name": "VTM5E.ThinBloodAlchemy",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "rituals": {
-            "name": "WOD5E.Rituals",
+            "name": "VTM5E.Rituals",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "ceremonies": {
-            "name": "WOD5E.Ceremonies",
+            "name": "VTM5E.Ceremonies",
             "description": "",
             "value": 0,
             "powers": [],
@@ -466,84 +466,84 @@
       "edges": {
         "edges": {
           "arsenal": {
-            "name": "WOD5E.Arsenal",
+            "name": "VTM5E.Arsenal",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "fleet": {
-            "name": "WOD5E.Fleet",
+            "name": "VTM5E.Fleet",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "ordnance": {
-            "name": "WOD5E.Ordnance",
+            "name": "VTM5E.Ordnance",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "library": {
-            "name": "WOD5E.Library",
+            "name": "VTM5E.Library",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "improvisedgear": {
-            "name": "WOD5E.ImprovisedGear",
+            "name": "VTM5E.ImprovisedGear",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "globalaccess": {
-            "name": "WOD5E.GlobalAccess",
+            "name": "VTM5E.GlobalAccess",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "dronejockey": {
-            "name": "WOD5E.DroneJockey",
+            "name": "VTM5E.DroneJockey",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "beastwhisperer": {
-            "name": "WOD5E.BeastWhisperer",
+            "name": "VTM5E.BeastWhisperer",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "sensetheunnatural": {
-            "name": "WOD5E.SenseTheUnnatural",
+            "name": "VTM5E.SenseTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "repeltheunnatural": {
-            "name": "WOD5E.RepelTheUnnatural",
+            "name": "VTM5E.RepelTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "thwarttheunnatural": {
-            "name": "WOD5E.ThwartTheUnnatural",
+            "name": "VTM5E.ThwartTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "artifact": {
-            "name": "WOD5E.Artifact",
+            "name": "VTM5E.Artifact",
             "description": "",
             "value": 0,
             "powers": [],

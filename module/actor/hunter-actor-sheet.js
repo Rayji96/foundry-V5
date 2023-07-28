@@ -51,7 +51,7 @@ export class HunterActorSheet extends CellActorSheet {
   async getData () {
     const data = await super.getData()
     // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('WOD5E.Hunter')}`
+    data.sheetType = `${game.i18n.localize('VTM5E.Hunter')}`
 
     // Prepare items.
     if (this.actor.type === 'hunter') {
@@ -198,24 +198,24 @@ export class HunterActorSheet extends CellActorSheet {
 
     const template = `<form>
         <div class="form-group">
-            <label>${game.i18n.localize('WOD5E.SelectAbility')}</label>
+            <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
             <select id="abilitySelect">${options}</select>
         </div>  
         <div class="form-group">
-            <label>${game.i18n.localize('WOD5E.Modifier')}</label>
+            <label>${game.i18n.localize('VTM5E.Modifier')}</label>
             <input type="text" id="inputMod" value="0">
         </div>
         <div class="form-group">` +
       (
         despairoutcome
-          ? `<label>${game.i18n.localize('WOD5E.DesperationUnavailable')}</label>
+          ? `<label>${game.i18n.localize('VTM5E.DesperationUnavailable')}</label>
              <input type="text" min="0" id="inputDespMod" disabled value="0">`
-          : `<label>${game.i18n.localize('WOD5E.DesperationDice')}</label>
+          : `<label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
              <input type="text" min="0" id="inputDespMod" value="0">`
       ) +
        `</div>
         <div class="form-group">
-            <label>${game.i18n.localize('WOD5E.Difficulty')}</label>
+            <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
             <input type="text" min="0" id="inputDif" value="0">
         </div>
     </form>`
@@ -224,7 +224,7 @@ export class HunterActorSheet extends CellActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Roll'),
+        label: game.i18n.localize('VTM5E.Roll'),
         callback: async (html) => {
           const ability = html.find('#abilitySelect')[0].value
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
@@ -238,12 +238,12 @@ export class HunterActorSheet extends CellActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
+        label: game.i18n.localize('VTM5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('WOD5E.Rolling') + ` ${dataset.label}...`,
+      title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
       content: template,
       buttons: buttons,
       default: 'draw'
@@ -396,7 +396,7 @@ export class HunterActorSheet extends CellActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectEdge')}</label>
+              <label>${game.i18n.localize('VTM5E.SelectEdge')}</label>
               <select id="edgeSelect">${options}</select>
           </div>
       </form>`
@@ -405,7 +405,7 @@ export class HunterActorSheet extends CellActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Add'),
+        label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
           const edge = html.find('#edgeSelect')[0].value
           this.actor.update({ [`system.edges.${edge}.visible`]: true })
@@ -413,12 +413,12 @@ export class HunterActorSheet extends CellActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
+        label: game.i18n.localize('VTM5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('WOD5E.AddEdge'),
+      title: game.i18n.localize('VTM5E.AddEdge'),
       content: template,
       buttons: buttons,
       default: 'draw'

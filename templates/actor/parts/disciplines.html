@@ -2,13 +2,13 @@
     <ol class="items-list">
         <!-- Header of the disciplines lists -->
         <li class="item flexrow item-header">
-            <div class="item-name">{{localize "WOD5E.Name"}}</div>
-            <div class="item-name header-level">{{localize "WOD5E.Level"}}</div>
+            <div class="item-name">{{localize "VTM5E.Name"}}</div>
+            <div class="item-name header-level">{{localize "VTM5E.Level"}}</div>
             <!-- Item controls for adding new discipline lists -->
             <div class="item-controls">
-                <a class="item-control discipline-create" title="{{localize 'WOD5E.AddDiscipline'}}">
+                <a class="item-control discipline-create" title="{{localize 'VTM5E.AddDiscipline'}}">
                     <i class="fas fa-plus"></i>
-                    {{localize "WOD5E.AddDiscipline"}}
+                    {{localize "VTM5E.AddDiscipline"}}
                 </a>
             </div>
         </li>
@@ -32,19 +32,19 @@
                     <!-- Item controls for Discipline sections -->
                     <div class="item-controls">
                         <!-- Add new discipline power -->
-                        <a class="item-control item-create" title="{{localize 'WOD5E.AddPower'}}" data-type="power" data-discipline="{{key}}">
+                        <a class="item-control item-create" title="{{localize 'VTM5E.AddPower'}}" data-type="power" data-discipline="{{key}}">
                             <i class="fas fa-plus"></i>
                         </a>
                         <!-- Icon to roll the discipline with an attribute -->
-                        <a class="vrollable discipline-dice" title="{{localize 'WOD5E.Roll'}}" data-roll="{{discipline.value}}" data-label="{{key}}">
+                        <a class="vrollable discipline-dice" title="{{localize 'VTM5E.Roll'}}" data-roll="{{discipline.value}}" data-label="{{key}}">
                             <i class="fas fa-dice-d20"></i>
                         </a>
                         <!-- Icon to show the discipline description to the chat-->
-                        <a class="item-control discipline-chat" title="{{localize 'WOD5E.ShowToChat'}}" data-type="power" data-discipline="{{key}}">
+                        <a class="item-control discipline-chat" title="{{localize 'VTM5E.ShowToChat'}}" data-type="power" data-discipline="{{key}}">
                             <i class="fas fa-comment-alt"></i>
                         </a>
                         <!-- Icon to delete the discipline (as long as it doesn't have any powers) -->
-                        <a class="item-control discipline-delete" title="{{localize 'WOD5E.Delete'}}" data-discipline="{{key}}">
+                        <a class="item-control discipline-delete" title="{{localize 'VTM5E.Delete'}}" data-discipline="{{key}}">
                             <i class="fas fa-trash"></i>
                         </a>
                     </div>
@@ -73,20 +73,20 @@
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rouse check, if applicable -->
                                 {{#if item.system.rouse}}
-                                    <a class="item-control item-rouse" title="{{localize 'WOD5E.RollRouse'}}" data-roll="{{discipline.value}}">
+                                    <a class="item-control item-rouse" title="{{localize 'VTM5E.RollRouse'}}" data-roll="{{discipline.value}}">
                                         <i class="fas fa-dice-d20"></i>
                                     </a>
                                 {{/if}}
                                 <!-- Icon to edit the power-->
-                                <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}">
+                                <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <!-- Icon to display the power in chat -->
-                                <a class="item-control item-chat" title="{{localize 'WOD5E.ShowToChat'}}">
+                                <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}">
                                     <i class="fas fa-comment-alt"></i>
                                 </a>
                                 <!-- Icon to delete the power -->
-                                <a class="item-control item-delete" title="{{localize 'WOD5E.Delete'}}">
+                                <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
