@@ -9,11 +9,13 @@
 
 This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System.
 
-Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pact License].
+Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pack License].
+
+![preview](./image.png)
 
 ## Dice
 
-There is integration with Dice So Nice!
+There is integration with Dice So Nice! Customizing the dice is possible.
 
 To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`. Replace the 1s with however many dice you want to roll for each type.
 
@@ -21,9 +23,9 @@ To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`. R
 
 ## Feedback
 
-Bugs reported as issues to this repository are greatly appreciate.
+Bugs or feature requests created to this repository are greatly appreciate. Please use the Issues tab on GitHub.
 
-Please reach out to me at weinerdolphin#3175 on Discord with issues, feature requests, etc.
+Please reach out to me at weinerdolphin#3175 on Discord with any pressing issues, I'd love to help you get your game running smoothly!
 
 Please check the issues list before suggesting new features.
 
@@ -51,6 +53,7 @@ Huge thanks to these folks for their contributions:
 * Partial HTML, character types, migrations, bugfixes, and refactors by [Dakayl]
 * In-chat willpower rerolling, dark theme, and numerous other features and fixes by [thalissas]
 * Adding blood potency bonus to discipline rolls by [MarkusOzgur]
+* Various upgrades and CSS design improvements by [LorduFreeman]
 * Dicebox by [crcroberts]
 * Feedback and fixes by [eisenfuchs]
 * Feedback and fixes by @OldMightyFriendlyGamer#0832
@@ -67,6 +70,7 @@ Huge thanks to these folks for their contributions:
 
 [Dark Pack]: https://s3-eu-north-1.amazonaws.com/pdx-campaign-wp-data/uploads/sites/10/2021/10/05102936/darkpack_logo2-300x300.png
 [Dark Pack URL]: https://www.worldofdarkness.com/dark-pack
+[Dark Pack License]: https://www.worldofdarkness.com/dark-pack
 
 [boilerplate system]: https://gitlab.com/asacolips-projects/foundry-mods/foundryvtt-system-tutorial
 [danielmalka]: https://github.com/danielmalka
@@ -87,3 +91,4 @@ Huge thanks to these folks for their contributions:
 [crcroberts]: https://github.com/crcroberts
 [gbursson]: https://github.com/gbursson
 [MrDionysus]: https://github.com/MrDionysus
+[LorduFreeman]: https://github.com/LorduFreeman
