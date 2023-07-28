@@ -42,9 +42,9 @@ export async function rollBasicDice (numDice, actor, label = '', difficulty = 0,
   // Get the difficulty result
   if (difficulty !== 0) {
     successRoll = totalSuccess >= difficulty
-    difficultyResult = `( <span class="danger">${game.i18n.localize('VTM5E.Fail')}</span> )`
+    difficultyResult = `(<span class="danger">${game.i18n.localize('VTM5E.Fail')}</span>)`
     if (successRoll) {
-      difficultyResult = `( <span class="success">${game.i18n.localize('VTM5E.Success')}</span> )`
+      difficultyResult = `(<span class="success">${game.i18n.localize('VTM5E.Success')}</span>)`
     }
   }
 

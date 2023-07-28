@@ -2,24 +2,29 @@
   "id": "vtm5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "2.0.2",
+  "version": "2.1.1",
   "compatibility": {
-    "minimum": 10,
-    "verified": "10.0"
+    "minimum": "10",
+    "verified": "11"
   },
   "authors": [
     {
       "name": "Ray",
       "url": "https://github.com/Rayji96",
       "email": "rayji96@gmail.com",
-      "discord": "weinerdolphin#3175"
+      "discord": "weinerdolphin#3175",
+      "flags": {}
     },
     {
       "name": "MrDionysus",
-      "url": "https://github.com/MrDionysus"
+      "url": "https://github.com/MrDionysus",
+      "flags": {}
+    },
+    {
+      "name": "LorduFreeman",
+      "discord": "LorduFreeman#8747"
     }
   ],
-  "relationships": {},
   "esmodules": [
     "module/main.js"
   ],
@@ -30,43 +35,51 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     },
     {
       "lang": "fr",
       "name": "French",
-      "path": "lang/fr.json"
+      "path": "lang/fr.json",
+      "flags": {}
     },
     {
       "lang": "pt-BR",
       "name": "Brazilian Portuguese",
-      "path": "lang/pt-BR.json"
+      "path": "lang/pt-BR.json",
+      "flags": {}
     },
     {
       "lang": "es",
       "name": "Spanish",
-      "path": "lang/es.json"
+      "path": "lang/es.json",
+      "flags": {}
     },
     {
       "lang": "de",
       "name": "German",
-      "path": "lang/de.json"
+      "path": "lang/de.json",
+      "flags": {}
     },
     {
       "lang": "it",
       "name": "Italian",
-      "path": "lang/it.json"
+      "path": "lang/it.json",
+      "flags": {}
     },
     {
       "lang": "pl",
       "name": "Polish",
-      "path": "lang/pl.json"
+      "path": "lang/pl.json",
+      "flags": {}
     }
   ],
   "gridDistance": 5,
   "gridUnits": "ft",
   "license": "LICENSE.txt",
   "url": "https://github.com/Rayji96/foundry-V5",
+  "background": "systems/vtm5e/assets/images/wodcity.jpg",
   "manifest": "https://raw.githubusercontent.com/Rayji96/foundry-V5/main/system.json",
-  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v2.0.2.zip"
+  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v2.1.1.zip"
 }

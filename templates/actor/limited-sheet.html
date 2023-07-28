@@ -8,12 +8,28 @@
     </header>
     {{!-- Sheet Body --}}
     <section class="sheet-body">
+            {{#unless actor.system.clan.value}}
         <div class="tab appearance description-content">
-            {{#if isCharacter}}
-            {{editor enrichedAppearance target="system.appearance" button=true editable=editable}}
-            {{else}}
-            {{editor enrichedBiography target="system.biography" button=true editable=editable}}
-            {{/if}}
+                <div class="flex-center">
+                    <label class="resource-label"><h2>{{localize "VTM5E.Notes"}}</h2></label>
+                </div>                  
+                {{editor enrichedNotes target="system.notes" button=true editable=editable}}
         </div>
+            {{else}}
+            <div class="grid grid-2col flexrow">                    
+                <div class="tab appearance description-content">
+                    <div class="flex-center">
+                        <label class="resource-label"><h2>{{localize "VTM5E.Biography"}}</h2></label>
+                    </div>              
+                    {{editor enrichedBiography target="system.biography" button=true editable=editable}}
+                </div>              
+                <div class="tab appearance description-content">
+                    <div class="flex-center">
+                        <label class="resource-label"><h2>{{localize "VTM5E.Appearance"}}</h2></label>
+                    </div>              
+                    {{editor enrichedAppearance target="system.appearance" button=true editable=editable}}
+                </div>
+            </div>
+            {{/unless}}
     </section>
 </form>
