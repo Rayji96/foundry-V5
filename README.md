@@ -3,7 +3,7 @@
 
 [![Dark Pack]][Dark Pack URL]
 
-[![Foundry Shield 10]][Foundry URL]
+[![Foundry Shield 11]][Foundry URL]
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
@@ -56,7 +56,7 @@ Huge thanks to these folks for their contributions:
 * Feedback and fixes by @OldMightyFriendlyGamer#0832
 * Initial testing and DiceSoNice feedback by Clement#1490
 
-[Foundry Shield 10]: https://img.shields.io/badge/Foundry-10-informational
+[Foundry Shield 11]: https://img.shields.io/badge/Foundry-11-informational
 [Foundry URL]: https://foundryvtt.com
 
 [MIT License]: https://img.shields.io/badge/License-MIT-green
