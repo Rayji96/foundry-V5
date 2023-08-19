@@ -73,6 +73,12 @@
       "name": "Polish",
       "path": "lang/pl.json",
       "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Russian",
+      "path": "lang/ru.json",
+      "flags": {}
     }
   ],
   "gridDistance": 5,
