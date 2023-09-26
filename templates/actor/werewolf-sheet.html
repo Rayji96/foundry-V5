@@ -7,10 +7,10 @@
           <div class="grid grid-3col flexrow">
               <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
                       placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-              <h1 class="charname"><input name="system.clan.value" type="text" value="{{actor.system.clan.value}}"
-                      placeholder="{{localize 'VTM5E.Clan'}}" /></h1>
-              <h1 class="charname"><input name="system.headers.predator" type="text" value="{{actor.system.headers.predator}}"
-                      placeholder="{{localize 'VTM5E.Predator'}}" /></h1>
+              <h1 class="charname"><input name="system.headers.tribe" type="text" value="{{actor.system.headers.tribe}}"
+                      placeholder="{{localize 'VTM5E.Tribe'}}" /></h1>
+              <h1 class="charname"><input name="system.headers.auspice" type="text" value="{{actor.system.headers.auspice}}"
+                      placeholder="{{localize 'VTM5E.Auspice'}}" /></h1>
           </div>
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -23,7 +23,7 @@
 
               {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/humanity.html"}}
+              {{> "systems/vtm5e/templates/actor/parts/werewolf/balance.html"}}
           </div>
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
@@ -31,11 +31,11 @@
           <div class="resources grid grid-4col">
               {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/hunger.html"}}
+              {{> "systems/vtm5e/templates/actor/parts/werewolf/frenzy.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/rouse.html"}}
+              {{> "systems/vtm5e/templates/actor/parts/werewolf/rage.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/frenzy.html"}}
+              {{> "systems/vtm5e/templates/actor/parts/werewolf/frenzy.html"}}
           </div>
       </div>
   </header>
@@ -43,9 +43,9 @@
   {{!-- Werewolf Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
       <div class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</div>
-      <div class="item" data-tab="disciplines">{{localize "VTM5E.Disciplines"}}</div>
+      <div class="item" data-tab="gifts-rites">{{localize "VTM5E.GiftsandRites"}}</div>
       <div class="item" data-tab="features">{{localize "VTM5E.Features"}}</div>
-      <div class="item" data-tab="blood">{{localize "VTM5E.Blood"}}</div>
+      <div class="item" data-tab="forms">{{localize "VTM5E.Forms"}}</div>
       <div class="item" data-tab="description">{{localize "VTM5E.Description"}}</div>
       <div class="item" data-tab="other">{{localize "VTM5E.Other"}}</div>
   </nav>
@@ -57,13 +57,13 @@
       {{> "systems/vtm5e/templates/actor/parts/stats.html"}}
 
       {{!-- Owned Powers Tab --}}
-      {{> "systems/vtm5e/templates/actor/parts/disciplines.html"}}
+      {{> "systems/vtm5e/templates/actor/parts/werewolf/gifts-rites.html"}}
 
       {{!-- Owned Features Tab --}}
       {{> "systems/vtm5e/templates/actor/parts/features.html"}}
 
       {{!-- Blood Tab --}}
-      {{> "systems/vtm5e/templates/actor/parts/blood.html"}}
+      {{> "systems/vtm5e/templates/actor/parts/werewolf/forms.html"}}
 
       {{!-- Biography Tab --}}
       {{> "systems/vtm5e/templates/actor/parts/biography.html"}}
