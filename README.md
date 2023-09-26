@@ -90,7 +90,7 @@ Huge thanks to these folks for their contributions:
 [Lemantia]: https://github.com/Lemantia
 [Varkal]: https://github.com/Varkal
 [Dakayl]: https://github.com/Dakayl
-[thalissas]: https://github.com/thalissa
+[Veilza]: https://github.com/Veilza
 [MarkusOzgur]: https://github.com/MarkusOzgur
 [Musrha]: https://github.com/Musrha
 [crcroberts]: https://github.com/crcroberts
