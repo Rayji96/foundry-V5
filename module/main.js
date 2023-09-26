@@ -224,6 +224,18 @@ Hooks.once('init', async function () {
     return remorseDice
   })
 
+  Handlebars.registerHelper('harano-test', function (harano, hauglosk) {
+    const haranoDice = Math.max((harano + hauglosk), 1)
+
+    return haranoDice
+  })
+
+  Handlebars.registerHelper('hauglosk-test', function (harano, hauglosk) {
+    const haugloskDice = Math.max((harano + hauglosk), 1)
+
+    return haugloskDice
+  })
+
   Handlebars.registerHelper('attrIf', function (attr, value, test) {
     if (value === undefined) return ''
     return value === test ? attr : ''

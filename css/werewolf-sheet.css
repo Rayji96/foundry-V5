@@ -1,0 +1,54 @@
+/* New Styles */
+.vtm5e.werewolf-sheet .profile-img,
+.vtm5e.werewolf-sheet .item-image img {
+  background: #4e2100ef;
+}
+
+.vtm5e.werewolf-sheet button.rollable,
+.vtm5e.werewolf-sheet button.rollable-with-mod {
+  background: #4e2100ef;
+}
+
+.vtm5e.werewolf-sheet .sheet-header .profile-img-zone button {
+  background: #4e2100ef;
+}
+
+.vtm5e.werewolf-sheet .sheet-header .profile-img-zone h1 {
+  color: #4e2100ef;
+}
+
+.vtm5e.werewolf-sheet .resource-value .resource-value-step.active {
+  background-color: #4e2100ef;
+}
+
+.vtm5e.werewolf-sheet .resource-value-static .resource-value-static-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.vtm5e.werewolf-sheet .resource-value-static .resource-value-static-step.active {
+  background-color: #4e2100ef;
+}
+
+.vtm5e.werewolf-sheet .resource-counter .resource-counter-step[data-state="-"] {
+  background-color: #4e2100ef;
+}
+
+.vtm5e.werewolf-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+  background-color: #4e2100ef;
+}
+
+.vtm5e.werewolf-sheet .balance {
+  display: flex;
+}
+
+.vtm5e.werewolf-sheet .harano {
+  margin-right: auto;
+}
+
+.vtm5e.werewolf-sheet .hauglosk {
+  margin-left: auto;
+}

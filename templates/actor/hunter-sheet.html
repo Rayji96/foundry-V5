@@ -9,9 +9,7 @@
                         placeholder="{{localize 'VTM5E.Name'}}" /></h1>
                 <h1 class="charname"><input name="system.headers.cellname" type="text" value="{{actor.system.headers.cellname}}"
                     placeholder="{{localize 'VTM5E.Cell'}}" /></h1>
-                <div class="resource flex-group-center exp">
-                    {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
-                </div>
+                {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
             </div>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number

@@ -1,11 +1,24 @@
 <div class="resource flex-group-center balance">
-    <label for="actor.system.humanity.value" class="resource-label rollable" data-roll="{{remorse actor.system.humanity.value actor.system.humanity.stains}}"
-    data-label="{{localize 'VTM5E.RollingRemorse'}}">{{localize "VTM5E.Balance"}}</label>
-    <div class="resource-content flexrow flex-center flex-between">
-        <div class="resource-counter" data-states="/:stains,-:value" data-value="{{actor.system.humanity.value}}" data-stains="{{actor.system.humanity.stains}}"  data-name="system.humanity">
-            {{#numLoop 10}}
-            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
-            {{/numLoop}}
+    <div class="harano">
+        <label for="actor.system.balance.harano" class="resource-label rollable" data-roll="{{harano-test actor.system.balance.harano actor.system.balance.hauglosk}}"
+        data-label="{{localize 'VTM5E.HaranoTest'}}">{{localize "VTM5E.Harano"}}</label>
+        <div class="resource-content flexrow flex-center flex-between">
+            <div class="resource-counter" data-states="-:value" data-value="{{actor.system.balance.harano}}" data-name="system.balance.harano">
+                {{#numLoop 5}}
+                <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                {{/numLoop}}
+            </div>
+        </div>
+    </div>
+    <div class='"hauglosk'>
+        <label for="actor.system.balance.hauglosk" class="resource-label rollable" data-roll="{{hauglosk-test actor.system.balance.harano actor.system.balance.hauglosk}}"
+        data-label="{{localize 'VTM5E.HaugloskTest'}}">{{localize "VTM5E.Hauglosk"}}</label>
+        <div class="resource-content flexrow flex-center flex-between">
+            <div class="resource-counter" data-states="-:value" data-value="{{actor.system.balance.hauglosk}}" data-name="system.balance.hauglosk">
+                {{#numLoop 5}}
+                <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                {{/numLoop}}
+            </div>
         </div>
     </div>
 </div>

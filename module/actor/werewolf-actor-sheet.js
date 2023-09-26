@@ -12,7 +12,7 @@ export class WerewolfActorSheet extends MortalActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'werewolf']
+    const classList = ['vtm5e', 'werewolf-sheet', 'actor', 'werewolf']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -73,5 +73,27 @@ export class WerewolfActorSheet extends MortalActorSheet {
 
     const actorData = sheetData.actor
     actorData.system.gamesystem = 'werewolf'
+  }
+
+  _onResourceChange (event) {
+    event.preventDefault()
+    const actorData = duplicate(this.actor)
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const resource = dataset.resource
+    if (dataset.action === 'plus' && !this.locked) {
+      actorData.system[resource].max++
+    } else if (dataset.action === 'minus' && !this.locked) {
+      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
+    }
+
+    if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
+      actorData.system[resource].aggravated = actorData.system[resource].max - actorData.system[resource].superficial
+      if (actorData.system[resource].aggravated <= 0) {
+        actorData.system[resource].aggravated = 0
+        actorData.system[resource].superficial = actorData.system[resource].max
+      }
+    }
+    this.actor.update(actorData)
   }
 }
