@@ -705,25 +705,9 @@
       }
     },
    
-    "character": {
-      "label": "VTM5e.Legacy",
-      "templates": ["base","disciplines"],
-      "headers":{
-        "predator":"",
-        "sire":"",
-        "generation":"",
-        "bane":""
-      },
-      "blood": {
-        "potency": 0,
-        "resonance": ""
-      },
-      "clan": {
-        "value": ""
-      },
-      "hunger": {
-        "value": 1
-      }
+    "mortal": {
+      "label": "VTM5E.Mortal",
+      "templates": ["base"]
     },
     "vampire": {
       "label": "VTM5E.Vampire",
@@ -745,17 +729,25 @@
         "value": 1
       }
     },
-    "ghoul": {
-      "label": "VTM5E.Ghoul",
-      "templates": ["base","disciplines"],
-      "headers":{
-        "domitor":"",
-        "creedfields":""
+    "werewolf": {
+      "label": "VTM5E.Werewolf",
+      "templates": ["base","renown","werewolf-forms","gifts"],
+      "headers": {
+        "auspice": "",
+        "patron": "",
+        "favor": "",
+        "ban": "",
+        "tribe": ""
+      },
+      "balance": {
+        "hauglosk": 0,
+        "harano": 0
+      },
+      "rites": [],
+      "talismans": [],
+      "rage": {
+        "value": 1
       }
-    },
-    "mortal": {
-      "label": "VTM5E.Mortal",
-      "templates": ["base"]
     },
     "hunter": {
       "label": "VTM5E.Hunter",
@@ -785,27 +777,35 @@
         "concept": ""
       }
     },
+    "ghoul": {
+      "label": "VTM5E.Ghoul",
+      "templates": ["base","disciplines"],
+      "headers":{
+        "domitor":"",
+        "creedfields":""
+      }
+    },
     "spc" : {
       "label": "VTM5E.SPC",
       "templates": ["abbreviated","disciplines"]
     },
-    "werewolf": {
-      "label": "VTM5E.Werewolf",
-      "templates": ["base","renown","werewolf-forms","gifts"],
-      "headers": {
-        "auspice": "",
-        "patron": "",
-        "favor": "",
-        "ban": "",
-        "tribe": ""
+    "character": {
+      "label": "VTM5e.Legacy",
+      "templates": ["base","disciplines"],
+      "headers":{
+        "predator":"",
+        "sire":"",
+        "generation":"",
+        "bane":""
       },
-      "balance": {
-        "hauglosk": 0,
-        "harano": 0
+      "blood": {
+        "potency": 0,
+        "resonance": ""
       },
-      "rites": [],
-      "talismans": [],
-      "rage": {
+      "clan": {
+        "value": ""
+      },
+      "hunger": {
         "value": 1
       }
     }
