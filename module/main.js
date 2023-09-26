@@ -16,6 +16,7 @@ import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
 import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
 import { CellActorSheet } from './actor/cell-actor-sheet.js'
 import { SPCActorSheet } from './actor/spc-actor-sheet.js'
+import { WerewolfActorSheet } from './actor/werewolf-actor-sheet.js'
 import {
   prepareSearchableSelection,
   prepareRouseShortcut,
@@ -145,6 +146,11 @@ Hooks.once('init', async function () {
   Actors.registerSheet('vtm5e', SPCActorSheet, {
     label: 'SPC Sheet',
     types: ['spc'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', WerewolfActorSheet, {
+    label: 'Werewolf Sheet',
+    types: ['werewolf'],
     makeDefault: true
   })
   Items.unregisterSheet('core', ItemSheet)

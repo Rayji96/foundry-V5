@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc"],
+    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc", "werewolf"],
     "templates": {
       "base": {
         "biography": "",
@@ -550,6 +550,158 @@
             "visible": false
           }
         }
+      },
+      "renown": {
+        "glory": {
+          "value": 0
+        },
+        "honor": {
+          "value": 0
+        },
+        "wisdom": {
+          "value": 0
+        }
+      },
+      "werewolf-forms": {
+        "homid": {
+          "name": "Homid",
+          "nickname": "The Human",
+          "cost": 0,
+          "description": "",
+          "abilities": []
+        },
+        "glabro": {
+          "name": "Glabro",
+          "nickname": "The Near-Human",
+          "cost": 1,
+          "description": "",
+          "abilities": []
+        },
+        "crinos": {
+          "name": "Crinos",
+          "nickname": "The War-Form, The Monster",
+          "cost": 2,
+          "description": "",
+          "abilities": []
+        },
+        "hispo": {
+          "name": "Hispo",
+          "nickname": "The Dire Wolf",
+          "cost": 1,
+          "description": "",
+          "abilities": []
+        },
+        "lupus": {
+          "name": "Lupus",
+          "nickname": "The Wolf",
+          "cost": 0,
+          "description": "",
+          "abilities": []
+        }
+      },
+      "gifts": {
+        "native": {
+          "name": "",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "ragabash": {
+          "name": "Ragabash",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "theurge": {
+          "name": "Theurge",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "philodox": {
+          "name": "Philodox",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "galliard": {
+          "name": "Galliard",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "ahroun": {
+          "name": "Ahroun",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "blackfury": {
+          "name": "Black Fury",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "bonegnawer": {
+          "name": "Bone Gnawer",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "childrenofgaia": {
+          "name": "Children of Gaia",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "galestalker": {
+          "name": "Galestalker",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "ghostcouncil": {
+          "name": "Ghost Council",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "glasswalker": {
+          "name": "Glass Walker",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "hartwarden": {
+          "name": "Hart Warden",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "redtalon": {
+          "name": "Red Talon",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "shadowlord": {
+          "name": "Shadow Lord",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "silentstrider": {
+          "name": "Silent Strider",
+          "description": "",
+          "value": 0,
+          "powers": []
+        },
+        "silverfang": {
+          "name": "Silver Fang",
+          "description": "",
+          "value": 0,
+          "powers": []
+        }
       }
     },
    
@@ -628,6 +780,25 @@
     },
     "spc" : {
       "templates": ["abbreviated","disciplines"]
+    },
+    "werewolf": {
+      "templates": ["base","renown","werewolf-forms","gifts"],
+      "headers": {
+        "auspice": "",
+        "patron": "",
+        "favor": "",
+        "ban": "",
+        "tribe": ""
+      },
+      "balance": {
+        "hauglosk": 0,
+        "harano": 0
+      },
+      "rites": [],
+      "talismans": [],
+      "rage": {
+        "value": 1
+      }
     }
   },
   "Item": {
