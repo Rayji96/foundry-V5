@@ -9,6 +9,11 @@
 
 This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System.
 
+Current supported systems include:
+* Vampire the Masquerade, 5th Edition
+* Hunter the Reckoning, 5th Edition
+* Werewolf the Apocalypse, 5th Edition
+
 Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pack License].
 
 ![preview](./image.png)
@@ -51,7 +56,7 @@ Huge thanks to these folks for their contributions:
 * Incredible work on dot and box counters by [erizocosmico]
 * Refactors and enhancements by [bmgraves]
 * Partial HTML, character types, migrations, bugfixes, and refactors by [Dakayl]
-* In-chat willpower rerolling, dark theme, and numerous other features and fixes by [thalissas]
+* In-chat willpower rerolling, dark theme, Werewolf v5 support, and numerous other features and fixes by [Veilza]
 * Adding blood potency bonus to discipline rolls by [MarkusOzgur]
 * Various upgrades and CSS design improvements by [LorduFreeman]
 * Dicebox by [crcroberts]
