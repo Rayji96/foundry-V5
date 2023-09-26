@@ -3,7 +3,7 @@
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
 import { migrateWorld } from './migration.js'
-import { VampireActor } from './actor/actor.js'
+import { WoDv5Actor } from './actor/actor.js'
 import { VampireItem } from './item/item.js'
 import { VampireItemSheet } from './item/item-sheet.js'
 import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie } from './dice/dice.js'
@@ -89,7 +89,7 @@ Hooks.once('init', async function () {
   })
 
   game.vtm5e = {
-    VampireActor,
+    WoDv5Actor,
     VampireItem,
     rollItemMacro
   }
@@ -103,7 +103,7 @@ Hooks.once('init', async function () {
   }
 
   // Define custom Entity classes
-  CONFIG.Actor.documentClass = VampireActor
+  CONFIG.Actor.documentClass = WoDv5Actor
   CONFIG.Item.documentClass = VampireItem
   CONFIG.Dice.terms.v = VampireDie
   CONFIG.Dice.terms.g = VampireHungerDie
@@ -113,16 +113,6 @@ Hooks.once('init', async function () {
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
 
-  Actors.registerSheet('vtm5e', VampireActorSheet, {
-    label: 'Vampire Sheet',
-    types: ['vampire', 'character'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', GhoulActorSheet, {
-    label: 'Ghoul Sheet',
-    types: ['ghoul'],
-    makeDefault: true
-  })
   Actors.registerSheet('vtm5e', MortalActorSheet, {
     label: 'Mortal Sheet',
     types: ['mortal'],
@@ -133,9 +123,19 @@ Hooks.once('init', async function () {
     types: ['hunter', 'character'],
     makeDefault: true
   })
-  Actors.registerSheet('vtm5e', CoterieActorSheet, {
-    label: 'Coterie Sheet',
-    types: ['coterie'],
+  Actors.registerSheet('vtm5e', VampireActorSheet, {
+    label: 'Vampire Sheet',
+    types: ['vampire', 'character'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', WerewolfActorSheet, {
+    label: 'Werewolf Sheet',
+    types: ['werewolf'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', GhoulActorSheet, {
+    label: 'Ghoul Sheet',
+    types: ['ghoul'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', CellActorSheet, {
@@ -143,14 +143,14 @@ Hooks.once('init', async function () {
     types: ['cell'],
     makeDefault: true
   })
+  Actors.registerSheet('vtm5e', CoterieActorSheet, {
+    label: 'Coterie Sheet',
+    types: ['coterie'],
+    makeDefault: true
+  })
   Actors.registerSheet('vtm5e', SPCActorSheet, {
     label: 'SPC Sheet',
     types: ['spc'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', WerewolfActorSheet, {
-    label: 'Werewolf Sheet',
-    types: ['werewolf'],
     makeDefault: true
   })
   Items.unregisterSheet('core', ItemSheet)

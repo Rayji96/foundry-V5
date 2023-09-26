@@ -706,6 +706,7 @@
     },
    
     "character": {
+      "label": "VTM5e.Legacy",
       "templates": ["base","disciplines"],
       "headers":{
         "predator":"",
@@ -725,6 +726,7 @@
       }
     },
     "vampire": {
+      "label": "VTM5E.Vampire",
       "templates": ["base","disciplines"],
       "headers":{
         "predator":"",
@@ -744,6 +746,7 @@
       }
     },
     "ghoul": {
+      "label": "VTM5E.Ghoul",
       "templates": ["base","disciplines"],
       "headers":{
         "domitor":"",
@@ -751,9 +754,11 @@
       }
     },
     "mortal": {
+      "label": "VTM5E.Mortal",
       "templates": ["base"]
     },
     "hunter": {
+      "label": "VTM5E.Hunter",
       "templates": ["base","edges"],
       "headers":{
         "cellname":""
@@ -763,6 +768,7 @@
       }
     },
     "coterie" : {
+      "label": "VTM5E.Coterie",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -771,6 +777,7 @@
       }
     },
     "cell" : {
+      "label": "VTM5E.Cell",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -779,9 +786,11 @@
       }
     },
     "spc" : {
+      "label": "VTM5E.SPC",
       "templates": ["abbreviated","disciplines"]
     },
     "werewolf": {
+      "label": "VTM5E.Werewolf",
       "templates": ["base","renown","werewolf-forms","gifts"],
       "headers": {
         "auspice": "",

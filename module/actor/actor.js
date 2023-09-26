@@ -4,7 +4,7 @@
  * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-export class VampireActor extends Actor {
+export class WoDv5Actor extends Actor {
   /**
      * Augment the basic actor data with additional dynamic data.
      */
@@ -21,21 +21,6 @@ export class VampireActor extends Actor {
   }
 
   /**
-     * Prepare Character type specific data
-     */
-  // _prepareCharacterData(actorData) {
-  //     const data = actorData.data;
-
-  //     // Make modifications to data here. For example:
-
-  //     // Loop through ability scores, and add their modifiers to our sheet output.
-  //     for (let [key, ability] of Object.entries(data.abilities)) {
-  //         // Calculate the modifier using d20 rules.
-  //         ability.mod = Math.floor((ability.value - 10) / 2);
-  //     }
-  // }
-
-  /**
    * Redefines the create "actor" type with translations :)
    * @param {object} data         Initial data with which to populate the creation form
    * @param {object} [options]    Positioning and sizing options for the resulting dialog
@@ -43,31 +28,37 @@ export class VampireActor extends Actor {
    * @memberof ClientDocumentMixin
    */
   static async createDialog (data = {}, options = {}) {
-    // Collect data
+    // Define data from the system and the game to be used when rendering the new actor dialogue
+    // Actor name
     const documentName = this.metadata.name
-    const types = game.system.documentTypes[documentName]
-    const folders = game.folders.filter(f => (f.type === documentName) && f.displayed)
+
+    // List of actor templates
+    const actorTemplates = game.template.Actor
+    // List of folders in the game, if there is at least 1
+    const gameFolders = game.folders.filter(f => (f.type === documentName) && f.displayed)
+
+    // Localize the label and title
     const label = game.i18n.localize(this.metadata.label)
     const title = game.i18n.format('DOCUMENT.Create', { type: label })
 
-    const index = types.indexOf('character')
-    if (index !== -1) {
-      types.splice(index, 1)
+    // Reorganize the actor templates into something usable for the creation form
+    let actorTypes = {}
+    for (var i in actorTemplates) {
+      // If the actor template has a label, add it to the types list
+      if(actorTemplates[i].label) {
+        actorTypes[i] = game.i18n.localize(actorTemplates[i].label)
+      }
     }
 
     // Render the document creation form
     const html = await renderTemplate('templates/sidebar/document-create.html', {
       name: data.name || game.i18n.format('DOCUMENT.New', { type: label }),
       folder: data.folder,
-      folders: folders,
-      hasFolders: folders.length > 1,
-      type: data.type || types[0],
-      types: types.reduce((obj, t) => {
-        const VTM5ELabel = 'VTM5E.' + t[0].toUpperCase() + t.substring(1)
-        obj[t] = game.i18n.has(VTM5ELabel) ? game.i18n.localize(VTM5ELabel) : t
-        return obj
-      }, {}),
-      hasTypes: types.length > 1
+      folders: gameFolders,
+      hasFolders: gameFolders.length > 0,
+      type: data.type || "base",
+      types: actorTypes,
+      hasTypes: true
     })
 
     // Render the confirmation dialog window
@@ -80,7 +71,7 @@ export class VampireActor extends Actor {
         const fd = new FormDataExtended(form)
         data = foundry.utils.mergeObject(data, fd.object)
         if (!data.folder) delete data.folder
-        if (types.length === 1) data.type = types[0]
+        if (actorTypes.length === 1) data.type = actorTypes[0]
         return this.create(data, { renderSheet: true })
       },
       rejectClose: false,
