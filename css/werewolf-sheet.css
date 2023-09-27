@@ -45,6 +45,14 @@
   display: flex;
 }
 
+.vtm5e.werewolf-sheet .balance .resource-value-step, .vtm5e.werewolf-sheet .balance .resource-value-empty {
+  border-radius: 0;
+}
+
+.vtm5e.werewolf-sheet .harano, .vtm5e.werewolf-sheet .hauglosk {
+  flex-grow: 1;
+}
+
 .vtm5e.werewolf-sheet .harano {
   margin-right: auto;
 }

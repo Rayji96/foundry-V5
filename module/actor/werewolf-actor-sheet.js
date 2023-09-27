@@ -73,27 +73,106 @@ export class WerewolfActorSheet extends MortalActorSheet {
 
     const actorData = sheetData.actor
     actorData.system.gamesystem = 'werewolf'
+
+    if (actorData.system.activeForm === "homid") {
+      //actorData.system.health.max = actorData.system.health.max + actorData.system.ciranosHealth.max
+    }
   }
 
-  _onResourceChange (event) {
+  /* -------------------------------------------- */
+
+  /** @override */
+  activateListeners (html) {
+    super.activateListeners(html)
+
+    // Everything below here is only needed if the sheet is editable
+    if (!this.options.editable) return
+
+    // Make Gift visible
+    html.find('.gift-create').click(this._onShowGift.bind(this))
+
+    // Make Gift hidden
+    html.find('.gift-delete').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      this.actor.update({ [`system.gifts.${data.gift}.visible`]: false })
+    })
+
+    // Post Edge description to the chat
+    html.find('.gift-chat').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      const gift = this.actor.system.gifts[data.gift]
+
+      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+        name: game.i18n.localize(gift.name),
+        img: 'icons/svg/dice-target.svg',
+        description: gift.description
+      }).then(html => {
+        ChatMessage.create({
+          content: html
+        })
+      })
+    })
+
+    // Rollable abilities.
+    html.find('.rollable').click(this._onRoll.bind(this))
+  }
+
+  /**
+     * Handle clickable rolls.
+     * @param {Event} event   The originating click event
+     * @private
+     */
+  _onRoll (event) {
     event.preventDefault()
-    const actorData = duplicate(this.actor)
     const element = event.currentTarget
     const dataset = element.dataset
-    const resource = dataset.resource
-    if (dataset.action === 'plus' && !this.locked) {
-      actorData.system[resource].max++
-    } else if (dataset.action === 'minus' && !this.locked) {
-      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
+    const subtractWillpower = dataset.subtractWillpower
+    const numDice = dataset.roll
+
+    //rollRageDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
+  }
+
+  /**
+     * Handle making a gift visible
+     * @param {Event} event   The originating click event
+     * @private
+     */
+  _onShowGift (event) {
+    event.preventDefault()
+    let options = ''
+    for (const [key, value] of Object.entries(this.actor.system.gifts)) {
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
-    if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
-      actorData.system[resource].aggravated = actorData.system[resource].max - actorData.system[resource].superficial
-      if (actorData.system[resource].aggravated <= 0) {
-        actorData.system[resource].aggravated = 0
-        actorData.system[resource].superficial = actorData.system[resource].max
+    const template = `
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.SelectGift')}</label>
+              <select id="giftSelect">${options}</select>
+          </div>
+      </form>`
+
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Add'),
+        callback: async (html) => {
+          const gift = html.find('#giftSelect')[0].value
+          this.actor.update({ [`system.gifts.${gift}.visible`]: true })
+        }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
       }
     }
-    this.actor.update(actorData)
+
+    new Dialog({
+      title: game.i18n.localize('VTM5E.AddGift'),
+      content: template,
+      buttons: buttons,
+      default: 'draw'
+    }).render(true)
   }
 }

@@ -3,20 +3,22 @@
         <label for="actor.system.balance.harano" class="resource-label rollable" data-roll="{{harano-test actor.system.balance.harano actor.system.balance.hauglosk}}"
         data-label="{{localize 'VTM5E.HaranoTest'}}">{{localize "VTM5E.Harano"}}</label>
         <div class="resource-content flexrow flex-center flex-between">
-            <div class="resource-counter" data-states="-:value" data-value="{{actor.system.balance.harano}}" data-name="system.balance.harano">
+            <div class="resource-value" data-value="{{actor.system.balance.harano.value}}" data-name="system.balance.harano.value">
+                <span class="resource-value-empty harano-value"></span>
                 {{#numLoop 5}}
-                <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                <span class="resource-value-step harano-value" data-index="{{this}}"></span>
                 {{/numLoop}}
             </div>
         </div>
     </div>
-    <div class='"hauglosk'>
+    <div class="hauglosk">
         <label for="actor.system.balance.hauglosk" class="resource-label rollable" data-roll="{{hauglosk-test actor.system.balance.harano actor.system.balance.hauglosk}}"
         data-label="{{localize 'VTM5E.HaugloskTest'}}">{{localize "VTM5E.Hauglosk"}}</label>
         <div class="resource-content flexrow flex-center flex-between">
-            <div class="resource-counter" data-states="-:value" data-value="{{actor.system.balance.hauglosk}}" data-name="system.balance.hauglosk">
+            <div class="resource-value" data-value="{{actor.system.balance.hauglosk.value}}" data-name="system.balance.hauglosk.value">
+                <span class="resource-value-empty hauglosk-value"></span>
                 {{#numLoop 5}}
-                <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                <span class="resource-value-step hauglosk-value" data-index="{{this}}"></span>
                 {{/numLoop}}
             </div>
         </div>
