@@ -1,4 +1,8 @@
 <form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} spc-sheet" autocomplete="off">
+    {{!-- Actor Type Banner --}}
+    <div class="sheetBanner">
+      <h1>{{ sheetType }}</h1>
+    </div>
 
     {{!-- SPC Sheet Header --}}
     <header class="sheet-header">
@@ -7,9 +11,7 @@
             <div class="grid grid-2col flexrow">
                 <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
                         placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-                <div class="resource flex-group-center difficulty">
-                    {{> "systems/vtm5e/templates/actor/parts/spc/generaldifficulty.html"}}
-                </div>
+                {{> "systems/vtm5e/templates/actor/parts/spc/generaldifficulty.html"}}
             </div>
             <div class="resources grid grid-2col">
                 {{> "systems/vtm5e/templates/actor/parts/health.html"}}

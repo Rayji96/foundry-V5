@@ -1,4 +1,8 @@
 <form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} ghoul-sheet" autocomplete="off">
+    {{!-- Actor Type Banner --}}
+    <div class="sheetBanner">
+      <h1>{{ sheetType }}</h1>
+    </div>
 
     {{!-- Ghoul Sheet Header --}}
     <header class="sheet-header">
@@ -9,9 +13,7 @@
                         placeholder="{{localize 'VTM5E.Name'}}" /></h1>
                 <h1 class="charname"><input name="system.headers.domitor" type="text" value="{{actor.system.headers.domitor}}"
                         placeholder="{{localize 'VTM5E.Domitor'}}" /></h1>
-                <div class="resource flex-group-center exp">
-                    {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
-                </div>
+                {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
             </div>
             {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
             use both the "grid" and "grid-Ncol" class where "N" can be any number

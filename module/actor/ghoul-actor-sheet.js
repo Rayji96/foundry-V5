@@ -11,7 +11,7 @@ export class GhoulActorSheet extends MortalActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'ghoul']
+    const classList = ['vtm5e', 'sheet', 'actor', 'ghoul', 'ghoul-sheet']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {

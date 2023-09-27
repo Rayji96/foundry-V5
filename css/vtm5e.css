@@ -941,6 +941,11 @@ input[name="system.blood.resonance"] {
     max-width: 160px;
 }
 
+.vtm5e.vampire-sheet .sheetBanner, .vtm5e.ghoul-sheet .sheetBanner, .vtm5e.coterie-sheet .sheetBanner {
+    background: #790813;
+    color: #CCC;
+  }
+
 .sheet nav.sheet-tabs .item {
     align-self: center;
 }
@@ -1010,6 +1015,18 @@ h3.item-name.chat-portrait-text-size-name-generic {
     min-height: auto;
     font-size: 1.2em;
     font-weight: 700;
+}
+
+.sheetBanner {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: column;
+    text-align: center;
+    margin: -10px -10px 5px -10px;
+}
+
+.sheetBanner h1 {
+    margin-bottom: 0px;
 }
 
 .sheet-header .grid-2col {

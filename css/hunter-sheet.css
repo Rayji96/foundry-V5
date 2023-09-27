@@ -4,6 +4,11 @@
   background: #cc6d28;
 }
 
+.vtm5e.hunter-sheet .sheetBanner {
+  background: #cc6d28;
+  color: #CCC;
+}
+
 .vtm5e.hunter-sheet button.rollable,
 .vtm5e.hunter-sheet button.rollable-with-mod {
   background: #cc6d28;

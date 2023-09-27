@@ -4,6 +4,11 @@
   background: #4e2100ef;
 }
 
+.vtm5e.werewolf-sheet .sheetBanner {
+  background: #4e2100ef;
+  color: #CCC;
+}
+
 .vtm5e.werewolf-sheet button.rollable,
 .vtm5e.werewolf-sheet button.rollable-with-mod {
   background: #4e2100ef;
