@@ -402,7 +402,6 @@ optgroup {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-bottom: 10px;
 }
 
 .vtm5e .limited .sheet-header {

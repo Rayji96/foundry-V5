@@ -27,17 +27,17 @@
 
               {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/werewolf/balance.html"}}
+              {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
           </div>
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns. --}}
-          <div class="resources grid grid-4col">
-              {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
-
+          <div class="resources grid grid-3col">
               {{> "systems/vtm5e/templates/actor/parts/werewolf/rage.html"}}
 
               {{> "systems/vtm5e/templates/actor/parts/werewolf/frenzy.html"}}
+
+              {{> "systems/vtm5e/templates/actor/parts/werewolf/balance.html"}}
           </div>
       </div>
   </header>
