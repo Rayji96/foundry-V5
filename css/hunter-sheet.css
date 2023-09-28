@@ -1,29 +1,33 @@
-/* New Styles */
+:root {
+  --hunter-primary: #cc6d28;
+}
+
+/* Styles specific to the Hunter sheets */
 .vtm5e.hunter-sheet .profile-img,
 .vtm5e.hunter-sheet .item-image img {
-  background: #cc6d28;
+  background: var(--hunter-primary);
 }
 
 .vtm5e.hunter-sheet .sheetBanner {
-  background: #cc6d28;
-  color: #CCC;
+  background: var(--hunter-primary);
+  color: #FFF;
 }
 
 .vtm5e.hunter-sheet button.rollable,
 .vtm5e.hunter-sheet button.rollable-with-mod {
-  background: #cc6d28;
+  background: var(--hunter-primary);
 }
 
 .vtm5e.hunter-sheet .actor-header .profile-img-zone button {
-  background: #cc6d28;
+  background: var(--hunter-primary);
 }
 
 .vtm5e.hunter-sheet .actor-header .profile-img-zone h1 {
-  color: #cc6d28;
+  color: var(--hunter-primary);
 }
 
 .vtm5e.hunter-sheet .resource-value .resource-value-step.active {
-  background-color: #cc6d28;
+  background-color: var(--hunter-primary);
 }
 
 .vtm5e.hunter-sheet .resource-value-static .resource-value-static-step {
@@ -35,13 +39,13 @@
 }
 
 .vtm5e.hunter-sheet .resource-value-static .resource-value-static-step.active {
-  background-color: #cc6d28;
+  background-color: var(--hunter-primary);
 }
 
 .vtm5e.hunter-sheet .resource-counter .resource-counter-step[data-state="-"] {
-  background-color: #cc6d28;
+  background-color: var(--hunter-primary);
 }
 
 .vtm5e.hunter-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
-  background-color: #cc6d28;
+  background-color: var(--hunter-primary);
 }
