@@ -6,15 +6,18 @@
 @import url("./hunter-theme.css");
 
 :root {
-    --color-text-hyperlink: #790813;
+	
     --color-text-light-highlight: #f9f5ed;
     --color-text-light-heading: #f1ede6;
+	
+    --color-border-light-1: var(--color-border-dark-1);
+    --color-border-light-2: var(--color-border-dark-2);
+	
+    --color-text-hyperlink: #790813;	
     --color-shadow-primary: #790813;
     --color-shadow-highlight: #790813;
     --color-border-highlight: #790813;
     --color-border-highlight-alt: #790813;
-	--color-border-light-1: var(--color-border-dark-1);
-    --color-border-light-2: var(--color-border-dark-2);
 }
 
 @font-face {
