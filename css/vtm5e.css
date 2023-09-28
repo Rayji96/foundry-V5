@@ -6,7 +6,6 @@
 @import url("./hunter-theme.css");
 
 :root {
-	
     --color-text-light-highlight: #f9f5ed;
     --color-text-light-heading: #f1ede6;
     --color-border-light-1: var(--color-border-dark-1);
