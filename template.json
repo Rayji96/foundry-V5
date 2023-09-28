@@ -759,6 +759,7 @@
       "rage": {
         "value": 1
       },
+      "frenzyActive": false,
       "crinosHealth": {
         "aggravated": 0,
         "superficial": 0,
@@ -769,10 +770,9 @@
       "label": "VTM5E.Hunter",
       "templates": ["base","edges"],
       "headers":{
-        "cellname":""
-      },
-      "creed": {
-        "value": ""
+        "cellname": "",
+        "creed": "",
+        "drive": ""
       }
     },
     "coterie" : {

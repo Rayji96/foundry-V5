@@ -23,7 +23,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/spc-sheet.html',
-      width: 800,
+      width: 940,
       height: 700,
       tabs: [{
         navSelector: '.sheet-tabs',

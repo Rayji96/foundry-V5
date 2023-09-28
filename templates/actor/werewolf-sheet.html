@@ -5,41 +5,38 @@
   </div>
 
   {{!-- Werewolf Sheet Header --}}
-  <header class="sheet-header">
-      {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
-      <div class="header-fields">
-          <div class="grid grid-3col flexrow">
-              <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
-                      placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-              <h1 class="charname"><input name="system.headers.tribe" type="text" value="{{actor.system.headers.tribe}}"
-                      placeholder="{{localize 'VTM5E.Tribe'}}" /></h1>
-              <h1 class="charname"><input name="system.headers.auspice" type="text" value="{{actor.system.headers.auspice}}"
-                      placeholder="{{localize 'VTM5E.Auspice'}}" /></h1>
-          </div>
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns. --}}
-          <div class="resources grid grid-3col">
-              {{!-- "flex-group-center" is also defined in the _grid.scss file
-              and it will add a small amount of padding, a border, and will
-              center all of its child elements content and text. --}}
-              {{> "systems/vtm5e/templates/actor/parts/health.html"}}
+  <header class="actor-header">
+      <div class="header-fields-top">
+        <div class="header-profile-img">
+            {{!-- Actor image and sheet lock toggle button --}}
+            {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
+        </div>
+        <div class="header-rows-top">
+            <div class="header-row-1">
+                {{!-- Text input header fields --}}
+                <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'VTM5E.Name'}}" /></h1>
+                <h1 class="charname"><input name="system.headers.tribe" type="text" value="{{actor.system.headers.tribe}}" placeholder="{{localize 'VTM5E.Tribe'}}" /></h1>
+                <h1 class="charname"><input name="system.headers.auspice" type="text" value="{{actor.system.headers.auspice}}" placeholder="{{localize 'VTM5E.Auspice'}}" /></h1>
+            </div>
+            <div class="header-row-2">
+                {{!-- Health Tracker --}}
+                {{> "systems/vtm5e/templates/actor/parts/health.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
+                {{!-- Willpower Tracker --}}
+                {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
-          </div>
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns. --}}
-          <div class="resources grid grid-3col">
-              {{> "systems/vtm5e/templates/actor/parts/werewolf/rage.html"}}
+                {{!-- XP Tracker --}}
+                {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/werewolf/frenzy.html"}}
+                {{!-- Anything more that needs to be in the header spot --}}
+                {{> "systems/vtm5e/templates/actor/parts/werewolf/rage.html"}}
 
-              {{> "systems/vtm5e/templates/actor/parts/werewolf/balance.html"}}
-          </div>
-      </div>
+                {{> "systems/vtm5e/templates/actor/parts/werewolf/frenzy.html"}}
+        
+                {{> "systems/vtm5e/templates/actor/parts/werewolf/balance.html"}}
+            </div>
+        </div>
+    </div>
   </header>
 
   {{!-- Werewolf Sheet Tab Navigation --}}

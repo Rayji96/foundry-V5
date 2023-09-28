@@ -19,7 +19,7 @@ export class CellActorSheet extends ActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/cell-sheet.html',
-      width: 800,
+      width: 940,
       height: 700,
       tabs: [{
         navSelector: '.sheet-tabs',

@@ -41,7 +41,7 @@
   font-weight: 700;
 }
 
-.vtm5e.dark-theme .sheet-header .profile-img-zone h1 {
+.vtm5e.dark-theme .actor-header .profile-img-zone h1 {
   color: #cc0014;
 }
 
@@ -220,7 +220,7 @@
   color: #bb1020;
 }
 
-.vtm5e.dark-theme .sheet-header h1.charname input {
+.vtm5e.dark-theme .actor-header h1.charname input {
   color: #f7f7f7;
 }
 

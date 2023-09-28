@@ -319,7 +319,7 @@ Hooks.once('init', async function () {
     const edges = {
       arsenal: 'VTM5E.Arsenal',
       ordnance: 'VTM5E.Ordnance',
-      library: 'VTM5E.Libraryy',
+      library: 'VTM5E.Library',
       improvisedgear: 'VTM5E.ImprovisedGear',
       globalaccess: 'VTM5E.GlobalAccess',
       dronejockey: 'VTM5E.DroneJockey',

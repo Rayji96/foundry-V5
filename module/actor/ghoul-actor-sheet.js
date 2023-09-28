@@ -21,7 +21,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/ghoul-sheet.html',
-      width: 800,
+      width: 940,
       height: 700,
       tabs: [{
         navSelector: '.sheet-tabs',

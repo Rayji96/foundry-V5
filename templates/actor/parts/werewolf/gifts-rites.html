@@ -1,4 +1,10 @@
 <div class="tab disciplines" data-group="primary" data-tab="gifts-rites">
+    {{#if actor.system.frenzyActive}}
+        <div class="frenzyNotification">
+            <h1>{{localize 'VTM5E.FrenzyActiveWarning'}}</h1>
+            <h3>{{localize 'VTM5E.FrenzyActiveWarning2'}}</h3>
+        </div>
+    {{/if}}
     <ol class="items-list">
         <!-- Header of the disciplines lists -->
         <li class="item flexrow item-header">

@@ -5,23 +5,31 @@
     </div>
 
     {{!-- Cell Sheet Header --}}
-    <header class="sheet-header">
-        {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
-        <div class="header-fields">
-            <div class="grid grid-3col flexrow">
-                <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
+    <header class="actor-header">
+        <div class="header-fields-top">
+          <div class="header-profile-img">
+              {{!-- Actor image and sheet lock toggle button --}}
+              {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
+          </div>
+          <div class="header-rows-top">
+              <div class="header-row-1">
+                  {{!-- Text input header fields --}}
+                  <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
                     placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-                <h1 class="charname"><input name="system.headers.concept" type="text" value="{{actor.system.headers.concept}}"
+                    
+                  <h1 class="charname"><input name="system.headers.concept" type="text" value="{{actor.system.headers.concept}}"
                     placeholder="{{localize 'VTM5E.Concept'}}" /></h1>
-                <h1 class="charname"><input name="system.headers.chronicle" type="text" value="{{actor.system.headers.chronicle}}"
+
+                  <h1 class="charname"><input name="system.headers.chronicle" type="text" value="{{actor.system.headers.chronicle}}"
                     placeholder="{{localize 'VTM5E.Chronicle'}}" /></h1>
-            </div>
-            <div class="resources grid grid-2col">
+              </div>
+              <div class="header-row-2">
                 {{> "systems/vtm5e/templates/actor/parts/hunter/desperation.html"}}
 
                 {{> "systems/vtm5e/templates/actor/parts/hunter/danger.html"}}
-            </div>
-        </div>
+              </div>
+          </div>
+      </div>
     </header>
 
     {{!-- Cell Sheet Tab Navigation --}}
