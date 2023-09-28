@@ -43,7 +43,7 @@ export class GhoulActorSheet extends MortalActorSheet {
   async getData () {
     const data = await super.getData()
 
-    data.sheetType = `${game.i18n.localize('WOD5E.Ghoul')}`
+    data.sheetType = `${game.i18n.localize('VTM5E.Ghoul')}`
 
     // Prepare items.
     if (this.actor.type === 'ghoul') {
@@ -141,7 +141,7 @@ export class GhoulActorSheet extends MortalActorSheet {
 
       const dicepool = this.potencyToRouse(potency, level)
 
-      rollDice(dicepool, this.actor, game.i18n.localize('WOD5E.RousingBlood'), 1, true, true, false)
+      rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, true, true, false)
     })
 
     // Rollable Vampire/Ghouls powers
@@ -163,7 +163,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectDiscipline')}</label>
+              <label>${game.i18n.localize('VTM5E.SelectDiscipline')}</label>
               <select id="disciplineSelect">${options}</select>
           </div>
       </form>`
@@ -172,7 +172,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Add'),
+        label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
           const discipline = html.find('#disciplineSelect')[0].value
           this.actor.update({ [`system.disciplines.${discipline}.visible`]: true })
@@ -180,12 +180,12 @@ export class GhoulActorSheet extends MortalActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
+        label: game.i18n.localize('VTM5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('WOD5E.AddDiscipline'),
+      title: game.i18n.localize('VTM5E.AddDiscipline'),
       content: template,
       buttons: buttons,
       default: 'draw'
