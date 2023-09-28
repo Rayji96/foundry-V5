@@ -13,6 +13,8 @@
     --color-shadow-highlight: #790813;
     --color-border-highlight: #790813;
     --color-border-highlight-alt: #790813;
+	--color-border-light-1: var(--color-border-dark-1);
+    --color-border-light-2: var(--color-border-dark-2);
 }
 
 @font-face {
@@ -235,7 +237,7 @@ button:focus {
 
 .vtm5e input {
     font-family: Amarante, serif;
-    background: white;
+    background: unset;
     border: 0;
 }
 
@@ -361,6 +363,10 @@ optgroup {
 
 .compendium.directory.flexcol {
     color: black;
+}
+
+.scenes-sidebar .scene h3 {
+    color: var(--color-text-light-1);
 }
 
 .sheet.journal-entry .journal-sidebar {
@@ -918,7 +924,7 @@ button.dialog-button:hover {
 
 .flex-group-center input[type="text"] {
     font-family: Vollkorn, serif;
-    background: white
+    background: unset;
 }
 
 input[name="system.blood.resonance"] {
