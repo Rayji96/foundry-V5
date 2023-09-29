@@ -2,7 +2,6 @@
 
 // Export this function to be used in other scripts
 import { CoterieActorSheet } from './coterie-actor-sheet.js'
-import { rollBasicDice } from './roll-basic-dice.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications

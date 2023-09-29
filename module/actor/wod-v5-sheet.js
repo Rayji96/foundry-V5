@@ -1,5 +1,8 @@
 /* global ActorSheet, game, renderTemplate, Dialog, FormDataExtended, foundry */
 
+import { rollDice } from './roll-dice.js'
+import { rollBasicDice } from './roll-basic-dice.js'
+
 /**
  * Extend the base ActorSheet document and put all our base functionality here
  * @extends {ActorSheet}
@@ -359,7 +362,7 @@ export class WoDv5Actor extends ActorSheet {
   }
 
   /**
-     * Handle clickable rolls.
+     * Handle clickable rolls activated through buttons
      * @param {Event} event   The originating click event
      * @private
      */
@@ -369,8 +372,14 @@ export class WoDv5Actor extends ActorSheet {
     const dataset = element.dataset
     const subtractWillpower = dataset.subtractWillpower
     const numDice = dataset.roll
+    const useHunger = dataset.useHunger
+    const increaseHunger = dataset.increaseHunger
 
-    rollBasicDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
+    if(dataset.system === "vampire" || dataset.system === "hunter" || dataset.system === "werewolf") {
+      rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger, increaseHunger, subtractWillpower)
+    } else {
+      rollBasicDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
+    }
   }
 
   _onRollWithMod (event) {
