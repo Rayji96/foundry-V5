@@ -103,11 +103,15 @@ export class WerewolfActorSheet extends MortalActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
-    // Make Gift visible
-    html.find('.gift-create').click(this._onShowGift.bind(this))
+    // Frenzy buttons
+    html.find('.begin-frenzy').click(this._onBeginFrenzy.bind(this))
+    html.find('.end-frenzy').click(this._onEndFrenzy.bind(this))
 
     // Make Gift visible
-    html.find('.rite-create').click(this._onShowRite.bind(this))
+    html.find('.gift-create').click(this._onCreateGift.bind(this))
+
+    // Make Gift visible
+    html.find('.rite-create').click(this._onCreateRite.bind(this))
 
     // Make Gift hidden
     html.find('.gift-delete').click(ev => {
@@ -155,56 +159,76 @@ export class WerewolfActorSheet extends MortalActorSheet {
      * @param {Event} event   The originating click event
      * @private
      */
-  _onShowGift (event) {
+  _onCreateGift (event) {
     event.preventDefault()
-    let options = ''
-    for (const [key, value] of Object.entries(this.actor.system.gifts)) {
-      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
-    }
 
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectGift')}</label>
-              <select id="giftSelect">${options}</select>
-          </div>
-      </form>`
+    const header = event.currentTarget
 
-    let buttons = {}
-    buttons = {
-      draw: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Add'),
-        callback: async (html) => {
-          const gift = html.find('#giftSelect')[0].value
-
-          // Prepare the item object.
-          const itemData = {
-            name: game.i18n.localize('VTM5E.NewGift'),
-            type: "gift",
-            system: {
-              "giftType": gift
-            }
+    // If the type of gift is already set, we don't need to ask for it
+    if (header.dataset.gift) {
+        // Prepare the item object.
+        const itemData = {
+          name: game.i18n.localize('VTM5E.NewGift'),
+          type: "gift",
+          system: {
+            "giftType": header.dataset.gift
           }
-          // Remove the type from the dataset since it's in the itemData.type prop.
-          delete itemData.system.type
-
-          // Finally, create the item!
-          return this.actor.createEmbeddedDocuments('Item', [itemData])
         }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
-      }
-    }
+        // Remove the type from the dataset since it's in the itemData.type prop.
+        delete itemData.system.type
 
-    new Dialog({
-      title: game.i18n.localize('VTM5E.AddGift'),
-      content: template,
-      buttons: buttons,
-      default: 'draw'
-    }).render(true)
+        // Finally, create the item!
+        return this.actor.createEmbeddedDocuments('Item', [itemData])
+    } else {
+      let options = ''
+      for (const [key, value] of Object.entries(this.actor.system.gifts)) {
+        options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
+      }
+
+      const template = `
+        <form>
+            <div class="form-group">
+                <label>${game.i18n.localize('VTM5E.SelectGift')}</label>
+                <select id="giftSelect">${options}</select>
+            </div>
+        </form>`
+
+      let buttons = {}
+      buttons = {
+        draw: {
+          icon: '<i class="fas fa-check"></i>',
+          label: game.i18n.localize('VTM5E.Add'),
+          callback: async (html) => {
+            const gift = html.find('#giftSelect')[0].value
+
+            // Prepare the item object.
+            const itemData = {
+              name: game.i18n.localize('VTM5E.NewGift'),
+              type: "gift",
+              system: {
+                "giftType": gift
+              }
+            }
+            // Remove the type from the dataset since it's in the itemData.type prop.
+            delete itemData.system.type
+
+            // Finally, create the item!
+            return this.actor.createEmbeddedDocuments('Item', [itemData])
+          }
+        },
+        cancel: {
+          icon: '<i class="fas fa-times"></i>',
+          label: game.i18n.localize('VTM5E.Cancel')
+        }
+      }
+
+      new Dialog({
+        title: game.i18n.localize('VTM5E.AddGift'),
+        content: template,
+        buttons: buttons,
+        default: 'draw'
+      }).render(true)
+    }
   }
 
   /**
@@ -212,7 +236,7 @@ export class WerewolfActorSheet extends MortalActorSheet {
      * @param {Event} event   The originating click event
      * @private
      */
-  _onShowRite (event) {
+  _onCreateRite (event) {
     event.preventDefault()
 
     // Prepare the item object.
@@ -228,5 +252,17 @@ export class WerewolfActorSheet extends MortalActorSheet {
 
     // Finally, create the item!
     return this.actor.createEmbeddedDocuments('Item', [itemData])
+  }
+
+  // Handle when an actor goes into a frenzy
+  _onBeginFrenzy (event) {
+    this.actor.update({ 'system.frenzyActive': true})
+
+    this.actor.update({ 'system.rage.value': 5 })
+  }
+
+  // Handle when an actor ends their frenzy
+  _onEndFrenzy (event) {
+    this.actor.update({ 'system.frenzyActive': false})
   }
 }

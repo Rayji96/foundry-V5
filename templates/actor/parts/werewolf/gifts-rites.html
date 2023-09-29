@@ -1,7 +1,7 @@
 <div class="tab gifts" data-group="primary" data-tab="gifts-rites">
     {{> "systems/vtm5e/templates/actor/parts/werewolf/renown.html"}}
     {{#if actor.system.frenzyActive}}
-        <div class="frenzyNotification">
+        <div class="frenzyNotification flex-center">
             <h1>{{localize 'VTM5E.FrenzyActiveWarning'}}</h1>
             <h3>{{localize 'VTM5E.FrenzyActiveWarning2'}}</h3>
         </div>
@@ -29,7 +29,7 @@
                     <!-- Item controls for Gifts sections -->
                     <div class="item-controls">
                         <!-- Add new gift -->
-                        <a class="item-control item-create" title="{{localize 'VTM5E.AddGift'}}" data-type="power" data-gift="{{key}}">
+                        <a class="item-control gift-create" title="{{localize 'VTM5E.AddGift'}}" data-gift="{{key}}">
                             <i class="fas fa-plus"></i>
                         </a>
                         <!-- Icon to roll the gift with an attribute -->

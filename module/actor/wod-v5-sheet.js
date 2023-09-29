@@ -185,7 +185,7 @@ export class WoDv5Actor extends ActorSheet {
     }
     // Initialize a default name.
     const name = this.getItemDefaultName(type, data)
-    
+
     // Prepare the item object.
     const itemData = {
       name: name,
@@ -199,6 +199,7 @@ export class WoDv5Actor extends ActorSheet {
     return this.actor.createEmbeddedDocuments('Item', [itemData])
   }
 
+  // Function to grab the default name of an item.
   getItemDefaultName (type, data) {
     if (type === 'feature') {
       return `${game.i18n.localize('VTM5E.' + data.featuretype.capitalize())}`
