@@ -1,23 +1,12 @@
 /* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry */
 
 /**
- * Extend the base Actor document by defining a custom roll data structure which is ideal for the Simple system.
+ * Extend the base ActorSheet document and put all our base functionality here
  * @extends {Actor}
  */
-export class WoDv5Actor extends Actor {
-  /**
-     * Augment the basic actor data with additional dynamic data.
-     */
+export class ActorInfo extends Actor {
   prepareData () {
     super.prepareData()
-
-    // const actorData = this.data
-    // const data = actorData.data;
-    // const flags = actorData.flags;
-
-    // Make separate methods for each Actor type (character, npc, etc.) to keep
-    // things organized.
-    // if (actorData.type === 'character') this._prepareCharacterData(actorData)
   }
 
   /**

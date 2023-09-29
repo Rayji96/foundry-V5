@@ -69,3 +69,11 @@
 .vtm5e.werewolf-sheet .hauglosk {
   margin-left: auto;
 }
+
+.vtm5e.werewolf-sheet .wolf .resource-label {
+  margin-bottom: 5px;
+}
+
+.vtm5e.werewolf-sheet .renown .resource {
+  border: 0;
+}

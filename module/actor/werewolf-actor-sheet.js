@@ -74,6 +74,8 @@ export class WerewolfActorSheet extends MortalActorSheet {
     const actorData = sheetData.actor
     actorData.system.gamesystem = 'werewolf'
 
+    console.log(actorData.system.gifts)
+
     if (actorData.system.activeForm === "homid") {
       //actorData.system.health.max = actorData.system.health.max + actorData.system.ciranosHealth.max
     }
@@ -159,7 +161,6 @@ export class WerewolfActorSheet extends MortalActorSheet {
         label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
           const gift = html.find('#giftSelect')[0].value
-          this.actor.update({ [`system.gifts.${gift}.visible`]: true })
         }
       },
       cancel: {

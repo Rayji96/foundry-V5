@@ -4,7 +4,7 @@
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class VampireItemSheet extends ItemSheet {
+export class WoDv5ItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes

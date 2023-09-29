@@ -20,11 +20,14 @@ Licensed WoD 5e materials will NOT be provided as this is a system provided for 
 
 ## Dice
 
-There is integration with Dice So Nice! Customizing the dice is possible.
+The system has integration with Dice So Nice!
 
-To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`. Replace the 1s with however many dice you want to roll for each type.
+The information for how to roll the splat-unique dice is like so:
+* To roll Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`.
+* To roll Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`.
+* To roll Werewolf dice, roll `1dw`. To roll Rage dice, roll `1dr`.
 
-To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`. Replace the 1s with however many dice you want to roll for each type.
+Replace the 1s with however many you want to roll for each type, and let the dice flow!
 
 ## Feedback
 

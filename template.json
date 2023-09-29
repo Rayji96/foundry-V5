@@ -564,40 +564,40 @@
           }
         }
       },
-      "werewolf-forms": {
+      "werewolfForms": {
         "activeForm": "homid",
         "forms": {
           "homid": {
-            "name": "Homid",
-            "nickname": "The Human",
+            "name": "VTM5E.HomidName",
+            "nickname": "VTM5E.HomidTitle",
             "cost": 0,
             "description": "",
             "abilities": []
           },
           "glabro": {
-            "name": "Glabro",
-            "nickname": "The Near-Human",
+            "name": "VTM5E.GlabroName",
+            "nickname": "VTM5E.GlabroTitle",
             "cost": 1,
             "description": "",
             "abilities": []
           },
           "crinos": {
-            "name": "Crinos",
-            "nickname": "The War-Form, The Monster",
+            "name": "VTM5E.CrinosName",
+            "nickname": "VTM5E.CrinosTitle",
             "cost": 2,
             "description": "",
             "abilities": []
           },
           "hispo": {
-            "name": "Hispo",
-            "nickname": "The Dire Wolf",
+            "name": "VTM5E.HispoName",
+            "nickname": "VTM5E.HispoTitle",
             "cost": 1,
             "description": "",
             "abilities": []
           },
           "lupus": {
-            "name": "Lupus",
-            "nickname": "The Wolf",
+            "name": "VTM5E.LupusName",
+            "nickname": "VTM5E.LupusTitle",
             "cost": 0,
             "description": "",
             "abilities": []
@@ -607,7 +607,7 @@
       "gifts": {
         "gifts": {
           "native": {
-            "name": "",
+            "name": "Native",
             "description": "",
             "value": 0,
             "powers": []
@@ -738,7 +738,7 @@
     },
     "werewolf": {
       "label": "VTM5E.Werewolf",
-      "templates": ["base","renown","werewolf-forms","gifts"],
+      "templates": ["base","renown","werewolfForms","gifts"],
       "headers": {
         "auspice": "",
         "patron": "",

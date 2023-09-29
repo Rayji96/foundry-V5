@@ -29,11 +29,11 @@
                 {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
 
                 {{!-- Anything more that needs to be in the header spot --}}
-                {{> "systems/vtm5e/templates/actor/parts/werewolf/rage.html"}}
+                {{> "systems/vtm5e/templates/actor/parts/werewolf/rage-value.html"}}
+
+                {{> "systems/vtm5e/templates/actor/parts/werewolf/rage-button.html"}}
 
                 {{> "systems/vtm5e/templates/actor/parts/werewolf/frenzy.html"}}
-        
-                {{> "systems/vtm5e/templates/actor/parts/werewolf/balance.html"}}
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
       <div class="item" data-tab="stats">{{localize "VTM5E.Stats"}}</div>
       <div class="item" data-tab="gifts-rites">{{localize "VTM5E.GiftsandRites"}}</div>
       <div class="item" data-tab="features">{{localize "VTM5E.Features"}}</div>
-      <div class="item" data-tab="forms">{{localize "VTM5E.Forms"}}</div>
+      <div class="item" data-tab="wolf">{{localize "VTM5E.TheWolf"}}</div>
       <div class="item" data-tab="description">{{localize "VTM5E.Description"}}</div>
       <div class="item" data-tab="other">{{localize "VTM5E.Other"}}</div>
   </nav>
@@ -62,7 +62,7 @@
       {{> "systems/vtm5e/templates/actor/parts/features.html"}}
 
       {{!-- Blood Tab --}}
-      {{> "systems/vtm5e/templates/actor/parts/werewolf/forms.html"}}
+      {{> "systems/vtm5e/templates/actor/parts/werewolf/wolf.html"}}
 
       {{!-- Biography Tab --}}
       {{> "systems/vtm5e/templates/actor/parts/biography.html"}}

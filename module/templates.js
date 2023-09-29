@@ -34,10 +34,13 @@ export const preloadHandlebarsTemplates = async function () {
 
     // Werewolf Sheet Partials
     'systems/vtm5e/templates/actor/parts/werewolf/gifts-rites.html',
-    'systems/vtm5e/templates/actor/parts/werewolf/forms.html',
+    'systems/vtm5e/templates/actor/parts/werewolf/wolf.html',
     'systems/vtm5e/templates/actor/parts/werewolf/balance.html',
     'systems/vtm5e/templates/actor/parts/werewolf/frenzy.html',
-    'systems/vtm5e/templates/actor/parts/werewolf/rage.html',
+    'systems/vtm5e/templates/actor/parts/werewolf/rage-button.html',
+    'systems/vtm5e/templates/actor/parts/werewolf/rage-value.html',
+    'systems/vtm5e/templates/actor/parts/werewolf/renown.html',
+    'systems/vtm5e/templates/actor/parts/werewolf/forms.html',
 
     // SPC Sheet Partials
     'systems/vtm5e/templates/actor/parts/spc/standard-dice-pools.html',

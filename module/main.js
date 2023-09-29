@@ -3,10 +3,10 @@
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
 import { migrateWorld } from './migration.js'
-import { WoDv5Actor } from './actor/actor.js'
-import { VampireItem } from './item/item.js'
-import { VampireItemSheet } from './item/item-sheet.js'
-import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie } from './dice/dice.js'
+import { ActorInfo } from './actor/actor.js'
+import { ItemInfo } from './item/item.js'
+import { WoDv5ItemSheet } from './item/item-sheet.js'
+import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/dice.js'
 import { rollDice } from './actor/roll-dice.js'
 import { rollHunterDice } from './actor/roll-hunter-dice.js'
 import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
@@ -89,8 +89,8 @@ Hooks.once('init', async function () {
   })
 
   game.vtm5e = {
-    WoDv5Actor,
-    VampireItem,
+    ActorInfo,
+    ItemInfo,
     rollItemMacro
   }
 
@@ -103,12 +103,14 @@ Hooks.once('init', async function () {
   }
 
   // Define custom Entity classes
-  CONFIG.Actor.documentClass = WoDv5Actor
-  CONFIG.Item.documentClass = VampireItem
+  CONFIG.Actor.documentClass = ActorInfo
+  CONFIG.Item.documentClass = ItemInfo
   CONFIG.Dice.terms.v = VampireDie
   CONFIG.Dice.terms.g = VampireHungerDie
   CONFIG.Dice.terms.h = HunterDie
   CONFIG.Dice.terms.s = HunterDesperationDie
+  CONFIG.Dice.terms.w = WerewolfDie
+  CONFIG.Dice.terms.r = WerewolfRageDie
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
@@ -154,7 +156,7 @@ Hooks.once('init', async function () {
     makeDefault: true
   })
   Items.unregisterSheet('core', ItemSheet)
-  Items.registerSheet('vtm5e', VampireItemSheet, {
+  Items.registerSheet('vtm5e', WoDv5ItemSheet, {
     label: 'Item Sheet',
     makeDefault: true
   })

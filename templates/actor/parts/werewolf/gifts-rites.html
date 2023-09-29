@@ -1,4 +1,5 @@
-<div class="tab disciplines" data-group="primary" data-tab="gifts-rites">
+<div class="tab gifts" data-group="primary" data-tab="gifts-rites">
+    {{> "systems/vtm5e/templates/actor/parts/werewolf/renown.html"}}
     {{#if actor.system.frenzyActive}}
         <div class="frenzyNotification">
             <h1>{{localize 'VTM5E.FrenzyActiveWarning'}}</h1>
@@ -6,61 +7,51 @@
         </div>
     {{/if}}
     <ol class="items-list">
-        <!-- Header of the disciplines lists -->
+        <!-- Header of the gifts lists -->
         <li class="item flexrow item-header">
             <div class="item-name">{{localize "VTM5E.Name"}}</div>
             <div class="item-name header-level">{{localize "VTM5E.Level"}}</div>
-            <!-- Item controls for adding new discipline lists -->
+            <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
-                <a class="item-control discipline-create" title="{{localize 'VTM5E.AddGift'}}">
+                <a class="item-control gift-create" title="{{localize 'VTM5E.AddGift'}}">
                     <i class="fas fa-plus"></i>
                     {{localize "VTM5E.AddGift"}}
                 </a>
             </div>
         </li>
-        <!-- Iterate through each of the rites lists -->
-        {{#each actor.system.rites as |discipline key|}}
-            {{#if discipline.visible}}
+        <!-- Iterate through each of the gifts lists -->
+        {{#each actor.system.gifts as |gift key|}}
+            {{#if gift.powers}}
                 <li class="flexrow item-header">
                     <div class="item-name collapsible">
-                        {{localize discipline.name}}
+                        {{localize gift.name}}
                     </div>
-                    <!-- All non-rite powers need dots displayed in the middle -->
-                    {{#if (and (ne key "rites"))}}
-                        <div class="resource-value" data-value="{{discipline.value}}" data-name="system.gifts.{{key}}.value">
-                            <!-- Empty box (for setting back to 0), and then iterate through the rest of the discipline dots -->
-                            <span class="resource-value-empty"></span>
-                            {{#numLoop 5}}
-                                <span class="resource-value-step" data-index="{{this}}"></span>
-                            {{/numLoop}}
-                        </div>
-                    {{/if}}
                     <!-- Item controls for Gifts sections -->
                     <div class="item-controls">
                         <!-- Add new gift -->
-                        <a class="item-control item-create" title="{{localize 'VTM5E.AddGift'}}" data-type="power" data-discipline="{{key}}">
+                        <a class="item-control item-create" title="{{localize 'VTM5E.AddGift'}}" data-type="power" data-gift="{{key}}">
                             <i class="fas fa-plus"></i>
                         </a>
                         <!-- Icon to roll the gift with an attribute -->
-                        <a class="vrollable discipline-dice" title="{{localize 'VTM5E.Roll'}}" data-roll="{{discipline.value}}" data-label="{{key}}">
+                        <a class="vrollable gift-dice" title="{{localize 'VTM5E.Roll'}}" data-roll="{{gift.value}}" data-label="{{key}}">
                             <i class="fas fa-dice-d20"></i>
                         </a>
-                        <!-- Icon to show the discipline description to the chat-->
-                        <a class="item-control discipline-chat" title="{{localize 'VTM5E.ShowToChat'}}" data-type="power" data-discipline="{{key}}">
+                        <!-- Icon to show the gift description to the chat-->
+                        <a class="item-control gift-chat" title="{{localize 'VTM5E.ShowToChat'}}" data-type="power" data-gift="{{key}}">
                             <i class="fas fa-comment-alt"></i>
                         </a>
-                        <!-- Icon to delete the discipline (as long as it doesn't have any powers) -->
-                        <a class="item-control discipline-delete" title="{{localize 'VTM5E.Delete'}}" data-discipline="{{key}}">
+                        <!-- Icon to delete the gift (as long as it doesn't have any powers) -->
+                        <a class="item-control gift-delete" title="{{localize 'VTM5E.Delete'}}" data-gift="{{key}}">
                             <i class="fas fa-trash"></i>
                         </a>
                     </div>
                 </li>
-                <!-- Discipline description -->
+                <!-- Gift description -->
                 <div class="collapsible-content">
-                    <textarea class="discipline-description" name="system.gifts.{{key}}.description">{{gift.description}}</textarea>
+                    <textarea class="gift-description" name="system.gifts.{{key}}.description">{{gift.description}}</textarea>
                 </div>
-                <!-- Iterate through each of the gifts -->
-                {{#each (lookup ../actor.gifts_list key) as |item id|}}
+                <!-- Iterate through each of the gift powers -->
+                {{#each gift.powers as |item id|}}
                     <li class="item flexcol" data-item-id="{{item._id}}">
                         <div class="flexrow">
                             <!-- Whether the button is clickable or not to post the power in chat -->
@@ -73,9 +64,9 @@
                                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                                 </div>
                             {{/if}}
-                            <!-- Discipline power name -->
+                            <!-- gift power name -->
                             <h4 class="item-name collapsible">{{item.name}}</h4>
-                            <!-- Item controls for discipline powers -->
+                            <!-- Item controls for gift powers -->
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rage check, if applicable -->
                                 {{#if item.system.rage}}
