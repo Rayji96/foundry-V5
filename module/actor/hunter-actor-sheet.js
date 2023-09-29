@@ -127,9 +127,6 @@ export class HunterActorSheet extends CellActorSheet {
   activateListeners (html) {
     super.activateListeners(html)
 
-    this._setupDotCounters(html)
-    this._setupSquareCounters(html)
-
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
@@ -158,16 +155,11 @@ export class HunterActorSheet extends CellActorSheet {
       })
     })
 
-    // Resource squares (Health, Willpower)
-    html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
-    html.find('.resource-plus').click(this._onResourceChange.bind(this))
-    html.find('.resource-minus').click(this._onResourceChange.bind(this))
-
     // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this))
+    html.find('.rollable').click(this._onHunterRoll.bind(this))
     html.find('.custom-rollable').click(this._onCustomHunterRoll.bind(this))
     html.find('.specialty-rollable').click(this._onCustomHunterRoll.bind(this))
-    html.find('.vrollable').click(this._onRollDialog.bind(this))
+    html.find('.vrollable').click(this._onHunterRollDialog.bind(this))
     html.find('.perk-rollable').click(this._onPerkRoll.bind(this))
   }
 
@@ -176,7 +168,7 @@ export class HunterActorSheet extends CellActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  _onRollDialog (event) {
+  _onHunterRollDialog (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
@@ -255,7 +247,7 @@ export class HunterActorSheet extends CellActorSheet {
      * @param {Event} event   The originating click event
      * @private
      */
-  _onRoll (event) {
+  _onHunterRoll (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
@@ -273,112 +265,13 @@ export class HunterActorSheet extends CellActorSheet {
       const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       dataset.roll = dice2 + 1 // specialty modifier
       dataset.label = dataset.name
-      this._onRollDialog(event)
+      this._onHunterRollDialog(event)
     } else {
       const dice1 = this.actor.system.abilities[dataset.dice1.toLowerCase()].value
       const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
       rollHunterDice(dicePool, this.actor, `${dataset.name}`, 0, 0, false)
     }
-  }
-
-  _onSquareCounterChange (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const index = Number(element.dataset.index)
-    const oldState = element.dataset.state || ''
-    const parent = $(element.parentNode)
-    const data = parent[0].dataset
-    const states = parseCounterStates(data.states)
-    const fields = data.name.split('.')
-    const steps = parent.find('.resource-counter-step')
-    const despair = data.name === 'system.despair'
-    const fulls = Number(data[states['-']]) || 0
-    const halfs = Number(data[states['/']]) || 0
-    const crossed = Number(data[states.x]) || 0
-
-    if (index < 0 || index > steps.length) {
-      return
-    }
-
-    const allStates = ['', ...Object.keys(states)]
-    const currentState = allStates.indexOf(oldState)
-    if (currentState < 0) {
-      return
-    }
-
-    const newState = allStates[(currentState + 1) % allStates.length]
-    steps[index].dataset.state = newState
-
-    if ((oldState !== '' && oldState !== '-') || (oldState !== '' && despair)) {
-      data[states[oldState]] = Number(data[states[oldState]]) - 1
-    }
-
-    // If the step was removed we also need to subtract from the maximum.
-    if (oldState !== '' && newState === '' && !despair) {
-      data[states['-']] = Number(data[states['-']]) - 1
-    }
-
-    if (newState !== '') {
-      data[states[newState]] = Number(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
-    }
-
-    const newValue = Object.values(states).reduce(function (obj, k) {
-      obj[k] = Number(data[k]) || 0
-      return obj
-    }, {})
-
-    this._assignToActorField(fields, newValue)
-  }
-
-  _setupSquareCounters (html) {
-    html.find('.resource-counter').each(function () {
-      const data = this.dataset
-      const states = parseCounterStates(data.states)
-      const despair = data.name === 'system.despair'
-
-      const fulls = Number(data[states['-']]) || 0
-      const halfs = Number(data[states['/']]) || 0
-      const crossed = Number(data[states.x]) || 0
-
-      const values = despair ? new Array(fulls) : new Array(halfs + crossed)
-
-      if (despair) {
-        values.fill('-', 0, fulls)
-      } else {
-        values.fill('/', 0, halfs)
-        values.fill('x', halfs, halfs + crossed)
-      }
-
-      $(this).find('.resource-counter-step').each(function () {
-        this.dataset.state = ''
-        if (this.dataset.index < values.length) {
-          this.dataset.state = values[this.dataset.index]
-        }
-      })
-    })
-  }
-
-  _onResourceChange (event) {
-    event.preventDefault()
-    const actorData = duplicate(this.actor)
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const resource = dataset.resource
-    if (dataset.action === 'plus' && !this.locked) {
-      actorData.system[resource].max++
-    } else if (dataset.action === 'minus' && !this.locked) {
-      actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
-    }
-
-    if (actorData.system[resource].aggravated + actorData.system[resource].superficial > actorData.system[resource].max) {
-      actorData.system[resource].aggravated = actorData.system[resource].max - actorData.system[resource].superficial
-      if (actorData.system[resource].aggravated <= 0) {
-        actorData.system[resource].aggravated = 0
-        actorData.system[resource].superficial = actorData.system[resource].max
-      }
-    }
-    this.actor.update(actorData)
   }
 
   /**
@@ -448,12 +341,4 @@ export class HunterActorSheet extends CellActorSheet {
     const dicePool = dice1 + dice2
     rollHunterDice(dicePool, this.actor, `${item.name}`, 0)
   }
-}
-
-function parseCounterStates (states) {
-  return states.split(',').reduce((obj, state) => {
-    const [k, v] = state.split(':')
-    obj[k] = v
-    return obj
-  }, {})
 }

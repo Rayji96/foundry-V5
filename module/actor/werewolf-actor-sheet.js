@@ -103,6 +103,9 @@ export class WerewolfActorSheet extends MortalActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
+    // Rollable abilities.
+    html.find('.rollable').click(this._onWerewolfRoll.bind(this))
+
     // Frenzy buttons
     html.find('.begin-frenzy').click(this._onBeginFrenzy.bind(this))
     html.find('.end-frenzy').click(this._onEndFrenzy.bind(this))
@@ -134,17 +137,14 @@ export class WerewolfActorSheet extends MortalActorSheet {
         })
       })
     })
-
-    // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this))
   }
 
   /**
-     * Handle clickable rolls.
+     * Handle clickable rolls within the Werewolf system
      * @param {Event} event   The originating click event
      * @private
      */
-  _onRoll (event) {
+  _onWerewolfRoll (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
