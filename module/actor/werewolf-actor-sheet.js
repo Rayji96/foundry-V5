@@ -61,20 +61,33 @@ export class WerewolfActorSheet extends MortalActorSheet {
     return data
   }
 
-  /**
-     * set Blood Potency for Vampire sheets.
-     *
-     * @param {Object} actorData The actor to prepare.
-     * @return {undefined}
-     * @override
-     */
+  /** Prepare important data for the werewolf actor */
   _prepareItems (sheetData) {
     super._prepareItems(sheetData)
 
     const actorData = sheetData.actor
     actorData.system.gamesystem = 'werewolf'
 
-    console.log(actorData.system.gifts)
+    const gifts_list = structuredClone(actorData.system.gifts)
+    const rites_list = structuredClone(actorData.system.rites)
+
+    // Iterate through items, allocating to containers
+    for (const i of sheetData.items) {
+      if (i.type === 'gift') {
+        if (i.system.giftType === "rite") {
+          // Append to the rites list.
+          rites_list.push(i)
+        } else {
+          // Append to each of the gift types.
+          if (i.system.giftType !== undefined) {
+            gifts_list[i.system.giftType].powers.push(i)
+          }
+        }
+      }
+    }
+
+    actorData.system.gifts_list = gifts_list;
+    actorData.system.rites_list = rites_list;
 
     if (actorData.system.activeForm === "homid") {
       //actorData.system.health.max = actorData.system.health.max + actorData.system.ciranosHealth.max
@@ -93,13 +106,16 @@ export class WerewolfActorSheet extends MortalActorSheet {
     // Make Gift visible
     html.find('.gift-create').click(this._onShowGift.bind(this))
 
+    // Make Gift visible
+    html.find('.rite-create').click(this._onShowRite.bind(this))
+
     // Make Gift hidden
     html.find('.gift-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`system.gifts.${data.gift}.visible`]: false })
+      this.actor.update({ [`system.gifts.${data.gift}.powers`]: [] })
     })
 
-    // Post Edge description to the chat
+    // Post Gift description to the chat
     html.find('.gift-chat').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
       const gift = this.actor.system.gifts[data.gift]
@@ -135,7 +151,7 @@ export class WerewolfActorSheet extends MortalActorSheet {
   }
 
   /**
-     * Handle making a gift visible
+     * Handle making a new gift
      * @param {Event} event   The originating click event
      * @private
      */
@@ -161,6 +177,20 @@ export class WerewolfActorSheet extends MortalActorSheet {
         label: game.i18n.localize('VTM5E.Add'),
         callback: async (html) => {
           const gift = html.find('#giftSelect')[0].value
+
+          // Prepare the item object.
+          const itemData = {
+            name: game.i18n.localize('VTM5E.NewGift'),
+            type: "gift",
+            system: {
+              "giftType": gift
+            }
+          }
+          // Remove the type from the dataset since it's in the itemData.type prop.
+          delete itemData.system.type
+
+          // Finally, create the item!
+          return this.actor.createEmbeddedDocuments('Item', [itemData])
         }
       },
       cancel: {
@@ -175,5 +205,28 @@ export class WerewolfActorSheet extends MortalActorSheet {
       buttons: buttons,
       default: 'draw'
     }).render(true)
+  }
+
+  /**
+     * Handle making a new rite
+     * @param {Event} event   The originating click event
+     * @private
+     */
+  _onShowRite (event) {
+    event.preventDefault()
+
+    // Prepare the item object.
+    const itemData = {
+      name: game.i18n.localize('VTM5E.NewRite'),
+      type: "gift",
+      system: {
+        "giftType": "rite"
+      }
+    }
+    // Remove the type from the dataset since it's in the itemData.type prop.
+    delete itemData.system.type
+
+    // Finally, create the item!
+    return this.actor.createEmbeddedDocuments('Item', [itemData])
   }
 }

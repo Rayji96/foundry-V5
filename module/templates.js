@@ -53,6 +53,8 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/item/parts/disciplines.html',
     'systems/vtm5e/templates/item/parts/edges.html',
     'systems/vtm5e/templates/item/parts/attributes.html',
+    'systems/vtm5e/templates/item/parts/gifts.html',
+    'systems/vtm5e/templates/item/parts/renown.html',
 
     // Dice Tray Partials
     'systems/vtm5e/templates/ui/parts/select-character.html',

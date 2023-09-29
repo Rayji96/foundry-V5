@@ -185,6 +185,7 @@ export class WoDv5Actor extends ActorSheet {
     }
     // Initialize a default name.
     const name = this.getItemDefaultName(type, data)
+    console.log(data)
     // Prepare the item object.
     const itemData = {
       name: name,

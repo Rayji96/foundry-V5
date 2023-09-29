@@ -632,103 +632,103 @@
       "gifts": {
         "gifts": {
           "native": {
-            "name": "Native",
+            "name": "VTM5E.Native",
             "description": "",
             "value": 0,
             "powers": []
           },
           "ragabash": {
-            "name": "Ragabash",
+            "name": "VTM5E.Ragabash",
             "description": "",
             "value": 0,
             "powers": []
           },
           "theurge": {
-            "name": "Theurge",
+            "name": "VTM5E.Theurge",
             "description": "",
             "value": 0,
             "powers": []
           },
           "philodox": {
-            "name": "Philodox",
+            "name": "VTM5E.Philodox",
             "description": "",
             "value": 0,
             "powers": []
           },
           "galliard": {
-            "name": "Galliard",
+            "name": "VTM5E.Galliard",
             "description": "",
             "value": 0,
             "powers": []
           },
           "ahroun": {
-            "name": "Ahroun",
+            "name": "VTM5E.Ahroun",
             "description": "",
             "value": 0,
             "powers": []
           },
           "blackfury": {
-            "name": "Black Fury",
+            "name": "VTM5E.BlackFury",
             "description": "",
             "value": 0,
             "powers": []
           },
           "bonegnawer": {
-            "name": "Bone Gnawer",
+            "name": "VTM5E.BoneGnawer",
             "description": "",
             "value": 0,
             "powers": []
           },
           "childrenofgaia": {
-            "name": "Children of Gaia",
+            "name": "VTM5E.ChildrenOfGaia",
             "description": "",
             "value": 0,
             "powers": []
           },
           "galestalker": {
-            "name": "Galestalker",
+            "name": "VTM5E.Galestalker",
             "description": "",
             "value": 0,
             "powers": []
           },
           "ghostcouncil": {
-            "name": "Ghost Council",
+            "name": "VTM5E.GhostCouncil",
             "description": "",
             "value": 0,
             "powers": []
           },
           "glasswalker": {
-            "name": "Glass Walker",
+            "name": "VTM5E.GlassWalker",
             "description": "",
             "value": 0,
             "powers": []
           },
           "hartwarden": {
-            "name": "Hart Warden",
+            "name": "VTM5E.HartWarden",
             "description": "",
             "value": 0,
             "powers": []
           },
           "redtalon": {
-            "name": "Red Talon",
+            "name": "VTM5E.RedTalon",
             "description": "",
             "value": 0,
             "powers": []
           },
           "shadowlord": {
-            "name": "Shadow Lord",
+            "name": "VTM5E.ShadowLord",
             "description": "",
             "value": 0,
             "powers": []
           },
           "silentstrider": {
-            "name": "Silent Strider",
+            "name": "VTM5E.SilentStrider",
             "description": "",
             "value": 0,
             "powers": []
           },
           "silverfang": {
-            "name": "Silver Fang",
+            "name": "VTM5E.SilverFang",
             "description": "",
             "value": 0,
             "powers": []
@@ -852,7 +852,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "boon", "customRoll", "perk"],
+    "types": ["feature", "power", "specialty", "boon", "customRoll", "perk", "gift"],
     "templates": {
       "base": {
         "description": ""
@@ -899,6 +899,18 @@
       "rollable": false,
       "skill": false,
       "amalgam": false
+    },
+    "gift": {
+      "templates": ["base"],
+      "giftType": "native",
+      "renown": "glory",
+      "cost": "",
+      "rollable": false,
+      "rage": false,
+      "action": "",
+      "dice1": "strength",
+      "dice2": "strength",
+      "duration": ""
     }
   }
 }
