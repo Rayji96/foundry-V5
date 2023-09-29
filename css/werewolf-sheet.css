@@ -50,15 +50,15 @@
   background-color: var(--werewolf-primary);
 }
 
-.vtm5e.werewolf-sheet .balance {
+.vtm5e.werewolf-sheet .wolf-resource {
   display: flex;
 }
 
-.vtm5e.werewolf-sheet .balance .resource-value-step, .vtm5e.werewolf-sheet .balance .resource-value-empty {
+.vtm5e.werewolf-sheet .wolf-resource .resource-value-step, .vtm5e.werewolf-sheet .wolf-resource .resource-value-empty {
   border-radius: 0;
 }
 
-.vtm5e.werewolf-sheet .harano, .vtm5e.werewolf-sheet .hauglosk {
+.vtm5e.werewolf-sheet .wolf-resource {
   flex-grow: 1;
 }
 
@@ -68,6 +68,16 @@
 
 .vtm5e.werewolf-sheet .hauglosk {
   margin-left: auto;
+}
+
+.vtm5e.werewolf-sheet .garou-forms-label {
+  font-size: 1.5em !important;
+  margin: 0 0 0.5rem;
+}
+
+.vtm5e.werewolf-sheet .were-form-nickname {
+  font-size: 0.9em;
+  font-weight: bold;
 }
 
 .vtm5e.werewolf-sheet .wolf .resource-label {
