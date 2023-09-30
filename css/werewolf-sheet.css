@@ -87,3 +87,27 @@
 .vtm5e.werewolf-sheet .renown .resource {
   border: 0;
 }
+
+.vtm5e.werewolf-sheet button.werewolf-button {
+  
+}
+
+.vtm5e.werewolf-sheet button.werewolf-button {
+    background: var(--werewolf-primary);
+    color: #fff;
+    font-family: cormorantLight, serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: none;
+    box-shadow: none;
+}
+
+.vtm5e.werewolf-sheet button.werewolf-button:hover {
+    outline: none;
+    box-shadow: inset 0 0 5px #000;
+    background: var(--color-shadow-highlight);
+    color: #f7f3eb;
+    transition-duration: 0.3s;
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+}
