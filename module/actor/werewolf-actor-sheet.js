@@ -109,6 +109,9 @@ export class WerewolfActorSheet extends MortalActorSheet {
     html.find('.begin-frenzy').click(this._onBeginFrenzy.bind(this))
     html.find('.end-frenzy').click(this._onEndFrenzy.bind(this))
 
+    // Form change buttons
+    html.find('.change-form').click(this._onShiftForm.bind(this))
+
     // Make Gift visible
     html.find('.gift-create').click(this._onCreateGift.bind(this))
 
@@ -255,6 +258,7 @@ export class WerewolfActorSheet extends MortalActorSheet {
 
   // Handle when an actor goes into a frenzy
   _onBeginFrenzy (event) {
+    event.preventDefault()
     this.actor.update({ 'system.frenzyActive': true})
 
     this.actor.update({ 'system.rage.value': 5 })
@@ -262,6 +266,51 @@ export class WerewolfActorSheet extends MortalActorSheet {
 
   // Handle when an actor ends their frenzy
   _onEndFrenzy (event) {
+    event.preventDefault()
     this.actor.update({ 'system.frenzyActive': false})
+  }
+
+  // Handle form changes
+  _onShiftForm (event) {
+    event.preventDefault()
+
+    const header = event.currentTarget
+    const newForm = header.dataset.newForm
+
+    // Switch statement to make it easy to see which form does what.
+    switch (newForm) {
+      case "homid":
+        console.log("Holid!")
+
+        break;
+      case "glabro":
+        console.log("Glabro")
+
+        this._onDeductRageDice(1)
+        break;
+      case "crinos":
+        console.log("Big scary werewoof")
+
+        this._onDeductRageDice(2)
+        break;
+      case "hispo":
+        console.log("Hispo")
+
+        this._onDeductRageDice(1)
+        break;
+      case "lupus":
+        console.log("Lupus")
+
+        break;
+      default:
+        console.log("No form selected.")
+    }
+  }
+
+  _onDeductRageDice (rageCost) {
+    const currentRageDice = this.actor.system.rage.value
+    const newRageDice = currentRageDice - rageCost
+
+    this.actor.update({ 'system.rage.value': newRageDice})
   }
 }
