@@ -1,6 +1,8 @@
 /* global ActorSheet, game, renderTemplate, Dialog, FormDataExtended, foundry */
 
 import { rollDice } from './roll-dice.js'
+import { rollHunterDice } from './roll-hunter-dice.js'
+import { rollWerewolfDice } from './roll-werewolf-dice.js'
 import { rollBasicDice } from './roll-basic-dice.js'
 
 /**
@@ -8,8 +10,67 @@ import { rollBasicDice } from './roll-basic-dice.js'
  * @extends {ActorSheet}
  */
 export class WoDv5Actor extends ActorSheet {
+  /** @override */
+  async getData () {
+    const data = await super.getData()
+    data.isCharacter = this.isCharacter
+
+    return data
+  }
+
   prepareData () {
     super.prepareData()
+  }
+
+  /**
+     * Organize and classify Items for all sheets.
+     *
+     * @param {Object} actorData The actor to prepare.
+     * @return {undefined}
+     * @override
+     */
+  _prepareItems (sheetData) {
+    const actorData = sheetData.actor
+
+    const features = {
+      background: [],
+      merit: [],
+      flaw: []
+    }
+
+    // Initialize containers.
+    const specialties = []
+    const boons = []
+    const customRolls = []
+    const gear = []
+
+    // Iterate through items, allocating to containers
+    for (const i of sheetData.items) {
+      i.img = i.img || DEFAULT_TOKEN
+      if (i.type === 'item') {
+        // Append to gear.
+        gear.push(i)
+      } else if (i.type === 'feature') {
+        // Append to features.
+        features[i.system.featuretype].push(i)
+      } else if (i.type === 'specialty') {
+        // Append to specialties.
+        specialties.push(i)
+      } else if (i.type === 'boon') {
+        // Append to boons.
+        boons.push(i)
+      } else if (i.type === 'customRoll') {
+        // Append to custom rolls.
+        customRolls.push(i)
+      }
+    }
+
+    // Assign and return
+    actorData.specialties = specialties
+    actorData.boons = boons
+    actorData.customRolls = customRolls
+    actorData.gear = gear
+    actorData.features = features
   }
 
   /* -------------------------------------------- */
@@ -29,6 +90,12 @@ export class WoDv5Actor extends ActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
+
+    // Rollable abilities
+    html.find('.rollable-with-mod').click(this._onRollWithMod.bind(this))
+    html.find('.vrollable').click(this._onRollDialog.bind(this))
+    html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
+    html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
 
     // Lock button
     html.find('.lock-btn').click(this._onToggleLocked.bind(this))
@@ -379,6 +446,130 @@ export class WoDv5Actor extends ActorSheet {
       rollDice(numDice, this.actor, `${dataset.label}`, 0, useHunger, increaseHunger, subtractWillpower)
     } else {
       rollBasicDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
+    }
+  }
+
+  /**
+   * Handle clickable Vampire rolls.
+   * @param {Event} event   The originating click event
+   * @private
+   */
+  _onRollDialog (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const system = dataset.system
+    let options = ''
+
+    for (const [key, value] of Object.entries(this.actor.system.abilities)) {
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
+    }
+
+    // Hunter specific modifier to a roll
+    let despairoutcome
+    if (system === 'hunter') {
+      const despair = Object.values(this.actor.system.despair)
+      const despairstring = despair.toString()
+
+      if (despairstring === '1') {
+        despairoutcome = true
+      } else {
+        despairoutcome = false
+      }
+    }
+
+    const template = `
+      <form>
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
+              <select id="abilitySelect">${options}</select>
+          </div>  
+          <div class="form-group">
+              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
+              <input type="text" id="inputMod" value="0">
+          </div>  
+          <div class="form-group">` +
+          // Hunter specific modifier to a roll
+          (
+            despairoutcome
+              ? `<label>${game.i18n.localize('VTM5E.DesperationUnavailable')}</label>
+                 <input type="text" min="0" id="inputDespMod" disabled value="0">`
+              : `<label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
+                 <input type="text" min="0" id="inputDespMod" value="0">`
+          ) +
+           `</div>
+           <div class="form-group">
+           <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
+           <input type="text" min="0" id="inputDif" value="0">
+       </div>
+      </form>`
+
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Roll'),
+        callback: async (html) => {
+          const ability = html.find('#abilitySelect')[0].value
+          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
+          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
+          const abilityVal = this.actor.system.abilities[ability].value
+          const abilityName = game.i18n.localize(this.actor.system.abilities[ability].name)
+          const numDice = abilityVal + parseInt(dataset.roll) + modifier
+
+          console.log(system)
+
+          // Define what kind of dice is appropriate to use
+          if (system === 'vampire') {
+            // Define actor's hunger dice
+            let hungerDice = Math.min(this.actor.system.hunger.value, numDice)
+
+            rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, hungerDice)
+          } else if (system === 'hunter') {
+            // Define actor's desparation dice
+            let desparationDice = parseInt(html.find('#inputDespMod')[0].value || 0)
+
+            rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, desparationDice)
+          } else if (system === 'werewolf') {
+            // Define actor's rage dice
+            let rageDice = Math.max(this.actor.system.rage.value, 0)
+
+            rollWerewolfDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, rageDice)
+          } else {
+            rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
+          }
+        }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
+      }
+    }
+
+    new Dialog({
+      title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
+      content: template,
+      buttons: buttons,
+      default: 'draw'
+    }).render(true)
+  }
+
+  _onCustomVampireRoll (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    if (dataset.dice1 === '') {
+      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
+      dataset.roll = dice2 + 1 // specialty modifier
+      dataset.label = dataset.name
+
+      this._onRollDialog(event)
+    } else {
+      const dice1 = this.actor.system.abilities[dataset.dice1.toLowerCase()].value
+      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
+      const dicePool = dice1 + dice2
+
+      rollDice(dicePool, this.actor, `${dataset.name}`, 0, this.hunger)
     }
   }
 

@@ -53,10 +53,11 @@ export class HunterActorSheet extends CellActorSheet {
     // TODO: confirm that I can finish and use this list
     data.sheetType = `${game.i18n.localize('VTM5E.Hunter')}`
 
+    // Ensure that the actor sheet knows this is a player character
+    this.actor.type === "character"
+
     // Prepare items.
-    if (this.actor.type === 'hunter') {
-      this._prepareItems(data)
-    }
+    this._prepareItems(data)
 
     return data
   }
@@ -71,6 +72,7 @@ export class HunterActorSheet extends CellActorSheet {
   _prepareItems (sheetData) {
     super._prepareItems(sheetData)
     const actorData = sheetData.actor
+    actorData.system.gamesystem = 'hunter'
 
     const edges = {
       arsenal: [],
@@ -154,125 +156,8 @@ export class HunterActorSheet extends CellActorSheet {
         })
       })
     })
-
-    // Rollable abilities.
-    html.find('.rollable').click(this._onHunterRoll.bind(this))
-    html.find('.custom-rollable').click(this._onCustomHunterRoll.bind(this))
-    html.find('.specialty-rollable').click(this._onCustomHunterRoll.bind(this))
-    html.find('.vrollable').click(this._onHunterRollDialog.bind(this))
-    html.find('.perk-rollable').click(this._onPerkRoll.bind(this))
   }
 
-  /**
-   * Handle clickable Hunter rolls.
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onHunterRollDialog (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    let options = ''
-
-    for (const [key, value] of Object.entries(this.actor.system.abilities)) {
-      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
-    }
-
-    const despair = Object.values(this.actor.system.despair)
-    const despairstring = despair.toString()
-
-    let despairoutcome
-    if (despairstring === '1') {
-      despairoutcome = true
-    } else {
-      despairoutcome = false
-    }
-
-    const template = `<form>
-        <div class="form-group">
-            <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
-            <select id="abilitySelect">${options}</select>
-        </div>  
-        <div class="form-group">
-            <label>${game.i18n.localize('VTM5E.Modifier')}</label>
-            <input type="text" id="inputMod" value="0">
-        </div>
-        <div class="form-group">` +
-      (
-        despairoutcome
-          ? `<label>${game.i18n.localize('VTM5E.DesperationUnavailable')}</label>
-             <input type="text" min="0" id="inputDespMod" disabled value="0">`
-          : `<label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
-             <input type="text" min="0" id="inputDespMod" value="0">`
-      ) +
-       `</div>
-        <div class="form-group">
-            <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
-            <input type="text" min="0" id="inputDif" value="0">
-        </div>
-    </form>`
-
-    let buttons = {}
-    buttons = {
-      draw: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Roll'),
-        callback: async (html) => {
-          const ability = html.find('#abilitySelect')[0].value
-          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
-          const desperationDice = parseInt(html.find('#inputDespMod')[0].value || 0)
-          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const abilityVal = this.actor.system.abilities[ability].value
-          const abilityName = game.i18n.localize(this.actor.system.abilities[ability].name)
-          const numDice = abilityVal + parseInt(dataset.roll) + modifier
-          rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, desperationDice, false)
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
-      }
-    }
-
-    new Dialog({
-      title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
-      content: template,
-      buttons: buttons,
-      default: 'draw'
-    }).render(true)
-  }
-
-  /**
-     * Handle clickable rolls.
-     * @param {Event} event   The originating click event
-     * @private
-     */
-  _onHunterRoll (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const subtractWillpower = dataset.subtractWillpower
-    const numDice = dataset.roll
-
-    rollHunterDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
-  }
-
-  _onCustomHunterRoll (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    if (dataset.dice1 === '') {
-      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
-      dataset.roll = dice2 + 1 // specialty modifier
-      dataset.label = dataset.name
-      this._onHunterRollDialog(event)
-    } else {
-      const dice1 = this.actor.system.abilities[dataset.dice1.toLowerCase()].value
-      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
-      const dicePool = dice1 + dice2
-      rollHunterDice(dicePool, this.actor, `${dataset.name}`, 0, 0, false)
-    }
-  }
 
   /**
      * Handle making a edge visible

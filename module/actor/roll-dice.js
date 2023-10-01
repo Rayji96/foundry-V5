@@ -6,18 +6,10 @@
 // actor = Actor's data
 // label = Text that appears at the head of the ChatMessage
 // difficulty = The amount of successes required for a given roll
-// useHunger = Will roll hunger dice, if true
+// hungerDice = Will roll hunger dice, if value is greater than 0
 // increaseHunger = Will increase the actor's hunger if no successes are rolled, if true
 // subtractWillpower = Subtracts a point of willpower, always, if true
-export async function rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true, increaseHunger = false, subtractWillpower = false) {
-  
-  // Define the actor's current hunger
-  let hungerDice
-  if (useHunger) {
-    hungerDice = Math.min(actor.system.hunger.value, numDice)
-  } else {
-    hungerDice = 0
-  }
+export async function rollDice (numDice, actor, label = '', difficulty = 0, hungerDice = 0, increaseHunger = false, subtractWillpower = false) {
 
   // Roll defining and evaluating
   const dice = numDice - hungerDice

@@ -49,7 +49,6 @@ export class CellActorSheet extends WoDv5Actor {
   async getData () {
     const data = await super.getData()
     data.locked = this.locked
-    data.isCharacter = this.isCharacter
     data.hasBoons = this.hasBoons
     data.sheetType = `${game.i18n.localize('VTM5E.Cell')}`
 

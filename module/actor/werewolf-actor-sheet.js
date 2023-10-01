@@ -1,13 +1,14 @@
 /* global game, mergeObject */
 
-import { MortalActorSheet } from './mortal-actor-sheet.js'
+import { WoDv5Actor } from './wod-v5-sheet.js'
+import { rollWerewolfDice } from './roll-werewolf-dice.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {MortalActorSheet}
+ * @extends {Wov5DActorSheet}
  */
 
-export class WerewolfActorSheet extends MortalActorSheet {
+export class WerewolfActorSheet extends WoDv5Actor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
@@ -33,7 +34,7 @@ export class WerewolfActorSheet extends MortalActorSheet {
 
   constructor (actor, options) {
     super(actor, options)
-    this.rage = true
+    this.isCharacter = true
   }
 
   /** @override */
@@ -50,12 +51,7 @@ export class WerewolfActorSheet extends MortalActorSheet {
 
     data.sheetType = `${game.i18n.localize('VTM5E.Werewolf')}`
 
-    // Prepare items.
-    if (this.actor.type === 'werewolf' ||
-      this.actor.type === 'character'
-    ) {
-      this._prepareItems(data)
-    }
+    this._prepareItems(data)
 
     return data
   }
@@ -101,9 +97,6 @@ export class WerewolfActorSheet extends MortalActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
-
-    // Rollable abilities.
-    html.find('.rollable').click(this._onWerewolfRoll.bind(this))
 
     // Frenzy buttons
     html.find('.begin-frenzy').click(this._onBeginFrenzy.bind(this))
@@ -152,8 +145,9 @@ export class WerewolfActorSheet extends MortalActorSheet {
     const dataset = element.dataset
     const subtractWillpower = dataset.subtractWillpower
     const numDice = dataset.roll
+    const rageDice = this.actor.rage.value
 
-    //rollRageDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
+    rollWerewolfDice(numDice, this.actor, `${dataset.label}`, 0, rageDice, subtractWillpower)
   }
 
   /**

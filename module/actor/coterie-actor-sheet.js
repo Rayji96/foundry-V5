@@ -49,7 +49,6 @@ export class CoterieActorSheet extends WoDv5Actor {
   async getData () {
     const data = await super.getData()
     data.locked = this.locked
-    data.isCharacter = this.isCharacter
     data.hasBoons = this.hasBoons
 
     data.sheetType = `${game.i18n.localize('VTM5E.Coterie')}`
@@ -68,39 +67,6 @@ export class CoterieActorSheet extends WoDv5Actor {
     }
 
     return data
-  }
-
-  /**
-     * Organize and classify Disciplines for Vampire & Ghoul sheets.
-     *
-     * @param {Object} actorData The actor to prepare.
-     *
-     * @return {undefined}
-     */
-  _prepareItems (sheetData) {
-    const actorData = sheetData.actor
-
-    const features = {
-      background: [],
-      merit: [],
-      flaw: []
-    }
-
-    const gear = []
-
-    for (const i of sheetData.items) {
-      i.img = i.img || DEFAULT_TOKEN
-      if (i.type === 'item') {
-        // Append to gear.
-        gear.push(i)
-      } else if (i.type === 'feature') {
-        // Append to features.
-        features[i.system.featuretype].push(i)
-      }
-    }
-
-    actorData.gear = gear
-    actorData.features = features
   }
 
   /* -------------------------------------------- */
