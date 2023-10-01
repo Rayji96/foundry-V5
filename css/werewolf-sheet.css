@@ -89,10 +89,6 @@
 }
 
 .vtm5e.werewolf-sheet button.werewolf-button {
-  
-}
-
-.vtm5e.werewolf-sheet button.werewolf-button {
     background: var(--werewolf-primary);
     color: #fff;
     font-family: cormorantLight, serif;
@@ -110,4 +106,19 @@
     transition-duration: 0.3s;
     text-shadow: 0 0 10px red;
     cursor: pointer;
+}
+
+.vtm5e.werewolf-sheet button.werewolf-button.disabled, .vtm5e.werewolf-sheet button.werewolf-button.disabled:hover {
+  font-size: 20pt;
+  color: #FFF;
+  cursor: default;
+  margin-bottom: 10px;
+}
+
+.locked button.lockable-button {
+  display: none;
+}
+
+.vtm5e.werewolf-sheet .forms .form-active {
+  background: #d985359a;
 }

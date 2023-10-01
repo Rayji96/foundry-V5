@@ -174,6 +174,22 @@ Hooks.once('init', async function () {
     return outStr
   })
 
+  Handlebars.registerHelper('ifeq', function (a, b, options) {
+    if (a == b) {
+      return options.fn(this)
+    }
+
+    return options.inverse(this)
+  })
+
+  Handlebars.registerHelper('ifnoteq', function (a, b, options) {
+      if (a != b) {
+        return options.fn(this)
+      }
+
+      return options.inverse(this)
+  })
+
   Handlebars.registerHelper('or', function (bool1, bool2) {
     return bool1 || bool2
   })

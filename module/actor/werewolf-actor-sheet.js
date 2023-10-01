@@ -280,30 +280,36 @@ export class WerewolfActorSheet extends MortalActorSheet {
     // Switch statement to make it easy to see which form does what.
     switch (newForm) {
       case "homid":
-        console.log("Holid!")
+        console.log("Homid!")
+        this.actor.update({ 'system.activeForm': "homid"})
 
         break;
       case "glabro":
         console.log("Glabro")
+        this.actor.update({ 'system.activeForm': "glabro"})
 
         this._onDeductRageDice(1)
         break;
       case "crinos":
         console.log("Big scary werewoof")
+        this.actor.update({ 'system.activeForm': "crinos"})
 
         this._onDeductRageDice(2)
         break;
       case "hispo":
         console.log("Hispo")
+        this.actor.update({ 'system.activeForm': "hispo"})
 
         this._onDeductRageDice(1)
         break;
       case "lupus":
         console.log("Lupus")
+        this.actor.update({ 'system.activeForm': "lupus"})
 
         break;
       default:
-        console.log("No form selected.")
+        console.log("No form selected. Resetting to human.")
+        this.actor.update({ 'system.activeForm': "homid"})
     }
   }
 

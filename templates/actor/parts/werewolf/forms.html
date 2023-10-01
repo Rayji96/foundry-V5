@@ -6,14 +6,18 @@
     <div class="were-form-title flexcol flex-center">
       <label class="were-form-nickname">{{localize form.nickname}}</label>
     </div>
-    <div class="resource flex-group-center">
-      <button class="werewolf-button change-form" data-system="werewolf" data-new-form="{{id}}" type="button" name="{{id}}">{{form.cost}} {{localize "VTM5E.RageDice"}}</button>
+    <div class="resource flex-group-center{{#ifeq ../actor.system.activeForm id}} form-active{{/ifeq}}">
+      {{#ifnoteq ../actor.system.activeForm id}}
+      <button class="werewolf-button change-form" data-system="werewolf" data-new-form="{{id}}" data-rage-cost="{{form.cost}}" type="button" name="{{id}}">{{form.cost}} {{localize "VTM5E.RageDice"}}</button>
+      {{else}}
+      <button class="werewolf-button disabled">{{localize "VTM5E.Active"}}</button>
+      {{/ifnoteq}}
       <div class="resource-content flex-center">
         <hr/>
         <p>{{form.description}}</p>
         <div class="flexrow">
           <button class="werewolf-button were-form-chat" data-form="{{id}}">{{localize "VTM5E.PostFormToChat"}}</button>
-          <button class="werewolf-button were-form-edit" data-form="{{id}}">{{localize "VTM5E.EditForm"}}</button>
+          <button class="werewolf-button were-form-edit lockable-button" data-form="{{id}}">{{localize "VTM5E.EditForm"}}</button>
         </div>
       </div>
     </div>
