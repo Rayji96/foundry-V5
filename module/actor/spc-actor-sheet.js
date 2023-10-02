@@ -81,10 +81,6 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
-    // Rollable abilities.
-    html.find('.rollable').click(this._onRoll.bind(this))
-    html.find('.rollable-with-mod').click(this._onRollWithMod.bind(this))
-
     // Make Discipline visible
     html.find('.discipline-create').click(this._onShowDiscipline.bind(this))
 

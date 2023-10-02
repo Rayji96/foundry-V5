@@ -46,7 +46,7 @@
         </li>
         {{#each actor.specialties as |item id|}}
         <li class="item flexrow" data-item-id="{{item._id}}">
-            <div class="item-image custom-rollable" data-dice1="" data-dice2="{{item.system.skill}}" data-name="{{item.name}}">
+            <div class="item-image custom-rollable" data-dice1="" data-dice2="{{item.system.skill}}" data-name="{{item.name}}" data-system="{{../actor.system.gamesystem}}">
                 <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}" />
             </div>
             <h4 class="item-name">{{item.name}}</h4>
@@ -76,7 +76,7 @@
         </li>
         {{#each actor.customRolls as |roll id|}}
         <li class="item flexrow" data-item-id="{{roll._id}}">
-            <div class="item-image custom-rollable" data-dice1="{{roll.system.dice1}}" data-dice2="{{roll.system.dice2}}" data-name="{{roll.name}}">
+            <div class="item-image custom-rollable" data-dice1="{{roll.system.dice1}}" data-dice2="{{roll.system.dice2}}" data-name="{{roll.name}}" data-system="{{../actor.system.gamesystem}}">
                 <img src="{{roll.img}}" title="{{roll.name}}" width="24" height="24" alt="{{roll.name}}" />
             </div>
             <h4 class="item-name">{{roll.name}}</h4>

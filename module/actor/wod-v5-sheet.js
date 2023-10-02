@@ -14,12 +14,18 @@ export class WoDv5Actor extends ActorSheet {
   async getData () {
     const data = await super.getData()
     data.isCharacter = this.isCharacter
+    data.locked = this.locked
 
     return data
   }
 
   prepareData () {
     super.prepareData()
+  }
+
+  constructor (actor, options) {
+    super(actor, options)
+    this.locked = true
   }
 
   /**
@@ -553,6 +559,9 @@ export class WoDv5Actor extends ActorSheet {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
+    const system = dataset.system
+    const difficulty = 0
+
     if (dataset.dice1 === '') {
       const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       dataset.roll = dice2 + 1 // specialty modifier
@@ -564,7 +573,25 @@ export class WoDv5Actor extends ActorSheet {
       const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
       const dicePool = dice1 + dice2
 
-      rollDice(dicePool, this.actor, `${dataset.name}`, 0, this.hunger)
+      // Define what kind of dice is appropriate to use
+      if (system === 'vampire') {
+        // Define actor's hunger dice
+        let hungerDice = Math.min(this.actor.system.hunger.value, dicePool)
+
+        rollDice(dicePool, this.actor, dataset.label, difficulty, hungerDice)
+      } else if (system === 'hunter') {
+        // Define actor's desparation dice
+        let desparationDice = parseInt(html.find('#inputDespMod')[0].value || 0)
+
+        rollHunterDice(dicePool, this.actor, dataset.label, difficulty, desparationDice)
+      } else if (system === 'werewolf') {
+        // Define actor's rage dice
+        let rageDice = Math.max(this.actor.system.rage.value, 0)
+
+        rollWerewolfDice(dicePool, this.actor, dataset.label, difficulty, rageDice)
+      } else {
+        rollDice(dicePool, this.actor, dataset.label, difficulty)
+      }
     }
   }
 
@@ -572,9 +599,9 @@ export class WoDv5Actor extends ActorSheet {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
-    const useHunger = this.hunger && (dataset.useHunger === '1')
     const increaseHunger = dataset.increaseHunger
     const subtractWillpower = dataset.subtractWillpower
+    const system = dataset.system
 
     const template = `
       <form>
@@ -597,7 +624,26 @@ export class WoDv5Actor extends ActorSheet {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
           const numDice = parseInt(dataset.roll) + modifier
-          rollDice(numDice, this.actor, `${dataset.label}`, difficulty, useHunger, increaseHunger, subtractWillpower)
+
+          // Define what kind of dice is appropriate to use
+          if (system === 'vampire') {
+            // Define actor's hunger dice
+            let hungerDice = Math.min(this.actor.system.hunger.value, numDice)
+
+            rollDice(numDice, this.actor, dataset.label,difficulty, hungerDice, increaseHunger, subtractWillpower)
+          } else if (system === 'hunter') {
+            // Define actor's desparation dice
+            let desparationDice = parseInt(html.find('#inputDespMod')[0].value || 0)
+
+            rollHunterDice(numDice, this.actor, dataset.label, difficulty, desparationDice)
+          } else if (system === 'werewolf') {
+            // Define actor's rage dice
+            let rageDice = Math.max(this.actor.system.rage.value, 0)
+
+            rollWerewolfDice(numDice, this.actor, dataset.label, difficulty, rageDice)
+          } else {
+            rollDice(numDice, this.actor, dataset.label, difficulty)
+          }
         }
       },
       cancel: {

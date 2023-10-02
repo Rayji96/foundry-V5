@@ -33,7 +33,6 @@ export class CellActorSheet extends WoDv5Actor {
 
   constructor (actor, options) {
     super(actor, options)
-    this.locked = true
     this.isCharacter = false
   }
 
@@ -48,7 +47,6 @@ export class CellActorSheet extends WoDv5Actor {
   /** @override */
   async getData () {
     const data = await super.getData()
-    data.locked = this.locked
     data.hasBoons = this.hasBoons
     data.sheetType = `${game.i18n.localize('VTM5E.Cell')}`
 
