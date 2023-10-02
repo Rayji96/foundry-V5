@@ -8,7 +8,7 @@
     </div>
     <div class="resource flex-group-center{{#ifeq ../actor.system.activeForm id}} form-active{{/ifeq}}">
       {{#ifnoteq ../actor.system.activeForm id}}
-      <button class="werewolf-button change-form" data-system="werewolf" data-new-form="{{id}}" data-rage-cost="{{form.cost}}" type="button" name="{{id}}">{{form.cost}} {{localize "VTM5E.RageDice"}}</button>
+      <button class="werewolf-button change-form" data-system="{{../actor.system.gamesystem}}" data-new-form="{{id}}" data-rage-cost="{{form.cost}}" type="button" name="{{id}}">{{form.cost}} {{localize "VTM5E.RageDice"}}</button>
       {{else}}
       <button class="werewolf-button disabled">{{localize "VTM5E.Active"}}</button>
       {{/ifnoteq}}

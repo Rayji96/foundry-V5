@@ -167,8 +167,6 @@ export class HunterActorSheet extends CellActorSheet {
     } else { // Set as "false"
       this.actor.update({ [`system.despair.value`]: 0 })
     }
-
-    console.log(this.actor.system.despair.value)
   }
 
   /**
