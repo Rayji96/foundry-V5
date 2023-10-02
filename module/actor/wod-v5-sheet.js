@@ -466,15 +466,17 @@ export class WoDv5Actor extends ActorSheet {
     }
 
     // Hunter specific modifier to a roll
-    let despairoutcome
+    let despairBlock = ``
     if (system === 'hunter') {
-      const despair = Object.values(this.actor.system.despair)
-      const despairstring = despair.toString()
+      const despair = Object.values(this.actor.system.despair).toString()
 
-      if (despairstring === '1') {
-        despairoutcome = true
-      } else {
-        despairoutcome = false
+      if (despair === '1') {
+        despairBlock = `
+        <div class="form-group">
+          <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
+          <input type="text" min="0" id="inputDespMod" value="0">
+        </div>
+        `
       }
     }
 
@@ -489,14 +491,9 @@ export class WoDv5Actor extends ActorSheet {
               <input type="text" id="inputMod" value="0">
           </div>  
           <div class="form-group">` +
-          // Hunter specific modifier to a roll
-          (
-            despairoutcome
-              ? `<label>${game.i18n.localize('VTM5E.DesperationUnavailable')}</label>
-                 <input type="text" min="0" id="inputDespMod" disabled value="0">`
-              : `<label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
-                 <input type="text" min="0" id="inputDespMod" value="0">`
-          ) +
+           // Hunter specific modifier to a roll
+           despairBlock
+           +
            `</div>
            <div class="form-group">
            <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
@@ -516,8 +513,6 @@ export class WoDv5Actor extends ActorSheet {
           const abilityVal = this.actor.system.abilities[ability].value
           const abilityName = game.i18n.localize(this.actor.system.abilities[ability].name)
           const numDice = abilityVal + parseInt(dataset.roll) + modifier
-
-          console.log(system)
 
           // Define what kind of dice is appropriate to use
           if (system === 'vampire') {

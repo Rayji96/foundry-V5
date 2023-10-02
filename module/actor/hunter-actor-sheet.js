@@ -37,6 +37,7 @@ export class HunterActorSheet extends CellActorSheet {
     super(actor, options)
     this.isCharacter = true
     this.hasBoons = false
+    this.despairActive = false
   }
 
   /** @override */
@@ -74,6 +75,11 @@ export class HunterActorSheet extends CellActorSheet {
     const actorData = sheetData.actor
     actorData.system.gamesystem = 'hunter'
 
+    // Track whether despair is toggled on or not
+    if (this.actor.system.despair.value > 0) {
+      actorData.system.despairActive = true
+    }
+
     const edges = {
       arsenal: [],
       fleet: [],
@@ -89,24 +95,9 @@ export class HunterActorSheet extends CellActorSheet {
       artifact: []
     }
 
-    // Initialize containers.
-    const specialties = []
-    const boons = []
-    const customRolls = []
-
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
-      i.img = i.img || DEFAULT_TOKEN
-      if (i.type === 'specialty') {
-        // Append to specialties.
-        specialties.push(i)
-      } else if (i.type === 'boon') {
-        // Append to boons.
-        boons.push(i)
-      } else if (i.type === 'customRoll') {
-        // Append to custom rolls.
-        customRolls.push(i)
-      } else if (i.type === 'perk') {
+      if (i.type === 'perk') {
         // Append to edges.
         if (i.system.edge !== undefined) {
           edges[i.system.edge].push(i)
@@ -118,9 +109,6 @@ export class HunterActorSheet extends CellActorSheet {
     }
 
     // Assign and return
-    actorData.specialties = specialties
-    actorData.boons = boons
-    actorData.customRolls = customRolls
     actorData.edges_list = edges
   }
   /* -------------------------------------------- */
@@ -131,6 +119,9 @@ export class HunterActorSheet extends CellActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
+
+    // Toggle despair
+    html.find('.despair-toggle').click(this._onToggleDespair.bind(this))
 
     // Make Edge visible
     html.find('.edge-create').click(this._onShowEdge.bind(this))
@@ -158,6 +149,27 @@ export class HunterActorSheet extends CellActorSheet {
     })
   }
 
+  /** Handle toggling the depsair value */
+  _onToggleDespair (event) {
+    event.preventDefault()
+
+    // I really only do this so it's clear what we're doing here
+    const currentDespair = this.actor.system.despairActive
+    const newDespair = !currentDespair
+
+    // Have to do this silly thing in order to prevent old versions of the Hunter sheet from freaking out
+    // Basically we're tracking the boolean of true/false in the sheet code but making sure that
+    // old versions of the sheet continue to track it in binary 1 or 0.
+    // It's dumb, I know, and I hope to set up a migration function to fix it sometime
+    // but I don't want to delay this release more than I already had to-
+    if (newDespair) { // Set as "true"
+      this.actor.update({ [`system.despair.value`]: 1 })
+    } else { // Set as "false"
+      this.actor.update({ [`system.despair.value`]: 0 })
+    }
+
+    console.log(this.actor.system.despair.value)
+  }
 
   /**
      * Handle making a edge visible
