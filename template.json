@@ -903,8 +903,8 @@
     "gift": {
       "templates": ["base"],
       "giftType": "native",
-      "renown": "glory",
-      "cost": "",
+      "renown": "honor",
+      "cost": 0,
       "rollable": false,
       "rage": false,
       "action": "",

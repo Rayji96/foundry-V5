@@ -102,6 +102,9 @@ export class WerewolfActorSheet extends WoDv5Actor {
     html.find('.begin-frenzy').click(this._onBeginFrenzy.bind(this))
     html.find('.end-frenzy').click(this._onEndFrenzy.bind(this))
 
+    // Rage buttons
+    html.find('.rage-roll').click(this._onRageButton.bind(this))
+
     // Form change buttons
     html.find('.change-form').click(this._onShiftForm.bind(this))
 
@@ -134,20 +137,16 @@ export class WerewolfActorSheet extends WoDv5Actor {
     })
   }
 
-  /**
-     * Handle clickable rolls within the Werewolf system
-     * @param {Event} event   The originating click event
-     * @private
-     */
-  _onWerewolfRoll (event) {
+  _onRageButton (event) {
     event.preventDefault()
+
     const element = event.currentTarget
     const dataset = element.dataset
+    const consumeRage = dataset.consumeRage
     const subtractWillpower = dataset.subtractWillpower
-    const numDice = dataset.roll
-    const rageDice = this.actor.rage.value
+    const rageDice = dataset.rageDice
 
-    rollWerewolfDice(numDice, this.actor, `${dataset.label}`, 0, rageDice, subtractWillpower)
+    rollWerewolfDice(rageDice, this.actor, dataset.label, 0, rageDice, subtractWillpower, consumeRage)
   }
 
   /**

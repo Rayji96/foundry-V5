@@ -4,14 +4,23 @@
         <div class="header-fields flexcol">
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}"
                     placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-            <div class="flexrow">
+            <div class="flexrow grid-3row">
                 <!-- Input the level of the gift -->
-                <div class="flexrow level">
+                <div class="flexcol level flex-center">
                     <label>{{localize "VTM5E.Level"}}</label>
                     <input name="system.level" value="{{item.system.level}}" type="number" min="0" max="5"/>
                 </div>
+                <div class="flexcol">
+                    <label class="flex-center">{{localize "VTM5E.Renown"}}</label>
+                    <select name="system.renown" value="{{item.system.renown}}" data-type="String">
+                        {{#select item.system.renown}}
+                        {{> "systems/vtm5e/templates/item/parts/renown.html"}}
+                        {{/select}}
+                    </select>
+                </div>
                 <!-- Select the gift this power belongs to -->
-                <div class="gift-type">
+                <div class="flexcol">
+                    <label class="flex-center">{{localize "VTM5E.GiftType"}}</label>
                     <select name="system.giftType" data-type="String">
                         {{#select item.system.giftType}}
                         {{> "systems/vtm5e/templates/item/parts/gifts.html"}}
@@ -45,7 +54,7 @@
                 <select name="system.dice1" data-type="String">
                     {{#select item.system.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
-                    <option value="giftType">{{localize (getDisciplineName item.system.giftType)}}</option>
+                    <option value="renown">{{localize (generateFeatureLabel item.system.renown)}}</option>
                     {{/select}}
                 </select>
                 <label class="resource-label">+</label>
@@ -59,7 +68,7 @@
                     <select name="system.dice2" data-type="String">
                         {{#select item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
-                        <option value="giftType">{{localize (getDisciplineName item.system.giftType)}}</option>
+                        <option value="renown">{{localize (generateFeatureLabel item.system.renown)}}</option>
                         {{/select}}
                     </select>
                 {{/if}}
@@ -79,6 +88,9 @@
                 <!-- If the item has a rage check to roll or not -->
                 <label class="resource-label">{{localize "VTM5E.Rage"}}: </label>
                 <input type="checkbox" id="system.rage" name="system.rage" {{checked item.system.rage}}>
+
+                <label class="resource-label">{{localize "VTM5E.Cost"}}: </label>
+                <input class="itemsheet-textbox" type="text" name="system.cost" value="{{item.system.cost}}" type="number" min="0" max="5"/>
             </div>
         </div>
     </section>

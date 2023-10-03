@@ -8,7 +8,8 @@
 // difficulty = The amount of successes required for a given roll
 // rageDice = Additional rage dice for the roll
 // subtractWillpower = Subtracts a point of willpower, always, if true
-export async function rollWerewolfDice (numDice, actor, label = '', difficulty = 0, rageDice = 0, subtractWillpower = false) {
+// consumeRage = Whether the roll is an ability that has the potential to reduce the actor's rage
+export async function rollWerewolfDice (numDice, actor, label = '', difficulty = 0, rageDice = 0, subtractWillpower = false, consumeRage = false) {
 
   // Roll defining and evaluating
   const rageDiceTotal = Math.min(numDice, rageDice)
@@ -48,6 +49,26 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
         rageSuccess++
       }
     } else {
+      // Reduce rage for each failure on a rage dice if this is a power that consumes it
+      if (consumeRage) {
+        const currentRage = actor.system.rage.value
+        const newRageAmount = currentRage - 1
+      
+        if (newRageAmount === 0 && currentRage > 0) {
+          let chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>
+          <p class="roll-content result-rage result-possible">This actor has 0 rage and has lost the wolf.</p>`
+      
+          // Post the message to the chat
+          ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: actor }),
+            content: chatMessage
+          })
+        }
+      
+        // Update the actor with the new amount of rage
+        actor.update({ 'system.rage.value': newRageAmount })
+      }
+
       // Brutal dice are on a 1 or a 2 in Werewolf v5
       if (dice.result === 1 || dice.result === 2) {
         brutalOutcome++

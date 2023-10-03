@@ -620,6 +620,7 @@ export class WoDv5Actor extends ActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const increaseHunger = dataset.increaseHunger
+    const consumeRage = dataset.consumeRage
     const subtractWillpower = dataset.subtractWillpower
     const system = dataset.system
 
@@ -660,7 +661,7 @@ export class WoDv5Actor extends ActorSheet {
             // Define actor's rage dice
             let rageDice = Math.max(this.actor.system.rage.value, 0)
 
-            rollWerewolfDice(numDice, this.actor, dataset.label, difficulty, rageDice)
+            rollWerewolfDice(numDice, this.actor, dataset.label, difficulty, rageDice, subtractWillpower, consumeRage)
           } else {
             rollDice(numDice, this.actor, dataset.label, difficulty)
           }
