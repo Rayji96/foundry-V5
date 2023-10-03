@@ -493,7 +493,7 @@ export class WoDv5Actor extends ActorSheet {
     if (system === 'hunter') {
       const despair = Object.values(this.actor.system.despair).toString()
 
-      if (despair === '1') {
+      if (despair === '0') {
         despairBlock = `
         <div class="form-group">
           <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
@@ -547,7 +547,7 @@ export class WoDv5Actor extends ActorSheet {
             let desparationDice
 
             // Define actor's desparation dice
-            if (this.actor.system.despair.value > 0) {
+            if (this.actor.system.despair.value === 0) {
               desparationDice = parseInt(html.find('#desparationInput')[0].value || 0)
             }
 
@@ -601,8 +601,7 @@ export class WoDv5Actor extends ActorSheet {
 
         rollDice(dicePool, this.actor, dataset.label, difficulty, hungerDice)
       } else if (system === 'hunter') {
-        // Define actor's desparation dice
-        let desparationDice = parseInt(html.find('#desparationInput')[0].value || 0)
+        let desparationDice
 
         rollHunterDice(dicePool, this.actor, dataset.label, difficulty, desparationDice)
       } else if (system === 'werewolf') {

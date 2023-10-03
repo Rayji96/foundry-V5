@@ -19,12 +19,12 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   // Variable defining
   let difficultyResult = '<span></span>'
   let success = 0
-  let rageSuccess = 0
   let critSuccess = 0
-  let rageCritSuccess = 0
   let fail = 0
+  let rageSuccess = 0
+  let rageCritSuccess = 0
   let rageFail = 0
-  let rageCritFail = 0
+  let brutalOutcome = 0
 
   // Defines the normal diceroll results
   roll.terms[0].results.forEach((dice) => {
@@ -48,8 +48,9 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
         rageSuccess++
       }
     } else {
-      if (dice.result === 1) {
-        rageCritFail++
+      // Brutal dice are on a 1 or a 2 in Werewolf v5
+      if (dice.result === 1 || dice.result === 2) {
+        brutalOutcome++
       } else {
         rageFail++
       }
@@ -78,13 +79,12 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   if (totalCritSuccess && successRoll) {
     chatMessage = chatMessage + `<p class="roll-content result-critical">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
   }
-  if (rageCritFail && successRoll && difficulty > 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-rage">${game.i18n.localize('VTM5E.RageSuccess')}</p>`
+  // No successes at all is a total failure
+  if (totalSuccess === 0) {
+    chatMessage = chatMessage + `<p class="roll-content result-rage result-desperation">${game.i18n.localize('VTM5E.TotalFailure')}</p>`
   }
-  if (rageCritFail && !successRoll && difficulty > 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-rage">${game.i18n.localize('VTM5E.DespairFailure')}</p>`
-  }
-  if (rageCritFail && !successRoll && difficulty === 0) {
+  // Greater than 1, a brutal outcome is possible
+  if (brutalOutcome > 1) {
     chatMessage = chatMessage + `<p class="roll-content result-rage result-possible">${game.i18n.localize('VTM5E.PossibleRageFailure')}</p>`
   }
 
@@ -112,7 +112,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   for (let i = 0, j = rageSuccess; i < j; i++) {
     chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-orange-success.png" alt="Rage Success" class="roll-img rage-dice" />'
   }
-  for (let i = 0, j = rageCritFail; i < j; i++) {
+  for (let i = 0, j = brutalOutcome; i < j; i++) {
     chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Rage Critical Fail" class="roll-img rage-dice" />'
   }
   for (let i = 0, j = rageFail; i < j; i++) {

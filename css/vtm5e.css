@@ -1100,7 +1100,7 @@ span.resource-counter-step:last-child {
     display: none;
 }
 
-.locked a.item-control.item-create, .locked a.item-control.discipline-create, .locked a.item-control.edge-create, .locked .gift-create, .locked .rite-create {
+.locked a.item-control.item-create, .locked a.item-control.discipline-create, .locked a.item-control.edge-create, .locked .gift-create, .locked .rite-create, .locked .item-edit {
     display: none;
 }
 

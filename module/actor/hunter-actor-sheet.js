@@ -54,11 +54,10 @@ export class HunterActorSheet extends CellActorSheet {
     // TODO: confirm that I can finish and use this list
     data.sheetType = `${game.i18n.localize('VTM5E.Hunter')}`
 
-    // Ensure that the actor sheet knows this is a player character
-    this.actor.type === "character"
-
     // Prepare items.
-    this._prepareItems(data)
+    if (this.actor.type === 'hunter') {
+      this._prepareItems(data)
+    }
 
     return data
   }
@@ -73,6 +72,7 @@ export class HunterActorSheet extends CellActorSheet {
   _prepareItems (sheetData) {
     super._prepareItems(sheetData)
     const actorData = sheetData.actor
+
     actorData.system.gamesystem = 'hunter'
 
     // Track whether despair is toggled on or not
