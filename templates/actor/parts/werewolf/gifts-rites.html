@@ -10,7 +10,7 @@
         <!-- Header of the gifts lists -->
         <li class="item flexrow item-header">
             <div class="item-name">{{localize "VTM5E.Name"}}</div>
-            <div class="item-name header-level">{{localize "VTM5E.Level"}}</div>
+            <div class="item-name header-level">{{localize "VTM5E.Renown"}}</div>
             <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
                 <a class="item-control gift-create" title="{{localize 'VTM5E.AddGift'}}">
@@ -52,7 +52,7 @@
                         <div class="flexrow">
                             <!-- Whether the button is clickable or not to post the power in chat -->
                             {{#if item.system.rollable}}
-                                <div class="item-image power-rollable" data-id="{{item._id}}" data-use-rage="1">
+                                <div class="item-image gift-rollable" data-id="{{item._id}}" data-system="{{../actor.system.gamesystem}}">
                                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                                 </div>
                             {{else}}
@@ -66,7 +66,8 @@
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rage check, if applicable -->
                                 {{#if item.system.rage}}
-                                    <a class="item-control item-rouse" title="{{localize 'VTM5E.RollRage'}}" data-roll="{{gift.value}}">
+                                    <a class="item-control rage-roll" title="{{localize 'VTM5E.RollRage'}}" data-system="{{../actor.system.gamesystem}}"
+                                        data-rage-dice="{{item.system.cost}}" data-consume-rage="true" data-label="{{localize 'VTM5E.RageDice'}}">
                                         <i class="fas fa-dice-d20"></i>
                                     </a>
                                 {{/if}}
@@ -99,7 +100,7 @@
         <!-- Header of the rites lists -->
         <li class="item flexrow item-header">
             <div class="item-name">{{localize "VTM5E.Name"}}</div>
-            <div class="item-name header-level">{{localize "VTM5E.Level"}}</div>
+            <div class="item-name header-level">{{localize "VTM5E.Renown"}}</div>
             <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
                 <a class="item-control rite-create" title="{{localize 'VTM5E.AddRite'}}">
@@ -114,7 +115,7 @@
                 <div class="flexrow">
                     <!-- Whether the button is clickable or not to post the power in chat -->
                     {{#if item.system.rollable}}
-                        <div class="item-image power-rollable" data-id="{{item._id}}" data-use-rage="1">
+                        <div class="item-image gift-rollable" data-id="{{item._id}}" data-system="{{../actor.system.gamesystem}}">
                             <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                         </div>
                     {{else}}
@@ -128,7 +129,8 @@
                     <div class="item-controls">
                         <!-- Icon to roll the power's rage check, if applicable -->
                         {{#if item.system.rage}}
-                            <a class="item-control item-rouse" title="{{localize 'VTM5E.RollRage'}}" data-roll="{{gift.value}}">
+                            <a class="item-control rage-roll" title="{{localize 'VTM5E.RollRage'}}" data-system="{{../actor.system.gamesystem}}"
+                                data-rage-dice="{{item.system.cost}}" data-consume-rage="true" data-label="{{localize 'VTM5E.RageDice'}}">
                                 <i class="fas fa-dice-d20"></i>
                             </a>
                         {{/if}}

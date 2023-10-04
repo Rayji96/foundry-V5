@@ -26,6 +26,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   let rageCritSuccess = 0
   let rageFail = 0
   let brutalOutcome = 0
+  let totalRageFail = 0
 
   // Defines the normal diceroll results
   roll.terms[0].results.forEach((dice) => {
@@ -49,34 +50,35 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
         rageSuccess++
       }
     } else {
-      // Reduce rage for each failure on a rage dice if this is a power that consumes it
-      if (consumeRage) {
-        const currentRage = actor.system.rage.value
-        const newRageAmount = currentRage - 1
-      
-        if (newRageAmount === 0 && currentRage > 0) {
-          let chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>
-          <p class="roll-content result-rage result-possible">This actor has 0 rage and has lost the wolf.</p>`
-      
-          // Post the message to the chat
-          ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: actor }),
-            content: chatMessage
-          })
-        }
-      
-        // Update the actor with the new amount of rage
-        actor.update({ 'system.rage.value': newRageAmount })
-      }
-
       // Brutal dice are on a 1 or a 2 in Werewolf v5
       if (dice.result === 1 || dice.result === 2) {
         brutalOutcome++
       } else {
         rageFail++
       }
+      totalRageFail++
     }
   })
+
+  // Reduce rage for each failure on a rage dice if this is a power that consumes it
+  if (consumeRage) {
+    const currentRage = actor.system.rage.value
+    const newRageAmount = currentRage - totalRageFail
+  
+    if (newRageAmount === 0 && currentRage > 0) {
+      let chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>
+      <p class="roll-content result-rage result-possible">This actor has 0 rage and has lost the wolf.</p>`
+  
+      // Post the message to the chat
+      ChatMessage.create({
+        speaker: ChatMessage.getSpeaker({ actor: actor }),
+        content: chatMessage
+      })
+    }
+  
+    // Update the actor with the new amount of rage
+    actor.update({ 'system.rage.value': newRageAmount })
+  }
 
   // Success canculating
   let totalCritSuccess = 0

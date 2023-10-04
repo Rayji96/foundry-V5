@@ -113,7 +113,9 @@ button:focus {
 .vrollable:hover,
 .vrollable:focus,
 .power-rollable:hover,
-.power-rollable:focus {
+.power-rollable:focus,
+.gift-rollable:hover,
+.gift-rollable:focus {
     color: #000;
     text-shadow: 0 0 10px red;
     cursor: pointer;

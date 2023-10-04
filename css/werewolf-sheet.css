@@ -122,3 +122,7 @@
 .vtm5e.werewolf-sheet .forms .form-active {
   background: #d985359a;
 }
+
+.vtm5e.werewolf-sheet .formAbilities {
+  text-align: left;
+}

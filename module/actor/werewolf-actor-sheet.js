@@ -22,7 +22,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
     return mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/werewolf-sheet.html',
-      width: 940,
+      width: 1050,
       height: 700,
       tabs: [{
         navSelector: '.sheet-tabs',
@@ -108,6 +108,15 @@ export class WerewolfActorSheet extends WoDv5Actor {
     // Form change buttons
     html.find('.change-form').click(this._onShiftForm.bind(this))
 
+    // Form to chat buttons
+    html.find('.were-form-chat').click(this._onFormToChat.bind(this))
+
+    // Form edit buttons
+    html.find('.were-form-edit').click(this._onFormEdit.bind(this))
+
+    // Rollable gift buttons
+    html.find('.gift-rollable').click(this._onGiftRoll.bind(this))
+
     // Make Gift visible
     html.find('.gift-create').click(this._onCreateGift.bind(this))
 
@@ -135,6 +144,30 @@ export class WerewolfActorSheet extends WoDv5Actor {
         })
       })
     })
+  }
+
+  _onGiftRoll (event) {
+    event.preventDefault()
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const item = this.actor.items.get(dataset.id)
+    const rageDice = Math.max(this.actor.system.rage.value, 0)
+    const itemRenown = item.system.renown
+    const renownValue = this.actor.system.renown[itemRenown].value
+
+    const dice1 = item.system.dice1 === 'renown' ? renownValue : this.actor.system.abilities[item.system.dice1].value
+
+    let dice2
+    if (item.system.dice2 === 'renown') {
+      dice2 = disciplineValue
+    } else if (item.system.skill) {
+      dice2 = this.actor.system.skills[item.system.dice2].value
+    } else {
+      dice2 = this.actor.system.abilities[item.system.dice2].value
+    }
+
+    const dicePool = dice1 + dice2
+    rollWerewolfDice(dicePool, this.actor, `${item.name}`, 0, rageDice)
   }
 
   _onRageButton (event) {
@@ -306,6 +339,72 @@ export class WerewolfActorSheet extends WoDv5Actor {
     }
   }
 
+  // Handle posting an actor's form to the chat.
+  _onFormToChat (event) {
+    const header = event.currentTarget
+    const form = header.dataset.form
+
+    const formData = this.actor.system.forms[form]
+    const formName = formData.name
+    const formDescription = formData.description
+    const formAbilities = formData.abilities
+
+    let chatMessage = `<p class="roll-label uppercase">` + game.i18n.localize(formName) + `</p><p>` + formDescription + `</p>`
+    chatMessage = chatMessage + `<ul>`
+    formAbilities.forEach((ability) =>
+      chatMessage = chatMessage + `<li>${ability}</li>`
+    )
+    chatMessage = chatMessage + `</ul>`
+
+    // Post the message to the chat
+    ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      content: chatMessage
+    })
+  }
+
+  // Handle editing an actor's form.
+  _onFormEdit (event) {
+    const header = event.currentTarget
+    const form = header.dataset.form
+
+    const formData = this.actor.system.forms[form]
+    const formName = formData.name
+    const formDescription = formData.description
+
+    const template = `
+      <form>
+          <div class="flexrow">
+            <textarea id="formDescription">${formDescription}</textarea>
+          </div>
+      </form>`
+
+      let buttons = {}
+      buttons = {
+        draw: {
+          icon: '<i class="fas fa-check"></i>',
+          label: game.i18n.localize('VTM5E.Submit'),
+          callback: async (html) => {
+            const newDescription = html.find('#formDescription')[0].value
+
+            this.actor.update({ [`system.forms.${form}.description`]: newDescription })
+          }
+        },
+        cancel: {
+          icon: '<i class="fas fa-times"></i>',
+          label: game.i18n.localize('VTM5E.Cancel')
+        }
+      }
+
+    new Dialog({
+      title: game.i18n.localize('VTM5E.Edit') + ` ` + game.i18n.localize(formName),
+      content: template,
+      buttons: buttons,
+      default: 'draw'
+    }).render(true)
+  }
+
+  // Quick function for deducting rage dice
   _onDeductRageDice (rageCost) {
     const currentRageDice = this.actor.system.rage.value
     const newRageDice = currentRageDice - rageCost

@@ -12,9 +12,15 @@
       {{else}}
       <button class="werewolf-button disabled">{{localize "VTM5E.Active"}}</button>
       {{/ifnoteq}}
-      <div class="resource-content flex-center">
+      <div class="resource-content">
         <hr/>
-        <p>{{form.description}}</p>
+        <p class="flex-center">{{form.description}}</p>
+        <hr>
+        <ul class="formAbilities">
+          {{#each form.abilities as |ability|}}
+            <li>{{ability}}</li>
+          {{/each}}
+        </ul>
         <div class="flexrow">
           <button class="werewolf-button were-form-chat" data-form="{{id}}">{{localize "VTM5E.PostFormToChat"}}</button>
           <button class="werewolf-button were-form-edit lockable-button" data-form="{{id}}">{{localize "VTM5E.Edit"}}</button>
