@@ -81,6 +81,15 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
+    // Make Exceptional Skill visible
+    html.find('.exceptionalskill-create').click(this._onShowExceptionalSkill.bind(this))
+
+    // Make Exceptional Skill hidden
+    html.find('.exceptionalskill-delete').click(ev => {
+      const data = $(ev.currentTarget)[0].dataset
+      this.actor.update({ [`system.exceptionaldicepools.${data.exceptionalskill}.visible`]: false })
+    })
+
     // Make Discipline visible
     html.find('.discipline-create').click(this._onShowDiscipline.bind(this))
 
