@@ -126,3 +126,7 @@
 .vtm5e.werewolf-sheet .formAbilities {
   text-align: left;
 }
+
+.vtm5e.werewolf-sheet .crinos-health .resource-counter-step {
+  border: 1px solid #c11f1f;
+}
