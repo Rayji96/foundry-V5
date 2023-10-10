@@ -2,6 +2,20 @@
   --werewolf-primary: #4e2100ef;
 }
 
+/* Colour overrides for sheet themes */
+.vtm5e.werewolf-sheet .window-content .sheet-body .tab > .resource-label, .vtm5e.werewolf-sheet .items-list .item-header {
+  color: var(--werewolf-primary);
+  border-color: var(--werewolf-primary);
+}
+
+.vtm5e.werewolf-sheet h1, .vtm5e.werewolf-sheet .flex-group-center, .vtm5e.werewolf-sheet .flex-group-left, .vtm5e.werewolf-sheet .flex-group-right, .vtm5e.werewolf-sheet .window-content nav.sheet-tabs .item.active, .vtm5e.werewolf-sheet .actor-header .resource, .vtm5e.werewolf-sheet .items-list .item, .vtm5e.werewolf-sheet.window-app, .vtm5e.werewolf-sheet.window-app .window-header {
+  border-color: var(--werewolf-primary);
+}
+
+.vtm5e.werewolf-sheet ::-webkit-scrollbar-thumb {
+  background: var(--werewolf-primary);
+}
+
 /* Styles specific to the Werewolf sheets */
 .vtm5e.werewolf-sheet .profile-img,
 .vtm5e.werewolf-sheet .item-image img {
