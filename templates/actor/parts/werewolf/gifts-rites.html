@@ -20,7 +20,7 @@
             </div>
         </li>
         <!-- Iterate through each of the gifts lists -->
-        {{#each actor.system.gifts_list as |gift key|}}
+        {{#each actor.system.giftsList as |gift key|}}
             {{#if gift.powers}}
                 <li class="flexrow item-header">
                     <div class="item-name collapsible">
@@ -44,7 +44,7 @@
                 </li>
                 <!-- Gift description -->
                 <div class="collapsible-content">
-                    <textarea class="gift-description" name="system.gifts_list.{{key}}.description">{{gift.description}}</textarea>
+                    <textarea class="gift-description" name="system.giftsList.{{key}}.description">{{gift.description}}</textarea>
                 </div>
                 <!-- Iterate through each of the gift powers -->
                 {{#each gift.powers as |item id|}}
@@ -110,7 +110,7 @@
             </div>
         </li>
         <!-- Iterate through each of the rites -->
-        {{#each actor.system.rites_list as |item id|}}
+        {{#each actor.system.ritesList as |item id|}}
             <li class="item flexcol" data-item-id="{{item._id}}">
                 <div class="flexrow">
                     <!-- Whether the button is clickable or not to post the power in chat -->

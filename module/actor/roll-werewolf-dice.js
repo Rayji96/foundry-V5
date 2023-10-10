@@ -10,7 +10,6 @@
 // subtractWillpower = Subtracts a point of willpower, always, if true
 // consumeRage = Whether the roll is an ability that has the potential to reduce the actor's rage
 export async function rollWerewolfDice (numDice, actor, label = '', difficulty = 0, rageDice = 0, subtractWillpower = false, consumeRage = false) {
-
   // Roll defining and evaluating
   const rageDiceTotal = Math.min(numDice, rageDice)
   const dice = Math.max(numDice - rageDiceTotal, 0)
@@ -66,7 +65,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
     const newRageAmount = currentRage - totalRageFail
   
     if (newRageAmount === 0 && currentRage > 0) {
-      let chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>
+      const chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>
       <p class="roll-content result-rage result-possible">This actor has 0 rage and has lost the wolf.</p>`
   
       // Post the message to the chat

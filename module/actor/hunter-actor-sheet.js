@@ -163,9 +163,9 @@ export class HunterActorSheet extends CellActorSheet {
     // It's dumb, I know, and I hope to set up a migration function to fix it sometime
     // but I don't want to delay this release more than I already had to-
     if (newDespair) { // Set as "true"
-      this.actor.update({ [`system.despair.value`]: 1 })
+      this.actor.update({ ['system.despair.value']: 1 })
     } else { // Set as "false"
-      this.actor.update({ [`system.despair.value`]: 0 })
+      this.actor.update({ ['system.despair.value']: 0 })
     }
   }
 

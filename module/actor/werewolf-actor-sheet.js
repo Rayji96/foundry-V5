@@ -1,4 +1,4 @@
-/* global game, mergeObject */
+/* global game, mergeObject, renderTemplate, ChatMessage */
 
 import { WoDv5Actor } from './wod-v5-sheet.js'
 import { rollWerewolfDice } from './roll-werewolf-dice.js'
@@ -63,30 +63,26 @@ export class WerewolfActorSheet extends WoDv5Actor {
     const actorData = sheetData.actor
     actorData.system.gamesystem = 'werewolf'
 
-    const gifts_list = structuredClone(actorData.system.gifts)
-    const rites_list = structuredClone(actorData.system.rites)
+    const giftsList = structuredClone(actorData.system.gifts)
+    const ritesList = structuredClone(actorData.system.rites)
 
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
       if (i.type === 'gift') {
-        if (i.system.giftType === "rite") {
+        if (i.system.giftType === 'rite') {
           // Append to the rites list.
-          rites_list.push(i)
+          ritesList.push(i)
         } else {
           // Append to each of the gift types.
           if (i.system.giftType !== undefined) {
-            gifts_list[i.system.giftType].powers.push(i)
+            giftsList[i.system.giftType].powers.push(i)
           }
         }
       }
     }
 
-    actorData.system.gifts_list = gifts_list;
-    actorData.system.rites_list = rites_list;
-
-    if (actorData.system.activeForm === "homid") {
-      //actorData.system.health.max = actorData.system.health.max + actorData.system.ciranosHealth.max
-    }
+    actorData.system.giftsList = giftsList
+    actorData.system.ritesList = ritesList
   }
 
   /* -------------------------------------------- */
@@ -159,7 +155,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
 
     let dice2
     if (item.system.dice2 === 'renown') {
-      dice2 = disciplineValue
+      dice2 = renownValue
     } else if (item.system.skill) {
       dice2 = this.actor.system.skills[item.system.dice2].value
     } else {
@@ -197,16 +193,17 @@ export class WerewolfActorSheet extends WoDv5Actor {
         // Prepare the item object.
         const itemData = {
           name: game.i18n.localize('VTM5E.NewGift'),
-          type: "gift",
+          type: 'gift',
           system: {
-            "giftType": header.dataset.gift
+            'giftType': header.dataset.gift
           }
         }
-        // Remove the type from the dataset since it's in the itemData.type prop.
-        delete itemData.system.type
 
-        // Finally, create the item!
-        return this.actor.createEmbeddedDocuments('Item', [itemData])
+      // Remove the type from the dataset since it's in the itemData.type prop.
+      delete itemData.system.type
+
+      // Finally, create the item!
+      return this.actor.createEmbeddedDocuments('Item', [itemData])
     } else {
       let options = ''
       for (const [key, value] of Object.entries(this.actor.system.gifts)) {
@@ -232,9 +229,9 @@ export class WerewolfActorSheet extends WoDv5Actor {
             // Prepare the item object.
             const itemData = {
               name: game.i18n.localize('VTM5E.NewGift'),
-              type: "gift",
+              type: 'gift',
               system: {
-                "giftType": gift
+                'giftType': gift
               }
             }
             // Remove the type from the dataset since it's in the itemData.type prop.
@@ -270,9 +267,9 @@ export class WerewolfActorSheet extends WoDv5Actor {
     // Prepare the item object.
     const itemData = {
       name: game.i18n.localize('VTM5E.NewRite'),
-      type: "gift",
+      type: 'gift',
       system: {
-        "giftType": "rite"
+        'giftType': 'rite'
       }
     }
     // Remove the type from the dataset since it's in the itemData.type prop.
@@ -305,37 +302,31 @@ export class WerewolfActorSheet extends WoDv5Actor {
 
     // Switch statement to make it easy to see which form does what.
     switch (newForm) {
-      case "homid":
-        console.log("Homid!")
-        this.actor.update({ 'system.activeForm': "homid"})
+      case 'homid':
+        this.actor.update({ 'system.activeForm': 'homid' })
 
         break;
-      case "glabro":
-        console.log("Glabro")
-        this.actor.update({ 'system.activeForm': "glabro"})
+      case 'glabro':
+        this.actor.update({ 'system.activeForm': 'glabro' })
 
         this._onDeductRageDice(1)
         break;
-      case "crinos":
-        console.log("Big scary werewoof")
-        this.actor.update({ 'system.activeForm': "crinos"})
+      case 'crinos':
+        this.actor.update({ 'system.activeForm': 'crinos' })
 
         this._onDeductRageDice(2)
         break;
-      case "hispo":
-        console.log("Hispo")
-        this.actor.update({ 'system.activeForm': "hispo"})
+      case 'hispo':
+        this.actor.update({ 'system.activeForm': 'hispo' })
 
         this._onDeductRageDice(1)
         break;
-      case "lupus":
-        console.log("Lupus")
-        this.actor.update({ 'system.activeForm': "lupus"})
+      case 'lupus':
+        this.actor.update({ 'system.activeForm': 'lupus' })
 
         break;
       default:
-        console.log("No form selected. Resetting to human.")
-        this.actor.update({ 'system.activeForm': "homid"})
+        this.actor.update({ 'system.activeForm': 'homid' })
     }
   }
 

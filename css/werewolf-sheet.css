@@ -8,7 +8,7 @@
   background: var(--werewolf-primary);
 }
 
-.vtm5e.werewolf-sheet .sheetBanner {
+.vtm5e.werewolf-sheet .sheet-banner {
   background: var(--werewolf-primary);
   color: #CCC;
 }
@@ -123,7 +123,7 @@
   background: #d985359a;
 }
 
-.vtm5e.werewolf-sheet .formAbilities {
+.vtm5e.werewolf-sheet .form-abilities {
   text-align: left;
 }
 

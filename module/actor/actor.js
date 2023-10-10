@@ -31,10 +31,10 @@ export class ActorInfo extends Actor {
     const title = game.i18n.format('DOCUMENT.Create', { type: label })
 
     // Reorganize the actor templates into something usable for the creation form
-    let actorTypes = {}
-    for (var i in actorTemplates) {
+    const actorTypes = {}
+    for (let i in actorTemplates) {
       // If the actor template has a label, add it to the types list
-      if(actorTemplates[i].label) {
+      if (actorTemplates[i].label) {
         actorTypes[i] = game.i18n.localize(actorTemplates[i].label)
       }
     }
@@ -45,7 +45,7 @@ export class ActorInfo extends Actor {
       folder: data.folder,
       folders: gameFolders,
       hasFolders: gameFolders.length > 0,
-      type: data.type || "base",
+      type: data.type || 'base',
       types: actorTypes,
       hasTypes: true
     })
