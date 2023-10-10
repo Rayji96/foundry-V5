@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject, renderTemplate, ChatMessage */
+/* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
 // Export this function to be used in other scripts
 import { CellActorSheet } from './cell-actor-sheet.js'

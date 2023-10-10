@@ -1,4 +1,4 @@
-/* global Dialog, duplicate, game, mergeObject */
+/* global Dialog, game, mergeObject */
 
 // Export this function to be used in other scripts
 import { CoterieActorSheet } from './coterie-actor-sheet.js'

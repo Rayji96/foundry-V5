@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, WoDv5Actor, game, mergeObject, duplicate, renderTemplate, ChatMessage, TextEditor */
+/* global game, mergeObject, TextEditor */
 
 import { WoDv5Actor } from './wod-v5-sheet.js'
 

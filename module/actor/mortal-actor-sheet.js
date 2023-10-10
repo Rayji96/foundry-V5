@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, Dialog, duplicate, game, mergeObject, TextEditor */
+/* global game, mergeObject, TextEditor */
 
 // Export this function to be used in other scripts
 import { CoterieActorSheet } from './coterie-actor-sheet.js'
