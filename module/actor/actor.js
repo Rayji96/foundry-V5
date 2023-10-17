@@ -23,6 +23,8 @@ export class ActorInfo extends Actor {
 
     // List of actor templates
     const actorTemplates = game.template.Actor
+    const actorTemplateTypes = game.template.Actor.types
+
     // List of folders in the game, if there is at least 1
     const gameFolders = game.folders.filter(f => (f.type === documentName) && f.displayed)
 
@@ -32,11 +34,12 @@ export class ActorInfo extends Actor {
 
     // Reorganize the actor templates into something usable for the creation form
     const actorTypes = {}
-    for (let i in actorTemplates) {
+    for (let i in actorTemplateTypes) {
+      let actorType = actorTemplateTypes[i]
+
       // If the actor template has a label, add it to the types list
-      if (actorTemplates[i].label) {
-        actorTypes[i] = game.i18n.localize(actorTemplates[i].label)
-      }
+      // Otherwise, default to the actor's key
+      actorTypes[actorType] = actorTemplates[actorType].label ? game.i18n.localize(actorTemplates[actorType].label) : actorType
     }
 
     // Render the document creation form
