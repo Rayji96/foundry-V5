@@ -80,7 +80,9 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
     actor.update({ 'system.rage.value': newRageAmount })
 
     // Send back the actor's new rage value
-    callback(newRageAmount)
+    if (callback) {
+      callback(newRageAmount)
+    }
   }
 
   // Success canculating
