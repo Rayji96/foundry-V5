@@ -297,8 +297,9 @@ export class WerewolfActorSheet extends WoDv5Actor {
   _onShiftForm (event) {
     event.preventDefault()
 
-    const header = event.currentTarget
-    const newForm = header.dataset.newForm
+    const element = event.currentTarget
+    const dataset = element.dataset
+    const newForm = dataset.newForm
 
     // Switch statement to make it easy to see which form does what.
     switch (newForm) {
@@ -307,24 +308,54 @@ export class WerewolfActorSheet extends WoDv5Actor {
 
         break;
       case 'glabro':
-        this.actor.update({ 'system.activeForm': 'glabro' })
+        // Make a quick promise to wait for the roll's outcome before we try swapping forms
+        const rollGlabroDicePromise = new Promise((resolve, reject) => {
+          // Roll the number of dice required to shift (1 for Glabro)
+          rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+        })
 
-        this._onDeductRageDice(1)
-        break;
+        // If the rage dice didn't reduce the actor's rage to 0, then continue
+        rollGlabroDicePromise.then((newRageDice) => {
+          if (newRageDice > 0) {
+            this.actor.update({ 'system.activeForm': 'glabro' })
+          }
+        })
+
+        break
       case 'crinos':
-        this.actor.update({ 'system.activeForm': 'crinos' })
+        // Make a quick promise to wait for the roll's outcome before we try swapping forms
+        const rollCrinosDicePromise = new Promise((resolve, reject) => {
+          // Roll the number of dice required to shift (2 for Crinos)
+          rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
+        })
 
-        this._onDeductRageDice(2)
-        break;
+        // If the rage dice didn't reduce the actor's rage to 0, then continue
+        rollCrinosDicePromise.then((newRageDice) => {
+          if (newRageDice > 0) {
+            this.actor.update({ 'system.activeForm': 'crinos' })
+          }
+        })
+
+        break
       case 'hispo':
-        this.actor.update({ 'system.activeForm': 'hispo' })
+        // Make a quick promise to wait for the roll's outcome before we try swapping forms
+        const rollHispoDicePromise = new Promise((resolve, reject) => {
+          // Roll the number of dice required to shift (1 for hispo)
+          rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+        })
 
-        this._onDeductRageDice(1)
-        break;
+        // If the rage dice didn't reduce the actor's rage to 0, then continue
+        rollHispoDicePromise.then((newRageDice) => {
+          if (newRageDice > 0) {
+            this.actor.update({ 'system.activeForm': 'hispo' })
+          }
+        })
+
+        break
       case 'lupus':
         this.actor.update({ 'system.activeForm': 'lupus' })
 
-        break;
+        break
       default:
         this.actor.update({ 'system.activeForm': 'homid' })
     }
@@ -393,13 +424,5 @@ export class WerewolfActorSheet extends WoDv5Actor {
       buttons: buttons,
       default: 'draw'
     }).render(true)
-  }
-
-  // Quick function for deducting rage dice
-  _onDeductRageDice (rageCost) {
-    const currentRageDice = this.actor.system.rage.value
-    const newRageDice = currentRageDice - rageCost
-
-    this.actor.update({ 'system.rage.value': newRageDice})
   }
 }

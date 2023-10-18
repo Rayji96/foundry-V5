@@ -9,7 +9,8 @@
 // rageDice = Additional rage dice for the roll
 // subtractWillpower = Subtracts a point of willpower, always, if true
 // consumeRage = Whether the roll is an ability that has the potential to reduce the actor's rage
-export async function rollWerewolfDice (numDice, actor, label = '', difficulty = 0, rageDice = 0, subtractWillpower = false, consumeRage = false) {
+// callback = A callback function in case there's things that rely on the outcome of the roll (such as shifting forms)
+export async function rollWerewolfDice (numDice, actor, label = '', difficulty = 0, rageDice = 0, subtractWillpower = false, consumeRage = false, callback) {
   // Roll defining and evaluating
   const rageDiceTotal = Math.min(numDice, rageDice)
   const dice = Math.max(numDice - rageDiceTotal, 0)
@@ -77,6 +78,9 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   
     // Update the actor with the new amount of rage
     actor.update({ 'system.rage.value': newRageAmount })
+
+    // Send back the actor's new rage value
+    callback(newRageAmount)
   }
 
   // Success canculating
