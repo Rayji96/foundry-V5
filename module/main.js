@@ -175,7 +175,7 @@ Hooks.once('init', async function () {
   })
 
   Handlebars.registerHelper('ifeq', function (a, b, options) {
-    if (a == b) {
+    if (a === b) {
       return options.fn(this)
     }
 
@@ -183,11 +183,11 @@ Hooks.once('init', async function () {
   })
 
   Handlebars.registerHelper('ifnoteq', function (a, b, options) {
-      if (a != b) {
-        return options.fn(this)
-      }
+    if (a !== b) {
+      return options.fn(this)
+    }
 
-      return options.inverse(this)
+    return options.inverse(this)
   })
 
   Handlebars.registerHelper('or', function (bool1, bool2) {
@@ -802,7 +802,7 @@ async function willpowerReroll (roll) {
   new Dialog({
     title: game.i18n.localize('VTM5E.WillpowerReroll'),
     content: template,
-    buttons: buttons,
+    buttons,
     render: function () {
       $('.willpower-reroll .die').on('click', dieSelect)
     },
@@ -866,7 +866,7 @@ async function createVampireMacro (data, slot) {
       name: item.name,
       type: 'script',
       img: item.img,
-      command: command,
+      command,
       flags: { 'vtm5e.itemMacro': true }
     })
   }
