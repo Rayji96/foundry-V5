@@ -250,7 +250,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
       new Dialog({
         title: game.i18n.localize('VTM5E.AddGift'),
         content: template,
-        buttons: buttons,
+        buttons,
         default: 'draw'
       }).render(true)
     }
@@ -309,13 +309,11 @@ export class WerewolfActorSheet extends WoDv5Actor {
         break
       case 'glabro':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        const rollGlabroDicePromise = new Promise((resolve) => {
+        new Promise((resolve) => {
           // Roll the number of dice required to shift (1 for Glabro)
           rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
-        })
-
-        // If the rage dice didn't reduce the actor's rage to 0, then continue
-        rollGlabroDicePromise.then((newRageDice) => {
+        }).then((newRageDice) => {
+          // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
             this.actor.update({ 'system.activeForm': 'glabro' })
           }
@@ -324,13 +322,11 @@ export class WerewolfActorSheet extends WoDv5Actor {
         break
       case 'crinos':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        const rollCrinosDicePromise = new Promise((resolve) => {
+        new Promise((resolve) => {
           // Roll the number of dice required to shift (2 for Crinos)
           rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
-        })
-
-        // If the rage dice didn't reduce the actor's rage to 0, then continue
-        rollCrinosDicePromise.then((newRageDice) => {
+        }).then((newRageDice) => {
+          // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
             this.actor.update({ 'system.activeForm': 'crinos' })
           }
@@ -339,13 +335,11 @@ export class WerewolfActorSheet extends WoDv5Actor {
         break
       case 'hispo':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        const rollHispoDicePromise = new Promise((resolve) => {
+        new Promise((resolve) => {
           // Roll the number of dice required to shift (1 for hispo)
           rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
-        })
-
-        // If the rage dice didn't reduce the actor's rage to 0, then continue
-        rollHispoDicePromise.then((newRageDice) => {
+        }).then((newRageDice) => {
+          // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
             this.actor.update({ 'system.activeForm': 'hispo' })
           }
@@ -371,12 +365,12 @@ export class WerewolfActorSheet extends WoDv5Actor {
     const formDescription = formData.description
     const formAbilities = formData.abilities
 
-    let chatMessage = `<p class="roll-label uppercase">` + game.i18n.localize(formName) + `</p><p>` + formDescription + `</p>`
-    chatMessage = chatMessage + `<ul>`
-    formAbilities.forEach((ability) =>
+    let chatMessage = '<p class="roll-label uppercase">' + game.i18n.localize(formName) + '</p><p>' + formDescription + '</p>'
+    chatMessage = chatMessage + '<ul>'
+    formAbilities.forEach((ability) => {
       chatMessage = chatMessage + `<li>${ability}</li>`
-    )
-    chatMessage = chatMessage + `</ul>`
+    })
+    chatMessage = chatMessage + '</ul>'
 
     // Post the message to the chat
     ChatMessage.create({
@@ -401,27 +395,27 @@ export class WerewolfActorSheet extends WoDv5Actor {
           </div>
       </form>`
 
-      let buttons = {}
-      buttons = {
-        draw: {
-          icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize('VTM5E.Submit'),
-          callback: async (html) => {
-            const newDescription = html.find('#formDescription')[0].value
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: game.i18n.localize('VTM5E.Submit'),
+        callback: async (html) => {
+          const newDescription = html.find('#formDescription')[0].value
 
-            this.actor.update({ [`system.forms.${form}.description`]: newDescription })
-          }
-        },
-        cancel: {
-          icon: '<i class="fas fa-times"></i>',
-          label: game.i18n.localize('VTM5E.Cancel')
+          this.actor.update({ [`system.forms.${form}.description`]: newDescription })
         }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
       }
+    }
 
     new Dialog({
-      title: game.i18n.localize('VTM5E.Edit') + ` ` + game.i18n.localize(formName),
+      title: game.i18n.localize('VTM5E.Edit') + ' ' + game.i18n.localize(formName),
       content: template,
-      buttons: buttons,
+      buttons,
       default: 'draw'
     }).render(true)
   }

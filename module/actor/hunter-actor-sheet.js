@@ -208,7 +208,7 @@ export class HunterActorSheet extends CellActorSheet {
     new Dialog({
       title: game.i18n.localize('VTM5E.AddEdge'),
       content: template,
-      buttons: buttons,
+      buttons,
       default: 'draw'
     }).render(true)
   }

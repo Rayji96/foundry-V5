@@ -188,7 +188,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     new Dialog({
       title: game.i18n.localize('VTM5E.AddDiscipline'),
       content: template,
-      buttons: buttons,
+      buttons,
       default: 'draw'
     }).render(true)
   }

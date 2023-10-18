@@ -55,7 +55,7 @@ export class ActorInfo extends Actor {
 
     // Render the confirmation dialog window
     return Dialog.prompt({
-      title: title,
+      title,
       content: html,
       label: title,
       callback: html => {
@@ -67,7 +67,7 @@ export class ActorInfo extends Actor {
         return this.create(data, { renderSheet: true })
       },
       rejectClose: false,
-      options: options
+      options
     })
   }
 }
