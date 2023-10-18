@@ -3,6 +3,10 @@
 }
 
 /* Colour overrides for sheet themes */
+.vtm5e.werewolf-sheet .wolf .resource-label {
+  margin-bottom: 5px;
+}
+
 .vtm5e.werewolf-sheet .window-content .sheet-body .tab > .resource-label, .vtm5e.werewolf-sheet .items-list .item-header {
   color: var(--werewolf-primary);
   border-color: var(--werewolf-primary);
@@ -66,14 +70,11 @@
 
 .vtm5e.werewolf-sheet .wolf-resource {
   display: flex;
+  flex-grow: 1;
 }
 
 .vtm5e.werewolf-sheet .wolf-resource .resource-value-step, .vtm5e.werewolf-sheet .wolf-resource .resource-value-empty {
   border-radius: 0;
-}
-
-.vtm5e.werewolf-sheet .wolf-resource {
-  flex-grow: 1;
 }
 
 .vtm5e.werewolf-sheet .harano {
@@ -92,10 +93,6 @@
 .vtm5e.werewolf-sheet .were-form-nickname {
   font-size: 0.9em;
   font-weight: bold;
-}
-
-.vtm5e.werewolf-sheet .wolf .resource-label {
-  margin-bottom: 5px;
 }
 
 .vtm5e.werewolf-sheet .renown .resource {

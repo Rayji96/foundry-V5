@@ -1,4 +1,4 @@
-/* global game, mergeObject, renderTemplate, ChatMessage */
+/* global game, mergeObject, renderTemplate, ChatMessage, Dialog */
 
 import { WoDv5Actor } from './wod-v5-sheet.js'
 import { rollWerewolfDice } from './roll-werewolf-dice.js'
@@ -190,14 +190,14 @@ export class WerewolfActorSheet extends WoDv5Actor {
 
     // If the type of gift is already set, we don't need to ask for it
     if (header.dataset.gift) {
-        // Prepare the item object.
-        const itemData = {
-          name: game.i18n.localize('VTM5E.NewGift'),
-          type: 'gift',
-          system: {
-            'giftType': header.dataset.gift
-          }
+      // Prepare the item object.
+      const itemData = {
+        name: game.i18n.localize('VTM5E.NewGift'),
+        type: 'gift',
+        system: {
+          giftType: header.dataset.gift
         }
+      }
 
       // Remove the type from the dataset since it's in the itemData.type prop.
       delete itemData.system.type
@@ -231,7 +231,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
               name: game.i18n.localize('VTM5E.NewGift'),
               type: 'gift',
               system: {
-                'giftType': gift
+                giftType: gift
               }
             }
             // Remove the type from the dataset since it's in the itemData.type prop.
@@ -269,7 +269,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
       name: game.i18n.localize('VTM5E.NewRite'),
       type: 'gift',
       system: {
-        'giftType': 'rite'
+        giftType: 'rite'
       }
     }
     // Remove the type from the dataset since it's in the itemData.type prop.
@@ -282,7 +282,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
   // Handle when an actor goes into a frenzy
   _onBeginFrenzy (event) {
     event.preventDefault()
-    this.actor.update({ 'system.frenzyActive': true})
+    this.actor.update({ 'system.frenzyActive': true })
 
     this.actor.update({ 'system.rage.value': 5 })
   }
@@ -290,7 +290,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
   // Handle when an actor ends their frenzy
   _onEndFrenzy (event) {
     event.preventDefault()
-    this.actor.update({ 'system.frenzyActive': false})
+    this.actor.update({ 'system.frenzyActive': false })
   }
 
   // Handle form changes
@@ -306,10 +306,10 @@ export class WerewolfActorSheet extends WoDv5Actor {
       case 'homid':
         this.actor.update({ 'system.activeForm': 'homid' })
 
-        break;
+        break
       case 'glabro':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        const rollGlabroDicePromise = new Promise((resolve, reject) => {
+        const rollGlabroDicePromise = new Promise((resolve) => {
           // Roll the number of dice required to shift (1 for Glabro)
           rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
         })
@@ -324,7 +324,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
         break
       case 'crinos':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        const rollCrinosDicePromise = new Promise((resolve, reject) => {
+        const rollCrinosDicePromise = new Promise((resolve) => {
           // Roll the number of dice required to shift (2 for Crinos)
           rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
         })
@@ -339,7 +339,7 @@ export class WerewolfActorSheet extends WoDv5Actor {
         break
       case 'hispo':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        const rollHispoDicePromise = new Promise((resolve, reject) => {
+        const rollHispoDicePromise = new Promise((resolve) => {
           // Roll the number of dice required to shift (1 for hispo)
           rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
         })

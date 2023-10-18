@@ -34,8 +34,8 @@ export class ActorInfo extends Actor {
 
     // Reorganize the actor templates into something usable for the creation form
     const actorTypes = {}
-    for (let i in actorTemplateTypes) {
-      let actorType = actorTemplateTypes[i]
+    for (const i in actorTemplateTypes) {
+      const actorType = actorTemplateTypes[i]
 
       // If the actor template has a label, add it to the types list
       // Otherwise, default to the actor's key

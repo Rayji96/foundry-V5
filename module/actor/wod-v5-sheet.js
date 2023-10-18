@@ -490,7 +490,7 @@ export class WoDv5Actor extends ActorSheet {
     }
 
     // Hunter specific modifier to a roll
-    let despairBlock = ``
+    let despairBlock = ''
     if (system === 'hunter') {
       const despair = Object.values(this.actor.system.despair).toString()
 
@@ -516,8 +516,7 @@ export class WoDv5Actor extends ActorSheet {
           </div>  
           <div class="form-group">` +
            // Hunter specific modifier to a roll
-           despairBlock
-           +
+           despairBlock +
            `</div>
            <div class="form-group">
            <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
@@ -541,7 +540,7 @@ export class WoDv5Actor extends ActorSheet {
           // Define what kind of dice is appropriate to use
           if (system === 'vampire') {
             // Define actor's hunger dice
-            let hungerDice = Math.min(this.actor.system.hunger.value, numDice)
+            const hungerDice = Math.min(this.actor.system.hunger.value, numDice)
 
             rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, hungerDice)
           } else if (system === 'hunter') {
@@ -555,7 +554,7 @@ export class WoDv5Actor extends ActorSheet {
             rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, desparationDice)
           } else if (system === 'werewolf') {
             // Define actor's rage dice
-            let rageDice = Math.max(this.actor.system.rage.value, 0)
+            const rageDice = Math.max(this.actor.system.rage.value, 0)
 
             rollWerewolfDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, rageDice)
           } else {
@@ -652,7 +651,7 @@ export class WoDv5Actor extends ActorSheet {
             // Define actor's hunger dice
             const hungerDice = Math.min(this.actor.system.hunger.value, numDice)
 
-            rollDice(numDice, this.actor, dataset.label,difficulty, hungerDice, increaseHunger, subtractWillpower)
+            rollDice(numDice, this.actor, dataset.label, difficulty, hungerDice, increaseHunger, subtractWillpower)
           } else if (system === 'hunter') {
             // Define actor's desparation dice
             const desparationDice = parseInt(html.find('#desparationInput')[0].value || 0)

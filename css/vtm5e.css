@@ -376,6 +376,23 @@ optgroup {
     flex-direction: row;
 }
 
+.dialog .dialog-buttons button {
+    border: 3px double var(--color-shadow-highlight);
+}
+
+.directory .action-buttons button {
+    border: 1px solid var(--color-shadow-highlight);
+}
+
+.vtm5e .actor-header .profile-img-zone button {
+    background: #790813;
+    color: #fff;
+    font-family: cormorantlight, sans-serif;
+    font-weight: 700;
+    border: none;
+    box-shadow: none;
+}
+
 .vtm5e .actor-header .header-fields-top .header-profile-img {
     max-width: 100px;
 }
@@ -386,7 +403,7 @@ optgroup {
 }
 
 .vtm5e .actor-header .header-fields-top .header-profile-img button {
-    margin: 0 0;
+    margin: 0;
 }
 
 .vtm5e .actor-header .header-fields-top .header-rows-top {
@@ -499,26 +516,12 @@ optgroup {
     margin-bottom: 0;
 }
 
-.dialog .dialog-buttons button {
-    border: 3px double var(--color-shadow-highlight);
-}
-
-.directory .action-buttons button {
-    border: 1px solid var(--color-shadow-highlight);
-}
-
-
-.vtm5e .actor-header .profile-img-zone button {
-    background: #790813;
-    color: #fff;
-    font-family: cormorantlight, sans-serif;
-    font-weight: 700;
-    border: none;
-    box-shadow: none;
-}
-
 .vtm5e .actor-header .profile-img-zone button:hover {
     box-shadow: inset 0 0 5px #000;
+}
+
+.sheet-banner h1 {
+    margin-bottom: 0;
 }
 
 .vtm5e .actor-header .profile-img-zone h1 {
@@ -981,6 +984,14 @@ input[name="system.blood.resonance"] {
     font-weight: 700;
 }
 
+.sheet-banner {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: column;
+    text-align: center;
+    margin: -10px -10px 5px;
+}
+
 .vtm5e.vampire-sheet .sheet-banner, .vtm5e.ghoul-sheet .sheet-banner, .vtm5e.coterie-sheet .sheet-banner {
     background: #790813;
     color: #CCC;
@@ -1055,18 +1066,6 @@ h3.item-name.chat-portrait-text-size-name-generic {
     min-height: auto;
     font-size: 1.2em;
     font-weight: 700;
-}
-
-.sheet-banner {
-    display: flex;
-    flex-grow: 0;
-    flex-direction: column;
-    text-align: center;
-    margin: -10px -10px 5px -10px;
-}
-
-.sheet-banner h1 {
-    margin-bottom: 0px;
 }
 
 .actor-header .grid-2col {

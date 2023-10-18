@@ -64,18 +64,18 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   if (consumeRage) {
     const currentRage = actor.system.rage.value
     const newRageAmount = currentRage - totalRageFail
-  
+
     if (newRageAmount === 0 && currentRage > 0) {
       const chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>
       <p class="roll-content result-rage result-possible">This actor has 0 rage and has lost the wolf.</p>`
-  
+
       // Post the message to the chat
       ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor: actor }),
         content: chatMessage
       })
     }
-  
+
     // Update the actor with the new amount of rage
     actor.update({ 'system.rage.value': newRageAmount })
 

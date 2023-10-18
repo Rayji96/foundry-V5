@@ -72,8 +72,5 @@ export class CoterieActorSheet extends WoDv5Actor {
   /** @override */
   activateListeners (html) {
     super.activateListeners(html)
-
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return
   }
 }
