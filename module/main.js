@@ -9,6 +9,7 @@ import { WoDv5ItemSheet } from './item/item-sheet.js'
 import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/dice.js'
 import { rollDice } from './actor/roll-dice.js'
 import { rollHunterDice } from './actor/roll-hunter-dice.js'
+import { rollWerewolfDice } from './actor/roll-werewolf-dice.js'
 import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
 import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
@@ -835,10 +836,14 @@ function rerollDie (roll) {
   const charactertype = getProperty(speaker, 'type', { strict: true })
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-  if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== 'hunter') {
-    rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
-  } else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === 'hunter') {
-    rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
+  if ((diceSelected > 0) && (diceSelected < 4)) {
+    if (charactertype === 'hunter') { // Hunter-specific dice
+      rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
+    } else if (charactertype === 'werewolf') { // Werewolf-specific dice
+      rollWerewolfDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
+    } else { // Everything else
+      rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
+    }
   }
 }
 
