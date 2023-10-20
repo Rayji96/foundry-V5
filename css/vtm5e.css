@@ -339,6 +339,7 @@ optgroup {
 .vtm5e .actor-header .resource {
     border: 1px solid #790813;
     border-radius: 2px;
+    flex-grow: 1;
 }
 
 .vtm5e .actor-header .resource.exp, .vtm5e .actor-header .resource.generaldifficulty {

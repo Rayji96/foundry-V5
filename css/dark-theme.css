@@ -34,9 +34,9 @@
 }
 
 .vtm5e.dark-theme .window-content .sheet-body .tab > .resource-label {
-  color: #790813;
+  color: #f7f7f7;
+  border-bottom: 1px solid #ff0000;
   padding-bottom: 0.1em;
-  border-bottom: 1px solid #790813;
   font-family: Vollkorn, serif;
   font-weight: 700;
 }
@@ -46,7 +46,7 @@
 }
 
 .vtm5e.dark-theme .items-list .item-header {
-  color: #bb1020;
+  color: #fff6f7;
 }
 
 .vtm5e.dark-theme .tox .tox-editor-container {
@@ -209,11 +209,11 @@
 }
 
 .vtm5e.dark-theme input {
-  color: #f7f7f7;
+  color: #000000;
 }
 
 .vtm5e.dark-theme .vtm5e input {
-  color: #f7f7f7;
+  color: #000000;
 }
 
 .vtm5e.dark-theme input[name="system.blood.resonance"] {
@@ -221,7 +221,7 @@
 }
 
 .vtm5e.dark-theme .actor-header h1.charname input {
-  color: #f7f7f7;
+  color: #000000;
 }
 
 .vtm5e.dark-theme .description-content {
@@ -233,4 +233,13 @@
 
 .vtm5e.dark-theme .tab.blood.active p {
   color: #bb1020;
+}
+
+.vtm5e.dark-theme.werewolf-sheet .window-content .sheet-body .tab > .resource-label, .vtm5e.dark-theme.werewolf-sheet .items-list .item-header {
+  color: #cd7a3def;
+  border-color: #cd7a3def;
+}
+
+.vtm5e.dark-theme.hunter-sheet .despair-box .despair-toggle {
+  border-color: white;
 }
