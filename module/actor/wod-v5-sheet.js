@@ -391,8 +391,8 @@ export class WoDv5Actor extends ActorSheet {
 
     // Prepare the item object.
     const itemData = {
-      name: name,
-      type: type,
+      name,
+      type,
       system: data
     }
     // Remove the type from the dataset since it's in the itemData.type prop.
@@ -571,7 +571,7 @@ export class WoDv5Actor extends ActorSheet {
     new Dialog({
       title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
       content: template,
-      buttons: buttons,
+      buttons,
       default: 'draw'
     }).render(true)
   }
@@ -676,7 +676,7 @@ export class WoDv5Actor extends ActorSheet {
     new Dialog({
       title: `${dataset.label}`,
       content: template,
-      buttons: buttons,
+      buttons,
       default: 'draw'
     }).render(true)
   }

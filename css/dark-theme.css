@@ -35,7 +35,7 @@
 
 .vtm5e.dark-theme .window-content .sheet-body .tab > .resource-label {
   color: #f7f7f7;
-  border-bottom: 1px solid #ff0000;
+  border-bottom: 1px solid #f00;
   padding-bottom: 0.1em;
   font-family: Vollkorn, serif;
   font-weight: 700;
@@ -209,11 +209,11 @@
 }
 
 .vtm5e.dark-theme input {
-  color: #000000;
+  color: #000;
 }
 
 .vtm5e.dark-theme .vtm5e input {
-  color: #000000;
+  color: #000;
 }
 
 .vtm5e.dark-theme input[name="system.blood.resonance"] {
@@ -221,7 +221,7 @@
 }
 
 .vtm5e.dark-theme .actor-header h1.charname input {
-  color: #000000;
+  color: #000;
 }
 
 .vtm5e.dark-theme .description-content {
