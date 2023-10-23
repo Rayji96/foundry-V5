@@ -1,6 +1,6 @@
 /* global game, mergeObject, renderTemplate, ChatMessage, Dialog */
 
-import { WoDv5Actor } from './wod-v5-sheet.js'
+import { WoDActor } from './wod-v5-sheet.js'
 import { rollWerewolfDice } from './roll-werewolf-dice.js'
 
 /**
@@ -8,7 +8,7 @@ import { rollWerewolfDice } from './roll-werewolf-dice.js'
  * @extends {Wov5DActorSheet}
  */
 
-export class WerewolfActorSheet extends WoDv5Actor {
+export class WerewolfActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes

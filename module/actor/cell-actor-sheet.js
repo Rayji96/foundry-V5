@@ -1,13 +1,13 @@
 /* global game, mergeObject, TextEditor */
 
-import { WoDv5Actor } from './wod-v5-sheet.js'
+import { WoDActor } from './wod-v5-sheet.js'
 
 /**
- * Extend the base WoDv5Actor with anything necessary for the new actor sheet
- * @extends {WoDv5Actor}
+ * Extend the base WoDActor with anything necessary for the new actor sheet
+ * @extends {WoDActor}
  */
 
-export class CellActorSheet extends WoDv5Actor {
+export class CellActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes

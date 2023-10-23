@@ -9,7 +9,7 @@ import { rollBasicDice } from './roll-basic-dice.js'
  * Extend the base ActorSheet document and put all our base functionality here
  * @extends {ActorSheet}
  */
-export class WoDv5Actor extends ActorSheet {
+export class WoDActor extends ActorSheet {
   /** @override */
   async getData () {
     const data = await super.getData()
