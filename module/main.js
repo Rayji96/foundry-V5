@@ -5,7 +5,7 @@ import { preloadHandlebarsTemplates } from './templates.js'
 import { migrateWorld } from './migration.js'
 import { ActorInfo } from './actor/actor.js'
 import { ItemInfo } from './item/item.js'
-import { WoDv5ItemSheet } from './item/item-sheet.js'
+import { WoDItemSheet } from './item/item-sheet.js'
 import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/dice.js'
 import { rollDice } from './actor/roll-dice.js'
 import { rollHunterDice } from './actor/roll-hunter-dice.js'
@@ -157,7 +157,7 @@ Hooks.once('init', async function () {
     makeDefault: true
   })
   Items.unregisterSheet('core', ItemSheet)
-  Items.registerSheet('vtm5e', WoDv5ItemSheet, {
+  Items.registerSheet('vtm5e', WoDItemSheet, {
     label: 'Item Sheet',
     makeDefault: true
   })
