@@ -1,11 +1,16 @@
 <form class="{{cssClass}} flexcol limited" autocomplete="off">
+    {{!-- Actor Type Banner --}}
+    <div class="sheet-banner">
+      <h1>{{ sheetType }}</h1>
+    </div>
 
     {{!-- Sheet Header --}}
-    <header class="sheet-header">
+    <header class="actor-header">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
             alt="Profile Image" />
         <h2 class="limited-charname">{{actor.name}}</h2>
     </header>
+
     {{!-- Sheet Body --}}
     <section class="sheet-body">
             {{#unless actor.system.clan.value}}

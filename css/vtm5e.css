@@ -3,7 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 @import url("./tray.css");
 @import url("./dark-theme.css");
-@import url("./hunter-theme.css");
+@import url("./hunter-sheet.css");
+@import url("./werewolf-sheet.css");
 
 :root {
     --color-text-hyperlink: #790813;
@@ -112,7 +113,9 @@ button:focus {
 .vrollable:hover,
 .vrollable:focus,
 .power-rollable:hover,
-.power-rollable:focus {
+.power-rollable:focus,
+.gift-rollable:hover,
+.gift-rollable:focus {
     color: #000;
     text-shadow: 0 0 10px red;
     cursor: pointer;
@@ -333,18 +336,22 @@ optgroup {
     cursor: pointer;
 }
 
-.vtm5e .window-content .header-fields .resource {
+.vtm5e .actor-header .resource {
     border: 1px solid #790813;
     border-radius: 2px;
+    flex-grow: 1;
 }
 
+.vtm5e .actor-header .resource.exp, .vtm5e .actor-header .resource.generaldifficulty {
+    max-width: 100px;
+}
 
-.vtm5e .window-content .header-fields select {
+.vtm5e .actor-header select {
     max-width: 150px;
     float: right;
 }
 
-.vtm5e .window-content .header-fields .level {
+.vtm5e .actor-header .level {
     flex-grow: 0;
     margin-left: 20px;
     align-self: center;
@@ -352,11 +359,116 @@ optgroup {
     text-align: center;
 }
 
-.vtm5e .sheet-header h1.charname input {
+.vtm5e .actor-header h1.charname input {
     width: 100%;
     height: 100%;
     margin: 0;
     text-align-last: center;
+}
+
+.vtm5e .actor-header {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+}
+
+.vtm5e .actor-header .header-fields-top {
+    display: flex;
+    flex-direction: row;
+}
+
+.dialog .dialog-buttons button {
+    border: 3px double var(--color-shadow-highlight);
+}
+
+.directory .action-buttons button {
+    border: 1px solid var(--color-shadow-highlight);
+}
+
+.vtm5e .actor-header .profile-img-zone button {
+    background: #790813;
+    color: #fff;
+    font-family: cormorantlight, sans-serif;
+    font-weight: 700;
+    border: none;
+    box-shadow: none;
+}
+
+.vtm5e .actor-header .header-fields-top .header-profile-img {
+    max-width: 100px;
+}
+
+.vtm5e .actor-header .header-fields-top .header-profile-img .profile-img-zone {
+    display: flex;
+    flex-direction: column;
+}
+
+.vtm5e .actor-header .header-fields-top .header-profile-img button {
+    margin: 0;
+}
+
+.vtm5e .actor-header .header-fields-top .header-rows-top {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.vtm5e .actor-header .header-fields-top .header-row-1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.vtm5e .actor-header .header-fields-top .header-row-2 {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.vtm5e .actor-header .header-fields-top .header-row-2 .resource {
+    margin-left: 5px;
+    margin-right: 5px;
+    flex-grow: 1;
+}
+
+.vtm5e .actor-header .header-fields-bottom {
+    display: flex;
+}
+
+.vtm5e .item-header {
+    flex: 0 0 215px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.vtm5e .item-header .profile-img {
+    flex: 0 0 100px;
+    min-height: 50px;
+    max-height: 205px;
+    height: auto;
+    width: 100px;
+    margin-right: 0;
+}
+
+.vtm5e .item-header .header-fields {
+    flex: 1;
+}
+
+.vtm5e .item-header h1.charname {
+    height: initial;
+    padding: 0;
+    margin: 0;
+    border-bottom: 0;
+}
+
+.item-header .grid-2col {
+    margin-bottom: 10px;
+}
+    
+.item-header .grid-3col {
+    margin-bottom: 10px;
 }
 
 .compendium.directory.flexcol {
@@ -377,9 +489,10 @@ optgroup {
     border-radius: 0;
 }
 
-.vtm5e .window-content .header-fields .level input {
+.vtm5e .window-content .header-fields .level input, .vtm5e .itemsheet-textbox {
     max-width: 35px;
     float: left;
+    background-color: #ffca55;
 }
 
 .vtm5e .window-content .abilities,
@@ -395,16 +508,7 @@ optgroup {
     text-transform: uppercase;
 }
 
-.vtm5e .sheet-header {
-    flex: 0 0 215px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-}
-
-.vtm5e .limited .sheet-header {
+.vtm5e .limited .actor-header {
     flex: 0 0 160px;
     overflow: hidden;
     display: flex;
@@ -413,56 +517,15 @@ optgroup {
     margin-bottom: 0;
 }
 
-.vtm5e .coterie-sheet .sheet-header,
-.vtm5e .mortal-sheet .sheet-header,
-.vtm5e .hunter-sheet .sheet-header,
-.vtm5e .cell-sheet .sheet-header,
-.vtm5e .spc-sheet .sheet-header,
-.vtm5e .ghoul-sheet .sheet-header {
-    flex: 0 0 155px;
-}
-
-.vtm5e .sheet-header .profile-img-zone {
-    max-width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-right: 10px;
-}
-
-.dialog .dialog-buttons button {
-    border: 3px double var(--color-shadow-highlight);
-}
-
-.directory .action-buttons button {
-    border: 1px solid var(--color-shadow-highlight);
-}
-
-
-.vtm5e .sheet-header .profile-img-zone button {
-    background: #790813;
-    color: #fff;
-    font-family: cormorantlight, sans-serif;
-    font-weight: 700;
-    border: none;
-    box-shadow: none;
-}
-
-.vtm5e .sheet-header .profile-img-zone button:hover {
+.vtm5e .actor-header .profile-img-zone button:hover {
     box-shadow: inset 0 0 5px #000;
 }
 
-.vtm5e .sheet-header .profile-img {
-    flex: 0 0 100px;
-    min-height: 50px;
-    max-height: 205px;
-    height: auto;
-    width: 100px;
-    margin-right: 0;
+.sheet-banner h1 {
+    margin-bottom: 0;
 }
 
-.vtm5e .sheet-header .profile-img-zone h1 {
+.vtm5e .actor-header .profile-img-zone h1 {
     color: #790813;
     font-family: cormorantlight, sans-serif;
     text-transform: uppercase;
@@ -470,18 +533,13 @@ optgroup {
     font-weight: 700;
 }
 
-.vtm5e .sheet-header .header-fields {
-    flex: 1;
-}
-
-.vtm5e .sheet-header h1.charname {
+.vtm5e .actor-header h1.charname {
     height: initial;
     padding: 0;
     margin: 0;
-    border-bottom: 0;
 }
 
-.vtm5e .sheet-header h2.limited-charname {
+.vtm5e .actor-header h2.limited-charname {
     font-weight: 700;
     font-size: 50px;
     text-align: center;
@@ -927,18 +985,18 @@ input[name="system.blood.resonance"] {
     font-weight: 700;
 }
 
-
-.vtm5e .vampire-sheet .sheet-header .profile-img {
-    flex: 0 0 160px;
-    max-height: 160px;
-    width: fit-content;
-    border: none;
-    border-radius: 3px 3px 0 0;
+.sheet-banner {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: column;
+    text-align: center;
+    margin: -10px -10px 5px;
 }
 
-.vtm5e .vampire-sheet .sheet-header .profile-img-zone {
-    max-width: 160px;
-}
+.vtm5e.vampire-sheet .sheet-banner, .vtm5e.ghoul-sheet .sheet-banner, .vtm5e.coterie-sheet .sheet-banner {
+    background: #790813;
+    color: #CCC;
+  }
 
 .sheet nav.sheet-tabs .item {
     align-self: center;
@@ -1011,11 +1069,11 @@ h3.item-name.chat-portrait-text-size-name-generic {
     font-weight: 700;
 }
 
-.sheet-header .grid-2col {
+.actor-header .grid-2col {
     margin-bottom: 10px;
 }
 
-.sheet-header .grid-3col {
+.actor-header .grid-3col {
     margin-bottom: 10px;
 }
 
@@ -1041,27 +1099,11 @@ span.resource-counter-step:last-child {
     margin-right: 0;
 }
 
-.locked .item-delete {
+.locked .item-delete, .locked .discipline-delete, .locked a.item-control.edge-delete, .locked .gift-delete {
     display: none;
 }
 
-.locked .discipline-delete {
-    display: none;
-}
-
-.locked a.item-control.edge-delete {
-    display: none;
-}
-
-.locked a.item-control.discipline-create {
-    display: none;
-}
-
-.locked a.item-control.item-create {
-    display: none;
-}
-
-.locked a.item-control.edge-create {
+.locked a.item-control.item-create, .locked a.item-control.discipline-create, .locked a.item-control.edge-create, .locked .gift-create, .locked .rite-create, .locked .item-edit {
     display: none;
 }
 

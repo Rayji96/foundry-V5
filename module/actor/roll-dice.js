@@ -1,23 +1,14 @@
-
-/* global ChatMessage, Roll, game */
+/* global ChatMessage, Roll, game, renderTemplate */
 
 // Function to roll dice
 // numDice = Number of dice the function will roll
 // actor = Actor's data
 // label = Text that appears at the head of the ChatMessage
 // difficulty = The amount of successes required for a given roll
-// useHunger = Will roll hunger dice, if true
+// hungerDice = Will roll hunger dice, if value is greater than 0
 // increaseHunger = Will increase the actor's hunger if no successes are rolled, if true
 // subtractWillpower = Subtracts a point of willpower, always, if true
-export async function rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true, increaseHunger = false, subtractWillpower = false) {
-  // Define the actor's current hunger
-  let hungerDice
-  if (useHunger) {
-    hungerDice = Math.min(actor.system.hunger.value, numDice)
-  } else {
-    hungerDice = 0
-  }
-
+export async function rollDice (numDice, actor, label = '', difficulty = 0, hungerDice = 0, increaseHunger = false, subtractWillpower = false) {
   // Roll defining and evaluating
   const dice = numDice - hungerDice
   const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dgcs>5', actor.system)
@@ -141,9 +132,15 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
       // If hunger is greater than 4 (5, or somehow higher)
       // then display that in the chat and don't increase hunger
       if (actorHunger > 4) {
-        roll.toMessage({
-          speaker: ChatMessage.getSpeaker({ actor: actor }),
-          content: game.i18n.localize('VTM5E.HungerFull')
+        renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+          name: game.i18n.localize('VTM5E.HungerFull1'),
+          img: 'systems/vtm5e/assets/images/bestial-fail-dsn.png',
+          description: game.i18n.localize('VTM5E.HungerFull2')
+        }).then(html => {
+          ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: actor }),
+            content: html
+          })
         })
       } else {
         // Define the new number of hunger points

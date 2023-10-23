@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc"],
+    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc", "werewolf"],
     "templates": {
       "base": {
         "biography": "",
@@ -550,67 +550,258 @@
             "visible": false
           }
         }
+      },
+      "renown": {
+        "renown": {
+          "glory": {
+            "value": 0
+          },
+          "honor": {
+            "value": 0
+          },
+          "wisdom": {
+            "value": 0
+          }
+        }
+      },
+      "werewolfForms": {
+        "activeForm": "homid",
+        "forms": {
+          "homid": {
+            "name": "VTM5E.HomidName",
+            "nickname": "VTM5E.HomidTitle",
+            "cost": 0,
+            "description": "Custom Homid description",
+            "abilities": [
+              "Silver Immunity"
+            ]
+          },
+          "glabro": {
+            "name": "VTM5E.GlabroName",
+            "nickname": "VTM5E.GlabroTitle",
+            "cost": 1,
+            "description": "Custom Glabro description",
+            "abilities": [
+              "Physical Tests: +2",
+              "Social Tests: -2",
+              "Regenerate: 1/Rage Check"
+            ]
+          },
+          "crinos": {
+            "name": "VTM5E.CrinosName",
+            "nickname": "VTM5E.CrinosTitle",
+            "cost": 2,
+            "description": "Custom Crinos description",
+            "abilities": [
+              "Frenzy Risk, 1 Willpower/turn",
+              "Physical Tests: +4",
+              "Health: +4",
+              "Social Tests: Auto-failure",
+              "Mental Tests: Auto-failure",
+              "Regenerate: 2/Rage Check",
+              "Claws: +3",
+              "Bite: +1 Aggravated",
+              "Causes Delirium"
+            ]
+          },
+          "hispo": {
+            "name": "VTM5E.HispoName",
+            "nickname": "VTM5E.HispoTitle",
+            "cost": 1,
+            "description": "Custom Hispo description",
+            "abilities": [
+              "(Non-Stealth) Physical Tests: +2",
+              "Stealth Tests: -2",
+              "Social Tests: Limited to wolves and Garou",
+              "Regenerate: 1/Rage Check",
+              "Bite: +1 Aggravated"
+            ]
+          },
+          "lupus": {
+            "name": "VTM5E.LupusName",
+            "nickname": "VTM5E.LupusTitle",
+            "cost": 0,
+            "description": "Custom Lupus description",
+            "abilities": [
+              "Silver Immunity",
+              "Social Tests: Limited to wolves and Garou"
+            ]
+          }
+        }
+      },
+      "gifts": {
+        "gifts": {
+          "native": {
+            "name": "VTM5E.Native",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "ragabash": {
+            "name": "VTM5E.Ragabash",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "theurge": {
+            "name": "VTM5E.Theurge",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "philodox": {
+            "name": "VTM5E.Philodox",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "galliard": {
+            "name": "VTM5E.Galliard",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "ahroun": {
+            "name": "VTM5E.Ahroun",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "blackfury": {
+            "name": "VTM5E.BlackFury",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "bonegnawer": {
+            "name": "VTM5E.BoneGnawer",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "childrenofgaia": {
+            "name": "VTM5E.ChildrenOfGaia",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "galestalker": {
+            "name": "VTM5E.Galestalker",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "ghostcouncil": {
+            "name": "VTM5E.GhostCouncil",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "glasswalker": {
+            "name": "VTM5E.GlassWalker",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "hartwarden": {
+            "name": "VTM5E.HartWarden",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "redtalon": {
+            "name": "VTM5E.RedTalon",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "shadowlord": {
+            "name": "VTM5E.ShadowLord",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "silentstrider": {
+            "name": "VTM5E.SilentStrider",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "silverfang": {
+            "name": "VTM5E.SilverFang",
+            "description": "",
+            "value": 0,
+            "powers": []
+          }
+        }
       }
     },
    
-    "character": {
-      "templates": ["base","disciplines"],
-      "headers":{
-        "predator":"",
-        "sire":"",
-        "generation":"",
-        "bane":""
-      },
-      "blood": {
-        "potency": 0,
-        "resonance": ""
-      },
-      "clan": {
-        "value": ""
-      },
-      "hunger": {
-        "value": 1
-      }
-    },
-    "vampire": {
-      "templates": ["base","disciplines"],
-      "headers":{
-        "predator":"",
-        "sire":"",
-        "generation":"",
-        "bane":""
-      },
-      "blood": {
-        "potency": 0,
-        "resonance": ""
-      },
-      "clan": {
-        "value": ""
-      },
-      "hunger": {
-        "value": 1
-      }
-    },
-    "ghoul": {
-      "templates": ["base","disciplines"],
-      "headers":{
-        "domitor":"",
-        "creedfields":""
-      }
-    },
     "mortal": {
+      "label": "VTM5E.Mortal",
       "templates": ["base"]
     },
+    "vampire": {
+      "label": "VTM5E.Vampire",
+      "templates": ["base","disciplines"],
+      "headers":{
+        "predator":"",
+        "sire":"",
+        "generation":"",
+        "bane":""
+      },
+      "blood": {
+        "potency": 0,
+        "resonance": ""
+      },
+      "clan": {
+        "value": ""
+      },
+      "hunger": {
+        "value": 1
+      }
+    },
+    "werewolf": {
+      "label": "VTM5E.Werewolf",
+      "templates": ["base","renown","werewolfForms","gifts"],
+      "headers": {
+        "auspice": "",
+        "patron": "",
+        "favor": "",
+        "ban": "",
+        "tribe": ""
+      },
+      "balance": {
+        "hauglosk": {
+          "value": 0
+        },
+        "harano": {
+          "value": 0
+        }
+      },
+      "rites": [],
+      "talismans": [],
+      "rage": {
+        "value": 1
+      },
+      "frenzyActive": false,
+      "crinosHealth": {
+        "aggravated": 0,
+        "superficial": 0,
+        "max": 4
+      }
+    },
     "hunter": {
+      "label": "VTM5E.Hunter",
       "templates": ["base","edges"],
       "headers":{
-        "cellname":""
-      },
-      "creed": {
-        "value": ""
+        "cellname": "",
+        "creed": "",
+        "drive": ""
       }
     },
     "coterie" : {
+      "label": "VTM5E.Coterie",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -619,6 +810,7 @@
       }
     },
     "cell" : {
+      "label": "VTM5E.Cell",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -626,12 +818,41 @@
         "concept": ""
       }
     },
+    "ghoul": {
+      "label": "VTM5E.Ghoul",
+      "templates": ["base","disciplines"],
+      "headers":{
+        "domitor":"",
+        "creedfields":""
+      }
+    },
     "spc" : {
+      "label": "VTM5E.SPC",
       "templates": ["abbreviated","disciplines"]
+    },
+    "character": {
+      "label": "VTM5e.Legacy",
+      "templates": ["base","disciplines"],
+      "headers":{
+        "predator":"",
+        "sire":"",
+        "generation":"",
+        "bane":""
+      },
+      "blood": {
+        "potency": 0,
+        "resonance": ""
+      },
+      "clan": {
+        "value": ""
+      },
+      "hunger": {
+        "value": 1
+      }
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "boon", "customRoll", "perk"],
+    "types": ["feature", "power", "specialty", "boon", "customRoll", "perk", "gift"],
     "templates": {
       "base": {
         "description": ""
@@ -678,6 +899,18 @@
       "rollable": false,
       "skill": false,
       "amalgam": false
+    },
+    "gift": {
+      "templates": ["base"],
+      "giftType": "native",
+      "renown": "honor",
+      "cost": 0,
+      "rollable": false,
+      "rage": false,
+      "action": "",
+      "dice1": "strength",
+      "dice2": "strength",
+      "duration": ""
     }
   }
 }

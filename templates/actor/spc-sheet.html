@@ -1,33 +1,40 @@
 <form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} spc-sheet" autocomplete="off">
+    {{!-- Actor Type Banner --}}
+    <div class="sheet-banner">
+      <h1>{{ sheetType }}</h1>
+    </div>
 
     {{!-- SPC Sheet Header --}}
-    <header class="sheet-header">
-        {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
-        <div class="header-fields">
-            <div class="grid grid-2col flexrow">
-                <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
-                        placeholder="{{localize 'VTM5E.Name'}}" /></h1>
-                <div class="resource flex-group-center difficulty">
-                    {{> "systems/vtm5e/templates/actor/parts/generaldifficulty.html"}}
-                </div>
-            </div>
-            <div class="resources grid grid-2col">
-                {{> "systems/vtm5e/templates/actor/parts/health.html"}}
-                {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
-            </div>
-        </div>
+    <header class="actor-header">
+        <div class="header-fields-top">
+          <div class="header-profile-img">
+              {{!-- Actor image and sheet lock toggle button --}}
+              {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
+          </div>
+          <div class="header-rows-top">
+              <div class="header-row-1 grid-4col">
+                  {{!-- Text input header fields --}}
+                  <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
+                    placeholder="{{localize 'VTM5E.Name'}}" /></h1>
+                    
+                  {{> "systems/vtm5e/templates/actor/parts/spc/generaldifficulty.html"}}
+                  {{> "systems/vtm5e/templates/actor/parts/health.html"}}
+                  {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
+              </div>
+          </div>
+      </div>
     </header>
 
     {{!-- SPC Sheet Body --}}
     <section class="sheet-body">
         <div class="resource grid grid-2col flexrow">
-        {{> "systems/vtm5e/templates/actor/parts/standard-dice-pools.html"}}
+        {{> "systems/vtm5e/templates/actor/parts/spc/standard-dice-pools.html"}}
         
-        {{> "systems/vtm5e/templates/actor/parts/exceptional-dice-pools.html"}}
+        {{> "systems/vtm5e/templates/actor/parts/spc/exceptional-dice-pools.html"}}
         
         {{> "systems/vtm5e/templates/actor/parts/notes.html"}}
 
-        {{> "systems/vtm5e/templates/actor/parts/spc-disciplines.html"}}
+        {{> "systems/vtm5e/templates/actor/parts/spc/spc-disciplines.html"}}
         </div>
     </section>
 </form>

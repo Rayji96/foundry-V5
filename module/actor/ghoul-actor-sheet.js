@@ -2,6 +2,7 @@
 
 import { MortalActorSheet } from './mortal-actor-sheet.js'
 import { rollDice } from './roll-dice.js'
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {MortalActorSheet}
@@ -11,7 +12,7 @@ export class GhoulActorSheet extends MortalActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'ghoul']
+    const classList = ['vtm5e', 'sheet', 'actor', 'ghoul', 'ghoul-sheet']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -21,7 +22,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     return mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/ghoul-sheet.html',
-      width: 800,
+      width: 940,
       height: 700,
       tabs: [{
         navSelector: '.sheet-tabs',
@@ -187,7 +188,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     new Dialog({
       title: game.i18n.localize('VTM5E.AddDiscipline'),
       content: template,
-      buttons: buttons,
+      buttons,
       default: 'draw'
     }).render(true)
   }
@@ -197,7 +198,8 @@ export class GhoulActorSheet extends MortalActorSheet {
     const element = event.currentTarget
     const dataset = element.dataset
     const item = this.actor.items.get(dataset.id)
-    const disciplineValue = 1
+    const itemDiscipline = item.system.discipline
+    const disciplineValue = this.actor.system.disciplines[itemDiscipline].value
 
     const dice1 = item.system.dice1 === 'discipline' ? disciplineValue : this.actor.system.abilities[item.system.dice1].value
 
