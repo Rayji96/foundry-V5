@@ -2,7 +2,7 @@
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
-import { migrateWorld } from './migration.js'
+import { migrateWorld } from './scripts/migration.js'
 import { ActorInfo } from './actor/actor.js'
 import { ItemInfo } from './item/item.js'
 import { WoDItemSheet } from './item/item-sheet.js'
