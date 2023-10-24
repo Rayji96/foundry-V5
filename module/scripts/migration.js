@@ -33,7 +33,7 @@ export const migrateWorld = async () => {
         ui.notifications.info(`Fixing actor ${actor.name}: Changing Legacy Sheet to Vampire Sheet.`)
 
         updates.push(id)
-        await actor.update({ 'type': 'vampire' })
+        await actor.update({ type: 'vampire' })
       }
     }
 
@@ -44,7 +44,7 @@ export const migrateWorld = async () => {
 
     // Update game version
     game.settings.set('vtm5e', 'worldVersion', currentVersion)
-    
+
     // Reload to implement the fixes after 5 seconds
     await setTimeout(5000)
     foundry.utils.debouncedReload()
