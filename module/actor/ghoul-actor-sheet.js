@@ -138,11 +138,27 @@ export class GhoulActorSheet extends MortalActorSheet {
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
       const level = item.system.level
-      const potency = this.actor.system.blood.potency
 
-      const dicepool = this.potencyToRouse(potency, level)
+      // Vampires roll rouse checks
+      if (this.actor.type === 'vampire') {
+        const potency = this.actor.type === 'vampire' ? this.actor.system.blood.potency : 0
+        const dicepool = this.potencyToRouse(potency, level)
+  
+        rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, 0, true, false)
+      } else if (this.actor.type === 'ghoul' && level > 1) {
+        // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
+        const actorHealth = this.actor.system.health
+        const actorHealthMax = actorHealth.max
+        const currentAggr = actorHealth.aggravated
+        let newAggr = Number(currentAggr) + 1
 
-      rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, true, true, false)
+        // Make sure aggravated can't go over the max
+        if (newAggr > actorHealthMax) {
+          newAggr = actorHealthMax
+        }
+
+        this.actor.update({ 'system.health.aggravated': newAggr })
+      }
     })
 
     // Rollable Vampire/Ghouls powers
@@ -200,6 +216,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     const item = this.actor.items.get(dataset.id)
     const itemDiscipline = item.system.discipline
     const disciplineValue = this.actor.system.disciplines[itemDiscipline].value
+    const hunger = this.actor.type === 'vampire' ? this.actor.system.hunger.value : 0
 
     const dice1 = item.system.dice1 === 'discipline' ? disciplineValue : this.actor.system.abilities[item.system.dice1].value
 
@@ -215,7 +232,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     }
 
     const dicePool = dice1 + dice2
-    rollDice(dicePool, this.actor, `${item.name}`, 0, this.hunger)
+    rollDice(dicePool, this.actor, `${item.name}`, 0, hunger)
   }
 
   potencyToRouse (potency, level) {
