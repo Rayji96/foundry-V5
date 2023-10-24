@@ -140,10 +140,10 @@ export class GhoulActorSheet extends MortalActorSheet {
       const dataset = element.dataset
       const numDice = dataset.roll
       const difficulty = dataset.difficulty
-  
+
       // See if we need to reduce hunger on this roll
       const increaseHunger = dataset.increaseHunger
-      
+
       // Roll the rouse check
       rollDice(numDice, this.actor, `${dataset.label}`, difficulty, numDice, increaseHunger)
     })
