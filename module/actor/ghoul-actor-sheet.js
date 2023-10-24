@@ -143,7 +143,7 @@ export class GhoulActorSheet extends MortalActorSheet {
       if (this.actor.type === 'vampire') {
         const potency = this.actor.type === 'vampire' ? this.actor.system.blood.potency : 0
         const dicepool = this.potencyToRouse(potency, level)
-  
+
         rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, 0, true, false)
       } else if (this.actor.type === 'ghoul' && level > 1) {
         // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
