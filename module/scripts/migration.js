@@ -1,4 +1,4 @@
-/* global ui, game, Actor */
+/* global ui, game, foundry */
 
 let worldVersion
 
@@ -19,6 +19,8 @@ export const migrateWorld = async () => {
 
   // If the world version is old, then push updates
   if (worldVersion !== currentVersion || worldVersion === '1.5') {
+    const updates = []
+
     ui.notifications.info('New version detected; Updating SchreckNet, please wait.')
     console.log('Obtaining SchreckNet Layer v' + currentVersion)
 
@@ -30,12 +32,15 @@ export const migrateWorld = async () => {
       if (actor.type === 'character') {
         ui.notifications.info(`Fixing actor ${actor.name}: Changing Legacy Sheet to Vampire Sheet.`)
 
+        updates.push(id)
         await actor.update({ 'type': 'vampire' })
       }
     }
 
     // Send notification to the GM
-    ui.notifications.info('Upgrade complete! Foundry will now refresh...')
+    if (updates.length > 0) {
+      ui.notifications.info('Upgrade complete! Foundry will now refresh...')
+    }
 
     // Update game version
     game.settings.set('vtm5e', 'worldVersion', currentVersion)
