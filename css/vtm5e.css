@@ -110,6 +110,8 @@ button:focus {
 .rollable:focus,
 .rollable-with-mod:hover,
 .rollable-with-mod:focus,
+.rouse-check:hover,
+.rouse-check:focus,
 .vrollable:hover,
 .vrollable:focus,
 .power-rollable:hover,
@@ -263,7 +265,8 @@ optgroup {
 }
 
 .vtm5e button.rollable,
-.vtm5e button.rollable-with-mod {
+.vtm5e button.rollable-with-mod,
+.vtm5e button.rouse-check {
     background: #790813;
     color: #fff;
     font-family: cormorantLight, serif;
@@ -274,7 +277,8 @@ optgroup {
 }
 
 .vtm5e button.rollable:hover,
-.vtm5e button.rollable-with-mod:hover {
+.vtm5e button.rollable-with-mod:hover,
+.vtm5e button.rouse-check {
     outline: none;
     box-shadow: inset 0 0 5px #000;
     background: var(--color-shadow-highlight);

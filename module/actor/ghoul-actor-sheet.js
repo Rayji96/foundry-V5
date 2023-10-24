@@ -133,6 +133,21 @@ export class GhoulActorSheet extends MortalActorSheet {
       })
     })
 
+    // Roll a general rouse check
+    html.find('.rouse-check').click(event => {
+      event.preventDefault()
+      const element = event.currentTarget
+      const dataset = element.dataset
+      const numDice = dataset.roll
+      const difficulty = dataset.difficulty
+  
+      // See if we need to reduce hunger on this roll
+      const increaseHunger = dataset.increaseHunger
+      
+      // Roll the rouse check
+      rollDice(numDice, this.actor, `${dataset.label}`, difficulty, numDice, increaseHunger)
+    })
+
     // Roll a rouse check for an item
     html.find('.item-rouse').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
@@ -144,7 +159,7 @@ export class GhoulActorSheet extends MortalActorSheet {
         const potency = this.actor.type === 'vampire' ? this.actor.system.blood.potency : 0
         const dicepool = this.potencyToRouse(potency, level)
 
-        rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, 0, true, false)
+        rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, dicepool, true, false)
       } else if (this.actor.type === 'ghoul' && level > 1) {
         // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
         const actorHealth = this.actor.system.health
