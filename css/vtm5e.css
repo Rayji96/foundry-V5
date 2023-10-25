@@ -493,10 +493,12 @@ optgroup {
     border-radius: 0;
 }
 
-.vtm5e .window-content .header-fields .level input, .vtm5e .itemsheet-textbox {
-    max-width: 35px;
+.vtm5e.item.sheet .window-content input {
     float: left;
     background-color: #ffca55;
+}
+.vtm5e.item.sheet .window-content input[type="number"] {
+    max-width: 35px;
 }
 
 .vtm5e .window-content .abilities,
