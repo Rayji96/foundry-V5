@@ -10,6 +10,7 @@
 * "Legacy" sheets that were made before a certain version have now been properly migrated to "Vampire" sheets [Veilza]
 * Ghouls will now take Aggravated damage upon clicking the "Rouse" button on discipline powers greater than level 1 [Veilza]
 * Disciplines now have a "Cost" field to input the number of appropriate Rouse checks. [Veilza]
+* Added this Changelog file [Veilza]
 
 ### From a developer's side:
 * Reorganized sheet partials [Veilza]
