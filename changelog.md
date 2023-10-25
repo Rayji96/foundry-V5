@@ -11,7 +11,7 @@
 * Ghouls will now take Aggravated damage upon clicking the "Rouse" button on discipline powers greater than level 1 [Veilza]
 * Disciplines now have a "Cost" field to input the number of appropriate Rouse checks. [Veilza]
 * Added this Changelog file [Veilza]
-* Fix input fields on item sheets being hard to read
+* Fix input fields on item sheets being hard to read [Veilza]
 
 ### From a developer's side
 * Reorganized sheet partials [Veilza]
