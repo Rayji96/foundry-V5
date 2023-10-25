@@ -97,14 +97,14 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     // Sort the discipline containers by the level of the power instead of by creation date
     for (const discipline in disciplines) {
-      disciplines[discipline] = disciplines[discipline].sort(function(power1, power2) {
-          // If the levels are the same, sort alphabetically instead
-          if (power1.system.level === power2.system.level) {
-            return power1.name.localeCompare(power2.name)
-          }
+      disciplines[discipline] = disciplines[discipline].sort(function (power1, power2) {
+        // If the levels are the same, sort alphabetically instead
+        if (power1.system.level === power2.system.level) {
+          return power1.name.localeCompare(power2.name)
+        }
 
-          // Sort by level
-          return power1.system.level - power2.system.level
+        // Sort by level
+        return power1.system.level - power2.system.level
       })
     }
 

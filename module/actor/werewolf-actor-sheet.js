@@ -83,21 +83,19 @@ export class WerewolfActorSheet extends WoDActor {
 
     // Sort the gift containers by the level of the power instead of by creation date
     for (const giftType in giftsList) {
-      for (const gift in giftsList[giftType].powers) {
-        giftsList[giftType].powers = giftsList[giftType].powers.sort(function(power1, power2) {
-          // If the levels are the same, sort alphabetically instead
-          if (power1.system.level === power2.system.level) {
-            return power1.name.localeCompare(power2.name)
-          }
+      giftsList[giftType].powers = giftsList[giftType].powers.sort(function (power1, power2) {
+        // If the levels are the same, sort alphabetically instead
+        if (power1.system.level === power2.system.level) {
+          return power1.name.localeCompare(power2.name)
+        }
 
-          // Sort by level
-          return power1.system.level - power2.system.level
-        })
-      }
+        // Sort by level
+        return power1.system.level - power2.system.level
+      })
     }
 
     // Sort the rite containers by the level of the power instead of by creation date
-    ritesList = ritesList.sort(function(power1, power2) {
+    ritesList = ritesList.sort(function (power1, power2) {
       // If the levels are the same, sort alphabetically instead
       if (power1.system.level === power2.system.level) {
         return power1.name.localeCompare(power2.name)
