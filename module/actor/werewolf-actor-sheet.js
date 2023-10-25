@@ -64,7 +64,7 @@ export class WerewolfActorSheet extends WoDActor {
     actorData.system.gamesystem = 'werewolf'
 
     const giftsList = structuredClone(actorData.system.gifts)
-    const ritesList = structuredClone(actorData.system.rites)
+    let ritesList = structuredClone(actorData.system.rites)
 
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
@@ -80,6 +80,32 @@ export class WerewolfActorSheet extends WoDActor {
         }
       }
     }
+
+    // Sort the gift containers by the level of the power instead of by creation date
+    for (const giftType in giftsList) {
+      for (const gift in giftsList[giftType].powers) {
+        giftsList[giftType].powers = giftsList[giftType].powers.sort(function(power1, power2) {
+          // If the levels are the same, sort alphabetically instead
+          if (power1.system.level === power2.system.level) {
+            return power1.name.localeCompare(power2.name)
+          }
+
+          // Sort by level
+          return power1.system.level - power2.system.level
+        })
+      }
+    }
+
+    // Sort the rite containers by the level of the power instead of by creation date
+    ritesList = ritesList.sort(function(power1, power2) {
+      // If the levels are the same, sort alphabetically instead
+      if (power1.system.level === power2.system.level) {
+        return power1.name.localeCompare(power2.name)
+      }
+
+      // Sort by level
+      return power1.system.level - power2.system.level
+    })
 
     actorData.system.giftsList = giftsList
     actorData.system.ritesList = ritesList

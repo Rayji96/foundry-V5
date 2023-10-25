@@ -108,6 +108,21 @@ export class HunterActorSheet extends CellActorSheet {
       }
     }
 
+    // Sort the edge containers by the level of the power instead of by creation date
+    for (const edgeType in edges) {
+      for (const edge in edges[edgeType]) {
+        edges[edgeType] = edges[edgeType].sort(function(power1, power2) {
+          // If the levels are the same, sort alphabetically instead
+          if (power1.system.level === power2.system.level) {
+            return power1.name.localeCompare(power2.name)
+          }
+
+          // Sort by level
+          return power1.system.level - power2.system.level
+        })
+      }
+    }
+
     // Assign and return
     actorData.edges_list = edges
   }
