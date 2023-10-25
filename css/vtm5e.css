@@ -493,15 +493,6 @@ optgroup {
     border-radius: 0;
 }
 
-.vtm5e.item .window-content input {
-    float: left;
-    background-color: #ffd578;
-}
-
-.vtm5e.item.sheet .window-content input[type="number"] {
-    max-width: 35px;
-}
-
 .vtm5e .window-content .abilities,
 .vtm5e.sheet.actor .window-content .skills {
     border: none;
@@ -538,6 +529,15 @@ optgroup {
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 700;
+}
+
+.vtm5e.item .window-content input {
+    float: left;
+    background-color: #ffd578;
+}
+
+.vtm5e.item.sheet .window-content input[type="number"] {
+    max-width: 35px;
 }
 
 .vtm5e .actor-header h1.charname {
