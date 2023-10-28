@@ -842,7 +842,7 @@ function rerollDie (roll) {
     } else if (charactertype === 'werewolf') { // Werewolf-specific dice
       rollWerewolfDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
     } else { // Everything else
-      rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
+      rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, false, true)
     }
   }
 }

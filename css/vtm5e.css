@@ -110,6 +110,8 @@ button:focus {
 .rollable:focus,
 .rollable-with-mod:hover,
 .rollable-with-mod:focus,
+.rouse-check:hover,
+.rouse-check:focus,
 .vrollable:hover,
 .vrollable:focus,
 .power-rollable:hover,
@@ -263,7 +265,8 @@ optgroup {
 }
 
 .vtm5e button.rollable,
-.vtm5e button.rollable-with-mod {
+.vtm5e button.rollable-with-mod,
+.vtm5e button.rouse-check {
     background: #790813;
     color: #fff;
     font-family: cormorantLight, serif;
@@ -274,7 +277,8 @@ optgroup {
 }
 
 .vtm5e button.rollable:hover,
-.vtm5e button.rollable-with-mod:hover {
+.vtm5e button.rollable-with-mod:hover,
+.vtm5e button.rouse-check {
     outline: none;
     box-shadow: inset 0 0 5px #000;
     background: var(--color-shadow-highlight);
@@ -357,6 +361,15 @@ optgroup {
     align-self: center;
     font-size: 1.2em;
     text-align: center;
+}
+
+.vtm5e.item .window-content input {
+    float: left;
+    background-color: #ffd578;
+}
+
+.vtm5e.item.sheet .window-content input[type="number"] {
+    max-width: 35px;
 }
 
 .vtm5e .actor-header h1.charname input {
@@ -487,12 +500,6 @@ optgroup {
     background: #f9f5ed;
     border: 4px double #790813;
     border-radius: 0;
-}
-
-.vtm5e .window-content .header-fields .level input, .vtm5e .itemsheet-textbox {
-    max-width: 35px;
-    float: left;
-    background-color: #ffca55;
 }
 
 .vtm5e .window-content .abilities,

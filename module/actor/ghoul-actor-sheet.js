@@ -95,6 +95,19 @@ export class GhoulActorSheet extends MortalActorSheet {
       }
     }
 
+    // Sort the discipline containers by the level of the power instead of by creation date
+    for (const discipline in disciplines) {
+      disciplines[discipline] = disciplines[discipline].sort(function (power1, power2) {
+        // If the levels are the same, sort alphabetically instead
+        if (power1.system.level === power2.system.level) {
+          return power1.name.localeCompare(power2.name)
+        }
+
+        // Sort by level
+        return power1.system.level - power2.system.level
+      })
+    }
+
     // Assign and return
     actorData.disciplines_list = disciplines
   }
@@ -133,16 +146,53 @@ export class GhoulActorSheet extends MortalActorSheet {
       })
     })
 
+    // Roll a general rouse check
+    html.find('.rouse-check').click(event => {
+      event.preventDefault()
+      const element = event.currentTarget
+      const dataset = element.dataset
+      const numDice = dataset.roll
+      const difficulty = dataset.difficulty
+
+      // See if we need to reduce hunger on this roll
+      const increaseHunger = dataset.increaseHunger
+
+      // Roll the rouse check
+      rollDice(numDice, this.actor, `${dataset.label}`, difficulty, numDice, increaseHunger)
+    })
+
     // Roll a rouse check for an item
     html.find('.item-rouse').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
       const level = item.system.level
-      const potency = this.actor.system.blood.potency
+      const cost = item.system.cost > 0 ? item.system.cost : 1
+      let dicepool
 
-      const dicepool = this.potencyToRouse(potency, level)
+      // Vampires roll rouse checks
+      if (this.actor.type === 'vampire') {
+        const potency = this.actor.type === 'vampire' ? this.actor.system.blood.potency : 0
+        const rouseRerolls = this.potencyToRouse(potency, level)
 
-      rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), 1, true, true, false)
+        // Double the number of dice to roll if rouseRerolls is true
+        // otherwise, just use the cost
+        dicepool = rouseRerolls ? cost * 2 : cost
+
+        rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), cost, dicepool, true, false)
+      } else if (this.actor.type === 'ghoul' && level > 1) {
+        // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
+        const actorHealth = this.actor.system.health
+        const actorHealthMax = actorHealth.max
+        const currentAggr = actorHealth.aggravated
+        let newAggr = Number(currentAggr) + 1
+
+        // Make sure aggravated can't go over the max
+        if (newAggr > actorHealthMax) {
+          newAggr = actorHealthMax
+        }
+
+        this.actor.update({ 'system.health.aggravated': newAggr })
+      }
     })
 
     // Rollable Vampire/Ghouls powers
@@ -200,6 +250,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     const item = this.actor.items.get(dataset.id)
     const itemDiscipline = item.system.discipline
     const disciplineValue = this.actor.system.disciplines[itemDiscipline].value
+    const hunger = this.actor.type === 'vampire' ? this.actor.system.hunger.value : 0
 
     const dice1 = item.system.dice1 === 'discipline' ? disciplineValue : this.actor.system.abilities[item.system.dice1].value
 
@@ -215,38 +266,38 @@ export class GhoulActorSheet extends MortalActorSheet {
     }
 
     const dicePool = dice1 + dice2
-    rollDice(dicePool, this.actor, `${item.name}`, 0, this.hunger)
+    rollDice(dicePool, this.actor, `${item.name}`, 0, hunger)
   }
 
   potencyToRouse (potency, level) {
-    // Define the number of dice to roll based on the user's blood potency
+    // Define whether to reroll dice based on the user's blood potency
     // and the power's level
     // Potency 0 never rolls additional rouse dice for disciplines
     if (potency === 0) {
-      return (1)
+      return false
     } else
     // Potency of 9 and 10 always roll additional rouse dice for disciplines
     if (potency > 8) {
-      return (2)
+      return true
     } else
     // Potency 7 and 8 roll additional rouse dice on discipline powers below 5
     if (potency > 6 && level < 5) {
-      return (2)
+      return true
     } else
     // Potency 5 and 6 roll additional rouse dice on discipline powers below 4
     if (potency > 4 && level < 4) {
-      return (2)
+      return true
     } else
     // Potency 3 and 4 roll additional rouse dice on discipline powers below 3
     if (potency > 2 && level < 3) {
-      return (2)
+      return true
     } else
     // Potency 1 and 2 roll additional rouse dice on discipline powers below 2
     if (potency > 0 && level < 2) {
-      return (2)
+      return true
     }
 
     // If none of the above are true, just roll 1 dice for the rouse check
-    return (1)
+    return false
   }
 }
