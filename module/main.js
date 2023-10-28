@@ -2,7 +2,7 @@
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
-import { migrateWorld } from './migration.js'
+import { migrateWorld } from './scripts/migration.js'
 import { ActorInfo } from './actor/actor.js'
 import { ItemInfo } from './item/item.js'
 import { WoDItemSheet } from './item/item-sheet.js'
@@ -123,12 +123,12 @@ Hooks.once('init', async function () {
   })
   Actors.registerSheet('vtm5e', HunterActorSheet, {
     label: 'Hunter Sheet',
-    types: ['hunter', 'character'],
+    types: ['hunter'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', VampireActorSheet, {
     label: 'Vampire Sheet',
-    types: ['vampire', 'character'],
+    types: ['vampire'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', WerewolfActorSheet, {

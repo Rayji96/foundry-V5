@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc", "werewolf"],
+    "types": ["vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc", "werewolf"],
     "templates": {
       "base": {
         "biography": "",
@@ -829,26 +829,6 @@
     "spc" : {
       "label": "VTM5E.SPC",
       "templates": ["abbreviated","disciplines"]
-    },
-    "character": {
-      "label": "VTM5e.Legacy",
-      "templates": ["base","disciplines"],
-      "headers":{
-        "predator":"",
-        "sire":"",
-        "generation":"",
-        "bane":""
-      },
-      "blood": {
-        "potency": 0,
-        "resonance": ""
-      },
-      "clan": {
-        "value": ""
-      },
-      "hunger": {
-        "value": 1
-      }
     }
   },
   "Item": {
