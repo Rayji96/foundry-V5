@@ -12,9 +12,17 @@
 // callback = A callback function in case there's things that rely on the outcome of the roll (such as shifting forms)
 export async function rollWerewolfDice (numDice, actor, label = '', difficulty = 0, rageDice = 0, subtractWillpower = false, consumeRage = false, callback) {
   // Roll defining and evaluating
-  const rageDiceTotal = Math.min(numDice, rageDice)
-  const dice = Math.max(numDice - rageDiceTotal, 0)
-  const roll = new Roll(dice + 'dwcs>5 + ' + rageDiceTotal + 'drcs>5', actor.system)
+
+  // Ensure that the number of hunger dice doesn't exceed the
+  // total number of dice
+  const rageRoll = Math.min(numDice, rageDice)
+
+  // Calculate the number of normal dice to roll by subtracting
+  // the number of hunger dice from them.
+  const dice = Math.max(numDice - rageRoll, 0)
+
+    // Send the roll to Foundry
+  const roll = new Roll(dice + 'dwcs>5 + ' + rageRoll + 'drcs>5', actor.system)
   await roll.evaluate({ async: true })
 
   // Variable defining

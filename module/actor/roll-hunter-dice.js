@@ -10,8 +10,17 @@
 // subtractWillpower = Subtracts a point of willpower, always, if true
 export async function rollHunterDice (numDice, actor, label = '', difficulty = 0, desperationDice = 0, subtractWillpower = false) {
   // Roll defining and evaluating
-  const dice = numDice
-  const roll = new Roll(dice + 'dhcs>5 + ' + desperationDice + 'dscs>5', actor.system)
+
+  // Ensure that the number of hunger dice doesn't exceed the
+  // total number of dice
+  const desperationRoll = Math.min(numDice, desperationDice)
+
+  // Calculate the number of normal dice to roll by subtracting
+  // the number of hunger dice from them.
+  const dice = Math.max(numDice - desperationRoll, 0)
+
+  // Send the roll to Foundry
+  const roll = new Roll(dice + 'dhcs>5 + ' + desperationRoll + 'dscs>5', actor.system)
   await roll.evaluate({ async: true })
 
   // Variable defining

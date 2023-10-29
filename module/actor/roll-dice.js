@@ -11,18 +11,16 @@
 export async function rollDice (numDice, actor, label = '', difficulty = 0, hungerDice = 0, increaseHunger = false, subtractWillpower = false) {
   // Roll defining and evaluating
 
-  // If total number of dice is greater than the number of hunger dice
-  // then we just need to subtract the total number of dice from hunger dice
-  // If total number of dice is less than the number of hunger dice,
-  // prevent it from going into the negatives by setting a min of 0
-  const dice = numDice > hungerDice ? numDice - hungerDice : 0
+  // Ensure that the number of hunger dice doesn't exceed the
+  // total number of dice
+  const hungerRoll = Math.min(numDice, hungerDice)
 
-  // If total number of hunger dice is greater than the total number of dice
-  // then we should ensure that the total is capped at the max number of dice
-  const diceHunger = hungerDice > numDice ? numDice : hungerDice
+  // Calculate the number of normal dice to roll by subtracting
+  // the number of hunger dice from them.
+  const dice = Math.max(numDice - hungerRoll, 0)
 
   // Send the roll to Foundry
-  const roll = new Roll(dice + 'dvcs>5 + ' + diceHunger + 'dgcs>5', actor.system)
+  const roll = new Roll(dice + 'dvcs>5 + ' + hungerRoll + 'dgcs>5', actor.system)
   await roll.evaluate({ async: true })
 
   // Variable defining
