@@ -220,7 +220,6 @@ Hooks.once('init', async function () {
     return 'VTM5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
   })
 
-  // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
     // Return the result of the stain, or 1 at minimum.
     const stainDice = Math.max((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3), 1)

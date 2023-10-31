@@ -13,12 +13,12 @@
 export async function rollWerewolfDice (numDice, actor, label = '', difficulty = 0, rageDice = 0, subtractWillpower = false, consumeRage = false, callback) {
   // Roll defining and evaluating
 
-  // Ensure that the number of hunger dice doesn't exceed the
+  // Ensure that the number of rage dice doesn't exceed the
   // total number of dice
   const rageRoll = Math.min(numDice, rageDice)
 
   // Calculate the number of normal dice to roll by subtracting
-  // the number of hunger dice from them.
+  // the number of rage dice from them.
   const dice = Math.max(numDice - rageRoll, 0)
 
     // Send the roll to Foundry
@@ -71,7 +71,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   // Reduce rage for each failure on a rage dice if this is a power that consumes it
   if (consumeRage) {
     const currentRage = actor.system.rage.value
-    const newRageAmount = currentRage - totalRageFail
+    const newRageAmount = Math.max(currentRage - totalRageFail, 0)
 
     if (newRageAmount === 0 && currentRage > 0) {
       const chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>

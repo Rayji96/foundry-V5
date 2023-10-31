@@ -137,10 +137,10 @@ export class WerewolfActorSheet extends WoDActor {
     // Rollable gift buttons
     html.find('.gift-rollable').click(this._onGiftRoll.bind(this))
 
-    // Make Gift visible
+    // Create a new Gift
     html.find('.gift-create').click(this._onCreateGift.bind(this))
 
-    // Make Gift visible
+    // Create a new Rite
     html.find('.rite-create').click(this._onCreateRite.bind(this))
 
     // Make Gift hidden

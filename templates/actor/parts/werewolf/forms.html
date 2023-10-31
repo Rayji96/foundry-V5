@@ -7,18 +7,18 @@
       <label class="were-form-nickname">{{localize form.nickname}}</label>
     </div>
     <div class="resource flex-group-center{{#ifeq ../actor.system.activeForm id}} form-active{{/ifeq}}">
-      {{#ifnoteq ../actor.system.activeForm id}}
-      <button class="werewolf-button change-form" data-system="{{../actor.system.gamesystem}}" data-new-form="{{id}}" data-rage-cost="{{form.cost}}" type="button" name="{{id}}">{{form.cost}} {{localize "VTM5E.RageDice"}}</button>
+      {{#ifeq ../actor.system.activeForm id}}
+      <button class="werewolf-button active">{{localize "VTM5E.Active"}}</button>
       {{else}}
-      <button class="werewolf-button disabled">{{localize "VTM5E.Active"}}</button>
-      {{/ifnoteq}}
+      <button class="werewolf-button change-form{{#ifeq ../actor.system.rage.value 0}}{{#ifnoteq form.cost 0}} disabled{{/ifnoteq}}{{/ifeq}}" data-system="{{../actor.system.gamesystem}}" data-new-form="{{id}}" data-rage-cost="{{form.cost}}" type="button" name="{{id}}"{{#ifeq ../actor.system.rage.value 0}}{{#ifnoteq form.cost 0}} title="{{localize "VTM5E.LostWolfFormChange"}}"{{/ifnoteq}}{{/ifeq}}>{{form.cost}} {{localize "VTM5E.RageDice"}}</button>
+      {{/ifeq}}
       <div class="resource-content">
         <hr/>
         <p class="flex-center">{{form.description}}</p>
         <hr>
         <ul class="form-abilities">
           {{#each form.abilities as |ability|}}
-            <li>{{ability}}</li>
+          <li>{{ability}}</li>
           {{/each}}
         </ul>
         <div class="flexrow">
