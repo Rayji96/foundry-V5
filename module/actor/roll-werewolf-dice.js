@@ -21,7 +21,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   // the number of rage dice from them.
   const dice = Math.max(numDice - rageRoll, 0)
 
-    // Send the roll to Foundry
+  // Send the roll to Foundry
   const roll = new Roll(dice + 'dwcs>5 + ' + rageRoll + 'drcs>5', actor.system)
   await roll.evaluate({ async: true })
 

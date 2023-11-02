@@ -334,8 +334,14 @@ export class WerewolfActorSheet extends WoDActor {
       case 'glabro':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
-          // Roll the number of dice required to shift (1 for Glabro)
-          rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+          // If rage dice is being consumed but the system has no rage, warn
+          // them.
+          if (this.actor.system.rage.value === 0) {
+            this._onInsufficientRage('glabro')
+          } else {
+            // Roll the number of dice required to shift (1 for Glabro)
+            rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+          }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
@@ -347,8 +353,14 @@ export class WerewolfActorSheet extends WoDActor {
       case 'crinos':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
-          // Roll the number of dice required to shift (2 for Crinos)
-          rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
+          // If rage dice is being consumed but the system has no rage, warn
+          // them.
+          if (this.actor.system.rage.value === 0) {
+            this._onInsufficientRage('crinos')
+          } else {
+            // Roll the number of dice required to shift (2 for Crinos)
+            rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
+          }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
@@ -360,8 +372,14 @@ export class WerewolfActorSheet extends WoDActor {
       case 'hispo':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
-          // Roll the number of dice required to shift (1 for hispo)
-          rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+          // If rage dice is being consumed but the system has no rage, warn
+          // them.
+          if (this.actor.system.rage.value === 0) {
+            this._onInsufficientRage('hispo')
+          } else {
+            // Roll the number of dice required to shift (1 for hispo)
+            rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+          }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
@@ -442,5 +460,36 @@ export class WerewolfActorSheet extends WoDActor {
       buttons,
       default: 'draw'
     }).render(true)
+  }
+
+  _onInsufficientRage (form) {
+    const template = `
+    <form>
+        <div class="form-group">
+            <label>This actor has Lost the Wolf and cannot transform into supernatural forms due to insufficient rage. Would you like to shift anyway?</label>
+        </div>
+    </form>`
+
+  let buttons = {}
+  buttons = {
+    draw: {
+      icon: '<i class="fas fa-check"></i>',
+      label: "Shift Anyway",
+      callback: async () => {
+        this.actor.update({ 'system.activeForm': form })
+      }
+    },
+    cancel: {
+      icon: '<i class="fas fa-times"></i>',
+      label: game.i18n.localize('VTM5E.Cancel')
+    }
+  }
+
+  new Dialog({
+    title: 'Can\'t Transform: Lost the Wolf',
+    content: template,
+    buttons,
+    default: 'draw'
+  }).render(true)
   }
 }
