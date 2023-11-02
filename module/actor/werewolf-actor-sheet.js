@@ -137,10 +137,10 @@ export class WerewolfActorSheet extends WoDActor {
     // Rollable gift buttons
     html.find('.gift-rollable').click(this._onGiftRoll.bind(this))
 
-    // Make Gift visible
+    // Create a new Gift
     html.find('.gift-create').click(this._onCreateGift.bind(this))
 
-    // Make Gift visible
+    // Create a new Rite
     html.find('.rite-create').click(this._onCreateRite.bind(this))
 
     // Make Gift hidden
@@ -195,9 +195,14 @@ export class WerewolfActorSheet extends WoDActor {
 
     const element = event.currentTarget
     const dataset = element.dataset
-    const consumeRage = dataset.consumeRage
     const subtractWillpower = dataset.subtractWillpower
     const rageDice = dataset.rageDice
+    let consumeRage = dataset.consumeRage
+
+    // If automated rage is disabled, set the consumeRage value to false no matter what
+    if (!game.settings.get('vtm5e', 'automatedRage')) {
+      consumeRage = false
+    }
 
     rollWerewolfDice(rageDice, this.actor, dataset.label, 0, rageDice, subtractWillpower, consumeRage)
   }
@@ -334,8 +339,14 @@ export class WerewolfActorSheet extends WoDActor {
       case 'glabro':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
-          // Roll the number of dice required to shift (1 for Glabro)
-          rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+          // If rage dice is being consumed but the system has no rage, warn
+          // them unless automatedRage is disabled.
+          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
+            this._onInsufficientRage('glabro')
+          } else {
+            // Roll the number of dice required to shift (1 for Glabro)
+            rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+          }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
@@ -347,8 +358,14 @@ export class WerewolfActorSheet extends WoDActor {
       case 'crinos':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
-          // Roll the number of dice required to shift (2 for Crinos)
-          rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
+          // If rage dice is being consumed but the system has no rage, warn
+          // them unless automatedRage is disabled.
+          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
+            this._onInsufficientRage('crinos')
+          } else {
+            // Roll the number of dice required to shift (2 for Crinos)
+            rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
+          }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
@@ -360,8 +377,14 @@ export class WerewolfActorSheet extends WoDActor {
       case 'hispo':
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
-          // Roll the number of dice required to shift (1 for hispo)
-          rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+          // If rage dice is being consumed but the system has no rage, warn
+          // them unless automatedRage is disabled.
+          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
+            this._onInsufficientRage('hispo')
+          } else {
+            // Roll the number of dice required to shift (1 for hispo)
+            rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+          }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue
           if (newRageDice > 0) {
@@ -438,6 +461,37 @@ export class WerewolfActorSheet extends WoDActor {
 
     new Dialog({
       title: game.i18n.localize('VTM5E.Edit') + ' ' + game.i18n.localize(formName),
+      content: template,
+      buttons,
+      default: 'draw'
+    }).render(true)
+  }
+
+  _onInsufficientRage (form) {
+    const template = `
+    <form>
+        <div class="form-group">
+            <label>This actor has Lost the Wolf and cannot transform into supernatural forms due to insufficient rage. Would you like to shift anyway?</label>
+        </div>
+    </form>`
+
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: 'Shift Anyway',
+        callback: async () => {
+          this.actor.update({ 'system.activeForm': form })
+        }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
+      }
+    }
+
+    new Dialog({
+      title: 'Can\'t Transform: Lost the Wolf',
       content: template,
       buttons,
       default: 'draw'

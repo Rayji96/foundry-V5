@@ -119,11 +119,17 @@
     cursor: pointer;
 }
 
-.vtm5e.werewolf-sheet button.werewolf-button.disabled, .vtm5e.werewolf-sheet button.werewolf-button.disabled:hover {
+.vtm5e.werewolf-sheet button.werewolf-button.active, .vtm5e.werewolf-sheet button.werewolf-button.active:hover {
   font-size: 20pt;
   color: #FFF;
   cursor: default;
   margin-bottom: 10px;
+}
+
+.vtm5e.werewolf-sheet button.werewolf-button.disabled, .vtm5e.werewolf-sheet button.werewolf-button.disabled:hover {
+  color: #000;
+  cursor: default;
+  background: #562f13ef;
 }
 
 .locked button.lockable-button {

@@ -43,6 +43,15 @@ Hooks.once('init', async function () {
     type: String
   })
 
+  game.settings.register('vtm5e', 'darkTheme', {
+    name: 'Dark Theme',
+    hint: 'Display sheets using a darker theme on a per-user basis.',
+    scope: 'client',
+    config: true,
+    default: false,
+    type: Boolean
+  })
+
   game.settings.register('vtm5e', 'useChatRoller', {
     // TODO: fix Chat Roller
     name: 'Chat Roller',
@@ -65,7 +74,7 @@ Hooks.once('init', async function () {
   game.settings.register('vtm5e', 'automatedWillpower', {
     name: 'Willpower Damage On Willpower Reroll',
     hint: 'If enabled, using the Willpower Reroll (right click on a chat message) feature will deal willpower damage to the associated actor.',
-    scope: 'client',
+    scope: 'world',
     config: true,
     default: true,
     type: Boolean
@@ -74,18 +83,18 @@ Hooks.once('init', async function () {
   game.settings.register('vtm5e', 'automatedRouse', {
     name: 'Increase Hunger With Rouse Checks',
     hint: 'If enabled, rolling a rouse check and failing will automatically increase the hunger of the associated actor.',
-    scope: 'client',
+    scope: 'world',
     config: true,
     default: true,
     type: Boolean
   })
 
-  game.settings.register('vtm5e', 'darkTheme', {
-    name: 'Dark Theme',
-    hint: 'Display sheets using a darker theme on a per-user basis.',
-    scope: 'client',
+  game.settings.register('vtm5e', 'automatedRage', {
+    name: 'Automate Rage Dice',
+    hint: 'If enabled, rolling Rage Dice or performing actions that require Rage Dice will automatically subtract Rage from the associated actor.',
+    scope: 'world',
     config: true,
-    default: false,
+    default: true,
     type: Boolean
   })
 
@@ -220,7 +229,6 @@ Hooks.once('init', async function () {
     return 'VTM5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
   })
 
-  // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
     // Return the result of the stain, or 1 at minimum.
     const stainDice = Math.max((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3), 1)
