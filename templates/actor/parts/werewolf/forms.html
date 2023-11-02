@@ -11,7 +11,7 @@
       <button class="werewolf-button active">{{localize "VTM5E.Active"}}</button>
       {{else}}
       <button class="werewolf-button change-form{{#ifeq ../actor.system.rage.value 0}}{{#ifnoteq form.cost 0}} disabled{{/ifnoteq}}{{/ifeq}}" 
-      {{#ifeq ../actor.system.rage.value 0}}{{#ifnoteq form.cost 0}}title="{{localize 'VTM5E.LostWolfFormChange'}}"{{/ifnoteq}}{{/ifeq}} 
+      title="{{#ifeq ../actor.system.rage.value 0}}{{#ifnoteq form.cost 0}}{{localize 'VTM5E.LostWolfFormChange'}}{{/ifnoteq}}{{/ifeq}}" 
       data-system="{{../actor.system.gamesystem}}" data-new-form="{{id}}" data-rage-cost="{{form.cost}}" type="button" name="{{id}}">
         {{form.cost}} {{localize "VTM5E.RageDice"}}
       </button>
