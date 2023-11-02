@@ -195,9 +195,14 @@ export class WerewolfActorSheet extends WoDActor {
 
     const element = event.currentTarget
     const dataset = element.dataset
-    const consumeRage = dataset.consumeRage
     const subtractWillpower = dataset.subtractWillpower
     const rageDice = dataset.rageDice
+    let consumeRage = dataset.consumeRage
+
+    // If automated rage is disabled, set the consumeRage value to false no matter what
+    if (!game.settings.get('vtm5e', 'automatedRage')) {
+      consumeRage = false
+    }
 
     rollWerewolfDice(rageDice, this.actor, dataset.label, 0, rageDice, subtractWillpower, consumeRage)
   }
@@ -335,8 +340,8 @@ export class WerewolfActorSheet extends WoDActor {
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
           // If rage dice is being consumed but the system has no rage, warn
-          // them.
-          if (this.actor.system.rage.value === 0) {
+          // them unless automatedRage is disabled.
+          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
             this._onInsufficientRage('glabro')
           } else {
             // Roll the number of dice required to shift (1 for Glabro)
@@ -354,8 +359,8 @@ export class WerewolfActorSheet extends WoDActor {
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
           // If rage dice is being consumed but the system has no rage, warn
-          // them.
-          if (this.actor.system.rage.value === 0) {
+          // them unless automatedRage is disabled.
+          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
             this._onInsufficientRage('crinos')
           } else {
             // Roll the number of dice required to shift (2 for Crinos)
@@ -373,8 +378,8 @@ export class WerewolfActorSheet extends WoDActor {
         // Make a quick promise to wait for the roll's outcome before we try swapping forms
         new Promise((resolve) => {
           // If rage dice is being consumed but the system has no rage, warn
-          // them.
-          if (this.actor.system.rage.value === 0) {
+          // them unless automatedRage is disabled.
+          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
             this._onInsufficientRage('hispo')
           } else {
             // Roll the number of dice required to shift (1 for hispo)

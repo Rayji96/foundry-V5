@@ -69,7 +69,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   })
 
   // Reduce rage for each failure on a rage dice if this is a power that consumes it
-  if (consumeRage) {
+  if (consumeRage && game.settings.get('vtm5e', 'automatedRage')) {
     const currentRage = actor.system.rage.value
     const newRageAmount = Math.max(currentRage - totalRageFail, 0)
 
