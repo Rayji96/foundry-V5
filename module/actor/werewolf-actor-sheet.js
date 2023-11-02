@@ -475,26 +475,26 @@ export class WerewolfActorSheet extends WoDActor {
         </div>
     </form>`
 
-  let buttons = {}
-  buttons = {
-    draw: {
-      icon: '<i class="fas fa-check"></i>',
-      label: "Shift Anyway",
-      callback: async () => {
-        this.actor.update({ 'system.activeForm': form })
+    let buttons = {}
+    buttons = {
+      draw: {
+        icon: '<i class="fas fa-check"></i>',
+        label: 'Shift Anyway',
+        callback: async () => {
+          this.actor.update({ 'system.activeForm': form })
+        }
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: game.i18n.localize('VTM5E.Cancel')
       }
-    },
-    cancel: {
-      icon: '<i class="fas fa-times"></i>',
-      label: game.i18n.localize('VTM5E.Cancel')
     }
-  }
 
-  new Dialog({
-    title: 'Can\'t Transform: Lost the Wolf',
-    content: template,
-    buttons,
-    default: 'draw'
-  }).render(true)
+    new Dialog({
+      title: 'Can\'t Transform: Lost the Wolf',
+      content: template,
+      buttons,
+      default: 'draw'
+    }).render(true)
   }
 }

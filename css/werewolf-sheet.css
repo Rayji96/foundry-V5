@@ -127,7 +127,7 @@
 }
 
 .vtm5e.werewolf-sheet button.werewolf-button.disabled, .vtm5e.werewolf-sheet button.werewolf-button.disabled:hover {
-  color: #000000;
+  color: #000;
   cursor: default;
   background: #562f13ef;
 }
