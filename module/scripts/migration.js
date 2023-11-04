@@ -37,16 +37,16 @@ export const migrateWorld = async () => {
       }
     }
 
-    // Send notification to the GM
+    // Only reload if there's 1 or more updates
     if (updates.length > 0) {
       ui.notifications.info('Upgrade complete! Foundry will now refresh...')
+
+      // Reload to implement the fixes after 5 seconds
+      await setTimeout(5000)
+      foundry.utils.debouncedReload()
     }
 
     // Update game version
     game.settings.set('vtm5e', 'worldVersion', currentVersion)
-
-    // Reload to implement the fixes after 5 seconds
-    await setTimeout(5000)
-    foundry.utils.debouncedReload()
   }
 }
