@@ -31,15 +31,15 @@ export const migrateWorld = async () => {
     // Migrate legacy sheets
     MigrateLegacySheets()
       .then(migrationIDs => {
-        // Push any legacy sheet updates so we can count them
-        updates.push(migrationIDs)
+        // Merge any legacy sheet updates so we can count them
+        updates.concat(migrationIDs)
 
         // Migrate localization
         return MigrateLocalization()
       })
       .then(migrationIDs => {
-        // Push any localization updates so we can count them
-        updates.push(migrationIDs)
+        // Merge any localization updates so we can count them
+        updates.concat(migrationIDs)
 
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {
