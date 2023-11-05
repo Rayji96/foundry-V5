@@ -1,11 +1,11 @@
 /* global ui, game */
 
-export const MigrateLegacySheets = async function() {
-  return new Promise((resolve, reject) => {
+export const MigrateLegacySheets = async function () {
+  return new Promise((resolve) => {
     const invalidActorsList = game.actors.invalidDocumentIds
     const totalIterations = invalidActorsList.size
+    const migrationIDs = []
     let counter = 0
-    let migrationIDs = []
 
     // If there's nothing to go through, then just resolve and move on.
     if (!totalIterations) { resolve() }

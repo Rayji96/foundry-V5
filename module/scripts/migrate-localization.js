@@ -1,25 +1,25 @@
 /* global ui, game */
 
-export const MigrateLocalization = async function() {
-  return new Promise((resolve, reject) => {
+export const MigrateLocalization = async function () {
+  return new Promise((resolve) => {
     const actorsList = game.actors
     const totalIterations = actorsList.size
+    const migrationIDs = []
     let counter = 0
-    let migrationIDs = []
 
     // Fix localization strings (v3.0.0)
     for (const actor of actorsList) {
       const actorData = actor.system
 
       // Check if there are any instances of VTM5E in the actor data
-      if (countInstances(actorData, "VTM5E") > 0) {
+      if (countInstances(actorData, 'VTM5E') > 0) {
         const newData = findAndReplace(actorData)
 
         ui.notifications.info(`Fixing actor ${actor.name}: Migrating localization data.`)
         migrationIDs.push(actor.uuid)
 
         // Update the actor's data with the new information
-        actor.update({ 'system': newData })
+        actor.update({ system: newData })
       }
 
       // Increase the counter and continue
@@ -37,7 +37,7 @@ export const MigrateLocalization = async function() {
       if (Array.isArray(obj)) {
         return obj.map(item => findAndReplace(item))
       } else if (typeof obj === 'object' && obj !== null) {
-        for (let key in obj) {
+        for (const key in obj) {
           obj[key] = findAndReplace(obj[key])
         }
         return obj
@@ -49,11 +49,11 @@ export const MigrateLocalization = async function() {
     }
 
     // Function to search through a given object and hunt all instances of "target"
-    function countInstances(jsonObj, target) {
+    function countInstances (jsonObj, target) {
       let count = 0
 
-      function search(obj) {
-        for (let key in obj) {
+      function search (obj) {
+        for (const key in obj) {
           if (typeof obj[key] === 'object' && obj[key] !== null) {
             // Recursively look deeper into the JSON structure
             search(obj[key])

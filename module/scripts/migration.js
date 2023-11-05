@@ -46,7 +46,7 @@ export const migrateWorld = async () => {
           ui.notifications.info('Upgrade complete! Foundry will now refresh in 10 seconds...')
 
           // Reload to implement the fixes after 10 seconds
-          setTimeout(function(){
+          setTimeout(function () {
             foundry.utils.debouncedReload()
           }, 10000)
         } else {
