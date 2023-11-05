@@ -13,7 +13,7 @@ export class HunterActorSheet extends CellActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'hunter-sheet', 'sheet', 'actor', 'hunter']
+    const classList = ['wod5e', 'hunter-sheet', 'sheet', 'actor', 'hunter']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -52,7 +52,7 @@ export class HunterActorSheet extends CellActorSheet {
   async getData () {
     const data = await super.getData()
     // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('VTM5E.Hunter')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.Hunter')}`
 
     // Prepare items.
     if (this.actor.type === 'hunter') {
@@ -197,7 +197,7 @@ export class HunterActorSheet extends CellActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectEdge')}</label>
+              <label>${game.i18n.localize('WOD5E.SelectEdge')}</label>
               <select id="edgeSelect">${options}</select>
           </div>
       </form>`
@@ -206,7 +206,7 @@ export class HunterActorSheet extends CellActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Add'),
+        label: game.i18n.localize('WOD5E.Add'),
         callback: async (html) => {
           const edge = html.find('#edgeSelect')[0].value
           this.actor.update({ [`system.edges.${edge}.visible`]: true })
@@ -214,12 +214,12 @@ export class HunterActorSheet extends CellActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
+        label: game.i18n.localize('WOD5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('VTM5E.AddEdge'),
+      title: game.i18n.localize('WOD5E.AddEdge'),
       content: template,
       buttons,
       default: 'draw'

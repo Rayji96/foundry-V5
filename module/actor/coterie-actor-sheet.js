@@ -11,7 +11,7 @@ export class CoterieActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'coterie', 'coterie-sheet']
+    const classList = ['wod5e', 'sheet', 'actor', 'coterie', 'coterie-sheet']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -49,7 +49,7 @@ export class CoterieActorSheet extends WoDActor {
     const data = await super.getData()
     data.hasBoons = this.hasBoons
 
-    data.sheetType = `${game.i18n.localize('VTM5E.Coterie')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.Coterie')}`
 
     data.dtypes = ['String', 'Number', 'Boolean']
 

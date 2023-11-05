@@ -12,7 +12,7 @@ export class GhoulActorSheet extends MortalActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'ghoul', 'ghoul-sheet']
+    const classList = ['wod5e', 'sheet', 'actor', 'ghoul', 'ghoul-sheet']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -44,7 +44,7 @@ export class GhoulActorSheet extends MortalActorSheet {
   async getData () {
     const data = await super.getData()
 
-    data.sheetType = `${game.i18n.localize('VTM5E.Ghoul')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.Ghoul')}`
 
     // Prepare items.
     if (this.actor.type === 'ghoul') {
@@ -178,7 +178,7 @@ export class GhoulActorSheet extends MortalActorSheet {
         // otherwise, just use the cost
         dicepool = rouseRerolls ? cost * 2 : cost
 
-        rollDice(dicepool, this.actor, game.i18n.localize('VTM5E.RousingBlood'), cost, dicepool, true, false)
+        rollDice(dicepool, this.actor, game.i18n.localize('WOD5E.RousingBlood'), cost, dicepool, true, false)
       } else if (this.actor.type === 'ghoul' && level > 1) {
         // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
         const actorHealth = this.actor.system.health
@@ -214,7 +214,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectDiscipline')}</label>
+              <label>${game.i18n.localize('WOD5E.SelectDiscipline')}</label>
               <select id="disciplineSelect">${options}</select>
           </div>
       </form>`
@@ -223,7 +223,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Add'),
+        label: game.i18n.localize('WOD5E.Add'),
         callback: async (html) => {
           const discipline = html.find('#disciplineSelect')[0].value
           this.actor.update({ [`system.disciplines.${discipline}.visible`]: true })
@@ -231,12 +231,12 @@ export class GhoulActorSheet extends MortalActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
+        label: game.i18n.localize('WOD5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('VTM5E.AddDiscipline'),
+      title: game.i18n.localize('WOD5E.AddDiscipline'),
       content: template,
       buttons,
       default: 'draw'

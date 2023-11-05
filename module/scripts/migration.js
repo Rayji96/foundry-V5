@@ -1,5 +1,8 @@
 /* global ui, game, foundry */
 
+import { MigrateLegacySheets } from './migrate-legacy-sheets.js'
+import { MigrateLocalization } from './migrate-localization.js'
+
 let worldVersion
 
 export const migrateWorld = async () => {
@@ -24,27 +27,32 @@ export const migrateWorld = async () => {
     ui.notifications.info('New version detected; Updating SchreckNet, please wait.')
     console.log('Obtaining SchreckNet Layer v' + currentVersion)
 
-    // Collect invalid actors and correct them
-    for (const id of game.actors.invalidDocumentIds) {
-      const actor = game.actors.getInvalid(id)
+    // Promise chain to go through the migration functions here
+    // Migrate legacy sheets
+    MigrateLegacySheets()
+      .then(migrationIDs => {
+        // Push any legacy sheet updates so we can count them
+        updates.push(migrationIDs)
 
-      // Migrate any legacy sheets to vampire sheets
-      if (actor.type === 'character') {
-        ui.notifications.info(`Fixing actor ${actor.name}: Changing Legacy Sheet to Vampire Sheet.`)
+        // Migrate localization
+        return MigrateLocalization()
+      })
+      .then(migrationIDs => {
+        // Push any localization updates so we can count them
+        updates.push(migrationIDs)
 
-        updates.push(id)
-        await actor.update({ type: 'vampire' })
-      }
-    }
+        // Only reload if there's 1 or more updates
+        if (updates.length > 0) {
+          ui.notifications.info('Upgrade complete! Foundry will now refresh in 10 seconds...')
 
-    // Only reload if there's 1 or more updates
-    if (updates.length > 0) {
-      ui.notifications.info('Upgrade complete! Foundry will now refresh...')
-
-      // Reload to implement the fixes after 5 seconds
-      await setTimeout(5000)
-      foundry.utils.debouncedReload()
-    }
+          // Reload to implement the fixes after 10 seconds
+          setTimeout(function(){
+            foundry.utils.debouncedReload()
+          }, 10000)
+        } else {
+          ui.notifications.info('No changes necessary! Welcome to version ' + currentVersion)
+        }
+      })
 
     // Update game version
     game.settings.set('vtm5e', 'worldVersion', currentVersion)

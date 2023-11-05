@@ -64,9 +64,9 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
   // Get the difficulty result
   if (difficulty !== 0) {
     successRoll = totalSuccess >= difficulty
-    difficultyResult = `( <span class="danger">${game.i18n.localize('VTM5E.Fail')}</span> )`
+    difficultyResult = `( <span class="danger">${game.i18n.localize('WOD5E.Fail')}</span> )`
     if (successRoll) {
-      difficultyResult = `( <span class="success">${game.i18n.localize('VTM5E.Success')}</span> )`
+      difficultyResult = `( <span class="success">${game.i18n.localize('WOD5E.Success')}</span> )`
     }
   }
 
@@ -75,20 +75,20 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
 
   // Special critical/desperation failure messages
   if (totalCritSuccess && successRoll) {
-    chatMessage = chatMessage + `<p class="roll-content result-critical">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-critical">${game.i18n.localize('WOD5E.CriticalSuccess')}</p>`
   }
   if (desperationCritFail && successRoll && difficulty > 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-desperation">${game.i18n.localize('VTM5E.DesperationSuccess')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-desperation">${game.i18n.localize('WOD5E.DesperationSuccess')}</p>`
   }
   if (desperationCritFail && !successRoll && difficulty > 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-desperation">${game.i18n.localize('VTM5E.DespairFailure')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-desperation">${game.i18n.localize('WOD5E.DespairFailure')}</p>`
   }
   if (desperationCritFail && !successRoll && difficulty === 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-desperation result-possible">${game.i18n.localize('VTM5E.PossibleDesperationFailure')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-desperation result-possible">${game.i18n.localize('WOD5E.PossibleDesperationFailure')}</p>`
   }
 
   // Total number of successes
-  chatMessage = chatMessage + `<p class="roll-label result-success">${game.i18n.localize('VTM5E.Successes')}: ${totalSuccess} ${difficultyResult}</p>`
+  chatMessage = chatMessage + `<p class="roll-label result-success">${game.i18n.localize('WOD5E.Successes')}: ${totalSuccess} ${difficultyResult}</p>`
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
@@ -137,7 +137,7 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
     if (aggrWillpower >= maxWillpower) {
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        content: game.i18n.localize('VTM5E.WillpowerFull')
+        content: game.i18n.localize('WOD5E.WillpowerFull')
       })
     } else {
       // If the superficial willpower ticket isn't completely full, then add a point

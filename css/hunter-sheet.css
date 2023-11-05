@@ -3,48 +3,48 @@
 }
 
 /* Colour overrides for sheet themes */
-.vtm5e.hunter-sheet .window-content .sheet-body .tab > .resource-label, .vtm5e.hunter-sheet .items-list .item-header {
+.wod5e.hunter-sheet .window-content .sheet-body .tab > .resource-label, .wod5e.hunter-sheet .items-list .item-header {
   color: var(--hunter-primary);
   border-color: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet h1, .vtm5e.hunter-sheet .flex-group-center, .vtm5e.hunter-sheet .flex-group-left, .vtm5e.hunter-sheet .flex-group-right, .vtm5e.hunter-sheet .window-content nav.sheet-tabs .item.active, .vtm5e.hunter-sheet .actor-header .resource, .vtm5e.hunter-sheet .items-list .item, .vtm5e.hunter-sheet.window-app, .vtm5e.hunter-sheet.window-app .window-header {
+.wod5e.hunter-sheet h1, .wod5e.hunter-sheet .flex-group-center, .wod5e.hunter-sheet .flex-group-left, .wod5e.hunter-sheet .flex-group-right, .wod5e.hunter-sheet .window-content nav.sheet-tabs .item.active, .wod5e.hunter-sheet .actor-header .resource, .wod5e.hunter-sheet .items-list .item, .wod5e.hunter-sheet.window-app, .wod5e.hunter-sheet.window-app .window-header {
   border-color: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet ::-webkit-scrollbar-thumb {
+.wod5e.hunter-sheet ::-webkit-scrollbar-thumb {
   background: var(--hunter-primary);
 }
 
 /* Styles specific to the Hunter sheets */
-.vtm5e.hunter-sheet .profile-img,
-.vtm5e.hunter-sheet .item-image img {
+.wod5e.hunter-sheet .profile-img,
+.wod5e.hunter-sheet .item-image img {
   background: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet .sheet-banner {
+.wod5e.hunter-sheet .sheet-banner {
   background: var(--hunter-primary);
   color: #FFF;
 }
 
-.vtm5e.hunter-sheet button.rollable,
-.vtm5e.hunter-sheet button.rollable-with-mod {
+.wod5e.hunter-sheet button.rollable,
+.wod5e.hunter-sheet button.rollable-with-mod {
   background: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet .actor-header .profile-img-zone button {
+.wod5e.hunter-sheet .actor-header .profile-img-zone button {
   background: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet .actor-header .profile-img-zone h1 {
+.wod5e.hunter-sheet .actor-header .profile-img-zone h1 {
   color: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet .resource-value .resource-value-step.active {
+.wod5e.hunter-sheet .resource-value .resource-value-step.active {
   background-color: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet .resource-value-static .resource-value-static-step {
+.wod5e.hunter-sheet .resource-value-static .resource-value-static-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -52,23 +52,23 @@
   border-radius: 50%;
 }
 
-.vtm5e.hunter-sheet .resource-value-static .resource-value-static-step.active {
+.wod5e.hunter-sheet .resource-value-static .resource-value-static-step.active {
   background-color: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet .resource-counter .resource-counter-step[data-state="-"], .vtm5e.hunter-sheet .despair-box .despair-toggle.active {
+.wod5e.hunter-sheet .resource-counter .resource-counter-step[data-state="-"], .wod5e.hunter-sheet .despair-box .despair-toggle.active {
   background-color: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+.wod5e.hunter-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
   background-color: var(--hunter-primary);
 }
 
-.vtm5e.hunter-sheet .despair-box {
+.wod5e.hunter-sheet .despair-box {
   margin-top: 5px;
 }
 
-.vtm5e.hunter-sheet .despair-box .despair-toggle {
+.wod5e.hunter-sheet .despair-box .despair-toggle {
   height: 14px;
   width: 14px;
   border: 1px solid #000;
