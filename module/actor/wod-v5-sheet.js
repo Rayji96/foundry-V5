@@ -19,11 +19,17 @@ export class WoDActor extends ActorSheet {
     // Encrich editor content
     data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })
     data.enrichedTouchstones = await TextEditor.enrichHTML(this.object.system.headers.touchstones, { async: true })
-    data.enrichedBane = await TextEditor.enrichHTML(this.object.system.headers.bane, { async: true })
+
     data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, { async: true })
     data.enrichedAppearance = await TextEditor.enrichHTML(this.object.system.appearance, { async: true })
     data.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, { async: true })
     data.enrichedEquipment = await TextEditor.enrichHTML(this.object.system.equipment, { async: true })
+
+    // Vampire stuff
+    data.enrichedBane = await TextEditor.enrichHTML(this.object.system.headers.bane, { async: true })
+
+    // Hunter stuff
+    data.enrichedCreedFields = await TextEditor.enrichHTML(this.object.system.headers.creedfields, { async: true })
 
     return data
   }
