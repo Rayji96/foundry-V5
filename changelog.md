@@ -19,5 +19,7 @@
 * Reworked how the actor dialogue is localized [Veilza]
 * Reworked how the various splats' dice are called [Veilza]
 * The system now uses "WoDActor" and "WoDItem" as the export classes for base actors/items and their functionality [Veilza]
+* Reworked the migration scripts [Veilza]
+* All instances of "VTM5E" in localization and CSS classes have now been changed to "WOD5E," with a migration script to fix any sheets made from before this fix [Veilza]
 
 [Veilza]: https://github.com/Veilza
