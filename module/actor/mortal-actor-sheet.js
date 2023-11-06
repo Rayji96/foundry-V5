@@ -49,13 +49,8 @@ export class MortalActorSheet extends CoterieActorSheet {
   /** @override */
   async getData () {
     const data = await super.getData()
-    // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('WOD5E.Mortal')}`
 
-    // Encrich editor content
-    data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })
-    data.enrichedTouchstones = await TextEditor.enrichHTML(this.object.system.headers.touchstones, { async: true })
-    data.enrichedBane = await TextEditor.enrichHTML(this.object.system.headers.bane, { async: true })
+    data.sheetType = `${game.i18n.localize('WOD5E.Mortal')}`
 
     // Prepare items.
     if (this.actor.type === 'mortal') {
