@@ -11,7 +11,7 @@ export class CellActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'hunter-sheet', 'sheet', 'actor', 'cell']
+    const classList = ['wod5e', 'hunter-sheet', 'sheet', 'actor', 'cell']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -48,7 +48,7 @@ export class CellActorSheet extends WoDActor {
   async getData () {
     const data = await super.getData()
     data.hasBoons = this.hasBoons
-    data.sheetType = `${game.i18n.localize('VTM5E.Cell')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.Cell')}`
 
     data.dtypes = ['String', 'Number', 'Boolean']
 

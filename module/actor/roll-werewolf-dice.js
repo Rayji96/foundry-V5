@@ -102,9 +102,9 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   // Get the difficulty result
   if (difficulty !== 0) {
     successRoll = totalSuccess >= difficulty
-    difficultyResult = `( <span class="danger">${game.i18n.localize('VTM5E.Fail')}</span> )`
+    difficultyResult = `( <span class="danger">${game.i18n.localize('WOD5E.Fail')}</span> )`
     if (successRoll) {
-      difficultyResult = `( <span class="success">${game.i18n.localize('VTM5E.Success')}</span> )`
+      difficultyResult = `( <span class="success">${game.i18n.localize('WOD5E.Success')}</span> )`
     }
   }
 
@@ -113,19 +113,19 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Special critical/rage failure messages
   if (totalCritSuccess && successRoll) {
-    chatMessage = chatMessage + `<p class="roll-content result-critical">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-critical">${game.i18n.localize('WOD5E.CriticalSuccess')}</p>`
   }
   // No successes at all is a total failure
   if (totalSuccess === 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-rage result-desperation">${game.i18n.localize('VTM5E.TotalFailure')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-rage result-desperation">${game.i18n.localize('WOD5E.TotalFailure')}</p>`
   }
   // Greater than 1, a brutal outcome is possible
   if (brutalOutcome > 1) {
-    chatMessage = chatMessage + `<p class="roll-content result-rage result-possible">${game.i18n.localize('VTM5E.PossibleRageFailure')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-rage result-possible">${game.i18n.localize('WOD5E.PossibleRageFailure')}</p>`
   }
 
   // Total number of successes
-  chatMessage = chatMessage + `<p class="roll-label result-success">${game.i18n.localize('VTM5E.Successes')}: ${totalSuccess} ${difficultyResult}</p>`
+  chatMessage = chatMessage + `<p class="roll-label result-success">${game.i18n.localize('WOD5E.Successes')}: ${totalSuccess} ${difficultyResult}</p>`
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
@@ -174,7 +174,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
     if (aggrWillpower >= maxWillpower) {
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        content: game.i18n.localize('VTM5E.WillpowerFull')
+        content: game.i18n.localize('WOD5E.WillpowerFull')
       })
     } else {
       // If the superficial willpower ticket isn't completely full, then add a point

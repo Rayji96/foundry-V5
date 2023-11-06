@@ -2,20 +2,20 @@
     {{> "systems/vtm5e/templates/actor/parts/werewolf/renown.html"}}
     {{#if actor.system.frenzyActive}}
         <div class="frenzyNotification flex-center">
-            <h1>{{localize 'VTM5E.FrenzyActiveWarning'}}</h1>
-            <h3>{{localize 'VTM5E.FrenzyActiveWarning2'}}</h3>
+            <h1>{{localize 'WOD5E.FrenzyActiveWarning'}}</h1>
+            <h3>{{localize 'WOD5E.FrenzyActiveWarning2'}}</h3>
         </div>
     {{/if}}
     <ol class="items-list">
         <!-- Header of the gifts lists -->
         <li class="item flexrow item-header">
-            <div class="item-name">{{localize "VTM5E.Name"}}</div>
-            <div class="item-name header-level">{{localize "VTM5E.Renown"}}</div>
+            <div class="item-name">{{localize "WOD5E.Name"}}</div>
+            <div class="item-name header-level">{{localize "WOD5E.Renown"}}</div>
             <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
-                <a class="item-control gift-create" title="{{localize 'VTM5E.AddGift'}}">
+                <a class="item-control gift-create" title="{{localize 'WOD5E.AddGift'}}">
                     <i class="fas fa-plus"></i>
-                    {{localize "VTM5E.AddGift"}}
+                    {{localize "WOD5E.AddGift"}}
                 </a>
             </div>
         </li>
@@ -29,15 +29,15 @@
                     <!-- Item controls for Gifts sections -->
                     <div class="item-controls">
                         <!-- Add new gift -->
-                        <a class="item-control gift-create" title="{{localize 'VTM5E.AddGift'}}" data-gift="{{key}}">
+                        <a class="item-control gift-create" title="{{localize 'WOD5E.AddGift'}}" data-gift="{{key}}">
                             <i class="fas fa-plus"></i>
                         </a>
                         <!-- Icon to show the gift description to the chat-->
-                        <a class="item-control gift-chat" title="{{localize 'VTM5E.ShowToChat'}}" data-type="power" data-gift="{{key}}">
+                        <a class="item-control gift-chat" title="{{localize 'WOD5E.ShowToChat'}}" data-type="power" data-gift="{{key}}">
                             <i class="fas fa-comment-alt"></i>
                         </a>
                         <!-- Icon to delete the gift (as long as it doesn't have any powers) -->
-                        <a class="item-control gift-delete" title="{{localize 'VTM5E.Delete'}}" data-gift="{{key}}">
+                        <a class="item-control gift-delete" title="{{localize 'WOD5E.Delete'}}" data-gift="{{key}}">
                             <i class="fas fa-trash"></i>
                         </a>
                     </div>
@@ -66,21 +66,21 @@
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rage check, if applicable -->
                                 {{#if item.system.rage}}
-                                    <a class="item-control rage-roll" title="{{localize 'VTM5E.RollRage'}}" data-system="{{../actor.system.gamesystem}}"
-                                        data-rage-dice="{{item.system.cost}}" data-consume-rage="true" data-label="{{localize 'VTM5E.RageDice'}}">
+                                    <a class="item-control rage-roll" title="{{localize 'WOD5E.RollRage'}}" data-system="{{../actor.system.gamesystem}}"
+                                        data-rage-dice="{{item.system.cost}}" data-consume-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
                                         <i class="fas fa-dice-d20"></i>
                                     </a>
                                 {{/if}}
                                 <!-- Icon to edit the power-->
-                                <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}">
+                                <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <!-- Icon to display the power in chat -->
-                                <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}">
+                                <a class="item-control item-chat" title="{{localize 'WOD5E.ShowToChat'}}">
                                     <i class="fas fa-comment-alt"></i>
                                 </a>
                                 <!-- Icon to delete the power -->
-                                <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}">
+                                <a class="item-control item-delete" title="{{localize 'WOD5E.Delete'}}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
@@ -99,13 +99,13 @@
     <ol class="items-list">
         <!-- Header of the rites lists -->
         <li class="item flexrow item-header">
-            <div class="item-name">{{localize "VTM5E.Name"}}</div>
-            <div class="item-name header-level">{{localize "VTM5E.Renown"}}</div>
+            <div class="item-name">{{localize "WOD5E.Name"}}</div>
+            <div class="item-name header-level">{{localize "WOD5E.Renown"}}</div>
             <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
-                <a class="item-control rite-create" title="{{localize 'VTM5E.AddRite'}}">
+                <a class="item-control rite-create" title="{{localize 'WOD5E.AddRite'}}">
                     <i class="fas fa-plus"></i>
-                    {{localize "VTM5E.AddRite"}}
+                    {{localize "WOD5E.AddRite"}}
                 </a>
             </div>
         </li>
@@ -129,21 +129,21 @@
                     <div class="item-controls">
                         <!-- Icon to roll the power's rage check, if applicable -->
                         {{#if item.system.rage}}
-                            <a class="item-control rage-roll" title="{{localize 'VTM5E.RollRage'}}" data-system="{{../actor.system.gamesystem}}"
-                                data-rage-dice="{{item.system.cost}}" data-consume-rage="true" data-label="{{localize 'VTM5E.RageDice'}}">
+                            <a class="item-control rage-roll" title="{{localize 'WOD5E.RollRage'}}" data-system="{{../actor.system.gamesystem}}"
+                                data-rage-dice="{{item.system.cost}}" data-consume-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
                                 <i class="fas fa-dice-d20"></i>
                             </a>
                         {{/if}}
                         <!-- Icon to edit the power-->
-                        <a class="item-control item-edit" title="{{localize 'VTM5E.Edit'}}">
+                        <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}">
                             <i class="fas fa-edit"></i>
                         </a>
                         <!-- Icon to display the power in chat -->
-                        <a class="item-control item-chat" title="{{localize 'VTM5E.ShowToChat'}}">
+                        <a class="item-control item-chat" title="{{localize 'WOD5E.ShowToChat'}}">
                             <i class="fas fa-comment-alt"></i>
                         </a>
                         <!-- Icon to delete the power -->
-                        <a class="item-control item-delete" title="{{localize 'VTM5E.Delete'}}">
+                        <a class="item-control item-delete" title="{{localize 'WOD5E.Delete'}}">
                             <i class="fas fa-trash"></i>
                         </a>
                     </div>

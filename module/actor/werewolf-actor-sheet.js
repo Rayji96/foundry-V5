@@ -12,7 +12,7 @@ export class WerewolfActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'werewolf-sheet', 'actor', 'sheet', 'werewolf']
+    const classList = ['wod5e', 'werewolf-sheet', 'actor', 'sheet', 'werewolf']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -49,7 +49,7 @@ export class WerewolfActorSheet extends WoDActor {
   async getData () {
     const data = await super.getData()
 
-    data.sheetType = `${game.i18n.localize('VTM5E.Werewolf')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.Werewolf')}`
 
     this._prepareItems(data)
 
@@ -221,7 +221,7 @@ export class WerewolfActorSheet extends WoDActor {
     if (header.dataset.gift) {
       // Prepare the item object.
       const itemData = {
-        name: game.i18n.localize('VTM5E.NewGift'),
+        name: game.i18n.localize('WOD5E.NewGift'),
         type: 'gift',
         system: {
           giftType: header.dataset.gift
@@ -242,7 +242,7 @@ export class WerewolfActorSheet extends WoDActor {
       const template = `
         <form>
             <div class="form-group">
-                <label>${game.i18n.localize('VTM5E.SelectGift')}</label>
+                <label>${game.i18n.localize('WOD5E.SelectGift')}</label>
                 <select id="giftSelect">${options}</select>
             </div>
         </form>`
@@ -251,13 +251,13 @@ export class WerewolfActorSheet extends WoDActor {
       buttons = {
         draw: {
           icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize('VTM5E.Add'),
+          label: game.i18n.localize('WOD5E.Add'),
           callback: async (html) => {
             const gift = html.find('#giftSelect')[0].value
 
             // Prepare the item object.
             const itemData = {
-              name: game.i18n.localize('VTM5E.NewGift'),
+              name: game.i18n.localize('WOD5E.NewGift'),
               type: 'gift',
               system: {
                 giftType: gift
@@ -272,12 +272,12 @@ export class WerewolfActorSheet extends WoDActor {
         },
         cancel: {
           icon: '<i class="fas fa-times"></i>',
-          label: game.i18n.localize('VTM5E.Cancel')
+          label: game.i18n.localize('WOD5E.Cancel')
         }
       }
 
       new Dialog({
-        title: game.i18n.localize('VTM5E.AddGift'),
+        title: game.i18n.localize('WOD5E.AddGift'),
         content: template,
         buttons,
         default: 'draw'
@@ -295,7 +295,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     // Prepare the item object.
     const itemData = {
-      name: game.i18n.localize('VTM5E.NewRite'),
+      name: game.i18n.localize('WOD5E.NewRite'),
       type: 'gift',
       system: {
         giftType: 'rite'
@@ -446,7 +446,7 @@ export class WerewolfActorSheet extends WoDActor {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Submit'),
+        label: game.i18n.localize('WOD5E.Submit'),
         callback: async (html) => {
           const newDescription = html.find('#formDescription')[0].value
 
@@ -455,12 +455,12 @@ export class WerewolfActorSheet extends WoDActor {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
+        label: game.i18n.localize('WOD5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('VTM5E.Edit') + ' ' + game.i18n.localize(formName),
+      title: game.i18n.localize('WOD5E.Edit') + ' ' + game.i18n.localize(formName),
       content: template,
       buttons,
       default: 'draw'
@@ -486,7 +486,7 @@ export class WerewolfActorSheet extends WoDActor {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
+        label: game.i18n.localize('WOD5E.Cancel')
       }
     }
 

@@ -12,7 +12,7 @@ export class MortalActorSheet extends CoterieActorSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'actor', 'mortal']
+    const classList = ['wod5e', 'sheet', 'actor', 'mortal']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
@@ -50,7 +50,7 @@ export class MortalActorSheet extends CoterieActorSheet {
   async getData () {
     const data = await super.getData()
     // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('VTM5E.Mortal')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.Mortal')}`
 
     // Encrich editor content
     data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })

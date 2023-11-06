@@ -405,15 +405,15 @@ export class WoDActor extends ActorSheet {
   // Function to grab the default name of an item.
   getItemDefaultName (type, data) {
     if (type === 'feature') {
-      return `${game.i18n.localize('VTM5E.' + data.featuretype.capitalize())}`
+      return `${game.i18n.localize('WOD5E.' + data.featuretype.capitalize())}`
     }
     if (type === 'power') {
-      return `${game.i18n.localize('VTM5E.' + data.discipline.capitalize())}`
+      return `${game.i18n.localize('WOD5E.' + data.discipline.capitalize())}`
     }
     if (type === 'perk') {
-      return `${game.i18n.localize('VTM5E.' + data.edge.capitalize())}`
+      return `${game.i18n.localize('WOD5E.' + data.edge.capitalize())}`
     }
-    return `${game.i18n.localize('VTM5E.' + type.capitalize())}`
+    return `${game.i18n.localize('WOD5E.' + type.capitalize())}`
   }
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out
@@ -497,7 +497,7 @@ export class WoDActor extends ActorSheet {
       if (despair === '0') {
         despairBlock = `
         <div class="form-group">
-          <label>${game.i18n.localize('VTM5E.DesperationDice')}</label>
+          <label>${game.i18n.localize('WOD5E.DesperationDice')}</label>
           <input type="text" min="0" id="desparationInput" value="0">
         </div>
         `
@@ -507,11 +507,11 @@ export class WoDActor extends ActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.SelectAbility')}</label>
+              <label>${game.i18n.localize('WOD5E.SelectAbility')}</label>
               <select id="abilitySelect">${options}</select>
           </div>  
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
+              <label>${game.i18n.localize('WOD5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
           </div>  
           <div class="form-group">` +
@@ -519,7 +519,7 @@ export class WoDActor extends ActorSheet {
            despairBlock +
            `</div>
            <div class="form-group">
-           <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
+           <label>${game.i18n.localize('WOD5E.Difficulty')}</label>
            <input type="text" min="0" id="inputDif" value="0">
        </div>
       </form>`
@@ -528,7 +528,7 @@ export class WoDActor extends ActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Roll'),
+        label: game.i18n.localize('WOD5E.Roll'),
         callback: async (html) => {
           const ability = html.find('#abilitySelect')[0].value
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
@@ -564,12 +564,12 @@ export class WoDActor extends ActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
+        label: game.i18n.localize('WOD5E.Cancel')
       }
     }
 
     new Dialog({
-      title: game.i18n.localize('VTM5E.Rolling') + ` ${dataset.label}...`,
+      title: game.i18n.localize('WOD5E.Rolling') + ` ${dataset.label}...`,
       content: template,
       buttons,
       default: 'draw'
@@ -627,11 +627,11 @@ export class WoDActor extends ActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Modifier')}</label>
+              <label>${game.i18n.localize('WOD5E.Modifier')}</label>
               <input type="text" id="inputMod" value="0">
           </div>  
           <div class="form-group">
-              <label>${game.i18n.localize('VTM5E.Difficulty')}</label>
+              <label>${game.i18n.localize('WOD5E.Difficulty')}</label>
               <input type="text" min="0" id="inputDif" value="0">
           </div>
       </form>`
@@ -640,7 +640,7 @@ export class WoDActor extends ActorSheet {
     buttons = {
       draw: {
         icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('VTM5E.Roll'),
+        label: game.i18n.localize('WOD5E.Roll'),
         callback: async (html) => {
           const modifier = parseInt(html.find('#inputMod')[0].value || 0)
           const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
@@ -669,7 +669,7 @@ export class WoDActor extends ActorSheet {
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('VTM5E.Cancel')
+        label: game.i18n.localize('WOD5E.Cancel')
       }
     }
 
