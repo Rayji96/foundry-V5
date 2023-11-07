@@ -75,3 +75,7 @@
   display: inline-block;
   cursor: pointer;
 }
+
+.item-image.edge-rollable img {
+  box-shadow: inset 0px 0px 5px 0px red;
+}

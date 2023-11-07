@@ -147,3 +147,7 @@
 .wod5e.werewolf-sheet .crinos-health .resource-counter-step {
   border: 1px solid #c11f1f;
 }
+
+.item-image.gift-rollable img {
+  box-shadow: inset 0px 0px 5px 0px red;
+}

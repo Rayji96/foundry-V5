@@ -106,6 +106,10 @@ button:focus {
     transition-duration: 0.3s;
 }
 
+.item-image.power-rollable img {
+    box-shadow: inset 0px 0px 5px 0px red;
+}
+
 .rollable:hover,
 .rollable:focus,
 .rollable-with-mod:hover,
@@ -116,6 +120,8 @@ button:focus {
 .vrollable:focus,
 .power-rollable:hover,
 .power-rollable:focus,
+.edge-rollable:hover,
+.edge-rollable:focus,
 .gift-rollable:hover,
 .gift-rollable:focus {
     color: #000;

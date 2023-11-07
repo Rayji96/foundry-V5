@@ -44,7 +44,7 @@
                         <div class="flexrow">
                             <!-- Whether the button is clickable or not to post the perk in chat -->
                             {{#if item.system.rollable}}
-                                <div class="item-image perk-rollable" data-id="{{item._id}}" data-use-hunger="1">
+                                <div class="item-image edge-rollable" data-id="{{item._id}}" data-system="{{../actor.system.gamesystem}}">
                                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                                 </div>
                             {{else}}

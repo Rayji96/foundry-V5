@@ -145,6 +145,9 @@ export class HunterActorSheet extends CellActorSheet {
       this.actor.update({ [`system.edges.${data.edge}.visible`]: false })
     })
 
+    // Rollable Edge powers
+    html.find('.edge-rollable').click(this._onEdgeRoll.bind(this))
+
     // Post Edge description to the chat
     html.find('.edge-chat').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
@@ -226,7 +229,7 @@ export class HunterActorSheet extends CellActorSheet {
     }).render(true)
   }
 
-  _onPerkRoll (event) {
+  _onEdgeRoll (event) {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset

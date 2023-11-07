@@ -480,7 +480,7 @@ export class WoDActor extends ActorSheet {
       rollDice(numDice, this.actor, `${dataset.label}`, difficulty, hungerDice)
     } else if (system === 'hunter') {
       // Define actor's desparation dice
-      const desparationDice = dataset.desparationDice
+      const desparationDice = dataset.desparationDice ? dataset.desparationDice : 0
 
       rollHunterDice(numDice, this.actor, `${dataset.label}`, difficulty, desparationDice)
     } else if (system === 'werewolf') {
