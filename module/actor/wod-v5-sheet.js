@@ -15,21 +15,26 @@ export class WoDActor extends ActorSheet {
     const data = await super.getData()
     data.isCharacter = this.isCharacter
     data.locked = this.locked
+    const actorData = this.object.system
+    const actorHeaders = actorData.headers
 
-    // Encrich editor content
-    data.enrichedTenets = await TextEditor.enrichHTML(this.object.system.headers.tenets, { async: true })
-    data.enrichedTouchstones = await TextEditor.enrichHTML(this.object.system.headers.touchstones, { async: true })
+    // Enrich non-header editor fields
+    if (actorData.biography) { data.enrichedBiography = await TextEditor.enrichHTML(actorData.biography, { async: true }) }
+    if (actorData.appearance) { data.enrichedAppearance = await TextEditor.enrichHTML(actorData.appearance, { async: true }) }
+    if (actorData.notes) { data.enrichedNotes = await TextEditor.enrichHTML(actorData.notes, { async: true }) }
+    if (actorData.equipment) { data.enrichedEquipment = await TextEditor.enrichHTML(actorData.equipment, { async: true }) }
 
-    data.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, { async: true })
-    data.enrichedAppearance = await TextEditor.enrichHTML(this.object.system.appearance, { async: true })
-    data.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, { async: true })
-    data.enrichedEquipment = await TextEditor.enrichHTML(this.object.system.equipment, { async: true })
+    // Enrich actor header editor fields
+    if(actorHeaders) {
+      if (actorHeaders.tenets) { data.enrichedTenets = await TextEditor.enrichHTML(actorHeaders.tenets, { async: true }) }
+      if (actorHeaders.touchstones) { data.enrichedTouchstones = await TextEditor.enrichHTML(actorHeaders.touchstones, { async: true }) }
 
-    // Vampire stuff
-    data.enrichedBane = await TextEditor.enrichHTML(this.object.system.headers.bane, { async: true })
+      // Vampire stuff
+      if (actorHeaders.bane) { data.enrichedBane = await TextEditor.enrichHTML(actorHeaders.bane, { async: true }) }
 
-    // Hunter stuff
-    data.enrichedCreedFields = await TextEditor.enrichHTML(this.object.system.headers.creedfields, { async: true })
+      // Ghoul stuff
+      if (actorHeaders.creedfields) { data.enrichedCreedFields = await TextEditor.enrichHTML(actorHeaders.creedfields, { async: true }) }
+    }
 
     return data
   }
