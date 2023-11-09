@@ -1,4 +1,18 @@
 <div class="tab blood" data-group="primary" data-tab="blood">
+    <div class="resource flexrow grid grid-3col">
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.Sire"}}</label>
+            <input type="text" name="system.headers.sire" value="{{actor.system.headers.sire}}" placeholder="{{localize 'WOD5E.Sire'}}" />
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.Generation"}}</label>
+            <input type="text" name="system.headers.generation" value="{{actor.system.headers.generation}}" placeholder="{{localize 'WOD5E.Generation'}}" />
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.BloodResonance"}}</label>
+            <input type="text" name="system.blood.resonance" value="{{actor.system.blood.resonance}}" placeholder="{{localize 'WOD5E.BloodResonance'}}" />
+        </div>
+    </div>
     <div class="resource flexrow grid grid-2col">
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.BloodPotency"}}: </label>
@@ -9,10 +23,7 @@
                 {{/numLoop}}
             </div>
         </div>
-        <div class="flex-group-center flexrow">
-            <label class="resource-label">{{localize "WOD5E.BloodResonance"}}: </label>
-            <input type="text" name="system.blood.resonance" value="{{actor.system.blood.resonance}}" />
-        </div>
+        {{> "systems/vtm5e/templates/actor/parts/vampire/humanity.html"}}
     </div>
     <div class="resource flexrow grid grid-2col">
         <div class="flex-group-center">
@@ -38,6 +49,14 @@
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.BaneSeverity"}}:</label>
             <p>{{lookup blood_potency_text "bane"}}</p>
+        </div>
+        <div class="flex-group-center">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.ClanBane"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedBane target="system.headers.bane" button=true editable=editable}}
+            </div>
         </div>
     </div>
 </div>

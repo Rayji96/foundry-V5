@@ -992,12 +992,6 @@ button.dialog-button:hover {
     background: white
 }
 
-input[name="system.blood.resonance"] {
-    font-size: 1.2em;
-    font-family: Vollkorn, serif;
-    font-weight: 700;
-}
-
 .sheet-banner {
     display: flex;
     flex-grow: 0;
