@@ -12,8 +12,6 @@ Current supported systems include:
 * Hunter the Reckoning, 5th Edition
 * Werewolf the Apocalypse, 5th Edition
 
-Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pack License].
-
 ![preview](./assets/images/SystemPreview.png)
 
 ## Dice
@@ -69,8 +67,11 @@ Huge thanks to these folks for their contributions!
 * Feedback and fixes by [eisenfuchs]
 * Feedback and fixes by @OldMightyFriendlyGamer#0832
 * Initial testing and DiceSoNice feedback by Clement#1490
+## Dark Pack
 
 [![Dark Pack]][Dark Pack URL]
+
+Licensed WoD 5e materials will not be provided as this system is provided for public usage, for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pack Agreement].
 
 [Foundry Shield 11]: https://img.shields.io/badge/Foundry-11-informational
 [Foundry URL]: https://foundryvtt.com
@@ -82,8 +83,8 @@ Huge thanks to these folks for their contributions!
 [Super-Linter URL]: https://github.com/marketplace/actions/super-linter
 
 [Dark Pack]: https://s3-eu-north-1.amazonaws.com/pdx-campaign-wp-data/uploads/sites/10/2021/10/05102936/darkpack_logo2-300x300.png
-[Dark Pack URL]: https://www.worldofdarkness.com/dark-pack
-[Dark Pack License]: https://www.worldofdarkness.com/dark-pack
+[Dark Pack URL]: https://www.paradoxinteractive.com/games/world-of-darkness/community/dark-pack-agreement
+[Dark Pack Agreement]: https://www.paradoxinteractive.com/games/world-of-darkness/community/dark-pack-agreement
 
 [boilerplate system]: https://gitlab.com/asacolips-projects/foundry-mods/foundryvtt-system-tutorial
 [danielmalka]: https://github.com/danielmalka
