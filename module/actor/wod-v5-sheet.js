@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog */
+/* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor */
 
 import { rollDice } from './roll-dice.js'
 import { rollHunterDice } from './roll-hunter-dice.js'

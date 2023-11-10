@@ -1,4 +1,4 @@
-/* global game, mergeObject, TextEditor */
+/* global game, mergeObject */
 
 import { WoDActor } from './wod-v5-sheet.js'
 
@@ -51,7 +51,7 @@ export class CellActorSheet extends WoDActor {
     data.sheetType = `${game.i18n.localize('WOD5E.Cell')}`
 
     data.dtypes = ['String', 'Number', 'Boolean']
-    
+
     // Prepare items.
     if (this.actor.type === 'cell') {
       this._prepareItems(data)
