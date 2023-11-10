@@ -17,13 +17,13 @@
 }
 
 /* Styles specific to the Hunter sheets */
-.wod5e.hunter-sheet .item-image.edge-rollable img {
-  box-shadow: inset 0 0 5px 0 red;
-}
-
 .wod5e.hunter-sheet .profile-img,
 .wod5e.hunter-sheet .item-image img {
   background: var(--hunter-primary);
+}
+
+.wod5e.hunter-sheet .item-image.edge-rollable img {
+  box-shadow: inset 0 0 5px 0 red;
 }
 
 .wod5e.hunter-sheet .sheet-banner {

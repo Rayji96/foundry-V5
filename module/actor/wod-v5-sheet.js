@@ -25,7 +25,7 @@ export class WoDActor extends ActorSheet {
     if (actorData.equipment) { data.enrichedEquipment = await TextEditor.enrichHTML(actorData.equipment, { async: true }) }
 
     // Enrich actor header editor fields
-    if(actorHeaders) {
+    if (actorHeaders) {
       if (actorHeaders.tenets) { data.enrichedTenets = await TextEditor.enrichHTML(actorHeaders.tenets, { async: true }) }
       if (actorHeaders.touchstones) { data.enrichedTouchstones = await TextEditor.enrichHTML(actorHeaders.touchstones, { async: true }) }
 
