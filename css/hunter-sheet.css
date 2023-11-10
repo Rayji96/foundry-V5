@@ -22,6 +22,10 @@
   background: var(--hunter-primary);
 }
 
+.wod5e.hunter-sheet .item-image.edge-rollable img {
+  box-shadow: inset 0 0 5px 0 red;
+}
+
 .wod5e.hunter-sheet .sheet-banner {
   background: var(--hunter-primary);
   color: #FFF;
@@ -74,8 +78,4 @@
   border: 1px solid #000;
   display: inline-block;
   cursor: pointer;
-}
-
-.item-image.edge-rollable img {
-  box-shadow: inset 0px 0px 5px 0px red;
 }

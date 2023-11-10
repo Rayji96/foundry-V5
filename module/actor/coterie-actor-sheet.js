@@ -1,4 +1,4 @@
-/* global game, mergeObject, TextEditor */
+/* global game, mergeObject */
 
 import { WoDActor } from './wod-v5-sheet.js'
 

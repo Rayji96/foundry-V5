@@ -1,4 +1,4 @@
-/* global game, mergeObject, TextEditor */
+/* global game, mergeObject */
 
 // Export this function to be used in other scripts
 import { CoterieActorSheet } from './coterie-actor-sheet.js'
