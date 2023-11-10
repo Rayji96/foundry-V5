@@ -1,73 +1,40 @@
 <div class="tab" data-group="primary" data-tab="description">
     {{#if isCharacter}}
-    {{#if actor.system.clan.value}}
-    <div class="resource flexrow grid grid-3col">
-        <div class="flex-group-center">
-            <label class="resource-label">{{localize "WOD5E.Concept"}}</label>
-            <input type="text" name="system.headers.concept" value="{{actor.system.headers.concept}}" />
-        </div>
-        <div class="flex-group-center">
-            <label class="resource-label">{{localize "WOD5E.Chronicle"}}</label>
-            <input type="text" name="system.headers.chronicle" value="{{actor.system.headers.chronicle}}" />
-        </div>
-        <div class="flex-group-center">
-            <label class="resource-label">{{localize "WOD5E.Ambition"}}</label>
-            <input type="text" name="system.headers.ambition" value="{{actor.system.headers.ambition}}" />
-        </div>
-    </div>
-    {{else}}
     <div class="resource flexrow grid grid-4col">
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.Concept"}}</label>
-            <input type="text" name="system.headers.concept" value="{{actor.system.headers.concept}}" />
+            <input type="text" name="system.headers.concept" value="{{actor.system.headers.concept}}" placeholder="{{localize 'WOD5E.Concept'}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.Chronicle"}}</label>
-            <input type="text" name="system.headers.chronicle" value="{{actor.system.headers.chronicle}}" />
+            <input type="text" name="system.headers.chronicle" value="{{actor.system.headers.chronicle}}" placeholder="{{localize 'WOD5E.Chronicle'}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.Ambition"}}</label>
-            <input type="text" name="system.headers.ambition" value="{{actor.system.headers.ambition}}" />
+            <input type="text" name="system.headers.ambition" value="{{actor.system.headers.ambition}}" placeholder="{{localize 'WOD5E.Ambition'}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.Desire"}}</label>
-            <input type="text" name="system.headers.desire" value="{{actor.system.headers.desire}}" />
+            <input type="text" name="system.headers.desire" value="{{actor.system.headers.desire}}" placeholder="{{localize 'WOD5E.Desire'}}" />
         </div>
     </div>
-    {{/if}}
     <div class="resource flexrow grid grid-3col">
-        {{#if actor.system.clan.value}}
-        <div class="flex-group-center">
-            <label class="resource-label">{{localize "WOD5E.Sire"}}</label>
-            <input type="text" name="system.headers.sire" value="{{actor.system.headers.sire}}" />
-        </div>
-        <div class="flex-group-center">
-            <label class="resource-label">{{localize "WOD5E.Generation"}}</label>
-            <input type="text" name="system.headers.generation" value="{{actor.system.headers.generation}}" />
-        </div>
-        {{/if}}
-        {{#if actor.system.headers.cellname}}
+        {{#ifeq actor.system.gamesystem 'hunter'}}
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.Creed"}}</label>
-            <input type="text" name="system.creed.value" value="{{actor.system.creed.value}}" />
+            <input type="text" name="system.creed.value" value="{{actor.system.creed.value}}" placeholder="{{localize 'WOD5E.Creed'}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.Drive"}}</label>
-            <input type="text" name="system.drive.value" value="{{actor.system.drive.value}}" />
+            <input type="text" name="system.drive.value" value="{{actor.system.drive.value}}" placeholder="{{localize 'WOD5E.Drive'}}" />
         </div>
         <div class="flex-group-center">
             <label class="resource-label">{{localize "WOD5E.Redemption"}}</label>
-            <input type="text" name="system.redemption.value" value="{{actor.system.redemption.value}}" />
+            <input type="text" name="system.redemption.value" value="{{actor.system.redemption.value}}" placeholder="{{localize 'WOD5E.Redemption'}}" />
         </div>
-        {{/if}}
-        {{#if actor.system.clan.value}}
-        <div class="flex-group-center">
-            <label class="resource-label">{{localize "WOD5E.Desire"}}</label>
-            <input type="text" name="system.headers.desire" value="{{actor.system.headers.desire}}" />
-        </div>
-        {{/if}}
+        {{/ifeq}}
     </div>
-    {{#if (or actor.system.clan.value actor.system.headers.cellname)}} 
+    {{#ifeq actor.system.gamesystem 'hunter'}}
     <div class="resource flexrow grid grid-3col" style="min-height: 264px;">
         <div class="flex-group-left">
             <div class="flex-center">
@@ -85,17 +52,7 @@
                 {{editor enrichedTouchstones target="system.headers.touchstones" button=true editable=editable}}
             </div>
         </div>
-        {{#if actor.system.clan.value}}
-        <div class="flex-group-left">
-            <div class="flex-center">
-                <label class="resource-label">{{localize "WOD5E.ClanBane"}}</label>
-            </div>
-            <div class="description-content">
-                {{editor enrichedBane target="system.headers.bane" button=true editable=editable}}
-            </div>
-        </div>
-        {{/if}}
-        {{#if actor.system.headers.cellname}}
+        {{#ifeq actor.system.gamesystem 'hunter'}}
         <div class="flex-group-left">
             <div class="flex-center">
                 <label class="resource-label">{{localize "WOD5E.CreedFields"}}</label>
@@ -104,7 +61,7 @@
                 {{editor enrichedCreedFields target="system.headers.creedfields" button=true editable=editable}}
             </div>
         </div>
-        {{/if}}
+        {{/ifeq}}
     </div>
     {{else}}
     <div class="resource flexrow grid grid-2col" style="min-height: 264px;">
@@ -125,7 +82,7 @@
             </div>
         </div>
     </div>
-    {{/if}}
+    {{/ifeq}}
     {{/if}}
     {{#if isCharacter}}
     <div class="resource flexrow grid grid-2col" style="min-height: 264px;"> 

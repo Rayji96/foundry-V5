@@ -107,7 +107,7 @@ button:focus {
 }
 
 .item-image.power-rollable img {
-    box-shadow: inset 0px 0px 5px 0px red;
+    box-shadow: inset 0 0 5px 0 red;
 }
 
 .rollable:hover,
@@ -990,12 +990,6 @@ button.dialog-button:hover {
 .flex-group-center input[type="text"] {
     font-family: Vollkorn, serif;
     background: white
-}
-
-input[name="system.blood.resonance"] {
-    font-size: 1.2em;
-    font-family: Vollkorn, serif;
-    font-weight: 700;
 }
 
 .sheet-banner {
