@@ -1,8 +1,6 @@
 
 # World of Darkness 5e System
 
-[![Dark Pack]][Dark Pack URL]
-
 [![Foundry Shield 11]][Foundry URL]
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
@@ -14,9 +12,7 @@ Current supported systems include:
 * Hunter the Reckoning, 5th Edition
 * Werewolf the Apocalypse, 5th Edition
 
-Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pack License].
-
-![preview](./image.png)
+![preview](./assets/images/SystemPreview.png)
 
 ## Dice
 
@@ -39,19 +35,10 @@ Please check the issues list before suggesting new features.
 
 ## Credits
 
-Huge thanks to these folks for their contributions:
+Huge thanks to these folks for their contributions!
 
-* This sheet was initially based on the [boilerplate system] by @asacolips#1867
+### System Contributors
 * Addition of Hunter sheets and SPC sheets by [MrDionysus] (MrDionysus#9673)
-* French localization started by @Lloyxide#6914
-* Italian localization started by @Arcadio21#8780
-* Help with french localization by [Lemantia]
-* Brazilian Portuguese localization started by [danielmalka]
-* German localization started and maintained by [tom959]
-* Spanish localization started by [erizocosmico]
-* Spanish localization help by [Musrha]
-* Polish localization help by [gbursson]
-* Icons used with permissions from [cftarbay]
 * Features improvements and custom roll table by [Veichassur]
 * Limited character sheet by [pedroboh]
 * Character sheet lock by [Varkal]
@@ -63,9 +50,28 @@ Huge thanks to these folks for their contributions:
 * Adding blood potency bonus to discipline rolls by [MarkusOzgur]
 * Various upgrades and CSS design improvements by [LorduFreeman]
 * Dicebox by [crcroberts]
+
+### Localization Contributors
+* French localization started by @Lloyxide#6914
+* Italian localization started by @Arcadio21#8780
+* Help with french localization by [Lemantia]
+* Brazilian Portuguese localization started by [danielmalka]
+* German localization started and maintained by [tom959]
+* Spanish localization started by [erizocosmico]
+* Spanish localization help by [Musrha]
+* Polish localization help by [gbursson]
+
+### Additional Contributions
+* This system was initially based on the [boilerplate system] by @asacolips#1867
+* Icons used with permissions from [cftarbay]
 * Feedback and fixes by [eisenfuchs]
 * Feedback and fixes by @OldMightyFriendlyGamer#0832
 * Initial testing and DiceSoNice feedback by Clement#1490
+## Dark Pack
+
+[![Dark Pack]][Dark Pack URL]
+
+Licensed WoD 5e materials will not be provided as this system is provided for public usage, for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pack Agreement].
 
 [Foundry Shield 11]: https://img.shields.io/badge/Foundry-11-informational
 [Foundry URL]: https://foundryvtt.com
@@ -77,8 +83,8 @@ Huge thanks to these folks for their contributions:
 [Super-Linter URL]: https://github.com/marketplace/actions/super-linter
 
 [Dark Pack]: https://s3-eu-north-1.amazonaws.com/pdx-campaign-wp-data/uploads/sites/10/2021/10/05102936/darkpack_logo2-300x300.png
-[Dark Pack URL]: https://www.worldofdarkness.com/dark-pack
-[Dark Pack License]: https://www.worldofdarkness.com/dark-pack
+[Dark Pack URL]: https://www.paradoxinteractive.com/games/world-of-darkness/community/dark-pack-agreement
+[Dark Pack Agreement]: https://www.paradoxinteractive.com/games/world-of-darkness/community/dark-pack-agreement
 
 [boilerplate system]: https://gitlab.com/asacolips-projects/foundry-mods/foundryvtt-system-tutorial
 [danielmalka]: https://github.com/danielmalka

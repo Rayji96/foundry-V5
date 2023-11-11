@@ -12,7 +12,9 @@
 * Disciplines now have a "Cost" field to input the number of appropriate Rouse checks. [Veilza]
 * Added this Changelog file [Veilza]
 * Fix input fields on item sheets being hard to read [Veilza]
-* Hunter Edges, Vampire Disciplines, and Werewolf Gifts/Rites will now all be sorted by level first and then alphabetically [Veilza]
+* Hunter Edges, Vampire Disciplines/Rituals, and Werewolf Gifts/Rites will now all be sorted by level first and then alphabetically [Veilza]
+* Edges, Disciplines/Rituals, and Gifts/Rites will now have a red effect overlayed on their icons if they're rollable. [Veilza]
+* Various fields on the Hunter and Vampire sheets will no longer be hidden until the actor fills in Cell/Clan. [Veilza]
 
 ### From a developer's side
 * Reorganized sheet partials [Veilza]
