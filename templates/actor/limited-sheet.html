@@ -1,17 +1,22 @@
 <form class="{{cssClass}} flexcol limited" autocomplete="off">
+    {{!-- Actor Type Banner --}}
+    <div class="sheet-banner">
+      <h1>{{ sheetType }}</h1>
+    </div>
 
     {{!-- Sheet Header --}}
-    <header class="sheet-header">
+    <header class="actor-header">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
             alt="Profile Image" />
         <h2 class="limited-charname">{{actor.name}}</h2>
     </header>
+
     {{!-- Sheet Body --}}
     <section class="sheet-body">
             {{#unless actor.system.clan.value}}
         <div class="tab appearance description-content">
                 <div class="flex-center">
-                    <label class="resource-label"><h2>{{localize "VTM5E.Notes"}}</h2></label>
+                    <label class="resource-label"><h2>{{localize "WOD5E.Notes"}}</h2></label>
                 </div>                  
                 {{editor enrichedNotes target="system.notes" button=true editable=editable}}
         </div>
@@ -19,13 +24,13 @@
             <div class="grid grid-2col flexrow">                    
                 <div class="tab appearance description-content">
                     <div class="flex-center">
-                        <label class="resource-label"><h2>{{localize "VTM5E.Biography"}}</h2></label>
+                        <label class="resource-label"><h2>{{localize "WOD5E.Biography"}}</h2></label>
                     </div>              
                     {{editor enrichedBiography target="system.biography" button=true editable=editable}}
                 </div>              
                 <div class="tab appearance description-content">
                     <div class="flex-center">
-                        <label class="resource-label"><h2>{{localize "VTM5E.Appearance"}}</h2></label>
+                        <label class="resource-label"><h2>{{localize "WOD5E.Appearance"}}</h2></label>
                     </div>              
                     {{editor enrichedAppearance target="system.appearance" button=true editable=editable}}
                 </div>

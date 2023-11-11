@@ -1,25 +1,29 @@
 
 # World of Darkness 5e System
 
-[![Dark Pack]][Dark Pack URL]
-
 [![Foundry Shield 11]][Foundry URL]
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
-This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System.
+This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System. For a list of the latest changes, see [Changelog.md](./changelog.md)
 
-Licensed WoD 5e materials will NOT be provided as this is a system provided for public use for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pack License].
+Current supported systems include:
+* Vampire the Masquerade, 5th Edition
+* Hunter the Reckoning, 5th Edition
+* Werewolf the Apocalypse, 5th Edition
 
-![preview](./image.png)
+![preview](./assets/images/SystemPreview.png)
 
 ## Dice
 
-There is integration with Dice So Nice! Customizing the dice is possible.
+The system has integration with Dice So Nice!
 
-To roll regular Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`. Replace the 1s with however many dice you want to roll for each type.
+The information for how to roll the splat-unique dice is like so:
+* To roll Vampire dice, roll `1dv`. To roll Hunger dice, roll `1dg`.
+* To roll Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`.
+* To roll Werewolf dice, roll `1dw`. To roll Rage dice, roll `1dr`.
 
-To roll regular Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`. Replace the 1s with however many dice you want to roll for each type.
+Replace the 1s with however many you want to roll for each type, and let the dice flow!
 
 ## Feedback
 
@@ -31,10 +35,23 @@ Please check the issues list before suggesting new features.
 
 ## Credits
 
-Huge thanks to these folks for their contributions:
+Huge thanks to these folks for their contributions!
 
-* This sheet was initially based on the [boilerplate system] by @asacolips#1867
+### System Contributors
 * Addition of Hunter sheets and SPC sheets by [MrDionysus] (MrDionysus#9673)
+* Features improvements and custom roll table by [Veichassur]
+* Limited character sheet by [pedroboh]
+* Character sheet lock by [Varkal]
+* CSS improvements by [lipefl]
+* Incredible work on dot and box counters by [erizocosmico]
+* Refactors and enhancements by [bmgraves]
+* Partial HTML, character types, migrations, bugfixes, and refactors by [Dakayl]
+* In-chat willpower rerolling, dark theme, Werewolf v5 support, and numerous other features and fixes by [Veilza]
+* Adding blood potency bonus to discipline rolls by [MarkusOzgur]
+* Various upgrades and CSS design improvements by [LorduFreeman]
+* Dicebox by [crcroberts]
+
+### Localization Contributors
 * French localization started by @Lloyxide#6914
 * Italian localization started by @Arcadio21#8780
 * Help with french localization by [Lemantia]
@@ -43,21 +60,18 @@ Huge thanks to these folks for their contributions:
 * Spanish localization started by [erizocosmico]
 * Spanish localization help by [Musrha]
 * Polish localization help by [gbursson]
+
+### Additional Contributions
+* This system was initially based on the [boilerplate system] by @asacolips#1867
 * Icons used with permissions from [cftarbay]
-* Features improvements and custom roll table by [Veichassur]
-* Limited character sheet by [pedroboh]
-* Character sheet lock by [Varkal]
-* CSS improvements by [lipefl]
-* Incredible work on dot and box counters by [erizocosmico]
-* Refactors and enhancements by [bmgraves]
-* Partial HTML, character types, migrations, bugfixes, and refactors by [Dakayl]
-* In-chat willpower rerolling, dark theme, and numerous other features and fixes by [thalissas]
-* Adding blood potency bonus to discipline rolls by [MarkusOzgur]
-* Various upgrades and CSS design improvements by [LorduFreeman]
-* Dicebox by [crcroberts]
 * Feedback and fixes by [eisenfuchs]
 * Feedback and fixes by @OldMightyFriendlyGamer#0832
 * Initial testing and DiceSoNice feedback by Clement#1490
+## Dark Pack
+
+[![Dark Pack]][Dark Pack URL]
+
+Licensed WoD 5e materials will not be provided as this system is provided for public usage, for free. We have made every effort to keep the Dark Pack guidelines as posted at [Dark Pack Agreement].
 
 [Foundry Shield 11]: https://img.shields.io/badge/Foundry-11-informational
 [Foundry URL]: https://foundryvtt.com
@@ -69,8 +83,8 @@ Huge thanks to these folks for their contributions:
 [Super-Linter URL]: https://github.com/marketplace/actions/super-linter
 
 [Dark Pack]: https://s3-eu-north-1.amazonaws.com/pdx-campaign-wp-data/uploads/sites/10/2021/10/05102936/darkpack_logo2-300x300.png
-[Dark Pack URL]: https://www.worldofdarkness.com/dark-pack
-[Dark Pack License]: https://www.worldofdarkness.com/dark-pack
+[Dark Pack URL]: https://www.paradoxinteractive.com/games/world-of-darkness/community/dark-pack-agreement
+[Dark Pack Agreement]: https://www.paradoxinteractive.com/games/world-of-darkness/community/dark-pack-agreement
 
 [boilerplate system]: https://gitlab.com/asacolips-projects/foundry-mods/foundryvtt-system-tutorial
 [danielmalka]: https://github.com/danielmalka
@@ -85,7 +99,7 @@ Huge thanks to these folks for their contributions:
 [Lemantia]: https://github.com/Lemantia
 [Varkal]: https://github.com/Varkal
 [Dakayl]: https://github.com/Dakayl
-[thalissas]: https://github.com/thalissa
+[Veilza]: https://github.com/Veilza
 [MarkusOzgur]: https://github.com/MarkusOzgur
 [Musrha]: https://github.com/Musrha
 [crcroberts]: https://github.com/crcroberts

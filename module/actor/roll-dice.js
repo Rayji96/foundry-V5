@@ -1,26 +1,26 @@
-
-/* global ChatMessage, Roll, game */
+/* global ChatMessage, Roll, game, renderTemplate */
 
 // Function to roll dice
 // numDice = Number of dice the function will roll
 // actor = Actor's data
 // label = Text that appears at the head of the ChatMessage
 // difficulty = The amount of successes required for a given roll
-// useHunger = Will roll hunger dice, if true
+// hungerDice = Will roll hunger dice, if value is greater than 0
 // increaseHunger = Will increase the actor's hunger if no successes are rolled, if true
 // subtractWillpower = Subtracts a point of willpower, always, if true
-export async function rollDice (numDice, actor, label = '', difficulty = 0, useHunger = true, increaseHunger = false, subtractWillpower = false) {
-  // Define the actor's current hunger
-  let hungerDice
-  if (useHunger) {
-    hungerDice = Math.min(actor.system.hunger.value, numDice)
-  } else {
-    hungerDice = 0
-  }
-
+export async function rollDice (numDice, actor, label = '', difficulty = 0, hungerDice = 0, increaseHunger = false, subtractWillpower = false) {
   // Roll defining and evaluating
-  const dice = numDice - hungerDice
-  const roll = new Roll(dice + 'dvcs>5 + ' + hungerDice + 'dgcs>5', actor.system)
+
+  // Ensure that the number of hunger dice doesn't exceed the
+  // total number of dice
+  const hungerRoll = Math.min(numDice, hungerDice)
+
+  // Calculate the number of normal dice to roll by subtracting
+  // the number of hunger dice from them.
+  const dice = Math.max(numDice - hungerRoll, 0)
+
+  // Send the roll to Foundry
+  const roll = new Roll(dice + 'dvcs>5 + ' + hungerRoll + 'dgcs>5', actor.system)
   await roll.evaluate({ async: true })
 
   // Variable defining
@@ -72,9 +72,9 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
   // Get the difficulty result
   if (difficulty !== 0) {
     successRoll = totalSuccess >= difficulty
-    difficultyResult = `( <span class="danger">${game.i18n.localize('VTM5E.Fail')}</span> )`
+    difficultyResult = `( <span class="danger">${game.i18n.localize('WOD5E.Fail')}</span> )`
     if (successRoll) {
-      difficultyResult = `( <span class="success">${game.i18n.localize('VTM5E.Success')}</span> )`
+      difficultyResult = `( <span class="success">${game.i18n.localize('WOD5E.Success')}</span> )`
     }
   }
 
@@ -83,19 +83,19 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
 
   // Special critical/bestial failure messages
   if (hungerCritSuccess && totalCritSuccess) {
-    chatMessage = chatMessage + `<p class="roll-content result-critical result-messy">${game.i18n.localize('VTM5E.MessyCritical')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-critical result-messy">${game.i18n.localize('WOD5E.MessyCritical')}</p>`
   } else if (totalCritSuccess) {
-    chatMessage = chatMessage + `<p class="roll-content result-critical">${game.i18n.localize('VTM5E.CriticalSuccess')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-critical">${game.i18n.localize('WOD5E.CriticalSuccess')}</p>`
   }
   if (hungerCritFail && !successRoll && difficulty > 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-bestial">${game.i18n.localize('VTM5E.BestialFailure')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-bestial">${game.i18n.localize('WOD5E.BestialFailure')}</p>`
   }
   if (hungerCritFail && !successRoll && difficulty === 0) {
-    chatMessage = chatMessage + `<p class="roll-content result-bestial result-possible">${game.i18n.localize('VTM5E.PossibleBestialFailure')}</p>`
+    chatMessage = chatMessage + `<p class="roll-content result-bestial result-possible">${game.i18n.localize('WOD5E.PossibleBestialFailure')}</p>`
   }
 
   // Total number of successes
-  chatMessage = chatMessage + `<p class="roll-label result-success">${game.i18n.localize('VTM5E.Successes')}: ${totalSuccess} ${difficultyResult}</p>`
+  chatMessage = chatMessage + `<p class="roll-label result-success">${game.i18n.localize('WOD5E.Successes')}: ${totalSuccess} ${difficultyResult}</p>`
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
@@ -141,9 +141,15 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
       // If hunger is greater than 4 (5, or somehow higher)
       // then display that in the chat and don't increase hunger
       if (actorHunger > 4) {
-        roll.toMessage({
-          speaker: ChatMessage.getSpeaker({ actor: actor }),
-          content: game.i18n.localize('VTM5E.HungerFull')
+        renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+          name: game.i18n.localize('WOD5E.HungerFull1'),
+          img: 'systems/vtm5e/assets/images/bestial-fail-dsn.png',
+          description: game.i18n.localize('WOD5E.HungerFull2')
+        }).then(html => {
+          ChatMessage.create({
+            speaker: ChatMessage.getSpeaker({ actor: actor }),
+            content: html
+          })
         })
       } else {
         // Define the new number of hunger points
@@ -168,7 +174,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, useH
     if (aggrWillpower >= maxWillpower) {
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: actor }),
-        content: game.i18n.localize('VTM5E.WillpowerFull')
+        content: game.i18n.localize('WOD5E.WillpowerFull')
       })
     } else {
       // If the superficial willpower ticket isn't completely full, then add a point

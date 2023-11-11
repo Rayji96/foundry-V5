@@ -1,23 +1,23 @@
 /* New Styles */
-.vtm5e.dark-theme .window-app {
+.wod5e.dark-theme .window-app {
     background: #faf5ed;
     color: #121212;
 }
 
-.vtm5e.dark-theme .window-content {
+.wod5e.dark-theme .window-content {
   background: #121212;
   color: #f7f7f7;
 }
 
-.vtm5e.dark-theme.actor.sheet .editor-content {
+.wod5e.dark-theme.actor.sheet .editor-content {
   color: inherit;
 }
 
-.vtm5e.dark-theme.item.sheet .editor-content {
+.wod5e.dark-theme.item.sheet .editor-content {
   color: #e0e0e0;
 }
 
-.vtm5e.dark-theme .window-content nav.sheet-tabs {
+.wod5e.dark-theme .window-content nav.sheet-tabs {
   background: #121212;
   color: #790813;
   font-family: Vollkorn, serif;
@@ -27,56 +27,58 @@
   margin-bottom: 10px;
 }
 
-.vtm5e.dark-theme .window-content nav.sheet-tabs .item.active {
+.wod5e.dark-theme .window-content nav.sheet-tabs .item.active {
   background: #3c3c3c;
   color: #f7f7f7;
   border-bottom: 2px solid #f7f7f7;
 }
 
-.vtm5e.dark-theme .window-content .sheet-body .tab > .resource-label {
-  color: #790813;
+.wod5e.dark-theme .window-content .sheet-body .tab > .resource-label {
+  color: #f7f7f7;
+  border-bottom: 1px solid #f00;
   padding-bottom: 0.1em;
-  border-bottom: 1px solid #790813;
   font-family: Vollkorn, serif;
   font-weight: 700;
 }
 
-.vtm5e.dark-theme .sheet-header .profile-img-zone h1 {
+.wod5e.dark-theme .actor-header .profile-img-zone h1 {
   color: #cc0014;
 }
 
-.vtm5e.dark-theme .items-list .item-header {
-  color: #bb1020;
+.wod5e.dark-theme .items-list .item-header {
+  color: #fff6f7;
 }
 
-.vtm5e.dark-theme .tox .tox-editor-container {
+.wod5e.dark-theme .tox .tox-editor-container {
   background: #fff;
 }
 
-.vtm5e.dark-theme .discipline-description {
+.wod5e.dark-theme .discipline-description {
   color: hwb(0deg 7% 98% / 100%);
   background: #eeece8;
 }
 
-.vtm5e.dark-theme .rollable:hover,
-.vtm5e.dark-theme .rollable:focus,
-.vtm5e.dark-theme .rollable-with-mod:hover,
-.vtm5e.dark-theme .rollable-with-mod:focus,
-.vtm5e.dark-theme .vrollable:hover,
-.vtm5e.dark-theme .vrollable:focus,
-.vtm5e.dark-theme .power-rollable:hover,
-.vtm5e.dark-theme .power-rollable:focus {
+.wod5e.dark-theme .rollable:hover,
+.wod5e.dark-theme .rollable:focus,
+.wod5e.dark-theme .rouse-check:hover,
+.wod5e.dark-theme .rouse-check:focus,
+.wod5e.dark-theme .rollable-with-mod:hover,
+.wod5e.dark-theme .rollable-with-mod:focus,
+.wod5e.dark-theme .vrollable:hover,
+.wod5e.dark-theme .vrollable:focus,
+.wod5e.dark-theme .power-rollable:hover,
+.wod5e.dark-theme .power-rollable:focus {
     color: #f7f7f7;
 }
 
-.vtm5e.dark-theme .custom-rollable:hover,
-.vtm5e.dark-theme .custom-rollable:focus {
+.wod5e.dark-theme .custom-rollable:hover,
+.wod5e.dark-theme .custom-rollable:focus {
     color: #f7f7f7;
 }
 
 /* Resource boxes CSS */
 
-.vtm5e.dark-theme .resource-value .resource-value-empty {
+.wod5e.dark-theme .resource-value .resource-value-empty {
   border: 1px solid #f7f7f7;
   background: linear-gradient(
       45deg,
@@ -98,35 +100,35 @@
     );
 }
 
-.vtm5e.dark-theme .resource-value .resource-value-step {
+.wod5e.dark-theme .resource-value .resource-value-step {
   border: 1px solid #cdcdcd;
 }
 
-.vtm5e.dark-theme .resource-value .resource-value-step.active {
+.wod5e.dark-theme .resource-value .resource-value-step.active {
   background-color: #790813;
 }
 
-.vtm5e.dark-theme .resource-value-static .resource-value-static-step {
+.wod5e.dark-theme .resource-value-static .resource-value-static-step {
   border: 1px solid black;
 }
 
-.vtm5e.dark-theme .resource-value-static .resource-value-static-step.active {
+.wod5e.dark-theme .resource-value-static .resource-value-static-step.active {
   background-color: #790813;
 }
 
-.vtm5e.dark-theme .resource-counter .resource-counter-step {
+.wod5e.dark-theme .resource-counter .resource-counter-step {
   border: 1px solid white;
 }
 
-.vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="-"] {
+.wod5e.dark-theme .resource-counter .resource-counter-step[data-state="-"] {
   background-color: #790813;
 }
 
-.vtm5e.dark-theme select {
+.wod5e.dark-theme select {
   background: #f7f7f7;
 }
 
-.vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="/"] {
+.wod5e.dark-theme .resource-counter .resource-counter-step[data-state="/"] {
   background:
     linear-gradient(
       135deg,
@@ -139,7 +141,7 @@
     );
 }
 
-.vtm5e.dark-theme .resource-counter .resource-counter-step[data-state="x"] {
+.wod5e.dark-theme .resource-counter .resource-counter-step[data-state="x"] {
   background:
     linear-gradient(
       45deg,
@@ -161,15 +163,15 @@
     );
 }
 
-.vtm5e.dark-theme .cell-resource-counter .cell-resource-counter-step {
+.wod5e.dark-theme .cell-resource-counter .cell-resource-counter-step {
   border: 1px solid white;
 }
 
-.vtm5e.dark-theme .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+.wod5e.dark-theme .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
   background-color: #790813;
 }
 
-.vtm5e.dark-theme .cell-resource-counter .cell-resource-counter-step[data-state="/"] {
+.wod5e.dark-theme .cell-resource-counter .cell-resource-counter-step[data-state="/"] {
   background:
     linear-gradient(
       135deg,
@@ -182,7 +184,7 @@
     );
 }
 
-.vtm5e.dark-theme .cell-resource-counter .cell-resource-counter-step[data-state="x"] {
+.wod5e.dark-theme .cell-resource-counter .cell-resource-counter-step[data-state="x"] {
   background:
     linear-gradient(
       45deg,
@@ -204,33 +206,42 @@
     );
 }
 
-.vtm5e.dark-theme .tabs .item {
+.wod5e.dark-theme .tabs .item {
   color: #8f8f8f;
 }
 
-.vtm5e.dark-theme input {
-  color: #f7f7f7;
+.wod5e.dark-theme input {
+  color: #000;
 }
 
-.vtm5e.dark-theme .vtm5e input {
-  color: #f7f7f7;
+.wod5e.dark-theme .wod5e input {
+  color: #000;
 }
 
-.vtm5e.dark-theme input[name="system.blood.resonance"] {
+.wod5e.dark-theme input[name="system.blood.resonance"] {
   color: #bb1020;
 }
 
-.vtm5e.dark-theme .sheet-header h1.charname input {
-  color: #f7f7f7;
+.wod5e.dark-theme .actor-header h1.charname input {
+  color: #000;
 }
 
-.vtm5e.dark-theme .description-content {
+.wod5e.dark-theme .description-content {
   background: none;
   border: 0;
   padding: 5px;
   height: 95%;
 }
 
-.vtm5e.dark-theme .tab.blood.active p {
+.wod5e.dark-theme .tab.blood.active p {
   color: #bb1020;
+}
+
+.wod5e.dark-theme.werewolf-sheet .window-content .sheet-body .tab > .resource-label, .wod5e.dark-theme.werewolf-sheet .items-list .item-header {
+  color: #cd7a3def;
+  border-color: #cd7a3def;
+}
+
+.wod5e.dark-theme.hunter-sheet .despair-box .despair-toggle {
+  border-color: white;
 }

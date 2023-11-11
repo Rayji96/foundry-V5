@@ -1,0 +1,97 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="item-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" alt="Item Image" />
+        <div class="header-fields flexcol">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}"
+                    placeholder="{{localize 'WOD5E.Name'}}" /></h1>
+            <div class="flexrow grid-3row">
+                <!-- Input the level of the gift -->
+                <div class="flexcol level flex-center">
+                    <label>{{localize "WOD5E.Level"}}</label>
+                    <input name="system.level" value="{{item.system.level}}" type="number" min="0" max="5"/>
+                </div>
+                <div class="flexcol">
+                    <label class="flex-center">{{localize "WOD5E.Renown"}}</label>
+                    <select name="system.renown" value="{{item.system.renown}}" data-type="String">
+                        {{#select item.system.renown}}
+                        {{> "systems/vtm5e/templates/item/parts/renown.html"}}
+                        {{/select}}
+                    </select>
+                </div>
+                <!-- Select the gift this power belongs to -->
+                <div class="flexcol">
+                    <label class="flex-center">{{localize "WOD5E.GiftType"}}</label>
+                    <select name="system.giftType" data-type="String">
+                        {{#select item.system.giftType}}
+                        {{> "systems/vtm5e/templates/item/parts/gifts.html"}}
+                        {{/select}}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">{{localize "WOD5E.Description"}}</a>
+        <a class="item" data-tab="attributes">{{localize "WOD5E.Attributes"}}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor enrichedDescription target="system.description" button=true editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="tab attributes" data-group="primary" data-tab="attributes">
+            {{!-- As you add new fields, add them in here! --}}
+            <div class="resource grid grid-4col flex-center">
+                <!-- Define the system that the power uses -->
+                <label class="resource-label">{{localize "WOD5E.System"}}: </label>
+                <select name="system.dice1" data-type="String">
+                    {{#select item.system.dice1}}
+                    {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
+                    <option value="renown">{{localize (generateFeatureLabel item.system.renown)}}</option>
+                    {{/select}}
+                </select>
+                <label class="resource-label">+</label>
+                {{#if item.system.skill}}
+                    <select name="system.dice2" data-type="String">
+                        {{#select item.system.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/skills.html"}}
+                        {{/select}}
+                    </select>
+                {{else}}
+                    <select name="system.dice2" data-type="String">
+                        {{#select item.system.dice2}}
+                        {{> "systems/vtm5e/templates/item/parts/attributes.html"}}
+                        <option value="renown">{{localize (generateFeatureLabel item.system.renown)}}</option>
+                        {{/select}}
+                    </select>
+                {{/if}}
+
+                <!-- Rollable or not -->
+                <label class="resource-label">{{localize "WOD5E.Rollable"}}: </label>
+                <input type="checkbox" id="system.rollable" name="system.rollable" {{checked item.system.rollable}}>
+
+                <!-- Whether the "system" option uses skills or not -->
+                <label class="resource-label">{{localize "WOD5E.UseSkill"}}: </label>
+                {{#if item.system.amalgam}}
+                    <input type="checkbox" id="system.skill" name="system.skill" disabled {{checked item.system.skill}}>
+                {{else}}
+                    <input type="checkbox" id="system.skill" name="system.skill" {{checked item.system.skill}}>
+                {{/if}}
+
+                <!-- If the item has a rage check to roll or not -->
+                <label class="resource-label">{{localize "WOD5E.Rage"}}: </label>
+                <input type="checkbox" id="system.rage" name="system.rage" {{checked item.system.rage}}>
+
+                <label class="resource-label">{{localize "WOD5E.Cost"}}: </label>
+                <input class="itemsheet-textbox" name="system.cost" value="{{item.system.cost}}" type="number" min="0" max="5"/>
+            </div>
+        </div>
+    </section>
+</form>

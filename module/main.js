@@ -2,13 +2,14 @@
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
-import { migrateWorld } from './migration.js'
-import { VampireActor } from './actor/actor.js'
-import { VampireItem } from './item/item.js'
-import { VampireItemSheet } from './item/item-sheet.js'
-import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie } from './dice/dice.js'
+import { migrateWorld } from './scripts/migration.js'
+import { ActorInfo } from './actor/actor.js'
+import { ItemInfo } from './item/item.js'
+import { WoDItemSheet } from './item/item-sheet.js'
+import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/dice.js'
 import { rollDice } from './actor/roll-dice.js'
 import { rollHunterDice } from './actor/roll-hunter-dice.js'
+import { rollWerewolfDice } from './actor/roll-werewolf-dice.js'
 import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
 import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
@@ -16,6 +17,7 @@ import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
 import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
 import { CellActorSheet } from './actor/cell-actor-sheet.js'
 import { SPCActorSheet } from './actor/spc-actor-sheet.js'
+import { WerewolfActorSheet } from './actor/werewolf-actor-sheet.js'
 import {
   prepareSearchableSelection,
   prepareRouseShortcut,
@@ -41,6 +43,15 @@ Hooks.once('init', async function () {
     type: String
   })
 
+  game.settings.register('vtm5e', 'darkTheme', {
+    name: 'Dark Theme',
+    hint: 'Display sheets using a darker theme on a per-user basis.',
+    scope: 'client',
+    config: true,
+    default: false,
+    type: Boolean
+  })
+
   game.settings.register('vtm5e', 'useChatRoller', {
     // TODO: fix Chat Roller
     name: 'Chat Roller',
@@ -63,7 +74,7 @@ Hooks.once('init', async function () {
   game.settings.register('vtm5e', 'automatedWillpower', {
     name: 'Willpower Damage On Willpower Reroll',
     hint: 'If enabled, using the Willpower Reroll (right click on a chat message) feature will deal willpower damage to the associated actor.',
-    scope: 'client',
+    scope: 'world',
     config: true,
     default: true,
     type: Boolean
@@ -72,24 +83,24 @@ Hooks.once('init', async function () {
   game.settings.register('vtm5e', 'automatedRouse', {
     name: 'Increase Hunger With Rouse Checks',
     hint: 'If enabled, rolling a rouse check and failing will automatically increase the hunger of the associated actor.',
-    scope: 'client',
+    scope: 'world',
     config: true,
     default: true,
     type: Boolean
   })
 
-  game.settings.register('vtm5e', 'darkTheme', {
-    name: 'Dark Theme',
-    hint: 'Display sheets using a darker theme on a per-user basis.',
-    scope: 'client',
+  game.settings.register('vtm5e', 'automatedRage', {
+    name: 'Automate Rage Dice',
+    hint: 'If enabled, rolling Rage Dice or performing actions that require Rage Dice will automatically subtract Rage from the associated actor.',
+    scope: 'world',
     config: true,
-    default: false,
+    default: true,
     type: Boolean
   })
 
-  game.vtm5e = {
-    VampireActor,
-    VampireItem,
+  game.wod5e = {
+    ActorInfo,
+    ItemInfo,
     rollItemMacro
   }
 
@@ -102,26 +113,18 @@ Hooks.once('init', async function () {
   }
 
   // Define custom Entity classes
-  CONFIG.Actor.documentClass = VampireActor
-  CONFIG.Item.documentClass = VampireItem
+  CONFIG.Actor.documentClass = ActorInfo
+  CONFIG.Item.documentClass = ItemInfo
   CONFIG.Dice.terms.v = VampireDie
   CONFIG.Dice.terms.g = VampireHungerDie
   CONFIG.Dice.terms.h = HunterDie
   CONFIG.Dice.terms.s = HunterDesperationDie
+  CONFIG.Dice.terms.w = WerewolfDie
+  CONFIG.Dice.terms.r = WerewolfRageDie
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
 
-  Actors.registerSheet('vtm5e', VampireActorSheet, {
-    label: 'Vampire Sheet',
-    types: ['vampire', 'character'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', GhoulActorSheet, {
-    label: 'Ghoul Sheet',
-    types: ['ghoul'],
-    makeDefault: true
-  })
   Actors.registerSheet('vtm5e', MortalActorSheet, {
     label: 'Mortal Sheet',
     types: ['mortal'],
@@ -129,17 +132,32 @@ Hooks.once('init', async function () {
   })
   Actors.registerSheet('vtm5e', HunterActorSheet, {
     label: 'Hunter Sheet',
-    types: ['hunter', 'character'],
+    types: ['hunter'],
     makeDefault: true
   })
-  Actors.registerSheet('vtm5e', CoterieActorSheet, {
-    label: 'Coterie Sheet',
-    types: ['coterie'],
+  Actors.registerSheet('vtm5e', VampireActorSheet, {
+    label: 'Vampire Sheet',
+    types: ['vampire'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', WerewolfActorSheet, {
+    label: 'Werewolf Sheet',
+    types: ['werewolf'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', GhoulActorSheet, {
+    label: 'Ghoul Sheet',
+    types: ['ghoul'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', CellActorSheet, {
     label: 'Cell Sheet',
     types: ['cell'],
+    makeDefault: true
+  })
+  Actors.registerSheet('vtm5e', CoterieActorSheet, {
+    label: 'Coterie Sheet',
+    types: ['coterie'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', SPCActorSheet, {
@@ -148,7 +166,7 @@ Hooks.once('init', async function () {
     makeDefault: true
   })
   Items.unregisterSheet('core', ItemSheet)
-  Items.registerSheet('vtm5e', VampireItemSheet, {
+  Items.registerSheet('vtm5e', WoDItemSheet, {
     label: 'Item Sheet',
     makeDefault: true
   })
@@ -164,6 +182,22 @@ Hooks.once('init', async function () {
       }
     }
     return outStr
+  })
+
+  Handlebars.registerHelper('ifeq', function (a, b, options) {
+    if (a === b) {
+      return options.fn(this)
+    }
+
+    return options.inverse(this)
+  })
+
+  Handlebars.registerHelper('ifnoteq', function (a, b, options) {
+    if (a !== b) {
+      return options.fn(this)
+    }
+
+    return options.inverse(this)
   })
 
   Handlebars.registerHelper('or', function (bool1, bool2) {
@@ -188,14 +222,13 @@ Hooks.once('init', async function () {
   }
 
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    return 'VTM5E.'.concat(capitalize(str))
+    return 'WOD5E.'.concat(capitalize(str))
   })
 
   Handlebars.registerHelper('generateSkillLabel', function (str) {
-    return 'VTM5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
+    return 'WOD5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
   })
 
-  // TODO: there exist math helpers for handlebars
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
     // Return the result of the stain, or 1 at minimum.
     const stainDice = Math.max((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3), 1)
@@ -216,6 +249,18 @@ Hooks.once('init', async function () {
     const remorseDice = Math.max((10 - humanity - stain), 1)
 
     return remorseDice
+  })
+
+  Handlebars.registerHelper('harano-test', function (harano, hauglosk) {
+    const haranoDice = Math.max((harano + hauglosk), 1)
+
+    return haranoDice
+  })
+
+  Handlebars.registerHelper('hauglosk-test', function (harano, hauglosk) {
+    const haugloskDice = Math.max((harano + hauglosk), 1)
+
+    return haugloskDice
   })
 
   Handlebars.registerHelper('attrIf', function (attr, value, test) {
@@ -272,20 +317,20 @@ Hooks.once('init', async function () {
 
   Handlebars.registerHelper('getDisciplineName', function (key, roll = false) {
     const disciplines = {
-      animalism: 'VTM5E.Animalism',
-      auspex: 'VTM5E.Auspex',
-      celerity: 'VTM5E.Celerity',
-      dominate: 'VTM5E.Dominate',
-      fortitude: 'VTM5E.Fortitude',
-      obfuscate: 'VTM5E.Obfuscate',
-      potence: 'VTM5E.Potence',
-      presence: 'VTM5E.Presence',
-      protean: 'VTM5E.Protean',
-      sorcery: 'VTM5E.BloodSorcery',
-      oblivion: 'VTM5E.Oblivion',
-      alchemy: 'VTM5E.ThinBloodAlchemy',
-      rituals: 'VTM5E.Rituals',
-      ceremonies: 'VTM5E.Ceremonies'
+      animalism: 'WOD5E.Animalism',
+      auspex: 'WOD5E.Auspex',
+      celerity: 'WOD5E.Celerity',
+      dominate: 'WOD5E.Dominate',
+      fortitude: 'WOD5E.Fortitude',
+      obfuscate: 'WOD5E.Obfuscate',
+      potence: 'WOD5E.Potence',
+      presence: 'WOD5E.Presence',
+      protean: 'WOD5E.Protean',
+      sorcery: 'WOD5E.BloodSorcery',
+      oblivion: 'WOD5E.Oblivion',
+      alchemy: 'WOD5E.ThinBloodAlchemy',
+      rituals: 'WOD5E.Rituals',
+      ceremonies: 'WOD5E.Ceremonies'
     }
     if (roll) {
       if (key === 'rituals') {
@@ -299,17 +344,17 @@ Hooks.once('init', async function () {
 
   Handlebars.registerHelper('getEdgeName', function (key) {
     const edges = {
-      arsenal: 'VTM5E.Arsenal',
-      ordnance: 'VTM5E.Ordnance',
-      library: 'VTM5E.Libraryy',
-      improvisedgear: 'VTM5E.ImprovisedGear',
-      globalaccess: 'VTM5E.GlobalAccess',
-      dronejockey: 'VTM5E.DroneJockey',
-      beastwhisperer: 'VTM5E.BeastWhisperer',
-      sensetheunnatural: 'VTM5E.SenseTheUnnatural',
-      repeltheunnatural: 'VTM5E.RepelTheUnnatural',
-      thwarttheunnatural: 'VTM5E.ThwartTheUnnatural',
-      artifact: 'VTM5E.Artifact'
+      arsenal: 'WOD5E.Arsenal',
+      ordnance: 'WOD5E.Ordnance',
+      library: 'WOD5E.Library',
+      improvisedgear: 'WOD5E.ImprovisedGear',
+      globalaccess: 'WOD5E.GlobalAccess',
+      dronejockey: 'WOD5E.DroneJockey',
+      beastwhisperer: 'WOD5E.BeastWhisperer',
+      sensetheunnatural: 'WOD5E.SenseTheUnnatural',
+      repeltheunnatural: 'WOD5E.RepelTheUnnatural',
+      thwarttheunnatural: 'WOD5E.ThwartTheUnnatural',
+      artifact: 'WOD5E.Artifact'
     }
     return edges[key]
   })
@@ -699,7 +744,7 @@ Hooks.on('renderSidebarTab', (app, html) => {
 // Create context menu option on selection
 Hooks.on('getChatLogEntryContext', function (html, options) {
   options.push({
-    name: game.i18n.localize('VTM5E.WillpowerReroll'),
+    name: game.i18n.localize('WOD5E.WillpowerReroll'),
     icon: '<i class="fas fa-redo"></i>',
     condition: li => {
       // Only show this context menu if the person is GM or author of the message
@@ -764,9 +809,9 @@ async function willpowerReroll (roll) {
 
   // Dialog object
   new Dialog({
-    title: game.i18n.localize('VTM5E.WillpowerReroll'),
+    title: game.i18n.localize('WOD5E.WillpowerReroll'),
     content: template,
-    buttons: buttons,
+    buttons,
     render: function () {
       $('.willpower-reroll .die').on('click', dieSelect)
     },
@@ -799,10 +844,14 @@ function rerollDie (roll) {
   const charactertype = getProperty(speaker, 'type', { strict: true })
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-  if ((diceSelected > 0) && (diceSelected < 4) && charactertype !== 'hunter') {
-    rollDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, false, false, true)
-  } else if ((diceSelected > 0) && (diceSelected < 4) && charactertype === 'hunter') {
-    rollHunterDice(diceSelected, speaker, game.i18n.localize('VTM5E.WillpowerReroll'), 0, 0, true)
+  if ((diceSelected > 0) && (diceSelected < 4)) {
+    if (charactertype === 'hunter') { // Hunter-specific dice
+      rollHunterDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, true)
+    } else if (charactertype === 'werewolf') { // Werewolf-specific dice
+      rollWerewolfDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, true)
+    } else { // Everything else
+      rollDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, false, true)
+    }
   }
 }
 
@@ -823,14 +872,14 @@ async function createVampireMacro (data, slot) {
   const item = data.system
 
   // Create the macro command
-  const command = `game.vtm5e.rollItemMacro("${item.name}");`
+  const command = `game.wod5e.rollItemMacro("${item.name}");`
   let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command))
   if (!macro) {
     macro = await Macro.create({
       name: item.name,
       type: 'script',
       img: item.img,
-      command: command,
+      command,
       flags: { 'vtm5e.itemMacro': true }
     })
   }
