@@ -373,7 +373,8 @@ optgroup {
 
 .wod5e.item .window-content input {
     float: left;
-    background-color: #ffd578;
+    background-color: white;
+	border: 1px solid var(--color-border-highlight);
 }
 
 .wod5e.item.sheet .window-content input[type="number"] {
@@ -482,6 +483,12 @@ optgroup {
     padding: 0;
     margin: 0;
     border-bottom: 0;
+}
+
+.wod5e .item-header h1.charname input {
+    padding: 0.7em 0em 0.8em 0.2em;
+    background: none;
+    margin-left: 0.08em;
 }
 
 .item-header .grid-2col {
@@ -943,11 +950,13 @@ p.roll-label.uppercase {
 .wod5e .locked .resource-minus {
     opacity: 0;
     cursor: default !important;
+    display: none;
 }
 
 .wod5e .locked .resource-plus {
     opacity: 0;
     cursor: default !important;
+	display: none;
 }
 
 .willpower-reroll .die {
