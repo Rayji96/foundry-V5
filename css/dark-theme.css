@@ -27,6 +27,11 @@
   margin-bottom: 10px;
 }
 
+.wod5e.dark-theme.werewolf-sheet .window-content nav.sheet-tabs {
+    border-top: 1px solid #cd7a3def;
+    border-bottom: 1px solid #cd7a3def;
+}
+
 .wod5e.dark-theme .window-content nav.sheet-tabs .item.active {
   background: #3c3c3c;
   color: #f7f7f7;
@@ -211,19 +216,23 @@
 }
 
 .wod5e.dark-theme input {
-  color: #000;
+  color: #faf5ed;
 }
 
 .wod5e.dark-theme .wod5e input {
-  color: #000;
+  color: #faf5ed;
 }
 
 .wod5e.dark-theme input[name="system.blood.resonance"] {
   color: #bb1020;
 }
 
+.wod5e.item.sheet .window-content input[type="number"] {
+    color: #000;
+}
+
 .wod5e.dark-theme .actor-header h1.charname input {
-  color: #000;
+  color: #faf5ed;
 }
 
 .wod5e.dark-theme .description-content {
