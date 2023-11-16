@@ -435,7 +435,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
     colorset: 'hunterdice',
-    fontScale: 0.5,
     system: 'vtm5e'
   })
 
@@ -510,7 +509,24 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
     ],
     colorset: 'werewolf',
-    fontScale: 0.5,
+    system: 'vtm5e'
+  })
+
+  dice3d.addDicePreset({
+    type: 'dr',
+    labels: [
+      'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
+    ],
+    colorset: 'rage',
     system: 'vtm5e'
   })
 
@@ -537,25 +553,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     material: 'plastic',
     font: 'Arial Black'
   }, 'default')
-
-  dice3d.addDicePreset({
-    type: 'dr',
-    labels: [
-      'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn.png',
-      'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn.png',
-      'systems/vtm5e/assets/images/normal-fail-dsn.png',
-      'systems/vtm5e/assets/images/normal-fail-dsn.png',
-      'systems/vtm5e/assets/images/normal-fail-dsn.png',
-      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
-      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
-      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
-      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
-      'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
-    ],
-    colorset: 'rage',
-    system: 'vtm5e'
-  })
-
 })
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
@@ -614,16 +611,50 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
   dice3d.addDicePreset({
     type: 'ds',
     labels: [
-      'systems/vtm5e/assets/images/desperation-fail-dsn.png',
+      'systems/vtm5e/assets/images/desperation-fail-dsnc.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsnc.png'
+    ],
+    system: 'vtm5x'
+  })
+
+  dice3d.addDicePreset({
+    type: 'dw',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
+    ],
+    system: 'vtm5x'
+  })
+
+  dice3d.addDicePreset({
+    type: 'dr',
+    labels: [
+      'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
     ],
     system: 'vtm5x'
   })

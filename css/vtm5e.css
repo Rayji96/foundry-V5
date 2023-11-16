@@ -354,6 +354,14 @@ optgroup {
     flex-grow: 1;
 }
 
+.wod5e .spc-sheet .actor-header .resource {
+    margin: 0px 0.2em;
+}
+
+.wod5e .spc-sheet .flex-group-left {
+    margin-top: 0.5em;
+}
+
 .wod5e .actor-header .resource.exp, .wod5e .actor-header .resource.generaldifficulty {
     max-width: 100px;
 }
@@ -954,7 +962,7 @@ p.roll-label.uppercase {
 }
 
 .roll-img.rage-dice {
-    background: hsl(4 100% 40% / 1);
+    background: #cc0e00;
     border-color: #8e0900;
 }
 
