@@ -355,7 +355,7 @@ optgroup {
 }
 
 .wod5e .spc-sheet .actor-header .resource {
-    margin: 0px 0.2em;
+    margin: 0 0.2em;
 }
 
 .wod5e .spc-sheet .flex-group-left {
@@ -942,7 +942,7 @@ p.roll-label.uppercase {
 }
 
 .roll-img.hunger-dice {
-    background: hsl(360 80% 35% / 1);
+    background: #a11212;
     border-color: black;
 }
 
