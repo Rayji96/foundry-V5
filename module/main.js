@@ -389,9 +389,9 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     description: 'V5 Hunger Dice',
     category: 'V5',
     foreground: '#fff',
-    background: '#450000',
+    background: '#6e0000',
     texture: 'none',
-    edge: '#450000',
+    edge: '#6e0000',
     material: 'plastic',
     font: 'Arial Black',
     fontScale: {
@@ -434,46 +434,128 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
-    colorset: 'black',
+    colorset: 'hunterdice',
     fontScale: 0.5,
     system: 'vtm5e'
   })
 
   dice3d.addColorset({
-    name: 'desperation',
-    description: 'V5 Desperation Dice',
+    name: 'hunterdice',
+    description: 'Hunter Dice',
     category: 'V5',
-    foreground: '#fff',
-    background: '#ee7e1f',
+    foreground: '#000000',
+    background: '#cb650f',
     texture: 'none',
-    edge: '#000000',
+    edge: '#cb650f',
     material: 'plastic',
     font: 'Arial Black',
     fontScale: {
       d6: 1.1,
       df: 2.2,
       dv: 0.8,
-      dg: 0.8
+      dg: 0.8,
+      dh: 0.7
+    }
+  }, 'default')
+
+  dice3d.addColorset({
+    name: 'desperation',
+    description: 'Desperation Dice',
+    category: 'V5',
+    foreground: '#fff',
+    background: '#ee7e1f',
+    texture: 'none',
+    edge: '#ee7e1f',
+    material: 'plastic',
+    font: 'Arial Black',
+    fontScale: {
+      d6: 1.1,
+      df: 2.5,
+      dv: 0.8,
+      dg: 0.8,
+      dh: 0.7
     }
   }, 'default')
 
   dice3d.addDicePreset({
     type: 'ds',
     labels: [
-      'systems/vtm5e/assets/images/desperation-fail-dsn.png',
+      'systems/vtm5e/assets/images/desperation-fail-dsnc.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
       'systems/vtm5e/assets/images/red-fail-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
-      'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-success-dsnc.png',
+      'systems/vtm5e/assets/images/hunter-normal-crit-dsnc.png'
     ],
-    colorset: 'desperation',
+    colorset: 'black',
     system: 'vtm5e'
   })
+
+  dice3d.addDicePreset({
+    type: 'dw',
+    labels: [
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
+    ],
+    colorset: 'werewolf',
+    fontScale: 0.5,
+    system: 'vtm5e'
+  })
+
+  dice3d.addColorset({
+    name: 'werewolf',
+    description: 'Werewolf Dice',
+    category: 'V5',
+    foreground: '#000000',
+    background: '#5c6419',
+    texture: 'none',
+    edge: '#5c6419',
+    material: 'plastic',
+    font: 'Arial Black'
+  }, 'default')
+
+  dice3d.addColorset({
+    name: 'rage',
+    description: 'Rage Dice',
+    category: 'V5',
+    foreground: '#000000',
+    background: '#9f0a00',
+    texture: 'none',
+    edge: '#9f0a00',
+    material: 'plastic',
+    font: 'Arial Black'
+  }, 'default')
+
+  dice3d.addDicePreset({
+    type: 'dr',
+    labels: [
+      'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/normal-fail-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-success-dsn.png',
+      'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
+    ],
+    colorset: 'rage',
+    system: 'vtm5e'
+  })
+
 })
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
@@ -494,23 +576,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     system: 'vtm5x'
   })
-  dice3d.addColorset({
-    name: 'hunger',
-    description: 'V5 Hunger Dice',
-    category: 'V5',
-    foreground: '#fff',
-    background: '#450000',
-    texture: 'none',
-    edge: '#450000',
-    material: 'plastic',
-    font: 'Arial Black',
-    fontScale: {
-      d6: 1.1,
-      df: 2.2,
-      dv: 0.8,
-      dg: 0.8
-    }
-  }, 'default')
 
   dice3d.addDicePreset({
     type: 'dg',
@@ -545,24 +610,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     system: 'vtm5x'
   })
-
-  dice3d.addColorset({
-    name: 'desperation',
-    description: 'V5 Desperation Dice',
-    category: 'V5',
-    foreground: '#fff',
-    background: '#ee7e1f',
-    texture: 'none',
-    edge: '#000000',
-    material: 'plastic',
-    font: 'Arial Black',
-    fontScale: {
-      d6: 1.1,
-      df: 2.2,
-      dv: 0.8,
-      dg: 0.8
-    }
-  }, 'default')
 
   dice3d.addDicePreset({
     type: 'ds',
@@ -600,23 +647,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     system: 'vtm5y'
   })
-  dice3d.addColorset({
-    name: 'hunger',
-    description: 'V5 Hunger Dice',
-    category: 'V5',
-    foreground: '#fff',
-    background: '#450000',
-    texture: 'none',
-    edge: '#450000',
-    material: 'plastic',
-    font: 'Arial Black',
-    fontScale: {
-      d6: 1.1,
-      df: 2.2,
-      dv: 0.8,
-      dg: 0.8
-    }
-  }, 'default')
 
   dice3d.addDicePreset({
     type: 'dg',
@@ -651,24 +681,6 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     ],
     system: 'vtm5y'
   })
-
-  dice3d.addColorset({
-    name: 'desperation',
-    description: 'V5 Desperation Dice',
-    category: 'V5',
-    foreground: '#fff',
-    background: '#ee7e1f',
-    texture: 'none',
-    edge: '#000000',
-    material: 'plastic',
-    font: 'Arial Black',
-    fontScale: {
-      d6: 1.1,
-      df: 2.5,
-      dv: 0.8,
-      dg: 0.8
-    }
-  }, 'default')
 
   dice3d.addDicePreset({
     type: 'ds',

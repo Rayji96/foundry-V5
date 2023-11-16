@@ -286,7 +286,7 @@ optgroup {
 
 .wod5e button.rollable:hover,
 .wod5e button.rollable-with-mod:hover,
-.wod5e button.rouse-check {
+.wod5e button.rouse-check:hover {
     outline: none;
     box-shadow: inset 0 0 5px #000;
     background: var(--color-shadow-highlight);
@@ -486,7 +486,7 @@ optgroup {
 }
 
 .wod5e .item-header h1.charname input {
-    padding: 0.7em 0em 0.8em 0.2em;
+    padding: 0.7em 0 0.8em 0.2em;
     background: none;
     margin-left: 0.08em;
 }
@@ -923,18 +923,39 @@ p.roll-label.uppercase {
 .roll-img {
     max-width: 40px;
     margin: 2px;
-    background: rgb(255 255 255 / 50%);
+    background: rgb(20 20 20);
     border-radius: 4px;
+    border-color: rgb(200 200 200);
+}
+
+.roll-img.vampire-dice {
+    background: rgb(230 255 230 / 50%);
+    border-color: rgb(15 55 5);
 }
 
 .roll-img.hunger-dice {
-    background: rgb(255 230 230 / 50%);
-    border-color: #790813;
+    background: hsl(360 80% 35% / 1);
+    border-color: black;
+}
+
+.roll-img.hunter-dice {
+    background: #ee7e1f;
+    border-color: black;
 }
 
 .roll-img.desperation-dice {
-    background: rgb(255 230 230 / 50%);
+    background: black;
     border-color: #cc6d28;
+}
+
+.roll-img.werewolf-dice {
+    background: #828d23;
+    border-color: rgb(66 74 17);
+}
+
+.roll-img.rage-dice {
+    background: hsl(4 100% 40% / 1);
+    border-color: #8e0900;
 }
 
 .wod5e .locked .resource-value-empty:not(.hunger-value) {
