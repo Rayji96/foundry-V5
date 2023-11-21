@@ -167,18 +167,13 @@ export class GhoulActorSheet extends MortalActorSheet {
       const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
       const level = item.system.level
       const cost = item.system.cost > 0 ? item.system.cost : 1
-      let dicepool
 
       // Vampires roll rouse checks
       if (this.actor.type === 'vampire') {
         const potency = this.actor.type === 'vampire' ? this.actor.system.blood.potency : 0
         const rouseRerolls = this.potencyToRouse(potency, level)
 
-        // Double the number of dice to roll if rouseRerolls is true
-        // otherwise, just use the cost
-        dicepool = rouseRerolls ? cost * 2 : cost
-
-        rollDice(dicepool, this.actor, game.i18n.localize('WOD5E.RousingBlood'), cost, dicepool, true, false)
+        rollDice(cost, this.actor, game.i18n.localize('WOD5E.RousingBlood'), cost, cost, true, false, rouseRerolls)
       } else if (this.actor.type === 'ghoul' && level > 1) {
         // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
         const actorHealth = this.actor.system.health
