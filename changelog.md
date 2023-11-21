@@ -15,6 +15,10 @@
 * Hunter Edges, Vampire Disciplines/Rituals, and Werewolf Gifts/Rites will now all be sorted by level first and then alphabetically [Veilza]
 * Edges, Disciplines/Rituals, and Gifts/Rites will now have a red effect overlayed on their icons if they're rollable. [Veilza]
 * Various fields on the Hunter and Vampire sheets will no longer be hidden until the actor fills in Cell/Clan. [Veilza]
+* Added Werewolf dice and updated the styling on the other splat's dice [LorduFreeman]
+* Various styling fixes [LorduFreeman]
+* Rouse checks on Vampire Disciplines will now add hunger for all failed dice [Veilza]
+* Rouse checks will now display rerolled dice in chat as greyed out [Veilza]
 
 ### From a developer's side
 * Reorganized sheet partials [Veilza]
@@ -25,3 +29,4 @@
 * All instances of "VTM5E" in localization and CSS classes have now been changed to "WOD5E," with a migration script to fix any sheets made from before this fix [Veilza]
 
 [Veilza]: https://github.com/Veilza
+[LorduFreeman]: https://github.com/LorduFreeman
