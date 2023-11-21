@@ -129,11 +129,11 @@ export class WerewolfDie extends Die {
       3: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
       4: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
       5: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      6: '<img src="systems/vtm5e/assets/images/normal-success.png" />',
-      7: '<img src="systems/vtm5e/assets/images/normal-success.png" />',
-      8: '<img src="systems/vtm5e/assets/images/normal-success.png" />',
-      9: '<img src="systems/vtm5e/assets/images/normal-success.png" />',
-      10: '<img src="systems/vtm5e/assets/images/normal-crit.png" />'
+      6: '<img src="systems/vtm5e/assets/images/werewolf-success.png" />',
+      7: '<img src="systems/vtm5e/assets/images/werewolf-success.png" />',
+      8: '<img src="systems/vtm5e/assets/images/werewolf-success.png" />',
+      9: '<img src="systems/vtm5e/assets/images/werewolf-success.png" />',
+      10: '<img src="systems/vtm5e/assets/images/werewolf-crit.png" />'
     }[result]
   }
 }
@@ -150,16 +150,16 @@ export class WerewolfRageDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: '<img src="systems/vtm5e/assets/images/bestial-fail.png" />',
-      2: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
+      1: '<img src="systems/vtm5e/assets/images/werewolf-brutal-fail.png" />',
+      2: '<img src="systems/vtm5e/assets/images/werewolf-brutal-fail.png" />',
       3: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
       4: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
       5: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      6: '<img src="systems/vtm5e/assets/images/red-success.png" />',
-      7: '<img src="systems/vtm5e/assets/images/red-success.png" />',
-      8: '<img src="systems/vtm5e/assets/images/red-success.png" />',
-      9: '<img src="systems/vtm5e/assets/images/red-success.png" />',
-      10: '<img src="systems/vtm5e/assets/images/red-crit.png" />'
+      6: '<img src="systems/vtm5e/assets/images/werewolf-red-success.png" />',
+      7: '<img src="systems/vtm5e/assets/images/werewolf-red-success.png" />',
+      8: '<img src="systems/vtm5e/assets/images/werewolf-red-success.png" />',
+      9: '<img src="systems/vtm5e/assets/images/werewolf-red-success.png" />',
+      10: '<img src="systems/vtm5e/assets/images/werewolf-red-crit.png" />'
     }[result]
   }
 }

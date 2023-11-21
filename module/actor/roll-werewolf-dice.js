@@ -129,13 +129,13 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-crit.png" alt="Normal Crit" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-crit.png" alt="Normal Crit" class="roll-img werewolf-dice" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" alt="Normal Success" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-success.png" alt="Normal Success" class="roll-img werewolf-dice" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img werewolf-dice" />'
   }
 
   // Separator
@@ -143,13 +143,13 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Run through displaying rage dice
   for (let i = 0, j = rageCritSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-orange-crit.png" alt="Rage Crit" class="roll-img rage-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-crit.png" alt="Rage Crit" class="roll-img rage-dice" />'
   }
   for (let i = 0, j = rageSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-orange-success.png" alt="Rage Success" class="roll-img rage-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-success.png" alt="Rage Success" class="roll-img rage-dice" />'
   }
   for (let i = 0, j = brutalOutcome; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Rage Critical Fail" class="roll-img rage-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-brutal-fail.png" alt="Rage Critical Fail" class="roll-img rage-dice" />'
   }
   for (let i = 0, j = rageFail; i < j; i++) {
     chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Rage Fail" class="roll-img rage-dice" />'

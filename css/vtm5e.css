@@ -7,9 +7,11 @@
 @import url("./werewolf-sheet.css");
 
 :root {
-    --color-text-hyperlink: #790813;
     --color-text-light-highlight: #f9f5ed;
     --color-text-light-heading: #f1ede6;
+    --color-border-light-1: var(--color-border-dark-1);
+    --color-border-light-2: var(--color-border-dark-2);
+    --color-text-hyperlink: #790813;	
     --color-shadow-primary: #790813;
     --color-shadow-highlight: #790813;
     --color-border-highlight: #790813;
@@ -246,7 +248,7 @@ button:focus {
 
 .wod5e input {
     font-family: Amarante, serif;
-    background: white;
+    background: unset;
     border: 0;
 }
 
@@ -284,7 +286,7 @@ optgroup {
 
 .wod5e button.rollable:hover,
 .wod5e button.rollable-with-mod:hover,
-.wod5e button.rouse-check {
+.wod5e button.rouse-check:hover {
     outline: none;
     box-shadow: inset 0 0 5px #000;
     background: var(--color-shadow-highlight);
@@ -352,6 +354,14 @@ optgroup {
     flex-grow: 1;
 }
 
+.wod5e .spc-sheet .actor-header .resource {
+    margin: 0 0.2em;
+}
+
+.wod5e .spc-sheet .flex-group-left {
+    margin-top: 0.5em;
+}
+
 .wod5e .actor-header .resource.exp, .wod5e .actor-header .resource.generaldifficulty {
     max-width: 100px;
 }
@@ -371,7 +381,8 @@ optgroup {
 
 .wod5e.item .window-content input {
     float: left;
-    background-color: #ffd578;
+    background-color: white;
+	border: 1px solid var(--color-border-highlight);
 }
 
 .wod5e.item.sheet .window-content input[type="number"] {
@@ -482,6 +493,12 @@ optgroup {
     border-bottom: 0;
 }
 
+.wod5e .item-header h1.charname input {
+    padding: 0.7em 0 0.8em 0.2em;
+    background: none;
+    margin-left: 0.08em;
+}
+
 .item-header .grid-2col {
     margin-bottom: 10px;
 }
@@ -492,6 +509,10 @@ optgroup {
 
 .compendium.directory.flexcol {
     color: black;
+}
+
+.scenes-sidebar .scene h3 {
+    color: var(--color-text-light-1);
 }
 
 .sheet.journal-entry .journal-sidebar {
@@ -910,18 +931,39 @@ p.roll-label.uppercase {
 .roll-img {
     max-width: 40px;
     margin: 2px;
-    background: rgb(255 255 255 / 50%);
+    background: rgb(20 20 20);
     border-radius: 4px;
+    border-color: rgb(200 200 200);
+}
+
+.roll-img.vampire-dice {
+    background: rgb(230 255 230 / 50%);
+    border-color: rgb(15 55 5);
 }
 
 .roll-img.hunger-dice {
-    background: rgb(255 230 230 / 50%);
-    border-color: #790813;
+    background: #a11212;
+    border-color: black;
+}
+
+.roll-img.hunter-dice {
+    background: #ee7e1f;
+    border-color: black;
 }
 
 .roll-img.desperation-dice {
-    background: rgb(255 230 230 / 50%);
+    background: black;
     border-color: #cc6d28;
+}
+
+.roll-img.werewolf-dice {
+    background: #828d23;
+    border-color: rgb(66 74 17);
+}
+
+.roll-img.rage-dice {
+    background: #cc0e00;
+    border-color: #8e0900;
 }
 
 .wod5e .locked .resource-value-empty:not(.hunger-value) {
@@ -937,11 +979,13 @@ p.roll-label.uppercase {
 .wod5e .locked .resource-minus {
     opacity: 0;
     cursor: default !important;
+    display: none;
 }
 
 .wod5e .locked .resource-plus {
     opacity: 0;
     cursor: default !important;
+	display: none;
 }
 
 .willpower-reroll .die {
@@ -989,7 +1033,7 @@ button.dialog-button:hover {
 
 .flex-group-center input[type="text"] {
     font-family: Vollkorn, serif;
-    background: white
+    background: unset;
 }
 
 .sheet-banner {
