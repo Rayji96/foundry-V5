@@ -250,6 +250,10 @@ button:focus {
     border: 0;
 }
 
+.wod5e p {
+    margin: 0.5em 0.5em;
+}
+
 select {
     height: calc(var(--form-field-height) + 1px);
     background: rgb(0 0 0 / 5%);
@@ -665,6 +669,10 @@ optgroup {
     font-weight: 700;
 }
 
+.wod5e .items-list .item-type {
+    text-align: center;
+}
+
 .wod5e .items-list .item-controls {
     text-align: right;
 }
@@ -861,12 +869,12 @@ p .collapsible-content{
     margin-top: 5px;
 }
 
-.wod5e .tab.disciplines .resource-value {
+.wod5e .tab.disciplines .resource-value, .wod5e .tab.edges .resource-value {
     margin-top: 2px;
     text-align: center;
 }
 
-.wod5e .tab.edges .resource-value {
+.wod5e .tab.features .resource-value, .wod5e .tab.features .resource-value-static {
     margin-top: 2px;
     text-align: center;
 }
@@ -917,6 +925,11 @@ p.roll-label.uppercase {
 .roll-img.hunger-dice {
     background: rgb(255 230 230 / 50%);
     border-color: #790813;
+}
+
+.roll-img.hunger-dice.rerolled {
+    background: rgb(147 147 147 / 50%);
+    border-color: #404040;
 }
 
 .roll-img.desperation-dice {

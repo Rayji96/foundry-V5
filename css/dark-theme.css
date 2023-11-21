@@ -100,19 +100,11 @@
     );
 }
 
-.wod5e.dark-theme .resource-value .resource-value-step {
+.wod5e.dark-theme .resource-value .resource-value-step, .wod5e.dark-theme .resource-value-static .resource-value-static-step {
   border: 1px solid #cdcdcd;
 }
 
-.wod5e.dark-theme .resource-value .resource-value-step.active {
-  background-color: #790813;
-}
-
-.wod5e.dark-theme .resource-value-static .resource-value-static-step {
-  border: 1px solid black;
-}
-
-.wod5e.dark-theme .resource-value-static .resource-value-static-step.active {
+.wod5e.dark-theme .resource-value .resource-value-step.active, .wod5e.dark-theme .resource-value-static .resource-value-static-step.active {
   background-color: #790813;
 }
 
