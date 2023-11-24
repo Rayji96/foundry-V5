@@ -803,7 +803,7 @@ Hooks.on('getChatLogEntryContext', function (html, options) {
       const message = game.messages.get(li.attr('data-message-id'))
 
       // Only show this context menu if there are re-rollable dice in the message
-      const rerollableDice = li.find('.normal-dice').length
+      const rerollableDice = li.find('.rerollable').length
 
       // All must be true to show the reroll dialogue
       return (game.user.isGM || message.isAuthor) && (rerollableDice > 0)
@@ -818,7 +818,7 @@ Hooks.once('ready', function () {
 
 async function willpowerReroll (roll) {
   // Variables
-  const dice = roll.find('.normal-dice')
+  const dice = roll.find('.rerollable')
   const diceRolls = []
 
   // Go through the message's dice and add them to the diceRolls array
