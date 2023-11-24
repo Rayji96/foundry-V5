@@ -1,8 +1,10 @@
 <form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} coterie-sheet" autocomplete="off">
     {{!-- Actor Type Banner --}}
+    {{#if displayBanner}}
     <div class="sheet-banner">
       <h1>{{ sheetType }}</h1>
     </div>
+    {{/if}}
 
     {{!-- Coterie Sheet Header --}}
     <header class="actor-header">
@@ -36,7 +38,6 @@
 
     {{!-- Coterie Sheet Body --}}
     <section class="sheet-body">
-
         {{!-- Shared Features Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/features.html"}}
 
@@ -45,6 +46,5 @@
 
         {{!-- Other Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/other.html"}}
-
     </section>
 </form>

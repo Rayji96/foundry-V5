@@ -1,8 +1,10 @@
 <form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} cell-sheet" autocomplete="off">
     {{!-- Actor Type Banner --}}
+    {{#if displayBanner}}
     <div class="sheet-banner">
       <h1>{{ sheetType }}</h1>
     </div>
+    {{/if}}
 
     {{!-- Cell Sheet Header --}}
     <header class="actor-header">
@@ -41,7 +43,6 @@
 
     {{!-- Cell Sheet Body --}}
     <section class="sheet-body">
-
         {{!-- Shared Features Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/features.html"}}
 
@@ -50,6 +51,5 @@
 
         {{!-- Other Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/other.html"}}
-
     </section>
 </form>

@@ -1,8 +1,10 @@
 <form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} ghoul-sheet" autocomplete="off">
     {{!-- Actor Type Banner --}}
+    {{#if displayBanner}}
     <div class="sheet-banner">
       <h1>{{ sheetType }}</h1>
     </div>
+    {{/if}}
 
     {{!-- Ghoul Sheet Header --}}
     <header class="actor-header">
@@ -47,7 +49,6 @@
 
     {{!-- Ghoul Sheet Body --}}
     <section class="sheet-body">
-
         {{!-- Stats Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/stats.html"}}
 
@@ -62,6 +63,5 @@
 
         {{!-- Other Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/other.html"}}
-
     </section>
 </form>
