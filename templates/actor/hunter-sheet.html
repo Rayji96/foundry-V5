@@ -1,8 +1,10 @@
 <form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} hunter-sheet" autocomplete="off">
     {{!-- Actor Type Banner --}}
+    {{#if displayBanner}}
     <div class="sheet-banner">
       <h1>{{ sheetType }}</h1>
     </div>
+    {{/if}}
 
     {{!-- Hunter Sheet Header --}}
     <header class="actor-header">
@@ -53,7 +55,6 @@
 
     {{!-- Hunter Sheet Body --}}
     <section class="sheet-body">
-
         {{!-- Stats Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/stats.html"}}
 
@@ -68,6 +69,5 @@
 
         {{!-- Other Tab --}}
         {{> "systems/vtm5e/templates/actor/parts/other.html"}}
-
     </section>
 </form>
