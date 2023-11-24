@@ -2,7 +2,7 @@
   "id": "vtm5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -23,6 +23,12 @@
     {
       "name": "LorduFreeman",
       "discord": "LorduFreeman#8747"
+    },
+    {
+      "name": "Veilza",
+      "url": "https://github.com/Veilza",
+      "discord": "veilza",
+      "flags": {}
     }
   ],
   "esmodules": [
@@ -80,6 +86,6 @@
   "license": "LICENSE.txt",
   "url": "https://github.com/Rayji96/foundry-V5",
   "background": "systems/vtm5e/assets/images/wodcity.jpg",
-  "manifest": "https://raw.githubusercontent.com/Rayji96/foundry-V5/main/system.json",
-  "download": "https://github.com/Rayji96/foundry-V5/archive/foundryvtt_v5_v2.1.1.zip"
+  "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/3.0.0/system.json",
+  "download": "https://github.com/Rayji96/foundry-V5/releases/download/3.0.0/vtm5e-3.0.0.zip"
 }
