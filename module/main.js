@@ -52,6 +52,15 @@ Hooks.once('init', async function () {
     type: Boolean
   })
 
+  game.settings.register('vtm5e', 'actorBanner', {
+    name: 'Enable Character Type Banner',
+    hint: 'Display a banner at the top of actor sheets to represent the character type.',
+    scope: 'client',
+    config: true,
+    default: true,
+    type: Boolean
+  })
+
   game.settings.register('vtm5e', 'useChatRoller', {
     // TODO: fix Chat Roller
     name: 'Chat Roller',

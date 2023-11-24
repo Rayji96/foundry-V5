@@ -18,6 +18,8 @@ export class WoDActor extends ActorSheet {
     const actorData = this.object.system
     const actorHeaders = actorData.headers
 
+    data.displayBanner = game.settings.get('vtm5e', 'actorBanner')
+
     // Enrich non-header editor fields
     if (actorData.biography) { data.enrichedBiography = await TextEditor.enrichHTML(actorData.biography, { async: true }) }
     if (actorData.appearance) { data.enrichedAppearance = await TextEditor.enrichHTML(actorData.appearance, { async: true }) }

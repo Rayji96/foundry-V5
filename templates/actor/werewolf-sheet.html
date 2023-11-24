@@ -1,8 +1,10 @@
 <form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} werewolf-sheet" autocomplete="off">
   {{!-- Actor Type Banner --}}
+  {{#if displayBanner}}
   <div class="sheet-banner">
     <h1>{{ sheetType }}</h1>
   </div>
+  {{/if}}
 
   {{!-- Werewolf Sheet Header --}}
   <header class="actor-header">
