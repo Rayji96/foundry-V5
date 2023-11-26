@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc"],
+    "types": ["vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc", "werewolf"],
     "templates": {
       "base": {
         "biography": "",
@@ -45,149 +45,149 @@
         "abilities": {
           "strength": {
             "value": 1,
-            "name": "VTM5E.Strength"
+            "name": "WOD5E.Strength"
           },
           "charisma": {
             "value": 1,
-            "name": "VTM5E.Charisma"
+            "name": "WOD5E.Charisma"
           },
           "intelligence": {
             "value": 1,
-            "name": "VTM5E.Intelligence"
+            "name": "WOD5E.Intelligence"
           },
           "dexterity": {
             "value": 1,
-            "name": "VTM5E.Dexterity"
+            "name": "WOD5E.Dexterity"
           },
           "manipulation": {
             "value": 1,
-            "name": "VTM5E.Manipulation"
+            "name": "WOD5E.Manipulation"
           },
           "wits": {
             "value": 1,
-            "name": "VTM5E.Wits"
+            "name": "WOD5E.Wits"
           },
           "stamina": {
             "value": 1,
-            "name": "VTM5E.Stamina"
+            "name": "WOD5E.Stamina"
           },
           "composure": {
             "value": 1,
-            "name": "VTM5E.Composure"
+            "name": "WOD5E.Composure"
           },
           "resolve": {
             "value": 1,
-            "name": "VTM5E.Resolve"
+            "name": "WOD5E.Resolve"
           }
         },
         "skills": {
           "athletics": {
             "value": 0,
-            "name": "VTM5E.Athletics"
+            "name": "WOD5E.Athletics"
           },
           "animal ken": {
             "value": 0,
-            "name": "VTM5E.AnimalKen"
+            "name": "WOD5E.AnimalKen"
           },
           "academics": {
             "value": 0,
-            "name": "VTM5E.Academics"
+            "name": "WOD5E.Academics"
           },
           "brawl": {
             "value": 0,
-            "name": "VTM5E.Brawl"
+            "name": "WOD5E.Brawl"
           },
           "etiquette": {
             "value": 0,
-            "name": "VTM5E.Etiquette"
+            "name": "WOD5E.Etiquette"
           },
           "awareness": {
             "value": 0,
-            "name": "VTM5E.Awareness"
+            "name": "WOD5E.Awareness"
           },
           "craft": {
             "value": 0,
-            "name": "VTM5E.Craft"
+            "name": "WOD5E.Craft"
           },
           "insight": {
             "value": 0,
-            "name": "VTM5E.Insight"
+            "name": "WOD5E.Insight"
           },
           "finance": {
             "value": 0,
-            "name": "VTM5E.Finance"
+            "name": "WOD5E.Finance"
           },
           "drive": {
             "value": 0,
-            "name": "VTM5E.Drive"
+            "name": "WOD5E.Drive"
           },
           "intimidation": {
             "value": 0,
-            "name": "VTM5E.Intimidation"
+            "name": "WOD5E.Intimidation"
           },
           "investigation": {
             "value": 0,
-            "name": "VTM5E.Investigation"
+            "name": "WOD5E.Investigation"
           },
           "firearms": {
             "value": 0,
-            "name": "VTM5E.Firearms"
+            "name": "WOD5E.Firearms"
           },
           "leadership": {
             "value": 0,
-            "name": "VTM5E.Leadership"
+            "name": "WOD5E.Leadership"
           },
           "medicine": {
             "value": 0,
-            "name": "VTM5E.Medicine"
+            "name": "WOD5E.Medicine"
           },
           "larceny": {
             "value": 0,
-            "name": "VTM5E.Larceny"
+            "name": "WOD5E.Larceny"
           },
           "performance": {
             "value": 0,
-            "name": "VTM5E.Performance"
+            "name": "WOD5E.Performance"
           },
           "occult": {
             "value": 0,
-            "name": "VTM5E.Occult"
+            "name": "WOD5E.Occult"
           },
           "melee": {
             "value": 0,
-            "name": "VTM5E.Melee"
+            "name": "WOD5E.Melee"
           },
           "persuasion": {
             "value": 0,
-            "name": "VTM5E.Persuasion"
+            "name": "WOD5E.Persuasion"
           },
           "politics": {
             "value": 0,
-            "name": "VTM5E.Politics"
+            "name": "WOD5E.Politics"
           },
           "stealth": {
             "value": 0,
-            "name": "VTM5E.Stealth"
+            "name": "WOD5E.Stealth"
           },
           "streetwise": {
             "value": 0,
-            "name": "VTM5E.Streetwise"
+            "name": "WOD5E.Streetwise"
           },
           "science": {
             "value": 0,
-            "name": "VTM5E.Science"
+            "name": "WOD5E.Science"
           },
           "survival": {
             "value": 0,
-            "name": "VTM5E.Survival"
+            "name": "WOD5E.Survival"
           },
           "subterfuge": {
             "value": 0,
-            "name": "VTM5E.Subterfuge"
+            "name": "WOD5E.Subterfuge"
           },
           "technology": {
             "value": 0,
-            "name": "VTM5E.Technology"
+            "name": "WOD5E.Technology"
           }
         }
       },
@@ -212,151 +212,151 @@
         "standarddicepools": {
           "physical": {
             "value": 1,
-            "name": "VTM5E.Physical"
+            "name": "WOD5E.Physical"
           },
           "social": {
             "value": 1,
-            "name": "VTM5E.Social"
+            "name": "WOD5E.Social"
           },
           "mental": {
             "value": 1,
-            "name": "VTM5E.Mental"
+            "name": "WOD5E.Mental"
           }
         },
         "exceptionaldicepools": {
           "athletics": {
             "value": 0,
-            "name": "VTM5E.Athletics",
+            "name": "WOD5E.Athletics",
             "visible": false
           },
           "animal ken": {
             "value": 0,
-            "name": "VTM5E.AnimalKen",
+            "name": "WOD5E.AnimalKen",
             "visible": false
           },
           "academics": {
             "value": 0,
-            "name": "VTM5E.Academics",
+            "name": "WOD5E.Academics",
             "visible": false
           },
           "brawl": {
             "value": 0,
-            "name": "VTM5E.Brawl",
+            "name": "WOD5E.Brawl",
             "visible": false
           },
           "etiquette": {
             "value": 0,
-            "name": "VTM5E.Etiquette",
+            "name": "WOD5E.Etiquette",
             "visible": false
           },
           "awareness": {
             "value": 0,
-            "name": "VTM5E.Awareness",
+            "name": "WOD5E.Awareness",
             "visible": false
           },
           "craft": {
             "value": 0,
-            "name": "VTM5E.Craft",
+            "name": "WOD5E.Craft",
             "visible": false
           },
           "insight": {
             "value": 0,
-            "name": "VTM5E.Insight",
+            "name": "WOD5E.Insight",
             "visible": false
           },
           "finance": {
             "value": 0,
-            "name": "VTM5E.Finance",
+            "name": "WOD5E.Finance",
             "visible": false
           },
           "drive": {
             "value": 0,
-            "name": "VTM5E.Drive",
+            "name": "WOD5E.Drive",
             "visible": false
           },
           "intimidation": {
             "value": 0,
-            "name": "VTM5E.Intimidation",
+            "name": "WOD5E.Intimidation",
             "visible": false
           },
           "investigation": {
             "value": 0,
-            "name": "VTM5E.Investigation",
+            "name": "WOD5E.Investigation",
             "visible": false
           },
           "firearms": {
             "value": 0,
-            "name": "VTM5E.Firearms",
+            "name": "WOD5E.Firearms",
             "visible": false
           },
           "leadership": {
             "value": 0,
-            "name": "VTM5E.Leadership",
+            "name": "WOD5E.Leadership",
             "visible": false
           },
           "medicine": {
             "value": 0,
-            "name": "VTM5E.Medicine",
+            "name": "WOD5E.Medicine",
             "visible": false
           },
           "larceny": {
             "value": 0,
-            "name": "VTM5E.Larceny",
+            "name": "WOD5E.Larceny",
             "visible": false
           },
           "performance": {
             "value": 0,
-            "name": "VTM5E.Performance",
+            "name": "WOD5E.Performance",
             "visible": false
           },
           "occult": {
             "value": 0,
-            "name": "VTM5E.Occult",
+            "name": "WOD5E.Occult",
             "visible": false
           },
           "melee": {
             "value": 0,
-            "name": "VTM5E.Melee",
+            "name": "WOD5E.Melee",
             "visible": false
           },
           "persuasion": {
             "value": 0,
-            "name": "VTM5E.Persuasion",
+            "name": "WOD5E.Persuasion",
             "visible": false
           },
           "politics": {
             "value": 0,
-            "name": "VTM5E.Politics",
+            "name": "WOD5E.Politics",
             "visible": false
           },
           "stealth": {
             "value": 0,
-            "name": "VTM5E.Stealth",
+            "name": "WOD5E.Stealth",
             "visible": false
           },
           "streetwise": {
             "value": 0,
-            "name": "VTM5E.Streetwise",
+            "name": "WOD5E.Streetwise",
             "visible": false
           },
           "science": {
             "value": 0,
-            "name": "VTM5E.Science",
+            "name": "WOD5E.Science",
             "visible": false
           },
           "survival": {
             "value": 0,
-            "name": "VTM5E.Survival",
+            "name": "WOD5E.Survival",
             "visible": false
           },
           "subterfuge": {
             "value": 0,
-            "name": "VTM5E.Subterfuge",
+            "name": "WOD5E.Subterfuge",
             "visible": false
           },
           "technology": {
             "value": 0,
-            "name": "VTM5E.Technology",
+            "name": "WOD5E.Technology",
             "visible": false
           }
         }
@@ -364,98 +364,98 @@
       "disciplines": {
         "disciplines": {
           "animalism": {
-            "name": "VTM5E.Animalism",
+            "name": "WOD5E.Animalism",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "auspex": {
-            "name": "VTM5E.Auspex",
+            "name": "WOD5E.Auspex",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "celerity": {
-            "name": "VTM5E.Celerity",
+            "name": "WOD5E.Celerity",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "dominate": {
-            "name": "VTM5E.Dominate",
+            "name": "WOD5E.Dominate",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "fortitude": {
-            "name": "VTM5E.Fortitude",
+            "name": "WOD5E.Fortitude",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "obfuscate": {
-            "name": "VTM5E.Obfuscate",
+            "name": "WOD5E.Obfuscate",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "potence": {
-            "name": "VTM5E.Potence",
+            "name": "WOD5E.Potence",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "presence": {
-            "name": "VTM5E.Presence",
+            "name": "WOD5E.Presence",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "protean": {
-            "name": "VTM5E.Protean",
+            "name": "WOD5E.Protean",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "sorcery": {
-            "name": "VTM5E.BloodSorcery",
+            "name": "WOD5E.BloodSorcery",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "oblivion": {
-            "name": "VTM5E.Oblivion",
+            "name": "WOD5E.Oblivion",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "alchemy": {
-            "name": "VTM5E.ThinBloodAlchemy",
+            "name": "WOD5E.ThinBloodAlchemy",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "rituals": {
-            "name": "VTM5E.Rituals",
+            "name": "WOD5E.Rituals",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "ceremonies": {
-            "name": "VTM5E.Ceremonies",
+            "name": "WOD5E.Ceremonies",
             "description": "",
             "value": 0,
             "powers": [],
@@ -466,151 +466,342 @@
       "edges": {
         "edges": {
           "arsenal": {
-            "name": "VTM5E.Arsenal",
+            "name": "WOD5E.Arsenal",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "fleet": {
-            "name": "VTM5E.Fleet",
+            "name": "WOD5E.Fleet",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "ordnance": {
-            "name": "VTM5E.Ordnance",
+            "name": "WOD5E.Ordnance",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "library": {
-            "name": "VTM5E.Library",
+            "name": "WOD5E.Library",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "improvisedgear": {
-            "name": "VTM5E.ImprovisedGear",
+            "name": "WOD5E.ImprovisedGear",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "globalaccess": {
-            "name": "VTM5E.GlobalAccess",
+            "name": "WOD5E.GlobalAccess",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "dronejockey": {
-            "name": "VTM5E.DroneJockey",
+            "name": "WOD5E.DroneJockey",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "beastwhisperer": {
-            "name": "VTM5E.BeastWhisperer",
+            "name": "WOD5E.BeastWhisperer",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "sensetheunnatural": {
-            "name": "VTM5E.SenseTheUnnatural",
+            "name": "WOD5E.SenseTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "repeltheunnatural": {
-            "name": "VTM5E.RepelTheUnnatural",
+            "name": "WOD5E.RepelTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "thwarttheunnatural": {
-            "name": "VTM5E.ThwartTheUnnatural",
+            "name": "WOD5E.ThwartTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "artifact": {
-            "name": "VTM5E.Artifact",
+            "name": "WOD5E.Artifact",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           }
         }
+      },
+      "renown": {
+        "renown": {
+          "glory": {
+            "value": 0
+          },
+          "honor": {
+            "value": 0
+          },
+          "wisdom": {
+            "value": 0
+          }
+        }
+      },
+      "werewolfForms": {
+        "activeForm": "homid",
+        "forms": {
+          "homid": {
+            "name": "WOD5E.HomidName",
+            "nickname": "WOD5E.HomidTitle",
+            "cost": 0,
+            "description": "Custom Homid description",
+            "abilities": [
+              "Silver Immunity"
+            ]
+          },
+          "glabro": {
+            "name": "WOD5E.GlabroName",
+            "nickname": "WOD5E.GlabroTitle",
+            "cost": 1,
+            "description": "Custom Glabro description",
+            "abilities": [
+              "Physical Tests: +2",
+              "Social Tests: -2",
+              "Regenerate: 1/Rage Check"
+            ]
+          },
+          "crinos": {
+            "name": "WOD5E.CrinosName",
+            "nickname": "WOD5E.CrinosTitle",
+            "cost": 2,
+            "description": "Custom Crinos description",
+            "abilities": [
+              "Frenzy Risk, 1 Willpower/turn",
+              "Physical Tests: +4",
+              "Health: +4",
+              "Social Tests: Auto-failure",
+              "Mental Tests: Auto-failure",
+              "Regenerate: 2/Rage Check",
+              "Claws: +3",
+              "Bite: +1 Aggravated",
+              "Causes Delirium"
+            ]
+          },
+          "hispo": {
+            "name": "WOD5E.HispoName",
+            "nickname": "WOD5E.HispoTitle",
+            "cost": 1,
+            "description": "Custom Hispo description",
+            "abilities": [
+              "(Non-Stealth) Physical Tests: +2",
+              "Stealth Tests: -2",
+              "Social Tests: Limited to wolves and Garou",
+              "Regenerate: 1/Rage Check",
+              "Bite: +1 Aggravated"
+            ]
+          },
+          "lupus": {
+            "name": "WOD5E.LupusName",
+            "nickname": "WOD5E.LupusTitle",
+            "cost": 0,
+            "description": "Custom Lupus description",
+            "abilities": [
+              "Silver Immunity",
+              "Social Tests: Limited to wolves and Garou"
+            ]
+          }
+        }
+      },
+      "gifts": {
+        "gifts": {
+          "native": {
+            "name": "WOD5E.Native",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "ragabash": {
+            "name": "WOD5E.Ragabash",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "theurge": {
+            "name": "WOD5E.Theurge",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "philodox": {
+            "name": "WOD5E.Philodox",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "galliard": {
+            "name": "WOD5E.Galliard",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "ahroun": {
+            "name": "WOD5E.Ahroun",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "blackfury": {
+            "name": "WOD5E.BlackFury",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "bonegnawer": {
+            "name": "WOD5E.BoneGnawer",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "childrenofgaia": {
+            "name": "WOD5E.ChildrenOfGaia",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "galestalker": {
+            "name": "WOD5E.Galestalker",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "ghostcouncil": {
+            "name": "WOD5E.GhostCouncil",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "glasswalker": {
+            "name": "WOD5E.GlassWalker",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "hartwarden": {
+            "name": "WOD5E.HartWarden",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "redtalon": {
+            "name": "WOD5E.RedTalon",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "shadowlord": {
+            "name": "WOD5E.ShadowLord",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "silentstrider": {
+            "name": "WOD5E.SilentStrider",
+            "description": "",
+            "value": 0,
+            "powers": []
+          },
+          "silverfang": {
+            "name": "WOD5E.SilverFang",
+            "description": "",
+            "value": 0,
+            "powers": []
+          }
+        }
       }
     },
    
-    "character": {
-      "templates": ["base","disciplines"],
-      "headers":{
-        "predator":"",
-        "sire":"",
-        "generation":"",
-        "bane":""
-      },
-      "blood": {
-        "potency": 0,
-        "resonance": ""
-      },
-      "clan": {
-        "value": ""
-      },
-      "hunger": {
-        "value": 1
-      }
-    },
-    "vampire": {
-      "templates": ["base","disciplines"],
-      "headers":{
-        "predator":"",
-        "sire":"",
-        "generation":"",
-        "bane":""
-      },
-      "blood": {
-        "potency": 0,
-        "resonance": ""
-      },
-      "clan": {
-        "value": ""
-      },
-      "hunger": {
-        "value": 1
-      }
-    },
-    "ghoul": {
-      "templates": ["base","disciplines"],
-      "headers":{
-        "domitor":"",
-        "creedfields":""
-      }
-    },
     "mortal": {
+      "label": "WOD5E.Mortal",
       "templates": ["base"]
     },
+    "vampire": {
+      "label": "WOD5E.Vampire",
+      "templates": ["base","disciplines"],
+      "headers":{
+        "predator":"",
+        "sire":"",
+        "generation":"",
+        "bane":""
+      },
+      "blood": {
+        "potency": 0,
+        "resonance": ""
+      },
+      "clan": {
+        "value": ""
+      },
+      "hunger": {
+        "value": 1
+      }
+    },
+    "werewolf": {
+      "label": "WOD5E.Werewolf",
+      "templates": ["base","renown","werewolfForms","gifts"],
+      "headers": {
+        "auspice": "",
+        "patron": "",
+        "favor": "",
+        "ban": "",
+        "tribe": ""
+      },
+      "balance": {
+        "hauglosk": {
+          "value": 0
+        },
+        "harano": {
+          "value": 0
+        }
+      },
+      "rites": [],
+      "talismans": [],
+      "rage": {
+        "value": 1
+      },
+      "frenzyActive": false,
+      "crinosHealth": {
+        "aggravated": 0,
+        "superficial": 0,
+        "max": 4
+      }
+    },
     "hunter": {
+      "label": "WOD5E.Hunter",
       "templates": ["base","edges"],
       "headers":{
-        "cellname":""
-      },
-      "creed": {
-        "value": ""
+        "cellname": "",
+        "creed": "",
+        "drive": ""
       }
     },
     "coterie" : {
+      "label": "WOD5E.Coterie",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -619,6 +810,7 @@
       }
     },
     "cell" : {
+      "label": "WOD5E.Cell",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -626,12 +818,21 @@
         "concept": ""
       }
     },
+    "ghoul": {
+      "label": "WOD5E.Ghoul",
+      "templates": ["base","disciplines"],
+      "headers":{
+        "domitor":"",
+        "creedfields":""
+      }
+    },
     "spc" : {
+      "label": "WOD5E.SPC",
       "templates": ["abbreviated","disciplines"]
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "boon", "customRoll", "perk"],
+    "types": ["feature", "power", "specialty", "boon", "customRoll", "perk", "gift"],
     "templates": {
       "base": {
         "description": ""
@@ -678,6 +879,18 @@
       "rollable": false,
       "skill": false,
       "amalgam": false
+    },
+    "gift": {
+      "templates": ["base"],
+      "giftType": "native",
+      "renown": "honor",
+      "cost": 0,
+      "rollable": false,
+      "rage": false,
+      "action": "",
+      "dice1": "strength",
+      "dice2": "strength",
+      "duration": ""
     }
   }
 }

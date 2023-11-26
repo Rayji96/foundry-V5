@@ -1,0 +1,76 @@
+<form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} werewolf-sheet" autocomplete="off">
+  {{!-- Actor Type Banner --}}
+  {{#if displayBanner}}
+  <div class="sheet-banner">
+    <h1>{{ sheetType }}</h1>
+  </div>
+  {{/if}}
+
+  {{!-- Werewolf Sheet Header --}}
+  <header class="actor-header">
+      <div class="header-fields-top">
+        <div class="header-profile-img">
+            {{!-- Actor image and sheet lock toggle button --}}
+            {{> "systems/vtm5e/templates/actor/parts/profile-img.html"}}
+        </div>
+        <div class="header-rows-top">
+            <div class="header-row-1">
+                {{!-- Text input header fields --}}
+                <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'WOD5E.Name'}}" /></h1>
+                <h1 class="charname"><input name="system.headers.tribe" type="text" value="{{actor.system.headers.tribe}}" placeholder="{{localize 'WOD5E.Tribe'}}" /></h1>
+                <h1 class="charname"><input name="system.headers.auspice" type="text" value="{{actor.system.headers.auspice}}" placeholder="{{localize 'WOD5E.Auspice'}}" /></h1>
+            </div>
+            <div class="header-row-2">
+                {{!-- Health Tracker --}}
+                {{> "systems/vtm5e/templates/actor/parts/health.html"}}
+
+                {{!-- Willpower Tracker --}}
+                {{> "systems/vtm5e/templates/actor/parts/willpower.html"}}
+
+                {{!-- XP Tracker --}}
+                {{> "systems/vtm5e/templates/actor/parts/exp.html"}}
+
+                {{!-- Anything more that needs to be in the header spot --}}
+                {{> "systems/vtm5e/templates/actor/parts/werewolf/rage-value.html"}}
+
+                {{> "systems/vtm5e/templates/actor/parts/werewolf/rage-button.html"}}
+
+                {{> "systems/vtm5e/templates/actor/parts/werewolf/frenzy.html"}}
+            </div>
+        </div>
+    </div>
+  </header>
+
+  {{!-- Werewolf Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+      <div class="item" data-tab="stats">{{localize "WOD5E.Stats"}}</div>
+      <div class="item" data-tab="gifts-rites">{{localize "WOD5E.GiftsandRites"}}</div>
+      <div class="item" data-tab="features">{{localize "WOD5E.Features"}}</div>
+      <div class="item" data-tab="wolf">{{localize "WOD5E.TheWolf"}}</div>
+      <div class="item" data-tab="description">{{localize "WOD5E.Description"}}</div>
+      <div class="item" data-tab="other">{{localize "WOD5E.Other"}}</div>
+  </nav>
+
+  {{!-- Werewolf Sheet Body --}}
+  <section class="sheet-body">
+
+      {{!-- Stats Tab --}}
+      {{> "systems/vtm5e/templates/actor/parts/stats.html"}}
+
+      {{!-- Owned Powers Tab --}}
+      {{> "systems/vtm5e/templates/actor/parts/werewolf/gifts-rites.html"}}
+
+      {{!-- Owned Features Tab --}}
+      {{> "systems/vtm5e/templates/actor/parts/features.html"}}
+
+      {{!-- Blood Tab --}}
+      {{> "systems/vtm5e/templates/actor/parts/werewolf/wolf.html"}}
+
+      {{!-- Biography Tab --}}
+      {{> "systems/vtm5e/templates/actor/parts/biography.html"}}
+
+      {{!-- Other Tab --}}
+      {{> "systems/vtm5e/templates/actor/parts/other.html"}}
+
+  </section>
+</form>

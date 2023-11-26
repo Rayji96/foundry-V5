@@ -4,11 +4,11 @@
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class VampireItemSheet extends ItemSheet {
+export class WoDItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['vtm5e', 'sheet', 'item']
+    const classList = ['wod5e', 'sheet', 'item']
 
     // If the user's enabled darkmode, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) { // eslint-disable-line
