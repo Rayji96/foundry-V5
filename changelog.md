@@ -1,9 +1,16 @@
 # World of Darkness 5e Changelog
 
 
-## In the Latest Release (3.0.0)
+## In the Latest Release (3.0.1)
 
 ### From a player's side
+* None, yet!
+
+### From a developer's side
+* Shifted various parts of main.js into their own files. [Veilza]
+
+## 3.0.0
+
 * Werewolf 5th Edition support [Veilza]
 * Overhaul to the sheets' designs, making them more consistent across the different splats [Veilza]
 * Fixes to Dark Mode and its various styling [Veilza]
@@ -20,8 +27,6 @@
 * Rouse checks on Vampire Disciplines will now add hunger for all failed dice [Veilza]
 * Rouse checks will now display rerolled dice in chat as greyed out [Veilza]
 * Actor banners at the top of character sheets can now be disabled within the settings [Veilza]
-
-### From a developer's side
 * Reorganized sheet partials [Veilza]
 * Reworked how the actor dialogue is localized [Veilza]
 * Reworked how the various splats' dice are called [Veilza]
