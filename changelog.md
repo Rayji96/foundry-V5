@@ -4,7 +4,7 @@
 ## In the Latest Release (3.0.1)
 
 ### From a player's side
-* None, yet!
+* Fixed Discipline Rouse rerolls to properly display what was rerolled, and to properly reroll dice twice and keep highest between each roll. [Veilza]
 
 ### From a developer's side
 * Shifted various parts of main.js into their own files. [Veilza]
