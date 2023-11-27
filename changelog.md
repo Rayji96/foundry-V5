@@ -8,6 +8,7 @@
 
 ### From a developer's side
 * Shifted various parts of main.js into their own files. [Veilza]
+* Moved the "gamesystem" definition to the actor template [Veilza]
 
 ## 3.0.0
 
