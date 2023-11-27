@@ -11,11 +11,11 @@
         {{#each feature as |item id|}}
         <li class="item flexcol" data-item-id="{{item._id}}">
             <div class="flexrow">
-                <div class="flexrow">
+                <div class="flexrow collapsible">
                     <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"
                             alt="{{item.name}}" />
                     </div>
-                    <h4 class="item-name collapsible">{{item.name}}</h4>
+                    <h4 class="item-name">{{item.name}}</h4>
                 </div>
                 {{#if (ne key "background")}}
                 <div class="resource-value-static" data-value="{{item.system.points}}" data-name="items.{{item._id}}">
@@ -62,11 +62,11 @@
         {{#each actor.boons as |item id|}}
         <li class="item flexcol" data-item-id="{{item._id}}">
             <div class="flexrow">
-                <div class="flexrow">
+                <div class="flexrow collapsible">
                     <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"
                         alt="{{item.name}}" />
                     </div>
-                    <h4 class="item-name collapsible">{{item.name}}</h4>
+                    <h4 class="item-name">{{item.name}}</h4>
                 </div>
                 <h4 class="item-type">{{item.system.boontype}}</h4>
                 <div class="item-controls">

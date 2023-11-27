@@ -254,6 +254,7 @@ button:focus {
 
 .wod5e p {
     margin: 0.5em;
+    word-break: break-all;
 }
 
 select {
