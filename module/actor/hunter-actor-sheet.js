@@ -73,8 +73,6 @@ export class HunterActorSheet extends CellActorSheet {
     super._prepareItems(sheetData)
     const actorData = sheetData.actor
 
-    actorData.system.gamesystem = 'hunter'
-
     // Track whether despair is toggled on or not
     if (this.actor.system.despair.value > 0) {
       actorData.system.despairActive = true

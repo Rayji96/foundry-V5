@@ -61,7 +61,6 @@ export class WerewolfActorSheet extends WoDActor {
     super._prepareItems(sheetData)
 
     const actorData = sheetData.actor
-    actorData.system.gamesystem = 'werewolf'
 
     const giftsList = structuredClone(actorData.system.gifts)
     let ritesList = structuredClone(actorData.system.rites)
