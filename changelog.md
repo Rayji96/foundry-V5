@@ -4,10 +4,10 @@
 ## In the Latest Release (3.0.1)
 
 ### From a player's side
-* (c7a468bb2c87cfd78ac85be23f89e3134feabe5d) Fixed Discipline Rouse rerolls to properly display what was rerolled, and to properly reroll dice twice and keep highest between each roll. [Veilza]
+* Fixed Discipline Rouse rerolls to properly display what was rerolled, and to properly reroll dice twice and keep highest between each roll. [Veilza]
 
 ### From a developer's side
-* (1eeff4e8a075743ecf0c4bfc878c5f50e5c1a7bd) Shifted various parts of main.js into their own files. [Veilza]
+* Shifted various parts of main.js into their own files. [Veilza]
 
 ## 3.0.0
 
