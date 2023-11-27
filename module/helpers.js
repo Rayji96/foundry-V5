@@ -1,4 +1,4 @@
-/* global Handlebars */
+/* global Handlebars, game */
 
 /**
  * Define any helpers necessary for working with Handlebars

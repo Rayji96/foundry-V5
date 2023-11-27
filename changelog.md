@@ -1,7 +1,15 @@
 # World of Darkness 5e Changelog
 
 
-## In the Latest Release (3.0.0)
+## In the Latest Release (3.0.1)
+
+### From a player's side
+* None, yet!
+
+### From a developer's side
+* Shifted various parts of main.js into their own files. [Veilza]
+
+## 3.0.0
 
 ### From a player's side
 * Werewolf 5th Edition support [Veilza]
