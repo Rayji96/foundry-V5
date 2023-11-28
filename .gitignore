@@ -11,5 +11,5 @@ npm-debug.log
 /.htmlhintrc*
 /.eslintrc*
 
-# Pack files (ignore them unless there's a real update)
-packs/
+# Pack files
+packs/*/lost/
