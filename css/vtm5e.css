@@ -333,6 +333,13 @@ optgroup {
     margin-bottom: 20px;
     height: 41px;
     padding: 0;
+    display: flex;
+}
+
+.wod5e .window-content nav.sheet-tabs .item {
+    align-self: center;
+    flex-grow: 1;
+    cursor: pointer;
 }
 
 .wod5e .tabs .item.active {
@@ -576,6 +583,7 @@ optgroup {
     height: initial;
     padding: 0;
     margin: 0;
+    flex-grow: 1;
 }
 
 .wod5e .actor-header h2.limited-charname {
@@ -1061,10 +1069,6 @@ button.dialog-button:hover {
 .wod5e.vampire-sheet .sheet-banner, .wod5e.ghoul-sheet .sheet-banner, .wod5e.coterie-sheet .sheet-banner {
     background: #790813;
     color: #CCC;
-  }
-
-.sheet nav.sheet-tabs .item {
-    align-self: center;
 }
 
 ::-webkit-scrollbar-thumb {
