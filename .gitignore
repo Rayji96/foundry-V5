@@ -13,3 +13,4 @@ npm-debug.log
 
 # Pack files
 packs/*
+!*.db
