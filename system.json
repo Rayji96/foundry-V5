@@ -81,6 +81,29 @@
       "flags": {}
     }
   ],
+  "packs": [
+    {
+      "label": "Macros",
+      "type": "Macro",
+      "name": "macros",
+      "path": "packs/macros",
+      "system": "vtm5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "World of Darkness 5e",
+      "sorting": "m",
+      "packs": [
+        "macros"
+      ],
+      "color": "#8c0303"
+    }
+  ],
   "gridDistance": 5,
   "gridUnits": "ft",
   "license": "LICENSE.txt",
