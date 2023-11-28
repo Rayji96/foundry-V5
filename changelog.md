@@ -6,10 +6,13 @@
 ### From a player's side
 * Fixed Discipline Rouse rerolls to properly display what was rerolled, and to properly reroll dice twice and keep highest between each roll. [Veilza]
 * Add Macro compendium and a couple of useful macros for storytellers [Veilza]
+* The navigation bar on sheets will now use the right cursor type and properly expand the active background to either side of the tab. [Veilza]
 
 ### From a developer's side
 * Shifted various parts of main.js into their own files. [Veilza]
 * Moved the "gamesystem" definition to the actor template [Veilza]
+* Updated "vtm5e.css" to "wod5e.css"
+* Moved various parts of the wod5e.css file to other files, for maintainability [Veilza]
 
 ## 3.0.0
 

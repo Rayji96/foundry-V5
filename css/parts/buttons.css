@@ -1,0 +1,131 @@
+button {
+  border: 3px double var(--color-shadow-highlight);
+  background: rgb(250 245 237);
+  border-radius: 0;
+}
+
+form button {
+  border: 3px double var(--color-shadow-highlight);
+  background: rgb(250 245 237);
+  border-radius: 0;
+  box-shadow: 0 1px 2px 0 #2a00049e;
+}
+
+button:hover,
+button:focus {
+  outline: none;
+  box-shadow: inset 0 0 5px #000;
+  background: var(--color-shadow-highlight);
+  color: #f7f3eb;
+  border: 3px double #f9f5ed;
+  transition-duration: 0.3s;
+}
+
+.rollable:hover,
+.rollable:focus,
+.rollable-with-mod:hover,
+.rollable-with-mod:focus,
+.rouse-check:hover,
+.rouse-check:focus,
+.vrollable:hover,
+.vrollable:focus,
+.power-rollable:hover,
+.power-rollable:focus,
+.edge-rollable:hover,
+.edge-rollable:focus,
+.gift-rollable:hover,
+.gift-rollable:focus {
+    color: #000;
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+}
+
+.custom-rollable:hover,
+.custom-rollable:focus {
+    color: #000;
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+}
+
+.wod5e button.rollable,
+.wod5e button.rollable-with-mod,
+.wod5e button.rouse-check {
+    background: #790813;
+    color: #fff;
+    font-family: cormorantLight, serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: none;
+    box-shadow: none;
+}
+
+.wod5e button.rollable:hover,
+.wod5e button.rollable-with-mod:hover,
+.wod5e button.rouse-check:hover {
+    outline: none;
+    box-shadow: inset 0 0 5px #000;
+    background: var(--color-shadow-highlight);
+    color: #f7f3eb;
+    transition-duration: 0.3s;
+}
+
+.dialog .dialog-buttons button {
+  border: 3px double var(--color-shadow-highlight);
+}
+
+.directory .action-buttons button {
+  border: 1px solid var(--color-shadow-highlight);
+}
+
+.wod5e .actor-header .profile-img-zone button {
+  background: #790813;
+  color: #fff;
+  font-family: cormorantlight, sans-serif;
+  font-weight: 700;
+  border: none;
+  box-shadow: none;
+}
+
+.wod5e .actor-header .header-fields-top .header-profile-img button {
+  margin: 0;
+}
+
+.wod5e .actor-header .profile-img-zone button:hover {
+  box-shadow: inset 0 0 5px #000;
+}
+
+button.lock-btn {
+  border-radius: 0 0 3px 3px;
+}
+
+.locked .item-delete, .locked .discipline-delete, .locked a.item-control.edge-delete, .locked .gift-delete {
+  display: none;
+}
+
+.locked a.item-control.item-create, .locked a.item-control.discipline-create, .locked a.item-control.edge-create, .locked .gift-create, .locked .rite-create, .locked .item-edit {
+  display: none;
+}
+
+.locked a.item-control.exceptionalskill-create {
+  display: none;
+}
+
+.dialog .dialog-buttons button.default {
+  background: rgb(116 5 16);
+  color: #f9f5ed;
+  border: 3px double #f9f5ed;
+}
+
+.dialog .dialog-buttons button.default:hover {
+  background: var(--color-shadow-highlight);
+}
+
+button.dialog-button.cancel:hover {
+  color: var(--color-shadow-highlight);
+  font-weight: 700;
+}
+
+button.dialog-button:hover {
+  font-weight: 700;
+  transition-duration: 0.3s;
+}

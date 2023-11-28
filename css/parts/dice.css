@@ -1,0 +1,42 @@
+.roll-img {
+  max-width: 40px;
+  margin: 2px;
+  background: rgb(20 20 20);
+  border-radius: 4px;
+  border-color: rgb(200 200 200);
+}
+
+.roll-img.vampire-dice {
+  background: rgb(230 255 230 / 50%);
+  border-color: rgb(15 55 5);
+}
+
+.roll-img.hunger-dice {
+  background: #a11212;
+  border-color: black;
+}
+
+.roll-img.hunter-dice {
+  background: #ee7e1f;
+  border-color: black;
+}
+
+.roll-img.hunger-dice.rerolled {
+  background: rgb(147 147 147 / 50%);
+  border-color: #404040;
+}
+
+.roll-img.desperation-dice {
+  background: black;
+  border-color: #cc6d28;
+}
+
+.roll-img.werewolf-dice {
+  background: #828d23;
+  border-color: rgb(66 74 17);
+}
+
+.roll-img.rage-dice {
+  background: #cc0e00;
+  border-color: #8e0900;
+}
