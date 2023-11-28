@@ -11,6 +11,8 @@
 ### From a developer's side
 * Shifted various parts of main.js into their own files. [Veilza]
 * Moved the "gamesystem" definition to the actor template [Veilza]
+* Updated "vtm5e.css" to "wod5e.css"
+* Moved various parts of the wod5e.css file to other files, for maintainability [Veilza]
 
 ## 3.0.0
 
