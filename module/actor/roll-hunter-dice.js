@@ -92,13 +92,13 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-crit.png" alt="Normal Crit" class="roll-img hunter-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-crit.png" alt="Normal Crit" class="roll-img hunter-dice rerollable" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" alt="Normal Success" class="roll-img hunter-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" alt="Normal Success" class="roll-img hunter-dice rerollable" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img hunter-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img hunter-dice rerollable" />'
   }
 
   // Separator

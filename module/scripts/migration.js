@@ -2,6 +2,7 @@
 
 import { MigrateLegacySheets } from './migrate-legacy-sheets.js'
 import { MigrateLocalization } from './migrate-localization.js'
+import { MigrateGamesystem } from './migrate-gamesystem.js'
 
 let worldVersion
 
@@ -39,6 +40,13 @@ export const migrateWorld = async () => {
       })
       .then(migrationIDs => {
         // Merge any localization updates so we can count them
+        updates.concat(migrationIDs)
+
+        // Migrate gamesystem data
+        return MigrateGamesystem()
+      })
+      .then(migrationIDs => {
+        // Merge any gamesystem updates so we can count them
         updates.concat(migrationIDs)
 
         // Only reload if there's 1 or more updates

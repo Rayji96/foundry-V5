@@ -8,19 +8,31 @@
 // hungerDice = Will roll hunger dice, if value is greater than 0
 // increaseHunger = Will increase the actor's hunger if no successes are rolled, if true
 // subtractWillpower = Subtracts a point of willpower, always, if true
-export async function rollDice (numDice, actor, label = '', difficulty = 0, hungerDice = 0, increaseHunger = false, subtractWillpower = false) {
+// rerollHunger = If the roll needs to have hunger dice rerolled on a failure, if true
+export async function rollDice (numDice, actor, label = '', difficulty = 0, hungerDice = 0, increaseHunger = false, subtractWillpower = false, rerollHunger = false) {
   // Roll defining and evaluating
 
   // Ensure that the number of hunger dice doesn't exceed the
-  // total number of dice
-  const hungerRoll = Math.min(numDice, hungerDice)
+  // total number of dice, unless it's a rouse check that needs
+  // rerolls, which requires twice the number of normal hunger
+  // dice and only the highest will be kept.
+  const hungerRoll = rerollHunger ? hungerDice * 2 : Math.min(numDice, hungerDice)
 
   // Calculate the number of normal dice to roll by subtracting
   // the number of hunger dice from them.
   const dice = Math.max(numDice - hungerRoll, 0)
 
+  // Compose the roll string.
+  // First, rolling vampire dice (dv) and count successes (cs>5)
+  // Then, roll hunger dice (dg) and count successes (cs>5) as well as
+  // rerolling those hunger dice to keep the highest (kh)
+  const rouseReroll = rerollHunger ? `kh${hungerDice}` : ''
+  const roll = new Roll(
+    `${dice}dvcs>5 + ${hungerRoll}dgcs>5${rouseReroll}`,
+    actor.system
+  )
+
   // Send the roll to Foundry
-  const roll = new Roll(dice + 'dvcs>5 + ' + hungerRoll + 'dgcs>5', actor.system)
   await roll.evaluate({ async: true })
 
   // Variable defining
@@ -32,6 +44,11 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
   let fail = 0
   let hungerFail = 0
   let hungerCritFail = 0
+  let totalHungerFail = 0
+  let hungerCritSuccessRerolled = 0
+  let hungerSuccessRerolled = 0
+  let hungerCritFailRerolled = 0
+  let hungerFailRerolled = 0
 
   // Defines the normal diceroll results
   roll.terms[0].results.forEach((dice) => {
@@ -48,20 +65,63 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
 
   // Track number of hunger diceroll results
   roll.terms[2].results.forEach((dice) => {
-    if (dice.success) {
-      if (dice.result === 10) {
-        hungerCritSuccess++
+    // Rerolled dice
+    if (dice.discarded) {
+      if (dice.success) {
+        if (dice.result === 10) {
+          hungerCritSuccessRerolled++
+        } else {
+          hungerSuccessRerolled++
+        }
       } else {
-        hungerSuccess++
+        if (dice.result === 1) {
+          hungerCritFailRerolled++
+        } else {
+          hungerFailRerolled++
+        }
       }
     } else {
-      if (dice.result === 1) {
-        hungerCritFail++
+      // Actually used results
+      if (dice.success) {
+        if (dice.result === 10) {
+          hungerCritSuccess++
+        } else {
+          hungerSuccess++
+        }
       } else {
-        hungerFail++
+        if (dice.result === 1) {
+          hungerCritFail++
+        } else {
+          hungerFail++
+        }
+        totalHungerFail++
       }
     }
   })
+
+  // Automatically add hunger to the actor on a failure (for rouse checks)
+  if (increaseHunger && game.settings.get('vtm5e', 'automatedRouse')) {
+    const currentHunger = actor.system.hunger.value
+    const newHungerAmount = Math.min(currentHunger + totalHungerFail, 5)
+
+    // If the roll would push the actor's hunger above 4 when their hunger was previously
+    // below 5, send a message in the chat to warn them.
+    if (newHungerAmount > 4 && currentHunger < 5) {
+      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+        name: game.i18n.localize('WOD5E.HungerFull1'),
+        img: 'systems/vtm5e/assets/images/bestial-fail-dsn.png',
+        description: game.i18n.localize('WOD5E.HungerFull2')
+      }).then(html => {
+        ChatMessage.create({
+          speaker: ChatMessage.getSpeaker({ actor: actor }),
+          content: html
+        })
+      })
+    }
+
+    // Update the actor with the new amount of rage
+    actor.update({ 'system.hunger.value': newHungerAmount })
+  }
 
   // Success canculating
   let totalCritSuccess = 0
@@ -99,13 +159,13 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img normal-dice rerollable" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img normal-dice rerollable" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img normal-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img normal-dice rerollable" />'
   }
 
   // Separator
@@ -125,41 +185,25 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
     chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img hunger-dice" />'
   }
 
+  // Run through displaying rerolled dice
+  for (let i = 0, j = hungerCritSuccessRerolled; i < j; i++) {
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-crit.png" alt="Hunger Crit Rerolled" class="roll-img hunger-dice rerolled" />'
+  }
+  for (let i = 0, j = hungerSuccessRerolled; i < j; i++) {
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-success.png" alt="Hunger Success Rerolled" class="roll-img hunger-dice rerolled" />'
+  }
+  for (let i = 0, j = hungerCritFailRerolled; i < j; i++) {
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Bestial Fail Rerolled" class="roll-img hunger-dice rerolled" />'
+  }
+  for (let i = 0, j = hungerFailRerolled; i < j; i++) {
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail Rerolled" class="roll-img hunger-dice rerolled" />'
+  }
+
   // Post the message to the chat
   roll.toMessage({
     speaker: ChatMessage.getSpeaker({ actor: actor }),
     content: chatMessage
   })
-
-  // Automatically add hunger to the actor on a failure (for rouse checks)
-  if (increaseHunger && game.settings.get('vtm5e', 'automatedRouse')) {
-    // Check if the roll failed (matters for discipline
-    // power-based rouse checks that roll 2 dice instead of 1)
-    if ((difficulty === 0 && totalSuccess === 0) || (totalSuccess < difficulty)) {
-      const actorHunger = actor.system.hunger.value
-
-      // If hunger is greater than 4 (5, or somehow higher)
-      // then display that in the chat and don't increase hunger
-      if (actorHunger > 4) {
-        renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
-          name: game.i18n.localize('WOD5E.HungerFull1'),
-          img: 'systems/vtm5e/assets/images/bestial-fail-dsn.png',
-          description: game.i18n.localize('WOD5E.HungerFull2')
-        }).then(html => {
-          ChatMessage.create({
-            speaker: ChatMessage.getSpeaker({ actor: actor }),
-            content: html
-          })
-        })
-      } else {
-        // Define the new number of hunger points
-        const newHunger = actor.system.hunger.value + 1
-
-        // Push it to the actor's sheet
-        actor.update({ 'system.hunger.value': newHunger })
-      }
-    }
-  }
 
   // Automatically track willpower damage as a result of willpower rerolls
   if (subtractWillpower && game.settings.get('vtm5e', 'automatedWillpower')) {

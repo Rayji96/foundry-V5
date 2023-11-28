@@ -129,13 +129,13 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-crit.png" alt="Normal Crit" class="roll-img werewolf-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-crit.png" alt="Normal Crit" class="roll-img werewolf-dice rerollable" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-success.png" alt="Normal Success" class="roll-img werewolf-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-success.png" alt="Normal Success" class="roll-img werewolf-dice rerollable" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img werewolf-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img werewolf-dice rerollable" />'
   }
 
   // Separator
