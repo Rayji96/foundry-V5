@@ -10,6 +10,3 @@ npm-debug.log
 /.stylelintrc*
 /.htmlhintrc*
 /.eslintrc*
-
-# Pack files (ignore them unless there's a real update)
-packs/
