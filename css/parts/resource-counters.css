@@ -1,0 +1,191 @@
+.wod5e .resource-value .resource-value-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid #000;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.wod5e .resource-value .resource-value-step.active {
+  background-color: #790813;
+}
+
+.wod5e .resource-value-static .resource-value-static-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid #000;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.wod5e .resource-value-static .resource-value-static-step.active {
+  background-color: #790813;
+}
+
+.wod5e .resource-value .resource-value-empty {
+  height: 14px;
+  width: 14px;
+  border: 1px solid #000;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  background: linear-gradient(
+          45deg,
+          transparent 0%,
+          transparent 43%,
+          black 45%,
+          black 55%,
+          transparent 57%,
+          transparent 100%
+      ),
+      linear-gradient(
+          135deg,
+          transparent 0%,
+          transparent 43%,
+          black 45%,
+          black 55%,
+          transparent 57%,
+          transparent 100%
+      );
+}
+
+.wod5e .resource-counter .resource-counter-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid #000;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.wod5e .resource-counter .resource-counter-step[data-state="-"] {
+  background-color: #790813;
+}
+
+.wod5e .resource-counter .resource-counter-step[data-state="/"] {
+  background: linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+  );
+}
+
+.wod5e .resource-counter .resource-counter-step[data-state="x"] {
+  background: linear-gradient(
+          45deg,
+          transparent 0%,
+          transparent 43%,
+          black 45%,
+          black 55%,
+          transparent 57%,
+          transparent 100%
+      ),
+      linear-gradient(
+          135deg,
+          transparent 0%,
+          transparent 43%,
+          black 45%,
+          black 55%,
+          transparent 57%,
+          transparent 100%
+      );
+}
+
+.wod5e .flex-group-center:not(.flexrow) .resource-value,
+.wod5e .flex-group-center:not(.flexrow) .resource-counter {
+  margin-top: 5px;
+}
+
+.wod5e .cell-resource-counter .cell-resource-counter-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid #000;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.wod5e .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+  background-color: #cc6d28;
+}
+
+.wod5e .cell-resource-counter .cell-resource-counter-step[data-state="/"] {
+  background: linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 43%,
+      black 45%,
+      black 55%,
+      transparent 57%,
+      transparent 100%
+  );
+}
+
+.wod5e .cell-resource-counter .cell-resource-counter-step[data-state="x"] {
+  background: linear-gradient(
+          45deg,
+          transparent 0%,
+          transparent 43%,
+          black 45%,
+          black 55%,
+          transparent 57%,
+          transparent 100%
+      ),
+      linear-gradient(
+          135deg,
+          transparent 0%,
+          transparent 43%,
+          black 45%,
+          black 55%,
+          transparent 57%,
+          transparent 100%
+      );
+}
+
+.wod5e .flex-group-center:not(.flexrow) .resource-value,
+.wod5e .flex-group-center:not(.flexrow) .cell-resource-counter {
+  margin-top: 5px;
+}
+
+.wod5e .tab.disciplines .resource-value, .wod5e .tab.edges .resource-value {
+  margin-top: 2px;
+  text-align: center;
+}
+
+.wod5e .tab.features .resource-value, .wod5e .tab.features .resource-value-static {
+  margin-top: 2px;
+  text-align: center;
+}
+
+span.resource-counter-step:nth-child(5n) {
+  margin-right: 6px;
+}
+
+span.resource-counter-step:last-child {
+  margin-right: 0;
+}
+
+.wod5e .locked .resource-value-empty:not(.hunger-value) {
+  opacity: 0;
+  cursor: default;
+  display: none;
+}
+
+.wod5e .locked .resource-value-step:not(.hunger-value) {
+  cursor: default;
+}
+
+.wod5e .locked .resource-minus {
+  opacity: 0;
+  cursor: default !important;
+  display: none;
+}
+
+.wod5e .locked .resource-plus {
+  opacity: 0;
+  cursor: default !important;
+display: none;
+}
