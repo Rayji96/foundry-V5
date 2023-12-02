@@ -3,7 +3,6 @@
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
 import { migrateWorld } from './scripts/migration.js'
-import { integrateHealthEstimate } from './scripts/health-estimate-integration.js'
 import { ActorInfo } from './actor/actor.js'
 import { ItemInfo } from './item/item.js'
 import { WoDItemSheet } from './item/item-sheet.js'
@@ -201,7 +200,6 @@ Hooks.on('getChatLogEntryContext', function (html, options) {
 
 Hooks.once('ready', function () {
   migrateWorld()
-  integrateHealthEstimate()
 })
 
 async function willpowerReroll (roll) {
