@@ -63,3 +63,7 @@ border: 1px solid var(--color-border-highlight);
   font-family: Vollkorn, serif;
   background: unset;
 }
+
+#hud .placeable-hud .middle .attribute input {
+  pointer-events: none;
+}
