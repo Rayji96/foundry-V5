@@ -244,8 +244,18 @@ export class GhoulActorSheet extends MortalActorSheet {
     const dataset = element.dataset
     const item = this.actor.items.get(dataset.id)
     const itemDiscipline = item.system.discipline
-    const disciplineValue = this.actor.system.disciplines[itemDiscipline].value
+    let disciplineValue
     const hunger = this.actor.type === 'vampire' ? this.actor.system.hunger.value : 0
+
+    // Assign any rituals to use Blood Sorcery value
+    // and any ceremonies to use Oblivion value
+    if (itemDiscipline === 'rituals') {
+      disciplineValue = this.actor.system.disciplines.sorcery.value
+    } else if (itemDiscipline === 'ceremonies') {
+      disciplineValue = this.actor.system.disciplines.oblivion.value
+    } else {
+      disciplineValue = this.actor.system.disciplines[itemDiscipline].value
+    }
 
     const dice1 = item.system.dice1 === 'discipline' ? disciplineValue : this.actor.system.abilities[item.system.dice1].value
 
