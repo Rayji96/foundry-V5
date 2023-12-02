@@ -41,7 +41,8 @@
         "willpower": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 5
+          "max": 5,
+          "value": 5
         },
         "abilities": {
           "strength": {
@@ -203,12 +204,14 @@
         "health": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 5
+          "max": 5,
+          "value": 5
         },
         "willpower": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 5
+          "max": 5,
+          "value": 5
         },
         "standarddicepools": {
           "physical": {

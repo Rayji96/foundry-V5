@@ -3,7 +3,7 @@
 import { MigrateLegacySheets } from './migrate-legacy-sheets.js'
 import { MigrateLocalization } from './migrate-localization.js'
 import { MigrateGamesystem } from './migrate-gamesystem.js'
-import { MigrateHealth } from './migrate-health.js'
+import { MigrateTrackers } from './migrate-trackers.js'
 
 let worldVersion
 
@@ -50,8 +50,8 @@ export const migrateWorld = async () => {
         // Merge any localization updates so we can count them
         updates.concat(migrationIDs)
 
-        // Migrate health data
-        return MigrateHealth()
+        // Migrate health and willpower tracker data
+        return MigrateTrackers()
       })
       .then(migrationIDs => {
         // Merge any gamesystem updates so we can count them

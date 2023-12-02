@@ -18,6 +18,7 @@ export class WoDActor extends ActorSheet {
     const actorData = this.object.system
     const actorHeaders = actorData.headers
     this._onHealthChange()
+    this._onWillpowerChange()
 
     data.displayBanner = game.settings.get('vtm5e', 'actorBanner')
 
@@ -706,12 +707,28 @@ export class WoDActor extends ActorSheet {
 
     // Derive the character's "health value" by taking
     // the sum of the current aggravated and superficial
-    // damage taken; superficial damage is reduced by half
-    // to represent its lesser effect
-    const derivedHealth = healthData.aggravated + (healthData.superficial/2)
+    // damage taken and subtracting the max by that;
+    // superficial damage is reduced by half to represent
+    // its lesser effect
+    const derivedHealth = healthData.max - (healthData.aggravated + (healthData.superficial/2))
 
     // Update the actor's health.value
-    this.actor.update({ 'system.health.value':  derivedHealth})
+    this.actor.update({ 'system.health.value':  derivedHealth })
+  }
+
+  _onWillpowerChange () {    
+    // Define the healthData
+    const willpowerData = this.actor.system.willpower
+
+    // Derive the character's "willpower value" by taking
+    // the sum of the current aggravated and superficial
+    // damage taken and subtracting the max by that;
+    // superficial damage is reduced by half to represent
+    // its lesser effect
+    const derivedWillpower = willpowerData.max - (willpowerData.aggravated + (willpowerData.superficial/2))
+
+    // Update the actor's health.value
+    this.actor.update({ 'system.willpower.value':  derivedWillpower })
   }
 }
 
