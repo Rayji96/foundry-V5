@@ -33,28 +33,28 @@ export const migrateWorld = async () => {
     // Migrate legacy sheets
     MigrateLegacySheets()
       .then(migrationIDs => {
-        // Merge any legacy sheet updates so we can count them
+        // Merge any updates
         updates.concat(migrationIDs)
 
         // Migrate localization
         return MigrateLocalization()
       })
       .then(migrationIDs => {
-        // Merge any localization updates so we can count them
+        // Merge any updates
         updates.concat(migrationIDs)
 
         // Migrate gamesystem data
         return MigrateGamesystem()
       })
       .then(migrationIDs => {
-        // Merge any localization updates so we can count them
+        // Merge any updates
         updates.concat(migrationIDs)
 
         // Migrate health and willpower tracker data
         return MigrateTrackers()
       })
       .then(migrationIDs => {
-        // Merge any gamesystem updates so we can count them
+        // Merge any updates
         updates.concat(migrationIDs)
 
         // Only reload if there's 1 or more updates
