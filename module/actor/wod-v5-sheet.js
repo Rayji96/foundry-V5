@@ -17,6 +17,7 @@ export class WoDActor extends ActorSheet {
     data.locked = this.locked
     const actorData = this.object.system
     const actorHeaders = actorData.headers
+    this._onHealthChange()
 
     data.displayBanner = game.settings.get('vtm5e', 'actorBanner')
 
@@ -39,10 +40,6 @@ export class WoDActor extends ActorSheet {
     }
 
     return data
-  }
-
-  prepareData () {
-    super.prepareData()
   }
 
   constructor (actor, options) {
@@ -701,6 +698,20 @@ export class WoDActor extends ActorSheet {
       buttons,
       default: 'draw'
     }).render(true)
+  }
+
+  _onHealthChange () {    
+    // Define the healthData
+    const healthData = this.actor.system.health
+
+    // Derive the character's "health value" by taking
+    // the sum of the current aggravated and superficial
+    // damage taken; superficial damage is reduced by half
+    // to represent its lesser effect
+    const derivedHealth = healthData.aggravated + (healthData.superficial/2)
+
+    // Update the actor's health.value
+    this.actor.update({ 'system.health.value':  derivedHealth})
   }
 }
 
