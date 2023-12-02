@@ -430,7 +430,24 @@ export class WoDActor extends ActorSheet {
       return `${game.i18n.localize('WOD5E.' + data.featuretype.capitalize())}`
     }
     if (type === 'power') {
-      return `${game.i18n.localize('WOD5E.' + data.discipline.capitalize())}`
+      const disciplines = {
+        animalism: 'WOD5E.Animalism',
+        auspex: 'WOD5E.Auspex',
+        celerity: 'WOD5E.Celerity',
+        dominate: 'WOD5E.Dominate',
+        fortitude: 'WOD5E.Fortitude',
+        obfuscate: 'WOD5E.Obfuscate',
+        potence: 'WOD5E.Potence',
+        presence: 'WOD5E.Presence',
+        protean: 'WOD5E.Protean',
+        sorcery: 'WOD5E.BloodSorcery',
+        oblivion: 'WOD5E.Oblivion',
+        alchemy: 'WOD5E.ThinBloodAlchemy',
+        rituals: 'WOD5E.Rituals',
+        ceremonies: 'WOD5E.Ceremonies'
+      }
+
+      return `${game.i18n.localize(disciplines[data.discipline])}`
     }
     if (type === 'perk') {
       return `${game.i18n.localize('WOD5E.' + data.edge.capitalize())}`
