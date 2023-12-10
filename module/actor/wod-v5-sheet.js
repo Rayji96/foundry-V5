@@ -730,7 +730,7 @@ export class WoDActor extends ActorSheet {
     const derivedHealth = healthData.max - (healthData.aggravated + (healthData.superficial / 2))
 
     // Update the actor's health.value
-    this.actor.update({ 'system.health.value':  derivedHealth })
+    this.actor.update({ 'system.health.value': derivedHealth })
   }
 
   _onWillpowerChange () {
@@ -745,7 +745,7 @@ export class WoDActor extends ActorSheet {
     const derivedWillpower = willpowerData.max - (willpowerData.aggravated + (willpowerData.superficial / 2))
 
     // Update the actor's health.value
-    this.actor.update({ 'system.willpower.value':  derivedWillpower })
+    this.actor.update({ 'system.willpower.value': derivedWillpower })
   }
 }
 
