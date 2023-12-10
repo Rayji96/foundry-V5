@@ -14,3 +14,6 @@ npm-debug.log
 # Pack files
 packs/*
 !*.db
+
+# Old Graphics
+assets/images/old/
