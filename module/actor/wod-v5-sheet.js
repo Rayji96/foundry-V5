@@ -718,7 +718,7 @@ export class WoDActor extends ActorSheet {
     }).render(true)
   }
 
-  _onHealthChange () {    
+  _onHealthChange () {
     // Define the healthData
     const healthData = this.actor.system.health
 
@@ -727,13 +727,13 @@ export class WoDActor extends ActorSheet {
     // damage taken and subtracting the max by that;
     // superficial damage is reduced by half to represent
     // its lesser effect
-    const derivedHealth = healthData.max - (healthData.aggravated + (healthData.superficial/2))
+    const derivedHealth = healthData.max - (healthData.aggravated + (healthData.superficial / 2))
 
     // Update the actor's health.value
-    this.actor.update({ 'system.health.value':  derivedHealth })
+    this.actor.update({'system.health.value':  derivedHealth })
   }
 
-  _onWillpowerChange () {    
+  _onWillpowerChange () {
     // Define the healthData
     const willpowerData = this.actor.system.willpower
 
@@ -742,10 +742,10 @@ export class WoDActor extends ActorSheet {
     // damage taken and subtracting the max by that;
     // superficial damage is reduced by half to represent
     // its lesser effect
-    const derivedWillpower = willpowerData.max - (willpowerData.aggravated + (willpowerData.superficial/2))
+    const derivedWillpower = willpowerData.max - (willpowerData.aggravated + (willpowerData.superficial / 2))
 
     // Update the actor's health.value
-    this.actor.update({ 'system.willpower.value':  derivedWillpower })
+    this.actor.update({'system.willpower.value':  derivedWillpower })
   }
 }
 
