@@ -19,7 +19,11 @@ export const loadDiceSoNice = async function (dice3d) {
       'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
     bumpMaps: [
-      ,,,,,
+      '',
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
@@ -29,6 +33,7 @@ export const loadDiceSoNice = async function (dice3d) {
     colorset: 'black',
     system: 'vtm5e'
   })
+
   dice3d.addColorset({
     name: 'hunger',
     description: 'V5 Hunger Dice',
@@ -63,7 +68,10 @@ export const loadDiceSoNice = async function (dice3d) {
     ],
     bumpMaps: [
       'systems/vtm5e/assets/images/bestial-fail-dsn-bump.png',
-      ,,,,
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
@@ -89,7 +97,11 @@ export const loadDiceSoNice = async function (dice3d) {
       'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
     bumpMaps: [
-      ,,,,,
+      '',
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
@@ -154,7 +166,10 @@ export const loadDiceSoNice = async function (dice3d) {
     ],
     bumpMaps: [
       'systems/vtm5e/assets/images/desperation-fail-dsn-bump.png',
-	  ,,,,
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
@@ -180,7 +195,11 @@ export const loadDiceSoNice = async function (dice3d) {
       'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
     ],
     bumpMaps: [
-      ,,,,,
+      '',
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
@@ -208,7 +227,9 @@ export const loadDiceSoNice = async function (dice3d) {
     bumpMaps: [
       'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn-bump.png',
-      ,,,
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
@@ -259,7 +280,11 @@ export const loadDiceSoNice = async function (dice3d) {
       'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
     bumpMaps: [
-      ,,,,,
+      '',
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
@@ -285,7 +310,10 @@ export const loadDiceSoNice = async function (dice3d) {
     ],
     bumpMaps: [
       'systems/vtm5e/assets/images/bestial-fail-dsn-bump.png',
-      ,,,,
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
@@ -310,7 +338,11 @@ export const loadDiceSoNice = async function (dice3d) {
       'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
     bumpMaps: [
-      ,,,,,
+      '',
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
@@ -336,7 +368,10 @@ export const loadDiceSoNice = async function (dice3d) {
     ],
     bumpMaps: [
       'systems/vtm5e/assets/images/desperation-fail-dsn-bump.png',
-	  ,,,,
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
@@ -361,7 +396,11 @@ export const loadDiceSoNice = async function (dice3d) {
       'systems/vtm5e/assets/images/werewolf-crit-dsn.png'
     ],
     bumpMaps: [
-      ,,,,,
+      '',
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
@@ -388,7 +427,9 @@ export const loadDiceSoNice = async function (dice3d) {
     bumpMaps: [
       'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-brutal-fail-dsn-bump.png',
-      ,,,
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
       'systems/vtm5e/assets/images/werewolf-success-dsn-bump.png',
@@ -414,7 +455,11 @@ export const loadDiceSoNice = async function (dice3d) {
       'systems/vtm5e/assets/images/normal-crit-dsn.png'
     ],
     bumpMaps: [
-      ,,,,,
+      '',
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
@@ -440,7 +485,10 @@ export const loadDiceSoNice = async function (dice3d) {
     ],
     bumpMaps: [
       'systems/vtm5e/assets/images/bestial-fail-dsn-bump.png',
-      ,,,,
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
       'systems/vtm5e/assets/images/normal-success-dsn-bump.png',
@@ -465,7 +513,11 @@ export const loadDiceSoNice = async function (dice3d) {
       'systems/vtm5e/assets/images/hunter-normal-crit-dsn.png'
     ],
     bumpMaps: [
-      ,,,,,
+      '',
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
@@ -491,7 +543,10 @@ export const loadDiceSoNice = async function (dice3d) {
     ],
     bumpMaps: [
       'systems/vtm5e/assets/images/desperation-fail-dsn-bump.png',
-	  ,,,,
+      '',
+      '',
+      '',
+      '',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
       'systems/vtm5e/assets/images/hunter-normal-success-dsn.png',
