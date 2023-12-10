@@ -33,7 +33,7 @@ export const loadDiceSoNice = async function (dice3d) {
     colorset: 'black',
     system: 'vtm5e'
   })
-  
+
   dice3d.addColorset({
     name: 'hunger',
     description: 'V5 Hunger Dice',
@@ -45,10 +45,10 @@ export const loadDiceSoNice = async function (dice3d) {
     material: 'plastic',
     font: 'Arial Black',
     fontScale: {
-    d6: 1.1,
-    df: 2.2,
-    dv: 0.8,
-    dg: 0.8
+      d6: 1.1,
+      df: 2.2,
+      dv: 0.8,
+      dg: 0.8
     }
   }, 'default')
 
@@ -123,11 +123,11 @@ export const loadDiceSoNice = async function (dice3d) {
     material: 'plastic',
     font: 'Arial Black',
     fontScale: {
-    d6: 1.1,
-    df: 2.2,
-    dv: 0.8,
-    dg: 0.8,
-    dh: 0.7
+      d6: 1.1,
+      df: 2.2,
+      dv: 0.8,
+      dg: 0.8,
+      dh: 0.7
     }
   }, 'default')
 
@@ -142,11 +142,11 @@ export const loadDiceSoNice = async function (dice3d) {
     material: 'plastic',
     font: 'Arial Black',
     fontScale: {
-    d6: 1.1,
-    df: 2.5,
-    dv: 0.8,
-    dg: 0.8,
-    dh: 0.7
+      d6: 1.1,
+      df: 2.5,
+      dv: 0.8,
+      dg: 0.8,
+      dh: 0.7
     }
   }, 'default')
 
@@ -324,8 +324,8 @@ export const loadDiceSoNice = async function (dice3d) {
   })
 
   dice3d.addDicePreset({
-  type: 'dh',
-  labels: [
+    type: 'dh',
+    labels: [
       'systems/vtm5e/assets/images/normal-fail-dsn.png',
       'systems/vtm5e/assets/images/normal-fail-dsn.png',
       'systems/vtm5e/assets/images/normal-fail-dsn.png',

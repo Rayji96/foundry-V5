@@ -27,7 +27,7 @@ export const MigrateTrackers = async function () {
           migrationIDs.push(actor.uuid)
 
           // Update the actor's data with the new information
-          actor.update({'system.health.value':  newActorHealthValue })
+          actor.update({ 'system.health.value':  newActorHealthValue })
         }
 
         // Check if the actor already has willpower.value defined
@@ -43,7 +43,7 @@ export const MigrateTrackers = async function () {
           migrationIDs.push(actor.uuid)
 
           // Update the actor's data with the new information
-          actor.update({'system.willpower.value':  newActorWillpowerValue })
+          actor.update({ 'system.willpower.value':  newActorWillpowerValue })
         }
 
         // Increase the counter and continue
