@@ -7,6 +7,7 @@
 * Fixed Discipline Rouse rerolls to properly display what was rerolled, and to properly reroll dice twice and keep highest between each roll. [Veilza]
 * Add Macro compendium and a couple of useful macros for storytellers [Veilza]
 * The navigation bar on sheets will now use the right cursor type and properly expand the active background to either side of the tab. [Veilza]
+* Fixed the items on the Features tab being unable to be expanded [Veilza]
 
 ### From a developer's side
 * Shifted various parts of main.js into their own files. [Veilza]
