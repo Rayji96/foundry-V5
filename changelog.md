@@ -1,7 +1,7 @@
 # World of Darkness 5e Changelog
 
 
-## In the Latest Release (3.0.1)
+## In the Latest Release (3.1.0)
 
 ### From a player's side
 * Fixed Discipline Rouse rerolls to properly display what was rerolled, and to properly reroll dice twice and keep highest between each roll. [Veilza]
@@ -13,6 +13,7 @@
 * Moved the "gamesystem" definition to the actor template [Veilza]
 * Updated "vtm5e.css" to "wod5e.css"
 * Moved various parts of the wod5e.css file to other files, for maintainability [Veilza]
+* Alterations to the dice faces to make them more colourblind-friendly [LorduFreeman]
 
 ## 3.0.0
 
