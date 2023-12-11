@@ -2,7 +2,7 @@
   "id": "vtm5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -35,7 +35,7 @@
     "module/main.js"
   ],
   "styles": [
-    "css/vtm5e.css"
+    "css/wod5e.css"
   ],
   "languages": [
     {
@@ -81,11 +81,42 @@
       "flags": {}
     }
   ],
+  "packs": [
+    {
+      "label": "Macros",
+      "type": "Macro",
+      "name": "macros",
+      "path": "packs/macros",
+      "system": "vtm5e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "World of Darkness 5e",
+      "sorting": "m",
+      "packs": [
+        "macros"
+      ],
+      "color": "#8c0303"
+    }
+  ],
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "willpower",
   "gridDistance": 5,
   "gridUnits": "ft",
   "license": "LICENSE.txt",
   "url": "https://github.com/Rayji96/foundry-V5",
   "background": "systems/vtm5e/assets/images/wodcity.jpg",
-  "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/3.0.0/system.json",
-  "download": "https://github.com/Rayji96/foundry-V5/releases/download/3.0.0/vtm5e-3.0.0.zip"
+  "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/3.1.0/system.json",
+  "download": "https://github.com/Rayji96/foundry-V5/releases/download/3.1.0/vtm5e-3.1.0.zip",
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "hbs", "json"],
+      "paths": ["css", "templates", "lang"]
+    }
+  }
 }
