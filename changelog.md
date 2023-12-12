@@ -5,6 +5,7 @@
 
 ### From a player's side
 * Removed an unnecessary field on the Hunter biography page [Veilza]
+* Fixed an issue that prevented Coterie and Cell sheets from loading [Veilza]
 
 ### From a developer's side
 * Add a separate localization for the word "Drive" specific to the Hunter term [Veilza]
