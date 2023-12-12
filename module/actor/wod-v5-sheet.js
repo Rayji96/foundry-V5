@@ -17,8 +17,11 @@ export class WoDActor extends ActorSheet {
     data.locked = this.locked
     const actorData = this.object.system
     const actorHeaders = actorData.headers
-    this._onHealthChange()
-    this._onWillpowerChange()
+
+    if (this.object.type !== 'cell' && this.object.type !== 'coterie') {
+      this._onHealthChange()
+      this._onWillpowerChange()
+    }
 
     data.displayBanner = game.settings.get('vtm5e', 'actorBanner')
 

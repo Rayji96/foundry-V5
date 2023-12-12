@@ -1,15 +1,21 @@
 # World of Darkness 5e Changelog
 
 
-## In the Latest Release (3.1.0)
+## In the Latest Release (3.1.1)
 
 ### From a player's side
+* Removed an unnecessary field on the Hunter biography page [Veilza]
+* Fixed an issue that prevented Coterie and Cell sheets from loading [Veilza]
+
+### From a developer's side
+* Add a separate localization for the word "Drive" specific to the Hunter term [Veilza]
+
+## 3.1.0
 * Fixed Discipline Rouse rerolls to properly display what was rerolled, and to properly reroll dice twice and keep highest between each roll. [Veilza]
 * Add Macro compendium and a couple of useful macros for storytellers [Veilza]
 * The navigation bar on sheets will now use the right cursor type and properly expand the active background to either side of the tab. [Veilza]
 * Fixed the items on the Features tab being unable to be expanded [Veilza]
-
-### From a developer's side
+* Added the ability for actor health and willpower to be displayed on token bars [Veilza]
 * Shifted various parts of main.js into their own files. [Veilza]
 * Moved the "gamesystem" definition to the actor template [Veilza]
 * Updated "vtm5e.css" to "wod5e.css"
