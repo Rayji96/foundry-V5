@@ -14,6 +14,7 @@
 * Add Macro compendium and a couple of useful macros for storytellers [Veilza]
 * The navigation bar on sheets will now use the right cursor type and properly expand the active background to either side of the tab. [Veilza]
 * Fixed the items on the Features tab being unable to be expanded [Veilza]
+* Added the ability for actor health and willpower to be displayed on token bars [Veilza]
 * Shifted various parts of main.js into their own files. [Veilza]
 * Moved the "gamesystem" definition to the actor template [Veilza]
 * Updated "vtm5e.css" to "wod5e.css"
