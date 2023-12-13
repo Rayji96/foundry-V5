@@ -20,6 +20,14 @@ export async function rollBasicDice (numDice, actor, label = '', difficulty = 0,
   let critSuccess = 0
   let fail = 0
 
+  // Define images
+  const diceLocation = "/systems/vtm5e/assets/icons/dice/mortal/"
+  const normalDiceFaces = {
+    "success": "success.png",
+    "failure": "failure.png",
+    "critical": "critical.png",
+  }
+
   // Defines the normal diceroll results
   roll.terms[0].results.forEach((dice) => {
     if (dice.success) {
@@ -61,13 +69,13 @@ export async function rollBasicDice (numDice, actor, label = '', difficulty = 0,
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-crit.png" alt="Normal Crit" class="roll-img normal-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.critical + '" alt="Normal Crit" class="roll-img normal-dice rerollable" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-success.png" alt="Normal Success" class="roll-img normal-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.success + '" alt="Normal Success" class="roll-img normal-dice rerollable" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img normal-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.failure + '" alt="Normal Fail" class="roll-img normal-dice rerollable" />'
   }
 
   // Separator

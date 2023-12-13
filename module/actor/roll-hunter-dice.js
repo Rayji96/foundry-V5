@@ -25,6 +25,21 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
   let desperationFail = 0
   let desperationCritFail = 0
 
+  // Define images
+  const diceLocation = "/systems/vtm5e/assets/icons/dice/hunter/"
+  const normalDiceFaces = {
+    "success": "success.png",
+    "failure": "failure.png",
+    "critical": "critical.png",
+  }
+
+  const desperationDiceFaces = {
+    "success": "desperation-success.png",
+    "failure": "desperation-failure.png",
+    "critical": "desperation-critical.png",
+    "criticalFailure": "desperation-critical-failure.png"
+  }
+
   // Defines the normal diceroll results
   roll.terms[0].results.forEach((dice) => {
     if (dice.success) {
@@ -92,13 +107,13 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-crit.png" alt="Normal Crit" class="roll-img hunter-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.critical + '" alt="Normal Crit" class="roll-img hunter-dice rerollable" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" alt="Normal Success" class="roll-img hunter-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.success + '" alt="Normal Success" class="roll-img hunter-dice rerollable" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img hunter-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.failure + '" alt="Normal Fail" class="roll-img hunter-dice rerollable" />'
   }
 
   // Separator
@@ -106,16 +121,16 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
 
   // Run through displaying Desperation dice
   for (let i = 0, j = desperationCritSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-orange-crit.png" alt="Desperation Crit" class="roll-img desperation-dice" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + desperationDiceFaces.critical + '" alt="Desperation Crit" class="roll-img desperation-dice" />'
   }
   for (let i = 0, j = desperationSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/hunter-orange-success.png" alt="Desperation Success" class="roll-img desperation-dice" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + desperationDiceFaces.success + '" alt="Desperation Success" class="roll-img desperation-dice" />'
   }
   for (let i = 0, j = desperationCritFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/desperation-fail.png" alt="Desperation Critical Fail" class="roll-img desperation-dice" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + desperationDiceFaces.criticalFailure + '" alt="Desperation Critical Fail" class="roll-img desperation-dice" />'
   }
   for (let i = 0, j = desperationFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Desperation Fail" class="roll-img desperation-dice" />'
+    chatMessage = chatMessage + '<img src="' + diceLocation + desperationDiceFaces.failure + '" alt="Desperation Fail" class="roll-img desperation-dice" />'
   }
 
   // Post the message to the chat
