@@ -13,8 +13,10 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
   // Roll defining and evaluating
 
   // Ensure that the number of hunger dice doesn't exceed the
-  // total number of dice.
-  const hungerRoll = Math.min(numDice, hungerDice)
+  // total number of dice, unless it's a rouse check that needs
+  // rerolls, which requires twice the number of normal hunger
+  // dice and only the highest will be kept.
+  const hungerRoll = rerollHunger ? hungerDice * 2 : Math.min(numDice, hungerDice)
 
   // Calculate the number of normal dice to roll by subtracting
   // the number of hunger dice from them.
@@ -23,8 +25,8 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
   // Compose the roll string.
   // First, rolling vampire dice (dv) and count successes (cs>5)
   // Then, roll hunger dice (dg) and count successes (cs>5) as well as
-  // rerolling those hunger dice on a failure if the roll calls for it (r>6)
-  const rouseReroll = rerollHunger ? 'r<6' : ''
+  // rerolling those hunger dice to keep the highest (kh)
+  const rouseReroll = rerollHunger ? `kh${hungerDice}` : ''
   const roll = new Roll(
     `${dice}dvcs>5 + ${hungerRoll}dgcs>5${rouseReroll}`,
     actor.system
@@ -43,7 +45,10 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
   let hungerFail = 0
   let hungerCritFail = 0
   let totalHungerFail = 0
-  let hungerRerolled = 0
+  let hungerCritSuccessRerolled = 0
+  let hungerSuccessRerolled = 0
+  let hungerCritFailRerolled = 0
+  let hungerFailRerolled = 0
 
   // Defines the normal diceroll results
   roll.terms[0].results.forEach((dice) => {
@@ -60,9 +65,23 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
 
   // Track number of hunger diceroll results
   roll.terms[2].results.forEach((dice) => {
-    if (dice.rerolled) {
-      hungerRerolled++
+    // Rerolled dice
+    if (dice.discarded) {
+      if (dice.success) {
+        if (dice.result === 10) {
+          hungerCritSuccessRerolled++
+        } else {
+          hungerSuccessRerolled++
+        }
+      } else {
+        if (dice.result === 1) {
+          hungerCritFailRerolled++
+        } else {
+          hungerFailRerolled++
+        }
+      }
     } else {
+      // Actually used results
       if (dice.success) {
         if (dice.result === 10) {
           hungerCritSuccess++
@@ -165,8 +184,19 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
   for (let i = 0, j = hungerFail; i < j; i++) {
     chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img hunger-dice" />'
   }
-  for (let i = 0, j = hungerRerolled; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail" class="roll-img hunger-dice rerolled" />'
+
+  // Run through displaying rerolled dice
+  for (let i = 0, j = hungerCritSuccessRerolled; i < j; i++) {
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-crit.png" alt="Hunger Crit Rerolled" class="roll-img hunger-dice rerolled" />'
+  }
+  for (let i = 0, j = hungerSuccessRerolled; i < j; i++) {
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-success.png" alt="Hunger Success Rerolled" class="roll-img hunger-dice rerolled" />'
+  }
+  for (let i = 0, j = hungerCritFailRerolled; i < j; i++) {
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/bestial-fail.png" alt="Bestial Fail Rerolled" class="roll-img hunger-dice rerolled" />'
+  }
+  for (let i = 0, j = hungerFailRerolled; i < j; i++) {
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Hunger Fail Rerolled" class="roll-img hunger-dice rerolled" />'
   }
 
   // Post the message to the chat

@@ -35,12 +35,14 @@
         "health": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 5
+          "max": 5,
+          "value": 5
         },
         "willpower": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 5
+          "max": 5,
+          "value": 5
         },
         "abilities": {
           "strength": {
@@ -202,12 +204,14 @@
         "health": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 5
+          "max": 5,
+          "value": 5
         },
         "willpower": {
           "aggravated": 0,
           "superficial": 0,
-          "max": 5
+          "max": 5,
+          "value": 5
         },
         "standarddicepools": {
           "physical": {
@@ -739,11 +743,13 @@
    
     "mortal": {
       "label": "WOD5E.Mortal",
-      "templates": ["base"]
+      "templates": ["base"],
+      "gamesystem": "mortal"
     },
     "vampire": {
       "label": "WOD5E.Vampire",
       "templates": ["base","disciplines"],
+      "gamesystem": "vampire",
       "headers":{
         "predator":"",
         "sire":"",
@@ -764,6 +770,7 @@
     "werewolf": {
       "label": "WOD5E.Werewolf",
       "templates": ["base","renown","werewolfForms","gifts"],
+      "gamesystem": "werewolf",
       "headers": {
         "auspice": "",
         "patron": "",
@@ -794,6 +801,7 @@
     "hunter": {
       "label": "WOD5E.Hunter",
       "templates": ["base","edges"],
+      "gamesystem": "hunter",
       "headers":{
         "cellname": "",
         "creed": "",
@@ -821,6 +829,7 @@
     "ghoul": {
       "label": "WOD5E.Ghoul",
       "templates": ["base","disciplines"],
+      "gamesystem": "vampire",
       "headers":{
         "domitor":"",
         "creedfields":""
@@ -828,7 +837,8 @@
     },
     "spc" : {
       "label": "WOD5E.SPC",
-      "templates": ["abbreviated","disciplines"]
+      "templates": ["abbreviated","disciplines"],
+      "gamesystem": "mortal"
     }
   },
   "Item": {

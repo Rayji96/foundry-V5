@@ -10,3 +10,10 @@ npm-debug.log
 /.stylelintrc*
 /.htmlhintrc*
 /.eslintrc*
+
+# Pack files
+packs/*
+!*.db
+
+# Old Graphics
+assets/images/old/

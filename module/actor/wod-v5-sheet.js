@@ -18,6 +18,11 @@ export class WoDActor extends ActorSheet {
     const actorData = this.object.system
     const actorHeaders = actorData.headers
 
+    if (this.object.type !== 'cell' && this.object.type !== 'coterie') {
+      this._onHealthChange()
+      this._onWillpowerChange()
+    }
+
     data.displayBanner = game.settings.get('vtm5e', 'actorBanner')
 
     // Enrich non-header editor fields
@@ -39,10 +44,6 @@ export class WoDActor extends ActorSheet {
     }
 
     return data
-  }
-
-  prepareData () {
-    super.prepareData()
   }
 
   constructor (actor, options) {
@@ -430,7 +431,24 @@ export class WoDActor extends ActorSheet {
       return `${game.i18n.localize('WOD5E.' + data.featuretype.capitalize())}`
     }
     if (type === 'power') {
-      return `${game.i18n.localize('WOD5E.' + data.discipline.capitalize())}`
+      const disciplines = {
+        animalism: 'WOD5E.Animalism',
+        auspex: 'WOD5E.Auspex',
+        celerity: 'WOD5E.Celerity',
+        dominate: 'WOD5E.Dominate',
+        fortitude: 'WOD5E.Fortitude',
+        obfuscate: 'WOD5E.Obfuscate',
+        potence: 'WOD5E.Potence',
+        presence: 'WOD5E.Presence',
+        protean: 'WOD5E.Protean',
+        sorcery: 'WOD5E.BloodSorcery',
+        oblivion: 'WOD5E.Oblivion',
+        alchemy: 'WOD5E.ThinBloodAlchemy',
+        rituals: 'WOD5E.Rituals',
+        ceremonies: 'WOD5E.Ceremonies'
+      }
+
+      return `${game.i18n.localize(disciplines[data.discipline])}`
     }
     if (type === 'perk') {
       return `${game.i18n.localize('WOD5E.' + data.edge.capitalize())}`
@@ -701,6 +719,36 @@ export class WoDActor extends ActorSheet {
       buttons,
       default: 'draw'
     }).render(true)
+  }
+
+  _onHealthChange () {
+    // Define the healthData
+    const healthData = this.actor.system.health
+
+    // Derive the character's "health value" by taking
+    // the sum of the current aggravated and superficial
+    // damage taken and subtracting the max by that;
+    // superficial damage is reduced by half to represent
+    // its lesser effect
+    const derivedHealth = healthData.max - (healthData.aggravated + (healthData.superficial / 2))
+
+    // Update the actor's health.value
+    this.actor.update({ 'system.health.value': derivedHealth })
+  }
+
+  _onWillpowerChange () {
+    // Define the healthData
+    const willpowerData = this.actor.system.willpower
+
+    // Derive the character's "willpower value" by taking
+    // the sum of the current aggravated and superficial
+    // damage taken and subtracting the max by that;
+    // superficial damage is reduced by half to represent
+    // its lesser effect
+    const derivedWillpower = willpowerData.max - (willpowerData.aggravated + (willpowerData.superficial / 2))
+
+    // Update the actor's health.value
+    this.actor.update({ 'system.willpower.value': derivedWillpower })
   }
 }
 
