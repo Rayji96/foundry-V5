@@ -1,7 +1,35 @@
 /* global Die */
 
+// Define image locations
+const vampireDiceLocation = '/systems/vtm5e/assets/icons/dice/hunter/'
+const werewolfDiceLocation = '/systems/vtm5e/assets/icons/dice/hunter/'
+const hunterDiceLocation = '/systems/vtm5e/assets/icons/dice/hunter/'
+const normalDiceFaces = {
+  success: 'success.png',
+  failure: 'failure.png',
+  critical: 'critical.png'
+}
+const hungerDiceFaces = {
+  success: 'hunger-success.png',
+  failure: 'hunger-failure.png',
+  critical: 'hunger-critical.png',
+  bestial: 'bestial-failure.png'
+}
+const rageDiceFaces = {
+  success: 'rage-success.png',
+  failure: 'rage-failure.png',
+  critical: 'rage-critical.png',
+  brutal: 'brutal-failure.png'
+}
+const desperationDiceFaces = {
+  success: 'desperation-success.png',
+  failure: 'desperation-failure.png',
+  critical: 'desperation-critical.png',
+  criticalFailure: 'desperation-critical-failure.png'
+}
+
 /**
- * Extend the basic Die to show custom vampire icons on a d10.
+ * Extend the basic Die for the Vampire (v) dice
  * @extends {Die}
  */
 export class VampireDie extends Die {
@@ -16,22 +44,22 @@ export class VampireDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      2: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      3: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      4: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      5: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      6: '<img src="systems/vtm5e/assets/images/normal-success.png" />',
-      7: '<img src="systems/vtm5e/assets/images/normal-success.png" />',
-      8: '<img src="systems/vtm5e/assets/images/normal-success.png" />',
-      9: '<img src="systems/vtm5e/assets/images/normal-success.png" />',
-      10: '<img src="systems/vtm5e/assets/images/normal-crit.png" />'
+      1: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
+      2: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
+      3: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
+      4: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
+      5: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
+      6: `<img src="${ vampireDiceLocation + normalDiceFaces.success }" />`,
+      7: `<img src="${ vampireDiceLocation + normalDiceFaces.success }" />`,
+      8: `<img src="${ vampireDiceLocation + normalDiceFaces.success }" />`,
+      9: `<img src="${ vampireDiceLocation + normalDiceFaces.success }" />`,
+      10: `<img src="${ vampireDiceLocation + normalDiceFaces.critical }" />`
     }[result]
   }
 }
 
 /**
- * Extend the basic Die to show custom vampire icons on a d10.
+ * Extend the basic Die for the Hunger (g) dice
  * @extends {Die}
  */
 export class VampireHungerDie extends Die {
@@ -46,20 +74,25 @@ export class VampireHungerDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: '<img src="systems/vtm5e/assets/images/bestial-fail.png" />',
-      2: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      3: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      4: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      5: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      6: '<img src="systems/vtm5e/assets/images/red-success.png" />',
-      7: '<img src="systems/vtm5e/assets/images/red-success.png" />',
-      8: '<img src="systems/vtm5e/assets/images/red-success.png" />',
-      9: '<img src="systems/vtm5e/assets/images/red-success.png" />',
-      10: '<img src="systems/vtm5e/assets/images/red-crit.png" />'
+      1: `<img src="${ vampireDiceLocation + hungerDiceFaces.bestial }" />`,
+      2: `<img src="${ vampireDiceLocation + hungerDiceFaces.failure }" />`,
+      3: `<img src="${ vampireDiceLocation + hungerDiceFaces.failure }" />`,
+      4: `<img src="${ vampireDiceLocation + hungerDiceFaces.failure }" />`,
+      5: `<img src="${ vampireDiceLocation + hungerDiceFaces.failure }" />`,
+      6: `<img src="${ vampireDiceLocation + hungerDiceFaces.success }" />`,
+      7: `<img src="${ vampireDiceLocation + hungerDiceFaces.success }" />`,
+      8: `<img src="${ vampireDiceLocation + hungerDiceFaces.success }" />`,
+      9: `<img src="${ vampireDiceLocation + hungerDiceFaces.success }" />`,
+      10: `<img src="${ vampireDiceLocation + hungerDiceFaces.critical }" />`
     }[result]
   }
 }
 
+
+/**
+ * Extend the basic Die for the Hunter (h) dice
+ * @extends {Die}
+ */
 export class HunterDie extends Die {
   constructor (termData) {
     termData.faces = 10
@@ -72,20 +105,24 @@ export class HunterDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      2: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      3: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      4: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      5: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      6: '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" />',
-      7: '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" />',
-      8: '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" />',
-      9: '<img src="systems/vtm5e/assets/images/hunter-normal-success.png" />',
-      10: '<img src="systems/vtm5e/assets/images/hunter-normal-crit.png" />'
+      1: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
+      2: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
+      3: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
+      4: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
+      5: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
+      6: `<img src="${ hunterDiceLocation + normalDiceFaces.success }" />`,
+      7: `<img src="${ hunterDiceLocation + normalDiceFaces.success }" />`,
+      8: `<img src="${ hunterDiceLocation + normalDiceFaces.success }" />`,
+      9: `<img src="${ hunterDiceLocation + normalDiceFaces.success }" />`,
+      10: `<img src="${ hunterDiceLocation + normalDiceFaces.critical }" />`
     }[result]
   }
 }
 
+/**
+ * Extend the basic Die for the Desperation (s) dice
+ * @extends {Die}
+ */
 export class HunterDesperationDie extends Die {
   constructor (termData) {
     termData.faces = 10
@@ -98,20 +135,24 @@ export class HunterDesperationDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: '<img src="systems/vtm5e/assets/images/desperation-fail.png" />',
-      2: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      3: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      4: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      5: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      6: '<img src="systems/vtm5e/assets/images/hunter-orange-success.png" />',
-      7: '<img src="systems/vtm5e/assets/images/hunter-orange-success.png" />',
-      8: '<img src="systems/vtm5e/assets/images/hunter-orange-success.png" />',
-      9: '<img src="systems/vtm5e/assets/images/hunter-orange-success.png" />',
-      10: '<img src="systems/vtm5e/assets/images/hunter-orange-crit.png" />'
+      1: `<img src="${ hunterDiceLocation + desperationDiceFaces.criticalFailure }" />`,
+      2: `<img src="${ hunterDiceLocation + desperationDiceFaces.failure }" />`,
+      3: `<img src="${ hunterDiceLocation + desperationDiceFaces.failure }" />`,
+      4: `<img src="${ hunterDiceLocation + desperationDiceFaces.failure }" />`,
+      5: `<img src="${ hunterDiceLocation + desperationDiceFaces.failure }" />`,
+      6: `<img src="${ hunterDiceLocation + desperationDiceFaces.success }" />`,
+      7: `<img src="${ hunterDiceLocation + desperationDiceFaces.success }" />`,
+      8: `<img src="${ hunterDiceLocation + desperationDiceFaces.success }" />`,
+      9: `<img src="${ hunterDiceLocation + desperationDiceFaces.success }" />`,
+      10: `<img src="${ hunterDiceLocation + desperationDiceFaces.critical }" />`
     }[result]
   }
 }
 
+/**
+ * Extend the basic Die for the Werewolf (w) dice
+ * @extends {Die}
+ */
 export class WerewolfDie extends Die {
   constructor (termData) {
     termData.faces = 10
@@ -124,20 +165,24 @@ export class WerewolfDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      2: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      3: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      4: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      5: '<img src="systems/vtm5e/assets/images/normal-fail.png" />',
-      6: '<img src="systems/vtm5e/assets/images/werewolf-success.png" />',
-      7: '<img src="systems/vtm5e/assets/images/werewolf-success.png" />',
-      8: '<img src="systems/vtm5e/assets/images/werewolf-success.png" />',
-      9: '<img src="systems/vtm5e/assets/images/werewolf-success.png" />',
-      10: '<img src="systems/vtm5e/assets/images/werewolf-crit.png" />'
+      1: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
+      2: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
+      3: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
+      4: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
+      5: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
+      6: `<img src="${ werewolfDiceLocation + normalDiceFaces.success }" />`,
+      7: `<img src="${ werewolfDiceLocation + normalDiceFaces.success }" />`,
+      8: `<img src="${ werewolfDiceLocation + normalDiceFaces.success }" />`,
+      9: `<img src="${ werewolfDiceLocation + normalDiceFaces.success }" />`,
+      10: `<img src="${ werewolfDiceLocation + normalDiceFaces.critical }" />`
     }[result]
   }
 }
 
+/**
+ * Extend the basic Die for the Rage (r) dice
+ * @extends {Die}
+ */
 export class WerewolfRageDie extends Die {
   constructor (termData) {
     termData.faces = 10
@@ -150,16 +195,16 @@ export class WerewolfRageDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: '<img src="systems/vtm5e/assets/images/werewolf-brutal-fail.png" />',
-      2: '<img src="systems/vtm5e/assets/images/werewolf-brutal-fail.png" />',
-      3: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      4: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      5: '<img src="systems/vtm5e/assets/images/red-fail.png" />',
-      6: '<img src="systems/vtm5e/assets/images/werewolf-red-success.png" />',
-      7: '<img src="systems/vtm5e/assets/images/werewolf-red-success.png" />',
-      8: '<img src="systems/vtm5e/assets/images/werewolf-red-success.png" />',
-      9: '<img src="systems/vtm5e/assets/images/werewolf-red-success.png" />',
-      10: '<img src="systems/vtm5e/assets/images/werewolf-red-crit.png" />'
+      1: `<img src="${ werewolfDiceLocation + rageDiceFaces.brutal }" />`,
+      2: `<img src="${ werewolfDiceLocation + rageDiceFaces.brutal }" />`,
+      3: `<img src="${ werewolfDiceLocation + rageDiceFaces.failure }" />`,
+      4: `<img src="${ werewolfDiceLocation + rageDiceFaces.failure }" />`,
+      5: `<img src="${ werewolfDiceLocation + rageDiceFaces.failure }" />`,
+      6: `<img src="${ werewolfDiceLocation + rageDiceFaces.success }" />`,
+      7: `<img src="${ werewolfDiceLocation + rageDiceFaces.success }" />`,
+      8: `<img src="${ werewolfDiceLocation + rageDiceFaces.success }" />`,
+      9: `<img src="${ werewolfDiceLocation + rageDiceFaces.success }" />`,
+      10: `<img src="${ werewolfDiceLocation + rageDiceFaces.critical }" />`
     }[result]
   }
 }

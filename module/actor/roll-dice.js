@@ -51,18 +51,18 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
   let hungerFailRerolled = 0
 
   // Define images
-  const diceLocation = "/systems/vtm5e/assets/icons/dice/vampire/"
+  const diceLocation = '/systems/vtm5e/assets/icons/dice/vampire/'
   const normalDiceFaces = {
-    "success": "success.png",
-    "failure": "failure.png",
-    "critical": "critical.png",
+    success: 'success.png',
+    failure: 'failure.png',
+    critical: 'critical.png'
   }
 
   const hungerDiceFaces = {
-    "success": "hunger-success.png",
-    "failure": "hunger-failure.png",
-    "critical": "hunger-critical.png",
-    "bestial": "bestial-failure.png"
+    success: 'hunger-success.png',
+    failure: 'hunger-failure.png',
+    critical: 'hunger-critical.png',
+    bestial: 'bestial-failure.png'
   }
 
   // Defines the normal diceroll results

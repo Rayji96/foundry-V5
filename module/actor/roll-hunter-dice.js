@@ -26,18 +26,18 @@ export async function rollHunterDice (numDice, actor, label = '', difficulty = 0
   let desperationCritFail = 0
 
   // Define images
-  const diceLocation = "/systems/vtm5e/assets/icons/dice/hunter/"
+  const diceLocation = '/systems/vtm5e/assets/icons/dice/hunter/'
   const normalDiceFaces = {
-    "success": "success.png",
-    "failure": "failure.png",
-    "critical": "critical.png",
+    success: 'success.png',
+    failure: 'failure.png',
+    critical: 'critical.png'
   }
 
   const desperationDiceFaces = {
-    "success": "desperation-success.png",
-    "failure": "desperation-failure.png",
-    "critical": "desperation-critical.png",
-    "criticalFailure": "desperation-critical-failure.png"
+    success: 'desperation-success.png',
+    failure: 'desperation-failure.png',
+    critical: 'desperation-critical.png',
+    criticalFailure: 'desperation-critical-failure.png'
   }
 
   // Defines the normal diceroll results

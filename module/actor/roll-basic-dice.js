@@ -21,11 +21,11 @@ export async function rollBasicDice (numDice, actor, label = '', difficulty = 0,
   let fail = 0
 
   // Define images
-  const diceLocation = "/systems/vtm5e/assets/icons/dice/mortal/"
+  const diceLocation = '/systems/vtm5e/assets/icons/dice/mortal/'
   const normalDiceFaces = {
-    "success": "success.png",
-    "failure": "failure.png",
-    "critical": "critical.png",
+    success: 'success.png',
+    failure: 'failure.png',
+    critical: 'critical.png'
   }
 
   // Defines the normal diceroll results

@@ -37,18 +37,18 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   let totalRageFail = 0
 
   // Define images
-  const diceLocation = "/systems/vtm5e/assets/icons/dice/werewolf/"
+  const diceLocation = '/systems/vtm5e/assets/icons/dice/werewolf/'
   const normalDiceFaces = {
-    "success": "success.png",
-    "failure": "failure.png",
-    "critical": "critical.png",
+    success: 'success.png',
+    failure: 'failure.png',
+    critical: 'critical.png'
   }
 
   const rageDiceFaces = {
-    "success": "rage-success.png",
-    "failure": "rage-failure.png",
-    "critical": "rage-critical.png",
-    "brutal": "brutal-failure.png"
+    success: 'rage-success.png',
+    failure: 'rage-failure.png',
+    critical: 'rage-critical.png',
+    brutal: 'brutal-failure.png'
   }
 
   // Defines the normal diceroll results
