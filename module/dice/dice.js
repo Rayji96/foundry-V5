@@ -1,32 +1,7 @@
 /* global Die */
 
-// Define image locations
-const vampireDiceLocation = '/systems/vtm5e/assets/icons/dice/hunter/'
-const werewolfDiceLocation = '/systems/vtm5e/assets/icons/dice/hunter/'
-const hunterDiceLocation = '/systems/vtm5e/assets/icons/dice/hunter/'
-const normalDiceFaces = {
-  success: 'success.png',
-  failure: 'failure.png',
-  critical: 'critical.png'
-}
-const hungerDiceFaces = {
-  success: 'hunger-success.png',
-  failure: 'hunger-failure.png',
-  critical: 'hunger-critical.png',
-  bestial: 'bestial-failure.png'
-}
-const rageDiceFaces = {
-  success: 'rage-success.png',
-  failure: 'rage-failure.png',
-  critical: 'rage-critical.png',
-  brutal: 'brutal-failure.png'
-}
-const desperationDiceFaces = {
-  success: 'desperation-success.png',
-  failure: 'desperation-failure.png',
-  critical: 'desperation-critical.png',
-  criticalFailure: 'desperation-critical-failure.png'
-}
+// Import dice face-related variables for icon paths
+import { vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from "../icons.js"
 
 /**
  * Extend the basic Die for the Vampire (v) dice

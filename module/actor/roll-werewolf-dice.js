@@ -1,5 +1,7 @@
-
 /* global ChatMessage, Roll, game */
+
+// Import dice face-related variables for icon paths
+import { werewolfDiceLocation, normalDiceFaces, rageDiceFaces } from "../icons.js"
 
 // Function to roll dice
 // numDice = Number of dice the function will roll
@@ -35,21 +37,6 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
   let rageFail = 0
   let brutalOutcome = 0
   let totalRageFail = 0
-
-  // Define images
-  const diceLocation = '/systems/vtm5e/assets/icons/dice/werewolf/'
-  const normalDiceFaces = {
-    success: 'success.png',
-    failure: 'failure.png',
-    critical: 'critical.png'
-  }
-
-  const rageDiceFaces = {
-    success: 'rage-success.png',
-    failure: 'rage-failure.png',
-    critical: 'rage-critical.png',
-    brutal: 'brutal-failure.png'
-  }
 
   // Defines the normal diceroll results
   roll.terms[0].results.forEach((dice) => {
@@ -144,13 +131,13 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.critical + '" alt="Normal Crit" class="roll-img werewolf-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + normalDiceFaces.critical + '" alt="Normal Crit" class="roll-img werewolf-dice rerollable" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.success + '" alt="Normal Success" class="roll-img werewolf-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + normalDiceFaces.success + '" alt="Normal Success" class="roll-img werewolf-dice rerollable" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.failure + '" alt="Normal Fail" class="roll-img werewolf-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + normalDiceFaces.failure + '" alt="Normal Fail" class="roll-img werewolf-dice rerollable" />'
   }
 
   // Separator
@@ -158,16 +145,16 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Run through displaying rage dice
   for (let i = 0, j = rageCritSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + rageDiceFaces.critical + '" alt="Rage Crit" class="roll-img rage-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + rageDiceFaces.critical + '" alt="Rage Crit" class="roll-img rage-dice rerollable" />'
   }
   for (let i = 0, j = rageSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + rageDiceFaces.success + '" alt="Rage Success" class="roll-img rage-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + rageDiceFaces.success + '" alt="Rage Success" class="roll-img rage-dice rerollable" />'
   }
   for (let i = 0, j = brutalOutcome; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + rageDiceFaces.brutal + '" alt="Rage Critical Fail" class="roll-img rage-dice" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + rageDiceFaces.brutal + '" alt="Rage Critical Fail" class="roll-img rage-dice" />'
   }
   for (let i = 0, j = rageFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + rageDiceFaces.failure + '" alt="Rage Fail" class="roll-img rage-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + rageDiceFaces.failure + '" alt="Rage Fail" class="roll-img rage-dice rerollable" />'
   }
 
   // Post the message to the chat

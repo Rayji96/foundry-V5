@@ -1,5 +1,8 @@
 /* global ChatMessage, Roll, game, renderTemplate */
 
+// Import dice face-related variables for icon paths
+import { vampireDiceLocation, normalDiceFaces, hungerDiceFaces } from "../icons.js"
+
 // Function to roll dice
 // numDice = Number of dice the function will roll
 // actor = Actor's data
@@ -49,21 +52,6 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
   let hungerSuccessRerolled = 0
   let hungerCritFailRerolled = 0
   let hungerFailRerolled = 0
-
-  // Define images
-  const diceLocation = '/systems/vtm5e/assets/icons/dice/vampire/'
-  const normalDiceFaces = {
-    success: 'success.png',
-    failure: 'failure.png',
-    critical: 'critical.png'
-  }
-
-  const hungerDiceFaces = {
-    success: 'hunger-success.png',
-    failure: 'hunger-failure.png',
-    critical: 'hunger-critical.png',
-    bestial: 'bestial-failure.png'
-  }
 
   // Defines the normal diceroll results
   roll.terms[0].results.forEach((dice) => {
@@ -174,13 +162,13 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.critical + '" alt="Normal Crit" class="roll-img normal-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + normalDiceFaces.critical + '" alt="Normal Crit" class="roll-img normal-dice rerollable" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.success + '" alt="Normal Success" class="roll-img normal-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + normalDiceFaces.success + '" alt="Normal Success" class="roll-img normal-dice rerollable" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + normalDiceFaces.failure + '" alt="Normal Fail" class="roll-img normal-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + normalDiceFaces.failure + '" alt="Normal Fail" class="roll-img normal-dice rerollable" />'
   }
 
   // Separator
@@ -188,30 +176,30 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
 
   // Run through displaying hunger dice
   for (let i = 0, j = hungerCritSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + hungerDiceFaces.critical + '" alt="Hunger Crit" class="roll-img hunger-dice" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + hungerDiceFaces.critical + '" alt="Hunger Crit" class="roll-img hunger-dice" />'
   }
   for (let i = 0, j = hungerSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + hungerDiceFaces.success + '" alt="Hunger Success" class="roll-img hunger-dice" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + hungerDiceFaces.success + '" alt="Hunger Success" class="roll-img hunger-dice" />'
   }
   for (let i = 0, j = hungerCritFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + hungerDiceFaces.bestial + '" alt="Bestial Fail" class="roll-img hunger-dice" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + hungerDiceFaces.bestial + '" alt="Bestial Fail" class="roll-img hunger-dice" />'
   }
   for (let i = 0, j = hungerFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + hungerDiceFaces.failure + '" alt="Hunger Fail" class="roll-img hunger-dice" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + hungerDiceFaces.failure + '" alt="Hunger Fail" class="roll-img hunger-dice" />'
   }
 
   // Run through displaying rerolled dice
   for (let i = 0, j = hungerCritSuccessRerolled; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + hungerDiceFaces.critical + '" alt="Hunger Crit Rerolled" class="roll-img hunger-dice rerolled" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + hungerDiceFaces.critical + '" alt="Hunger Crit Rerolled" class="roll-img hunger-dice rerolled" />'
   }
   for (let i = 0, j = hungerSuccessRerolled; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + hungerDiceFaces.success + '" alt="Hunger Success Rerolled" class="roll-img hunger-dice rerolled" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + hungerDiceFaces.success + '" alt="Hunger Success Rerolled" class="roll-img hunger-dice rerolled" />'
   }
   for (let i = 0, j = hungerCritFailRerolled; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + hungerDiceFaces.failure + '" alt="Bestial Fail Rerolled" class="roll-img hunger-dice rerolled" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + hungerDiceFaces.failure + '" alt="Bestial Fail Rerolled" class="roll-img hunger-dice rerolled" />'
   }
   for (let i = 0, j = hungerFailRerolled; i < j; i++) {
-    chatMessage = chatMessage + '<img src="' + diceLocation + hungerDiceFaces.bestial + '" alt="Hunger Fail Rerolled" class="roll-img hunger-dice rerolled" />'
+    chatMessage = chatMessage + '<img src="' + vampireDiceLocation + hungerDiceFaces.bestial + '" alt="Hunger Fail Rerolled" class="roll-img hunger-dice rerolled" />'
   }
 
   // Post the message to the chat
