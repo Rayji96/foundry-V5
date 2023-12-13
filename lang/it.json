@@ -95,7 +95,8 @@
     "WOD5E.PossibleDesperationFailure": "Possibile Successo a un costo o fallimento disperato!",
     "WOD5E.DespairFailure": "Fallimento disperato!",
     "WOD5E.DesperationUnavailable": "Non puoi usare i dadi disperazione se se già disperato",
-
+	"WOD5E.HunterDrive": "Impulso",
+	
     "WOD5E.Arsenal": "Arsenale",
     "WOD5E.Fleet": "Flotta",
     "WOD5E.Ordnance": "Esplosivi",
