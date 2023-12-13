@@ -397,6 +397,8 @@ export class WoDActor extends ActorSheet {
     const header = event.currentTarget
     // Get the type of item to create.
     const type = header.dataset.type
+    // Default img
+    let img = '/icons/svg/item-bag.svg'
     // Grab any data associated with this control.
     const data = duplicate(header.dataset)
     if (type === 'specialty') {
@@ -409,6 +411,13 @@ export class WoDActor extends ActorSheet {
       data.dice1 = 'strength'
       data.dice2 = 'athletics'
     }
+    if (type === 'power') {
+      img = '/systems/vtm5e/assets/icons/powers/discipline.png'
+    }
+    if (type === 'perk') {
+      img = '/systems/vtm5e/assets/icons/powers/edge.png'
+    }
+
     // Initialize a default name.
     const name = this.getItemDefaultName(type, data)
 
@@ -416,6 +425,7 @@ export class WoDActor extends ActorSheet {
     const itemData = {
       name,
       type,
+      img,
       system: data
     }
     // Remove the type from the dataset since it's in the itemData.type prop.

@@ -1,7 +1,7 @@
 /* global ChatMessage, Roll, game, renderTemplate */
 
 // Import dice face-related variables for icon paths
-import { vampireDiceLocation, normalDiceFaces, hungerDiceFaces } from "../icons.js"
+import { vampireDiceLocation, normalDiceFaces, hungerDiceFaces } from '../icons.js'
 
 // Function to roll dice
 // numDice = Number of dice the function will roll
@@ -116,7 +116,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
         description: game.i18n.localize('WOD5E.HungerFull2')
       }).then(html => {
         ChatMessage.create({
-          speaker: ChatMessage.getSpeaker({ actor: actor }),
+          speaker: ChatMessage.getSpeaker({ actor }),
           content: html
         })
       })
@@ -204,7 +204,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
 
   // Post the message to the chat
   roll.toMessage({
-    speaker: ChatMessage.getSpeaker({ actor: actor }),
+    speaker: ChatMessage.getSpeaker({ actor }),
     content: chatMessage
   })
 
@@ -220,7 +220,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
     // then tell the chat and don't increase any values.
     if (aggrWillpower >= maxWillpower) {
       roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: actor }),
+        speaker: ChatMessage.getSpeaker({ actor }),
         content: game.i18n.localize('WOD5E.WillpowerFull')
       })
     } else {

@@ -222,6 +222,7 @@ export class WerewolfActorSheet extends WoDActor {
       const itemData = {
         name: game.i18n.localize('WOD5E.NewGift'),
         type: 'gift',
+        img: '/systems/vtm5e/assets/icons/powers/gift.png',
         system: {
           giftType: header.dataset.gift
         }
@@ -258,6 +259,7 @@ export class WerewolfActorSheet extends WoDActor {
             const itemData = {
               name: game.i18n.localize('WOD5E.NewGift'),
               type: 'gift',
+              img: '/systems/vtm5e/assets/icons/powers/gift.png',
               system: {
                 giftType: gift
               }
@@ -296,6 +298,7 @@ export class WerewolfActorSheet extends WoDActor {
     const itemData = {
       name: game.i18n.localize('WOD5E.NewRite'),
       type: 'gift',
+      img: '/systems/vtm5e/assets/icons/powers/gift.png',
       system: {
         giftType: 'rite'
       }

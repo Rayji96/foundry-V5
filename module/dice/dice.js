@@ -1,7 +1,7 @@
 /* global Die */
 
 // Import dice face-related variables for icon paths
-import { vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from "../icons.js"
+import { vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from '../icons.js'
 
 /**
  * Extend the basic Die for the Vampire (v) dice
@@ -19,16 +19,16 @@ export class VampireDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
-      2: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
-      3: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
-      4: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
-      5: `<img src="${ vampireDiceLocation + normalDiceFaces.failure }" />`,
-      6: `<img src="${ vampireDiceLocation + normalDiceFaces.success }" />`,
-      7: `<img src="${ vampireDiceLocation + normalDiceFaces.success }" />`,
-      8: `<img src="${ vampireDiceLocation + normalDiceFaces.success }" />`,
-      9: `<img src="${ vampireDiceLocation + normalDiceFaces.success }" />`,
-      10: `<img src="${ vampireDiceLocation + normalDiceFaces.critical }" />`
+      1: `<img src="${vampireDiceLocation + normalDiceFaces.failure}" />`,
+      2: `<img src="${vampireDiceLocation + normalDiceFaces.failure}" />`,
+      3: `<img src="${vampireDiceLocation + normalDiceFaces.failure}" />`,
+      4: `<img src="${vampireDiceLocation + normalDiceFaces.failure}" />`,
+      5: `<img src="${vampireDiceLocation + normalDiceFaces.failure}" />`,
+      6: `<img src="${vampireDiceLocation + normalDiceFaces.success}" />`,
+      7: `<img src="${vampireDiceLocation + normalDiceFaces.success}" />`,
+      8: `<img src="${vampireDiceLocation + normalDiceFaces.success}" />`,
+      9: `<img src="${vampireDiceLocation + normalDiceFaces.success}" />`,
+      10: `<img src="${vampireDiceLocation + normalDiceFaces.critical}" />`
     }[result]
   }
 }
@@ -49,20 +49,19 @@ export class VampireHungerDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: `<img src="${ vampireDiceLocation + hungerDiceFaces.bestial }" />`,
-      2: `<img src="${ vampireDiceLocation + hungerDiceFaces.failure }" />`,
-      3: `<img src="${ vampireDiceLocation + hungerDiceFaces.failure }" />`,
-      4: `<img src="${ vampireDiceLocation + hungerDiceFaces.failure }" />`,
-      5: `<img src="${ vampireDiceLocation + hungerDiceFaces.failure }" />`,
-      6: `<img src="${ vampireDiceLocation + hungerDiceFaces.success }" />`,
-      7: `<img src="${ vampireDiceLocation + hungerDiceFaces.success }" />`,
-      8: `<img src="${ vampireDiceLocation + hungerDiceFaces.success }" />`,
-      9: `<img src="${ vampireDiceLocation + hungerDiceFaces.success }" />`,
-      10: `<img src="${ vampireDiceLocation + hungerDiceFaces.critical }" />`
+      1: `<img src="${vampireDiceLocation + hungerDiceFaces.bestial}" />`,
+      2: `<img src="${vampireDiceLocation + hungerDiceFaces.failure}" />`,
+      3: `<img src="${vampireDiceLocation + hungerDiceFaces.failure}" />`,
+      4: `<img src="${vampireDiceLocation + hungerDiceFaces.failure}" />`,
+      5: `<img src="${vampireDiceLocation + hungerDiceFaces.failure}" />`,
+      6: `<img src="${vampireDiceLocation + hungerDiceFaces.success}" />`,
+      7: `<img src="${vampireDiceLocation + hungerDiceFaces.success}" />`,
+      8: `<img src="${vampireDiceLocation + hungerDiceFaces.success}" />`,
+      9: `<img src="${vampireDiceLocation + hungerDiceFaces.success}" />`,
+      10: `<img src="${vampireDiceLocation + hungerDiceFaces.critical}" />`
     }[result]
   }
 }
-
 
 /**
  * Extend the basic Die for the Hunter (h) dice
@@ -80,16 +79,16 @@ export class HunterDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
-      2: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
-      3: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
-      4: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
-      5: `<img src="${ hunterDiceLocation + normalDiceFaces.failure }" />`,
-      6: `<img src="${ hunterDiceLocation + normalDiceFaces.success }" />`,
-      7: `<img src="${ hunterDiceLocation + normalDiceFaces.success }" />`,
-      8: `<img src="${ hunterDiceLocation + normalDiceFaces.success }" />`,
-      9: `<img src="${ hunterDiceLocation + normalDiceFaces.success }" />`,
-      10: `<img src="${ hunterDiceLocation + normalDiceFaces.critical }" />`
+      1: `<img src="${hunterDiceLocation + normalDiceFaces.failure}" />`,
+      2: `<img src="${hunterDiceLocation + normalDiceFaces.failure}" />`,
+      3: `<img src="${hunterDiceLocation + normalDiceFaces.failure}" />`,
+      4: `<img src="${hunterDiceLocation + normalDiceFaces.failure}" />`,
+      5: `<img src="${hunterDiceLocation + normalDiceFaces.failure}" />`,
+      6: `<img src="${hunterDiceLocation + normalDiceFaces.success}" />`,
+      7: `<img src="${hunterDiceLocation + normalDiceFaces.success}" />`,
+      8: `<img src="${hunterDiceLocation + normalDiceFaces.success}" />`,
+      9: `<img src="${hunterDiceLocation + normalDiceFaces.success}" />`,
+      10: `<img src="${hunterDiceLocation + normalDiceFaces.critical}" />`
     }[result]
   }
 }
@@ -110,16 +109,16 @@ export class HunterDesperationDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: `<img src="${ hunterDiceLocation + desperationDiceFaces.criticalFailure }" />`,
-      2: `<img src="${ hunterDiceLocation + desperationDiceFaces.failure }" />`,
-      3: `<img src="${ hunterDiceLocation + desperationDiceFaces.failure }" />`,
-      4: `<img src="${ hunterDiceLocation + desperationDiceFaces.failure }" />`,
-      5: `<img src="${ hunterDiceLocation + desperationDiceFaces.failure }" />`,
-      6: `<img src="${ hunterDiceLocation + desperationDiceFaces.success }" />`,
-      7: `<img src="${ hunterDiceLocation + desperationDiceFaces.success }" />`,
-      8: `<img src="${ hunterDiceLocation + desperationDiceFaces.success }" />`,
-      9: `<img src="${ hunterDiceLocation + desperationDiceFaces.success }" />`,
-      10: `<img src="${ hunterDiceLocation + desperationDiceFaces.critical }" />`
+      1: `<img src="${hunterDiceLocation + desperationDiceFaces.criticalFailure}" />`,
+      2: `<img src="${hunterDiceLocation + desperationDiceFaces.failure}" />`,
+      3: `<img src="${hunterDiceLocation + desperationDiceFaces.failure}" />`,
+      4: `<img src="${hunterDiceLocation + desperationDiceFaces.failure}" />`,
+      5: `<img src="${hunterDiceLocation + desperationDiceFaces.failure}" />`,
+      6: `<img src="${hunterDiceLocation + desperationDiceFaces.success}" />`,
+      7: `<img src="${hunterDiceLocation + desperationDiceFaces.success}" />`,
+      8: `<img src="${hunterDiceLocation + desperationDiceFaces.success}" />`,
+      9: `<img src="${hunterDiceLocation + desperationDiceFaces.success}" />`,
+      10: `<img src="${hunterDiceLocation + desperationDiceFaces.critical}" />`
     }[result]
   }
 }
@@ -140,16 +139,16 @@ export class WerewolfDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
-      2: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
-      3: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
-      4: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
-      5: `<img src="${ werewolfDiceLocation + normalDiceFaces.failure }" />`,
-      6: `<img src="${ werewolfDiceLocation + normalDiceFaces.success }" />`,
-      7: `<img src="${ werewolfDiceLocation + normalDiceFaces.success }" />`,
-      8: `<img src="${ werewolfDiceLocation + normalDiceFaces.success }" />`,
-      9: `<img src="${ werewolfDiceLocation + normalDiceFaces.success }" />`,
-      10: `<img src="${ werewolfDiceLocation + normalDiceFaces.critical }" />`
+      1: `<img src="${werewolfDiceLocation + normalDiceFaces.failure}" />`,
+      2: `<img src="${werewolfDiceLocation + normalDiceFaces.failure}" />`,
+      3: `<img src="${werewolfDiceLocation + normalDiceFaces.failure}" />`,
+      4: `<img src="${werewolfDiceLocation + normalDiceFaces.failure}" />`,
+      5: `<img src="${werewolfDiceLocation + normalDiceFaces.failure}" />`,
+      6: `<img src="${werewolfDiceLocation + normalDiceFaces.success}" />`,
+      7: `<img src="${werewolfDiceLocation + normalDiceFaces.success}" />`,
+      8: `<img src="${werewolfDiceLocation + normalDiceFaces.success}" />`,
+      9: `<img src="${werewolfDiceLocation + normalDiceFaces.success}" />`,
+      10: `<img src="${werewolfDiceLocation + normalDiceFaces.critical}" />`
     }[result]
   }
 }
@@ -170,16 +169,16 @@ export class WerewolfRageDie extends Die {
   /** @override */
   static getResultLabel (result) {
     return {
-      1: `<img src="${ werewolfDiceLocation + rageDiceFaces.brutal }" />`,
-      2: `<img src="${ werewolfDiceLocation + rageDiceFaces.brutal }" />`,
-      3: `<img src="${ werewolfDiceLocation + rageDiceFaces.failure }" />`,
-      4: `<img src="${ werewolfDiceLocation + rageDiceFaces.failure }" />`,
-      5: `<img src="${ werewolfDiceLocation + rageDiceFaces.failure }" />`,
-      6: `<img src="${ werewolfDiceLocation + rageDiceFaces.success }" />`,
-      7: `<img src="${ werewolfDiceLocation + rageDiceFaces.success }" />`,
-      8: `<img src="${ werewolfDiceLocation + rageDiceFaces.success }" />`,
-      9: `<img src="${ werewolfDiceLocation + rageDiceFaces.success }" />`,
-      10: `<img src="${ werewolfDiceLocation + rageDiceFaces.critical }" />`
+      1: `<img src="${werewolfDiceLocation + rageDiceFaces.brutal}" />`,
+      2: `<img src="${werewolfDiceLocation + rageDiceFaces.brutal}" />`,
+      3: `<img src="${werewolfDiceLocation + rageDiceFaces.failure}" />`,
+      4: `<img src="${werewolfDiceLocation + rageDiceFaces.failure}" />`,
+      5: `<img src="${werewolfDiceLocation + rageDiceFaces.failure}" />`,
+      6: `<img src="${werewolfDiceLocation + rageDiceFaces.success}" />`,
+      7: `<img src="${werewolfDiceLocation + rageDiceFaces.success}" />`,
+      8: `<img src="${werewolfDiceLocation + rageDiceFaces.success}" />`,
+      9: `<img src="${werewolfDiceLocation + rageDiceFaces.success}" />`,
+      10: `<img src="${werewolfDiceLocation + rageDiceFaces.critical}" />`
     }[result]
   }
 }

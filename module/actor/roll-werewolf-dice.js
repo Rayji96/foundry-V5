@@ -1,7 +1,7 @@
 /* global ChatMessage, Roll, game */
 
 // Import dice face-related variables for icon paths
-import { werewolfDiceLocation, normalDiceFaces, rageDiceFaces } from "../icons.js"
+import { werewolfDiceLocation, normalDiceFaces, rageDiceFaces } from '../icons.js'
 
 // Function to roll dice
 // numDice = Number of dice the function will roll
@@ -81,7 +81,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
       // Post the message to the chat
       ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: actor }),
+        speaker: ChatMessage.getSpeaker({ actor }),
         content: chatMessage
       })
     }
@@ -159,7 +159,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Post the message to the chat
   roll.toMessage({
-    speaker: ChatMessage.getSpeaker({ actor: actor }),
+    speaker: ChatMessage.getSpeaker({ actor }),
     content: chatMessage
   })
 
@@ -175,7 +175,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
     // then tell the chat and don't increase any values.
     if (aggrWillpower >= maxWillpower) {
       roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: actor }),
+        speaker: ChatMessage.getSpeaker({ actor }),
         content: game.i18n.localize('WOD5E.WillpowerFull')
       })
     } else {
