@@ -143,16 +143,16 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Run through displaying rage dice
   for (let i = 0, j = rageCritSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-crit.png" alt="Rage Crit" class="roll-img rage-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-crit.png" alt="Rage Crit" class="roll-img rage-dice rerollable" />'
   }
   for (let i = 0, j = rageSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-success.png" alt="Rage Success" class="roll-img rage-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-success.png" alt="Rage Success" class="roll-img rage-dice rerollable" />'
   }
   for (let i = 0, j = brutalOutcome; i < j; i++) {
     chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-brutal-fail.png" alt="Rage Critical Fail" class="roll-img rage-dice" />'
   }
   for (let i = 0, j = rageFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Rage Fail" class="roll-img rage-dice" />'
+    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Rage Fail" class="roll-img rage-dice rerollable" />'
   }
 
   // Post the message to the chat
