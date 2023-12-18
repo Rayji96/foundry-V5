@@ -1,6 +1,6 @@
 # World of Darkness 5e Changelog
 
-## In the Latest Release (3.1.1)
+## In the Latest Release (3.1.2)
 
 ### From a player's side
 * Updated Italian translation [Arcadio21]
