@@ -1,4 +1,4 @@
-/* global Handlebars, game */
+/* global Handlebars, game, TextEditor */
 
 /**
  * Define any helpers necessary for working with Handlebars
@@ -188,5 +188,9 @@ export const loadHelpers = async function () {
       artifact: 'WOD5E.Artifact'
     }
     return edges[key]
+  })
+
+  Handlebars.registerHelper('enrichHTML', function (text) {
+    return TextEditor.enrichHTML(text, { async: false })
   })
 }
