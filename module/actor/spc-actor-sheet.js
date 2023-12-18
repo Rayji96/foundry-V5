@@ -139,7 +139,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     new Dialog({
       title: game.i18n.localize('WOD5E.AddSkill'),
       content: template,
-      buttons: buttons,
+      buttons,
       default: 'draw'
     }).render(true)
   }
@@ -183,7 +183,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     new Dialog({
       title: game.i18n.localize('WOD5E.AddDiscipline'),
       content: template,
-      buttons: buttons,
+      buttons,
       default: 'draw'
     }).render(true)
   }

@@ -45,14 +45,14 @@ export const MigrateTrackers = async function () {
           // Update the actor's data with the new information
           actor.update({ 'system.willpower.value': newActorWillpowerValue })
         }
+      }
 
-        // Increase the counter and continue
-        counter++
+      // Increase the counter and continue
+      counter++
 
-        // Only resolve when we're finished going through all the actors.
-        if (counter === totalIterations) {
-          resolve(migrationIDs)
-        }
+      // Only resolve when we're finished going through all the actors.
+      if (counter === totalIterations) {
+        resolve(migrationIDs)
       }
     }
   })
