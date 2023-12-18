@@ -580,7 +580,8 @@ export class WoDActor extends ActorSheet {
           // Define what kind of dice is appropriate to use
           if (system === 'vampire') {
             // Define actor's hunger dice
-            const hungerDice = Math.min(this.actor.system.hunger.value, numDice)
+            // 0 if the actor is a ghoul, current hunger value if otherwise
+            const hungerDice = this.actor.type === 'ghoul' ? 0 : Math.min(this.actor.system.hunger.value, numDice)
 
             rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, hungerDice)
           } else if (system === 'hunter') {

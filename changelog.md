@@ -1,13 +1,18 @@
 # World of Darkness 5e Changelog
 
-
 ## In the Latest Release (3.1.1)
 
 ### From a player's side
-* Removed an unnecessary field on the Hunter biography page [Veilza]
-* Fixed an issue that prevented Coterie and Cell sheets from loading [Veilza]
+* Updated Italian translation [Arcadio21]
+* Fixed Ghoul sheets being unable to make dialogue rolls [Veilza]
+* Updated Werewolf dice to allow willpower rerolling of non-brutal Rage dice [Veilza]
 
 ### From a developer's side
+* None, yet!
+
+## 3.1.1
+* Removed an unnecessary field on the Hunter biography page [Veilza]
+* Fixed an issue that prevented Coterie and Cell sheets from loading [Veilza]
 * Add a separate localization for the word "Drive" specific to the Hunter term [Veilza]
 
 ## 3.1.0
@@ -49,3 +54,4 @@
 
 [Veilza]: https://github.com/Veilza
 [LorduFreeman]: https://github.com/LorduFreeman
+[Arcadio21]: https://github.com/Arcadio21
