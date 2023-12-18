@@ -7,6 +7,7 @@
 * Fixed Ghoul sheets being unable to make dialogue rolls [Veilza]
 * Updated Werewolf dice to allow willpower rerolling of non-brutal Rage dice [Veilza]
 * New disciplines/rituals, gifts/rites, and edges will use icons different from the default item icons now [Veilza]
+* Fixed the enrichment of item descriptions, allowing journal entries and other Foundry items to be linked to disciplines, gifts, etc [Veilza]
 
 ### From a developer's side
 * Reorganized the dice icon paths and centralised where they're obtained from into one file [Veilza]

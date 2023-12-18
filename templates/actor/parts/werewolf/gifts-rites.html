@@ -87,7 +87,7 @@
                         </div>
                         <!-- Power description, expandable by a collapse -->
                         <div class="collapsible-content">
-                            {{{item.system.description}}}
+                            {{{enrichHTML item.system.description}}}
                         </div>
                     </li>
                 {{/each}}
@@ -150,7 +150,7 @@
                 </div>
                 <!-- Power description, expandable by a collapse -->
                 <div class="collapsible-content">
-                    {{{item.system.description}}}
+                    {{{enrichHTML item.system.description}}}
                 </div>
             </li>
         {{/each}}
