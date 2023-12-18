@@ -189,4 +189,8 @@ export const loadHelpers = async function () {
     }
     return edges[key]
   })
+
+  Handlebars.registerHelper('enrichHTML', function (text) {
+    return TextEditor.enrichHTML(text, {async: false})
+  })
 }
