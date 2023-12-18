@@ -1,7 +1,7 @@
 /* global Die */
 
 // Import dice face-related variables for icon paths
-import { vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from '../icons.js'
+import { vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from './icons.js'
 
 /**
  * Extend the basic Die for the Vampire (v) dice

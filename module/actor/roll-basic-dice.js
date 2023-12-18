@@ -1,7 +1,7 @@
 /* global ChatMessage, Roll, game */
 
 // Import dice face-related variables for icon paths
-import { mortalDiceLocation, normalDiceFaces } from '../icons.js'
+import { mortalDiceLocation, normalDiceFaces } from '../dice/icons.js'
 
 // Function to roll dice
 // numDice = Number of dice the function will roll

@@ -28,7 +28,7 @@ import {
   watchPool2Filters,
   prepareCustomRollButton
 } from './dice/dicebox.js'
-import { loadDiceSoNice } from './dice-so-nice.js'
+import { loadDiceSoNice } from './dice/dice-so-nice.js'
 import { loadHelpers } from './helpers.js'
 import { loadSettings } from './settings.js'
 
