@@ -12,6 +12,7 @@
 ### From a developer's side
 * Reorganized the dice icon paths and centralised where they're obtained from into one file [Veilza]
 * Moved dice-so-nice.js into the 'dice' folder [Veilza]
+* Fixed an issue where the migration script would get stuck on migrating health/willpower trackers [Veilza]
 
 ## 3.1.1
 * Removed an unnecessary field on the Hunter biography page [Veilza]
