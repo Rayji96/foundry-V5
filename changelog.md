@@ -8,7 +8,8 @@
 * Updated Werewolf dice to allow willpower rerolling of non-brutal Rage dice [Veilza]
 
 ### From a developer's side
-* None, yet!
+* Reorganized the dice icon paths and centralised where they're obtained from into one file [Veilza]
+* Moved dice-so-nice.js into the 'dice' folder [Veilza]
 
 ## 3.1.1
 * Removed an unnecessary field on the Hunter biography page [Veilza]
