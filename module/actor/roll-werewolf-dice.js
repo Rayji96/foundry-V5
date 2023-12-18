@@ -1,5 +1,7 @@
-
 /* global ChatMessage, Roll, game */
+
+// Import dice face-related variables for icon paths
+import { werewolfDiceLocation, normalDiceFaces, rageDiceFaces } from '../dice/icons.js'
 
 // Function to roll dice
 // numDice = Number of dice the function will roll
@@ -79,7 +81,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
       // Post the message to the chat
       ChatMessage.create({
-        speaker: ChatMessage.getSpeaker({ actor: actor }),
+        speaker: ChatMessage.getSpeaker({ actor }),
         content: chatMessage
       })
     }
@@ -129,13 +131,13 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Run through displaying the normal dice
   for (let i = 0, j = critSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-crit.png" alt="Normal Crit" class="roll-img werewolf-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + normalDiceFaces.critical + '" alt="Normal Crit" class="roll-img werewolf-dice rerollable" />'
   }
   for (let i = 0, j = success; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-success.png" alt="Normal Success" class="roll-img werewolf-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + normalDiceFaces.success + '" alt="Normal Success" class="roll-img werewolf-dice rerollable" />'
   }
   for (let i = 0, j = fail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/normal-fail.png" alt="Normal Fail" class="roll-img werewolf-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + normalDiceFaces.failure + '" alt="Normal Fail" class="roll-img werewolf-dice rerollable" />'
   }
 
   // Separator
@@ -143,21 +145,21 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
 
   // Run through displaying rage dice
   for (let i = 0, j = rageCritSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-crit.png" alt="Rage Crit" class="roll-img rage-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + rageDiceFaces.critical + '" alt="Rage Crit" class="roll-img rage-dice rerollable" />'
   }
   for (let i = 0, j = rageSuccess; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-success.png" alt="Rage Success" class="roll-img rage-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + rageDiceFaces.success + '" alt="Rage Success" class="roll-img rage-dice rerollable" />'
   }
   for (let i = 0, j = brutalOutcome; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/werewolf-brutal-fail.png" alt="Rage Critical Fail" class="roll-img rage-dice" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + rageDiceFaces.brutal + '" alt="Rage Critical Fail" class="roll-img rage-dice" />'
   }
   for (let i = 0, j = rageFail; i < j; i++) {
-    chatMessage = chatMessage + '<img src="systems/vtm5e/assets/images/red-fail.png" alt="Rage Fail" class="roll-img rage-dice rerollable" />'
+    chatMessage = chatMessage + '<img src="' + werewolfDiceLocation + rageDiceFaces.failure + '" alt="Rage Fail" class="roll-img rage-dice rerollable" />'
   }
 
   // Post the message to the chat
   roll.toMessage({
-    speaker: ChatMessage.getSpeaker({ actor: actor }),
+    speaker: ChatMessage.getSpeaker({ actor }),
     content: chatMessage
   })
 
@@ -173,7 +175,7 @@ export async function rollWerewolfDice (numDice, actor, label = '', difficulty =
     // then tell the chat and don't increase any values.
     if (aggrWillpower >= maxWillpower) {
       roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: actor }),
+        speaker: ChatMessage.getSpeaker({ actor }),
         content: game.i18n.localize('WOD5E.WillpowerFull')
       })
     } else {
