@@ -1,4 +1,4 @@
-/* global Handlebars, game */
+/* global Handlebars, game, TextEditor */
 
 /**
  * Define any helpers necessary for working with Handlebars
@@ -191,6 +191,6 @@ export const loadHelpers = async function () {
   })
 
   Handlebars.registerHelper('enrichHTML', function (text) {
-    return TextEditor.enrichHTML(text, {async: false})
+    return TextEditor.enrichHTML(text, { async: false })
   })
 }
