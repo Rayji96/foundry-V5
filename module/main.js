@@ -273,6 +273,7 @@ function dieSelect () {
 function rerollDie (roll) {
   // Variables
   const diceSelected = $('.willpower-reroll .selected').length
+  const rageDiceSelected = $('.willpower-reroll .selected .rage-dice').length
 
   // Get the actor associated with the message
   // Theoretically I should error-check this, but there shouldn't be any
@@ -286,7 +287,7 @@ function rerollDie (roll) {
     if (charactertype === 'hunter') { // Hunter-specific dice
       rollHunterDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, true)
     } else if (charactertype === 'werewolf') { // Werewolf-specific dice
-      rollWerewolfDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, true)
+      rollWerewolfDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, rageDiceSelected, true)
     } else { // Everything else
       rollDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, false, true)
     }
