@@ -1,9 +1,9 @@
 /* global ui, game, foundry */
 
-import { MigrateLegacySheets } from './migrate-legacy-sheets.js'
-import { MigrateLocalization } from './migrate-localization.js'
-import { MigrateGamesystem } from './migrate-gamesystem.js'
-import { MigrateTrackers } from './migrate-trackers.js'
+import { MigrateLegacySheets } from './migration/migrate-legacy-sheets.js'
+import { MigrateLocalization } from './migration/migrate-localization.js'
+import { MigrateGamesystem } from './migration/migrate-gamesystem.js'
+import { MigrateTrackers } from './migration/migrate-trackers.js'
 
 let worldVersion
 

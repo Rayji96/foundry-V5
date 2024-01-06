@@ -1,0 +1,18 @@
+<div class="form-group">
+  <label>{{localize 'WOD5E.Modifier' }}</label>
+  <input type="text" id="inputModifier" value="0">
+</div>
+<div class="form-group">
+  <label>{{localize 'WOD5E.Difficulty' }}</label>
+  <input type="text" min="0" id="inputDifficulty" value="0">
+</div>
+<div class="form-group">
+  <label>{{localize 'WOD5E.RollMode'}}</label>
+  <select name="rollMode">
+    {{#select rollMode}}
+      {{#each rollModes as |label mode|}}
+        <option value="{{mode}}">{{localize label}}</option>
+      {{/each}}
+    {{/select}}
+  </select>
+</div>

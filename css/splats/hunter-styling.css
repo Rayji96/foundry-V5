@@ -2,7 +2,27 @@
   --hunter-primary: #cc6d28;
 }
 
-/* Colour overrides for sheet themes */
+/* wod5e.css */
+.wod5e.hunter-sheet.window-app {
+  border: 4px solid var(--hunter-primary);
+}
+
+.wod5e.hunter-sheet.window-app .window-header {
+  border-bottom: 4px double var(--hunter-primary);
+}
+
+.wod5e.hunter-sheet.window-app .window-resizable-handle {
+  border-top: 3px double #ff9a02;
+  border-left: 3px double #ff9a02;
+  border-bottom: 1px solid #ff9a02;
+  border-radius: 0;
+}
+
+.wod5e.hunter-sheet.window-app .fa-arrows-alt-h::before,
+.wod5e.hunter-sheet.window-app .fa-left-right::before {
+    color: #ff9a02;
+}
+
 .wod5e.hunter-sheet .window-content .sheet-body .tab > .resource-label, .wod5e.hunter-sheet .items-list .item-header {
   color: var(--hunter-primary);
   border-color: var(--hunter-primary);
@@ -16,14 +36,9 @@
   background: var(--hunter-primary);
 }
 
-/* Styles specific to the Hunter sheets */
 .wod5e.hunter-sheet .profile-img,
 .wod5e.hunter-sheet .item-image img {
   background: var(--hunter-primary);
-}
-
-.wod5e.hunter-sheet .item-image.edge-rollable img {
-  box-shadow: inset 0 0 5px 0 red;
 }
 
 .wod5e.hunter-sheet .sheet-banner {
@@ -31,19 +46,42 @@
   color: #FFF;
 }
 
-.wod5e.hunter-sheet button.rollable,
-.wod5e.hunter-sheet button.rollable-with-mod {
-  background: var(--hunter-primary);
-}
-
-.wod5e.hunter-sheet .actor-header .profile-img-zone button {
-  background: var(--hunter-primary);
-}
-
 .wod5e.hunter-sheet .actor-header .profile-img-zone h1 {
   color: var(--hunter-primary);
 }
 
+/* buttons.css */
+.wod5e.hunter-sheet button {
+  background: #df660e;
+  color: #fff;
+  font-family: cormorantLight, serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: none;
+  box-shadow: none;
+}
+
+.wod5e.hunter-sheet button:hover,
+.wod5e.hunter-sheet button:focus {
+  outline: none;
+  box-shadow: inset 0 0 5px #000;
+  background: #ff6400;
+  color: #f7f3eb;
+  transition-duration: 0.3s;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+.wod5e.hunter-sheet .item-image.edge-rollable img {
+  box-shadow: inset 0 0 5px 0 red;
+}
+
+/* dialog.css */
+.wod5e.hunter-dialog .dialog-contents .dice-group-header {
+  background-color: var(--hunter-primary);
+}
+
+/* resource-counters.css */
 .wod5e.hunter-sheet .resource-value .resource-value-step.active {
   background-color: var(--hunter-primary);
 }
@@ -78,4 +116,20 @@
   border: 1px solid #000;
   display: inline-block;
   cursor: pointer;
+}
+
+.wod5e .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+  background-color: var(--hunter-primary);
+}
+
+/* groupings.css */
+.wod5e.hunter-sheet .flex-group-center,
+.wod5e.hunter-sheet .flex-group-left,
+.wod5e.hunter-sheet .flex-group-right {
+    border: 1px solid var(--hunter-primary);
+}
+
+/* inputs.css */
+.wod5e.hunter-sheet input, .wod5e.hunter-sheet select {
+  border: 1px solid var(--hunter-primary);
 }

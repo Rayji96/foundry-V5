@@ -78,7 +78,7 @@ export class CellActorSheet extends WoDActor {
   _onCellSquareCounterChange (event) {
     event.preventDefault()
     const element = event.currentTarget
-    const index = Number(element.dataset.index)
+    const index = parseInt(element.dataset.index)
     const oldState = element.dataset.state || ''
     const parent = $(element.parentNode)
     const data = parent[0].dataset
@@ -87,9 +87,9 @@ export class CellActorSheet extends WoDActor {
     const steps = parent.find('.cell-resource-counter-step')
     const desperation = data.name === 'system.desperation'
     const danger = data.name === 'system.danger'
-    const fulls = Number(data[states['-']]) || 0
-    const halfs = Number(data[states['/']]) || 0
-    const crossed = Number(data[states.x]) || 0
+    const fulls = parseInt(data[states['-']]) || 0
+    const halfs = parseInt(data[states['/']]) || 0
+    const crossed = parseInt(data[states.x]) || 0
 
     if (index < 0 || index > steps.length) {
       return
@@ -105,20 +105,20 @@ export class CellActorSheet extends WoDActor {
     steps[index].dataset.state = newState
 
     if ((oldState !== '' && oldState !== '-') || (oldState !== '' && desperation) || (oldState !== '' && danger)) {
-      data[states[oldState]] = Number(data[states[oldState]]) - 1
+      data[states[oldState]] = parseInt(data[states[oldState]]) - 1
     }
 
     // If the step was removed we also need to subtract from the maximum.
     if (oldState !== '' && newState === '' && !desperation && !danger) {
-      data[states['-']] = Number(data[states['-']]) - 1
+      data[states['-']] = parseInt(data[states['-']]) - 1
     }
 
     if (newState !== '') {
-      data[states[newState]] = Number(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
+      data[states[newState]] = parseInt(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
     }
 
     const newValue = Object.values(states).reduce(function (obj, k) {
-      obj[k] = Number(data[k]) || 0
+      obj[k] = parseInt(data[k]) || 0
       return obj
     }, {})
 
@@ -132,9 +132,9 @@ export class CellActorSheet extends WoDActor {
       const desperation = data.name === 'system.desperation'
       const danger = data.name === 'system.danger'
 
-      const fulls = Number(data[states['-']]) || 0
-      const halfs = Number(data[states['/']]) || 0
-      const crossed = Number(data[states.x]) || 0
+      const fulls = parseInt(data[states['-']]) || 0
+      const halfs = parseInt(data[states['/']]) || 0
+      const crossed = parseInt(data[states.x]) || 0
 
       const values = desperation ? new Array(fulls + halfs) : danger ? new Array(fulls + halfs) : new Array(halfs + crossed)
 

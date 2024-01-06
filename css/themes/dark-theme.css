@@ -1,10 +1,10 @@
 /* New Styles */
-.wod5e.dark-theme .window-app {
+.wod5e.window-app.dark-theme {
     background: #faf5ed;
     color: #121212;
 }
 
-.wod5e.dark-theme .window-content {
+.wod5e.window-app.dark-theme .window-content {
   background: #121212;
   color: #f7f7f7;
 }
@@ -67,17 +67,8 @@
 .wod5e.dark-theme .rollable:focus,
 .wod5e.dark-theme .rouse-check:hover,
 .wod5e.dark-theme .rouse-check:focus,
-.wod5e.dark-theme .rollable-with-mod:hover,
-.wod5e.dark-theme .rollable-with-mod:focus,
-.wod5e.dark-theme .vrollable:hover,
-.wod5e.dark-theme .vrollable:focus,
 .wod5e.dark-theme .power-rollable:hover,
 .wod5e.dark-theme .power-rollable:focus {
-    color: #f7f7f7;
-}
-
-.wod5e.dark-theme .custom-rollable:hover,
-.wod5e.dark-theme .custom-rollable:focus {
     color: #f7f7f7;
 }
 

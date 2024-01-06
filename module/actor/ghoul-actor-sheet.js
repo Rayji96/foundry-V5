@@ -179,7 +179,7 @@ export class GhoulActorSheet extends MortalActorSheet {
         const actorHealth = this.actor.system.health
         const actorHealthMax = actorHealth.max
         const currentAggr = actorHealth.aggravated
-        let newAggr = Number(currentAggr) + 1
+        let newAggr = parseInt(currentAggr) + 1
 
         // Make sure aggravated can't go over the max
         if (newAggr > actorHealthMax) {

@@ -112,7 +112,7 @@ export async function rollDice (numDice, actor, label = '', difficulty = 0, hung
     if (newHungerAmount > 4 && currentHunger < 5) {
       renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
         name: game.i18n.localize('WOD5E.HungerFull1'),
-        img: 'systems/vtm5e/assets/icons/bestial-fail.png',
+        img: 'systems/vtm5e/assets/icons/dice/vampire/bestial-failure.png',
         description: game.i18n.localize('WOD5E.HungerFull2')
       }).then(html => {
         ChatMessage.create({

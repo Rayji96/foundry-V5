@@ -1,7 +1,37 @@
 /* global Die */
 
 // Import dice face-related variables for icon paths
-import { vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from './icons.js'
+import { mortalDiceLocation, vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from './icons.js'
+
+/**
+ * Extend the basic Die for the Mortal (m) dice
+ * @extends {Die}
+ */
+export class MortalDie extends Die {
+  constructor (termData) {
+    termData.faces = 10
+    super(termData)
+  }
+
+  /** @override */
+  static DENOMINATION = 'm'
+
+  /** @override */
+  static getResultLabel (result) {
+    return {
+      1: `<img src="${mortalDiceLocation + normalDiceFaces.failure}" />`,
+      2: `<img src="${mortalDiceLocation + normalDiceFaces.failure}" />`,
+      3: `<img src="${mortalDiceLocation + normalDiceFaces.failure}" />`,
+      4: `<img src="${mortalDiceLocation + normalDiceFaces.failure}" />`,
+      5: `<img src="${mortalDiceLocation + normalDiceFaces.failure}" />`,
+      6: `<img src="${mortalDiceLocation + normalDiceFaces.success}" />`,
+      7: `<img src="${mortalDiceLocation + normalDiceFaces.success}" />`,
+      8: `<img src="${mortalDiceLocation + normalDiceFaces.success}" />`,
+      9: `<img src="${mortalDiceLocation + normalDiceFaces.success}" />`,
+      10: `<img src="${mortalDiceLocation + normalDiceFaces.critical}" />`
+    }[result]
+  }
+}
 
 /**
  * Extend the basic Die for the Vampire (v) dice

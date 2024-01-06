@@ -5,6 +5,36 @@
 export const loadDiceSoNice = async function (dice3d) {
   dice3d.addSystem({ id: 'vtm5e', name: 'VtM5e' }, true)
   dice3d.addDicePreset({
+    type: 'dm',
+    labels: [
+      'systems/vtm5e/assets/icons/dsn/normal-fail-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-fail-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-fail-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-fail-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-fail-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-success-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-success-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-success-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-success-dsn.png',
+      'systems/vtm5e/assets/icons/dsn/normal-crit-dsn.png'
+    ],
+    bumpMaps: [
+      '',
+      '',
+      '',
+      '',
+      '',
+      'systems/vtm5e/assets/icons/dsn/normal-success-dsn-bump.png',
+      'systems/vtm5e/assets/icons/dsn/normal-success-dsn-bump.png',
+      'systems/vtm5e/assets/icons/dsn/normal-success-dsn-bump.png',
+      'systems/vtm5e/assets/icons/dsn/normal-success-dsn-bump.png',
+      'systems/vtm5e/assets/icons/dsn/normal-crit-dsn-bump.png'
+    ],
+    colorset: 'black',
+    system: 'vtm5e'
+  })
+
+  dice3d.addDicePreset({
     type: 'dv',
     labels: [
       'systems/vtm5e/assets/icons/dsn/normal-fail-dsn.png',

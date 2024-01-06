@@ -52,7 +52,7 @@
                         <div class="flexrow">
                             <!-- Whether the button is clickable or not to post the power in chat -->
                             {{#if item.system.rollable}}
-                                <div class="item-image gift-rollable" data-id="{{item._id}}" data-system="{{../actor.system.gamesystem}}">
+                                <div class="item-image gift-rollable" data-id="{{item._id}}">
                                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                                 </div>
                             {{else}}
@@ -66,8 +66,8 @@
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rage check, if applicable -->
                                 {{#if item.system.rage}}
-                                    <a class="item-control rage-roll" title="{{localize 'WOD5E.RollRage'}}" data-system="{{../actor.system.gamesystem}}"
-                                        data-rage-dice="{{item.system.cost}}" data-consume-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
+                                    <a class="item-control rage-roll" title="{{localize 'WOD5E.RollRage'}}" data-rage-dice="{{item.system.cost}}"
+                                        data-consume-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
                                         <i class="fas fa-dice-d20"></i>
                                     </a>
                                 {{/if}}
@@ -115,7 +115,7 @@
                 <div class="flexrow">
                     <!-- Whether the button is clickable or not to post the power in chat -->
                     {{#if item.system.rollable}}
-                        <div class="item-image gift-rollable" data-id="{{item._id}}" data-system="{{../actor.system.gamesystem}}">
+                        <div class="item-image gift-rollable" data-id="{{item._id}}">
                             <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
                         </div>
                     {{else}}
@@ -129,8 +129,8 @@
                     <div class="item-controls">
                         <!-- Icon to roll the power's rage check, if applicable -->
                         {{#if item.system.rage}}
-                            <a class="item-control rage-roll" title="{{localize 'WOD5E.RollRage'}}" data-system="{{../actor.system.gamesystem}}"
-                                data-rage-dice="{{item.system.cost}}" data-consume-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
+                            <a class="item-control rage-roll" title="{{localize 'WOD5E.RollRage'}}" data-rage-dice="{{item.system.cost}}"
+                                data-consume-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
                                 <i class="fas fa-dice-d20"></i>
                             </a>
                         {{/if}}

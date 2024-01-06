@@ -64,7 +64,14 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/ui/parts/pool2-select-attribute.html',
     'systems/vtm5e/templates/ui/parts/pool2-select-skill.html',
     'systems/vtm5e/templates/ui/parts/pool2-select-discipline.html',
-    'systems/vtm5e/templates/ui/parts/pool2-nothing.html'
+    'systems/vtm5e/templates/ui/parts/pool2-nothing.html',
+
+    // Roll dialog Partials
+    'systems/vtm5e/templates/ui/parts/roll-dialog-base.html',
+    'systems/vtm5e/templates/ui/mortal-roll-dialog.html',
+    'systems/vtm5e/templates/ui/vampire-roll-dialog.html',
+    'systems/vtm5e/templates/ui/werewolf-roll-dialog.html',
+    'systems/vtm5e/templates/ui/hunter-roll-dialog.html'
   ]
 
   /* Load the template parts

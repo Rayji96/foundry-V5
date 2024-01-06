@@ -6,7 +6,7 @@ import { migrateWorld } from './scripts/migration.js'
 import { ActorInfo } from './actor/actor.js'
 import { ItemInfo } from './item/item.js'
 import { WoDItemSheet } from './item/item-sheet.js'
-import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/splat-dice.js'
+import { MortalDie, VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/splat-dice.js'
 import { rollDice } from './actor/roll-dice.js'
 import { rollHunterDice } from './actor/roll-hunter-dice.js'
 import { rollWerewolfDice } from './actor/roll-werewolf-dice.js'
@@ -50,12 +50,13 @@ Hooks.once('init', async function () {
      * @type {String}
      */
   CONFIG.Combat.initiative = {
-    formula: '1d20'
+    formula: '1d10'
   }
 
   // Define custom Entity classes
   CONFIG.Actor.documentClass = ActorInfo
   CONFIG.Item.documentClass = ItemInfo
+  CONFIG.Dice.terms.m = MortalDie
   CONFIG.Dice.terms.v = VampireDie
   CONFIG.Dice.terms.g = VampireHungerDie
   CONFIG.Dice.terms.h = HunterDie
@@ -191,7 +192,7 @@ Hooks.on('getChatLogEntryContext', function (html, options) {
       // Only show this context menu if there are re-rollable dice in the message
       const rerollableDice = li.find('.rerollable').length
 
-      // All must be true to show the reroll dialogue
+      // All must be true to show the reroll dialog
       return (game.user.isGM || message.isAuthor) && (rerollableDice > 0)
     },
     callback: li => willpowerReroll(li)

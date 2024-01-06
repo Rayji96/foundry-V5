@@ -7,20 +7,17 @@
 @import url("./parts/resource-counters.css");
 @import url("./parts/dice.css");
 @import url("./parts/tray.css");
+@import url("./parts/dialog.css");
 @import url("./themes/dark-theme.css");
-@import url("./splats/hunter-sheet.css");
-@import url("./splats/werewolf-sheet.css");
+@import url("./splats/vampire-styling.css");
+@import url("./splats/hunter-styling.css");
+@import url("./splats/werewolf-styling.css");
 
 :root {
     --color-text-light-highlight: #f9f5ed;
     --color-text-light-heading: #f1ede6;
     --color-border-light-1: var(--color-border-dark-1);
     --color-border-light-2: var(--color-border-dark-2);
-    --color-text-hyperlink: #790813;	
-    --color-shadow-primary: #790813;
-    --color-shadow-highlight: #790813;
-    --color-border-highlight: #790813;
-    --color-border-highlight-alt: #790813;
 }
 
 @font-face {
@@ -30,28 +27,26 @@
     font-style: normal;
 }
 
-.window-app {
+.wod5e.window-app {
     font-family: Signika, sans-serif;
-    border: 4px double var(--color-shadow-highlight);
     background: #faf5ed;
     color: #000;
     border-radius: 0;
 }
 
-.window-app .window-content {
+.wod5e.window-app .window-content {
     background: #faf5ed;
 }
 
-.window-app .window-header {
-    border-bottom: 4px double var(--color-shadow-highlight);
+.wod5e.window-app .window-header {
     font-weight: 600;
 }
 
-.window-app .window-header .window-title {
+.wod5e.window-app .window-header .window-title {
     font-weight: 700;
 }
 
-.window-app .window-resizable-handle {
+.wod5e.window-app .window-resizable-handle {
     width: 20px;
     height: 20px;
     position: absolute;
@@ -59,13 +54,10 @@
     right: -1px;
     background: #f9f5ed;
     padding: 2px;
-    border-top: 3px double var(--color-shadow-highlight);
-    border-left: 3px double var(--color-shadow-highlight);
-    border-bottom: 1px solid var(--color-shadow-highlight);
-    border-radius: 0;
+    cursor: pointer;
 }
 
-.window-app .window-resizable-handle i.fas {
+.wod5e.window-app .window-resizable-handle i.fas {
     transform: translateY(-2px) scale(0.8) rotate(45deg);
     width: 15px;
     height: 10px;
@@ -74,14 +66,9 @@
     border-radius: 0;
 }
 
-.fa-arrows-alt-h::before,
+.wod5e.fa-arrows-alt-h::before,
 .fa-left-right::before {
     content: "\f337";
-    color: var(--color-shadow-highlight);
-}
-
-.item-image.power-rollable img {
-    box-shadow: inset 0 0 5px 0 red;
 }
 
 .wod5e .window-content {
@@ -90,17 +77,16 @@
     font-weight: 500;
 }
 
-.wod5e .profile-img,
-.wod5e .item-image img {
-    background: #790813;
-}
-
 .wod5e p {
     margin: 0.5em;
     word-break: break-word;
 }
 
-select {
+.wod5e .no-border {
+    border: 0 !important;
+}
+
+.wod5eselect {
     height: calc(var(--form-field-height) + 1px);
     background: rgb(0 0 0 / 5%);
     padding: 0 3px;
@@ -108,12 +94,11 @@ select {
     font-family: Vollkorn, serif;
     font-weight: 600;
     font-size: inherit;
-    border: 1px solid var(--color-shadow-highlight);
     border-radius: 0;
 }
 
-option,
-optgroup {
+.wod5e option,
+.wod5e optgroup {
     font-family: inherit;
     font-weight: inherit;
     background: inherit;
@@ -167,7 +152,6 @@ optgroup {
     min-height: 30px;
     line-height: 24px;
     padding: 3px 0;
-    border-bottom: 1px solid #790813;
 }
 
 .wod5e .window-content nav.sheet-tabs .item {
@@ -184,18 +168,15 @@ optgroup {
 .wod5e .window-content nav.sheet-tabs .item.active {
     background: #faf5ed;
     text-decoration: none;
-	border-bottom: 2px solid #790813;
 }
 
 .wod5e .resource .resource-control:hover,
 .wod5e .resource .resource-control:focus {
     color: #000;
-    text-shadow: 0 0 10px red;
     cursor: pointer;
 }
 
 .wod5e .actor-header .resource {
-    border: 1px solid #790813;
     border-radius: 2px;
     flex-grow: 1;
 }
@@ -312,7 +293,6 @@ optgroup {
     flex: 1;
     height: 100%;
     background: #f9f5ed;
-    border: 4px double #790813;
     border-radius: 0;
 }
 
@@ -322,8 +302,6 @@ optgroup {
 }
 
 .wod5e .window-content .sheet-body .tab > .resource-label {
-    color: #790813;
-    border-bottom: 1px solid #790813;
     width: 100%;
     display: block;
     text-transform: uppercase;
@@ -343,7 +321,6 @@ optgroup {
 }
 
 .wod5e .actor-header .profile-img-zone h1 {
-    color: #790813;
     font-family: cormorantlight, sans-serif;
     text-transform: uppercase;
     font-size: 20px;
@@ -408,8 +385,6 @@ optgroup {
     min-height: 30px;
     line-height: 24px;
     padding: 3px 0;
-    border-bottom: 1px solid #790813;
-    color: #790813;
 }
 
 .wod5e .items-list .item-header .header-level {
@@ -456,7 +431,6 @@ p .collapsible-content{
 .wod5e .collapsible:hover,
 .wod5e .collapsible:focus {
     color: #000;
-    text-shadow: 0 0 10px red;
     cursor: pointer;
 }
 
@@ -511,7 +485,6 @@ p .collapsible-content{
     font-family: Vollkorn, serif;
     margin: 0;
     font-weight: 600;
-    color: #77110c;
     text-align: center;
 }
 
@@ -533,7 +506,6 @@ p.roll-label.uppercase {
     position: absolute;
     font-size: 35px;
     font-weight: 700;
-    color: #e10406;
     margin-left: -38px;
     margin-top: 0;
     content: "⟳";
@@ -556,14 +528,12 @@ p.roll-label.uppercase {
 }
 
 .wod5e.vampire-sheet .sheet-banner, .wod5e.ghoul-sheet .sheet-banner, .wod5e.coterie-sheet .sheet-banner {
-    background: #790813;
     color: #CCC;
 }
 
 ::-webkit-scrollbar-thumb {
     outline: none;
     border-radius: 1px;
-    background: #790813;
     border: 1px solid #121212;
 }
 
@@ -628,7 +598,10 @@ h3.item-name.chat-portrait-text-size-name-generic {
 }
 
 .dice-tray {
-    background: url("/systems/vtm5e/assets/images/background-black-marble.jpg"),
-        #000;
+    background: url("/systems/vtm5e/assets/images/background-black-marble.jpg"), #000;
     border: 2px solid #000;
+}
+
+.locked button.lockable-button {
+    display: none;
 }

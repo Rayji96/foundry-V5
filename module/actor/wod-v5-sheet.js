@@ -4,6 +4,7 @@ import { rollDice } from './roll-dice.js'
 import { rollHunterDice } from './roll-hunter-dice.js'
 import { rollWerewolfDice } from './roll-werewolf-dice.js'
 import { rollBasicDice } from './roll-basic-dice.js'
+import { WOD5eDice } from '../scripts/system-rolls.js'
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -122,10 +123,6 @@ export class WoDActor extends ActorSheet {
 
     // Rollable abilities
     html.find('.rollable').click(this._onRoll.bind(this))
-    html.find('.rollable-with-mod').click(this._onRollWithMod.bind(this))
-    html.find('.vrollable').click(this._onRollDialog.bind(this))
-    html.find('.custom-rollable').click(this._onCustomVampireRoll.bind(this))
-    html.find('.specialty-rollable').click(this._onCustomVampireRoll.bind(this))
 
     // Lock button
     html.find('.lock-btn').click(this._onToggleLocked.bind(this))
@@ -214,7 +211,7 @@ export class WoDActor extends ActorSheet {
 
   _setupDotCounters (html) {
     html.find('.resource-value').each(function () {
-      const value = Number(this.dataset.value)
+      const value = parseInt(this.dataset.value)
       $(this).find('.resource-value-step').each(function (i) {
         if (i + 1 <= value) {
           $(this).addClass('active')
@@ -222,7 +219,7 @@ export class WoDActor extends ActorSheet {
       })
     })
     html.find('.resource-value-static').each(function () {
-      const value = Number(this.dataset.value)
+      const value = parseInt(this.dataset.value)
       $(this).find('.resource-value-static-step').each(function (i) {
         if (i + 1 <= value) {
           $(this).addClass('active')
@@ -238,9 +235,9 @@ export class WoDActor extends ActorSheet {
       const humanity = data.name === 'system.humanity'
       const despair = data.name === 'system.despair'
 
-      const fulls = Number(data[states['-']]) || 0
-      const halfs = Number(data[states['/']]) || 0
-      const crossed = Number(data[states.x]) || 0
+      const fulls = parseInt(data[states['-']]) || 0
+      const halfs = parseInt(data[states['/']]) || 0
+      const crossed = parseInt(data[states.x]) || 0
 
       let values
 
@@ -291,7 +288,7 @@ export class WoDActor extends ActorSheet {
     event.preventDefault()
     const element = event.currentTarget
     const dataset = element.dataset
-    const index = Number(dataset.index)
+    const index = parseInt(dataset.index)
     const parent = $(element.parentNode)
     const fieldStrings = parent[0].dataset.name
     const fields = fieldStrings.split('.')
@@ -340,7 +337,7 @@ export class WoDActor extends ActorSheet {
   _onSquareCounterChange (event) {
     event.preventDefault()
     const element = event.currentTarget
-    const index = Number(element.dataset.index)
+    const index = parseInt(element.dataset.index)
     const oldState = element.dataset.state || ''
     const parent = $(element.parentNode)
     const data = parent[0].dataset
@@ -349,9 +346,9 @@ export class WoDActor extends ActorSheet {
     const steps = parent.find('.resource-counter-step')
     const humanity = data.name === 'system.humanity'
     const despair = data.name === 'system.despair'
-    const fulls = Number(data[states['-']]) || 0
-    const halfs = Number(data[states['/']]) || 0
-    const crossed = Number(data[states.x]) || 0
+    const fulls = parseInt(data[states['-']]) || 0
+    const halfs = parseInt(data[states['/']]) || 0
+    const crossed = parseInt(data[states.x]) || 0
 
     if (index < 0 || index > steps.length) {
       return
@@ -367,20 +364,20 @@ export class WoDActor extends ActorSheet {
     steps[index].dataset.state = newState
 
     if ((oldState !== '' && oldState !== '-') || (oldState !== '' && humanity)) {
-      data[states[oldState]] = Number(data[states[oldState]]) - 1
+      data[states[oldState]] = parseInt(data[states[oldState]]) - 1
     }
 
     // If the step was removed we also need to subtract from the maximum.
     if (oldState !== '' && newState === '' && !humanity && !despair) {
-      data[states['-']] = Number(data[states['-']]) - 1
+      data[states['-']] = parseInt(data[states['-']]) - 1
     }
 
     if (newState !== '') {
-      data[states[newState]] = Number(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
+      data[states[newState]] = parseInt(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
     }
 
     const newValue = Object.values(states).reduce(function (obj, k) {
-      obj[k] = Number(data[k]) || 0
+      obj[k] = parseInt(data[k]) || 0
       return obj
     }, {})
 
@@ -489,247 +486,147 @@ export class WoDActor extends ActorSheet {
      * Handle clickable rolls activated through buttons
      * @param {Event} event   The originating click event
      * @private
-     */
+  */
   _onRoll (event) {
     event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
+
+    // Shortcut variables to call back on
+    const actor = this.actor
+    const dataset = event.currentTarget.dataset
+
+    // Variables to help us compile the roll data
     const subtractWillpower = dataset.subtractWillpower
-    const numDice = dataset.roll
-    const system = dataset.system
     const difficulty = dataset.difficulty
+    const title = dataset.label
+    const disableBasicDice = dataset.disableBasicDice
+    const disableAdvancedDice = dataset.disableAdvancedDice
+    const flavor = "Skill test."
+    const quickRoll = dataset.quickRoll
+    const rerollHunger = dataset.rerollHunger
+    const flatMod = parseInt(dataset.flatMod) || 0
+    const useAbsoluteValue = dataset.useAbsoluteValue
+    const absoluteValue = parseInt(dataset.absoluteValue) || 0
 
-    // Define what kind of dice is appropriate to use
-    if (system === 'vampire') {
-      // See if we need to reduce hunger on this roll
-      const increaseHunger = dataset.increaseHunger
-
-      // Define actor's hunger dice
-      const hungerDice = Math.min(this.actor.system.hunger.value, numDice, increaseHunger)
-
-      rollDice(numDice, this.actor, `${dataset.label}`, difficulty, hungerDice)
-    } else if (system === 'hunter') {
-      // Define actor's desparation dice
-      const desparationDice = dataset.desparationDice ? dataset.desparationDice : 0
-
-      rollHunterDice(numDice, this.actor, `${dataset.label}`, difficulty, desparationDice)
-    } else if (system === 'werewolf') {
-      // Define actor's rage dice
-      const rageDice = Math.max(this.actor.system.rage.value, 0)
-
-      rollWerewolfDice(numDice, this.actor, `${dataset.label}`, difficulty, rageDice)
+    // Get the number of basicDice and advancedDice
+    let basicDice
+    let advancedDice
+    if (disableBasicDice && useAbsoluteValue) {
+      // For when basic dice are disabled and we want the
+      // advanced dice to equal the absoluteValue given
+      advancedDice = absoluteValue
+      basicDice = 0
+    } else if (disableBasicDice) {
+      // If just the basicDice are disabled, set it to 0
+      // and retrieve the appropriate amount of advanced dice
+      basicDice = 0
+      advancedDice = disableAdvancedDice ? 0 : this.getAdvancedDice()
     } else {
-      rollBasicDice(numDice, this.actor, `${dataset.label}`, 0, subtractWillpower)
-    }
-  }
-
-  /**
-   * Handle clickable Vampire rolls.
-   * @param {Event} event   The originating click event
-   * @private
-   */
-  _onRollDialog (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const system = dataset.system
-    let options = ''
-
-    for (const [key, value] of Object.entries(this.actor.system.abilities)) {
-      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
-    }
-
-    // Hunter specific modifier to a roll
-    let despairBlock = ''
-    if (system === 'hunter') {
-      const despair = Object.values(this.actor.system.despair).toString()
-
-      if (despair === '0') {
-        despairBlock = `
-        <div class="form-group">
-          <label>${game.i18n.localize('WOD5E.DesperationDice')}</label>
-          <input type="text" min="0" id="desparationInput" value="0">
-        </div>
-        `
-      }
-    }
-
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectAbility')}</label>
-              <select id="abilitySelect">${options}</select>
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.Modifier')}</label>
-              <input type="text" id="inputMod" value="0">
-          </div>  
-          <div class="form-group">` +
-           // Hunter specific modifier to a roll
-           despairBlock +
-           `</div>
-           <div class="form-group">
-           <label>${game.i18n.localize('WOD5E.Difficulty')}</label>
-           <input type="text" min="0" id="inputDif" value="0">
-       </div>
-      </form>`
-
-    let buttons = {}
-    buttons = {
-      draw: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Roll'),
-        callback: async (html) => {
-          const ability = html.find('#abilitySelect')[0].value
-          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
-          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const abilityVal = this.actor.system.abilities[ability].value
-          const abilityName = game.i18n.localize(this.actor.system.abilities[ability].name)
-          const numDice = abilityVal + parseInt(dataset.roll) + modifier
-
-          // Define what kind of dice is appropriate to use
-          if (system === 'vampire') {
-            // Define actor's hunger dice
-            // 0 if the actor is a ghoul, current hunger value if otherwise
-            const hungerDice = this.actor.type === 'ghoul' ? 0 : Math.min(this.actor.system.hunger.value, numDice)
-
-            rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, hungerDice)
-          } else if (system === 'hunter') {
-            let desparationDice
-
-            // Define actor's desparation dice
-            if (this.actor.system.despair.value === 0) {
-              desparationDice = parseInt(html.find('#desparationInput')[0].value || 0)
-            }
-
-            rollHunterDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, desparationDice)
-          } else if (system === 'werewolf') {
-            // Define actor's rage dice
-            const rageDice = Math.max(this.actor.system.rage.value, 0)
-
-            rollWerewolfDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty, rageDice)
-          } else {
-            rollDice(numDice, this.actor, `${dataset.label} + ${abilityName}`, difficulty)
-          }
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
-      }
-    }
-
-    new Dialog({
-      title: game.i18n.localize('WOD5E.Rolling') + ` ${dataset.label}...`,
-      content: template,
-      buttons,
-      default: 'draw'
-    }).render(true)
-  }
-
-  _onCustomVampireRoll (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const system = dataset.system
-    const difficulty = 0
-    dataset.label = dataset.name
-
-    if (dataset.dice1 === '') {
-      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
-      dataset.roll = dice2 + 1 // specialty modifier
-
-      this._onRollDialog(event)
-    } else {
-      const dice1 = this.actor.system.abilities[dataset.dice1.toLowerCase()].value
-      const dice2 = this.actor.system.skills[dataset.dice2.toLowerCase()].value
-      const dicePool = dice1 + dice2
-
-      // Define what kind of dice is appropriate to use
-      if (system === 'vampire') {
-        // Define actor's hunger dice
-        const hungerDice = Math.min(this.actor.system.hunger.value, dicePool)
-
-        rollDice(dicePool, this.actor, dataset.label, difficulty, hungerDice)
-      } else if (system === 'hunter') {
-        const desparationDice = dataset.desparationDice
-
-        rollHunterDice(dicePool, this.actor, dataset.label, difficulty, desparationDice)
-      } else if (system === 'werewolf') {
-        // Define actor's rage dice
-        const rageDice = Math.max(this.actor.system.rage.value, 0)
-
-        rollWerewolfDice(dicePool, this.actor, dataset.label, difficulty, rageDice)
+      // Calculate basicDice based on different conditions
+      if (useAbsoluteValue) {
+        // If basic dice aren't disabled, but we use the absolute
+        // value, add the absoluteValue and the flatMod together
+        basicDice = absoluteValue + flatMod
       } else {
-        rollDice(dicePool, this.actor, dataset.label, difficulty)
+        // All other, more normal, circumstances where basicDice
+        // are calculated normally
+        basicDice = this.getBasicDice(dataset.valuePaths, flatMod)
+      }
+    
+      // Retrieve the appropriate amount of advanced dice
+      advancedDice = disableAdvancedDice ? 0 : this.getAdvancedDice()
+    }
+
+    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
+    const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+    const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+
+    // Some quick modifications to vampire and werewolf rolls
+    // in order to properly display the dice in the dialog window
+    if (!disableBasicDice) {
+      if(system === 'vampire') {
+        // Ensure that the number of hunger dice doesn't exceed the
+        // total number of dice, unless it's a rouse check that needs
+        // rerolls, which requires twice the number of normal hunger
+        // dice and only the highest will be kept
+        advancedDice = rerollHunger ? advancedDice * 2 : Math.min(basicDice, advancedDice)
+      
+        // Calculate the number of normal dice to roll by subtracting
+        // the number of hunger dice from them, minimum zero
+        basicDice = Math.max(basicDice - advancedDice, 0)
+      } else if(system === 'werewolf') {
+        // Ensure that the number of rage dice doesn't exceed the
+        // total number of dice
+        advancedDice = Math.min(basicDice, advancedDice)
+      
+        // Calculate the number of normal dice to roll by subtracting
+        // the number of rage dice from them, minimum zero
+        basicDice = Math.max(basicDice - advancedDice, 0)
       }
     }
+
+    WOD5eDice.Roll({
+      basicDice,
+      advancedDice,
+      actor,
+      data: actor.system,
+      title,
+      disableBasicDice,
+      disableAdvancedDice,
+      subtractWillpower,
+      difficulty,
+      flavor,
+      quickRoll,
+      rerollHunger
+    })
   }
 
-  _onRollWithMod (event) {
-    event.preventDefault()
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const increaseHunger = dataset.increaseHunger
-    const consumeRage = dataset.consumeRage
-    const subtractWillpower = dataset.subtractWillpower
-    const system = dataset.system
+  // Function to grab the values of any given paths and add them up as the total number of basic dice for the roll
+  getBasicDice (valuePaths, flatMod) {
+    const actorData = this.actor.system
+    const valueArray = valuePaths.split(' ')
+    let total = parseInt(flatMod) || 0 // Start with any flat modifiers
 
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.Modifier')}</label>
-              <input type="text" id="inputMod" value="0">
-          </div>  
-          <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.Difficulty')}</label>
-              <input type="text" min="0" id="inputDif" value="0">
-          </div>
-      </form>`
+    // Look up the path and grab the value
+    for (let path of valueArray) {
+      const properties = path.split('.')
+  
+      let pathValue = actorData
+      for (let prop of properties) {
+        pathValue = pathValue[prop]
 
-    let buttons = {}
-    buttons = {
-      draw: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Roll'),
-        callback: async (html) => {
-          const modifier = parseInt(html.find('#inputMod')[0].value || 0)
-          const difficulty = parseInt(html.find('#inputDif')[0].value || 0)
-          const numDice = parseInt(dataset.roll) + modifier
-
-          // Define what kind of dice is appropriate to use
-          if (system === 'vampire') {
-            // Define actor's hunger dice
-            const hungerDice = Math.min(this.actor.system.hunger.value, numDice)
-
-            rollDice(numDice, this.actor, dataset.label, difficulty, hungerDice, increaseHunger, subtractWillpower)
-          } else if (system === 'hunter') {
-            // Define actor's desparation dice
-            const desparationDice = parseInt(html.find('#desparationInput')[0].value || 0)
-
-            rollHunterDice(numDice, this.actor, dataset.label, difficulty, desparationDice)
-          } else if (system === 'werewolf') {
-            // Define actor's rage dice
-            const rageDice = Math.max(this.actor.system.rage.value, 0)
-
-            rollWerewolfDice(numDice, this.actor, dataset.label, difficulty, rageDice, subtractWillpower, consumeRage)
-          } else {
-            rollDice(numDice, this.actor, dataset.label, difficulty)
-          }
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
+        if (pathValue === undefined) break // Break the loop if property is not found
       }
+      
+      // Add the value from the path to the total; if the value isn't a number, just default to 0
+      total += typeof pathValue === 'number' ? pathValue : 0
     }
 
-    new Dialog({
-      title: `${dataset.label}`,
-      content: template,
-      buttons,
-      default: 'draw'
-    }).render(true)
+    return total
+  }
+
+  // Function to construct what the advanced dice of the actor's roll should be and total to
+  getAdvancedDice () {
+    const actorData = this.actor.system
+    
+    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
+    const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+    const system = systemsList.indexOf(actorData.gamesystem) > -1 ? actorData.gamesystem : 'mortal'
+
+    if (system === "vampire") {
+      // Define actor's hunger dice, ensuring it can't go below 0
+      const hungerDice = Math.max(actorData.hunger.value, 0)
+
+      return hungerDice
+    } else if (system === "werewolf") {
+      // Define actor's rage dice, ensuring it can't go below 0
+      const rageDice = Math.max(actorData.rage.value, 0)
+
+      return rageDice
+    } else {
+      // Hunters will handle their Desperation dice in the roll dialog
+      // Mortals don't need this
+      return 0
+    }
   }
 
   _onHealthChange () {
