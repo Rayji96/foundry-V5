@@ -1,7 +1,6 @@
 /* global game, mergeObject, renderTemplate, ChatMessage, Dialog */
 
 import { WoDActor } from './wod-v5-sheet.js'
-import { rollWerewolfDice } from './roll-werewolf-dice.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -121,9 +120,6 @@ export class WerewolfActorSheet extends WoDActor {
     html.find('.begin-frenzy').click(this._onBeginFrenzy.bind(this))
     html.find('.end-frenzy').click(this._onEndFrenzy.bind(this))
 
-    // Rage buttons
-    html.find('.rage-roll').click(this._onRageButton.bind(this))
-
     // Form change buttons
     html.find('.change-form').click(this._onShiftForm.bind(this))
 
@@ -186,7 +182,7 @@ export class WerewolfActorSheet extends WoDActor {
     }
 
     const dicePool = dice1 + dice2
-    rollWerewolfDice(dicePool, this.actor, `${item.name}`, 0, rageDice)
+    //rollWerewolfDice(dicePool, this.actor, `${item.name}`, 0, rageDice)
   }
 
   _onRageButton (event) {
@@ -194,7 +190,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     const element = event.currentTarget
     const dataset = element.dataset
-    const subtractWillpower = dataset.subtractWillpower
+    const damageWillpower = dataset.damageWillpower
     const rageDice = dataset.rageDice
     let consumeRage = dataset.consumeRage
 
@@ -203,7 +199,7 @@ export class WerewolfActorSheet extends WoDActor {
       consumeRage = false
     }
 
-    rollWerewolfDice(rageDice, this.actor, dataset.label, 0, rageDice, subtractWillpower, consumeRage)
+    //rollWerewolfDice(rageDice, this.actor, dataset.label, 0, rageDice, damageWillpower, consumeRage)
   }
 
   /**
@@ -347,7 +343,7 @@ export class WerewolfActorSheet extends WoDActor {
             this._onInsufficientRage('glabro')
           } else {
             // Roll the number of dice required to shift (1 for Glabro)
-            rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+            //rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
           }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue
@@ -366,7 +362,7 @@ export class WerewolfActorSheet extends WoDActor {
             this._onInsufficientRage('crinos')
           } else {
             // Roll the number of dice required to shift (2 for Crinos)
-            rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
+            //rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
           }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue
@@ -385,7 +381,7 @@ export class WerewolfActorSheet extends WoDActor {
             this._onInsufficientRage('hispo')
           } else {
             // Roll the number of dice required to shift (1 for hispo)
-            rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
+            //rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
           }
         }).then((newRageDice) => {
           // If the rage dice didn't reduce the actor's rage to 0, then continue

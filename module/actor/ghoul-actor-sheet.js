@@ -1,7 +1,7 @@
 /* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
+import { WOD5eDice } from '../scripts/system-rolls.js'
 import { MortalActorSheet } from './mortal-actor-sheet.js'
-import { rollDice } from './roll-dice.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -146,21 +146,6 @@ export class GhoulActorSheet extends MortalActorSheet {
       })
     })
 
-    // Roll a general rouse check
-    html.find('.rouse-check').click(event => {
-      event.preventDefault()
-      const element = event.currentTarget
-      const dataset = element.dataset
-      const numDice = dataset.roll
-      const difficulty = dataset.difficulty
-
-      // See if we need to reduce hunger on this roll
-      const increaseHunger = dataset.increaseHunger
-
-      // Roll the rouse check
-      rollDice(numDice, this.actor, `${dataset.label}`, difficulty, numDice, increaseHunger)
-    })
-
     // Roll a rouse check for an item
     html.find('.item-rouse').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
@@ -173,7 +158,13 @@ export class GhoulActorSheet extends MortalActorSheet {
         const potency = this.actor.type === 'vampire' ? this.actor.system.blood.potency : 0
         const rouseRerolls = this.potencyToRouse(potency, level)
 
-        rollDice(cost, this.actor, game.i18n.localize('WOD5E.RousingBlood'), 0, cost, true, false, rouseRerolls)
+        WOD5eDice.Roll({
+          advancedDice: cost,
+          title: game.i18n.localize('WOD5E.RousingBlood'),
+          actor: this.actor,
+          disableBasicDice: true,
+          rerollHunger: rouseRerolls
+        })
       } else if (this.actor.type === 'ghoul' && level > 1) {
         // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
         const actorHealth = this.actor.system.health
@@ -271,7 +262,14 @@ export class GhoulActorSheet extends MortalActorSheet {
     }
 
     const dicePool = dice1 + dice2
-    rollDice(dicePool, this.actor, `${item.name}`, 0, hunger)
+
+    WOD5eDice.Roll({
+      basicDice: Math.max(dicePool - hunger, 0),
+      advancedDice: Math.min(dicePool, hunger),
+      title: item.name,
+      actor: this.actor,
+      data: item.system
+    })
   }
 
   potencyToRouse (potency, level) {

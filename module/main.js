@@ -7,9 +7,6 @@ import { ActorInfo } from './actor/actor.js'
 import { ItemInfo } from './item/item.js'
 import { WoDItemSheet } from './item/item-sheet.js'
 import { MortalDie, VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/splat-dice.js'
-import { rollDice } from './actor/roll-dice.js'
-import { rollHunterDice } from './actor/roll-hunter-dice.js'
-import { rollWerewolfDice } from './actor/roll-werewolf-dice.js'
 import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
 import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
@@ -18,19 +15,10 @@ import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
 import { CellActorSheet } from './actor/cell-actor-sheet.js'
 import { SPCActorSheet } from './actor/spc-actor-sheet.js'
 import { WerewolfActorSheet } from './actor/werewolf-actor-sheet.js'
-import {
-  prepareSearchableSelection,
-  prepareRouseShortcut,
-  prepareWillpowerShortcut,
-  prepareFrenzyShortcut,
-  prepareHumanityShortcut,
-  watchPool1Filters,
-  watchPool2Filters,
-  prepareCustomRollButton
-} from './dice/dicebox.js'
 import { loadDiceSoNice } from './dice/dice-so-nice.js'
 import { loadHelpers } from './helpers.js'
 import { loadSettings } from './settings.js'
+import { WOD5eDice } from './scripts/system-rolls.js'
 
 const OWNED_PERMISSION = 3
 
@@ -125,55 +113,6 @@ Hooks.once('ready', async function () {
 
 Hooks.once('diceSoNiceReady', (dice3d) => {
   loadDiceSoNice(dice3d)
-})
-
-/* -------------------------------------------- */
-/*  Add chat dicebox                            */
-/* -------------------------------------------- */
-Hooks.on('renderSidebarTab', (app, html) => {
-  if (!game.settings.get('vtm5e', 'useChatRoller')) {
-    return
-  }
-
-  const $chatForm = html.find('#chat-form')
-  const template = 'systems/vtm5e/templates/ui/tray.html'
-  const ownedCharacters = Array.from(game.actors)
-    .filter((c) => c.permission === OWNED_PERMISSION)
-  const options = {
-    characters: ownedCharacters,
-    selectedCharacter: ownedCharacters[0],
-    pool1Type: 'abilities',
-    pool1: null,
-    pool2Type: 'skills',
-    pool2: null,
-    updateDiceTray: (options) => {
-      renderTemplate(template, options).then((c) => {
-        if (c.length > 0) {
-          const $content = $(c)
-          html.find('.dice-tray').remove()
-          $chatForm.after($content)
-
-          prepareSearchableSelection('selectedCharacter', $content, options, (event) => game.actors.get(event.target.value))
-
-          prepareSearchableSelection('pool1', $content, options, (event) => event.target.value)
-          options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find('#pool1 option').attr('value')
-          prepareSearchableSelection('pool2', $content, options, (event) => event.target.value)
-          options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find('#pool2 option').attr('value')
-
-          watchPool1Filters($content, options)
-          watchPool2Filters($content, options)
-
-          prepareCustomRollButton($content, options)
-
-          prepareRouseShortcut($content, options)
-          prepareWillpowerShortcut($content, options)
-          prepareFrenzyShortcut($content, options)
-          prepareHumanityShortcut($content, options)
-        }
-      })
-    }
-  }
-  options.updateDiceTray(options)
 })
 
 /* -------------------------------------------- */
@@ -285,13 +224,14 @@ function rerollDie (roll) {
 
   // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
   if ((diceSelected > 0) && (diceSelected < 4)) {
-    if (charactertype === 'hunter') { // Hunter-specific dice
-      rollHunterDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, true)
-    } else if (charactertype === 'werewolf') { // Werewolf-specific dice
-      rollWerewolfDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, rageDiceSelected, true)
-    } else { // Everything else
-      rollDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, false, true)
-    }
+    WOD5eDice.Roll({
+      basicDice: diceSelected,
+      advancedDice: rageDiceSelected,
+      label: game.i18n.localize('WOD5E.WillpowerReroll'),
+      speaker,
+      damageWillpower: true,
+      quickRoll: true
+    })
   }
 }
 

@@ -66,8 +66,8 @@
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rage check, if applicable -->
                                 {{#if item.system.rage}}
-                                    <a class="item-control rage-roll" title="{{localize 'WOD5E.RollRage'}}" data-rage-dice="{{item.system.cost}}"
-                                        data-consume-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
+                                    <a class="item-control rollable" title="{{localize 'WOD5E.RollRage'}}" data-disable-basic-dice="true" data-use-absolute-value="true"
+                                        data-absolute-value="{{item.system.cost}}" data-decrease-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
                                         <i class="fas fa-dice-d20"></i>
                                     </a>
                                 {{/if}}
@@ -129,8 +129,8 @@
                     <div class="item-controls">
                         <!-- Icon to roll the power's rage check, if applicable -->
                         {{#if item.system.rage}}
-                            <a class="item-control rage-roll" title="{{localize 'WOD5E.RollRage'}}" data-rage-dice="{{item.system.cost}}"
-                                data-consume-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
+                            <a class="item-control rollable" title="{{localize 'WOD5E.RollRage'}}" data-disable-basic-dice="true" data-use-absolute-value="true"
+                                data-absolute-value="{{item.system.cost}}" data-decrease-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
                                 <i class="fas fa-dice-d20"></i>
                             </a>
                         {{/if}}

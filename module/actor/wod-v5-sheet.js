@@ -1,9 +1,5 @@
 /* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor */
 
-import { rollDice } from './roll-dice.js'
-import { rollHunterDice } from './roll-hunter-dice.js'
-import { rollWerewolfDice } from './roll-werewolf-dice.js'
-import { rollBasicDice } from './roll-basic-dice.js'
 import { WOD5eDice } from '../scripts/system-rolls.js'
 
 /**
@@ -495,7 +491,7 @@ export class WoDActor extends ActorSheet {
     const dataset = event.currentTarget.dataset
 
     // Variables to help us compile the roll data
-    const subtractWillpower = dataset.subtractWillpower
+    const damageWillpower = dataset.damageWillpower
     const difficulty = dataset.difficulty
     const title = dataset.label
     const disableBasicDice = dataset.disableBasicDice
@@ -506,6 +502,8 @@ export class WoDActor extends ActorSheet {
     const flatMod = parseInt(dataset.flatMod) || 0
     const useAbsoluteValue = dataset.useAbsoluteValue
     const absoluteValue = parseInt(dataset.absoluteValue) || 0
+    const increaseHunger = dataset.increaseHunger
+    const decreaseRage = dataset.decreaseRage
 
     // Get the number of basicDice and advancedDice
     let basicDice
@@ -572,11 +570,13 @@ export class WoDActor extends ActorSheet {
       title,
       disableBasicDice,
       disableAdvancedDice,
-      subtractWillpower,
+      damageWillpower,
       difficulty,
       flavor,
       quickRoll,
-      rerollHunger
+      rerollHunger,
+      increaseHunger,
+      decreaseRage
     })
   }
 

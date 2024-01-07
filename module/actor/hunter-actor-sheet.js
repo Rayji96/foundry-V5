@@ -1,8 +1,8 @@
 /* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
 // Export this function to be used in other scripts
+import { WOD5eDice } from '../scripts/system-rolls.js'
 import { CellActorSheet } from './cell-actor-sheet.js'
-import { rollHunterDice } from './roll-hunter-dice.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -248,6 +248,12 @@ export class HunterActorSheet extends CellActorSheet {
     }
 
     const dicePool = dice1 + dice2
-    rollHunterDice(dicePool, this.actor, `${item.name}`, 0)
+
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      actor: this.actor,
+      data: item.system,
+      title: item.name
+    })
   }
 }

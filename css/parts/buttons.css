@@ -16,8 +16,6 @@ button:focus {
 
 .rollable:hover,
 .rollable:focus,
-.rouse-check:hover,
-.rouse-check:focus,
 .power-rollable:hover,
 .power-rollable:focus,
 .edge-rollable:hover,
@@ -28,8 +26,7 @@ button:focus {
     cursor: pointer;
 }
 
-.wod5e button.rollable,
-.wod5e button.rouse-check {
+.wod5e button.rollable {
     color: #fff;
     font-family: cormorantLight, serif;
     font-weight: 700;
