@@ -1,5 +1,6 @@
 /* global game, mergeObject, renderTemplate, ChatMessage, Dialog */
 
+import { WOD5eDice } from '../scripts/system-rolls.js'
 import { WoDActor } from './wod-v5-sheet.js'
 
 /**
@@ -129,9 +130,6 @@ export class WerewolfActorSheet extends WoDActor {
     // Form edit buttons
     html.find('.were-form-edit').click(this._onFormEdit.bind(this))
 
-    // Rollable gift buttons
-    html.find('.gift-rollable').click(this._onGiftRoll.bind(this))
-
     // Create a new Gift
     html.find('.gift-create').click(this._onCreateGift.bind(this))
 
@@ -182,24 +180,14 @@ export class WerewolfActorSheet extends WoDActor {
     }
 
     const dicePool = dice1 + dice2
-    //rollWerewolfDice(dicePool, this.actor, `${item.name}`, 0, rageDice)
-  }
 
-  _onRageButton (event) {
-    event.preventDefault()
-
-    const element = event.currentTarget
-    const dataset = element.dataset
-    const damageWillpower = dataset.damageWillpower
-    const rageDice = dataset.rageDice
-    let consumeRage = dataset.consumeRage
-
-    // If automated rage is disabled, set the consumeRage value to false no matter what
-    if (!game.settings.get('vtm5e', 'automatedRage')) {
-      consumeRage = false
-    }
-
-    //rollWerewolfDice(rageDice, this.actor, dataset.label, 0, rageDice, damageWillpower, consumeRage)
+    WOD5eDice.Roll({
+      basicDice: Math.max(dicePool - rageDice, 0),
+      advancedDice: Math.min(dicePool, rageDice),
+      title: item.name,
+      actor: this.actor,
+      data: item.system
+    })
   }
 
   /**
@@ -320,83 +308,59 @@ export class WerewolfActorSheet extends WoDActor {
     this.actor.update({ 'system.frenzyActive': false })
   }
 
-  // Handle form changes
-  _onShiftForm (event) {
+  // Switch function to direct data to form change functions
+  _onShiftForm(event) {
     event.preventDefault()
-
     const element = event.currentTarget
     const dataset = element.dataset
     const newForm = dataset.newForm
-
-    // Switch statement to make it easy to see which form does what.
+  
     switch (newForm) {
       case 'homid':
         this.actor.update({ 'system.activeForm': 'homid' })
-
         break
       case 'glabro':
-        // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        new Promise((resolve) => {
-          // If rage dice is being consumed but the system has no rage, warn
-          // them unless automatedRage is disabled.
-          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
-            this._onInsufficientRage('glabro')
-          } else {
-            // Roll the number of dice required to shift (1 for Glabro)
-            //rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
-          }
-        }).then((newRageDice) => {
-          // If the rage dice didn't reduce the actor's rage to 0, then continue
-          if (newRageDice > 0) {
-            this.actor.update({ 'system.activeForm': 'glabro' })
-          }
-        })
-
+        this.handleFormChange('glabro', 1)
         break
       case 'crinos':
-        // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        new Promise((resolve) => {
-          // If rage dice is being consumed but the system has no rage, warn
-          // them unless automatedRage is disabled.
-          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
-            this._onInsufficientRage('crinos')
-          } else {
-            // Roll the number of dice required to shift (2 for Crinos)
-            //rollWerewolfDice(2, this.actor, newForm, 0, 2, false, true, resolve)
-          }
-        }).then((newRageDice) => {
-          // If the rage dice didn't reduce the actor's rage to 0, then continue
-          if (newRageDice > 0) {
-            this.actor.update({ 'system.activeForm': 'crinos' })
-          }
-        })
-
+        this.handleFormChange('crinos', 2)
         break
       case 'hispo':
-        // Make a quick promise to wait for the roll's outcome before we try swapping forms
-        new Promise((resolve) => {
-          // If rage dice is being consumed but the system has no rage, warn
-          // them unless automatedRage is disabled.
-          if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
-            this._onInsufficientRage('hispo')
-          } else {
-            // Roll the number of dice required to shift (1 for hispo)
-            //rollWerewolfDice(1, this.actor, newForm, 0, 1, false, true, resolve)
-          }
-        }).then((newRageDice) => {
-          // If the rage dice didn't reduce the actor's rage to 0, then continue
-          if (newRageDice > 0) {
-            this.actor.update({ 'system.activeForm': 'hispo' })
-          }
-        })
-
+        this.handleFormChange('hispo', 1)
         break
       case 'lupus':
         this.actor.update({ 'system.activeForm': 'lupus' })
-
         break
       default:
         this.actor.update({ 'system.activeForm': 'homid' })
+    }
+  }
+  
+  // Function to handle rolling the dice and updating the actor
+  handleFormChange(form, diceCount) {
+    // If automatedRage is turned on and the actor's rage is 0, present a warning
+    if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
+      this._onInsufficientRage(form)
+    } else {
+      // Roll the rage dice necessary
+      WOD5eDice.Roll({
+        advancedDice: diceCount,
+        title: form,
+        actor: this.actor,
+        data: this.actor.system,
+        quickRoll: true,
+        disableBasicDice: true,
+        decreaseRage: true,
+        callback: (rollData) => {
+          const failures = rollData.terms[2].results.filter(result => !result.success).length
+          const newRageAmount = Math.max(this.actor.system.rage.value - failures, 0)
+          
+          // If rolling rage dice didn't reduce the actor to 0 rage, then update the current form
+          if (newRageAmount > 0) {
+            this.actor.update({ 'system.activeForm': form })
+          }
+        }
+      })
     }
   }
 

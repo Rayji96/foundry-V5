@@ -1,9 +1,9 @@
 /* global ChatMessage, renderTemplate */
 
-export async function _increaseHunger (actor) {
+export async function _increaseHunger (actor, amount) {
   // Automatically add hunger to the actor on a failure (for rouse checks)
   const currentHunger = actor.system.hunger.value
-  const newHungerAmount = Math.min(currentHunger + 1, 5)
+  const newHungerAmount = Math.min(currentHunger + amount, 5)
 
   // If the roll would push the actor's hunger above 4 when their hunger was previously
   // below 5, send a message in the chat to warn them.

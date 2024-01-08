@@ -71,7 +71,10 @@ class WOD5eDice {
       })
 
       // Handle failures for werewolves and vampires
-      handleFailure(system, roll.terms[2].results)
+      await handleFailure(system, roll.terms[2].results)
+
+      // Send the results of the roll back to any functions that need it
+      if (callback) callback(roll)
 
       // Construct the proper message content from the generateRollMessage function
       const content = await generateRollMessage({
@@ -91,6 +94,7 @@ class WOD5eDice {
           rollMode: $form ? $form.find("[name=rollMode]").val() : rollMode
         }
       )
+
       return roll
     }
 
@@ -144,7 +148,6 @@ class WOD5eDice {
             },
             default: game.i18n.localize("WOD5E.Roll"),
             close: html => {
-              if (callback) callback(html, rollFormula, data)
               if (damageWillpower && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor)
               resolve(roll)
             }
@@ -160,15 +163,15 @@ class WOD5eDice {
 
     // Function to help with handling additional functions as a result
     // of failures
-    function handleFailure(system, diceResults) {
-      if (system === 'vampire') {
-        diceResults.forEach((dice) => {
-          if (!dice.success && increaseHunger && game.settings.get('vtm5e', 'automatedRouse')) _increaseHunger(actor)
-        })
-      } else if (system === 'werewolf') {
-        diceResults.forEach((dice) => {
-          if (!dice.success && decreaseRage && game.settings.get('vtm5e', 'automatedRage')) _decreaseRage(actor)
-        })
+    async function handleFailure(system, diceResults) {
+      const failures = diceResults.filter(result => result.success === false).length
+
+      if (failures > 0) {
+        if (system === 'vampire' && increaseHunger && game.settings.get('vtm5e', 'automatedRouse')) {
+          _increaseHunger(actor, failures)
+        } else if (system === 'werewolf' && decreaseRage && game.settings.get('vtm5e', 'automatedRage')) {
+          _decreaseRage(actor, failures)
+        }
       }
     }
   }

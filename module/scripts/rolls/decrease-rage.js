@@ -1,9 +1,9 @@
 /* global ChatMessage, renderTemplate */
 
-export async function _decreaseRage (actor) {
+export async function _decreaseRage (actor, amount) {
   // Reduce rage for each failure on a rage dice if this is a power that consumes it
   const currentRage = actor.system.rage.value
-  const newRageAmount = Math.max(currentRage - 1, 0)
+  const newRageAmount = Math.max(currentRage - amount, 0)
 
   if (newRageAmount === 0 && currentRage > 0) {
     const chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>
