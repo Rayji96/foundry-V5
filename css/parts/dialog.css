@@ -42,3 +42,13 @@
   flex-direction: row;
   flex-grow: 0;
 }
+
+.wod5e .dialog-contents .dialog-control {
+  margin-top: 5px;
+}
+
+.wod5e .dialog-contents .dialog-control:hover,
+.wod5e .dialog-contents .dialog-control:focus {
+    color: #000;
+    cursor: pointer;
+}

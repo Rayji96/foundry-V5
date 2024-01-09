@@ -141,6 +141,9 @@ export class SPCActorSheet extends CoterieActorSheet {
       content: template,
       buttons,
       default: 'draw'
+    },
+    {
+      classes: ['wod5e', `mortal-dialog`, `mortal-sheet`]
     }).render(true)
   }
 
@@ -185,6 +188,9 @@ export class SPCActorSheet extends CoterieActorSheet {
       content: template,
       buttons,
       default: 'draw'
+    },
+    {
+      classes: ['wod5e', `vampire-dialog`, `vampire-sheet`]
     }).render(true)
   }
 }

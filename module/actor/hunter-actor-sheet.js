@@ -224,6 +224,9 @@ export class HunterActorSheet extends CellActorSheet {
       content: template,
       buttons,
       default: 'draw'
+    },
+    {
+      classes: ['wod5e', `hunter-dialog`, `hunter-sheet`]
     }).render(true)
   }
 
