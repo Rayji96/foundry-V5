@@ -398,6 +398,9 @@ export class WerewolfActorSheet extends WoDActor {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       content: chatMessage
     })
+
+    // Remove focus once the chat message is posted
+    event.currentTarget.blur()
   }
 
   // Handle editing an actor's form.
@@ -420,7 +423,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     let buttons = {}
     buttons = {
-      draw: {
+      submit: {
         icon: '<i class="fas fa-check"></i>',
         label: game.i18n.localize('WOD5E.Submit'),
         callback: async (html) => {
@@ -439,7 +442,7 @@ export class WerewolfActorSheet extends WoDActor {
       title: game.i18n.localize('WOD5E.Edit') + ' ' + game.i18n.localize(formName),
       content: template,
       buttons,
-      default: 'draw'
+      default: 'submit'
     },
     {
       classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]

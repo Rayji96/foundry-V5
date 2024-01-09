@@ -146,7 +146,7 @@ class WOD5eDice {
                 label: game.i18n.localize('WOD5E.Cancel')
               }
             },
-            default: game.i18n.localize("WOD5E.Roll"),
+            default: 'roll',
             close: html => {
               if (damageWillpower && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor)
               resolve(roll)
