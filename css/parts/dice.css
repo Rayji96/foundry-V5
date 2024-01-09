@@ -1,14 +1,17 @@
 .roll-img {
   max-width: 40px;
   margin: 2px;
-  background: rgb(20 20 20);
   border-radius: 4px;
-  border-color: rgb(200 200 200);
+}
+
+.roll-img.mortal-dice {
+  background: rgb(20 20 20);
+  border-color: rgb(15 55 5);
 }
 
 .roll-img.vampire-dice {
-  background: rgb(230 255 230 / 50%);
-  border-color: rgb(15 55 5);
+  background: rgb(20 20 20);
+  border-color: rgb(200 200 200);
 }
 
 .roll-img.hunger-dice {
@@ -24,7 +27,7 @@
 .roll-img.hunger-dice.rerolled {
   background: #7b7b7b80;
   border-color: #d3d3d3;
-    filter: invert(1);
+  filter: invert(1);
 }
 
 .roll-img.desperation-dice {

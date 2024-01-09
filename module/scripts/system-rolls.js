@@ -71,7 +71,7 @@ class WOD5eDice {
       })
 
       // Handle failures for werewolves and vampires
-      await handleFailure(system, roll.terms[2].results)
+      if (roll.terms[2]) await handleFailure(system, roll.terms[2].results)
 
       // Send the results of the roll back to any functions that need it
       if (callback) callback(roll)
@@ -104,7 +104,7 @@ class WOD5eDice {
       let situationalModifiers = []
 
       // Roll dialog template
-      const template = `systems/vtm5e/templates/ui/${system}-roll-dialog.html`
+      const dialogTemplate = `systems/vtm5e/templates/ui/${system}-roll-dialog.html`
       // Data that the dialog template needs
       const dialogData = {
         system,
@@ -118,7 +118,7 @@ class WOD5eDice {
         situationalModifiers
       }
       // Render the dialog
-      const content = await renderTemplate(template, dialogData)
+      const content = await renderTemplate(dialogTemplate, dialogData)
 
       // Promise to handle the roll after the dialog window is closed
       // as well as any callbacks or other functions with the roll

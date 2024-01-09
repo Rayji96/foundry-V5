@@ -71,11 +71,14 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/ui/mortal-roll-dialog.html',
     'systems/vtm5e/templates/ui/vampire-roll-dialog.html',
     'systems/vtm5e/templates/ui/werewolf-roll-dialog.html',
-    'systems/vtm5e/templates/ui/hunter-roll-dialog.html'
+    'systems/vtm5e/templates/ui/hunter-roll-dialog.html',
+
+    // Chat Message Partials
+    'systems/vtm5e/templates/chat/roll-message.html',
+    'systems/vtm5e/templates/chat/willpower-reroll.html'
   ]
 
   /* Load the template parts
-     That function is part of foundry, not founding it here is normal
   */
   return loadTemplates(templatePaths) // eslint-disable-line no-undef
 }
