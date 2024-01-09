@@ -18,8 +18,10 @@
       {{/ifeq}}
       <div class="resource-content">
         <hr/>
+        {{#if form.description}}
         <p class="flex-center">{{form.description}}</p>
         <hr>
+        {{/if}}
         <ul class="form-abilities">
           {{#each form.abilities as |ability|}}
           <li>{{ability}}</li>

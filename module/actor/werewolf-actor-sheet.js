@@ -161,6 +161,7 @@ export class WerewolfActorSheet extends WoDActor {
 
   _onGiftRoll (event) {
     event.preventDefault()
+
     const element = event.currentTarget
     const dataset = element.dataset
     const item = this.actor.items.get(dataset.id)
@@ -266,6 +267,9 @@ export class WerewolfActorSheet extends WoDActor {
         content: template,
         buttons,
         default: 'draw'
+      },
+      {
+        classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]
       }).render(true)
     }
   }
@@ -297,6 +301,7 @@ export class WerewolfActorSheet extends WoDActor {
   // Handle when an actor goes into a frenzy
   _onBeginFrenzy (event) {
     event.preventDefault()
+
     this.actor.update({ 'system.frenzyActive': true })
 
     this.actor.update({ 'system.rage.value': 5 })
@@ -305,12 +310,14 @@ export class WerewolfActorSheet extends WoDActor {
   // Handle when an actor ends their frenzy
   _onEndFrenzy (event) {
     event.preventDefault()
+
     this.actor.update({ 'system.frenzyActive': false })
   }
 
   // Switch function to direct data to form change functions
   _onShiftForm(event) {
     event.preventDefault()
+
     const element = event.currentTarget
     const dataset = element.dataset
     const newForm = dataset.newForm
@@ -352,6 +359,7 @@ export class WerewolfActorSheet extends WoDActor {
         disableBasicDice: true,
         decreaseRage: true,
         callback: (rollData) => {
+          // Calculate the number of rage dice the actor has left
           const failures = rollData.terms[2].results.filter(result => !result.success).length
           const newRageAmount = Math.max(this.actor.system.rage.value - failures, 0)
           
@@ -366,20 +374,24 @@ export class WerewolfActorSheet extends WoDActor {
 
   // Handle posting an actor's form to the chat.
   _onFormToChat (event) {
+    event.preventDefault()
+
     const header = event.currentTarget
     const form = header.dataset.form
 
     const formData = this.actor.system.forms[form]
     const formName = formData.name
-    const formDescription = formData.description
+    const formDescription = formData.description ? `<p>${formData.description}</p>` : ''
     const formAbilities = formData.abilities
 
-    let chatMessage = '<p class="roll-label uppercase">' + game.i18n.localize(formName) + '</p><p>' + formDescription + '</p>'
-    chatMessage = chatMessage + '<ul>'
-    formAbilities.forEach((ability) => {
-      chatMessage = chatMessage + `<li>${ability}</li>`
-    })
-    chatMessage = chatMessage + '</ul>'
+    let chatMessage = `<p class="roll-label uppercase">${game.i18n.localize(formName)}</p>${formDescription}`
+    if (formAbilities.length > 0) {
+      chatMessage = chatMessage + '<ul>'
+      formAbilities.forEach((ability) => {
+        chatMessage = chatMessage + `<li>${ability}</li>`
+      })
+      chatMessage = chatMessage + '</ul>'
+    }
 
     // Post the message to the chat
     ChatMessage.create({
@@ -390,6 +402,8 @@ export class WerewolfActorSheet extends WoDActor {
 
   // Handle editing an actor's form.
   _onFormEdit (event) {
+    event.preventDefault()
+
     const header = event.currentTarget
     const form = header.dataset.form
 
@@ -426,6 +440,9 @@ export class WerewolfActorSheet extends WoDActor {
       content: template,
       buttons,
       default: 'draw'
+    },
+    {
+      classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]
     }).render(true)
   }
 
@@ -457,6 +474,9 @@ export class WerewolfActorSheet extends WoDActor {
       content: template,
       buttons,
       default: 'draw'
+    },
+    {
+      classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]
     }).render(true)
   }
 }
