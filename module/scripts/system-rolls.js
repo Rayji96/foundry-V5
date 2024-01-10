@@ -73,6 +73,9 @@ class WOD5eDice {
       // Handle failures for werewolves and vampires
       if (roll.terms[2]) await handleFailure(system, roll.terms[2].results)
 
+      // Handle willpower damage
+      if (damageWillpower && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor)
+
       // Send the results of the roll back to any functions that need it
       if (callback) callback(roll)
 
@@ -148,7 +151,6 @@ class WOD5eDice {
             },
             default: 'roll',
             close: html => {
-              if (damageWillpower && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor)
               resolve(roll)
             },
             render: (html) => {

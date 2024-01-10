@@ -182,6 +182,7 @@ export class WoDActor extends ActorSheet {
    */
   _onResourceChange (event) {
     event.preventDefault()
+
     const actorData = duplicate(this.actor)
     const element = event.currentTarget
     const dataset = element.dataset
@@ -496,7 +497,7 @@ export class WoDActor extends ActorSheet {
     const title = dataset.label
     const disableBasicDice = dataset.disableBasicDice
     const disableAdvancedDice = dataset.disableAdvancedDice
-    const flavor = "Skill test."
+    const flavor = dataset.useFlavorPath ? this.getFlavorDescription(dataset.flavorPath) : dataset.flavor
     const quickRoll = dataset.quickRoll
     const rerollHunger = dataset.rerollHunger
     const flatMod = parseInt(dataset.flatMod) || 0
@@ -578,6 +579,23 @@ export class WoDActor extends ActorSheet {
       increaseHunger,
       decreaseRage
     })
+  }
+
+  // Function to grab the values of any given paths and add them up as the total number of basic dice for the roll
+  getFlavorDescription (valuePath, data) {
+    // Look up the path and grab the value
+    for (let path of valueArray) {
+      const properties = path.split('.')
+  
+      let pathValue = data
+      for (let prop of properties) {
+        pathValue = pathValue[prop]
+
+        if (pathValue === undefined) break // Break the loop if property is not found
+      }
+    }
+
+    return pathValue
   }
 
   // Function to grab the values of any given paths and add them up as the total number of basic dice for the roll

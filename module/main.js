@@ -18,10 +18,11 @@ import { WerewolfActorSheet } from './actor/werewolf-actor-sheet.js'
 import { loadDiceSoNice } from './dice/dice-so-nice.js'
 import { loadHelpers } from './helpers.js'
 import { loadSettings } from './settings.js'
-import { willpowerRerollInit } from './scripts/willpower-reroll.js'
+import { willpowerReroll } from './scripts/willpower-reroll.js'
 
 const OWNED_PERMISSION = 3
 
+// Anything that needs to be ran alongside the initialisation of the world
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
 
@@ -46,7 +47,6 @@ Hooks.once('init', async function () {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
-
   Actors.registerSheet('vtm5e', MortalActorSheet, {
     label: 'Mortal Sheet',
     types: ['mortal'],
@@ -93,23 +93,44 @@ Hooks.once('init', async function () {
     makeDefault: true
   })
 
+  // Make Handlebars templates accessible to the system
   preloadHandlebarsTemplates()
 
+  // Make helpers accessible to the system
   loadHelpers()
 })
 
+// Anything that needs to run once the world is ready
 Hooks.once('ready', async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createVampireMacro(data, slot))
+
+  // Migration functions
+  migrateWorld()
 })
 
+// DiceSoNice functionality
 Hooks.once('diceSoNiceReady', (dice3d) => {
   loadDiceSoNice(dice3d)
 })
 
-Hooks.once('ready', function () {
-  migrateWorld()
-  willpowerRerollInit()
+// Display the willpower reroll option in the chat when messages are right clicked
+Hooks.on('getChatLogEntryContext', (html, options) => {
+  options.push({
+    name: game.i18n.localize('WOD5E.WillpowerReroll'),
+    icon: '<i class="fas fa-redo"></i>',
+    condition: li => {
+      // Only show this context menu if the person is GM or author of the message
+      const message = game.messages.get(li.attr('data-message-id'))
+
+      // Only show this context menu if there are re-rollable dice in the message
+      const rerollableDice = li.find('.rerollable').length
+
+      // All must be true to show the reroll dialog
+      return (game.user.isGM || message.isAuthor) && (rerollableDice > 0)
+    },
+    callback: li => willpowerReroll(li)
+  })
 })
 
 /* -------------------------------------------- */
