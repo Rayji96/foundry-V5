@@ -150,6 +150,29 @@ class WOD5eDice {
             close: html => {
               if (damageWillpower && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor)
               resolve(roll)
+            },
+            render: (html) => {
+              // Add event listeners to plus and minus signs on the dice in the dialog
+              html.find('.dialog-plus').click(function(event){
+                // Determine the input
+                const input = $(`#${event.currentTarget.dataset.resource}`)
+
+                // Add one to the value
+                const newValue = parseInt(input.val()) + 1
+
+                // Plug in the new value to the input
+                input.val(newValue)
+              })
+              html.find('.dialog-minus').click(function(event){
+                // Determine the input
+                const input = $(`#${event.currentTarget.dataset.resource}`)
+
+                // Prevent negative amounts of dice when getting the new value
+                const newValue = Math.max(parseInt(input.val()) - 1, 0)
+
+                // Plug in the new value to the input
+                input.val(newValue)
+              })
             }
           },
           {
