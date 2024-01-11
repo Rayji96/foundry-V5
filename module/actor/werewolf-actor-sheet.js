@@ -117,6 +117,9 @@ export class WerewolfActorSheet extends WoDActor {
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
+    // Rollable gift buttons
+    html.find('.gift-rollable').click(this._onGiftRoll.bind(this))
+
     // Frenzy buttons
     html.find('.begin-frenzy').click(this._onBeginFrenzy.bind(this))
     html.find('.end-frenzy').click(this._onEndFrenzy.bind(this))
