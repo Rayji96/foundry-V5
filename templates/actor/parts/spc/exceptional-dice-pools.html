@@ -11,10 +11,8 @@
         {{#each actor.system.exceptionaldicepools as |exceptionalskill key|}}
             {{#if exceptionalskill.visible}}
                 <li class="flexrow item-header">
-                    <label for="{{exceptionalskill.name}}" 
-                      class="resource-label rollable"
-                      data-roll="{{exceptionalskill.value}}" 
-                      data-label="{{localize exceptionalskill.name}}">{{localize exceptionalskill.name}} 
+                    <label for="{{exceptionalskill.name}}" class="resource-label rollable" data-absolute-value="{{exceptionalskill.value}}" 
+                      data-use-absolute-value="true" data-label="{{localize exceptionalskill.name}}">{{localize exceptionalskill.name}} 
                     </label>
                     <div class="resource-value">
                         <input type="number" name="system.exceptionaldicepools.{{key}}.value" 

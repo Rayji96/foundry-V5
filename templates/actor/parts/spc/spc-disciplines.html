@@ -11,10 +11,8 @@
         {{#each actor.system.disciplines as |discipline key|}}
             {{#if discipline.visible}}
                 <li class="flexrow item-header">
-                    <label for="{{discipline.name}}" 
-                      class="resource-label rollable"
-                      data-roll="{{discipline.value}}" 
-                      data-label="{{localize discipline.name}}">{{localize discipline.name}} 
+                    <label for="{{discipline.name}}" class="resource-label rollable" data-use-absolute-value="true"
+                      data-roll="{{discipline.value}}" data-label="{{localize discipline.name}}">{{localize discipline.name}} 
                     </label>
                     <div class="resource-value">
                         <input type="number" name="system.disciplines.{{key}}.value" 
