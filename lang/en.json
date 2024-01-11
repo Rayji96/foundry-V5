@@ -93,6 +93,7 @@
     "WOD5E.Cell": "Cell",
     "WOD5E.Redemption": "Redemption",
     "WOD5E.Edges": "Edges",
+    "WOD5E.EdgeType": "Edge Type",
     "WOD5E.AddEdge": "Add Edge",
     "WOD5E.SelectEdge": "Select Edge",
     "WOD5E.AddPerk": "Add Perk",
@@ -150,6 +151,7 @@
 
     "WOD5E.Stats": "Stats",
     "WOD5E.Disciplines": "Disciplines",
+    "WOD5E.DisciplineType": "Discipline Type",
     "WOD5E.Features": "Features",
     "WOD5E.Blood": "Blood",
     "WOD5E.Description": "Description",

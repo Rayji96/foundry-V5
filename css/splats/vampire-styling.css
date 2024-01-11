@@ -49,10 +49,6 @@
   border: 1px solid var(--vampire-primary);
 }
 
-.sheet.journal-entry .journal-entry-content {
-  border: 4px double var(--vampire-primary);
-}
-
 .wod5e .window-content .sheet-body .tab > .resource-label {
   color: var(--vampire-primary);
   border-bottom: 1px solid var(--vampire-primary);

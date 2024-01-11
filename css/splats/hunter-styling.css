@@ -50,6 +50,11 @@
   color: var(--hunter-primary);
 }
 
+.wod5e .item-header .edge .perk {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* buttons.css */
 .wod5e.hunter-sheet button {
   background: #df660e;

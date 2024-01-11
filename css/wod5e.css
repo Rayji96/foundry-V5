@@ -283,19 +283,6 @@
     color: var(--color-text-light-1);
 }
 
-.sheet.journal-entry .journal-sidebar {
-    flex-basis: var(--sidebar-width-expanded);
-    background: transparent;
-    color: black;
-}
-
-.sheet.journal-entry .journal-entry-content {
-    flex: 1;
-    height: 100%;
-    background: #f9f5ed;
-    border-radius: 0;
-}
-
 .wod5e .window-content .abilities,
 .wod5e.sheet.actor .window-content .skills {
     border: none;

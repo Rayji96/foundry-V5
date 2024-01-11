@@ -11,7 +11,8 @@
                     <input name="system.level" value="{{item.system.level}}" type="number" min="0" max="5"/>
                 </div>
                 <!-- Select the discipline this power belongs to -->
-                <div class="discipline">
+                <div class="flexcol discipline flex-center">
+                    <label>{{localize "WOD5E.DisciplineType"}}</label>
                     <select name="system.discipline" data-type="String">
                         {{#select item.system.discipline}}
                         {{> "systems/vtm5e/templates/item/parts/disciplines.html"}}
