@@ -45,7 +45,8 @@
         </li>
         {{#each actor.specialties as |item id|}}
         <li class="item flexrow" data-item-id="{{item._id}}">
-            <div class="item-image rollable" data-value-paths="skills.{{item.system.skill}}.value" data-flat-mod=1 data-name="{{item.name}}">
+            <div class="item-image rollable" data-value-paths="skills.{{item.system.skill}}.value" data-flat-mod="1" data-label="{{item.name}}" data-name="{{item.name}}"
+                data-use-flavor-path="true" data-flavor-path="description" data-item-id="{{item._id}}">
                 <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}" />
             </div>
             <h4 class="item-name">{{item.name}}</h4>
@@ -76,7 +77,7 @@
         {{#each actor.customRolls as |roll id|}}
         <li class="item flexrow" data-item-id="{{roll._id}}">
             <div class="item-image rollable" data-value-paths="abilities.{{roll.system.dice1}}.value skills.{{roll.system.dice2}}.value"
-                data-name="{{roll.name}}">
+                data-name="{{roll.name}}" data-label="{{roll.name}}" data-use-flavor-path="true" data-flavor-path="description" data-item-id="{{roll._id}}">
                 <img src="{{roll.img}}" title="{{roll.name}}" width="24" height="24" alt="{{roll.name}}" />
             </div>
             <h4 class="item-name">{{roll.name}}</h4>

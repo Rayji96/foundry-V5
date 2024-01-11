@@ -323,9 +323,6 @@ export class WerewolfActorSheet extends WoDActor {
     const newForm = dataset.newForm
   
     switch (newForm) {
-      case 'homid':
-        this.actor.update({ 'system.activeForm': 'homid' })
-        break
       case 'glabro':
         this.handleFormChange('glabro', 1)
         break
@@ -337,9 +334,11 @@ export class WerewolfActorSheet extends WoDActor {
         break
       case 'lupus':
         this.actor.update({ 'system.activeForm': 'lupus' })
+        this._onFormToChat(event)
         break
       default:
         this.actor.update({ 'system.activeForm': 'homid' })
+        this._onFormToChat(event)
     }
   }
   
@@ -349,12 +348,17 @@ export class WerewolfActorSheet extends WoDActor {
     if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
       this._onInsufficientRage(form)
     } else {
+      // Variables
+      const formData = this.actor.system.forms[form]
+      const flavor = formData.description
+
       // Roll the rage dice necessary
       WOD5eDice.Roll({
         advancedDice: diceCount,
         title: form,
         actor: this.actor,
         data: this.actor.system,
+        flavor,
         quickRoll: true,
         disableBasicDice: true,
         decreaseRage: true,
@@ -377,7 +381,7 @@ export class WerewolfActorSheet extends WoDActor {
     event.preventDefault()
 
     const header = event.currentTarget
-    const form = header.dataset.form
+    const form = header.dataset.newForm
 
     const formData = this.actor.system.forms[form]
     const formName = formData.name

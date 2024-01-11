@@ -134,7 +134,7 @@ export class WoDActor extends ActorSheet {
     html.find('.item-chat').click(ev => {
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
-      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
         name: item.name,
         img: item.img,
         description: item.system.description
@@ -497,7 +497,8 @@ export class WoDActor extends ActorSheet {
     const title = dataset.label
     const disableBasicDice = dataset.disableBasicDice
     const disableAdvancedDice = dataset.disableAdvancedDice
-    const flavor = dataset.useFlavorPath ? this.getFlavorDescription(dataset.flavorPath) : dataset.flavor
+    const data = dataset.itemId ? actor.items.get(dataset.itemId).system : actor.system
+    const flavor = dataset.useFlavorPath ? this.getFlavorDescription(dataset.flavorPath, data) : dataset.flavor
     const quickRoll = dataset.quickRoll
     const rerollHunger = dataset.rerollHunger
     const flatMod = parseInt(dataset.flatMod) || 0
@@ -584,15 +585,13 @@ export class WoDActor extends ActorSheet {
   // Function to grab the values of any given paths and add them up as the total number of basic dice for the roll
   getFlavorDescription (valuePath, data) {
     // Look up the path and grab the value
-    for (let path of valueArray) {
-      const properties = path.split('.')
-  
-      let pathValue = data
-      for (let prop of properties) {
-        pathValue = pathValue[prop]
+    const properties = valuePath.split('.')
 
-        if (pathValue === undefined) break // Break the loop if property is not found
-      }
+    let pathValue = data
+    for (let prop of properties) {
+      pathValue = pathValue[prop]
+
+      if (pathValue === undefined) break // Break the loop if property is not found
     }
 
     return pathValue
