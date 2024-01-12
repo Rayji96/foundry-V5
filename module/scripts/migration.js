@@ -4,6 +4,7 @@ import { MigrateLegacySheets } from './migration/migrate-legacy-sheets.js'
 import { MigrateLocalization } from './migration/migrate-localization.js'
 import { MigrateGamesystem } from './migration/migrate-gamesystem.js'
 import { MigrateTrackers } from './migration/migrate-trackers.js'
+import { MigrateSpecialties } from './migration/migrate-specialties.js'
 
 let worldVersion
 
@@ -45,6 +46,10 @@ export const migrateWorld = async () => {
         // Migrate health and willpower tracker data
         const migrationIDs4 = await MigrateTrackers()
         updates.concat(migrationIDs4)
+
+        // Migrate specialties into their respective skills
+        const migrationIDs5 = await MigrateSpecialties()
+        updates.concat(migrationIDs5)
   
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {
