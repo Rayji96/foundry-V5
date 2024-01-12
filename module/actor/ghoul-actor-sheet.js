@@ -163,7 +163,8 @@ export class GhoulActorSheet extends MortalActorSheet {
           title: game.i18n.localize('WOD5E.RousingBlood'),
           actor: this.actor,
           disableBasicDice: true,
-          rerollHunger: rouseRerolls
+          rerollHunger: rouseRerolls,
+          selectors: ["rouse"]
         })
       } else if (this.actor.type === 'ghoul' && level > 1) {
         // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
@@ -234,12 +235,14 @@ export class GhoulActorSheet extends MortalActorSheet {
 
   _onVampireRoll (event) {
     event.preventDefault()
+
     const element = event.currentTarget
     const dataset = element.dataset
     const item = this.actor.items.get(dataset.id)
     const itemDiscipline = item.system.discipline
-    let disciplineValue
+    let disciplineValue, dice1, dice2
     const hunger = this.actor.type === 'vampire' ? this.actor.system.hunger.value : 0
+    let selectors = []
 
     // Assign any rituals to use Blood Sorcery value
     // and any ceremonies to use Oblivion value
@@ -251,17 +254,44 @@ export class GhoulActorSheet extends MortalActorSheet {
       disciplineValue = this.actor.system.disciplines[itemDiscipline].value
     }
 
-    const dice1 = item.system.dice1 === 'discipline' ? disciplineValue : this.actor.system.abilities[item.system.dice1].value
+    if (item.system.dice1 === 'discipline') {
+      dice1 = disciplineValue
 
-    let dice2
+    } else {
+      dice1 = this.actor.system.abilities[item.system.dice1].value
+      selectors.push(['abilities', `abilities.${item.system.dice1}`])
+    }
+
+    if (item.system.dice1 === 'discipline' || item.system.dice2 === 'discipline') {
+      selectors.push(['disciplines'])
+
+      if (itemDiscipline === 'rituals') {
+        selectors.push(['disciplines.sorcery'])
+      } else if (itemDiscipline === 'ceremonies') {
+        selectors.push(['disciplines.oblivion'])
+      } else {
+        selectors.push([`disciplines.${itemDiscipline}`])
+      }
+    }
+
     if (item.system.dice2 === 'discipline') {
       dice2 = disciplineValue
     } else if (item.system.skill) {
       dice2 = this.actor.system.skills[item.system.dice2].value
+      selectors.push(['skills', `skills.${item.system.dice2}`])
     } else if (item.system.amalgam) {
       dice2 = this.actor.system.disciplines[item.system.dice2].value
+
+      if (item.system.dice2 === 'rituals') {
+        selectors.push(['disciplines.sorcery'])
+      } else if (item.system.dice2 === 'ceremonies') {
+        selectors.push(['disciplines.oblivion'])
+      } else {
+        selectors.push([`disciplines.${itemDiscipline}`])
+      }
     } else {
       dice2 = this.actor.system.abilities[item.system.dice2].value
+      selectors.push([`abilities.${item.system.dice2}`])
     }
 
     const dicePool = dice1 + dice2
@@ -271,7 +301,8 @@ export class GhoulActorSheet extends MortalActorSheet {
       advancedDice: Math.min(dicePool, hunger),
       title: item.name,
       actor: this.actor,
-      data: item.system
+      data: item.system,
+      selectors
     })
   }
 

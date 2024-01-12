@@ -589,6 +589,28 @@
               "Physical Tests: +2",
               "Social Tests: -2",
               "Regenerate: 1/Rage Check"
+            ],
+            "bonuses": [
+              {
+                "source": "WOD5E.GlabroName",
+                "value": 2,
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.stealth", "skills.survival"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "glabro"
+                }
+              },
+              {
+                "source": "WOD5E.GlabroName",
+                "value": -2,
+                "paths": ["abilities.charisma", "abilities.manipulation", "abilities.composure", "skills.animal ken", "skills.etiquette", "skills.insight", "skills.intimidation", "skills.leadership", "skills.performance", "skills.persuasion", "skills.streetwise", "skills.subterfuge"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "glabro"
+                }
+              }
             ]
           },
           "crinos": {
@@ -606,6 +628,18 @@
               "Claws: +3",
               "Bite: +1 Aggravated",
               "Causes Delirium"
+            ],
+            "bonuses": [
+              {
+                "source": "WOD5E.CrinosName",
+                "value": 4,
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.stealth", "skills.survival"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "crinos"
+                }
+              }
             ]
           },
           "hispo": {
@@ -619,6 +653,28 @@
               "Social Tests: Limited to wolves and Garou",
               "Regenerate: 1/Rage Check",
               "Bite: +1 Aggravated"
+            ],
+            "bonuses": [
+              {
+                "source": "WOD5E.HispoName",
+                "value": 2,
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.survival"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "hispo"
+                }
+              },
+              {
+                "source": "WOD5E.HispoName",
+                "value": -2,
+                "paths": ["skills.stealth"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "hispo"
+                }
+              }
             ]
           },
           "lupus": {
@@ -842,7 +898,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "boon", "customRoll", "perk", "gift"],
+    "types": ["feature", "power", "boon", "customRoll", "perk", "gift"],
     "templates": {
       "base": {
         "description": ""
@@ -865,10 +921,6 @@
       "skill": false,
       "amalgam": false,
       "rouse": false
-    },
-    "specialty": {
-      "templates": ["base"],
-      "skill": "athletics"
     },
     "boon": {
       "templates": ["base"],

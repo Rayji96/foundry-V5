@@ -3,6 +3,7 @@
 // Import various helper functions
 import { generateRollFormula } from './rolls/roll-formula.js'
 import { generateRollMessage } from './rolls/roll-message.js'
+import { getSituationalModifiers } from './rolls/situational-modifiers.js'
 import { _damageWillpower } from './rolls/willpower-damage.js'
 import { _increaseHunger } from './rolls/increase-hunger.js'
 import { _decreaseRage } from './rolls/decrease-rage.js'
@@ -28,6 +29,7 @@ class WOD5eDice {
    * @param quickRoll                 (Optional, default false) Whether the roll was called to bypass the roll dialog or not
    * @param rollMode                  (Optional, default FVTT's current roll mode) Which roll mode the message should default as
    * @param rerollHunger              (Optional, default false) Whether to reroll failed hunger dice
+   * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
    * 
    */
   static async Roll({
@@ -47,7 +49,8 @@ class WOD5eDice {
     callback,
     quickRoll = false,
     rollMode = game.settings.get("core", "rollMode"),
-    rerollHunger = false
+    rerollHunger = false,
+    selectors = []
   }) {
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
     const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
@@ -86,7 +89,9 @@ class WOD5eDice {
         actor,
         data,
         title,
-        flavor
+        flavor,
+        difficulty,
+        situationalModifiers
       })
 
       roll.toMessage({
@@ -103,8 +108,13 @@ class WOD5eDice {
 
     // Check if the user wants to bypass the roll dialog
     if (!quickRoll) {
-      // Situational modifiers
-      let situationalModifiers = []
+      // Handle getting any situational modifiers to display in the dialog
+      const situationalModifiers = await getSituationalModifiers({
+        actor,
+        selectors
+      })
+
+      console.log(situationalModifiers)
 
       // Roll dialog template
       const dialogTemplate = `systems/vtm5e/templates/ui/${system}-roll-dialog.html`

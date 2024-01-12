@@ -65,7 +65,6 @@ export class WoDActor extends ActorSheet {
     }
 
     // Initialize containers.
-    const specialties = []
     const boons = []
     const customRolls = []
     const gear = []
@@ -79,9 +78,6 @@ export class WoDActor extends ActorSheet {
       } else if (i.type === 'feature') {
         // Append to features.
         features[i.system.featuretype].push(i)
-      } else if (i.type === 'specialty') {
-        // Append to specialties.
-        specialties.push(i)
       } else if (i.type === 'boon') {
         // Append to boons.
         boons.push(i)
@@ -92,7 +88,6 @@ export class WoDActor extends ActorSheet {
     }
 
     // Assign and return
-    actorData.specialties = specialties
     actorData.boons = boons
     actorData.customRolls = customRolls
     actorData.gear = gear
@@ -388,6 +383,7 @@ export class WoDActor extends ActorSheet {
    */
   _onItemCreate (event) {
     event.preventDefault()
+    
     const header = event.currentTarget
     // Get the type of item to create.
     const type = header.dataset.type
@@ -395,9 +391,6 @@ export class WoDActor extends ActorSheet {
     let img = '/icons/svg/item-bag.svg'
     // Grab any data associated with this control.
     const data = duplicate(header.dataset)
-    if (type === 'specialty') {
-      data.skill = 'academics'
-    }
     if (type === 'boon') {
       data.boontype = 'Trivial'
     }
@@ -506,6 +499,7 @@ export class WoDActor extends ActorSheet {
     const absoluteValue = parseInt(dataset.absoluteValue) || 0
     const increaseHunger = dataset.increaseHunger
     const decreaseRage = dataset.decreaseRage
+    const selectors = dataset.selectors ? dataset.selectors.split(" ") : []
 
     // Get the number of basicDice and advancedDice
     let basicDice
@@ -578,7 +572,8 @@ export class WoDActor extends ActorSheet {
       quickRoll,
       rerollHunger,
       increaseHunger,
-      decreaseRage
+      decreaseRage,
+      selectors
     })
   }
 

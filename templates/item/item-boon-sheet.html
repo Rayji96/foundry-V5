@@ -11,11 +11,11 @@
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">{{localize "WOD5E.Description"}}</a>
         <a class="item" data-tab="type">{{localize "WOD5E.Type"}}</a>
+        <a class="item" data-tab="bonuses">{{localize "WOD5E.Bonuses"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
             {{editor enrichedDescription target="system.description" button=true editable=editable}}
@@ -23,11 +23,13 @@
 
         {{!-- Type Tab --}}
         <div class="tab type" data-group="primary" data-tab="type">
-            {{!-- As you add new fields, add them in here! --}}
             <div class="resource grid grid-2col flex-center">
                 <label class="resource-label">{{localize "WOD5E.Type"}}: </label>
                 <input type="text" name="system.boontype" value="{{item.system.boontype}}" />
             </div>
         </div>
+
+        {{!-- Bonuses Tab --}}
+        {{> "systems/vtm5e/templates/item/parts/bonuses.html"}}
     </section>
 </form>

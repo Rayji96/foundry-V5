@@ -12,6 +12,7 @@ import { mortalDiceLocation, vampireDiceLocation, werewolfDiceLocation, hunterDi
  * @param data                      Actor or item data to pass along with the roll
  * @param title                     Title of the roll for the chat message
  * @param flavor                    (Optional, default "") Text that appears in the description of the roll
+ * @param difficulty                (Optional, default 0) The number of successes needed to pass the check
  */
 export async function generateRollMessage ({
   roll,
@@ -19,16 +20,19 @@ export async function generateRollMessage ({
   actor,
   data,
   title,
-  flavor = ""
+  flavor = "",
+  difficulty = 0
 }) {
   let basicDice, advancedDice
 
   if (roll.terms[0]) {
-    basicDice = await generateBasicDiceDisplay(system, roll.terms[0])
+    basicDice = await generateBasicDiceDisplay(roll.terms[0])
   }
   if (roll.terms[2]) {
-    advancedDice = await generateAdvancedDiceDisplay(system, roll.terms[2])
+    advancedDice = await generateAdvancedDiceDisplay(roll.terms[2])
   }
+
+  const { totalResult, resultLabel } = await generateResult(basicDice, advancedDice)
 
   const chatTemplate = `systems/vtm5e/templates/chat/roll-message.html`
   const chatData = {
@@ -37,135 +41,142 @@ export async function generateRollMessage ({
     advancedDice,
     system,
     title,
-    flavor
+    flavor,
+    difficulty,
+    totalResult,
+    margin: totalResult > difficulty ? totalResult - difficulty : 0,
+    resultLabel
   }
 
   const chatMessage = await renderTemplate(chatTemplate, chatData)
 
   return chatMessage
 
-  // Function to help with rendering a display for each basic die
-  async function generateBasicDiceDisplay(system, rollData) {
+  // Function to help with rendering of basic dice
+  async function generateBasicDiceDisplay(rollData) {
     const basicDice = rollData.results
 
     basicDice.forEach((die, index) => {
-      // Determine the result of the die
+      // Variables
       let dieResult, dieImg, dieAltText, dieFace
       let dieClasses = ['roll-img', 'rerollable']
 
-      if (die.result === 10) {
-        dieResult = 'critical'
-      } else if (die.result < 10 && die.result > 5) {
-        dieResult = 'success'
-      } else {
-        dieResult = 'failure'
-      }
+      // Basic die results
+      if (die.result === 10) dieResult = 'critical'
+      else if (die.result < 10 && die.result > 5) dieResult = 'success'
+      else dieResult = 'failure'
 
-      // Use the result in order to plug in the proper dice face needed
+      // Define the face of the die based on the above conditionals
       dieFace = normalDiceFaces[dieResult]
 
-      // Use switch-cases to get the proper dice locations and classes
-      // Then add them to the die object
+      // Use switch-cases to adjust splat-specific dice locations/faces
       switch (system) {
         case 'werewolf':
+          // Werewolf data
           dieImg = `${werewolfDiceLocation}${dieFace}`
           dieClasses.push(['werewolf-dice'])
           break
         case 'vampire':
+          // Vampire data
           dieImg = `${vampireDiceLocation}${dieFace}`
           dieClasses.push(['vampire-dice'])
           break
         case 'hunter':
+          // Hunter data
           dieImg = `${hunterDiceLocation}${dieFace}`
           dieClasses.push(['hunter-dice'])
           break
         default:
+          // Mortal data
           dieImg = `${mortalDiceLocation}${dieFace}`
           dieClasses.push(['mortal-dice'])
           break
       }
 
-      rollData.results[index]['img'] = dieImg
-      rollData.results[index]['classes'] = dieClasses.join(" ")
-      rollData.results[index]['altText'] = dieAltText
+      // Add any necessary data to the dice object
+      rollData.results[index].img = dieImg
+      rollData.results[index].classes = dieClasses.join(" ")
+      rollData.results[index].altText = dieAltText
     })
 
     return rollData
   }
-
-  // Function to help with rendering a display for each advanced die
-  async function generateAdvancedDiceDisplay(system, rollData) {
+  
+  // Function to help the rendering of advanced dice
+  async function generateAdvancedDiceDisplay(rollData) {
     const advancedDice = rollData.results
 
     advancedDice.forEach((die, index) => {
-      // Determine the result of the die
+      // Variables
       let dieResult, dieImg, dieAltText, dieFace
       let dieClasses = ['roll-img']
 
-      // Use switch-cases to get the proper dice locations and classes
-      // Then add them to the die object
+      // Use switch-cases to adjust splat-specific dice locations/faces
       switch (system) {
         case 'werewolf':
-          if (die.result === 10) {
+          // Werewolf die results
+          if (die.result === 10 || (die.result < 10 && die.result > 5)) {
             dieResult = 'critical'
-            dieClasses.push(['rerollable'])
-          } else if (die.result < 10 && die.result > 5) {
-            dieResult = 'success'
             dieClasses.push(['rerollable'])
           } else if (die.result < 6 && die.result > 2) {
             dieResult = 'failure'
             dieClasses.push(['rerollable'])
-          } else {
-            dieResult = 'brutal'
-          }
-    
-          // Use the result in order to plug in the proper dice face needed
-          dieFace = rageDiceFaces[dieResult]
+          } else dieResult = 'brutal'
 
+          // Werewolf data
+          dieFace = rageDiceFaces[dieResult]
           dieImg = `${werewolfDiceLocation}${dieFace}`
           dieClasses.push(['rage-dice'])
-
           break
         case 'vampire':
-          if (die.result === 10) {
-            dieResult = 'critical'
-          } else if (die.result < 10 && die.result > 5) {
-            dieResult = 'success'
-          } else if (die.result < 6 && die.result > 1) {
-            dieResult = 'failure'
-          } else {
-            dieResult = 'bestial'
-          }
+          // Vampire die results
+          if (die.result === 10) dieResult = 'critical'
+          else if (die.result < 10 && die.result > 5) dieResult = 'success'
+          else if (die.result < 6 && die.result > 1) dieResult = 'failure'
+          else dieResult = 'bestial'
 
+          // Vampire data
           dieFace = hungerDiceFaces[dieResult]
-
           dieImg = `${vampireDiceLocation}${dieFace}`
           dieClasses.push(['hunger-dice'])
-
           break
         case 'hunter':
-          if (die.result === 10) {
-            dieResult = 'critical'
-          } else if (die.result < 10 && die.result > 5) {
-            dieResult = 'success'
-          } else if (die.result < 6 && die.result > 1) {
-            dieResult = 'failure'
-          } else {
-            dieResult = 'criticalFailure'
-          }
+          // Hunter die results
+          if (die.result === 10) dieResult = 'critical'
+          else if (die.result < 10 && die.result > 5) dieResult = 'success'
+          else if (die.result < 6 && die.result > 1) dieResult = 'failure'
+          else dieResult = 'criticalFailure'
 
+          // Hunter data
           dieFace = desperationDiceFaces[dieResult]
-
           dieImg = `${hunterDiceLocation}${dieFace}`
           dieClasses.push(['desperation-dice'])
           break
       }
-
-      rollData.results[index]['img'] = dieImg
-      rollData.results[index]['classes'] = dieClasses.join(" ")
-      rollData.results[index]['altText'] = dieAltText
+  
+      // Add any necessary data to the dice object
+      rollData.results[index].img = dieImg
+      rollData.results[index].classes = dieClasses.join(" ")
+      rollData.results[index].altText = dieAltText
     })
-
+  
     return rollData
+  }
+
+  async function generateResult(basicDice, advancedDice) {
+    let totalResult = 0, criticals = 0
+    let resultLabel
+
+    totalResult = basicDice.total + advancedDice.total
+
+    if (difficulty > 0) {
+      if (totalResult >= difficulty) {
+        resultLabel = "Success"
+      } else {
+        resultLabel = "Failure"
+      }
+    }
+
+    return { totalResult, resultLabel }
   }
 }

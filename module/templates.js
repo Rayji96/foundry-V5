@@ -5,6 +5,7 @@
  */
 export const preloadHandlebarsTemplates = async function () {
   console.log('Schrecknet : loading subroutines')
+  
   // Define template paths to load
   const templatePaths = [
     // Base Sheet Partials
@@ -55,6 +56,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/item/parts/attributes.html',
     'systems/vtm5e/templates/item/parts/gifts.html',
     'systems/vtm5e/templates/item/parts/renown.html',
+    'systems/vtm5e/templates/item/parts/bonuses.html',
 
     // Dice Tray Partials
     'systems/vtm5e/templates/ui/parts/select-character.html',
