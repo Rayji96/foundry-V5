@@ -9,33 +9,36 @@ export const MigrateSpecialties = async function () {
 
     // Migrate specialties to their appropriate skills (v4.0.0)
     for (const actor of actorsList) {
-      const actorData = actor.system
+      let actorData = actor.system
+      let actorItems = actor.items
 
-      ui.notifications.info(`Fixing actor ${actor.name}: Migrating specialties data.`)
+      if (actorItems.filter(item => item.type === 'specialty').length > 0) {
+        ui.notifications.info(`Fixing actor ${actor.name}: Migrating specialties data.`)
 
-      actorData.items = actorData.items.map(item => {
-        if (item.type === 'specialty' && item.system && item.system.skill) {
-          const skill = item.system.skill
-          actorData.skills[skill] = actorData.skills[skill] || { bonuses: [] }
-    
-          // Modify the 'specialty' data before adding it to 'bonuses'
-          const modifiedSpecialty = {
-            source: `${item.name}`,
-            value: 1,
-            paths: [`skills.${skill}`],
-            activeWhen: {
-              "check": "always"
+        actorItems = actorItems.map(item => {
+          if (item.type === 'specialty' && item.system && item.system.skill) {
+            const skill = item.system.skill
+            actorData.skills[skill] = actorData.skills[skill] || { bonuses: [] }
+      
+            // Modify the 'specialty' data before adding it to 'bonuses'
+            const modifiedSpecialty = {
+              source: `${item.name}`,
+              value: 1,
+              paths: [`skills.${skill}`],
+              activeWhen: {
+                "check": "always"
+              }
             }
+      
+            actorData.skills[skill].bonuses.push(modifiedSpecialty)
+            return null // Mark for removal
           }
-    
-          actorData.skills[skill].bonuses.push(modifiedSpecialty)
-          return null // Mark for removal
-        }
-        return item // Keep other items
-      }).filter(Boolean) // Remove null entries
+          return item // Keep other items
+        }).filter(Boolean) // Remove null entries
 
-      // Update the actor data with the new data
-      actor.update({ system: actorData })
+        // Update the actor data with the new data
+        actor.update({ system: actorData, items: actorItems })
+      }
 
       // Increase the counter and continue
       counter++
