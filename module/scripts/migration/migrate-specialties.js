@@ -9,18 +9,34 @@ export const MigrateSpecialties = async function () {
 
     // Migrate specialties to their appropriate skills (v4.0.0)
     for (const actor of actorsList) {
+      // Variables
       let actorData = actor.system
-      let actorItems = actor.items
+      let actorInvalidItems = actor.items.invalidDocumentIds
+      let actorInvalidItemsList = []
 
-      if (actorItems.filter(item => item.type === 'specialty').length > 0) {
-        ui.notifications.info(`Fixing actor ${actor.name}: Migrating specialties data.`)
+      // Check for invalid items
+      if (actorInvalidItems.size > 0) {
+        // Add each invalid item on the actor to the list
+        for (const invalidID of actorInvalidItems) {
+          actorInvalidItemsList.push(actor.items.getInvalid(invalidID))
+        }
 
-        actorItems = actorItems.map(item => {
-          if (item.type === 'specialty' && item.system && item.system.skill) {
+        // Check for if there's specialties that are invalid
+        const invalidSpecialties = actorInvalidItemsList.filter(item => item.type === 'specialty')
+        if (invalidSpecialties.length > 0) {
+          ui.notifications.info(`Fixing actor ${actor.name}: Migrating specialties data.`)
+          migrationIDs.push(actor.uuid)
+
+          let actorItems = invalidSpecialties.map(item => {
+            // Define what skill we're using
             const skill = item.system.skill
-            actorData.skills[skill] = actorData.skills[skill] || { bonuses: [] }
-      
-            // Modify the 'specialty' data before adding it to 'bonuses'
+
+            // If 'bonuses' doesn't already exist for this skill, create it
+            if (!actorData.skills[skill].hasOwnProperty('bonuses')) {
+              actorData.skills[skill].bonuses = []
+            }
+
+            // Construct the 'specialty' data together
             const modifiedSpecialty = {
               source: `${item.name}`,
               value: 1,
@@ -29,15 +45,17 @@ export const MigrateSpecialties = async function () {
                 "check": "always"
               }
             }
-      
+            
+            // Push the new specialty to the 'bonuses' array
             actorData.skills[skill].bonuses.push(modifiedSpecialty)
-            return null // Mark for removal
-          }
-          return item // Keep other items
-        }).filter(Boolean) // Remove null entries
 
-        // Update the actor data with the new data
-        actor.update({ system: actorData, items: actorItems })
+            // Remove the item
+            actor.items.getInvalid(item._id).delete()
+          })
+
+          // Update the actor data with the new data when finished
+          actor.update({ system: actorData, 'items.invalidDocumentIds': actorInvalidItems })
+        }
       }
 
       // Increase the counter and continue
