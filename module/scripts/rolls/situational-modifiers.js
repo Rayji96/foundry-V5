@@ -17,25 +17,35 @@
 
     // Function to parse through the actor's data and retrieve any bonuses
     // that match any of the selectors given
-    function getModifiers(dataset, selectors) {
-      const result = []
-    
-      Object.values(dataset).forEach((obj) => {
-        if (obj && obj.bonuses && Array.isArray(obj.bonuses)) {
-          obj.bonuses.forEach((bonus) => {
-            if (bonus.instances && Array.isArray(bonus.instances)) {
-              const includesSelector = bonus.instances.some((instance) => {
-                return selectors.includes(instance)
-              })
-      
-              if (includesSelector) {
-                result.push(bonus)
+    function getModifiers(data, selectors) {
+      const modifiers = []
+  
+      function searchBonuses(obj, path) {
+          if (typeof obj !== 'object' || obj === null) {
+              return
+          }
+  
+          if (obj.bonuses && Array.isArray(obj.bonuses)) {
+              const matchingBonuses = obj.bonuses.filter(bonus =>
+                  selectors.some(selector => bonus.paths.includes(selector))
+              )
+  
+              if (matchingBonuses.length > 0) {
+                  modifiers.push(...matchingBonuses)
               }
-            }
+          }
+  
+          Object.entries(obj).forEach(([key, value]) => {
+              const currentPath = path ? `${path}.${key}` : key
+  
+              if (typeof value === 'object' && value !== null) {
+                  searchBonuses(value, currentPath)
+              }
           })
-        }
-      })
-    
-      return result
+      }
+  
+      searchBonuses(data, '')
+  
+      return modifiers
     }
   }
