@@ -323,9 +323,9 @@ export class WerewolfActorSheet extends WoDActor {
 
     const element = event.currentTarget
     const dataset = element.dataset
-    const newForm = dataset.newForm
+    const form = dataset.form
   
-    switch (newForm) {
+    switch (form) {
       case 'glabro':
         this.handleFormChange('glabro', 1)
         break
@@ -384,7 +384,7 @@ export class WerewolfActorSheet extends WoDActor {
     event.preventDefault()
 
     const header = event.currentTarget
-    const form = header.dataset.newForm
+    const form = header.dataset.form
 
     const formData = this.actor.system.forms[form]
     const formName = formData.name
