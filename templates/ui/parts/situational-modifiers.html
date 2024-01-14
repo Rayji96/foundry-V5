@@ -1,0 +1,19 @@
+{{#if situationalModifiers}}
+  <div class="flex-group-center situational-modifiers">
+    <h3>Selectable Modifiers</h3>
+    <div class="form-group mod-header">
+      <div>Source</div>
+      <div>Value</div>
+      <div>Active</div>
+    </div>
+    {{#each situationalModifiers as |mod key|}}
+      <div class="form-group modifier">
+        <div class="mod-label">{{localize mod.source}}</div>
+        <div class="mod-value">{{mod.value}}</div>
+        <div class="mod-active">
+          <input type="checkbox">
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/if}}

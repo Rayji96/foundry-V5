@@ -66,3 +66,7 @@ input[type="search"] {
 #hud .placeable-hud .middle .attribute input {
   pointer-events: none;
 }
+
+.wod5e input[type="checkbox"] {
+  cursor: pointer;
+}

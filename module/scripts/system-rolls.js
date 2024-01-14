@@ -114,8 +114,6 @@ class WOD5eDice {
         selectors
       })
 
-      console.log(situationalModifiers)
-
       // Roll dialog template
       const dialogTemplate = `systems/vtm5e/templates/ui/${system}-roll-dialog.html`
       // Data that the dialog template needs

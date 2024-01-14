@@ -52,3 +52,16 @@
     color: #000;
     cursor: pointer;
 }
+
+.wod5e .dialog-contents .situational-modifiers {
+  position: absolute;
+  display: inline-block;
+  width: 250px;
+  top: 0;
+  left: 400px;
+  background-color: #faf5ed;
+}
+
+.wod5e .dialog-contents .situational-modifiers .mod-header {
+  font-weight: bold;
+}

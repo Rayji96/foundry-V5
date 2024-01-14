@@ -10,17 +10,18 @@
   }) {
     // Variables
     const data = actor.system
-    const modifiers = getModifiers(data, selectors)
+    const allModifiers = getModifiers(data, selectors)
+    const activeModifiers = filterModifiers(data, allModifiers)
 
     // Return the array of modifiers to whatever called for it
-    return modifiers
+    return activeModifiers
 
     // Function to parse through the actor's data and retrieve any bonuses
     // that match any of the selectors given
-    function getModifiers(data, selectors) {
+    function getModifiers (data, selectors) {
       const modifiers = []
   
-      function searchBonuses(obj, path) {
+      function searchBonuses (obj, path) {
           if (typeof obj !== 'object' || obj === null) {
               return
           }
@@ -47,5 +48,22 @@
       searchBonuses(data, '')
   
       return modifiers
+    }
+
+    function filterModifiers (data, modifiers) {
+      return modifiers.filter(modifier => {
+        const { check, path, value } = modifier.activeWhen
+    
+        if (check === 'always') {
+          return true
+        }
+    
+        if (check === 'isEqual') {
+          const pathValue = path.split('.').reduce((obj, key) => obj[key], data)
+          return pathValue === value
+        }
+    
+        return false
+      })
     }
   }

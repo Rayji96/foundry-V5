@@ -70,6 +70,7 @@ export const preloadHandlebarsTemplates = async function () {
 
     // Roll dialog Partials
     'systems/vtm5e/templates/ui/parts/roll-dialog-base.html',
+    'systems/vtm5e/templates/ui/parts/situational-modifiers.html',
     'systems/vtm5e/templates/ui/mortal-roll-dialog.html',
     'systems/vtm5e/templates/ui/vampire-roll-dialog.html',
     'systems/vtm5e/templates/ui/werewolf-roll-dialog.html',
