@@ -68,6 +68,10 @@ class WOD5eDice {
         rerollHunger
       })
 
+      // Variables
+      let modifiersList = $form.find('.mod-checkbox')
+      let activeModifiers = []
+
       // Send the roll to chat
       const roll = await new Roll(rollFormula, data).roll({
         async: true
@@ -82,6 +86,27 @@ class WOD5eDice {
       // Send the results of the roll back to any functions that need it
       if (callback) callback(roll)
 
+      if (modifiersList.length > 0) {
+        modifiersList.each(function() {
+          const isChecked = $(this).prop('checked')
+
+          if (isChecked) {
+            // Get the dataset values
+            const label = this.dataset.label
+            const value = this.dataset.value
+
+            // Add a plus sign if the value is positive
+            const valueWithSign = (value > 0 ? '+' : '') + value
+        
+            // Push the values to the activeModifiers array
+            activeModifiers.push({
+                "label": label,
+                "value": valueWithSign
+            })
+          }
+        })
+      }
+
       // Construct the proper message content from the generateRollMessage function
       const content = await generateRollMessage({
         system,
@@ -91,7 +116,7 @@ class WOD5eDice {
         title,
         flavor,
         difficulty,
-        situationalModifiers
+        activeModifiers
       })
 
       roll.toMessage({
@@ -144,12 +169,16 @@ class WOD5eDice {
                 icon: '<i class="fas fa-dice"></i>',
                 label: game.i18n.localize("WOD5E.Roll"),
                 callback: async html => {
-                  // Assign basic and advanced inputs to variables that default to 0 if not found
-                  const inputBasicDice = html.find('#inputBasicDice').val() ? html.find('#inputBasicDice').val() : 0
-                  const inputAdvancedDice = html.find('#inputAdvancedDice').val() ? html.find('#inputAdvancedDice').val() : 0
+                  // Obtain the input fields for basic and advanced dice
+                  const basicDiceInput = html.find('#inputBasicDice')
+                  const advancedDiceInput = html.find('#inputAdvancedDice')
+
+                // Get the values of basic and advanced dice
+                const basicValue = basicDiceInput.val() ? basicDiceInput.val() : 0
+                const advancedValue = advancedDiceInput.val() ? advancedDiceInput.val() : 0
 
                   // Send the roll to the _roll function
-                  roll = await _roll(inputBasicDice, inputAdvancedDice, html)
+                  roll = await _roll(basicValue, advancedValue, html)
                 }
               },
               cancel: {
@@ -162,8 +191,14 @@ class WOD5eDice {
               resolve(roll)
             },
             render: (html) => {
+              // Obtain the input fields for basic and advanced dice
+              const basicDiceInput = html.find('#inputBasicDice')
+              const advancedDiceInput = html.find('#inputAdvancedDice')
+
               // Add event listeners to plus and minus signs on the dice in the dialog
               html.find('.dialog-plus').click(function(event){
+                event.preventDefault()
+
                 // Determine the input
                 const input = $(`#${event.currentTarget.dataset.resource}`)
 
@@ -174,6 +209,8 @@ class WOD5eDice {
                 input.val(newValue)
               })
               html.find('.dialog-minus').click(function(event){
+                event.preventDefault()
+
                 // Determine the input
                 const input = $(`#${event.currentTarget.dataset.resource}`)
 
@@ -182,6 +219,34 @@ class WOD5eDice {
 
                 // Plug in the new value to the input
                 input.val(newValue)
+              })
+
+              // Add event listeners to the situational modifier toggles
+              html.find('.mod-checkbox').on("change", function(event){
+                event.preventDefault()
+
+                // Determine the input
+                const modCheckbox = $(event.target)
+                const modifier = event.currentTarget.dataset.value
+
+                // Get the values of basic and advanced dice
+                const basicValue = basicDiceInput.val() ? basicDiceInput.val() : 0
+                const advancedValue = advancedDiceInput.val() ? advancedDiceInput.val() : 0
+
+                // Determine the new input depending on if the bonus is getting added (checked)
+                // or not (unchecked)
+                let newValue = 0
+                if (modCheckbox.prop('checked')) {
+                  newValue = parseInt(basicValue) + parseInt(modifier)
+                } else {
+                  newValue = parseInt(basicValue) - parseInt(modifier)
+                }
+
+                // Ensure that there can't be negative dice
+                if (newValue < 0) newValue = 0
+
+                // Plug in the new value to the input
+                basicDiceInput.val(newValue)
               })
             }
           },

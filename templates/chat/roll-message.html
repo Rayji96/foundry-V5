@@ -1,5 +1,12 @@
 <p class="roll-label uppercase">{{title}}</p>
 <div class="dice-roll">
+  <div class="modifiers">
+    {{#each activeModifiers as |mod key|}}
+      <label class="mod">
+        {{mod.label}} {{mod.value}}
+      </label>
+    {{/each}}
+  </div>
   <div class="dice-result">
     {{#each basicDice.results as |die key|}}
       <img src="{{die.img}}" class="{{die.classes}}" alt="{{die.altText}}"/>
