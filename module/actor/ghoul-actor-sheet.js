@@ -245,7 +245,8 @@ export class GhoulActorSheet extends MortalActorSheet {
     let selectors = []
 
     // Assign any rituals to use Blood Sorcery value
-    // and any ceremonies to use Oblivion value
+    // and any ceremonies to use Oblivion value, otherwise
+    // just use the normal disciplines path and value
     if (itemDiscipline === 'rituals') {
       disciplineValue = this.actor.system.disciplines.sorcery.value
     } else if (itemDiscipline === 'ceremonies') {
@@ -254,44 +255,51 @@ export class GhoulActorSheet extends MortalActorSheet {
       disciplineValue = this.actor.system.disciplines[itemDiscipline].value
     }
 
+    // Handle the first set of dice and any logic that it needs
     if (item.system.dice1 === 'discipline') {
       dice1 = disciplineValue
-
     } else {
       dice1 = this.actor.system.abilities[item.system.dice1].value
-      selectors.push(['abilities', `abilities.${item.system.dice1}`])
+      selectors.push(...['abilities', `abilities.${item.system.dice1}`])
     }
 
+    // If either set of dice are a discipline power, push the necessary selectors
     if (item.system.dice1 === 'discipline' || item.system.dice2 === 'discipline') {
-      selectors.push(['disciplines'])
+      selectors.push('disciplines')
 
       if (itemDiscipline === 'rituals') {
-        selectors.push(['disciplines.sorcery'])
+        selectors.push('disciplines.sorcery')
       } else if (itemDiscipline === 'ceremonies') {
-        selectors.push(['disciplines.oblivion'])
+        selectors.push('disciplines.oblivion')
       } else {
-        selectors.push([`disciplines.${itemDiscipline}`])
+        selectors.push(`disciplines.${itemDiscipline}`)
       }
     }
 
+    // Handle the second set of dice and logic that it needs
     if (item.system.dice2 === 'discipline') {
+      // Use the previously declared disciplineValue
       dice2 = disciplineValue
     } else if (item.system.skill) {
+      // Get the skill value and push the skill selectors
       dice2 = this.actor.system.skills[item.system.dice2].value
-      selectors.push(['skills', `skills.${item.system.dice2}`])
+      selectors.push(...['skills', `skills.${item.system.dice2}`])
     } else if (item.system.amalgam) {
+      // Get the second discipline roll
       dice2 = this.actor.system.disciplines[item.system.dice2].value
 
+      // Push the selector for the second discipline
       if (item.system.dice2 === 'rituals') {
-        selectors.push(['disciplines.sorcery'])
+        selectors.push('disciplines.sorcery')
       } else if (item.system.dice2 === 'ceremonies') {
-        selectors.push(['disciplines.oblivion'])
+        selectors.push('disciplines.oblivion')
       } else {
-        selectors.push([`disciplines.${itemDiscipline}`])
+        selectors.push(`disciplines.${itemDiscipline}`)
       }
     } else {
+      // Get the ability value and push the selectors
       dice2 = this.actor.system.abilities[item.system.dice2].value
-      selectors.push([`abilities.${item.system.dice2}`])
+      selectors.push(...['abilities', `abilities.${item.system.dice2}`])
     }
 
     const dicePool = dice1 + dice2
