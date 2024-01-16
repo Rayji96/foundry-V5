@@ -1,7 +1,25 @@
-.dice-result {
+.chat-message .dice-result {
   cursor: pointer;
 }
 
+.chat-message .modifiers {
+  margin-bottom: 2px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.chat-message .modifiers .mod {
+  text-transform: uppercase;
+  font-size: 8pt;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 0 5px;
+  border: 1px solid #424242;
+  margin: 1px 3px;
+}
+
+/* These are also used for willpower rerolls */
 .roll-img {
   max-width: 40px;
   margin: 2px;
