@@ -58,15 +58,3 @@ button:focus {
 button.lock-btn {
   border-radius: 0 0 3px 3px;
 }
-
-.locked .item-delete, .locked .discipline-delete, .locked a.item-control.edge-delete, .locked .gift-delete {
-  display: none;
-}
-
-.locked a.item-control.item-create, .locked a.item-control.discipline-create, .locked a.item-control.edge-create, .locked .gift-create, .locked .rite-create, .locked .item-edit {
-  display: none;
-}
-
-.locked a.item-control.exceptionalskill-create {
-  display: none;
-}

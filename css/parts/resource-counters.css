@@ -151,25 +151,3 @@ span.resource-counter-step:nth-child(5n) {
 span.resource-counter-step:last-child {
   margin-right: 0;
 }
-
-.wod5e .locked .resource-value-empty:not(.hunger-value) {
-  opacity: 0;
-  cursor: default;
-  display: none;
-}
-
-.wod5e .locked .resource-value-step:not(.hunger-value) {
-  cursor: default;
-}
-
-.wod5e .locked .resource-minus {
-  opacity: 0;
-  cursor: default !important;
-  display: none;
-}
-
-.wod5e .locked .resource-plus {
-  opacity: 0;
-  cursor: default !important;
-  display: none;
-}

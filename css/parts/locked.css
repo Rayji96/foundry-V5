@@ -1,0 +1,44 @@
+/* wod5e.css */
+.locked button.lockable-button {
+  display: none;
+}
+
+/* buttons.css */
+.locked .item-delete, .locked .discipline-delete, .locked a.item-control.edge-delete, .locked .gift-delete {
+  display: none;
+}
+
+.locked a.item-control.item-create, .locked a.item-control.discipline-create, .locked a.item-control.edge-create, .locked .gift-create, .locked .rite-create, .locked .item-edit {
+  display: none;
+}
+
+.locked a.item-control.exceptionalskill-create {
+  display: none;
+}
+
+.locked .skills .edit-skill {
+  display: none;
+}
+
+/* resource-counters.css */
+.wod5e .locked .resource-value-empty:not(.hunger-value) {
+  opacity: 0;
+  cursor: default;
+  display: none;
+}
+
+.wod5e .locked .resource-value-step:not(.hunger-value) {
+  cursor: default;
+}
+
+.wod5e .locked .resource-minus {
+  opacity: 0;
+  cursor: default !important;
+  display: none;
+}
+
+.wod5e .locked .resource-plus {
+  opacity: 0;
+  cursor: default !important;
+  display: none;
+}

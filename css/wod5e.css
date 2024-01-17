@@ -8,6 +8,7 @@
 @import url("./parts/tray.css");
 @import url("./parts/dialog.css");
 @import url("./parts/chat.css");
+@import url("./parts/locked.css");
 @import url("./themes/dark-theme.css");
 @import url("./splats/vampire-styling.css");
 @import url("./splats/hunter-styling.css");
@@ -288,6 +289,18 @@
     border: none;
 }
 
+.wod5e.sheet.actor .window-content .skills .skill .specialty {
+    position: relative;
+    top: -5px;
+    font-size: 10pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.wod5e.sheet.actor .window-content .skills .skill .edit-skill {
+    font-size: 14px;
+}
+
 .wod5e .window-content .sheet-body .tab > .resource-label {
     width: 100%;
     display: block;
@@ -451,7 +464,7 @@ p .collapsible-content{
 }
 
 .roll-label {
-        font-weight: 700;
+    font-weight: 700;
     font-family: Vollkorn, serif;
     font-variant-caps: titling-caps;
     font-size: 1.4em;
@@ -587,8 +600,4 @@ h3.item-name.chat-portrait-text-size-name-generic {
 .dice-tray {
     background: url("/systems/vtm5e/assets/images/background-black-marble.jpg"), #000;
     border: 2px solid #000;
-}
-
-.locked button.lockable-button {
-    display: none;
 }
