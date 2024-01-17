@@ -1,6 +1,6 @@
 <div class="resource flex-group-center humanity">
-    <label for="actor.system.humanity.value" class="resource-label rollable" data-roll="{{remorse actor.system.humanity.value actor.system.humanity.stains}}"
-    data-label="{{localize 'WOD5E.RollingRemorse'}}">{{localize "WOD5E.Humanity"}}</label>
+    <label for="actor.system.humanity.value" class="resource-label rollable" data-disable-advanced-dice="true" data-use-absolute-value="true" data-absolute-value="{{remorse actor.system.humanity.value actor.system.humanity.stains}}"
+    data-label="{{localize 'WOD5E.RollingRemorse'}}" data-difficulty="1">{{localize "WOD5E.Humanity"}}</label>
     <div class="resource-content flexrow flex-center flex-between">
         <div class="resource-counter" data-states="/:stains,-:value" data-value="{{actor.system.humanity.value}}" data-stains="{{actor.system.humanity.stains}}"  data-name="system.humanity">
             {{#numLoop 10}}
