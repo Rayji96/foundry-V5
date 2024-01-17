@@ -2,6 +2,7 @@
 
 // Export this function to be used in other scripts
 import { WOD5eDice } from '../scripts/system-rolls.js'
+import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
 import { CellActorSheet } from './cell-actor-sheet.js'
 
 /**
@@ -151,7 +152,7 @@ export class HunterActorSheet extends CellActorSheet {
       const data = $(ev.currentTarget)[0].dataset
       const edge = this.actor.system.edges[data.edge]
 
-      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
         name: game.i18n.localize(edge.name),
         img: 'icons/svg/dice-target.svg',
         description: edge.description
@@ -230,33 +231,42 @@ export class HunterActorSheet extends CellActorSheet {
     }).render(true)
   }
 
-  _onEdgeRoll (event) {
+  async _onEdgeRoll (event) {
     event.preventDefault()
+
+    const actor = this.actor
     const element = event.currentTarget
     const dataset = element.dataset
-    const item = this.actor.items.get(dataset.id)
+    const item = actor.items.get(dataset.id)
     const edgeValue = 1
 
-    const dice1 = item.system.dice1 === 'edge' ? edgeValue : this.actor.system.abilities[item.system.dice1].value
+    const dice1 = item.system.dice1 === 'edge' ? edgeValue : actor.system.abilities[item.system.dice1].value
 
     let dice2
     if (item.system.dice2 === 'edge') {
       dice2 = edgeValue
     } else if (item.system.skill) {
-      dice2 = this.actor.system.skills[item.system.dice2].value
+      dice2 = actor.system.skills[item.system.dice2].value
     } else if (item.system.amalgam) {
-      dice2 = this.actor.system.edges[item.system.dice2].value
+      dice2 = actor.system.edges[item.system.dice2].value
     } else {
-      dice2 = this.actor.system.abilities[item.system.dice2].value
+      dice2 = actor.system.abilities[item.system.dice2].value
     }
 
-    const dicePool = dice1 + dice2
+    // Handle getting any situational modifiers
+    const activeBonuses = await getActiveBonuses({
+      actor,
+      selectors
+    })
+
+    const dicePool = dice1 + dice2 + activeBonuses
 
     WOD5eDice.Roll({
       basicDice: dicePool,
-      actor: this.actor,
+      actor,
       data: item.system,
-      title: item.name
+      title: item.name,
+      selectors
     })
   }
 }

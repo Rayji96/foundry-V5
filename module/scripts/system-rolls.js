@@ -56,6 +56,12 @@ class WOD5eDice {
     const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
     const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
+    // Handle getting any situational modifiers
+    const situationalModifiers = await getSituationalModifiers({
+      actor,
+      selectors
+    })
+
     // Inner roll function
     const _roll = async (inputBasicDice, inputAdvancedDice, $form) => {
       // Construct the proper roll formula by sending it to the generateRollFormula function
@@ -67,10 +73,6 @@ class WOD5eDice {
         data,
         rerollHunger
       })
-
-      // Variables
-      let modifiersList = $form.find('.mod-checkbox')
-      let activeModifiers = []
 
       // Send the roll to chat
       const roll = await new Roll(rollFormula, data).roll({
@@ -86,25 +88,30 @@ class WOD5eDice {
       // Send the results of the roll back to any functions that need it
       if (callback) callback(roll)
 
-      if (modifiersList.length > 0) {
-        modifiersList.each(function() {
-          const isChecked = $(this).prop('checked')
-
-          if (isChecked) {
-            // Get the dataset values
-            const label = this.dataset.label
-            const value = this.dataset.value
-
-            // Add a plus sign if the value is positive
-            const valueWithSign = (value > 0 ? '+' : '') + value
-        
-            // Push the values to the activeModifiers array
-            activeModifiers.push({
-                "label": label,
-                "value": valueWithSign
-            })
-          }
-        })
+      // Determine any active modifiers
+      let activeModifiers = []
+      if ($form) {
+        let modifiersList = $form.find('.mod-checkbox')
+        if (modifiersList.length > 0) {
+          modifiersList.each(function() {
+            const isChecked = $(this).prop('checked')
+  
+            if (isChecked) {
+              // Get the dataset values
+              const label = this.dataset.label
+              const value = this.dataset.value
+  
+              // Add a plus sign if the value is positive
+              const valueWithSign = (value > 0 ? '+' : '') + value
+          
+              // Push the values to the activeModifiers array
+              activeModifiers.push({
+                  "label": label,
+                  "value": valueWithSign
+              })
+            }
+          })
+        }
       }
 
       // Construct the proper message content from the generateRollMessage function
@@ -133,12 +140,6 @@ class WOD5eDice {
 
     // Check if the user wants to bypass the roll dialog
     if (!quickRoll) {
-      // Handle getting any situational modifiers to display in the dialog
-      const situationalModifiers = await getSituationalModifiers({
-        actor,
-        selectors
-      })
-
       // Roll dialog template
       const dialogTemplate = `systems/vtm5e/templates/ui/${system}-roll-dialog.html`
       // Data that the dialog template needs
@@ -193,7 +194,6 @@ class WOD5eDice {
             render: (html) => {
               // Obtain the input fields for basic and advanced dice
               const basicDiceInput = html.find('#inputBasicDice')
-              const advancedDiceInput = html.find('#inputAdvancedDice')
 
               // Add event listeners to plus and minus signs on the dice in the dialog
               html.find('.dialog-plus').click(function(event){
@@ -231,7 +231,6 @@ class WOD5eDice {
 
                 // Get the values of basic and advanced dice
                 const basicValue = basicDiceInput.val() ? basicDiceInput.val() : 0
-                const advancedValue = advancedDiceInput.val() ? advancedDiceInput.val() : 0
 
                 // Determine the new input depending on if the bonus is getting added (checked)
                 // or not (unchecked)

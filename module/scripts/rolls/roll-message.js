@@ -169,7 +169,10 @@ export async function generateRollMessage ({
     let totalResult = 0, criticals = 0
     let resultLabel
 
-    totalResult = basicDice.total + advancedDice.total
+    let basicTotal = basicDice.total ? basicDice.total : 0
+    let advancedTotal = advancedDice.total ? advancedDice.total : 0
+
+    totalResult = basicTotal + advancedTotal
 
     if (difficulty > 0) {
       if (totalResult >= difficulty) {

@@ -1,6 +1,7 @@
 /* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
+import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
 import { MortalActorSheet } from './mortal-actor-sheet.js'
 
 /**
@@ -125,17 +126,17 @@ export class GhoulActorSheet extends MortalActorSheet {
     html.find('.discipline-create').click(this._onShowDiscipline.bind(this))
 
     // Make Discipline hidden
-    html.find('.discipline-delete').click(ev => {
+    html.find('.discipline-delete').click(async ev => {
       const data = $(ev.currentTarget)[0].dataset
       this.actor.update({ [`system.disciplines.${data.discipline}.visible`]: false })
     })
 
     // Post Discipline description to the chat
-    html.find('.discipline-chat').click(ev => {
+    html.find('.discipline-chat').click(async ev => {
       const data = $(ev.currentTarget)[0].dataset
       const discipline = this.actor.system.disciplines[data.discipline]
 
-      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
         name: game.i18n.localize(discipline.name),
         img: 'icons/svg/dice-target.svg',
         description: discipline.description
@@ -147,28 +148,37 @@ export class GhoulActorSheet extends MortalActorSheet {
     })
 
     // Roll a rouse check for an item
-    html.find('.item-rouse').click(ev => {
+    html.find('.item-rouse').click(async ev => {
+      const actor = this.actor
       const li = $(ev.currentTarget).parents('.item')
       const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
       const level = item.system.level
       const cost = item.system.cost > 0 ? item.system.cost : 1
 
       // Vampires roll rouse checks
-      if (this.actor.type === 'vampire') {
-        const potency = this.actor.type === 'vampire' ? this.actor.system.blood.potency : 0
+      if (actor.type === 'vampire') {
+        const potency = actor.type === 'vampire' ? actor.system.blood.potency : 0
         const rouseRerolls = this.potencyToRouse(potency, level)
+        const selectors = ["rouse"]
+
+        // Handle getting any situational modifiers
+        const activeBonuses = await getActiveBonuses({
+          actor,
+          selectors
+        })
 
         WOD5eDice.Roll({
-          advancedDice: cost,
+          advancedDice: cost + activeBonuses,
           title: game.i18n.localize('WOD5E.RousingBlood'),
-          actor: this.actor,
+          actor,
           disableBasicDice: true,
           rerollHunger: rouseRerolls,
-          selectors: ["rouse"]
+          increaseHunger: true,
+          selectors
         })
-      } else if (this.actor.type === 'ghoul' && level > 1) {
+      } else if (actor.type === 'ghoul' && level > 1) {
         // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
-        const actorHealth = this.actor.system.health
+        const actorHealth = actor.system.health
         const actorHealthMax = actorHealth.max
         const currentAggr = actorHealth.aggravated
         let newAggr = parseInt(currentAggr) + 1
@@ -178,7 +188,7 @@ export class GhoulActorSheet extends MortalActorSheet {
           newAggr = actorHealthMax
         }
 
-        this.actor.update({ 'system.health.aggravated': newAggr })
+        actor.update({ 'system.health.aggravated': newAggr })
       }
     })
 
@@ -233,33 +243,34 @@ export class GhoulActorSheet extends MortalActorSheet {
     }).render(true)
   }
 
-  _onVampireRoll (event) {
+  async _onVampireRoll (event) {
     event.preventDefault()
 
+    const actor = this.actor
     const element = event.currentTarget
     const dataset = element.dataset
-    const item = this.actor.items.get(dataset.id)
+    const item = actor.items.get(dataset.id)
     const itemDiscipline = item.system.discipline
     let disciplineValue, dice1, dice2
-    const hunger = this.actor.type === 'vampire' ? this.actor.system.hunger.value : 0
+    const hunger = actor.type === 'vampire' ? actor.system.hunger.value : 0
     let selectors = []
 
     // Assign any rituals to use Blood Sorcery value
     // and any ceremonies to use Oblivion value, otherwise
     // just use the normal disciplines path and value
     if (itemDiscipline === 'rituals') {
-      disciplineValue = this.actor.system.disciplines.sorcery.value
+      disciplineValue = actor.system.disciplines.sorcery.value
     } else if (itemDiscipline === 'ceremonies') {
-      disciplineValue = this.actor.system.disciplines.oblivion.value
+      disciplineValue = actor.system.disciplines.oblivion.value
     } else {
-      disciplineValue = this.actor.system.disciplines[itemDiscipline].value
+      disciplineValue = actor.system.disciplines[itemDiscipline].value
     }
 
     // Handle the first set of dice and any logic that it needs
     if (item.system.dice1 === 'discipline') {
       dice1 = disciplineValue
     } else {
-      dice1 = this.actor.system.abilities[item.system.dice1].value
+      dice1 = actor.system.abilities[item.system.dice1].value
       selectors.push(...['abilities', `abilities.${item.system.dice1}`])
     }
 
@@ -282,11 +293,11 @@ export class GhoulActorSheet extends MortalActorSheet {
       dice2 = disciplineValue
     } else if (item.system.skill) {
       // Get the skill value and push the skill selectors
-      dice2 = this.actor.system.skills[item.system.dice2].value
+      dice2 = actor.system.skills[item.system.dice2].value
       selectors.push(...['skills', `skills.${item.system.dice2}`])
     } else if (item.system.amalgam) {
       // Get the second discipline roll
-      dice2 = this.actor.system.disciplines[item.system.dice2].value
+      dice2 = actor.system.disciplines[item.system.dice2].value
 
       // Push the selector for the second discipline
       if (item.system.dice2 === 'rituals') {
@@ -298,17 +309,23 @@ export class GhoulActorSheet extends MortalActorSheet {
       }
     } else {
       // Get the ability value and push the selectors
-      dice2 = this.actor.system.abilities[item.system.dice2].value
+      dice2 = actor.system.abilities[item.system.dice2].value
       selectors.push(...['abilities', `abilities.${item.system.dice2}`])
     }
 
-    const dicePool = dice1 + dice2
+    // Handle getting any situational modifiers
+    const activeBonuses = await getActiveBonuses({
+      actor,
+      selectors
+    })
+
+    const dicePool = dice1 + dice2 + activeBonuses
 
     WOD5eDice.Roll({
       basicDice: Math.max(dicePool - hunger, 0),
       advancedDice: Math.min(dicePool, hunger),
       title: item.name,
-      actor: this.actor,
+      actor,
       data: item.system,
       selectors
     })

@@ -1,6 +1,7 @@
 /* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
+import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -477,7 +478,7 @@ export class WoDActor extends ActorSheet {
      * @param {Event} event   The originating click event
      * @private
   */
-  _onRoll (event) {
+  async _onRoll (event) {
     event.preventDefault()
 
     // Shortcut variables to call back on
@@ -501,29 +502,35 @@ export class WoDActor extends ActorSheet {
     const decreaseRage = dataset.decreaseRage
     const selectors = dataset.selectors ? dataset.selectors.split(" ") : []
 
+    // Handle getting any situational modifiers
+    const activeBonuses = await getActiveBonuses({
+      actor,
+      selectors
+    })
+
     // Get the number of basicDice and advancedDice
     let basicDice
     let advancedDice
     if (disableBasicDice && useAbsoluteValue) {
       // For when basic dice are disabled and we want the
       // advanced dice to equal the absoluteValue given
-      advancedDice = absoluteValue
+      advancedDice = absoluteValue + activeBonuses
       basicDice = 0
     } else if (disableBasicDice) {
       // If just the basicDice are disabled, set it to 0
       // and retrieve the appropriate amount of advanced dice
       basicDice = 0
-      advancedDice = disableAdvancedDice ? 0 : this.getAdvancedDice()
+      advancedDice = disableAdvancedDice ? 0 + activeBonuses : this.getAdvancedDice() + activeBonuses
     } else {
       // Calculate basicDice based on different conditions
       if (useAbsoluteValue) {
         // If basic dice aren't disabled, but we use the absolute
         // value, add the absoluteValue and the flatMod together
-        basicDice = absoluteValue + flatMod
+        basicDice = absoluteValue + flatMod + activeBonuses
       } else {
         // All other, more normal, circumstances where basicDice
         // are calculated normally
-        basicDice = this.getBasicDice(dataset.valuePaths, flatMod)
+        basicDice = this.getBasicDice(dataset.valuePaths, flatMod + activeBonuses)
       }
     
       // Retrieve the appropriate amount of advanced dice

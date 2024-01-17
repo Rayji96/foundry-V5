@@ -88,7 +88,8 @@ export class VampireActorSheet extends GhoulActorSheet {
         "paths": ["blood-surge"],
         "activeWhen": {
           "check": "always"
-        }
+        },
+        "displayWhenInactive": true
       }
     ]
   }

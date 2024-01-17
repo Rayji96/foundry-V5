@@ -1,6 +1,7 @@
 /* global game, mergeObject, renderTemplate, ChatMessage, Dialog */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
+import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
 import { WoDActor } from './wod-v5-sheet.js'
 
 /**
@@ -150,7 +151,7 @@ export class WerewolfActorSheet extends WoDActor {
       const data = $(ev.currentTarget)[0].dataset
       const gift = this.actor.system.gifts[data.gift]
 
-      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
         name: game.i18n.localize(gift.name),
         img: 'icons/svg/dice-target.svg',
         description: gift.description
@@ -162,35 +163,60 @@ export class WerewolfActorSheet extends WoDActor {
     })
   }
 
-  _onGiftRoll (event) {
+  async _onGiftRoll (event) {
     event.preventDefault()
 
+    const actor = this.actor
     const element = event.currentTarget
     const dataset = element.dataset
-    const item = this.actor.items.get(dataset.id)
+    const item = actor.items.get(dataset.id)
     const rageDice = Math.max(this.actor.system.rage.value, 0)
     const itemRenown = item.system.renown
-    const renownValue = this.actor.system.renown[itemRenown].value
+    const renownValue = actor.system.renown[itemRenown].value
+    let selectors = []
 
-    const dice1 = item.system.dice1 === 'renown' ? renownValue : this.actor.system.abilities[item.system.dice1].value
+    // Handle dice1 as either renown or an ability
+    const dice1 = item.system.dice1 === 'renown' ? renownValue : actor.system.abilities[item.system.dice1].value
 
+    // Add ability to selector if dice1 is not renown
+    if (item.system.dice1 !== 'renown') {
+      selectors.push(...['abilities', `abilities.${item.system.dice1}`])
+    }
+
+    // Add Renown to the list of selectors if dice1 or dice2 is renown
+    if (item.system.dice1 === 'renown' || item.system.dice2 === 'renown') {
+      selectors.push(...['renown', `renown.${itemRenown}`])
+    }
+
+    // Handle figuring out what dice2 is and push their selectors
     let dice2
     if (item.system.dice2 === 'renown') {
       dice2 = renownValue
     } else if (item.system.skill) {
-      dice2 = this.actor.system.skills[item.system.dice2].value
+      dice2 = actor.system.skills[item.system.dice2].value
+      selectors.push(...['skills', `skills.${item.system.dice2}`])
     } else {
-      dice2 = this.actor.system.abilities[item.system.dice2].value
+      dice2 = actor.system.abilities[item.system.dice2].value
+      selectors.push(...['abilities', `abilities.${item.system.dice2}`])
     }
 
-    const dicePool = dice1 + dice2
+    // Handle getting any situational modifiers
+    const activeBonuses = await getActiveBonuses({
+      actor,
+      selectors
+    })
 
+    // Add all values together
+    const dicePool = dice1 + dice2 + activeBonuses
+
+    // Send the roll to the system
     WOD5eDice.Roll({
       basicDice: Math.max(dicePool - rageDice, 0),
       advancedDice: Math.min(dicePool, rageDice),
       title: item.name,
-      actor: this.actor,
-      data: item.system
+      actor,
+      data: item.system,
+      selectors
     })
   }
 
@@ -346,7 +372,7 @@ export class WerewolfActorSheet extends WoDActor {
   }
   
   // Function to handle rolling the dice and updating the actor
-  handleFormChange(form, diceCount) {
+  async handleFormChange(form, diceCount) {
     // If automatedRage is turned on and the actor's rage is 0, present a warning
     if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
       this._onInsufficientRage(form)
@@ -354,17 +380,26 @@ export class WerewolfActorSheet extends WoDActor {
       // Variables
       const formData = this.actor.system.forms[form]
       const flavor = formData.description
+      const actor = this.actor
+      const selectors = []
+
+      // Handle getting any situational modifiers
+      const activeBonuses = await getActiveBonuses({
+        actor,
+        selectors
+      })
 
       // Roll the rage dice necessary
       WOD5eDice.Roll({
-        advancedDice: diceCount,
+        advancedDice: diceCount + activeBonuses,
         title: form,
-        actor: this.actor,
+        actor,
         data: this.actor.system,
         flavor,
         quickRoll: true,
         disableBasicDice: true,
         decreaseRage: true,
+        selectors,
         callback: (rollData) => {
           // Calculate the number of rage dice the actor has left
           const failures = rollData.terms[2].results.filter(result => !result.success).length

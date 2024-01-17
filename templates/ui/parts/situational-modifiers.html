@@ -11,7 +11,7 @@
         <div class="mod-label">{{localize mod.source}}</div>
         <div class="mod-value">{{mod.value}}</div>
         <div class="mod-active">
-          <input type="checkbox" class="mod-checkbox" data-value="{{mod.value}}" data-label="{{localize mod.source}}">
+          <input type="checkbox" class="mod-checkbox" data-value="{{mod.value}}" data-label="{{localize mod.source}}" {{#if mod.isActive}}checked{{/if}}>
         </div>
       </div>
     {{/each}}

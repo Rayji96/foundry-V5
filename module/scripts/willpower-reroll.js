@@ -2,6 +2,7 @@
 
 // Import modules
 import { WOD5eDice } from './system-rolls.js'
+import { getActiveBonuses } from './rolls/situational-modifiers.js'
 
 /**
  * Initalise willpower rerolls and its functions
@@ -80,10 +81,11 @@ export const willpowerReroll = async (roll) => {
   // Handles rerolling the number of dice selected
   // TODO: Make this function duplicate/replace the previous roll with the new results
   // For now this works well enough as "roll three new dice"
-  function rerollDie (roll) {
+  async function rerollDie (roll) {
     // Variables
     const diceSelected = $('.willpower-reroll .selected').length
     const rageDiceSelected = $('.willpower-reroll .selected .rage-dice').length
+    const selectors = ['willpower', 'willpower-reroll']
   
     // Get the actor associated with the message
     // Theoretically I should error-check this, but there shouldn't be any
@@ -99,7 +101,8 @@ export const willpowerReroll = async (roll) => {
         title: game.i18n.localize('WOD5E.WillpowerReroll'),
         actor,
         damageWillpower: true,
-        quickRoll: true
+        quickRoll: true,
+        selectors
       })
     }
   }
