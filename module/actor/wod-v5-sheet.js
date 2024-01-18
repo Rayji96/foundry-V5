@@ -99,7 +99,11 @@ export class WoDActor extends ActorSheet {
 
   /** @override */
   activateListeners (html) {
+    // Activate listeners
     super.activateListeners(html)
+
+    // Top-level variables
+    const actor = this.actor
 
     // Resource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(this._onSquareCounterChange.bind(this))
@@ -127,9 +131,9 @@ export class WoDActor extends ActorSheet {
     html.find('.item-create').click(this._onItemCreate.bind(this))
 
     // Send Inventory Item to Chat
-    html.find('.item-chat').click(ev => {
-      const li = $(ev.currentTarget).parents('.item')
-      const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
+    html.find('.item-chat').click(event => {
+      const li = $(event.currentTarget).parents('.item')
+      const item = actor.getEmbeddedDocument('Item', li.data('itemId'))
       renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
         name: item.name,
         img: item.img,
@@ -142,16 +146,16 @@ export class WoDActor extends ActorSheet {
     })
 
     // Update Inventory Item
-    html.find('.item-edit').click(ev => {
-      const li = $(ev.currentTarget).parents('.item')
-      const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
+    html.find('.item-edit').click(event => {
+      const li = $(event.currentTarget).parents('.item')
+      const item = actor.getEmbeddedDocument('Item', li.data('itemId'))
       item.sheet.render(true)
     })
 
     // Delete Inventory Item
-    html.find('.item-delete').click(ev => {
-      const li = $(ev.currentTarget).parents('.item')
-      this.actor.deleteEmbeddedDocuments('Item', [li.data('itemId')])
+    html.find('.item-delete').click(event => {
+      const li = $(event.currentTarget).parents('.item')
+      actor.deleteEmbeddedDocuments('Item', [li.data('itemId')])
       li.slideUp(200, () => this.render(false))
     })
 
@@ -179,16 +183,20 @@ export class WoDActor extends ActorSheet {
   _onResourceChange (event) {
     event.preventDefault()
 
-    const actorData = duplicate(this.actor)
+    // Top-level variables
+    const actor = this.actor
+    const actorData = duplicate(actor)
     const element = event.currentTarget
     const dataset = element.dataset
     const resource = dataset.resource
 
-    // If the sheet is unlocked, handle adding and subtracting
-    // the number of boxes
-    if (dataset.action === 'plus' && !this.locked) {
+    // Don't let things be edited if the sheet is locked
+    if (this.locked) return
+
+    // Handle adding and subtracting the number of boxes
+    if (dataset.action === 'plus') {
       actorData.system[resource].max++
-    } else if (dataset.action === 'minus' && !this.locked) {
+    } else if (dataset.action === 'minus') {
       actorData.system[resource].max = Math.max(actorData.system[resource].max - 1, 0)
     }
 
@@ -199,9 +207,15 @@ export class WoDActor extends ActorSheet {
         actorData.system[resource].superficial = actorData.system[resource].max
       }
     }
-    this.actor.update(actorData)
+
+    // Update the actor with the new data
+    actor.update(actorData)
   }
 
+  /**
+   * Handle changes to the dot counters
+   * @param {Event} event   The originating click event
+   */
   _setupDotCounters (html) {
     html.find('.resource-value').each(function () {
       const value = parseInt(this.dataset.value)
@@ -221,6 +235,10 @@ export class WoDActor extends ActorSheet {
     })
   }
 
+  /**
+   * Handle all changes to square counters
+   * @param {Event} event   The originating click event
+   */
   _setupSquareCounters (html) {
     html.find('.resource-counter').each(function () {
       const data = this.dataset
@@ -384,14 +402,17 @@ export class WoDActor extends ActorSheet {
    */
   _onItemCreate (event) {
     event.preventDefault()
-    
+
+    // Top-level variables
+    const actor = this.actor
     const header = event.currentTarget
-    // Get the type of item to create.
     const type = header.dataset.type
-    // Default img
+
+    // Secondary variables
     let img = '/icons/svg/item-bag.svg'
-    // Grab any data associated with this control.
     const data = duplicate(header.dataset)
+
+    // Handle situational variable changing
     if (type === 'boon') {
       data.boontype = 'Trivial'
     }
@@ -399,6 +420,8 @@ export class WoDActor extends ActorSheet {
       data.dice1 = 'strength'
       data.dice2 = 'athletics'
     }
+
+    // Handle changing the item image if needed
     if (type === 'power') {
       img = '/systems/vtm5e/assets/icons/powers/discipline.png'
     }
@@ -420,7 +443,7 @@ export class WoDActor extends ActorSheet {
     delete itemData.system.type
 
     // Finally, create the item!
-    return this.actor.createEmbeddedDocuments('Item', [itemData])
+    return actor.createEmbeddedDocuments('Item', [itemData])
   }
 
   // Function to grab the default name of an item.
@@ -456,7 +479,9 @@ export class WoDActor extends ActorSheet {
 
   // There's gotta be a better way to do this but for the life of me I can't figure it out
   _assignToActorField (fields, value) {
-    const actorData = duplicate(this.actor)
+    // Top-level variables
+    const actor = this.actor
+    const actorData = duplicate(actor)
 
     // update actor owned items
     if (fields.length === 2 && fields[0] === 'items') {
@@ -470,7 +495,9 @@ export class WoDActor extends ActorSheet {
       const lastField = fields.pop()
       fields.reduce((data, field) => data[field], actorData)[lastField] = value
     }
-    this.actor.update(actorData)
+
+    // Update the actor with the new data
+    actor.update(actorData)
   }
 
   /**
@@ -481,11 +508,11 @@ export class WoDActor extends ActorSheet {
   async _onRoll (event) {
     event.preventDefault()
 
-    // Shortcut variables to call back on
+    // Top-level variables
     const actor = this.actor
     const dataset = event.currentTarget.dataset
 
-    // Variables to help us compile the roll data
+    // Secondary variables
     const damageWillpower = dataset.damageWillpower
     const difficulty = dataset.difficulty
     const title = dataset.label
@@ -502,6 +529,9 @@ export class WoDActor extends ActorSheet {
     const decreaseRage = dataset.decreaseRage
     const selectors = dataset.selectors ? dataset.selectors.split(" ") : []
 
+    // Variables yet to be defined
+    let basicDice, advancedDice
+
     // Handle getting any situational modifiers
     const activeBonuses = await getActiveBonuses({
       actor,
@@ -509,8 +539,6 @@ export class WoDActor extends ActorSheet {
     })
 
     // Get the number of basicDice and advancedDice
-    let basicDice
-    let advancedDice
     if (disableBasicDice && useAbsoluteValue) {
       // For when basic dice are disabled and we want the
       // advanced dice to equal the absoluteValue given
@@ -565,6 +593,7 @@ export class WoDActor extends ActorSheet {
       }
     }
 
+    // Send the roll to the system
     WOD5eDice.Roll({
       basicDice,
       advancedDice,
@@ -601,9 +630,14 @@ export class WoDActor extends ActorSheet {
 
   // Function to grab the values of any given paths and add them up as the total number of basic dice for the roll
   getBasicDice (valuePaths, flatMod) {
-    const actorData = this.actor.system
+    // Top-level variables
+    const actor = this.actor
+    const actorData = actor.system
+
+    // Secondary variables
     const valueArray = valuePaths.split(' ')
-    let total = parseInt(flatMod) || 0 // Start with any flat modifiers
+    // Start with any flat modifiers or 0 if we have none
+    let total = parseInt(flatMod) || 0
 
     // Look up the path and grab the value
     for (let path of valueArray) {
@@ -625,7 +659,9 @@ export class WoDActor extends ActorSheet {
 
   // Function to construct what the advanced dice of the actor's roll should be and total to
   getAdvancedDice () {
-    const actorData = this.actor.system
+    // Top-level variables
+    const actor = this.actor
+    const actorData = actor.system
     
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
     const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
@@ -648,9 +684,13 @@ export class WoDActor extends ActorSheet {
     }
   }
 
+  // Handle changes to health
   _onHealthChange () {
+    // Top-level variables
+    const actor = this.actor
+
     // Define the healthData
-    const healthData = this.actor.system.health
+    const healthData = actor.system.health
 
     // Derive the character's "health value" by taking
     // the sum of the current aggravated and superficial
@@ -660,12 +700,16 @@ export class WoDActor extends ActorSheet {
     const derivedHealth = healthData.max - (healthData.aggravated + (healthData.superficial / 2))
 
     // Update the actor's health.value
-    this.actor.update({ 'system.health.value': derivedHealth })
+    actor.update({ 'system.health.value': derivedHealth })
   }
 
+  // Handle changes to willpower
   _onWillpowerChange () {
+    // Top-level variables
+    const actor = this.actor
+
     // Define the healthData
-    const willpowerData = this.actor.system.willpower
+    const willpowerData = actor.system.willpower
 
     // Derive the character's "willpower value" by taking
     // the sum of the current aggravated and superficial
@@ -675,10 +719,11 @@ export class WoDActor extends ActorSheet {
     const derivedWillpower = willpowerData.max - (willpowerData.aggravated + (willpowerData.superficial / 2))
 
     // Update the actor's health.value
-    this.actor.update({ 'system.willpower.value': derivedWillpower })
+    actor.update({ 'system.willpower.value': derivedWillpower })
   }
 }
 
+// Handle counter changes
 function parseCounterStates (states) {
   return states.split(',').reduce((obj, state) => {
     const [k, v] = state.split(':')

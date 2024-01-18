@@ -13,7 +13,7 @@ export class CellActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'hunter-sheet', 'sheet', 'actor', 'cell']
 
-    // If the user's enabled darkmode, then push it to the class list
+    // If the user has darkmode enabled, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
       classList.push('dark-theme')
     }
@@ -46,16 +46,23 @@ export class CellActorSheet extends WoDActor {
 
   /** @override */
   async getData () {
+    // Top-level variables
     const data = await super.getData()
-    data.hasBoons = this.hasBoons
+    const actor = this.actor
+
+    // Define the type of sheet
     data.sheetType = `${game.i18n.localize('WOD5E.Cell')}`
 
-    data.dtypes = ['String', 'Number', 'Boolean']
-
     // Prepare items.
-    if (this.actor.type === 'cell') {
+    if (actor.type === 'cell') {
       this._prepareItems(data)
     }
+
+    // Show boons on the sheet
+    data.hasBoons = this.hasBoons
+
+    // Define data types
+    data.dtypes = ['String', 'Number', 'Boolean']
 
     return data
   }
@@ -64,7 +71,10 @@ export class CellActorSheet extends WoDActor {
 
   /** @override */
   activateListeners (html) {
+    // Activate listeners
     super.activateListeners(html)
+
+    // Setup counters
     this._setupCellSquareCounters(html)
 
     // Everything below here is only needed if the sheet is editable
@@ -77,7 +87,11 @@ export class CellActorSheet extends WoDActor {
   // Added for Desperation and Danger Counters
   _onCellSquareCounterChange (event) {
     event.preventDefault()
+
+    // Top-level variables
     const element = event.currentTarget
+
+    // Secondary variables
     const index = parseInt(element.dataset.index)
     const oldState = element.dataset.state || ''
     const parent = $(element.parentNode)
@@ -127,15 +141,16 @@ export class CellActorSheet extends WoDActor {
 
   _setupCellSquareCounters (html) {
     html.find('.cell-resource-counter').each(function () {
+      // Top-level variables
       const data = this.dataset
+
+      // Secondary variables
       const states = parseCounterStates(data.states)
       const desperation = data.name === 'system.desperation'
       const danger = data.name === 'system.danger'
-
       const fulls = parseInt(data[states['-']]) || 0
       const halfs = parseInt(data[states['/']]) || 0
       const crossed = parseInt(data[states.x]) || 0
-
       const values = desperation ? new Array(fulls + halfs) : danger ? new Array(fulls + halfs) : new Array(halfs + crossed)
 
       if (desperation) {

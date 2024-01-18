@@ -14,7 +14,7 @@ export class MortalActorSheet extends CoterieActorSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'mortal']
 
-    // If the user's enabled darkmode, then push it to the class list
+    // If the user has darkmode enabled, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
       classList.push('dark-theme')
     }
@@ -48,12 +48,15 @@ export class MortalActorSheet extends CoterieActorSheet {
 
   /** @override */
   async getData () {
+    // Top-level variables
     const data = await super.getData()
+    const actor = this.actor
 
+    // Define the type of sheet
     data.sheetType = `${game.i18n.localize('WOD5E.Mortal')}`
 
-    // Prepare items.
-    if (this.actor.type === 'mortal') {
+    // Prepare items
+    if (actor.type === 'mortal') {
       this._prepareItems(data)
     }
 
@@ -64,6 +67,7 @@ export class MortalActorSheet extends CoterieActorSheet {
 
   /** @override */
   activateListeners (html) {
+    // Activate listeners
     super.activateListeners(html)
   }
 }

@@ -15,7 +15,7 @@ export class WerewolfActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'werewolf-sheet', 'actor', 'sheet', 'werewolf']
 
-    // If the user's enabled darkmode, then push it to the class list
+    // If the user has darkmode enabled, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
       classList.push('dark-theme')
     }
@@ -113,7 +113,11 @@ export class WerewolfActorSheet extends WoDActor {
 
   /** @override */
   activateListeners (html) {
+    // Activate listeners
     super.activateListeners(html)
+
+    // Top-level variables
+    const actor = this.actor
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
@@ -143,13 +147,13 @@ export class WerewolfActorSheet extends WoDActor {
     // Make Gift hidden
     html.find('.gift-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`system.gifts.${data.gift}.powers`]: [] })
+      actor.update({ [`system.gifts.${data.gift}.powers`]: [] })
     })
 
     // Post Gift description to the chat
     html.find('.gift-chat').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      const gift = this.actor.system.gifts[data.gift]
+      const gift = actor.system.gifts[data.gift]
 
       renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
         name: game.i18n.localize(gift.name),
@@ -166,13 +170,18 @@ export class WerewolfActorSheet extends WoDActor {
   async _onGiftRoll (event) {
     event.preventDefault()
 
+    // Top-level variables
     const actor = this.actor
     const element = event.currentTarget
     const dataset = element.dataset
     const item = actor.items.get(dataset.id)
-    const rageDice = Math.max(this.actor.system.rage.value, 0)
+
+    // Secondary variables
+    const rageDice = Math.max(actor.system.rage.value, 0)
     const itemRenown = item.system.renown
     const renownValue = actor.system.renown[itemRenown].value
+
+    // Variables yet to be defined
     let selectors = []
 
     // Handle dice1 as either renown or an ability
@@ -228,7 +237,13 @@ export class WerewolfActorSheet extends WoDActor {
   _onCreateGift (event) {
     event.preventDefault()
 
+    // Top-level variables
+    const actor = this.actor
     const header = event.currentTarget
+
+    // Variables yet to be defined
+    let options = ''
+    let buttons = {}
 
     // If the type of gift is already set, we don't need to ask for it
     if (header.dataset.gift) {
@@ -246,13 +261,14 @@ export class WerewolfActorSheet extends WoDActor {
       delete itemData.system.type
 
       // Finally, create the item!
-      return this.actor.createEmbeddedDocuments('Item', [itemData])
+      return actor.createEmbeddedDocuments('Item', [itemData])
     } else {
-      let options = ''
-      for (const [key, value] of Object.entries(this.actor.system.gifts)) {
+      // Go through the options and add them to the options variable
+      for (const [key, value] of Object.entries(actor.system.gifts)) {
         options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
       }
 
+      // Define the template to be used
       const template = `
         <form>
             <div class="form-group">
@@ -261,9 +277,9 @@ export class WerewolfActorSheet extends WoDActor {
             </div>
         </form>`
 
-      let buttons = {}
+      // Define the buttons to be used and push them to the buttons variable
       buttons = {
-        draw: {
+        submit: {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize('WOD5E.Add'),
           callback: async (html) => {
@@ -282,7 +298,7 @@ export class WerewolfActorSheet extends WoDActor {
             delete itemData.system.type
 
             // Finally, create the item!
-            return this.actor.createEmbeddedDocuments('Item', [itemData])
+            return actor.createEmbeddedDocuments('Item', [itemData])
           }
         },
         cancel: {
@@ -291,11 +307,12 @@ export class WerewolfActorSheet extends WoDActor {
         }
       }
 
+      // Display the dialog
       new Dialog({
         title: game.i18n.localize('WOD5E.AddGift'),
         content: template,
         buttons,
-        default: 'draw'
+        default: 'submit'
       },
       {
         classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]
@@ -311,6 +328,9 @@ export class WerewolfActorSheet extends WoDActor {
   _onCreateRite (event) {
     event.preventDefault()
 
+    // Top-level variables
+    const actor = this.actor
+
     // Prepare the item object.
     const itemData = {
       name: game.i18n.localize('WOD5E.NewRite'),
@@ -324,29 +344,37 @@ export class WerewolfActorSheet extends WoDActor {
     delete itemData.system.type
 
     // Finally, create the item!
-    return this.actor.createEmbeddedDocuments('Item', [itemData])
+    return actor.createEmbeddedDocuments('Item', [itemData])
   }
 
   // Handle when an actor goes into a frenzy
   _onBeginFrenzy (event) {
     event.preventDefault()
 
-    this.actor.update({ 'system.frenzyActive': true })
+    // Top-level variables
+    const actor = this.actor
 
-    this.actor.update({ 'system.rage.value': 5 })
+    actor.update({ 'system.frenzyActive': true })
+
+    actor.update({ 'system.rage.value': 5 })
   }
 
   // Handle when an actor ends their frenzy
   _onEndFrenzy (event) {
     event.preventDefault()
 
-    this.actor.update({ 'system.frenzyActive': false })
+    // Top-level variables
+    const actor = this.actor
+
+    actor.update({ 'system.frenzyActive': false })
   }
 
   // Switch function to direct data to form change functions
   _onShiftForm(event) {
     event.preventDefault()
 
+    // Top-level variables
+    const actor = this.actor
     const element = event.currentTarget
     const dataset = element.dataset
     const form = dataset.form
@@ -362,26 +390,30 @@ export class WerewolfActorSheet extends WoDActor {
         this.handleFormChange('hispo', 1)
         break
       case 'lupus':
-        this.actor.update({ 'system.activeForm': 'lupus' })
+        actor.update({ 'system.activeForm': 'lupus' })
         this._onFormToChat(event)
         break
       default:
-        this.actor.update({ 'system.activeForm': 'homid' })
+        actor.update({ 'system.activeForm': 'homid' })
         this._onFormToChat(event)
     }
   }
   
   // Function to handle rolling the dice and updating the actor
   async handleFormChange(form, diceCount) {
+    // Top-level variables
+    const actor = this.actor
+
+    // Variables yet to be defined
+    const selectors = []
+
     // If automatedRage is turned on and the actor's rage is 0, present a warning
-    if (game.settings.get('vtm5e', 'automatedRage') && this.actor.system.rage.value === 0) {
+    if (game.settings.get('vtm5e', 'automatedRage') && actor.system.rage.value === 0) {
       this._onInsufficientRage(form)
     } else {
       // Variables
-      const formData = this.actor.system.forms[form]
+      const formData = actor.system.forms[form]
       const flavor = formData.description
-      const actor = this.actor
-      const selectors = []
 
       // Handle getting any situational modifiers
       const activeBonuses = await getActiveBonuses({
@@ -394,7 +426,7 @@ export class WerewolfActorSheet extends WoDActor {
         advancedDice: diceCount + activeBonuses,
         title: form,
         actor,
-        data: this.actor.system,
+        data: actor.system,
         flavor,
         quickRoll: true,
         disableBasicDice: true,
@@ -403,11 +435,11 @@ export class WerewolfActorSheet extends WoDActor {
         callback: (rollData) => {
           // Calculate the number of rage dice the actor has left
           const failures = rollData.terms[2].results.filter(result => !result.success).length
-          const newRageAmount = Math.max(this.actor.system.rage.value - failures, 0)
+          const newRageAmount = Math.max(actor.system.rage.value - failures, 0)
           
           // If rolling rage dice didn't reduce the actor to 0 rage, then update the current form
           if (newRageAmount > 0) {
-            this.actor.update({ 'system.activeForm': form })
+            actor.update({ 'system.activeForm': form })
           }
         }
       })
@@ -418,14 +450,18 @@ export class WerewolfActorSheet extends WoDActor {
   _onFormToChat (event) {
     event.preventDefault()
 
+    // Top-level variables
+    const actor = this.actor
     const header = event.currentTarget
     const form = header.dataset.form
 
-    const formData = this.actor.system.forms[form]
+    // Secondary variables
+    const formData = actor.system.forms[form]
     const formName = formData.name
     const formDescription = formData.description ? `<p>${formData.description}</p>` : ''
     const formAbilities = formData.abilities
 
+    // Define the chat message
     let chatMessage = `<p class="roll-label uppercase">${game.i18n.localize(formName)}</p>${formDescription}`
     if (formAbilities.length > 0) {
       chatMessage = chatMessage + '<ul>'
@@ -437,7 +473,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     // Post the message to the chat
     ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      speaker: ChatMessage.getSpeaker({ actor: actor }),
       content: chatMessage
     })
 
@@ -449,13 +485,20 @@ export class WerewolfActorSheet extends WoDActor {
   _onFormEdit (event) {
     event.preventDefault()
 
+    // Top-level variables
+    const actor = this.actor
     const header = event.currentTarget
     const form = header.dataset.form
 
-    const formData = this.actor.system.forms[form]
+    // Secondary variables
+    const formData = actor.system.forms[form]
     const formName = formData.name
     const formDescription = formData.description
 
+    // Variables yet to be defined
+    let buttons = {}
+
+    // Define the template to be used
     const template = `
       <form>
           <div class="flexrow">
@@ -463,7 +506,7 @@ export class WerewolfActorSheet extends WoDActor {
           </div>
       </form>`
 
-    let buttons = {}
+    // Define the buttons to be used and push them to the buttons variable
     buttons = {
       submit: {
         icon: '<i class="fas fa-check"></i>',
@@ -471,7 +514,7 @@ export class WerewolfActorSheet extends WoDActor {
         callback: async (html) => {
           const newDescription = html.find('#formDescription')[0].value
 
-          this.actor.update({ [`system.forms.${form}.description`]: newDescription })
+          actor.update({ [`system.forms.${form}.description`]: newDescription })
         }
       },
       cancel: {
@@ -480,6 +523,7 @@ export class WerewolfActorSheet extends WoDActor {
       }
     }
 
+    // Display the dialog
     new Dialog({
       title: game.i18n.localize('WOD5E.Edit') + ' ' + game.i18n.localize(formName),
       content: template,
@@ -492,6 +536,13 @@ export class WerewolfActorSheet extends WoDActor {
   }
 
   _onInsufficientRage (form) {
+    // Top-level variables
+    const actor = this.actor
+
+    // Variables yet to be defined
+    let buttons = {}
+
+    // Define the template to be used
     const template = `
     <form>
         <div class="form-group">
@@ -499,13 +550,13 @@ export class WerewolfActorSheet extends WoDActor {
         </div>
     </form>`
 
-    let buttons = {}
+    // Define the buttons and push them to the buttons variable
     buttons = {
-      draw: {
+      submit: {
         icon: '<i class="fas fa-check"></i>',
         label: 'Shift Anyway',
         callback: async () => {
-          this.actor.update({ 'system.activeForm': form })
+          actor.update({ 'system.activeForm': form })
         }
       },
       cancel: {
@@ -518,7 +569,7 @@ export class WerewolfActorSheet extends WoDActor {
       title: 'Can\'t Transform: Lost the Wolf',
       content: template,
       buttons,
-      default: 'draw'
+      default: 'submit'
     },
     {
       classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]

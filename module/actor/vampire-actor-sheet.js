@@ -14,7 +14,7 @@ export class VampireActorSheet extends GhoulActorSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'vampire', 'vampire-sheet']
 
-    // If the user's enabled darkmode, then push it to the class list
+    // If the user has darkmode enabled, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
       classList.push('dark-theme')
     }
@@ -64,11 +64,15 @@ export class VampireActorSheet extends GhoulActorSheet {
      * @override
      */
   _prepareItems (sheetData) {
+    // Prepare items
     super._prepareItems(sheetData)
 
+    // Top-level variables
     const actorData = sheetData.actor
+    const actor = this.actor
 
-    actorData.bloodPotencyValue = parseInt(this.actor.system.blood.potency)
+    // Define various blood potency values
+    actorData.bloodPotencyValue = parseInt(actor.system.blood.potency)
     sheetData.blood_potency_text = getBloodPotencyText(actorData.bloodPotencyValue)
     actorData.bloodPotency = getBloodPotencyValues(actorData.bloodPotencyValue)
 

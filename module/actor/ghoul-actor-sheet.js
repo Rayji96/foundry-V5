@@ -15,7 +15,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'ghoul', 'ghoul-sheet']
 
-    // If the user's enabled darkmode, then push it to the class list
+    // If the user has darkmode enabled, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
       classList.push('dark-theme')
     }
@@ -43,12 +43,15 @@ export class GhoulActorSheet extends MortalActorSheet {
 
   /** @override */
   async getData () {
+    // Top-level variables
     const data = await super.getData()
+    const actor = this.actor
 
+    // Define the type of sheet 
     data.sheetType = `${game.i18n.localize('WOD5E.Ghoul')}`
 
     // Prepare items.
-    if (this.actor.type === 'ghoul') {
+    if (actor.type === 'ghoul') {
       this._prepareItems(data)
     }
 
@@ -63,9 +66,14 @@ export class GhoulActorSheet extends MortalActorSheet {
      * @override
      */
   _prepareItems (sheetData) {
+    // Prepare items
     super._prepareItems(sheetData)
-    const actorData = sheetData.actor
 
+    // Top-level variables
+    const actorData = sheetData.actor
+    const actor = this.actor
+
+    // Variables yet to be defined
     const disciplines = {
       animalism: [],
       auspex: [],
@@ -85,13 +93,14 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
-      if (i.type === 'power') {
-        // Append to disciplines.
-        if (i.system.discipline !== undefined) {
-          disciplines[i.system.discipline].push(i)
-          if (!this.actor.system.disciplines[i.system.discipline].visible) {
-            this.actor.update({ [`system.disciplines.${i.system.discipline}.visible`]: true })
-          }
+      // Make sure the item is a power and has a discipline
+      if (i.type === 'power' && i.system.discipline) {
+        // Append to disciplines list
+        disciplines[i.system.discipline].push(i)
+
+        // If the discipline isn't already visible, make it visible
+        if (!actor.system.disciplines[i.system.discipline].visible) {
+          actor.update({ [`system.disciplines.${i.system.discipline}.visible`]: true })
         }
       }
     }
@@ -109,7 +118,7 @@ export class GhoulActorSheet extends MortalActorSheet {
       })
     }
 
-    // Assign and return
+    // Assign and return the disciplines list
     actorData.disciplines_list = disciplines
   }
 
@@ -117,10 +126,14 @@ export class GhoulActorSheet extends MortalActorSheet {
 
   /** @override */
   activateListeners (html) {
+    // Activate listeners
     super.activateListeners(html)
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
+
+    // Top-level variables
+    const actor = this.actor
 
     // Make Discipline visible
     html.find('.discipline-create').click(this._onShowDiscipline.bind(this))
@@ -128,13 +141,13 @@ export class GhoulActorSheet extends MortalActorSheet {
     // Make Discipline hidden
     html.find('.discipline-delete').click(async ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`system.disciplines.${data.discipline}.visible`]: false })
+      actor.update({ [`system.disciplines.${data.discipline}.visible`]: false })
     })
 
     // Post Discipline description to the chat
-    html.find('.discipline-chat').click(async ev => {
-      const data = $(ev.currentTarget)[0].dataset
-      const discipline = this.actor.system.disciplines[data.discipline]
+    html.find('.discipline-chat').click(async event => {
+      const data = $(event.currentTarget)[0].dataset
+      const discipline = actor.system.disciplines[data.discipline]
 
       renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
         name: game.i18n.localize(discipline.name),
@@ -148,18 +161,23 @@ export class GhoulActorSheet extends MortalActorSheet {
     })
 
     // Roll a rouse check for an item
-    html.find('.item-rouse').click(async ev => {
+    html.find('.item-rouse').click(async event => {
+      event.preventDefault()
+
+      // Top-level variables
       const actor = this.actor
-      const li = $(ev.currentTarget).parents('.item')
-      const item = this.actor.getEmbeddedDocument('Item', li.data('itemId'))
+      const li = $(event.currentTarget).parents('.item')
+      const item = actor.getEmbeddedDocument('Item', li.data('itemId'))
+
+      // Secondary variables
       const level = item.system.level
       const cost = item.system.cost > 0 ? item.system.cost : 1
+      const selectors = ["rouse"]
 
       // Vampires roll rouse checks
       if (actor.type === 'vampire') {
         const potency = actor.type === 'vampire' ? actor.system.blood.potency : 0
         const rouseRerolls = this.potencyToRouse(potency, level)
-        const selectors = ["rouse"]
 
         // Handle getting any situational modifiers
         const activeBonuses = await getActiveBonuses({
@@ -167,6 +185,7 @@ export class GhoulActorSheet extends MortalActorSheet {
           selectors
         })
 
+        // Send the roll to the system
         WOD5eDice.Roll({
           advancedDice: cost + activeBonuses,
           title: game.i18n.localize('WOD5E.RousingBlood'),
@@ -188,6 +207,7 @@ export class GhoulActorSheet extends MortalActorSheet {
           newAggr = actorHealthMax
         }
 
+        // Update the actor with the new health
         actor.update({ 'system.health.aggravated': newAggr })
       }
     })
@@ -203,11 +223,20 @@ export class GhoulActorSheet extends MortalActorSheet {
      */
   _onShowDiscipline (event) {
     event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+
+    // Variables yet to be defined
     let options = ''
-    for (const [key, value] of Object.entries(this.actor.system.disciplines)) {
+    let buttons = {}
+
+    // Go through each discipline and add it to the list of options
+    for (const [key, value] of Object.entries(actor.system.disciplines)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
+    // Base template for the discipline selector
     const template = `
       <form>
           <div class="form-group">
@@ -216,14 +245,17 @@ export class GhoulActorSheet extends MortalActorSheet {
           </div>
       </form>`
 
-    let buttons = {}
+    // Add buttons
     buttons = {
-      draw: {
+      submit: {
         icon: '<i class="fas fa-check"></i>',
         label: game.i18n.localize('WOD5E.Add'),
         callback: async (html) => {
+          // Define the discipline selected
           const discipline = html.find('#disciplineSelect')[0].value
-          this.actor.update({ [`system.disciplines.${discipline}.visible`]: true })
+
+          // Make the selected discipline visible
+          actor.update({ [`system.disciplines.${discipline}.visible`]: true })
         }
       },
       cancel: {
@@ -232,11 +264,12 @@ export class GhoulActorSheet extends MortalActorSheet {
       }
     }
 
+    // Render the dialog window
     new Dialog({
       title: game.i18n.localize('WOD5E.AddDiscipline'),
       content: template,
       buttons,
-      default: 'draw'
+      default: 'submit'
     },
     {
       classes: ['wod5e', `vampire-dialog`, `vampire-sheet`]
@@ -246,13 +279,18 @@ export class GhoulActorSheet extends MortalActorSheet {
   async _onVampireRoll (event) {
     event.preventDefault()
 
+    // Top-level variables
     const actor = this.actor
+    const item = actor.items.get(dataset.id)
     const element = event.currentTarget
     const dataset = element.dataset
-    const item = actor.items.get(dataset.id)
+
+    // Secondary variables
     const itemDiscipline = item.system.discipline
-    let disciplineValue, dice1, dice2
     const hunger = actor.type === 'vampire' ? actor.system.hunger.value : 0
+
+    // Variables yet to be defined
+    let disciplineValue, dice1, dice2
     let selectors = []
 
     // Assign any rituals to use Blood Sorcery value

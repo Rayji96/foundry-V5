@@ -14,7 +14,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'spc']
 
-    // If the user's enabled darkmode, then push it to the class list
+    // If the user has darkmode enabled, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
       classList.push('dark-theme')
     }
@@ -49,11 +49,14 @@ export class SPCActorSheet extends CoterieActorSheet {
 
   /** @override */
   async getData () {
+    // Top-level variables
     const data = await super.getData()
-    // TODO: confirm that I can finish and use this list
+    const actor = this.actor
+
+    // Define the type of sheet
     data.sheetType = `${game.i18n.localize('WOD5E.SPC')}`
 
-    // Prepare items.
+    // Prepare items
     if (this.actor.type === 'spc') {
       this._prepareItems(data)
     }
@@ -69,6 +72,7 @@ export class SPCActorSheet extends CoterieActorSheet {
      * @override
      */
   _prepareItems (sheetData) {
+    // Prepare items
     super._prepareItems(sheetData)
   }
 
@@ -76,7 +80,11 @@ export class SPCActorSheet extends CoterieActorSheet {
 
   /** @override */
   activateListeners (html) {
+    // Activate listeners
     super.activateListeners(html)
+
+    // Top-level variables
+    const actor = this.actor
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
@@ -87,7 +95,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Make Exceptional Skill hidden
     html.find('.exceptionalskill-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`system.exceptionaldicepools.${data.exceptionalskill}.visible`]: false })
+      actor.update({ [`system.exceptionaldicepools.${data.exceptionalskill}.visible`]: false })
     })
 
     // Make Discipline visible
@@ -96,22 +104,31 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Make Discipline hidden
     html.find('.discipline-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`system.disciplines.${data.discipline}.visible`]: false })
+      actor.update({ [`system.disciplines.${data.discipline}.visible`]: false })
     })
   }
 
   /**
-     * Handle making a exceptionalskill visible
+     * Handle making a exceptional skills visible
      * @param {Event} event   The originating click event
      * @private
      */
   _onShowExceptionalSkill (event) {
     event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+
+    // Variables yet to be defined
     let options = ''
-    for (const [key, value] of Object.entries(this.actor.system.exceptionaldicepools)) {
+    let buttons = {}
+
+    // Gather and push the list of options to the 'options' variable
+    for (const [key, value] of Object.entries(actor.system.exceptionaldicepools)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
+    // Define the template to be used
     const template = `
       <form>
           <div class="form-group">
@@ -120,14 +137,17 @@ export class SPCActorSheet extends CoterieActorSheet {
           </div>
       </form>`
 
-    let buttons = {}
+    // Define any buttons needed and add them to the buttons variable
     buttons = {
-      draw: {
+      submit: {
         icon: '<i class="fas fa-check"></i>',
         label: game.i18n.localize('WOD5E.Add'),
         callback: async (html) => {
+          // Define the skill being used
           const exceptionalskill = html.find('#skillSelect')[0].value
-          this.actor.update({ [`system.exceptionaldicepools.${exceptionalskill}.visible`]: true })
+
+          // If the dicepool wasn't already visible, make it visible
+          actor.update({ [`system.exceptionaldicepools.${exceptionalskill}.visible`]: true })
         }
       },
       cancel: {
@@ -136,11 +156,12 @@ export class SPCActorSheet extends CoterieActorSheet {
       }
     }
 
+    // Display the dialog
     new Dialog({
       title: game.i18n.localize('WOD5E.AddSkill'),
       content: template,
       buttons,
-      default: 'draw'
+      default: 'submit'
     },
     {
       classes: ['wod5e', `mortal-dialog`, `mortal-sheet`]
@@ -154,11 +175,20 @@ export class SPCActorSheet extends CoterieActorSheet {
      */
   _onShowDiscipline (event) {
     event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+
+    // Variables yet to be defined
     let options = ''
-    for (const [key, value] of Object.entries(this.actor.system.disciplines)) {
+    let buttons = {}
+
+    // Gather and push the list of options to the 'options' variable
+    for (const [key, value] of Object.entries(actor.system.disciplines)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
+    // Define the template to be used
     const template = `
       <form>
           <div class="form-group">
@@ -167,14 +197,17 @@ export class SPCActorSheet extends CoterieActorSheet {
           </div>
       </form>`
 
-    let buttons = {}
+    // Define any buttons needed and add them to the buttons variable
     buttons = {
-      draw: {
+      submit: {
         icon: '<i class="fas fa-check"></i>',
         label: game.i18n.localize('WOD5E.Add'),
         callback: async (html) => {
+          // Define the selected discipline
           const discipline = html.find('#disciplineSelect')[0].value
-          this.actor.update({ [`system.disciplines.${discipline}.visible`]: true })
+
+          // If the discipline wasn't already visible, make it visible
+          actor.update({ [`system.disciplines.${discipline}.visible`]: true })
         }
       },
       cancel: {
@@ -183,11 +216,12 @@ export class SPCActorSheet extends CoterieActorSheet {
       }
     }
 
+    // Display the dialog
     new Dialog({
       title: game.i18n.localize('WOD5E.AddDiscipline'),
       content: template,
       buttons,
-      default: 'draw'
+      default: 'submit'
     },
     {
       classes: ['wod5e', `vampire-dialog`, `vampire-sheet`]
