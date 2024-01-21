@@ -134,7 +134,7 @@ export class WoDActor extends ActorSheet {
     html.find('.item-chat').click(event => {
       const li = $(event.currentTarget).parents('.item')
       const item = actor.getEmbeddedDocument('Item', li.data('itemId'))
-      renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
         name: item.name,
         img: item.img,
         description: item.system.description

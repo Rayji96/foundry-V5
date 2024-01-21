@@ -141,7 +141,7 @@ class WOD5eDice {
     // Check if the user wants to bypass the roll dialog
     if (!quickRoll) {
       // Roll dialog template
-      const dialogTemplate = `systems/vtm5e/templates/ui/${system}-roll-dialog.html`
+      const dialogTemplate = `systems/vtm5e/templates/ui/${system}-roll-dialog.hbs`
       // Data that the dialog template needs
       const dialogData = {
         system,

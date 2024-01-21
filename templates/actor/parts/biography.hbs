@@ -1,0 +1,108 @@
+<div class="tab" data-group="primary" data-tab="description">
+    {{#if isCharacter}}
+    <div class="resource flexrow grid grid-4col">
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.Concept"}}</label>
+            <input type="text" name="system.headers.concept" value="{{actor.system.headers.concept}}" placeholder="{{localize 'WOD5E.Concept'}}" />
+        </div>
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.Chronicle"}}</label>
+            <input type="text" name="system.headers.chronicle" value="{{actor.system.headers.chronicle}}" placeholder="{{localize 'WOD5E.Chronicle'}}" />
+        </div>
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.Ambition"}}</label>
+            <input type="text" name="system.headers.ambition" value="{{actor.system.headers.ambition}}" placeholder="{{localize 'WOD5E.Ambition'}}" />
+        </div>
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.Desire"}}</label>
+            <input type="text" name="system.headers.desire" value="{{actor.system.headers.desire}}" placeholder="{{localize 'WOD5E.Desire'}}" />
+        </div>
+    </div>
+    <div class="resource flexrow grid grid-2col">
+        {{#ifeq actor.system.gamesystem 'hunter'}}
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.Creed"}}</label>
+            <input type="text" name="system.creed.value" value="{{actor.system.creed.value}}" placeholder="{{localize 'WOD5E.Creed'}}" />
+        </div>
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.Redemption"}}</label>
+            <input type="text" name="system.redemption.value" value="{{actor.system.redemption.value}}" placeholder="{{localize 'WOD5E.Redemption'}}" />
+        </div>
+        {{/ifeq}}
+    </div>
+    {{#ifeq actor.system.gamesystem 'hunter'}}
+    <div class="resource flexrow grid grid-3col" style="min-height: 264px;">
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label ">{{localize "WOD5E.ChronicleTenets"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedTenets target="system.headers.tenets" button=true editable=editable}}
+            </div>
+        </div>
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.TouchstonesAndConvictions"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedTouchstones target="system.headers.touchstones" button=true editable=editable}}
+            </div>
+        </div>
+        {{#ifeq actor.system.gamesystem 'hunter'}}
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.CreedFields"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedCreedFields target="system.headers.creedfields" button=true editable=editable}}
+            </div>
+        </div>
+        {{/ifeq}}
+    </div>
+    {{else}}
+    <div class="resource flexrow grid grid-2col" style="min-height: 264px;">
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label ">{{localize "WOD5E.ChronicleTenets"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedTenets target="system.headers.tenets" button=true editable=editable}}
+            </div>
+        </div>
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.TouchstonesAndConvictions"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedTouchstones target="system.headers.touchstones" button=true editable=editable}}
+            </div>
+        </div>
+    </div>
+    {{/ifeq}}
+    {{/if}}
+    {{#if isCharacter}}
+    <div class="resource flexrow grid grid-2col" style="min-height: 264px;"> 
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.Biography"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedBiography target="system.biography" button=true editable=editable}}
+            </div>
+        </div>
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.Appearance"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedAppearance target="system.appearance" button=true editable=editable}}
+            </div>
+        </div>
+    </div>  
+    {{else}}
+    <label class="resource-label flex-center">{{localize "WOD5E.History"}}</label>
+    <div class="description-content">
+        {{editor enrichedBiography target="system.biography" button=true editable=editable}}
+    </div>
+    {{/if}}
+</div>

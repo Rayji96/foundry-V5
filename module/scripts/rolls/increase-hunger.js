@@ -8,7 +8,7 @@ export async function _increaseHunger (actor, amount) {
   // If the roll would push the actor's hunger above 4 when their hunger was previously
   // below 5, send a message in the chat to warn them.
   if (newHungerAmount > 4 && currentHunger < 5) {
-    renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
+    renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
       name: game.i18n.localize('WOD5E.HungerFull1'),
       img: 'systems/vtm5e/assets/icons/dice/vampire/bestial-failure.png',
       description: game.i18n.localize('WOD5E.HungerFull2')

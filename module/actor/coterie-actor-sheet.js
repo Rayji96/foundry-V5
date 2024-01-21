@@ -20,7 +20,7 @@ export class CoterieActorSheet extends WoDActor {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/vtm5e/templates/actor/coterie-sheet.html',
+      template: 'systems/vtm5e/templates/actor/coterie-sheet.hbs',
       width: 940,
       height: 700,
       tabs: [{
@@ -38,8 +38,8 @@ export class CoterieActorSheet extends WoDActor {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
-    return 'systems/vtm5e/templates/actor/coterie-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.hbs'
+    return 'systems/vtm5e/templates/actor/coterie-sheet.hbs'
   }
 
   /* -------------------------------------------- */

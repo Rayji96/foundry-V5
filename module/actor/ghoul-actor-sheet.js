@@ -22,7 +22,7 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/vtm5e/templates/actor/ghoul-sheet.html',
+      template: 'systems/vtm5e/templates/actor/ghoul-sheet.hbs',
       width: 940,
       height: 700,
       tabs: [{
@@ -35,8 +35,8 @@ export class GhoulActorSheet extends MortalActorSheet {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
-    return 'systems/vtm5e/templates/actor/ghoul-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.hbs'
+    return 'systems/vtm5e/templates/actor/ghoul-sheet.hbs'
   }
 
   /* -------------------------------------------- */
@@ -149,7 +149,7 @@ export class GhoulActorSheet extends MortalActorSheet {
       const data = $(event.currentTarget)[0].dataset
       const discipline = actor.system.disciplines[data.discipline]
 
-      renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
         name: game.i18n.localize(discipline.name),
         img: 'icons/svg/dice-target.svg',
         description: discipline.description

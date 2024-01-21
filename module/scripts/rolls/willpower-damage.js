@@ -10,7 +10,7 @@ export async function _damageWillpower (actor) {
   // If the willpower boxes are fully ticked with aggravated damage
   // then tell the chat and don't increase any values.
   if (aggrWillpower >= maxWillpower) {
-    renderTemplate('systems/vtm5e/templates/chat/chat-message.html', {
+    renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
       name: game.i18n.localize('WOD5E.WillpowerFullTitle'),
       img: 'systems/vtm5e/assets/icons/dice/vampire/bestial-failure.png',
       description: game.i18n.localize('WOD5E.WillpowerFull')

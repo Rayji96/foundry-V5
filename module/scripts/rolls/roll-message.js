@@ -35,7 +35,7 @@ export async function generateRollMessage ({
 
   const { totalResult, resultLabel } = await generateResult(basicDice, advancedDice)
 
-  const chatTemplate = `systems/vtm5e/templates/chat/roll-message.html`
+  const chatTemplate = `systems/vtm5e/templates/chat/roll-message.hbs`
   const chatData = {
     fullFormula: roll._formula,
     basicDice,

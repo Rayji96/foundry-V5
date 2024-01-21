@@ -1,0 +1,62 @@
+<div class="tab blood" data-group="primary" data-tab="blood">
+    <div class="resource flexrow grid grid-3col">
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.Sire"}}</label>
+            <input type="text" name="system.headers.sire" value="{{actor.system.headers.sire}}" placeholder="{{localize 'WOD5E.Sire'}}" />
+        </div>
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.Generation"}}</label>
+            <input type="text" name="system.headers.generation" value="{{actor.system.headers.generation}}" placeholder="{{localize 'WOD5E.Generation'}}" />
+        </div>
+        <div class="flex-group-center no-border">
+            <label class="resource-label">{{localize "WOD5E.BloodResonance"}}</label>
+            <input type="text" name="system.blood.resonance" value="{{actor.system.blood.resonance}}" placeholder="{{localize 'WOD5E.BloodResonance'}}" />
+        </div>
+    </div>
+    <div class="resource flexrow grid grid-2col">
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.BloodPotency"}}: </label>
+            <div class="resource-value" data-value="{{actor.system.blood.potency}}" data-name="system.blood.potency">
+                <span class="resource-value-empty"></span>
+                {{#numLoop 10}}
+                <span class="resource-value-step" data-index="{{this}}"></span>
+                {{/numLoop}}
+            </div>
+        </div>
+        {{> "systems/vtm5e/templates/actor/parts/vampire/humanity.hbs"}}
+    </div>
+    <div class="resource flexrow grid grid-2col">
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.BloodSurge"}}:</label>
+            <p>{{lookup blood_potency_text "surge"}}</p>
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.MendAmount"}}:</label>
+            <p>{{lookup blood_potency_text "mend"}}</p>
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.PowerBonus"}}:</label>
+            <p>{{lookup blood_potency_text "power"}}</p>
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.RouseReRoll"}}:</label>
+            <p>{{lookup blood_potency_text "rouse"}}</p>
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.FeedingPenalty"}}:</label>
+            <p>{{lookup blood_potency_text "feeding"}}</p>
+        </div>
+        <div class="flex-group-center">
+            <label class="resource-label">{{localize "WOD5E.BaneSeverity"}}:</label>
+            <p>{{lookup blood_potency_text "bane"}}</p>
+        </div>
+        <div class="flex-group-center">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.ClanBane"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedBane target="system.headers.bane" button=true editable=editable}}
+            </div>
+        </div>
+    </div>
+</div>
