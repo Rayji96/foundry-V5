@@ -1,29 +1,46 @@
 <form class="dialog-contents">
-  <!-- Unless a skill is already selected, show skill selection -->
-  {{#unless skill}}
+  <!-- Unless a skill/attribute is already selected, show skill selection -->
+  {{#or skill attribute}}
     <div class="primary-selector">
-
+      <select>
+        {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
+      </select>
     </div>
-  {{/unless}}
+  {{else}}
+    <!-- If a skill/attribute is already selected, present it as a numerical value -->
+    <div class="primary-selector">
+      {{#if skill}}
+        {{skill.value}}
+      {{#elseif attribute}}
+        {{attribute.value}}
+      {{/if}}
+    </div>
+  {{/or}}
 
   <span>+</span>
 
   <!-- Attribute selection -->
   <div class="primary-selector">
-
+      <select>
+        {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
+      </select>
   </div>
 
   <!-- If the actor is a vampire, show option to add Discipline dots -->
   {{#ifeq system "vampire"}}
     <div class="secondary-selector">
-
+      <select>
+        {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
+      </select>
     </div>
   {{/ifeq}}
 
   <!-- If the actor is a werewolf, show option to add Renown dots-->
   {{#ifeq system "werewolf"}}
     <div class="secondary-selector">
-
+      <select>
+        {{> "systems/vtm5e/templates/item/parts/renown.hbs"}}
+      </select>
     </div>
   {{/ifeq}}
 </form>
