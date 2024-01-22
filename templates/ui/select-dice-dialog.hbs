@@ -1,21 +1,29 @@
 <form class="dialog-contents">
-  <!-- If a skill is already selected, show attribute selection -->
-  {{#if skill}}
+  <!-- Unless a skill is already selected, show skill selection -->
+  {{#unless skill}}
+    <div class="primary-selector">
 
-  {{/if}}
+    </div>
+  {{/unless}}
 
-  <!-- If an attribute is already selected, show skill selection -->
-  {{#if attribute}}
+  <span>+</span>
 
-  {{/if}}
+  <!-- Attribute selection -->
+  <div class="primary-selector">
+
+  </div>
 
   <!-- If the actor is a vampire, show option to add Discipline dots -->
   {{#ifeq system "vampire"}}
+    <div class="secondary-selector">
 
+    </div>
   {{/ifeq}}
 
   <!-- If the actor is a werewolf, show option to add Renown dots-->
   {{#ifeq system "werewolf"}}
-  
+    <div class="secondary-selector">
+
+    </div>
   {{/ifeq}}
 </form>
