@@ -513,20 +513,72 @@ export class WoDActor extends ActorSheet {
     const dataset = event.currentTarget.dataset
 
     // Secondary variables
-    const damageWillpower = dataset.damageWillpower
-    const difficulty = dataset.difficulty
+    const { skill, attribute, discipline, renown } = dataset
+
+    // Variables yet to be defined
+    let system
+
+    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
+    const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+    system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+
+    // Render selecting a skill/attribute to roll
+    const dialogTemplate = 'systems/vtm5e/templates/ui/select-dice-dialog.hbs'
+    const dialogData = {
+      system,
+      skill,
+      attribute,
+      discipline,
+      renown
+    }
+    // Render the template
+    const content = await renderTemplate(dialogTemplate, dialogData)
+
+    // Render the dialog window to select which skill/attribute combo to use
+    new Dialog(
+      {
+        title: "Select Roll",
+        content,
+        buttons: {
+          confirm: {
+            icon: '<i class="fas fa-dice"></i>',
+            label: game.i18n.localize("WOD5E.Confirm"),
+            callback: async html => {
+              // Compile the selected data and send it to the roll function
+
+              await this._onConfirmRoll(dataset)
+            }
+          },
+          cancel: {
+            icon: '<i class="fas fa-times"></i>',
+            label: game.i18n.localize('WOD5E.Cancel')
+          }
+        },
+        default: 'confirm'
+      },
+      {
+        classes: ['wod5e', `${system}-dialog`, `${system}-sheet`]
+      }
+    ).render(true)
+
+  }
+
+  /**
+     * Handle rolls after the selection dialog window is closed
+     * @param {Event} event   The originating click event
+     * @private
+  */
+  async _onConfirmRoll (dataset) {
+    // Top-level variables
+    const actor = this.actor
+
+    // Secondary variables
+    const { damageWillpower, difficulty, disableBasicDice, disableAdvancedDice, quickRoll, rerollHunger, useAbsoluteValue, increaseHunger, decreaseRage } = dataset
     const title = dataset.label
-    const disableBasicDice = dataset.disableBasicDice
-    const disableAdvancedDice = dataset.disableAdvancedDice
     const data = dataset.itemId ? actor.items.get(dataset.itemId).system : actor.system
     const flavor = dataset.useFlavorPath ? this.getFlavorDescription(dataset.flavorPath, data) : dataset.flavor
-    const quickRoll = dataset.quickRoll
-    const rerollHunger = dataset.rerollHunger
     const flatMod = parseInt(dataset.flatMod) || 0
-    const useAbsoluteValue = dataset.useAbsoluteValue
     const absoluteValue = parseInt(dataset.absoluteValue) || 0
-    const increaseHunger = dataset.increaseHunger
-    const decreaseRage = dataset.decreaseRage
     const selectors = dataset.selectors ? dataset.selectors.split(" ") : []
 
     // Variables yet to be defined

@@ -1,7 +1,14 @@
 <div class="tab bonuses" data-group="primary" data-tab="bonuses">
+  {{#each system.bonuses as |bonus key|}}
+    <div class="bonus">
+      <h3>{{bonus.source}}</h3>
+      <input type="number" value="{{bonus.value}}"/>
+      <input type="text" value="{{splitArray bonus.paths}}"/>
+    </div>
+  {{/each}}
   <div class="resource grid grid-2col flex-center">
       <label for=""></label>
-      <input 
+      <input/>
   </div>
   <label class="addBonus">Add Bonus</label>
 </div>

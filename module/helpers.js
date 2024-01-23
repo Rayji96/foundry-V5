@@ -52,6 +52,14 @@ export const loadHelpers = async function () {
     return s.charAt(0).toUpperCase() + s.slice(1)
   }
 
+  Handlebars.registerHelper('splitArray', function (arr) {
+    if (!Array.isArray(arr)) {
+      return ''
+    }
+  
+    return arr.join('; ')
+  })
+
   Handlebars.registerHelper('generateDataPath', function (str) {
     // Run through abilities, skills, disciplines, rituals, gifts, rites, edges, and any other
     // sections of the system where the data path can be grabbed, and then return it as a string

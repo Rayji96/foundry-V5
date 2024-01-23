@@ -50,6 +50,20 @@ export class WoDItemSheet extends ItemSheet {
     return data
   }
 
+  /** @override */
+  async _getSubmitData (updateData) {
+    let formData = super._getSubmitData(updateData)
+
+    // Handle turning the bonuses separated by a semicolon back into an array
+
+    // NOTE: Need to turn into a forEach statement to go through all bonus input fields
+    if (formData['system.bonuses']) {
+      formData['system.bonuses'] = formData['system.bonuses'].split('; ').map(item => item.trim())
+    }
+
+    return formData
+  }
+
   /* -------------------------------------------- */
 
   /** @override */

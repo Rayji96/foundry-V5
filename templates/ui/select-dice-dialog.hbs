@@ -3,6 +3,7 @@
   {{#or skill attribute}}
     <div class="primary-selector">
       <select>
+        <option value="none">None</option>
         {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
       </select>
     </div>
@@ -11,7 +12,7 @@
     <div class="primary-selector">
       {{#if skill}}
         {{skill.value}}
-      {{#elseif attribute}}
+      {{else if attribute}}
         {{attribute.value}}
       {{/if}}
     </div>
@@ -22,6 +23,7 @@
   <!-- Attribute selection -->
   <div class="primary-selector">
       <select>
+        <option value="none">None</option>
         {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
       </select>
   </div>
@@ -29,7 +31,9 @@
   <!-- If the actor is a vampire, show option to add Discipline dots -->
   {{#ifeq system "vampire"}}
     <div class="secondary-selector">
+      <div>Add Discipline:</div>
       <select>
+        <option value="none">None</option>
         {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
       </select>
     </div>
@@ -38,7 +42,9 @@
   <!-- If the actor is a werewolf, show option to add Renown dots-->
   {{#ifeq system "werewolf"}}
     <div class="secondary-selector">
+      <div>Add Renown:</div>
       <select>
+        <option value="none">None</option>
         {{> "systems/vtm5e/templates/item/parts/renown.hbs"}}
       </select>
     </div>
