@@ -31,8 +31,13 @@ export const loadHelpers = async function () {
     return options.inverse(this)
   })
 
-  Handlebars.registerHelper('or', function (bool1, bool2) {
-    return bool1 || bool2
+  Handlebars.registerHelper('or', function() {
+    for (let i = 0; i < arguments.length - 1; i++) {
+      if (arguments[i]) {
+        return true
+      }
+    }
+    return false;
   })
 
   Handlebars.registerHelper('and', function (bool1, bool2) {
