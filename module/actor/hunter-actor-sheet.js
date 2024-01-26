@@ -258,7 +258,7 @@ export class HunterActorSheet extends CellActorSheet {
     // Top-level variables
     const actor = this.actor
     const element = event.currentTarget
-    const dataset = element.dataset
+    const dataset = Object.assign({}, element.dataset)
     const item = actor.items.get(dataset.id)
 
     // Secondary variables

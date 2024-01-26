@@ -122,7 +122,7 @@ class WOD5eDice {
         data,
         title,
         flavor,
-        difficulty,
+        difficulty: $form ? $form.find("[id=inputDifficulty]").val() : difficulty,
         activeModifiers
       })
 
@@ -170,13 +170,13 @@ class WOD5eDice {
                 icon: '<i class="fas fa-dice"></i>',
                 label: game.i18n.localize("WOD5E.Roll"),
                 callback: async html => {
-                  // Obtain the input fields for basic and advanced dice
+                  // Obtain the input fields
                   const basicDiceInput = html.find('#inputBasicDice')
                   const advancedDiceInput = html.find('#inputAdvancedDice')
 
-                // Get the values of basic and advanced dice
-                const basicValue = basicDiceInput.val() ? basicDiceInput.val() : 0
-                const advancedValue = advancedDiceInput.val() ? advancedDiceInput.val() : 0
+                  // Get the values
+                  const basicValue = basicDiceInput.val() ? basicDiceInput.val() : 0
+                  const advancedValue = advancedDiceInput.val() ? advancedDiceInput.val() : 0
 
                   // Send the roll to the _roll function
                   roll = await _roll(basicValue, advancedValue, html)

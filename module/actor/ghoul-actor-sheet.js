@@ -281,9 +281,9 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     // Top-level variables
     const actor = this.actor
-    const item = actor.items.get(dataset.id)
     const element = event.currentTarget
-    const dataset = element.dataset
+    const dataset = Object.assign({}, element.dataset)
+    const item = actor.items.get(dataset.id)
 
     // Secondary variables
     const itemDiscipline = item.system.discipline

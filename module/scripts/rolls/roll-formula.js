@@ -30,6 +30,7 @@ export async function generateRollFormula ({
     // Then, roll hunger dice (dg) and count successes (cs>5) as well as
     // rerolling those hunger dice to keep the highest (kh)
     const rouseReroll = rerollHunger ? `kh${advancedDice}` : ''
+    if (rerollHunger) advancedDice = advancedDice * 2
 
     // Construct the Vampire roll formula by merging Vampire Dice, Hunger Dice, and any possible rouse reroll modifiers
     rollFormula = `${basicDice}d${VampireDie.DENOMINATION}${successFormula} + ${advancedDice}d${VampireHungerDie.DENOMINATION}${successFormula}${rouseReroll}`

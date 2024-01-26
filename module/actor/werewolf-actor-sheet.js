@@ -173,7 +173,7 @@ export class WerewolfActorSheet extends WoDActor {
     // Top-level variables
     const actor = this.actor
     const element = event.currentTarget
-    const dataset = element.dataset
+    const dataset = Object.assign({}, element.dataset)
     const item = actor.items.get(dataset.id)
 
     // Secondary variables
@@ -376,7 +376,7 @@ export class WerewolfActorSheet extends WoDActor {
     // Top-level variables
     const actor = this.actor
     const element = event.currentTarget
-    const dataset = element.dataset
+    const dataset = Object.assign({}, element.dataset)
     const form = dataset.form
   
     switch (form) {

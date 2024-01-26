@@ -3,7 +3,7 @@
     <div class="abilities grid grid-3col flex-group-center">
         {{#each actor.system.abilities as |ability key|}}
             <div class="ability flexrow flex-center">
-                <label for="actor.system.abilities.{{key}}.value" class="resource-label rollable" data-value-paths="abilities.{{key}}.value"
+                <label for="actor.system.abilities.{{key}}.value" class="resource-label rollable" data-value-paths="abilities.{{key}}.value" data-select-dialog="true"
                     data-label="{{localize ability.name}}" data-selectors="abilities abilities.{{key}}" data-attribute="{{key}}">{{localize ability.name}}</label>
                 <div class="resource-value" data-value="{{ability.value}}" data-name="system.abilities.{{key}}.value">
                     <span class="resource-value-empty"></span>
@@ -24,7 +24,7 @@
                     <i class="fas fa-edit"></i>
                 </a>
                 <label for="actor.system.skills.{{key}}.value" class="rollable{{#if skill.bonuses}} specialty-available{{/if}}" data-value-paths="skills.{{key}}.value"
-                data-label="{{localize skill.name}}" data-selectors="skills skills.{{key}}" data-skill="{{key}}">{{localize skill.name}}</label>
+                data-label="{{localize skill.name}}" data-selectors="skills skills.{{key}}" data-skill="{{key}}" data-select-dialog="true">{{localize skill.name}}</label>
                 {{#if skill.bonuses}}
                     <label class="specialty" title="Specialties:{{#each skill.bonuses as |bonus key|}} {{bonus.source}}{{#unless @last}},{{/unless}}{{/each}}">S</label>
                 {{/if}}

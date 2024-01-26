@@ -24,7 +24,11 @@ export async function generateRollMessage ({
   difficulty = 0,
   activeModifiers
 }) {
+  // Variables to be defined later
   let basicDice, advancedDice
+
+  // Make super sure that difficulty is an int
+  difficulty = parseInt(difficulty)
 
   if (roll.terms[0]) {
     basicDice = await generateBasicDiceDisplay(roll.terms[0])
@@ -57,6 +61,7 @@ export async function generateRollMessage ({
   // Function to help with rendering of basic dice
   async function generateBasicDiceDisplay(rollData) {
     const basicDice = rollData.results
+    let criticals = 0
 
     basicDice.forEach((die, index) => {
       // Variables
@@ -64,9 +69,9 @@ export async function generateRollMessage ({
       let dieClasses = ['roll-img', 'rerollable']
 
       // Basic die results
-      if (die.result === 10) dieResult = 'critical'
-      else if (die.result < 10 && die.result > 5) dieResult = 'success'
-      else dieResult = 'failure'
+      if (die.result === 10) dieResult = 'critical' // Critical successes
+      else if (die.result < 10 && die.result > 5) dieResult = 'success' // Successes
+      else dieResult = 'failure' // Failures
 
       // Define the face of the die based on the above conditionals
       dieFace = normalDiceFaces[dieResult]
@@ -99,7 +104,13 @@ export async function generateRollMessage ({
       rollData.results[index].img = dieImg
       rollData.results[index].classes = dieClasses.join(" ")
       rollData.results[index].altText = dieAltText
+
+      // Increase the number of criticals collected across the dice
+      if (dieResult === 'critical') criticals++
     })
+
+    // Add in critical data as its own property
+    rollData.criticals = criticals
 
     return rollData
   }
@@ -107,23 +118,31 @@ export async function generateRollMessage ({
   // Function to help the rendering of advanced dice
   async function generateAdvancedDiceDisplay(rollData) {
     const advancedDice = rollData.results
+    let criticals = 0
+    let critFails = 0
 
     advancedDice.forEach((die, index) => {
       // Variables
       let dieResult, dieImg, dieAltText, dieFace
       let dieClasses = ['roll-img']
 
+      // Mark any die that were rerolled / not used
+      if (die.discarded) dieClasses.push(['rerolled'])
+
       // Use switch-cases to adjust splat-specific dice locations/faces
       switch (system) {
         case 'werewolf':
           // Werewolf die results
-          if (die.result === 10 || (die.result < 10 && die.result > 5)) {
+          if (die.result === 10) { // Handle critical successes
             dieResult = 'critical'
             dieClasses.push(['rerollable'])
-          } else if (die.result < 6 && die.result > 2) {
-            dieResult = 'failure'
+          } else if (die.result < 10 && die.result > 5) { // Successes
+            dieResult = 'success'
             dieClasses.push(['rerollable'])
-          } else dieResult = 'brutal'
+          } else if (die.result < 6 && die.result > 2) { // Failures
+            dieResult = 'failure'
+            dieClasses.push(['rerollable']) 
+          } else dieResult = 'brutal' // Brutal failures
 
           // Werewolf data
           dieFace = rageDiceFaces[dieResult]
@@ -132,10 +151,10 @@ export async function generateRollMessage ({
           break
         case 'vampire':
           // Vampire die results
-          if (die.result === 10) dieResult = 'critical'
-          else if (die.result < 10 && die.result > 5) dieResult = 'success'
-          else if (die.result < 6 && die.result > 1) dieResult = 'failure'
-          else dieResult = 'bestial'
+          if (die.result === 10) dieResult = 'critical' // Critical successes
+          else if (die.result < 10 && die.result > 5) dieResult = 'success' // Successes
+          else if (die.result < 6 && die.result > 1) dieResult = 'failure' // Failures
+          else dieResult = 'bestial' // Bestial failures
 
           // Vampire data
           dieFace = hungerDiceFaces[dieResult]
@@ -144,10 +163,10 @@ export async function generateRollMessage ({
           break
         case 'hunter':
           // Hunter die results
-          if (die.result === 10) dieResult = 'critical'
-          else if (die.result < 10 && die.result > 5) dieResult = 'success'
-          else if (die.result < 6 && die.result > 1) dieResult = 'failure'
-          else dieResult = 'criticalFailure'
+          if (die.result === 10) dieResult = 'critical' // Critical successes
+          else if (die.result < 10 && die.result > 5) dieResult = 'success' // Successes
+          else if (die.result < 6 && die.result > 1) dieResult = 'failure' // Failures
+          else dieResult = 'criticalFailure' // Critical failures
 
           // Hunter data
           dieFace = desperationDiceFaces[dieResult]
@@ -160,25 +179,61 @@ export async function generateRollMessage ({
       rollData.results[index].img = dieImg
       rollData.results[index].classes = dieClasses.join(" ")
       rollData.results[index].altText = dieAltText
+
+      // Increase the number of criticals collected across the dice
+      if (dieResult === 'critical') criticals++
+      if (dieResult === 'criticalFailure' || dieResult === 'bestial' || dieResult === 'brutal') critFails++
     })
+
+    // Add in critical data as its own properties
+    rollData.criticals = criticals
+    rollData.critFails = critFails
   
     return rollData
   }
 
   async function generateResult(basicDice, advancedDice) {
-    let totalResult = 0, criticals = 0
+    // Useful variables
+    let totalResult = 0
+    let totalCriticals = 0
+    let critTotal = 0
     let resultLabel
 
+    // Calculate the totals of basic and advanced dice
     let basicTotal = basicDice.total ? basicDice.total : 0
     let advancedTotal = advancedDice.total ? advancedDice.total : 0
 
-    totalResult = basicTotal + advancedTotal
+    // Sum up the total criticals across both sets of dice
+    totalCriticals = basicDice.criticals + advancedDice.criticals
+    // Define the total to add to the roll as a result of the criticals
+    // (every 2 critical results adds an additional 2 successes)
+    critTotal = Math.floor(totalCriticals / 2) * 2
 
-    if (difficulty > 0) {
-      if (totalResult >= difficulty) {
-        resultLabel = "Success"
-      } else {
-        resultLabel = "Failure"
+    // Calculate the total result when factoring in criticals
+    totalResult = basicTotal + advancedTotal + critTotal
+
+    // Generate the result label depending on the splat and difficulty
+    if (totalResult < difficulty || (totalResult === 0 && difficulty === 0)) { // Handle failures...
+      if (system === 'vampire' && advancedDice.critFails > 0) { // Handle bestial failures
+        resultLabel = `<div class="roll-result-label bestial-failure">${game.i18n.localize('WOD5E.PossibleBestialFailure')}</div>`
+      } else if (system === 'werewolf' && advancedDice.critFails > 0) { // Handle brutal outcomes
+        resultLabel = `<div class="roll-result-label rage-failure">${game.i18n.localize('WOD5E.PossibleRageFailure')}</div>`
+      } else if (system === 'hunter' && advancedDice.critFails > 0) { // Handle desperation failures
+        resultLabel = `<div class="roll-result-label desperation-failure">${game.i18n.localize('WOD5E.PossibleDesperationFailure')}</div>`
+      } else { // Everything else is just a normal failure
+        resultLabel = `<div class="roll-result-label failure">${game.i18n.localize('WOD5E.Fail')}</div>`
+      }
+    } else {
+      if (totalResult >= difficulty) { // If the difficulty is matched or exceeded...
+        if (critTotal > 0) { // If there's at least one set of critical dice...
+          if (system === 'vampire' && advancedDice.criticals > 1) { // Handle messy criticals
+            resultLabel = `<div class="roll-result-label messy-critical">${game.i18n.localize('WOD5E.MessyCritical')}</div>`
+          } else { // Everything else is just a normal critical success
+            resultLabel = `<div class="roll-result-label critical-success">${game.i18n.localize('WOD5E.CriticalSuccess')}</div>`
+          }
+        } else { // Normal success
+          resultLabel = `<div class="roll-result-label success">${game.i18n.localize('WOD5E.Success')}</div>`
+        }
       }
     }
 

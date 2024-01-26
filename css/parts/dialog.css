@@ -65,3 +65,28 @@
 .wod5e .dialog-contents .situational-modifiers .mod-header {
   font-weight: bold;
 }
+
+.wod5e .dialog-contents .selectors-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.wod5e .dialog-contents .selectors-group .primary-selector {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.wod5e .dialog-contents .selectors-group .selector-title {
+  font-size: 13pt;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.wod5e .dialog-contents .selectors-group .middle {
+  font-size: 20pt;
+}
+
+.wod5e .dialog-contents .selectors-group .selector-title, .selector-content {
+  margin: auto;
+}

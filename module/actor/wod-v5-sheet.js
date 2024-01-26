@@ -187,7 +187,7 @@ export class WoDActor extends ActorSheet {
     const actor = this.actor
     const actorData = duplicate(actor)
     const element = event.currentTarget
-    const dataset = element.dataset
+    const dataset = Object.assign({}, element.dataset)
     const resource = dataset.resource
 
     // Don't let things be edited if the sheet is locked
@@ -297,8 +297,12 @@ export class WoDActor extends ActorSheet {
    */
   _onDotCounterChange (event) {
     event.preventDefault()
+
+    // Top-level variables
     const element = event.currentTarget
-    const dataset = element.dataset
+    const dataset = Object.assign({}, element.dataset)
+
+    // Secondary variables
     const index = parseInt(dataset.index)
     const parent = $(element.parentNode)
     const fieldStrings = parent[0].dataset.name
@@ -510,7 +514,11 @@ export class WoDActor extends ActorSheet {
 
     // Top-level variables
     const actor = this.actor
-    const dataset = event.currentTarget.dataset
+    const element = event.currentTarget
+    const dataset = Object.assign({}, element.dataset)
+
+    // If selectDialog isn't set, just skip to the next dialog immediately
+    if (!dataset.selectDialog) return this._onConfirmRoll(dataset)
 
     // Secondary variables
     const { skill, attribute, discipline, renown } = dataset
@@ -545,6 +553,56 @@ export class WoDActor extends ActorSheet {
             label: game.i18n.localize("WOD5E.Confirm"),
             callback: async html => {
               // Compile the selected data and send it to the roll function
+
+              const skillSelect = html.find("[id=skillSelect]").val()
+              const attributeSelect = html.find("[id=attributeSelect]").val()
+              const disciplineSelect = html.find("[id=disciplineSelect]").val()
+              const renownSelect = html.find("[id=renownSelect]").val()
+
+              // Handle adding a skill to the dicepool
+              if (skillSelect) {
+                // Add it to the label
+                dataset.label += ` + ${this.generateLabelAndLocalize(skillSelect)}`
+
+                // Add it to the value path if applicable
+                if (dataset.valuePaths) dataset.valuePaths += ` skills.${skillSelect}.value`
+
+                // If using absolute values instead of value paths, add the values together
+                if (dataset.useAbsoluteValue && data.absoluteValue) dataset.absoluteValue += actor.system.skills[skillSelect].value
+              }
+              // Handle adding an attribute to the dicepool
+              if (attributeSelect) {
+                // Add it to the label
+                dataset.label += ` + ${this.generateLabelAndLocalize(attributeSelect)}`
+
+                // Add it to the value path if applicable
+                if (dataset.valuePaths) dataset.valuePaths += ` abilities.${attributeSelect}.value`
+
+                // If using absolute values instead of value paths, add the values together
+                if (dataset.useAbsoluteValue && data.absoluteValue) dataset.absoluteValue += actor.system.abilities[attributeSelect].value
+              }
+              // Handle adding a discipline to the dicepool
+              if (disciplineSelect) {
+                // Add it to the label
+                dataset.label += ` + ${this.generateLabelAndLocalize(disciplineSelect)}`
+
+                // Add it to the value path if applicable
+                if (dataset.valuePaths) dataset.valuePaths += ` disciplines.${disciplineSelect}.value`
+
+                // If using absolute values instead of value paths, add the values together
+                if (dataset.useAbsoluteValue && data.absoluteValue) dataset.absoluteValue += actor.system.disciplines[disciplineSelect].value
+              }
+              // Handle adding a renown to the dicepool
+              if (renownSelect) {
+                // Add it to the label
+                dataset.label += ` + ${this.generateLabelAndLocalize(renownSelect)}`
+
+                // Add it to the value path if applicable
+                if (dataset.valuePaths) dataset.valuePaths += ` renown.${renownSelect}.value`
+
+                // If using absolute values instead of value paths, add the values together
+                if (dataset.useAbsoluteValue && data.absoluteValue) dataset.absoluteValue += actor.system.renown[renownSelect].value
+              }
 
               await this._onConfirmRoll(dataset)
             }
@@ -772,6 +830,31 @@ export class WoDActor extends ActorSheet {
 
     // Update the actor's health.value
     actor.update({ 'system.willpower.value': derivedWillpower })
+  }
+
+  generateLabelAndLocalize (str) {
+    const disciplines = {
+      animalism: 'WOD5E.Animalism',
+      auspex: 'WOD5E.Auspex',
+      celerity: 'WOD5E.Celerity',
+      dominate: 'WOD5E.Dominate',
+      fortitude: 'WOD5E.Fortitude',
+      obfuscate: 'WOD5E.Obfuscate',
+      potence: 'WOD5E.Potence',
+      presence: 'WOD5E.Presence',
+      protean: 'WOD5E.Protean',
+      sorcery: 'WOD5E.BloodSorcery',
+      oblivion: 'WOD5E.Oblivion',
+      alchemy: 'WOD5E.ThinBloodAlchemy',
+      rituals: 'WOD5E.Rituals',
+      ceremonies: 'WOD5E.Ceremonies'
+    }
+
+    if (disciplines.hasOwnProperty(str)) {
+      return `${game.i18n.localize(disciplines[str])}`
+    }
+
+    return `${game.i18n.localize('WOD5E.' + str.capitalize())}`
   }
 }
 

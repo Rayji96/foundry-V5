@@ -1,39 +1,61 @@
 <form class="dialog-contents">
-  <!-- Unless a skill/attribute is already selected, show skill selection -->
-  {{#or skill attribute}}
-    <div class="primary-selector">
-      <select>
-        <option value="none">None</option>
-        {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
-      </select>
-    </div>
-  {{else}}
-    <!-- If a skill/attribute is already selected, present it as a numerical value -->
-    <div class="primary-selector">
-      {{#if skill}}
-        {{skill.value}}
-      {{else if attribute}}
-        {{attribute.value}}
-      {{/if}}
-    </div>
-  {{/or}}
+  <div class="selectors-group">
+    {{#unless (or skill attribute)}}
+      <!-- Unless a skill/attribute is already selected, show skill selection -->
+      <div class="primary-selector">
+        <div class="selector-sitle">
+          {{localize "WOD5E.Skill"}}
+        </div>
+        <div class="selector-content">
+          <select id="skillSelect">
+            <option value="">None</option>
+            {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
+          </select>
+        </div>
+      </div>
+    {{else}}
+      <!-- If a skill/attribute is already selected, present it as a numerical value -->
+      <div class="primary-selector">
+        {{#if skill}}
+          <div class="selector-title">
+            {{localize "WOD5E.Skill"}}
+          </div>
+          <div class="selector-content">
+            {{localize (generateFeatureLabel skill)}}
+          </div>
+        {{else if attribute}}
+          <div class="selector-title">
+            {{localize "WOD5E.Attribute"}}
+          </div>
+          <div class="selector-content">
+            {{localize (generateFeatureLabel attribute)}}
+          </div>
+        {{/if}}
+      </div>
+    {{/unless}}
 
-  <span>+</span>
+    <div class="middle">+</div>
 
-  <!-- Attribute selection -->
-  <div class="primary-selector">
-      <select>
-        <option value="none">None</option>
-        {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
-      </select>
+    <!-- Attribute selection -->
+    <div class="primary-selector">
+        <div class="selector-title">
+          {{localize "WOD5E.Attribute"}}
+        </div>
+        <div class="selector-content">
+          <select id="attributeSelect">
+            <option value="">None</option>
+            {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
+          </select>
+        </div>
+    </div>
   </div>
 
   <!-- If the actor is a vampire, show option to add Discipline dots -->
   {{#ifeq system "vampire"}}
     <div class="secondary-selector">
       <div>Add Discipline:</div>
-      <select>
-        <option value="none">None</option>
+      <select id="disciplineSelect">
+        <option value="">None</option>
         {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
       </select>
     </div>
@@ -43,8 +65,8 @@
   {{#ifeq system "werewolf"}}
     <div class="secondary-selector">
       <div>Add Renown:</div>
-      <select>
-        <option value="none">None</option>
+      <select id="renownSelect">
+        <option value="">None</option>
         {{> "systems/vtm5e/templates/item/parts/renown.hbs"}}
       </select>
     </div>
