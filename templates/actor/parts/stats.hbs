@@ -20,11 +20,12 @@
         {{#each actor.system.skills as |skill key|}}
         <div class="skill flexrow flex-center">
             <div class="resource-label">
-                <a class="edit-skill" title="Edit skill">
+                <a class="edit-skill" title="Edit skill" data-skill="{{key}}">
                     <i class="fas fa-edit"></i>
                 </a>
                 <label for="actor.system.skills.{{key}}.value" class="rollable{{#if skill.bonuses}} specialty-available{{/if}}" data-value-paths="skills.{{key}}.value"
-                data-label="{{localize skill.name}}" data-selectors="skills skills.{{key}}" data-skill="{{key}}" data-select-dialog="true">{{localize skill.name}}</label>
+                data-label="{{localize skill.name}}" data-selectors="skills skills.{{key}}" data-skill="{{key}}" data-select-dialog="true"
+                data-use-flavor-path="true" data-flavor-path="skills.{{key}}.description">{{localize skill.name}}</label>
                 {{#if skill.bonuses}}
                     <label class="specialty" title="Specialties:{{#each skill.bonuses as |bonus key|}} {{bonus.source}}{{#unless @last}},{{/unless}}{{/each}}">S</label>
                 {{/if}}

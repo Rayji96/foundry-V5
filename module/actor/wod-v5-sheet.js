@@ -130,6 +130,9 @@ export class WoDActor extends ActorSheet {
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this))
 
+    // Edit a skill
+    html.find('.edit-skill').click(this._onSkillEdit.bind(this))
+
     // Send Inventory Item to Chat
     html.find('.item-chat').click(event => {
       const li = $(event.currentTarget).parents('.item')
@@ -287,6 +290,7 @@ export class WoDActor extends ActorSheet {
    */
   _onToggleLocked (event) {
     event.preventDefault()
+
     this.locked = !this.locked
     this._render()
   }
@@ -448,6 +452,72 @@ export class WoDActor extends ActorSheet {
 
     // Finally, create the item!
     return actor.createEmbeddedDocuments('Item', [itemData])
+  }
+
+  /**
+   * Handle bringing up the skill edit dialog window
+   * @param {Event} event   The originating click event
+   * @protected
+   */
+  async _onSkillEdit (event) {
+    event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+    const header = event.currentTarget
+    const skill = header.dataset.skill
+
+    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
+    const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+    const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+
+    // Secondary variables
+    const skillData = {
+      actor,
+      system,
+      skill: actor.system.skills[skill]
+    }
+
+    // Render selecting a skill/attribute to roll
+    const skillTemplate = 'systems/vtm5e/templates/actor/parts/skill-dialog.hbs'
+    // Render the template
+    const content = await renderTemplate(skillTemplate, skillData)
+
+    // Render the dialog window to select which skill/attribute combo to use
+    new Dialog(
+      {
+        title: game.i18n.localize(actor.system.skills[skill].name),
+        content,
+        buttons: { },
+        close: (html) => {
+          // Top-level variables
+          const newDescription = html.find('#description')[0].value
+
+          // Variables yet to be defined
+          let newBonuses = []
+
+          // Update the description of the skill
+          actor.update({ [`system.skills.${skill}.description`]: newDescription })
+
+          // Update the bonuses of the skill
+        },
+        render: (html) => {
+          html.find('.addBonus').click(function(event) {
+            console.log("uuu")
+          })
+        }
+      },
+      {
+        classes: ['wod5e', `${system}-dialog`, `${system}-sheet`],
+        tabs: [
+          {
+            navSelector: '.sheet-tabs',
+            contentSelector: '.sheet-body',
+            initial: 'description'
+          }
+        ]
+      }
+    ).render(true)
   }
 
   // Function to grab the default name of an item.

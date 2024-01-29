@@ -30,11 +30,7 @@ export class WoDItemSheet extends ItemSheet {
   /** @override */
   get template () {
     const path = 'systems/vtm5e/templates/item'
-    // Return a single sheet for all item types.
-    // return `${path}/item-sheet.hbs`;
 
-    // Alternatively, you could use the following return statement to do a
-    // unique item sheet by type, like `weapon-sheet.hbs`.
     return `${path}/item-${this.item.type}-sheet.hbs`
   }
 
@@ -51,17 +47,16 @@ export class WoDItemSheet extends ItemSheet {
   }
 
   /** @override */
-  async _getSubmitData (updateData) {
+  _getSubmitData (updateData) {
     let formData = super._getSubmitData(updateData)
 
-    // Handle turning the bonuses separated by a semicolon back into an array
-
-    // NOTE: Need to turn into a forEach statement to go through all bonus input fields
     if (formData['system.bonuses']) {
       formData['system.bonuses'] = formData['system.bonuses'].split('; ').map(item => item.trim())
     }
 
-    return formData
+    const submitData = foundry.utils.expandObject(formData)
+
+    return submitData
   }
 
   /* -------------------------------------------- */
