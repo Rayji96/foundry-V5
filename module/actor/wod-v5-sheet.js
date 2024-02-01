@@ -2,7 +2,7 @@
 
 import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
-import { _onAddBonus, _onEditBonus } from './scripts/bonuses.js'
+import { _onAddBonus, _onEditBonus } from './scripts/specialty-bonuses.js'
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -261,6 +261,7 @@ export class WoDActor extends ActorSheet {
 
     // Secondary variables
     const skillData = {
+      id: skill,
       actor,
       system,
       skill: actor.system.skills[skill]
@@ -289,7 +290,9 @@ export class WoDActor extends ActorSheet {
           html.find('.add-bonus').click(_onAddBonus.bind(this))
 
           // Prompt the dialog to edit a bonus
-          html.find('.edit-bonus').click(_onEditBonus.bind(this, skillData, actor))
+          html.find('.edit-bonus').click(event => {
+            _onEditBonus(event, actor, skillData)
+          })
         }
       },
       {

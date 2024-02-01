@@ -42,7 +42,7 @@ export const _onRoll = async function (event) {
   // Render the dialog window to select which skill/attribute combo to use
   new Dialog(
     {
-      title: "Select Roll",
+      title: 'Select Roll',
       content,
       buttons: {
         confirm: {
