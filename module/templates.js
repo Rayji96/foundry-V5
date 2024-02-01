@@ -58,6 +58,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/item/parts/gifts.hbs',
     'systems/vtm5e/templates/item/parts/renown.hbs',
     'systems/vtm5e/templates/item/parts/bonuses.hbs',
+    'systems/vtm5e/templates/item/parts/bonus-display.hbs',
 
     // Dice Tray Partials
     'systems/vtm5e/templates/ui/parts/select-character.hbs',
