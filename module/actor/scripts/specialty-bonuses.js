@@ -88,7 +88,7 @@ export const _onAddBonus = async function (event) {
   ).render(true)
 }
 
-export const _onEditBonus = async function (event, actor, skillData) {
+export const _onEditBonus = async function (event, actor, skillData, SkillEditDialog) {
   // Top-level variables
   const header = event.currentTarget
   const key = header.dataset.bonus
@@ -151,6 +151,15 @@ export const _onEditBonus = async function (event, actor, skillData) {
 
             // Update the actor
             actor.update({ [`system.skills.${skillData.id}.bonuses`]: actorBonuses })
+
+            // Re-render the skill edit dialog
+            SkillEditDialog.data.content = await renderTemplate('systems/vtm5e/templates/actor/parts/skill-dialog.hbs', {
+              id: skillData.id,
+              actor,
+              system,
+              skill: actor.system.skills[skillData.id]
+            })
+            SkillEditDialog.render(true)
           }
         },
         cancel: {

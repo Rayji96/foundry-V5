@@ -260,7 +260,7 @@ export class WoDActor extends ActorSheet {
     const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
     // Secondary variables
-    const skillData = {
+    let skillData = {
       id: skill,
       actor,
       system,
@@ -273,7 +273,7 @@ export class WoDActor extends ActorSheet {
     const content = await renderTemplate(skillTemplate, skillData)
 
     // Render the dialog window to select which skill/attribute combo to use
-    new Dialog(
+    const SkillEditDialog = new Dialog(
       {
         title: game.i18n.localize(actor.system.skills[skill].name),
         content,
@@ -284,6 +284,9 @@ export class WoDActor extends ActorSheet {
 
           // Update the description of the skill
           actor.update({ [`system.skills.${skill}.description`]: newDescription })
+
+          // Remove the dialog from the actor's apps on close.
+          delete actor.apps[SkillEditDialog.appId]
         },
         render: (html) => {
           // Prompt the dialog to add a new bonus
@@ -291,7 +294,7 @@ export class WoDActor extends ActorSheet {
 
           // Prompt the dialog to edit a bonus
           html.find('.edit-bonus').click(event => {
-            _onEditBonus(event, actor, skillData)
+            _onEditBonus(event, actor, skillData, SkillEditDialog)
           })
         }
       },
@@ -303,9 +306,14 @@ export class WoDActor extends ActorSheet {
             contentSelector: '.sheet-body',
             initial: 'description'
           }
-        ]
+        ],
+        resizeable: true
       }
     ).render(true)
+
+    // Add the dialog to the list of apps on the actor
+    // This re-renders the dialog every actor update
+    actor.apps[SkillEditDialog.appId] = SkillEditDialog
   }
 
   // Function to grab the default name of an item.
