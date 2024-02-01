@@ -1,0 +1,34 @@
+<div class="bonus">
+    <h3><input class="no-border" name="source" type="text" value="{{bonus.source}}" placeholder="New Bonus"/></h3>
+    <div class="grid grid-3col flex-center">
+        <div class="flexcol">
+            <b>Value</b>
+            <input name="value" type="number" value="{{bonus.value}}"/>
+        </div>
+        <div class="flexrow flex-center">
+            <input name="displayWhenInactive" type="checkbox"{{#if bonus.displayWhenInactive}} checked{{/if}}>Display when inactive</input>
+        </div>
+        <div class="flexcol">
+            <b>Active When</b>
+            <select name="check" type="number">
+                <option value="never"{{#ifeq bonus.activeWhen.check "never"}} selected{{/ifeq}}>Never</option>
+                <option value="always"{{#ifeq bonus.activeWhen.check "always"}} selected{{/ifeq}}>Always</option>
+                <option value="ifEquals"{{#ifeq bonus.activeWhen.check "ifEquals"}} selected{{/ifeq}}>If equals...</option>
+            </select>
+        </div>
+        {{#ifeq bonus.activeWhen.check 'ifEquals'}}
+            <div>
+                <b>Path</b>
+                <input name="path" type="text" value="{{bonus.activeWhen.path}}" placeholder="Path to check"/>
+            </div>
+            <div>
+                <b>Value</b>
+                <input name="value" type="text" value="{{bonus.activeWhen.value}}" placeholder="Value to check"/>
+            </div>
+        {{/ifeq}}
+    </div>
+    <div class="flexcol">
+        <b>Paths, separated by semicolons (;)</b>
+        <input name="paths" type="text" value="{{splitArray bonus.paths}}" placeholder="skills.athletics; attributes.strength"/>
+    </div>
+</div>
