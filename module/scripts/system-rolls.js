@@ -19,7 +19,6 @@ class WOD5eDice {
    * @param title                     Title of the roll for the dialog/chat message
    * @param disableBasicDice          (Optional, default false) Whether to disable basic dice on this roll
    * @param disableAdvancedDice       (Optional, default false) Whether to disable advanced dice on this roll
-   * @param speaker                   (Optional) Speaker that the message should be sent as
    * @param damageWillpower           (Optional, default false) Whether to damage willpower after the roll is complete
    * @param increaseHunger            (Optional, default false) Whether to increase hunger on failures
    * @param decreaseRage              (Optional, default false) Whether to reduce rage on failures
@@ -30,7 +29,7 @@ class WOD5eDice {
    * @param rollMode                  (Optional, default FVTT's current roll mode) Which roll mode the message should default as
    * @param rerollHunger              (Optional, default false) Whether to reroll failed hunger dice
    * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
-   * 
+   *
    */
   static async Roll ({
     basicDice = 0,
@@ -40,7 +39,6 @@ class WOD5eDice {
     title,
     disableBasicDice,
     disableAdvancedDice,
-    speaker,
     damageWillpower = false,
     increaseHunger = false,
     decreaseRage = false,
