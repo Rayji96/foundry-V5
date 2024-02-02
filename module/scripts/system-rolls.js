@@ -1,4 +1,4 @@
-/* global ChatMessage, Roll, game, renderTemplate, CONFIG */
+/* global ChatMessage, Roll, game, renderTemplate, CONFIG, Dialog */
 
 // Import various helper functions
 import { generateRollFormula } from './rolls/roll-formula.js'
@@ -188,7 +188,7 @@ class WOD5eDice {
               }
             },
             default: 'roll',
-            close: html => {
+            close: () => {
               resolve(roll)
             },
             render: (html) => {

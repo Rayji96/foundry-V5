@@ -27,7 +27,7 @@ export const MigrateSpecialties = async function () {
           ui.notifications.info(`Fixing actor ${actor.name}: Migrating specialties data.`)
           migrationIDs.push(actor.uuid)
 
-          let actorItems = invalidSpecialties.map(item => {
+          invalidSpecialties.map(item => {
             // Define what skill we're using
             const skill = item.system.skill
 

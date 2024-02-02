@@ -7,16 +7,12 @@ import { MortalDie, VampireDie, VampireHungerDie, HunterDie, HunterDesperationDi
    * @param basicDice                 (Optional, default 0) The number of 'basic' dice to roll, such as v, w, and h
    * @param advancedDice              (Optional, default 0) The number of 'advanced' dice to roll, such as g, r and s
    * @param system                    (Optional, default "mortal") The gamesystem the roll is coming from
-   * @param actor                     The actor that the roll is coming from
-   * @param data                      Actor or item data to pass along with the roll
    * @param rerollHunger              (Optional, default false) Whether to reroll failed hunger dice
    */
 export async function generateRollFormula ({
   basicDice = 0,
   advancedDice = 0,
   system = "mortal",
-  actor,
-  data,
   rerollHunger = false
 }) {
   // The formula for counting a roll's success (anything over 5)

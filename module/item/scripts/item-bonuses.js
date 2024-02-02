@@ -1,8 +1,6 @@
-export const _onAddBonus = async function (event, item) {
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
-  const system = 'mortal' //systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+/* global renderTemplate, Dialog, game */
 
+export const _onAddBonus = async function (event, item) {
   // Secondary variables
   const bonusData = {
     item,
@@ -88,10 +86,6 @@ export const _onDeleteBonus = async function (event, item) {
   const header = event.currentTarget
   const key = header.dataset.bonus
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
-  const system = 'mortal' //systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
-
   // Define the existing list of bonuses
   let itemBonuses = item.system.bonuses || []
 
@@ -112,10 +106,6 @@ export const _onEditBonus = async function (event, item) {
     item,
     bonus: item.system.bonuses[key]
   }
-
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
-  const system = 'mortal' //systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Render the template
   const bonusTemplate = 'systems/vtm5e/templates/item/parts/bonus-display.hbs'

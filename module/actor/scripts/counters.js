@@ -1,3 +1,5 @@
+/* global duplicate */
+
 // Handle all types of resource changes
 export const _onResourceChange = async function (event) {
   event.preventDefault()

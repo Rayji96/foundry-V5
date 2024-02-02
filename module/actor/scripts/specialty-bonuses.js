@@ -1,3 +1,5 @@
+/* global renderTemplate, Dialog, game */
+
 export const _onAddBonus = async function (event, actor, data, SkillEditDialog) {
   // Top-level variables
   const header = event.currentTarget

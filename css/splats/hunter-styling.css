@@ -103,11 +103,11 @@
   background-color: var(--hunter-primary);
 }
 
-.wod5e.hunter-sheet .resource-counter .resource-counter-step[data-state="-"], .wod5e.hunter-sheet .despair-box .despair-toggle.active {
+.wod5e .cell-resource-counter .cell-resource-counter-step[data-state="-"], .wod5e.hunter-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
   background-color: var(--hunter-primary);
 }
 
-.wod5e.hunter-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+.wod5e.hunter-sheet .resource-counter .resource-counter-step[data-state="-"], .wod5e.hunter-sheet .despair-box .despair-toggle.active {
   background-color: var(--hunter-primary);
 }
 
@@ -121,10 +121,6 @@
   border: 1px solid #000;
   display: inline-block;
   cursor: pointer;
-}
-
-.wod5e .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
-  background-color: var(--hunter-primary);
 }
 
 /* groupings.css */

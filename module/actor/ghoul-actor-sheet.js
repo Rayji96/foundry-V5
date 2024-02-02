@@ -47,7 +47,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     const data = await super.getData()
     const actor = this.actor
 
-    // Define the type of sheet 
+    // Define the type of sheet
     data.sheetType = `${game.i18n.localize('WOD5E.Ghoul')}`
 
     // Prepare items.
@@ -172,7 +172,7 @@ export class GhoulActorSheet extends MortalActorSheet {
       // Secondary variables
       const level = item.system.level
       const cost = item.system.cost > 0 ? item.system.cost : 1
-      const selectors = ["rouse"]
+      const selectors = ['rouse']
 
       // Vampires roll rouse checks
       if (actor.type === 'vampire') {
@@ -272,7 +272,7 @@ export class GhoulActorSheet extends MortalActorSheet {
       default: 'submit'
     },
     {
-      classes: ['wod5e', `vampire-dialog`, `vampire-sheet`]
+      classes: ['wod5e', 'vampire-dialog', 'vampire-sheet']
     }).render(true)
   }
 
@@ -291,7 +291,7 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     // Variables yet to be defined
     let disciplineValue, dice1, dice2
-    let selectors = []
+    const selectors = []
 
     // Assign any rituals to use Blood Sorcery value
     // and any ceremonies to use Oblivion value, otherwise

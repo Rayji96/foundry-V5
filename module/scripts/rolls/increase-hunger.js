@@ -1,4 +1,4 @@
-/* global ChatMessage, renderTemplate */
+/* global ChatMessage, renderTemplate, game */
 
 export async function _increaseHunger (actor, amount) {
   // Automatically add hunger to the actor on a failure (for rouse checks)

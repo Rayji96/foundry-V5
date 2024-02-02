@@ -35,6 +35,12 @@
     border-radius: 0;
 }
 
+.wod5e .window-content {
+    background: #faf5ed;
+    font-family: Vollkorn, sans-serif;
+    font-weight: 500;
+}
+
 .wod5e.window-app .window-content {
     background: #faf5ed;
 }
@@ -70,12 +76,6 @@
 .wod5e.fa-arrows-alt-h::before,
 .fa-left-right::before {
     content: "\f337";
-}
-
-.wod5e .window-content {
-    background: #faf5ed;
-    font-family: Vollkorn, sans-serif;
-    font-weight: 500;
 }
 
 .wod5e p {

@@ -1,4 +1,4 @@
-/* global ChatMessage, renderTemplate */
+/* global ChatMessage */
 
 export async function _decreaseRage (actor, amount) {
   // Reduce rage for each failure on a rage dice if this is a power that consumes it

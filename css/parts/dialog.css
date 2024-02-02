@@ -23,17 +23,17 @@
   border-radius: 0;
 }
 
-.wod5e .dialog-contents .diceInput input {
+.wod5e .dialog-contents .dice-input input {
   max-width: 50px;
 }
 
-.wod5e .dialog-contents .diceInput {
+.wod5e .dialog-contents .dice-input {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.wod5e .dialog-contents .diceInput img {
+.wod5e .dialog-contents .dice-input img {
   background-color: #000;
 }
 

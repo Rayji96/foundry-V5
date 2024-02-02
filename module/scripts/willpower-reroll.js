@@ -1,8 +1,7 @@
-/* global game, Hooks, ChatMessage, Dialog, renderTemplate */
+/* global game, Dialog */
 
 // Import modules
 import { WOD5eDice } from './system-rolls.js'
-import { getActiveBonuses } from './rolls/situational-modifiers.js'
 
 /**
  * Initalise willpower rerolls and its functions

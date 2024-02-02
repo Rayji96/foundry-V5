@@ -1,4 +1,4 @@
-/* global ChatMessage, renderTemplate */
+/* global ChatMessage, renderTemplate, game */
 
 export async function _damageWillpower (actor) {
   // Get the actor's willpower and define it for convenience

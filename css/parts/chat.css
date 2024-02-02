@@ -6,7 +6,7 @@
   margin-bottom: 2px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: wrap;
 }
 
 .chat-message .modifiers .mod {
@@ -48,26 +48,33 @@
   background-color: #128d08;
   color: #dbd6d6;
 }
+
 .chat-message .roll-result-label.critical-success {
   background-color: #00a80e;
   color: #fff;
 }
+
 .chat-message .roll-result-label.messy-critical {
   background-color: #f10808;
   color: #c5c3c3;
 }
+
 .chat-message .roll-result-label.failure {
   background-color: #e56e3b;
 }
+
 .chat-message .roll-result-label.critical-failure {
   background-color: #dd3636;
 }
+
 .chat-message .roll-result-label.bestial-failure {
   background-color: #cf4848;
 }
+
 .chat-message .roll-result-label.desperation-failure {
   background-color: #dfdc1b;
 }
+
 .chat-message .roll-result-label.rage-failure {
   background-color: #b35700;
 }

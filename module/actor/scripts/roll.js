@@ -1,3 +1,5 @@
+/* global renderTemplate, Dialog, game */
+
 import { WOD5eDice } from '../../scripts/system-rolls.js'
 import { getActiveBonuses } from '../../scripts/rolls/situational-modifiers.js'
 
@@ -20,12 +22,9 @@ export const _onRoll = async function (event) {
   // Secondary variables
   const { skill, attribute, discipline, renown } = dataset
 
-  // Variables yet to be defined
-  let system
-
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
-  system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
+  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Render selecting a skill/attribute to roll
   const dialogTemplate = 'systems/vtm5e/templates/ui/select-dice-dialog.hbs'
@@ -47,13 +46,13 @@ export const _onRoll = async function (event) {
       buttons: {
         confirm: {
           icon: '<i class="fas fa-dice"></i>',
-          label: game.i18n.localize("WOD5E.Confirm"),
+          label: game.i18n.localize('WOD5E.Confirm'),
           callback: async html => {
             // Compile the selected data and send it to the roll function
-            const skillSelect = html.find("[id=skillSelect]").val()
-            const attributeSelect = html.find("[id=attributeSelect]").val()
-            const disciplineSelect = html.find("[id=disciplineSelect]").val()
-            const renownSelect = html.find("[id=renownSelect]").val()
+            const skillSelect = html.find('[id=skillSelect]').val()
+            const attributeSelect = html.find('[id=attributeSelect]').val()
+            const disciplineSelect = html.find('[id=disciplineSelect]').val()
+            const renownSelect = html.find('[id=renownSelect]').val()
 
             // Handle adding a skill to the dicepool
             if (skillSelect) {
@@ -64,7 +63,7 @@ export const _onRoll = async function (event) {
               if (dataset.valuePaths) dataset.valuePaths += ` skills.${skillSelect}.value`
 
               // If using absolute values instead of value paths, add the values together
-              if (dataset.useAbsoluteValue && data.absoluteValue) dataset.absoluteValue += actor.system.skills[skillSelect].value
+              if (dataset.useAbsoluteValue && dataset.absoluteValue) dataset.absoluteValue += actor.system.skills[skillSelect].value
             }
             // Handle adding an attribute to the dicepool
             if (attributeSelect) {
@@ -75,7 +74,7 @@ export const _onRoll = async function (event) {
               if (dataset.valuePaths) dataset.valuePaths += ` abilities.${attributeSelect}.value`
 
               // If using absolute values instead of value paths, add the values together
-              if (dataset.useAbsoluteValue && data.absoluteValue) dataset.absoluteValue += actor.system.abilities[attributeSelect].value
+              if (dataset.useAbsoluteValue && dataset.absoluteValue) dataset.absoluteValue += actor.system.abilities[attributeSelect].value
             }
             // Handle adding a discipline to the dicepool
             if (disciplineSelect) {
@@ -86,7 +85,7 @@ export const _onRoll = async function (event) {
               if (dataset.valuePaths) dataset.valuePaths += ` disciplines.${disciplineSelect}.value`
 
               // If using absolute values instead of value paths, add the values together
-              if (dataset.useAbsoluteValue && data.absoluteValue) dataset.absoluteValue += actor.system.disciplines[disciplineSelect].value
+              if (dataset.useAbsoluteValue && dataset.absoluteValue) dataset.absoluteValue += actor.system.disciplines[disciplineSelect].value
             }
             // Handle adding a renown to the dicepool
             if (renownSelect) {
@@ -97,7 +96,7 @@ export const _onRoll = async function (event) {
               if (dataset.valuePaths) dataset.valuePaths += ` renown.${renownSelect}.value`
 
               // If using absolute values instead of value paths, add the values together
-              if (dataset.useAbsoluteValue && data.absoluteValue) dataset.absoluteValue += actor.system.renown[renownSelect].value
+              if (dataset.useAbsoluteValue && dataset.absoluteValue) dataset.absoluteValue += actor.system.renown[renownSelect].value
             }
 
             await _onConfirmRoll(dataset, actor)
@@ -129,7 +128,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
   const flavor = dataset.useFlavorPath ? await getFlavorDescription(dataset.flavorPath, data) : dataset.flavor
   const flatMod = parseInt(dataset.flatMod) || 0
   const absoluteValue = parseInt(dataset.absoluteValue) || 0
-  const selectors = dataset.selectors ? dataset.selectors.split(" ") : []
+  const selectors = dataset.selectors ? dataset.selectors.split(' ') : []
 
   // Variables yet to be defined
   let basicDice, advancedDice
@@ -169,7 +168,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
   }
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
   const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Some quick modifications to vampire and werewolf rolls
@@ -265,15 +264,15 @@ export const getAdvancedDice = async function (actor) {
   const actorData = actor.system
   
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
   const system = systemsList.indexOf(actorData.gamesystem) > -1 ? actorData.gamesystem : 'mortal'
 
-  if (system === "vampire") {
+  if (system === 'vampire') {
     // Define actor's hunger dice, ensuring it can't go below 0
     const hungerDice = Math.max(actorData.hunger.value, 0)
 
     return hungerDice
-  } else if (system === "werewolf") {
+  } else if (system === 'werewolf') {
     // Define actor's rage dice, ensuring it can't go below 0
     const rageDice = Math.max(actorData.rage.value, 0)
 

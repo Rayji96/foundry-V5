@@ -1,4 +1,4 @@
-/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui, renderTemplate, getProperty */
+/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui */
 
 // Import Modules
 import { preloadHandlebarsTemplates } from './templates.js'
@@ -19,8 +19,6 @@ import { loadDiceSoNice } from './dice/dice-so-nice.js'
 import { loadHelpers } from './helpers.js'
 import { loadSettings } from './settings.js'
 import { willpowerReroll } from './scripts/willpower-reroll.js'
-
-const OWNED_PERMISSION = 3
 
 // Anything that needs to be ran alongside the initialisation of the world
 Hooks.once('init', async function () {

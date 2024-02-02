@@ -1,4 +1,4 @@
-/* global ChatMessage, renderTemplate */
+/* global game, renderTemplate */
 
 // Import dice face-related variables for icon paths
 import { mortalDiceLocation, vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from '../../dice/icons.js'
@@ -8,8 +8,6 @@ import { mortalDiceLocation, vampireDiceLocation, werewolfDiceLocation, hunterDi
  *
  * @param roll                      The roll after being handled by Foundry
  * @param system                    (Optional, default "mortal") The gamesystem the roll is coming from
- * @param actor                     The actor that the roll is coming from
- * @param data                      Actor or item data to pass along with the roll
  * @param title                     Title of the roll for the chat message
  * @param flavor                    (Optional, default "") Text that appears in the description of the roll
  * @param difficulty                (Optional, default 0) The number of successes needed to pass the check
@@ -17,8 +15,6 @@ import { mortalDiceLocation, vampireDiceLocation, werewolfDiceLocation, hunterDi
 export async function generateRollMessage ({
   roll,
   system = "mortal",
-  actor,
-  data,
   title,
   flavor = "",
   difficulty = 0,

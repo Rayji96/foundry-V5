@@ -248,7 +248,7 @@ export class HunterActorSheet extends CellActorSheet {
       default: 'submit'
     },
     {
-      classes: ['wod5e', `hunter-dialog`, `hunter-sheet`]
+      classes: ['wod5e', 'hunter-dialog', 'hunter-sheet']
     }).render(true)
   }
 
@@ -265,10 +265,11 @@ export class HunterActorSheet extends CellActorSheet {
     const edgeValue = 1
 
     // Variables yet to be defined
-    let dice1, dice2
+    let dice2
+    const selectors = []
 
     // Determine the value of dice1
-    dice1 = item.system.dice1 === 'edge' ? edgeValue : actor.system.abilities[item.system.dice1].value
+    const dice1 = item.system.dice1 === 'edge' ? edgeValue : actor.system.abilities[item.system.dice1].value
 
     // Determine the value of dice2
     if (item.system.dice2 === 'edge') {
