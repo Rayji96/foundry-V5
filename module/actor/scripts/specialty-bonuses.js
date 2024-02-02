@@ -51,9 +51,9 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
             })
 
             const activeWhen = {}
-            activeWhen['check'] = html.find('[id=activeWhenCheck]').val()
-            activeWhen['path'] = html.find('[id=activeWhenPath]').val()
-            activeWhen['value'] = html.find('[id=activeWhenValue]').val()
+            activeWhen.check = html.find('[id=activeWhenCheck]').val()
+            activeWhen.path = html.find('[id=activeWhenPath]').val()
+            activeWhen.value = html.find('[id=activeWhenValue]').val()
 
             let newBonus = {}
             newBonus = {
@@ -66,7 +66,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
 
             // Define the existing list of bonuses
             const parentKeys = bonusPath.split('.')
-            let actorBonuses = parentKeys.reduce((obj, key) => obj && obj[key], actor.system) || { bonuses: [] }
+            const actorBonuses = parentKeys.reduce((obj, key) => obj && obj[key], actor.system) || { bonuses: [] }
 
             // Add the new bonus to the list
             actorBonuses.bonuses.push(newBonus)
@@ -92,7 +92,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
       default: 'cancel'
     },
     {
-      classes: ['wod5e', `${system}-dialog`, `${system}-sheet`],
+      classes: ['wod5e', `${system}-dialog`, `${system}-sheet`]
     }
   ).render(true)
 }
@@ -109,7 +109,7 @@ export const _onDeleteBonus = async function (event, actor, data, SkillEditDialo
 
   // Define the existing list of bonuses
   const bonusKeys = bonusPath.split('.')
-  let actorBonuses = bonusKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
+  const actorBonuses = bonusKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
 
   // Remove the bonus from the list
   actorBonuses.splice(key, 1)
@@ -170,9 +170,9 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
             })
 
             const activeWhen = {}
-            activeWhen['check'] = html.find('[id=activeWhenCheck]').val()
-            activeWhen['path'] = html.find('[id=activeWhenPath]').val()
-            activeWhen['value'] = html.find('[id=activeWhenValue]').val()
+            activeWhen.check = html.find('[id=activeWhenCheck]').val()
+            activeWhen.path = html.find('[id=activeWhenPath]').val()
+            activeWhen.value = html.find('[id=activeWhenValue]').val()
 
             // Define the existing list of bonuses
             const bonusKeys = bonusPath.split('.')
