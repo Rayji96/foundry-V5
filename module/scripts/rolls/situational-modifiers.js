@@ -22,27 +22,27 @@ export async function getSituationalModifiers ({
     const modifiers = []
 
     function searchBonuses (obj, path) {
-        if (typeof obj !== 'object' || obj === null) {
-            return
-        }
+      if (typeof obj !== 'object' || obj === null) {
+          return
+      }
 
-        if (obj.bonuses && Array.isArray(obj.bonuses)) {
-            const matchingBonuses = obj.bonuses.filter(bonus =>
-                selectors.some(selector => bonus.paths.includes(selector))
-            )
+      if (obj.bonuses && Array.isArray(obj.bonuses)) {
+          const matchingBonuses = obj.bonuses.filter(bonus =>
+              selectors.some(selector => bonus.paths.includes(selector))
+          )
 
-            if (matchingBonuses.length > 0) {
-                modifiers.push(...matchingBonuses)
-            }
-        }
+          if (matchingBonuses.length > 0) {
+              modifiers.push(...matchingBonuses)
+          }
+      }
 
-        Object.entries(obj).forEach(([key, value]) => {
-            const currentPath = path ? `${path}.${key}` : key
+      Object.entries(obj).forEach(([key, value]) => {
+          const currentPath = path ? `${path}.${key}` : key
 
-            if (typeof value === 'object' && value !== null) {
-                searchBonuses(value, currentPath)
-            }
-        })
+          if (typeof value === 'object' && value !== null) {
+              searchBonuses(value, currentPath)
+          }
+      })
     }
 
     searchBonuses(data, '')
@@ -73,7 +73,7 @@ export async function getSituationalModifiers ({
         modifier.isActive = false
         return true
       }
-  
+
       return false
     })
   }

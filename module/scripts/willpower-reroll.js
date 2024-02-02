@@ -66,7 +66,7 @@ export const willpowerReroll = async (roll) => {
   {
     classes: ['wod5e', `${system}-dialog`, `${system}-sheet`]
   }).render(true)
-  
+
   // Handles selecting and de-selecting the die
   function dieSelect () {
     // If the die isn't already selected and there aren't 3 already selected, add selected to the die
@@ -76,7 +76,7 @@ export const willpowerReroll = async (roll) => {
       $(this).removeClass('selected')
     }
   }
-  
+
   // Handles rerolling the number of dice selected
   // TODO: Make this function duplicate/replace the previous roll with the new results
   // For now this works well enough as "roll three new dice"
@@ -85,13 +85,13 @@ export const willpowerReroll = async (roll) => {
     const diceSelected = $('.willpower-reroll .selected').length
     const rageDiceSelected = $('.willpower-reroll .selected .rage-dice').length
     const selectors = ['willpower', 'willpower-reroll']
-  
+
     // Get the actor associated with the message
     // Theoretically I should error-check this, but there shouldn't be any
     // messages that call for a WillpowerReroll without an associated actor
     const message = game.messages.get(roll.attr('data-message-id'))
     const actor = game.actors.get(message.speaker.actor)
-  
+
     // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
     if ((diceSelected > 0) && (diceSelected < 4)) {
       WOD5eDice.Roll({

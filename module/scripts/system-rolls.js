@@ -24,7 +24,7 @@ class WOD5eDice {
    * @param increaseHunger            (Optional, default false) Whether to increase hunger on failures
    * @param decreaseRage              (Optional, default false) Whether to reduce rage on failures
    * @param difficulty                (Optional, default 0) The number that the roll must succeed to count as a success
-   * @param flavor                    (Optional, default "") Text that appears in the description of the roll
+   * @param flavor                    (Optional, default '') Text that appears in the description of the roll
    * @param callback                  (Optional) A callable function for determining the chat message flavor given parts and data
    * @param quickRoll                 (Optional, default false) Whether the roll was called to bypass the roll dialog or not
    * @param rollMode                  (Optional, default FVTT's current roll mode) Which roll mode the message should default as
@@ -32,7 +32,7 @@ class WOD5eDice {
    * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
    * 
    */
-  static async Roll({
+  static async Roll ({
     basicDice = 0,
     advancedDice = 0,
     actor,
@@ -45,15 +45,15 @@ class WOD5eDice {
     increaseHunger = false,
     decreaseRage = false,
     difficulty = 0,
-    flavor = "",
+    flavor = '',
     callback,
     quickRoll = false,
-    rollMode = game.settings.get("core", "rollMode"),
+    rollMode = game.settings.get('core', 'rollMode'),
     rerollHunger = false,
     selectors = []
   }) {
-    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-    const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+    // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systemsList
+    const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
     const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
     // Handle getting any situational modifiers
@@ -89,25 +89,25 @@ class WOD5eDice {
       if (callback) callback(roll)
 
       // Determine any active modifiers
-      let activeModifiers = []
+      const activeModifiers = []
       if ($form) {
-        let modifiersList = $form.find('.mod-checkbox')
+        const modifiersList = $form.find('.mod-checkbox')
         if (modifiersList.length > 0) {
           modifiersList.each(function () {
             const isChecked = $(this).prop('checked')
-  
+
             if (isChecked) {
               // Get the dataset values
               const label = this.dataset.label
               const value = this.dataset.value
-  
+
               // Add a plus sign if the value is positive
               const valueWithSign = (value > 0 ? '+' : '') + value
-          
+
               // Push the values to the activeModifiers array
               activeModifiers.push({
-                  "label": label,
-                  "value": valueWithSign
+                label,
+                value: valueWithSign
               })
             }
           })
@@ -122,18 +122,17 @@ class WOD5eDice {
         data,
         title,
         flavor,
-        difficulty: $form ? $form.find("[id=inputDifficulty]").val() : difficulty,
+        difficulty: $form ? $form.find('[id=inputDifficulty]').val() : difficulty,
         activeModifiers
       })
 
       roll.toMessage({
-          speaker: speaker ? speaker : ChatMessage.getSpeaker({ actor }),
-          content
-        },
-        {
-          rollMode: $form ? $form.find("[name=rollMode]").val() : rollMode
-        }
-      )
+        speaker: ChatMessage.getSpeaker({ actor }),
+        content
+      },
+      {
+        rollMode: $form ? $form.find('[name=rollMode]').val() : rollMode
+      })
 
       return roll
     }
@@ -168,7 +167,7 @@ class WOD5eDice {
             buttons: {
               roll: {
                 icon: '<i class="fas fa-dice"></i>',
-                label: game.i18n.localize("WOD5E.Roll"),
+                label: game.i18n.localize('WOD5E.Roll'),
                 callback: async html => {
                   // Obtain the input fields
                   const basicDiceInput = html.find('#inputBasicDice')
@@ -196,7 +195,7 @@ class WOD5eDice {
               const basicDiceInput = html.find('#inputBasicDice')
 
               // Add event listeners to plus and minus signs on the dice in the dialog
-              html.find('.dialog-plus').click(function (event){
+              html.find('.dialog-plus').click(function (event) {
                 event.preventDefault()
 
                 // Determine the input
@@ -208,7 +207,7 @@ class WOD5eDice {
                 // Plug in the new value to the input
                 input.val(newValue)
               })
-              html.find('.dialog-minus').click(function (event){
+              html.find('.dialog-minus').click(function (event) {
                 event.preventDefault()
 
                 // Determine the input
@@ -222,7 +221,7 @@ class WOD5eDice {
               })
 
               // Add event listeners to the situational modifier toggles
-              html.find('.mod-checkbox').on("change", function (event){
+              html.find('.mod-checkbox').on('change', function (event) {
                 event.preventDefault()
 
                 // Determine the input
@@ -260,7 +259,7 @@ class WOD5eDice {
 
     // Function to help with handling additional functions as a result
     // of failures
-    async function handleFailure(system, diceResults) {
+    async function handleFailure (system, diceResults) {
       const failures = diceResults.filter(result => result.success === false).length
 
       if (failures > 0) {

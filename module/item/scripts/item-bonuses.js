@@ -57,13 +57,13 @@ export const _onAddBonus = async function (event, item) {
             }
 
             // Define the existing list of bonuses
-            let itemBonuses = item.system.bonuses || []
+            const itemBonuses = item.system.bonuses || []
 
             // Add the new bonus to the list
             itemBonuses.push(newBonus)
 
             // Update the item
-            item.update({ ['system.bonuses']: itemBonuses })
+            item.update({ 'system.bonuses': itemBonuses })
           }
         },
         cancel: {
@@ -82,13 +82,13 @@ export const _onDeleteBonus = async function (event, item) {
   const key = header.dataset.bonus
 
   // Define the existing list of bonuses
-  let itemBonuses = item.system.bonuses || []
+  const itemBonuses = item.system.bonuses || []
 
   // Remove the bonus from the list
   itemBonuses.splice(key, 1)
 
   // Update the item
-  item.update({ ['system.bonuses']: itemBonuses })
+  item.update({ 'system.bonuses': itemBonuses })
 }
 
 export const _onEditBonus = async function (event, item) {
@@ -115,29 +115,27 @@ export const _onEditBonus = async function (event, item) {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize('WOD5E.Save'),
           callback: async html => {
-            let source, value, displayWhenInactive, rawPaths, arrPaths, cleanPaths
-            let paths = []
-            let activeWhen = {}
+            const activeWhen = {}
 
-            source = html.find('[id=bonusSource]').val()
-            value = html.find('[id=bonusValue]').val()
-            displayWhenInactive = html.find('[id=displayBonusWhenInactive]').is(':checked')
+            const source = html.find('[id=bonusSource]').val()
+            const value = html.find('[id=bonusValue]').val()
+            const displayWhenInactive = html.find('[id=displayBonusWhenInactive]').is(':checked')
 
-            rawPaths = html.find('[id=bonusPaths]').val()
-            arrPaths = rawPaths.split(';')
-            cleanPaths = arrPaths.map(function (item) {
+            const rawPaths = html.find('[id=bonusPaths]').val()
+            const arrPaths = rawPaths.split(';')
+            const cleanPaths = arrPaths.map(function (item) {
               return item.trim()
             })
-            paths = cleanPaths.filter(function (item) {
+            const paths = cleanPaths.filter(function (item) {
               return item !== ''
             })
 
-            activeWhen['check'] = html.find('[id=activeWhenCheck]').val()
-            activeWhen['path'] = html.find('[id=activeWhenPath]').val()
-            activeWhen['value'] = html.find('[id=activeWhenValue]').val()
+            activeWhen.check = html.find('[id=activeWhenCheck]').val()
+            activeWhen.path = html.find('[id=activeWhenPath]').val()
+            activeWhen.value = html.find('[id=activeWhenValue]').val()
 
             // Define the existing list of bonuses
-            let itemBonuses = item.system.bonuses
+            const itemBonuses = item.system.bonuses
 
             // Update the existing bonus with the new data
             itemBonuses[key] = {
@@ -149,7 +147,7 @@ export const _onEditBonus = async function (event, item) {
             }
 
             // Update the item
-            item.update({ ['system.bonuses']: itemBonuses })
+            item.update({ 'system.bonuses': itemBonuses })
           }
         },
         cancel: {

@@ -110,9 +110,9 @@ export async function generateRollMessage ({
 
     return rollData
   }
-  
+
   // Function to help the rendering of advanced dice
-  async function generateAdvancedDiceDisplay(rollData) {
+  async function generateAdvancedDiceDisplay (rollData) {
     const advancedDice = rollData.results
     let criticals = 0
     let critFails = 0
@@ -120,7 +120,7 @@ export async function generateRollMessage ({
     advancedDice.forEach((die, index) => {
       // Variables
       let dieResult, dieImg, dieAltText, dieFace
-      let dieClasses = ['roll-img']
+      const dieClasses = ['roll-img']
 
       // Mark any die that were rerolled / not used
       if (die.discarded) dieClasses.push(['rerolled'])
@@ -137,7 +137,7 @@ export async function generateRollMessage ({
             dieClasses.push(['rerollable'])
           } else if (die.result < 6 && die.result > 2) { // Failures
             dieResult = 'failure'
-            dieClasses.push(['rerollable']) 
+            dieClasses.push(['rerollable'])
           } else dieResult = 'brutal' // Brutal failures
 
           // Werewolf data
@@ -170,10 +170,10 @@ export async function generateRollMessage ({
           dieClasses.push(['desperation-dice'])
           break
       }
-  
+
       // Add any necessary data to the dice object
       rollData.results[index].img = dieImg
-      rollData.results[index].classes = dieClasses.join(" ")
+      rollData.results[index].classes = dieClasses.join(' ')
       rollData.results[index].altText = dieAltText
 
       // Increase the number of criticals collected across the dice
@@ -184,11 +184,11 @@ export async function generateRollMessage ({
     // Add in critical data as its own properties
     rollData.criticals = criticals
     rollData.critFails = critFails
-  
+
     return rollData
   }
 
-  async function generateResult(basicDice, advancedDice) {
+  async function generateResult (basicDice, advancedDice) {
     // Useful variables
     let totalResult = 0
     let totalCriticals = 0
@@ -196,8 +196,8 @@ export async function generateRollMessage ({
     let resultLabel
 
     // Calculate the totals of basic and advanced dice
-    let basicTotal = basicDice.total ? basicDice.total : 0
-    let advancedTotal = advancedDice.total ? advancedDice.total : 0
+    const basicTotal = basicDice.total ? basicDice.total : 0
+    const advancedTotal = advancedDice.total ? advancedDice.total : 0
 
     // Sum up the total criticals across both sets of dice
     totalCriticals = basicDice.criticals + advancedDice.criticals

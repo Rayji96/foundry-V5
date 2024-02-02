@@ -23,7 +23,7 @@ export const migrateWorld = async () => {
 
   console.log('Current SchreckNet Layer v' + worldVersion)
 
-  async function updateWorld() {
+  async function updateWorld () {
     if (worldVersion !== currentVersion || worldVersion === '1.5') {
       const updates = []
 

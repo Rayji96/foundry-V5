@@ -5,7 +5,7 @@
  */
 export const preloadHandlebarsTemplates = async function () {
   console.log('Schrecknet : loading subroutines')
-  
+
   // Define template paths to load
   const templatePaths = [
     // Base Sheet Partials
