@@ -144,7 +144,7 @@ function describePool (poolNumber, data) {
 
 function rollDice () {
   console.log("This function doesn't work just yet.")
-} 
+}
 
 export function prepareRouseShortcut ($content, data) {
   $content.find('.dice-tray-button[data=rollRouse]').on('click', event => {

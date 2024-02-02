@@ -161,10 +161,9 @@ export const _onConfirmRoll = async function (dataset, actor) {
       // are calculated normally
       basicDice = await getBasicDice(dataset.valuePaths, flatMod + activeBonuses, actor)
     }
-  
+
     // Retrieve the appropriate amount of advanced dice
     advancedDice = disableAdvancedDice ? 0 : await getAdvancedDice(actor)
-
   }
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
@@ -174,21 +173,21 @@ export const _onConfirmRoll = async function (dataset, actor) {
   // Some quick modifications to vampire and werewolf rolls
   // in order to properly display the dice in the dialog window
   if (!disableBasicDice) {
-    if(system === 'vampire') {
+    if (system === 'vampire') {
       // Ensure that the number of hunger dice doesn't exceed the
       // total number of dice, unless it's a rouse check that needs
       // rerolls, which requires twice the number of normal hunger
       // dice and only the highest will be kept
       advancedDice = rerollHunger ? advancedDice * 2 : Math.min(basicDice, advancedDice)
-    
+
       // Calculate the number of normal dice to roll by subtracting
       // the number of hunger dice from them, minimum zero
       basicDice = Math.max(basicDice - advancedDice, 0)
-    } else if(system === 'werewolf') {
+    } else if (system === 'werewolf') {
       // Ensure that the number of rage dice doesn't exceed the
       // total number of dice
       advancedDice = Math.min(basicDice, advancedDice)
-    
+
       // Calculate the number of normal dice to roll by subtracting
       // the number of rage dice from them, minimum zero
       basicDice = Math.max(basicDice - advancedDice, 0)
@@ -221,7 +220,7 @@ export const getFlavorDescription = async function (valuePath, data) {
   const properties = valuePath.split('.')
 
   let pathValue = data
-  for (let prop of properties) {
+  for (const prop of properties) {
     pathValue = pathValue[prop]
 
     if (pathValue === undefined) break // Break the loop if property is not found
@@ -241,16 +240,16 @@ export const getBasicDice = async function (valuePaths, flatMod, actor) {
   let total = parseInt(flatMod) || 0
 
   // Look up the path and grab the value
-  for (let path of valueArray) {
+  for (const path of valueArray) {
     const properties = path.split('.')
 
     let pathValue = actorData
-    for (let prop of properties) {
+    for (const prop of properties) {
       pathValue = pathValue[prop]
 
       if (pathValue === undefined) break // Break the loop if property is not found
     }
-    
+
     // Add the value from the path to the total; if the value isn't a number, just default to 0
     total += typeof pathValue === 'number' ? pathValue : 0
   }
@@ -262,7 +261,7 @@ export const getBasicDice = async function (valuePaths, flatMod, actor) {
 export const getAdvancedDice = async function (actor) {
   // Top-level variables
   const actorData = actor.system
-  
+
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
   const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
   const system = systemsList.indexOf(actorData.gamesystem) > -1 ? actorData.gamesystem : 'mortal'
@@ -302,7 +301,7 @@ export const generateLabelAndLocalize = async function (str) {
     ceremonies: 'WOD5E.Ceremonies'
   }
 
-  if (disciplines.hasOwnProperty(str)) {
+  if (disciplines.prototype.hasOwnProperty(str)) {
     return `${game.i18n.localize(disciplines[str])}`
   }
 

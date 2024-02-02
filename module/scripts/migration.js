@@ -26,23 +26,23 @@ export const migrateWorld = async () => {
   async function updateWorld() {
     if (worldVersion !== currentVersion || worldVersion === '1.5') {
       const updates = []
-  
+
       ui.notifications.info('New version detected Updating SchreckNet, please wait.')
       console.log('Obtaining SchreckNet Layer v' + currentVersion)
-  
+
       try {
         // Migrate legacy sheets
         const migrationIDs1 = await MigrateLegacySheets()
         updates.concat(migrationIDs1)
-  
+
         // Migrate localization
         const migrationIDs2 = await MigrateLocalization()
         updates.concat(migrationIDs2)
-  
+
         // Migrate gamesystem data
         const migrationIDs3 = await MigrateGamesystem()
         updates.concat(migrationIDs3)
-  
+
         // Migrate health and willpower tracker data
         const migrationIDs4 = await MigrateTrackers()
         updates.concat(migrationIDs4)
@@ -50,11 +50,11 @@ export const migrateWorld = async () => {
         // Migrate specialties into their respective skills
         const migrationIDs5 = await MigrateSpecialties()
         updates.concat(migrationIDs5)
-  
+
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {
           ui.notifications.info('Upgrade complete! Foundry will now refresh in 10 seconds...')
-  
+
           // Reload to implement the fixes after 10 seconds
           setTimeout(() => {
             foundry.utils.debouncedReload()
@@ -62,7 +62,7 @@ export const migrateWorld = async () => {
         } else {
           ui.notifications.info('No changes necessary! Welcome to version ' + currentVersion)
         }
-  
+
         // Update game version
         game.settings.set('vtm5e', 'worldVersion', currentVersion)
       } catch (error) {
@@ -70,6 +70,6 @@ export const migrateWorld = async () => {
       }
     }
   }
-  
+
   updateWorld()
 }

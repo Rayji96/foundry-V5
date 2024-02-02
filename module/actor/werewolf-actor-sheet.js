@@ -182,7 +182,7 @@ export class WerewolfActorSheet extends WoDActor {
     const renownValue = actor.system.renown[itemRenown].value
 
     // Variables yet to be defined
-    let selectors = []
+    const selectors = []
 
     // Handle dice1 as either renown or an ability
     const dice1 = item.system.dice1 === 'renown' ? renownValue : actor.system.abilities[item.system.dice1].value
@@ -315,7 +315,7 @@ export class WerewolfActorSheet extends WoDActor {
         default: 'submit'
       },
       {
-        classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]
+        classes: ['wod5e', 'werewolf-dialog', 'werewolf-sheet']
       }).render(true)
     }
   }
@@ -370,7 +370,7 @@ export class WerewolfActorSheet extends WoDActor {
   }
 
   // Switch function to direct data to form change functions
-  _onShiftForm(event) {
+  _onShiftForm (event) {
     event.preventDefault()
 
     // Top-level variables
@@ -378,7 +378,7 @@ export class WerewolfActorSheet extends WoDActor {
     const element = event.currentTarget
     const dataset = Object.assign({}, element.dataset)
     const form = dataset.form
-  
+
     switch (form) {
       case 'glabro':
         this.handleFormChange('glabro', 1)
@@ -398,9 +398,9 @@ export class WerewolfActorSheet extends WoDActor {
         this._onFormToChat(event)
     }
   }
-  
+
   // Function to handle rolling the dice and updating the actor
-  async handleFormChange(form, diceCount) {
+  async handleFormChange (form, diceCount) {
     // Top-level variables
     const actor = this.actor
 
@@ -436,7 +436,7 @@ export class WerewolfActorSheet extends WoDActor {
           // Calculate the number of rage dice the actor has left
           const failures = rollData.terms[2].results.filter(result => !result.success).length
           const newRageAmount = Math.max(actor.system.rage.value - failures, 0)
-          
+
           // If rolling rage dice didn't reduce the actor to 0 rage, then update the current form
           if (newRageAmount > 0) {
             actor.update({ 'system.activeForm': form })
@@ -473,7 +473,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     // Post the message to the chat
     ChatMessage.create({
-      speaker: ChatMessage.getSpeaker({ actor: actor }),
+      speaker: ChatMessage.getSpeaker({ actor }),
       content: chatMessage
     })
 
@@ -531,7 +531,7 @@ export class WerewolfActorSheet extends WoDActor {
       default: 'submit'
     },
     {
-      classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]
+      classes: ['wod5e', 'werewolf-dialog', 'werewolf-sheet']
     }).render(true)
   }
 
@@ -572,7 +572,7 @@ export class WerewolfActorSheet extends WoDActor {
       default: 'submit'
     },
     {
-      classes: ['wod5e', `werewolf-dialog`, `werewolf-sheet`]
+      classes: ['wod5e', 'werewolf-dialog', 'werewolf-sheet']
     }).render(true)
   }
 }

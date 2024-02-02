@@ -7,7 +7,7 @@ export const _onAddBonus = async function (event, item) {
     bonus: {
       source: 'New bonus',
       value: 1,
-      paths: [`skills.athletics`],
+      paths: ['skills.athletics'],
       displayWhenInactive: false,
       activeWhen: {
         check: 'always'
@@ -26,29 +26,29 @@ export const _onAddBonus = async function (event, item) {
       buttons: {
         add: {
           icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize("WOD5E.Add"),
+          label: game.i18n.localize('WOD5E.Add'),
           callback: async html => {
             let source, value, displayWhenInactive, rawPaths, arrPaths, cleanPaths
             let paths = []
             let activeWhen = {}
             let newBonus = {}
 
-            source = html.find("[id=bonusSource]").val()
-            value = html.find("[id=bonusValue]").val()
-            displayWhenInactive = html.find("[id=displayBonusWhenInactive]").is(':checked')
+            source = html.find('[id=bonusSource]').val()
+            value = html.find('[id=bonusValue]').val()
+            displayWhenInactive = html.find('[id=displayBonusWhenInactive]').is(':checked')
 
-            rawPaths = html.find("[id=bonusPaths]").val()
-            arrPaths = rawPaths.split(";")
-            cleanPaths = arrPaths.map(function(item) {
+            rawPaths = html.find('[id=bonusPaths]').val()
+            arrPaths = rawPaths.split(';')
+            cleanPaths = arrPaths.map(function (item) {
               return item.trim()
             })
-            paths = cleanPaths.filter(function(item) {
-              return item !== ""
+            paths = cleanPaths.filter(function (item) {
+              return item !== ''
             })
 
-            activeWhen['check'] = html.find("[id=activeWhenCheck]").val()
-            activeWhen['path'] = html.find("[id=activeWhenPath]").val()
-            activeWhen['value'] = html.find("[id=activeWhenValue]").val()
+            activeWhen['check'] = html.find('[id=activeWhenCheck]').val()
+            activeWhen['path'] = html.find('[id=activeWhenPath]').val()
+            activeWhen['value'] = html.find('[id=activeWhenValue]').val()
 
             newBonus = {
               source,
@@ -65,7 +65,7 @@ export const _onAddBonus = async function (event, item) {
             itemBonuses.push(newBonus)
 
             // Update the item
-            item.update({ [`system.bonuses`]: itemBonuses })
+            item.update({ ['system.bonuses']: itemBonuses })
           }
         },
         cancel: {
@@ -74,9 +74,6 @@ export const _onAddBonus = async function (event, item) {
         }
       },
       default: 'cancel'
-    },
-    {
-      classes: ['wod5e', `${system}-dialog`, `${system}-sheet`],
     }
   ).render(true)
 }
@@ -93,7 +90,7 @@ export const _onDeleteBonus = async function (event, item) {
   itemBonuses.splice(key, 1)
 
   // Update the item
-  item.update({ [`system.bonuses`]: itemBonuses })
+  item.update({ ['system.bonuses']: itemBonuses })
 }
 
 export const _onEditBonus = async function (event, item) {
@@ -118,28 +115,28 @@ export const _onEditBonus = async function (event, item) {
       buttons: {
         save: {
           icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize("WOD5E.Save"),
+          label: game.i18n.localize('WOD5E.Save'),
           callback: async html => {
             let source, value, displayWhenInactive, rawPaths, arrPaths, cleanPaths
             let paths = []
             let activeWhen = {}
 
-            source = html.find("[id=bonusSource]").val()
-            value = html.find("[id=bonusValue]").val()
-            displayWhenInactive = html.find("[id=displayBonusWhenInactive]").is(':checked')
+            source = html.find('[id=bonusSource]').val()
+            value = html.find('[id=bonusValue]').val()
+            displayWhenInactive = html.find('[id=displayBonusWhenInactive]').is(':checked')
 
-            rawPaths = html.find("[id=bonusPaths]").val()
-            arrPaths = rawPaths.split(";")
-            cleanPaths = arrPaths.map(function(item) {
+            rawPaths = html.find('[id=bonusPaths]').val()
+            arrPaths = rawPaths.split(';')
+            cleanPaths = arrPaths.map(function (item) {
               return item.trim()
             })
-            paths = cleanPaths.filter(function(item) {
-              return item !== ""
+            paths = cleanPaths.filter(function (item) {
+              return item !== ''
             })
 
-            activeWhen['check'] = html.find("[id=activeWhenCheck]").val()
-            activeWhen['path'] = html.find("[id=activeWhenPath]").val()
-            activeWhen['value'] = html.find("[id=activeWhenValue]").val()
+            activeWhen['check'] = html.find('[id=activeWhenCheck]').val()
+            activeWhen['path'] = html.find('[id=activeWhenPath]').val()
+            activeWhen['value'] = html.find('[id=activeWhenValue]').val()
 
             // Define the existing list of bonuses
             let itemBonuses = item.system.bonuses
@@ -154,7 +151,7 @@ export const _onEditBonus = async function (event, item) {
             }
 
             // Update the item
-            item.update({ [`system.bonuses`]: itemBonuses })
+            item.update({ ['system.bonuses']: itemBonuses })
           }
         },
         cancel: {
@@ -163,9 +160,6 @@ export const _onEditBonus = async function (event, item) {
         }
       },
       default: 'cancel'
-    },
-    {
-      classes: ['wod5e', `${system}-dialog`, `${system}-sheet`],
     }
   ).render(true)
 }

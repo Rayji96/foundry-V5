@@ -14,9 +14,9 @@ import { mortalDiceLocation, vampireDiceLocation, werewolfDiceLocation, hunterDi
  */
 export async function generateRollMessage ({
   roll,
-  system = "mortal",
+  system = 'mortal',
   title,
-  flavor = "",
+  flavor = '',
   difficulty = 0,
   activeModifiers
 }) {
@@ -35,7 +35,7 @@ export async function generateRollMessage ({
 
   const { totalResult, resultLabel } = await generateResult(basicDice, advancedDice)
 
-  const chatTemplate = `systems/vtm5e/templates/chat/roll-message.hbs`
+  const chatTemplate = 'systems/vtm5e/templates/chat/roll-message.hbs'
   const chatData = {
     fullFormula: roll._formula,
     basicDice,
@@ -55,14 +55,14 @@ export async function generateRollMessage ({
   return chatMessage
 
   // Function to help with rendering of basic dice
-  async function generateBasicDiceDisplay(rollData) {
+  async function generateBasicDiceDisplay (rollData) {
     const basicDice = rollData.results
     let criticals = 0
 
     basicDice.forEach((die, index) => {
       // Variables
-      let dieResult, dieImg, dieAltText, dieFace
-      let dieClasses = ['roll-img', 'rerollable']
+      let dieResult, dieImg, dieAltText
+      const dieClasses = ['roll-img', 'rerollable']
 
       // Basic die results
       if (die.result === 10) dieResult = 'critical' // Critical successes
@@ -70,7 +70,7 @@ export async function generateRollMessage ({
       else dieResult = 'failure' // Failures
 
       // Define the face of the die based on the above conditionals
-      dieFace = normalDiceFaces[dieResult]
+      const dieFace = normalDiceFaces[dieResult]
 
       // Use switch-cases to adjust splat-specific dice locations/faces
       switch (system) {
@@ -98,7 +98,7 @@ export async function generateRollMessage ({
 
       // Add any necessary data to the dice object
       rollData.results[index].img = dieImg
-      rollData.results[index].classes = dieClasses.join(" ")
+      rollData.results[index].classes = dieClasses.join(' ')
       rollData.results[index].altText = dieAltText
 
       // Increase the number of criticals collected across the dice

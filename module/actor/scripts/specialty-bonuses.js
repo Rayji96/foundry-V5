@@ -7,7 +7,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
   const bonusPath = header.dataset.bonusPath
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
   const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Secondary variables
@@ -35,30 +35,27 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
       buttons: {
         add: {
           icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize("WOD5E.Add"),
+          label: game.i18n.localize('WOD5E.Add'),
           callback: async html => {
-            let source, value, displayWhenInactive, rawPaths, arrPaths, cleanPaths
-            let paths = []
-            let activeWhen = {}
-            let newBonus = {}
+            const source = html.find('[id=bonusSource]').val()
+            const value = html.find('[id=bonusValue]').val()
+            const displayWhenInactive = html.find('[id=displayBonusWhenInactive]').is(':checked')
 
-            source = html.find("[id=bonusSource]").val()
-            value = html.find("[id=bonusValue]").val()
-            displayWhenInactive = html.find("[id=displayBonusWhenInactive]").is(':checked')
-
-            rawPaths = html.find("[id=bonusPaths]").val()
-            arrPaths = rawPaths.split(";")
-            cleanPaths = arrPaths.map(function(item) {
+            const rawPaths = html.find('[id=bonusPaths]').val()
+            const arrPaths = rawPaths.split(';')
+            const cleanPaths = arrPaths.map(function (item) {
               return item.trim()
             })
-            paths = cleanPaths.filter(function(item) {
-              return item !== ""
+            const paths = cleanPaths.filter(function (item) {
+              return item !== ''
             })
 
-            activeWhen['check'] = html.find("[id=activeWhenCheck]").val()
-            activeWhen['path'] = html.find("[id=activeWhenPath]").val()
-            activeWhen['value'] = html.find("[id=activeWhenValue]").val()
+            const activeWhen = {}
+            activeWhen['check'] = html.find('[id=activeWhenCheck]').val()
+            activeWhen['path'] = html.find('[id=activeWhenPath]').val()
+            activeWhen['value'] = html.find('[id=activeWhenValue]').val()
 
+            let newBonus = {}
             newBonus = {
               source,
               value,
@@ -107,7 +104,7 @@ export const _onDeleteBonus = async function (event, actor, data, SkillEditDialo
   const bonusPath = header.dataset.bonusPath
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
   const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Define the existing list of bonuses
@@ -143,7 +140,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
   }
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
   const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Render the template
@@ -157,32 +154,29 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
       buttons: {
         save: {
           icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize("WOD5E.Save"),
+          label: game.i18n.localize('WOD5E.Save'),
           callback: async html => {
-            let source, value, displayWhenInactive, rawPaths, arrPaths, cleanPaths
-            let paths = []
-            let activeWhen = {}
+            const source = html.find('[id=bonusSource]').val()
+            const value = html.find('[id=bonusValue]').val()
+            const displayWhenInactive = html.find('[id=displayBonusWhenInactive]').is(':checked')
 
-            source = html.find("[id=bonusSource]").val()
-            value = html.find("[id=bonusValue]").val()
-            displayWhenInactive = html.find("[id=displayBonusWhenInactive]").is(':checked')
-
-            rawPaths = html.find("[id=bonusPaths]").val()
-            arrPaths = rawPaths.split(";")
-            cleanPaths = arrPaths.map(function(item) {
+            const rawPaths = html.find('[id=bonusPaths]').val()
+            const arrPaths = rawPaths.split(';')
+            const cleanPaths = arrPaths.map(function (item) {
               return item.trim()
             })
-            paths = cleanPaths.filter(function(item) {
-              return item !== ""
+            const paths = cleanPaths.filter(function (item) {
+              return item !== ''
             })
 
-            activeWhen['check'] = html.find("[id=activeWhenCheck]").val()
-            activeWhen['path'] = html.find("[id=activeWhenPath]").val()
-            activeWhen['value'] = html.find("[id=activeWhenValue]").val()
+            const activeWhen = {}
+            activeWhen['check'] = html.find('[id=activeWhenCheck]').val()
+            activeWhen['path'] = html.find('[id=activeWhenPath]').val()
+            activeWhen['value'] = html.find('[id=activeWhenValue]').val()
 
             // Define the existing list of bonuses
             const bonusKeys = bonusPath.split('.')
-            let actorBonuses = bonusKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
+            const actorBonuses = bonusKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
 
             // Update the existing bonus with the new data
             actorBonuses[key] = {
@@ -214,7 +208,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
       default: 'cancel'
     },
     {
-      classes: ['wod5e', `${system}-dialog`, `${system}-sheet`],
+      classes: ['wod5e', `${system}-dialog`, `${system}-sheet`]
     }
   ).render(true)
 }

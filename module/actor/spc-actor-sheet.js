@@ -163,7 +163,7 @@ export class SPCActorSheet extends CoterieActorSheet {
       default: 'submit'
     },
     {
-      classes: ['wod5e', `mortal-dialog`, `mortal-sheet`]
+      classes: ['wod5e', 'mortal-dialog', 'mortal-sheet']
     }).render(true)
   }
 
@@ -223,7 +223,7 @@ export class SPCActorSheet extends CoterieActorSheet {
       default: 'submit'
     },
     {
-      classes: ['wod5e', `vampire-dialog`, `vampire-sheet`]
+      classes: ['wod5e', 'vampire-dialog', 'vampire-sheet']
     }).render(true)
   }
 }

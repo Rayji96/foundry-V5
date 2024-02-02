@@ -256,11 +256,11 @@ export class WoDActor extends ActorSheet {
     const skill = header.dataset.skill
 
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-    const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
+    const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
     const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
     // Secondary variables
-    let skillData = {
+    const skillData = {
       id: skill,
       actor,
       system,

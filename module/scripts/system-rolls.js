@@ -93,7 +93,7 @@ class WOD5eDice {
       if ($form) {
         let modifiersList = $form.find('.mod-checkbox')
         if (modifiersList.length > 0) {
-          modifiersList.each(function() {
+          modifiersList.each(function () {
             const isChecked = $(this).prop('checked')
   
             if (isChecked) {
@@ -196,7 +196,7 @@ class WOD5eDice {
               const basicDiceInput = html.find('#inputBasicDice')
 
               // Add event listeners to plus and minus signs on the dice in the dialog
-              html.find('.dialog-plus').click(function(event){
+              html.find('.dialog-plus').click(function (event){
                 event.preventDefault()
 
                 // Determine the input
@@ -208,7 +208,7 @@ class WOD5eDice {
                 // Plug in the new value to the input
                 input.val(newValue)
               })
-              html.find('.dialog-minus').click(function(event){
+              html.find('.dialog-minus').click(function (event){
                 event.preventDefault()
 
                 // Determine the input
@@ -222,7 +222,7 @@ class WOD5eDice {
               })
 
               // Add event listeners to the situational modifier toggles
-              html.find('.mod-checkbox').on("change", function(event){
+              html.find('.mod-checkbox').on("change", function (event){
                 event.preventDefault()
 
                 // Determine the input

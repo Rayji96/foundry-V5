@@ -5,8 +5,7 @@
 .chat-message .modifiers {
   margin-bottom: 2px;
   display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
+  flex-wrap: wrap;
 }
 
 .chat-message .modifiers .mod {

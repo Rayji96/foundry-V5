@@ -10,9 +10,9 @@ export const MigrateSpecialties = async function () {
     // Migrate specialties to their appropriate skills (v4.0.0)
     for (const actor of actorsList) {
       // Variables
-      let actorData = actor.system
-      let actorInvalidItems = actor.items.invalidDocumentIds
-      let actorInvalidItemsList = []
+      const actorData = actor.system
+      const actorInvalidItems = actor.items.invalidDocumentIds
+      const actorInvalidItemsList = []
 
       // Check for invalid items
       if (actorInvalidItems.size > 0) {
@@ -32,7 +32,7 @@ export const MigrateSpecialties = async function () {
             const skill = item.system.skill
 
             // If 'bonuses' doesn't already exist for this skill, create it
-            if (!actorData.skills[skill].hasOwnProperty('bonuses')) {
+            if (!actorData.skills[skill].prototype.hasOwnProperty('bonuses')) {
               actorData.skills[skill].bonuses = []
             }
 
@@ -42,15 +42,17 @@ export const MigrateSpecialties = async function () {
               value: 1,
               paths: [`skills.${skill}`],
               activeWhen: {
-                "check": "always"
+                check: 'always'
               }
             }
-            
+
             // Push the new specialty to the 'bonuses' array
             actorData.skills[skill].bonuses.push(modifiedSpecialty)
 
             // Remove the item
             actor.items.getInvalid(item._id).delete()
+
+            return item
           })
 
           // Update the actor data with the new data when finished
