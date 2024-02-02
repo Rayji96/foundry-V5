@@ -22,12 +22,15 @@
         <div class="tab bonuses" data-group="primary" data-tab="bonuses">
             <div class="bonuses-list">
                 {{#each skill.bonuses as |bonus key|}}
-                    <div class="bonus">
+                    <div class="bonus" style="margin-top: 5px;">
                         <h3>
-                            <a class="edit-bonus" title="Edit bonus" data-bonus="{{key}}" style="margin-right: 5px; margin-top: 5px; font-size: 13pt;">
+                            <a class="edit-bonus" title="Edit bonus" data-bonus-path="skills.{{../id}}.bonuses" data-bonus="{{key}}" style="margin-right: 5px; margin-top: 5px; font-size: 13pt;">
                                 <i class="fas fa-edit"></i>
                             </a>
                             {{bonus.source}}
+                            <a class="delete-bonus" title="Delete bonus" data-bonus-path="skills.{{../id}}.bonuses" data-bonus="{{key}}" style="float: right;">
+                                <i class="fas fa-trash"></i>
+                            </a>
                         </h3>
                         <div class="grid grid-2col flex-center">
                             <div class="flexcol">
@@ -65,7 +68,7 @@
             <hr>
             <div class="flex-center">
                 <b>
-                    <a class="add-bonus" data-skill="{{id}}">Add New Bonus</a>
+                    <a class="add-bonus" data-bonus-path="skills.{{id}}.bonuses">Add New Bonus</a>
                 </b>
             </div>
         </div>

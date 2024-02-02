@@ -1,5 +1,7 @@
 /* global ItemSheet, mergeObject, TextEditor */
 
+import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/item-bonuses.js'
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -42,21 +44,9 @@ export class WoDItemSheet extends ItemSheet {
 
     // Encrich editor content
     data.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description, { async: true })
+    data.bonuses = this.object.system.bonuses
 
     return data
-  }
-
-  /** @override */
-  _getSubmitData (updateData) {
-    let formData = super._getSubmitData(updateData)
-
-    if (formData['system.bonuses']) {
-      formData['system.bonuses'] = formData['system.bonuses'].split('; ').map(item => item.trim())
-    }
-
-    const submitData = foundry.utils.expandObject(formData)
-
-    return submitData
   }
 
   /* -------------------------------------------- */
@@ -78,6 +68,9 @@ export class WoDItemSheet extends ItemSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
+
+    // Top-level Variables
+    const item = this.item
 
     // Rollable Checkbox Handler.
     const rollCheckbox = document.querySelector('input[type="checkbox"][name="system.rollable"]')
@@ -104,5 +97,20 @@ export class WoDItemSheet extends ItemSheet {
         }
       })
     }
+
+    // Prompt the dialog to add a new bonus
+    html.find('.add-bonus').click(event => {
+      _onAddBonus(event, item)
+    })
+
+    // Delete a bonus
+    html.find('.delete-bonus').click(event => {
+      _onDeleteBonus(event, item)
+    })
+
+    // Prompt the dialog to edit a bonus
+    html.find('.edit-bonus').click(event => {
+      _onEditBonus(event, item)
+    })
   }
 }

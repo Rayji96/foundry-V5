@@ -1,20 +1,15 @@
-export const _onAddBonus = async function (event, actor, data, SkillEditDialog) {
-  // Top-level variables
-  const header = event.currentTarget
-  const skill = header.dataset.skill
-  const bonusPath = header.dataset.bonusPath
-
+export const _onAddBonus = async function (event, item) {
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
   const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  const system = 'mortal' //systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Secondary variables
   const bonusData = {
-    actor,
+    item,
     bonus: {
-      source: 'New specialty',
+      source: 'New bonus',
       value: 1,
-      paths: [`skills.${skill}`],
+      paths: [`skills.athletics`],
       displayWhenInactive: false,
       activeWhen: {
         check: 'always'
@@ -66,23 +61,13 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
             }
 
             // Define the existing list of bonuses
-            const parentKeys = bonusPath.split('.')
-            let actorBonuses = parentKeys.reduce((obj, key) => obj && obj[key], actor.system) || { bonuses: [] }
+            let itemBonuses = item.system.bonuses || []
 
             // Add the new bonus to the list
-            actorBonuses.bonuses.push(newBonus)
+            itemBonuses.push(newBonus)
 
-            // Update the actor
-            actor.update({ [`system.${bonusPath}`]: actorBonuses.bonuses })
-
-            // Re-render the skill edit dialog
-            SkillEditDialog.data.content = await renderTemplate('systems/vtm5e/templates/actor/parts/skill-dialog.hbs', {
-              id: data.id,
-              actor,
-              system,
-              skill: actor.system.skills[data.id]
-            })
-            SkillEditDialog.render(true)
+            // Update the item
+            item.update({ [`system.bonuses`]: itemBonuses })
           }
         },
         cancel: {
@@ -98,51 +83,39 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
   ).render(true)
 }
 
-export const _onDeleteBonus = async function (event, actor, data, SkillEditDialog) {
+export const _onDeleteBonus = async function (event, item) {
   // Top-level variables
   const header = event.currentTarget
   const key = header.dataset.bonus
-  const bonusPath = header.dataset.bonusPath
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
   const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  const system = 'mortal' //systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Define the existing list of bonuses
-  const bonusKeys = bonusPath.split('.')
-  let actorBonuses = bonusKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
+  let itemBonuses = item.system.bonuses || []
 
   // Remove the bonus from the list
-  actorBonuses.splice(key, 1)
+  itemBonuses.splice(key, 1)
 
-  // Update the actor
-  actor.update({ [`system.${bonusPath}`]: actorBonuses })
-
-  // Re-render the skill edit dialog
-  SkillEditDialog.data.content = await renderTemplate('systems/vtm5e/templates/actor/parts/skill-dialog.hbs', {
-    id: data.id,
-    actor,
-    system,
-    skill: actor.system.skills[data.id]
-  })
-  SkillEditDialog.render(true)
+  // Update the item
+  item.update({ [`system.bonuses`]: itemBonuses })
 }
 
-export const _onEditBonus = async function (event, actor, data, SkillEditDialog) {
+export const _onEditBonus = async function (event, item) {
   // Top-level variables
   const header = event.currentTarget
   const key = header.dataset.bonus
-  const bonusPath = header.dataset.bonusPath
 
   // Secondary variables
   const bonusData = {
-    actor,
-    bonus: data.skill.bonuses[key]
+    item,
+    bonus: item.system.bonuses[key]
   }
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
   const systemsList = ["vampire", "werewolf", "hunter", "mortal"]
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  const system = 'mortal' //systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
 
   // Render the template
   const bonusTemplate = 'systems/vtm5e/templates/item/parts/bonus-display.hbs'
@@ -179,11 +152,10 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
             activeWhen['value'] = html.find("[id=activeWhenValue]").val()
 
             // Define the existing list of bonuses
-            const bonusKeys = bonusPath.split('.')
-            let actorBonuses = bonusKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
+            let itemBonuses = item.system.bonuses
 
             // Update the existing bonus with the new data
-            actorBonuses[key] = {
+            itemBonuses[key] = {
               source,
               value,
               paths,
@@ -191,17 +163,8 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
               activeWhen
             }
 
-            // Update the actor
-            actor.update({ [`system.${bonusPath}`]: actorBonuses })
-
-            // Re-render the skill edit dialog
-            SkillEditDialog.data.content = await renderTemplate('systems/vtm5e/templates/actor/parts/skill-dialog.hbs', {
-              id: data.id,
-              actor,
-              system,
-              skill: actor.system.skills[data.id]
-            })
-            SkillEditDialog.render(true)
+            // Update the item
+            item.update({ [`system.bonuses`]: itemBonuses })
           }
         },
         cancel: {
