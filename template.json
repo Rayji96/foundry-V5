@@ -575,7 +575,7 @@
             "name": "WOD5E.HomidName",
             "nickname": "WOD5E.HomidTitle",
             "cost": 0,
-            "description": "Custom Homid description",
+            "description": "",
             "abilities": [
               "Silver Immunity"
             ]
@@ -584,18 +584,40 @@
             "name": "WOD5E.GlabroName",
             "nickname": "WOD5E.GlabroTitle",
             "cost": 1,
-            "description": "Custom Glabro description",
+            "description": "",
             "abilities": [
               "Physical Tests: +2",
               "Social Tests: -2",
               "Regenerate: 1/Rage Check"
+            ],
+            "bonuses": [
+              {
+                "source": "WOD5E.GlabroName",
+                "value": 2,
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.stealth", "skills.survival"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "glabro"
+                }
+              },
+              {
+                "source": "WOD5E.GlabroName",
+                "value": -2,
+                "paths": ["abilities.charisma", "abilities.manipulation", "abilities.composure", "skills.animal ken", "skills.etiquette", "skills.insight", "skills.intimidation", "skills.leadership", "skills.performance", "skills.persuasion", "skills.streetwise", "skills.subterfuge"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "glabro"
+                }
+              }
             ]
           },
           "crinos": {
             "name": "WOD5E.CrinosName",
             "nickname": "WOD5E.CrinosTitle",
             "cost": 2,
-            "description": "Custom Crinos description",
+            "description": "",
             "abilities": [
               "Frenzy Risk, 1 Willpower/turn",
               "Physical Tests: +4",
@@ -606,26 +628,60 @@
               "Claws: +3",
               "Bite: +1 Aggravated",
               "Causes Delirium"
+            ],
+            "bonuses": [
+              {
+                "source": "WOD5E.CrinosName",
+                "value": 4,
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.stealth", "skills.survival"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "crinos"
+                }
+              }
             ]
           },
           "hispo": {
             "name": "WOD5E.HispoName",
             "nickname": "WOD5E.HispoTitle",
             "cost": 1,
-            "description": "Custom Hispo description",
+            "description": "",
             "abilities": [
               "(Non-Stealth) Physical Tests: +2",
               "Stealth Tests: -2",
               "Social Tests: Limited to wolves and Garou",
               "Regenerate: 1/Rage Check",
               "Bite: +1 Aggravated"
+            ],
+            "bonuses": [
+              {
+                "source": "WOD5E.HispoName",
+                "value": 2,
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.survival"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "hispo"
+                }
+              },
+              {
+                "source": "WOD5E.HispoName",
+                "value": -2,
+                "paths": ["skills.stealth"],
+                "activeWhen": {
+                  "check": "isEqual",
+                  "path": "activeForm",
+                  "value": "hispo"
+                }
+              }
             ]
           },
           "lupus": {
             "name": "WOD5E.LupusName",
             "nickname": "WOD5E.LupusTitle",
             "cost": 0,
-            "description": "Custom Lupus description",
+            "description": "",
             "abilities": [
               "Silver Immunity",
               "Social Tests: Limited to wolves and Garou"
@@ -842,7 +898,7 @@
     }
   },
   "Item": {
-    "types": ["feature", "power", "specialty", "boon", "customRoll", "perk", "gift"],
+    "types": ["feature", "power", "boon", "customRoll", "perk", "gift"],
     "templates": {
       "base": {
         "description": ""
@@ -865,10 +921,6 @@
       "skill": false,
       "amalgam": false,
       "rouse": false
-    },
-    "specialty": {
-      "templates": ["base"],
-      "skill": "athletics"
     },
     "boon": {
       "templates": ["base"],

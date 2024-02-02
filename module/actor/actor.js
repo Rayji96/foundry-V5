@@ -17,7 +17,7 @@ export class ActorInfo extends Actor {
    * @memberof ClientDocumentMixin
    */
   static async createDialog (data = {}, options = {}) {
-    // Define data from the system and the game to be used when rendering the new actor dialogue
+    // Define data from the system and the game to be used when rendering the new actor dialog
     // Actor name
     const documentName = this.metadata.name
 

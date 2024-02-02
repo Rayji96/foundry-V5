@@ -31,8 +31,14 @@ export const loadHelpers = async function () {
     return options.inverse(this)
   })
 
-  Handlebars.registerHelper('or', function (bool1, bool2) {
-    return bool1 || bool2
+  Handlebars.registerHelper('or', function () {
+    for (let i = 0; i < arguments.length - 1; i++) {
+      if (arguments[i]) {
+        return true
+      }
+    }
+
+    return false
   })
 
   Handlebars.registerHelper('and', function (bool1, bool2) {
@@ -51,6 +57,14 @@ export const loadHelpers = async function () {
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
   }
+
+  Handlebars.registerHelper('splitArray', function (arr) {
+    if (!Array.isArray(arr)) {
+      return ''
+    }
+
+    return arr.join('; ')
+  })
 
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
     return 'WOD5E.'.concat(capitalize(str))

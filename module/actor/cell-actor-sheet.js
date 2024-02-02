@@ -13,14 +13,14 @@ export class CellActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'hunter-sheet', 'sheet', 'actor', 'cell']
 
-    // If the user's enabled darkmode, then push it to the class list
+    // If the user has darkmode enabled, then push it to the class list
     if (game.settings.get('vtm5e', 'darkTheme')) {
       classList.push('dark-theme')
     }
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/vtm5e/templates/actor/cell-sheet.html',
+      template: 'systems/vtm5e/templates/actor/cell-sheet.hbs',
       width: 940,
       height: 700,
       tabs: [{
@@ -38,24 +38,31 @@ export class CellActorSheet extends WoDActor {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
-    return 'systems/vtm5e/templates/actor/cell-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.hbs'
+    return 'systems/vtm5e/templates/actor/cell-sheet.hbs'
   }
 
   /* -------------------------------------------- */
 
   /** @override */
   async getData () {
+    // Top-level variables
     const data = await super.getData()
-    data.hasBoons = this.hasBoons
+    const actor = this.actor
+
+    // Define the type of sheet
     data.sheetType = `${game.i18n.localize('WOD5E.Cell')}`
 
-    data.dtypes = ['String', 'Number', 'Boolean']
-
     // Prepare items.
-    if (this.actor.type === 'cell') {
+    if (actor.type === 'cell') {
       this._prepareItems(data)
     }
+
+    // Show boons on the sheet
+    data.hasBoons = this.hasBoons
+
+    // Define data types
+    data.dtypes = ['String', 'Number', 'Boolean']
 
     return data
   }
@@ -64,7 +71,10 @@ export class CellActorSheet extends WoDActor {
 
   /** @override */
   activateListeners (html) {
+    // Activate listeners
     super.activateListeners(html)
+
+    // Setup counters
     this._setupCellSquareCounters(html)
 
     // Everything below here is only needed if the sheet is editable
@@ -77,8 +87,12 @@ export class CellActorSheet extends WoDActor {
   // Added for Desperation and Danger Counters
   _onCellSquareCounterChange (event) {
     event.preventDefault()
+
+    // Top-level variables
     const element = event.currentTarget
-    const index = Number(element.dataset.index)
+
+    // Secondary variables
+    const index = parseInt(element.dataset.index)
     const oldState = element.dataset.state || ''
     const parent = $(element.parentNode)
     const data = parent[0].dataset
@@ -87,9 +101,9 @@ export class CellActorSheet extends WoDActor {
     const steps = parent.find('.cell-resource-counter-step')
     const desperation = data.name === 'system.desperation'
     const danger = data.name === 'system.danger'
-    const fulls = Number(data[states['-']]) || 0
-    const halfs = Number(data[states['/']]) || 0
-    const crossed = Number(data[states.x]) || 0
+    const fulls = parseInt(data[states['-']]) || 0
+    const halfs = parseInt(data[states['/']]) || 0
+    const crossed = parseInt(data[states.x]) || 0
 
     if (index < 0 || index > steps.length) {
       return
@@ -105,20 +119,20 @@ export class CellActorSheet extends WoDActor {
     steps[index].dataset.state = newState
 
     if ((oldState !== '' && oldState !== '-') || (oldState !== '' && desperation) || (oldState !== '' && danger)) {
-      data[states[oldState]] = Number(data[states[oldState]]) - 1
+      data[states[oldState]] = parseInt(data[states[oldState]]) - 1
     }
 
     // If the step was removed we also need to subtract from the maximum.
     if (oldState !== '' && newState === '' && !desperation && !danger) {
-      data[states['-']] = Number(data[states['-']]) - 1
+      data[states['-']] = parseInt(data[states['-']]) - 1
     }
 
     if (newState !== '') {
-      data[states[newState]] = Number(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
+      data[states[newState]] = parseInt(data[states[newState]]) + Math.max(index + 1 - fulls - halfs - crossed, 1)
     }
 
     const newValue = Object.values(states).reduce(function (obj, k) {
-      obj[k] = Number(data[k]) || 0
+      obj[k] = parseInt(data[k]) || 0
       return obj
     }, {})
 
@@ -127,15 +141,16 @@ export class CellActorSheet extends WoDActor {
 
   _setupCellSquareCounters (html) {
     html.find('.cell-resource-counter').each(function () {
+      // Top-level variables
       const data = this.dataset
+
+      // Secondary variables
       const states = parseCounterStates(data.states)
       const desperation = data.name === 'system.desperation'
       const danger = data.name === 'system.danger'
-
-      const fulls = Number(data[states['-']]) || 0
-      const halfs = Number(data[states['/']]) || 0
-      const crossed = Number(data[states.x]) || 0
-
+      const fulls = parseInt(data[states['-']]) || 0
+      const halfs = parseInt(data[states['/']]) || 0
+      const crossed = parseInt(data[states.x]) || 0
       const values = desperation ? new Array(fulls + halfs) : danger ? new Array(fulls + halfs) : new Array(halfs + crossed)
 
       if (desperation) {

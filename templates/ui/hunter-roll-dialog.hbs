@@ -1,0 +1,37 @@
+<form class="dialog-contents">
+  <div class="dice-group-header flex-group-center">
+    {{#unless disableBasicDice}}
+      <label>{{localize 'WOD5E.HunterDice' }}</label>
+    {{/unless}}
+    {{#unless disableAdvancedDice}}
+      <label>{{localize 'WOD5E.DesperationDice' }}</label>
+    {{/unless}}
+  </div>
+  <div class="base-dice-group flex-group-center">
+    {{#unless disableBasicDice}}
+      <div class="basic-dice">
+        <div class="dice-input">
+          <img width="50" height="50" src="/systems/vtm5e/assets/icons/dialog/hunter-dice.png"/>
+          <div class="flexrow">
+            <i class="fas fa-minus dialog-control dialog-minus" data-resource="inputBasicDice" data-action="minus"></i>
+            <input type="text" id="inputBasicDice" value="{{basicDice}}">
+            <i class="fas fa-plus dialog-control dialog-plus" data-resource="inputBasicDice" data-action="plus"></i>
+          </div>
+        </div>
+      </div>
+    {{/unless}}
+    {{#unless disableAdvancedDice}}
+      <div class="advanced-dice">
+        <div class="dice-input">
+          <img width="50" height="50" src="/systems/vtm5e/assets/icons/dialog/desperation-dice.png"/>
+          <div class="flexrow">
+            <i class="fas fa-minus dialog-control dialog-minus" data-resource="inputAdvancedDice" data-action="minus"></i>
+            <input type="text" id="inputAdvancedDice" value="{{advancedDice}}">
+            <i class="fas fa-plus dialog-control dialog-plus" data-resource="inputAdvancedDice" data-action="plus"></i>
+          </div>
+        </div>
+      </div>
+    {{/unless}}
+  </div>
+  {{> "systems/vtm5e/templates/ui/parts/roll-dialog-base.hbs"}}
+</form>

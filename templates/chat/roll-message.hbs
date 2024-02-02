@@ -1,0 +1,75 @@
+<p class="roll-label uppercase">{{title}}</p>
+<div class="dice-roll">
+  <div class="modifiers">
+    {{#each activeModifiers as |mod key|}}
+      <label class="mod">
+        {{mod.label}} {{mod.value}}
+      </label>
+    {{/each}}
+  </div>
+  <div class="dice-result">
+    {{#each basicDice.results as |die key|}}
+      <img src="{{die.img}}" class="{{die.classes}}" alt="{{die.altText}}"/>
+    {{/each}}
+    {{#each advancedDice.results as |die key|}}
+      <img src="{{die.img}}" class="{{die.classes}}" alt="{{die.altText}}"/>
+    {{/each}}
+    {{#if flavor}}
+      <hr>
+      {{{enrichHTML flavor}}}
+      <hr>
+    {{/if}}
+    <div class="dice-tooltip">
+      <div class="dice-formula">{{ fullFormula }}</div>
+      <section class="tooltip-part">
+        <div class="dice">
+          <header class="part-header flexrow">
+            <span class="part-formula">{{basicDice.formula}}</span>
+
+            <span class="part-total">{{basicDice.total}}</span>
+          </header>
+          <ol class="dice-rolls">
+            {{#each basicDice.results as |die key|}}
+              <li class="roll werewolfdie d10">{{die.result}}</li>
+            {{/each}}
+          </ol>
+        </div>
+      </section>
+      <section class="tooltip-part">
+        <div class="dice">
+          <header class="part-header flexrow">
+            <span class="part-formula">{{advancedDice.formula}}</span>
+
+            <span class="part-total">{{advancedDice.total}}</span>
+          </header>
+          <ol class="dice-rolls">
+            {{#each advancedDice.results as |die key|}}
+              <li class="roll werewolfragedie d10">{{die.result}}</li>
+            {{/each}}
+          </ol>
+        </div>
+      </section>
+    </div>
+    <div class="total-and-difficulty">
+      <div class="roll-total">
+        <span class="total-title">
+          Total
+        </span>
+        <span class="total-contents">
+          {{totalResult}}
+        </span>
+      </div>
+      {{#ifnoteq difficulty 0}}
+        <div class="roll-difficulty">
+          <span class="difficulty-title">
+            {{localize "WOD5E.Difficulty"}}
+          </span>
+          <span class="difficulty-contents">
+            {{difficulty}}
+          </span>
+        </div>
+      {{/ifnoteq}}
+    </div>
+    {{{enrichHTML resultLabel}}}
+  </div>
+</div>

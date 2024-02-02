@@ -7,7 +7,7 @@
 
 ## 3.1.2
 * Updated Italian translation [Arcadio21]
-* Fixed Ghoul sheets being unable to make dialogue rolls [Veilza]
+* Fixed Ghoul sheets being unable to make dialog rolls [Veilza]
 * Updated Werewolf dice to allow willpower rerolling of non-brutal Rage dice [Veilza]
 * New disciplines/rituals, gifts/rites, and edges will use icons different from the default item icons now [Veilza]
 * Fixed the enrichment of item descriptions, allowing journal entries and other Foundry items to be linked to disciplines, gifts, etc [Veilza]
@@ -51,7 +51,7 @@
 * Rouse checks will now display rerolled dice in chat as greyed out [Veilza]
 * Actor banners at the top of character sheets can now be disabled within the settings [Veilza]
 * Reorganized sheet partials [Veilza]
-* Reworked how the actor dialogue is localized [Veilza]
+* Reworked how the actor dialog is localized [Veilza]
 * Reworked how the various splats' dice are called [Veilza]
 * The system now uses "WoDActor" and "WoDItem" as the export classes for base actors/items and their functionality [Veilza]
 * Reworked the migration scripts [Veilza]

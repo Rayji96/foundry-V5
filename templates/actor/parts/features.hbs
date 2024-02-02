@@ -1,0 +1,89 @@
+<div class="tab features" data-group="primary" data-tab="features">
+    <ol class="items-list">
+        {{#each actor.features as |feature key|}}
+        <li class="flexrow item-header">
+            <div class="item-name">{{localize (generateFeatureLabel key)}}</div>
+            <div class="item-controls">
+                <a class="item-control item-create" title="{{localize 'WOD5E.AddFeat'}}" data-type="feature"
+                    data-featuretype="{{key}}"><i class="fas fa-plus"></i> {{localize "WOD5E.AddFeat"}}</a>
+            </div>
+        </li>
+        {{#each feature as |item id|}}
+        <li class="item flexcol" data-item-id="{{item._id}}">
+            <div class="flexrow">
+                <div class="flexrow collapsible">
+                    <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"
+                            alt="{{item.name}}" />
+                    </div>
+                    <h4 class="item-name">{{item.name}}</h4>
+                </div>
+                {{#if (ne key "background")}}
+                <div class="resource-value-static" data-value="{{item.system.points}}" data-name="items.{{item._id}}">
+                    {{#numLoop 5}}
+                    <span class="resource-value-static-step" data-index="{{this}}"></span>
+                    {{/numLoop}}
+                </div>
+                {{else}}
+                <div class="resource-value" data-value="{{item.system.points}}" data-name="items.{{item._id}}">
+                    <span class="resource-value-empty"></span>
+                    {{#numLoop 5}}
+                    <span class="resource-value-step" data-index="{{this}}"></span>
+                    {{/numLoop}}
+                </div>
+                {{/if}}
+                <div class="item-controls">
+                    <a class="item-control item-chat" title="{{localize 'WOD5E.ShowToChat'}}"><i
+                        class="fas fa-comment-alt"></i></a>
+                    <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}"><i
+                            class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="{{localize 'WOD5E.Delete'}}"><i
+                            class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            <div class="collapsible-content">
+                {{{enrichHTML item.system.description}}}
+            </div>
+        </li>
+        {{/each}}
+        {{/each}}
+    </ol>
+    {{#if (or hasBoons isCharacter)}}
+    <label class="resource-label flex-center">{{localize "WOD5E.Boons"}}</label>
+    <ol class="items-list flex-left">
+        <li class="item flexrow item-header">
+            <div class="item-name">{{localize "WOD5E.Name"}}</div>
+            <div class="item-type">{{localize "WOD5E.Type"}}</div>
+            <div class="item-controls">
+                <a class="item-control item-create" title="{{localize 'WOD5E.AddItem'}}"
+                    data-type="boon"><i class="fas fa-plus"></i> {{localize "WOD5E.AddItem"}}
+                </a>
+            </div>
+        </li>
+        {{#each actor.boons as |item id|}}
+        <li class="item flexcol" data-item-id="{{item._id}}">
+            <div class="flexrow">
+                <div class="flexrow collapsible">
+                    <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"
+                        alt="{{item.name}}" />
+                    </div>
+                    <h4 class="item-name">{{item.name}}</h4>
+                </div>
+                <div class="item-type">{{item.system.boontype}}</div>
+                <div class="item-controls">
+                    <a class="item-control item-chat" title="{{localize 'WOD5E.ShowToChat'}}"><i
+                        class="fas fa-comment-alt"></i></a>
+                    <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}"><i
+                            class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="{{localize 'WOD5E.Delete'}}"><i
+                            class="fas fa-trash"></i></a>
+                </div>
+            </div>
+            <div class="collapsible-content">
+                {{{enrichHTML item.system.description}}}
+            </div>
+        </li>
+        {{/each}}
+    </ol>
+    <br/>
+    {{/if}}
+</div>

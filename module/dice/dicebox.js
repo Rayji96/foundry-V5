@@ -1,9 +1,5 @@
 /* global game */
 
-import { rollDice } from '../actor/roll-dice.js'
-// TODO: add Hunter Dice
-// import { rollHunterDice } from '../actor/roll-hunter-dice.js'
-
 export function prepareSearchableSelection (id, $content, data, callback) {
   const select = `#${id}`
   const cover = `#${id}Cover`
@@ -144,6 +140,10 @@ function describePool (poolNumber, data) {
   poolDesciption.size = poolVars.value
 
   return poolDesciption
+}
+
+function rollDice () {
+  console.log("This function doesn't work just yet.")
 }
 
 export function prepareRouseShortcut ($content, data) {
