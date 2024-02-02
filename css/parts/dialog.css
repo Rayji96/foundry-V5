@@ -90,3 +90,7 @@
 .wod5e .dialog-contents .selectors-group .selector-title, .selector-content {
   margin: auto;
 }
+
+.wod5e .dialog-contents .secondary-selector {
+  text-align: center;
+}
