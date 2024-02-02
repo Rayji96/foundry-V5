@@ -301,7 +301,7 @@ export const generateLabelAndLocalize = async function (str) {
     ceremonies: 'WOD5E.Ceremonies'
   }
 
-  if (disciplines.prototype.hasOwnProperty(str)) {
+  if (Object.prototype.hasOwnProperty.call(disciplines, str)) {
     return `${game.i18n.localize(disciplines[str])}`
   }
 
