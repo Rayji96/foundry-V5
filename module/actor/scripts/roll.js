@@ -266,7 +266,7 @@ export const getAdvancedDice = async function (actor) {
   const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
   const system = systemsList.indexOf(actorData.gamesystem) > -1 ? actorData.gamesystem : 'mortal'
 
-  if (system === 'vampire') {
+  if (system === 'vampire' && actor.type !== 'ghoul') {
     // Define actor's hunger dice, ensuring it can't go below 0
     const hungerDice = Math.max(actorData.hunger.value, 0)
 
@@ -278,7 +278,7 @@ export const getAdvancedDice = async function (actor) {
     return rageDice
   } else {
     // Hunters will handle their Desperation dice in the roll dialog
-    // Mortals don't need this
+    // Mortals and ghouls don't need this
     return 0
   }
 }
