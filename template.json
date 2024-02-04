@@ -594,7 +594,7 @@
               {
                 "source": "WOD5E.GlabroName",
                 "value": 2,
-                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.stealth", "skills.survival"],
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina"],
                 "activeWhen": {
                   "check": "isEqual",
                   "path": "activeForm",
@@ -604,7 +604,7 @@
               {
                 "source": "WOD5E.GlabroName",
                 "value": -2,
-                "paths": ["abilities.charisma", "abilities.manipulation", "abilities.composure", "skills.animal ken", "skills.etiquette", "skills.insight", "skills.intimidation", "skills.leadership", "skills.performance", "skills.persuasion", "skills.streetwise", "skills.subterfuge"],
+                "paths": ["abilities.charisma", "abilities.manipulation", "abilities.composure"],
                 "activeWhen": {
                   "check": "isEqual",
                   "path": "activeForm",
@@ -633,7 +633,7 @@
               {
                 "source": "WOD5E.CrinosName",
                 "value": 4,
-                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.stealth", "skills.survival"],
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina"],
                 "activeWhen": {
                   "check": "isEqual",
                   "path": "activeForm",
@@ -658,7 +658,8 @@
               {
                 "source": "WOD5E.HispoName",
                 "value": 2,
-                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina", "skills.athletics", "skills.brawl", "skills.craft", "skills.drive", "skills.firearms", "skills.larceny", "skills.melee", "skills.survival"],
+                "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina"],
+                "unless": ["skills.stealth"],
                 "activeWhen": {
                   "check": "isEqual",
                   "path": "activeForm",
