@@ -86,6 +86,9 @@ export const _onRoll = async function (event) {
 
               // If using absolute values instead of value paths, add the values together
               if (dataset.useAbsoluteValue && dataset.absoluteValue) dataset.absoluteValue += actor.system.disciplines[disciplineSelect].value
+
+              // Add the discipline and potency selectors to the roll
+              dataset.selectors += ` disciplines disciplines.${disciplineSelect}.value`
             }
             // Handle adding a renown to the dicepool
             if (renownSelect) {
@@ -97,6 +100,9 @@ export const _onRoll = async function (event) {
 
               // If using absolute values instead of value paths, add the values together
               if (dataset.useAbsoluteValue && dataset.absoluteValue) dataset.absoluteValue += actor.system.renown[renownSelect].value
+
+              // Add the renown selector to the roll
+              dataset.selectors += ` renown renown.${renownSelect}.value`
             }
 
             await _onConfirmRoll(dataset, actor)
