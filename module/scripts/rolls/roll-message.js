@@ -190,23 +190,23 @@ export async function generateRollMessage ({
 
   async function generateResult (basicDice, advancedDice) {
     // Useful variables
-    let totalResult = 0
-    let totalCriticals = 0
-    let critTotal = 0
     let resultLabel
 
-    // Calculate the totals of basic and advanced dice
-    const basicTotal = basicDice.total ? basicDice.total : 0
-    const advancedTotal = advancedDice.total ? advancedDice.total : 0
+    // Calculate the totals across the basic and advanced dice
+    const basicTotal = basicDice ? basicDice.total : 0
+    const advancedTotal = advancedDice ? advancedDice.total : 0
 
+    // Grab the totals of crits across basic and advanced dice
+    const basicCrits = basicDice ? basicDice.criticals : 0
+    const advancedCrits = advancedDice ? advancedDice.criticals : 0
     // Sum up the total criticals across both sets of dice
-    totalCriticals = basicDice.criticals + advancedDice.criticals
+    const totalCriticals = basicCrits + advancedCrits
     // Define the total to add to the roll as a result of the criticals
     // (every 2 critical results adds an additional 2 successes)
-    critTotal = Math.floor(totalCriticals / 2) * 2
+    const critTotal = Math.floor(totalCriticals / 2) * 2
 
     // Calculate the total result when factoring in criticals
-    totalResult = basicTotal + advancedTotal + critTotal
+    const totalResult = basicTotal + advancedTotal + critTotal
 
     // Generate the result label depending on the splat and difficulty
     if (totalResult < difficulty || (totalResult === 0 && difficulty === 0)) { // Handle failures...
