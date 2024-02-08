@@ -48,10 +48,13 @@ export const _onAddBonus = async function (event, item) {
             activeWhen.path = html.find('[id=activeWhenPath]').val()
             activeWhen.value = html.find('[id=activeWhenValue]').val()
 
+            const unless = html.find('[id=unless]').val()
+
             newBonus = {
               source,
               value,
               paths,
+              unless,
               displayWhenInactive,
               activeWhen
             }
@@ -134,6 +137,8 @@ export const _onEditBonus = async function (event, item) {
             activeWhen.path = html.find('[id=activeWhenPath]').val()
             activeWhen.value = html.find('[id=activeWhenValue]').val()
 
+            const unless = html.find('[id=unlessValue]').val()
+
             // Define the existing list of bonuses
             const itemBonuses = item.system.bonuses
 
@@ -142,6 +147,7 @@ export const _onEditBonus = async function (event, item) {
               source,
               value,
               paths,
+              unless,
               displayWhenInactive,
               activeWhen
             }

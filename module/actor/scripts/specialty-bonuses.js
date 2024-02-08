@@ -55,11 +55,14 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
             activeWhen.path = html.find('[id=activeWhenPath]').val()
             activeWhen.value = html.find('[id=activeWhenValue]').val()
 
+            const unless = html.find('[id=unless]').val()
+
             let newBonus = {}
             newBonus = {
               source,
               value,
               paths,
+              unless,
               displayWhenInactive,
               activeWhen
             }
@@ -69,10 +72,10 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
             const actorBonuses = parentKeys.reduce((obj, key) => obj && obj[key], actor.system) || { bonuses: [] }
 
             // Add the new bonus to the list
-            actorBonuses.bonuses.push(newBonus)
+            actorBonuses.push(newBonus)
 
             // Update the actor
-            actor.update({ [`system.${bonusPath}`]: actorBonuses.bonuses })
+            actor.update({ [`system.${bonusPath}`]: actorBonuses })
 
             // Re-render the skill edit dialog
             SkillEditDialog.data.content = await renderTemplate('systems/vtm5e/templates/actor/parts/skill-dialog.hbs', {
@@ -174,6 +177,8 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
             activeWhen.path = html.find('[id=activeWhenPath]').val()
             activeWhen.value = html.find('[id=activeWhenValue]').val()
 
+            const unless = html.find('[id=unlessValue]').val()
+
             // Define the existing list of bonuses
             const bonusKeys = bonusPath.split('.')
             const actorBonuses = bonusKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
@@ -183,6 +188,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
               source,
               value,
               paths,
+              unless,
               displayWhenInactive,
               activeWhen
             }

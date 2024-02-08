@@ -54,6 +54,13 @@ export async function getSituationalModifiers ({
     return modifiers.filter(modifier => {
       const { check, path, value } = modifier.activeWhen
       const displayWhenInactive = modifier.displayWhenInactive
+      const unless = modifier.unless
+
+      // Check if 'unless' is present in 'modifiers.path' array
+      if (unless && modifiers.paths.includes(unless)) {
+        modifier.isActive = false;
+        return false;
+      }
 
       // As long as the path is found, the modifier will be active
       if (check === 'always') {
