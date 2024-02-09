@@ -20,11 +20,11 @@ export const MigrateGamesystem = async function () {
           let definedSystem
 
           // Fill in the gamesystem using the actor's label
-          if (actorLabel === 'WOD5E.Ghoul' || actorLabel === 'WOD5E.VTM.Label') {
+          if (actorLabel === 'WOD5E.Ghoul' || actorLabel === 'WOD5E.Vampire') {
             definedSystem = 'vampire'
-          } else if (actorLabel === 'WOD5E.WTA.Label') {
+          } else if (actorLabel === 'WOD5E.Werewolf') {
             definedSystem = 'werewolf'
-          } else if (actorLabel === 'WOD5E.HTR.Label') {
+          } else if (actorLabel === 'WOD5E.Hunter') {
             definedSystem = 'hunter'
           } else {
             definedSystem = 'mortal'
