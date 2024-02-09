@@ -189,17 +189,18 @@ export const loadHelpers = async function () {
 
   Handlebars.registerHelper('getEdgeName', function (key) {
     const edges = {
-      arsenal: 'WOD5E.Arsenal',
-      ordnance: 'WOD5E.Ordnance',
-      library: 'WOD5E.Library',
-      improvisedgear: 'WOD5E.ImprovisedGear',
-      globalaccess: 'WOD5E.GlobalAccess',
-      dronejockey: 'WOD5E.DroneJockey',
-      beastwhisperer: 'WOD5E.BeastWhisperer',
-      sensetheunnatural: 'WOD5E.SenseTheUnnatural',
-      repeltheunnatural: 'WOD5E.RepelTheUnnatural',
-      thwarttheunnatural: 'WOD5E.ThwartTheUnnatural',
-      artifact: 'WOD5E.Artifact'
+      arsenal: 'WOD5E.HTR.Arsenal',
+      fleet: 'WOD5E.HTR.Fleet',
+      ordnance: 'WOD5E.HTR.Ordnance',
+      library: 'WOD5E.HTR.Library',
+      improvisedgear: 'WOD5E.HTR.ImprovisedGear',
+      globalaccess: 'WOD5E.HTR.GlobalAccess',
+      dronejockey: 'WOD5E.HTR.DroneJockey',
+      beastwhisperer: 'WOD5E.HTR.BeastWhisperer',
+      sensetheunnatural: 'WOD5E.HTR.SenseTheUnnatural',
+      repeltheunnatural: 'WOD5E.HTR.RepelTheUnnatural',
+      thwarttheunnatural: 'WOD5E.HTR.ThwartTheUnnatural',
+      artifact: 'WOD5E.HTR.Artifact'
     }
     return edges[key]
   })

@@ -15,7 +15,7 @@
         {{/each}}
     </div>
 
-    <label class="resource-label">{{localize "WOD5E.Skills"}}</label>
+    <label class="resource-label">{{localize "WOD5E.Skills.Skills"}}</label>
     <div class="skills grid grid-3col flex-group-center">
         {{#each actor.system.skills as |skill key|}}
         <div class="skill flexrow flex-center">
@@ -45,11 +45,11 @@
         <li class="item flexrow item-header">
             <div class="item-image"></div>
             <div class="item-name">{{localize "WOD5E.Name"}}</div>
-            <div class="item-name">{{localize "WOD5E.Attribute"}}</div>
-            <div class="item-name">{{localize "WOD5E.Skill"}}</div>
+            <div class="item-name">{{localize "WOD5E.Attributes.Label"}}</div>
+            <div class="item-name">{{localize "WOD5E.Skills.Label"}}</div>
             <div class="item-controls">
-                <a class="item-control item-create" title="{{localize 'WOD5E.AddItem'}}"
-                    data-type="customRoll"><i class="fas fa-plus"></i> {{localize "WOD5E.AddItem"}}
+                <a class="item-control item-create" title="{{localize 'WOD5E.Add'}}"
+                    data-type="customRoll"><i class="fas fa-plus"></i> {{localize "WOD5E.Add"}}
                 </a>
             </div>
         </li>

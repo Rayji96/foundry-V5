@@ -4,7 +4,7 @@
       <!-- Unless a skill/attribute is already selected, show skill selection -->
       <div class="primary-selector">
         <div class="selector-sitle">
-          {{localize "WOD5E.Skill"}}
+          {{localize "WOD5E.Skills.Label"}}
         </div>
         <div class="selector-content">
           <select id="skillSelect">
@@ -18,14 +18,14 @@
       <div class="primary-selector">
         {{#if skill}}
           <div class="selector-title">
-            {{localize "WOD5E.Skill"}}
+            {{localize "WOD5E.Skills.Label"}}
           </div>
           <div class="selector-content">
             {{localize (generateFeatureLabel skill)}}
           </div>
         {{else if attribute}}
           <div class="selector-title">
-            {{localize "WOD5E.Attribute"}}
+            {{localize "WOD5E.Attributes.Label"}}
           </div>
           <div class="selector-content">
             {{localize (generateFeatureLabel attribute)}}
@@ -39,7 +39,7 @@
     <!-- Attribute selection -->
     <div class="primary-selector">
         <div class="selector-title">
-          {{localize "WOD5E.Attribute"}}
+          {{localize "WOD5E.Attributes.Label"}}
         </div>
         <div class="selector-content">
           <select id="attributeSelect">

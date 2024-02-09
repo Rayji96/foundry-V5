@@ -2,20 +2,20 @@
     {{> "systems/vtm5e/templates/actor/parts/werewolf/renown.hbs"}}
     {{#if actor.system.frenzyActive}}
         <div class="frenzyNotification flex-center">
-            <h1>{{localize 'WOD5E.FrenzyActiveWarning'}}</h1>
-            <h3>{{localize 'WOD5E.FrenzyActiveWarning2'}}</h3>
+            <h1>{{localize 'WOD5E.WTA.FrenzyActiveWarning'}}</h1>
+            <h3>{{localize 'WOD5E.WTA.FrenzyActiveWarning2'}}</h3>
         </div>
     {{/if}}
     <ol class="items-list">
         <!-- Header of the gifts lists -->
         <li class="item flexrow item-header">
             <div class="item-name">{{localize "WOD5E.Name"}}</div>
-            <div class="item-name header-level">{{localize "WOD5E.Renown"}}</div>
+            <div class="item-name header-level">{{localize "WOD5E.WTA.Renown"}}</div>
             <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
-                <a class="item-control gift-create" title="{{localize 'WOD5E.AddGift'}}">
+                <a class="item-control gift-create" title="{{localize 'WOD5E.WTA.AddGift'}}">
                     <i class="fas fa-plus"></i>
-                    {{localize "WOD5E.AddGift"}}
+                    {{localize "WOD5E.WTA.AddGift"}}
                 </a>
             </div>
         </li>
@@ -29,7 +29,7 @@
                     <!-- Item controls for Gifts sections -->
                     <div class="item-controls">
                         <!-- Add new gift -->
-                        <a class="item-control gift-create" title="{{localize 'WOD5E.AddGift'}}" data-gift="{{key}}">
+                        <a class="item-control gift-create" title="{{localize 'WOD5E.WTA.AddGift'}}" data-gift="{{key}}">
                             <i class="fas fa-plus"></i>
                         </a>
                         <!-- Icon to show the gift description to the chat-->
@@ -66,8 +66,8 @@
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rage check, if applicable -->
                                 {{#if item.system.rage}}
-                                    <a class="item-control rollable" title="{{localize 'WOD5E.RollRage'}}" data-disable-basic-dice="true" data-use-absolute-value="true"
-                                        data-absolute-value="{{item.system.cost}}" data-decrease-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
+                                    <a class="item-control rollable" title="{{localize 'WOD5E.WTA.RollRage'}}" data-disable-basic-dice="true" data-use-absolute-value="true"
+                                        data-absolute-value="{{item.system.cost}}" data-decrease-rage="true" data-label="{{localize 'WOD5E.WTA.RageDice'}}">
                                         <i class="fas fa-dice-d20"></i>
                                     </a>
                                 {{/if}}
@@ -100,12 +100,12 @@
         <!-- Header of the rites lists -->
         <li class="item flexrow item-header">
             <div class="item-name">{{localize "WOD5E.Name"}}</div>
-            <div class="item-name header-level">{{localize "WOD5E.Renown"}}</div>
+            <div class="item-name header-level">{{localize "WOD5E.WTA.Renown"}}</div>
             <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
-                <a class="item-control rite-create" title="{{localize 'WOD5E.AddRite'}}">
+                <a class="item-control rite-create" title="{{localize 'WOD5E.WTA.AddRite'}}">
                     <i class="fas fa-plus"></i>
-                    {{localize "WOD5E.AddRite"}}
+                    {{localize "WOD5E.WTA.AddRite"}}
                 </a>
             </div>
         </li>
@@ -129,8 +129,8 @@
                     <div class="item-controls">
                         <!-- Icon to roll the power's rage check, if applicable -->
                         {{#if item.system.rage}}
-                            <a class="item-control rollable" title="{{localize 'WOD5E.RollRage'}}" data-disable-basic-dice="true" data-use-absolute-value="true"
-                                data-absolute-value="{{item.system.cost}}" data-decrease-rage="true" data-label="{{localize 'WOD5E.RageDice'}}">
+                            <a class="item-control rollable" title="{{localize 'WOD5E.WTA.RollRage'}}" data-disable-basic-dice="true" data-use-absolute-value="true"
+                                data-absolute-value="{{item.system.cost}}" data-decrease-rage="true" data-label="{{localize 'WOD5E.WTA.RageDice'}}">
                                 <i class="fas fa-dice-d20"></i>
                             </a>
                         {{/if}}

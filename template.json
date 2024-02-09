@@ -470,84 +470,84 @@
       "edges": {
         "edges": {
           "arsenal": {
-            "name": "WOD5E.Arsenal",
+            "name": "WOD5E.HTR.Arsenal",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "fleet": {
-            "name": "WOD5E.Fleet",
+            "name": "WOD5E.HTR.Fleet",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "ordnance": {
-            "name": "WOD5E.Ordnance",
+            "name": "WOD5E.HTR.Ordnance",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "library": {
-            "name": "WOD5E.Library",
+            "name": "WOD5E.HTR.Library",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "improvisedgear": {
-            "name": "WOD5E.ImprovisedGear",
+            "name": "WOD5E.HTR.ImprovisedGear",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "globalaccess": {
-            "name": "WOD5E.GlobalAccess",
+            "name": "WOD5E.HTR.GlobalAccess",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "dronejockey": {
-            "name": "WOD5E.DroneJockey",
+            "name": "WOD5E.HTR.DroneJockey",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "beastwhisperer": {
-            "name": "WOD5E.BeastWhisperer",
+            "name": "WOD5E.HTR.BeastWhisperer",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "sensetheunnatural": {
-            "name": "WOD5E.SenseTheUnnatural",
+            "name": "WOD5E.HTR.SenseTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "repeltheunnatural": {
-            "name": "WOD5E.RepelTheUnnatural",
+            "name": "WOD5E.HTR.RepelTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "thwarttheunnatural": {
-            "name": "WOD5E.ThwartTheUnnatural",
+            "name": "WOD5E.HTR.ThwartTheUnnatural",
             "description": "",
             "value": 0,
             "powers": [],
             "visible": false
           },
           "artifact": {
-            "name": "WOD5E.Artifact",
+            "name": "WOD5E.HTR.Artifact",
             "description": "",
             "value": 0,
             "powers": [],
@@ -572,8 +572,8 @@
         "activeForm": "homid",
         "forms": {
           "homid": {
-            "name": "WOD5E.HomidName",
-            "nickname": "WOD5E.HomidTitle",
+            "name": "WOD5E.WTA.HomidName",
+            "nickname": "WOD5E.WTA.HomidTitle",
             "cost": 0,
             "description": "",
             "abilities": [
@@ -581,8 +581,8 @@
             ]
           },
           "glabro": {
-            "name": "WOD5E.GlabroName",
-            "nickname": "WOD5E.GlabroTitle",
+            "name": "WOD5E.WTA.GlabroName",
+            "nickname": "WOD5E.WTA.GlabroTitle",
             "cost": 1,
             "description": "",
             "abilities": [
@@ -592,7 +592,7 @@
             ],
             "bonuses": [
               {
-                "source": "WOD5E.GlabroName",
+                "source": "WOD5E.WTA.GlabroName",
                 "value": 2,
                 "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina"],
                 "activeWhen": {
@@ -602,7 +602,7 @@
                 }
               },
               {
-                "source": "WOD5E.GlabroName",
+                "source": "WOD5E.WTA.GlabroName",
                 "value": -2,
                 "paths": ["abilities.charisma", "abilities.manipulation", "abilities.composure"],
                 "activeWhen": {
@@ -614,8 +614,8 @@
             ]
           },
           "crinos": {
-            "name": "WOD5E.CrinosName",
-            "nickname": "WOD5E.CrinosTitle",
+            "name": "WOD5E.WTA.CrinosName",
+            "nickname": "WOD5E.WTA.CrinosTitle",
             "cost": 2,
             "description": "",
             "abilities": [
@@ -631,7 +631,7 @@
             ],
             "bonuses": [
               {
-                "source": "WOD5E.CrinosName",
+                "source": "WOD5E.WTA.CrinosName",
                 "value": 4,
                 "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina"],
                 "activeWhen": {
@@ -643,8 +643,8 @@
             ]
           },
           "hispo": {
-            "name": "WOD5E.HispoName",
-            "nickname": "WOD5E.HispoTitle",
+            "name": "WOD5E.WTA.HispoName",
+            "nickname": "WOD5E.WTA.HispoTitle",
             "cost": 1,
             "description": "",
             "abilities": [
@@ -656,7 +656,7 @@
             ],
             "bonuses": [
               {
-                "source": "WOD5E.HispoName",
+                "source": "WOD5E.WTA.HispoName",
                 "value": 2,
                 "paths": ["abilities.strength", "abilities.dexterity", "abilities.stamina"],
                 "unless": ["skills.stealth"],
@@ -667,7 +667,7 @@
                 }
               },
               {
-                "source": "WOD5E.HispoName",
+                "source": "WOD5E.WTA.HispoName",
                 "value": -2,
                 "paths": ["skills.stealth"],
                 "activeWhen": {
@@ -679,8 +679,8 @@
             ]
           },
           "lupus": {
-            "name": "WOD5E.LupusName",
-            "nickname": "WOD5E.LupusTitle",
+            "name": "WOD5E.WTA.LupusName",
+            "nickname": "WOD5E.WTA.LupusTitle",
             "cost": 0,
             "description": "",
             "abilities": [
@@ -693,103 +693,103 @@
       "gifts": {
         "gifts": {
           "native": {
-            "name": "WOD5E.Native",
+            "name": "WOD5E.WTA.Native",
             "description": "",
             "value": 0,
             "powers": []
           },
           "ragabash": {
-            "name": "WOD5E.Ragabash",
+            "name": "WOD5E.WTA.Ragabash",
             "description": "",
             "value": 0,
             "powers": []
           },
           "theurge": {
-            "name": "WOD5E.Theurge",
+            "name": "WOD5E.WTA.Theurge",
             "description": "",
             "value": 0,
             "powers": []
           },
           "philodox": {
-            "name": "WOD5E.Philodox",
+            "name": "WOD5E.WTA.Philodox",
             "description": "",
             "value": 0,
             "powers": []
           },
           "galliard": {
-            "name": "WOD5E.Galliard",
+            "name": "WOD5E.WTA.Galliard",
             "description": "",
             "value": 0,
             "powers": []
           },
           "ahroun": {
-            "name": "WOD5E.Ahroun",
+            "name": "WOD5E.WTA.Ahroun",
             "description": "",
             "value": 0,
             "powers": []
           },
           "blackfury": {
-            "name": "WOD5E.BlackFury",
+            "name": "WOD5E.WTA.BlackFury",
             "description": "",
             "value": 0,
             "powers": []
           },
           "bonegnawer": {
-            "name": "WOD5E.BoneGnawer",
+            "name": "WOD5E.WTA.BoneGnawer",
             "description": "",
             "value": 0,
             "powers": []
           },
           "childrenofgaia": {
-            "name": "WOD5E.ChildrenOfGaia",
+            "name": "WOD5E.WTA.ChildrenOfGaia",
             "description": "",
             "value": 0,
             "powers": []
           },
           "galestalker": {
-            "name": "WOD5E.Galestalker",
+            "name": "WOD5E.WTA.Galestalker",
             "description": "",
             "value": 0,
             "powers": []
           },
           "ghostcouncil": {
-            "name": "WOD5E.GhostCouncil",
+            "name": "WOD5E.WTA.GhostCouncil",
             "description": "",
             "value": 0,
             "powers": []
           },
           "glasswalker": {
-            "name": "WOD5E.GlassWalker",
+            "name": "WOD5E.WTA.GlassWalker",
             "description": "",
             "value": 0,
             "powers": []
           },
           "hartwarden": {
-            "name": "WOD5E.HartWarden",
+            "name": "WOD5E.WTA.HartWarden",
             "description": "",
             "value": 0,
             "powers": []
           },
           "redtalon": {
-            "name": "WOD5E.RedTalon",
+            "name": "WOD5E.WTA.RedTalon",
             "description": "",
             "value": 0,
             "powers": []
           },
           "shadowlord": {
-            "name": "WOD5E.ShadowLord",
+            "name": "WOD5E.WTA.ShadowLord",
             "description": "",
             "value": 0,
             "powers": []
           },
           "silentstrider": {
-            "name": "WOD5E.SilentStrider",
+            "name": "WOD5E.WTA.SilentStrider",
             "description": "",
             "value": 0,
             "powers": []
           },
           "silverfang": {
-            "name": "WOD5E.SilverFang",
+            "name": "WOD5E.WTA.SilverFang",
             "description": "",
             "value": 0,
             "powers": []
@@ -804,7 +804,7 @@
       "gamesystem": "mortal"
     },
     "vampire": {
-      "label": "WOD5E.Vampire",
+      "label": "WOD5E.VTM.Label",
       "templates": ["base","disciplines"],
       "gamesystem": "vampire",
       "headers":{
@@ -825,7 +825,7 @@
       }
     },
     "werewolf": {
-      "label": "WOD5E.Werewolf",
+      "label": "WOD5E.WTA.Label",
       "templates": ["base","renown","werewolfForms","gifts"],
       "gamesystem": "werewolf",
       "headers": {
@@ -856,7 +856,7 @@
       }
     },
     "hunter": {
-      "label": "WOD5E.Hunter",
+      "label": "WOD5E.HTR.Label",
       "templates": ["base","edges"],
       "gamesystem": "hunter",
       "headers":{
@@ -875,7 +875,7 @@
       }
     },
     "cell" : {
-      "label": "WOD5E.Cell",
+      "label": "WOD5E.HTR.Cell",
       "biography": "",
       "equipment": "",
       "notes": "",

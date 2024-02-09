@@ -21,12 +21,12 @@
     <div class="resource flexrow grid grid-2col">
         {{#ifeq actor.system.gamesystem 'hunter'}}
         <div class="flex-group-center no-border">
-            <label class="resource-label">{{localize "WOD5E.Creed"}}</label>
-            <input type="text" name="system.creed.value" value="{{actor.system.creed.value}}" placeholder="{{localize 'WOD5E.Creed'}}" />
+            <label class="resource-label">{{localize "WOD5E.HTR.Creed"}}</label>
+            <input type="text" name="system.creed.value" value="{{actor.system.creed.value}}" placeholder="{{localize 'WOD5E.HTR.Creed'}}" />
         </div>
         <div class="flex-group-center no-border">
-            <label class="resource-label">{{localize "WOD5E.Redemption"}}</label>
-            <input type="text" name="system.redemption.value" value="{{actor.system.redemption.value}}" placeholder="{{localize 'WOD5E.Redemption'}}" />
+            <label class="resource-label">{{localize "WOD5E.HTR.Redemption"}}</label>
+            <input type="text" name="system.redemption.value" value="{{actor.system.redemption.value}}" placeholder="{{localize 'WOD5E.HTR.Redemption'}}" />
         </div>
         {{/ifeq}}
     </div>
@@ -51,7 +51,7 @@
         {{#ifeq actor.system.gamesystem 'hunter'}}
         <div class="flex-group-left">
             <div class="flex-center">
-                <label class="resource-label">{{localize "WOD5E.CreedFields"}}</label>
+                <label class="resource-label">{{localize "WOD5E.HTR.CreedFields"}}</label>
             </div>
             <div class="description-content">
                 {{editor enrichedCreedFields target="system.headers.creedfields" button=true editable=editable}}

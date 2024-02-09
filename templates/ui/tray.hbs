@@ -24,8 +24,8 @@
                 {{> "systems/vtm5e/templates/ui/parts/pool2-nothing.hbs"}}
             {{/if}}
         </div>
-        <button class="dice-tray-button roll-button" title="{{localize 'WOD5E.Roll'}}">
-            <img class="roll-image" alt="{{localize 'WOD5E.Roll'}}" src="/systems/vtm5e/assets/images/dice.svg" />
+        <button class="dice-tray-button roll-button" title="{{localize 'WOD5E.Roll.Label'}}">
+            <img class="roll-image" alt="{{localize 'WOD5E.Roll.Label'}}" src="/systems/vtm5e/assets/images/dice.svg" />
         </button>
         {{text value=pool1Selection}}
         <div class="dice-tray-pool-filters flexrow pool1-filters">
@@ -33,7 +33,7 @@
                 <input type="radio" id="pool1Attr" name="pool1Type" value="abilities" {{attrIf "checked" pool1Type 'abilities' }} />
                 <label for="pool1Attr">{{localize 'WOD5E.AttributeShortLabel'}}</label>
             </button>
-            <button class="dice-tray-button small-button" title="{{localize 'WOD5E.Skills'}}">
+            <button class="dice-tray-button small-button" title="{{localize 'WOD5E.Skills.Skills'}}">
                 <input type="radio" id="pool1Skill" name="pool1Type" value="skills" {{attrIf "checked" pool1Type 'skills' }} />
                 <label for="pool1Skill">{{localize 'WOD5E.SkillShortLabel'}}</label>
             </button>
@@ -48,7 +48,7 @@
                 <input type="radio" id="pool2Attr" name="pool2Type" value="abilities" {{attrIf "checked" pool2Type 'abilities' }} />
                 <label for="pool2Attr">{{localize 'WOD5E.AttributeShortLabel'}}</label>
             </button>
-            <button class="dice-tray-button small-button" title="{{localize 'WOD5E.Skills'}}">
+            <button class="dice-tray-button small-button" title="{{localize 'WOD5E.Skills.Skills'}}">
                 <input type="radio" id="pool2Skill" name="pool2Type" value="skills" {{attrIf "checked" pool2Type 'skills' }} />
                 <label for="pool2Skill">{{localize 'WOD5E.SkillShortLabel'}}</label>
             </button>
@@ -70,7 +70,7 @@
             {{localize 'WOD5E.Willpower'}}
         </button>
         <button class="dice-tray-button" data="rollFrenzy" title="{{localize 'WOD5E.RollFrenzy'}}">
-            {{localize 'WOD5E.Frenzy'}}
+            {{localize 'WOD5E.VTM.Frenzy'}}
         </button>
         <button class="dice-tray-button" data="rollHumanity" title="{{localize 'WOD5E.RollRemorse'}}">
             {{localize 'WOD5E.Remorse'}}

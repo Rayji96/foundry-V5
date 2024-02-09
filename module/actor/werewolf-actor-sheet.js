@@ -50,7 +50,7 @@ export class WerewolfActorSheet extends WoDActor {
   async getData () {
     const data = await super.getData()
 
-    data.sheetType = `${game.i18n.localize('WOD5E.Werewolf')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.WTA.Label')}`
 
     this._prepareItems(data)
 
@@ -249,7 +249,7 @@ export class WerewolfActorSheet extends WoDActor {
     if (header.dataset.gift) {
       // Prepare the item object.
       const itemData = {
-        name: game.i18n.localize('WOD5E.NewGift'),
+        name: game.i18n.localize('WOD5E.WTA.NewGift'),
         type: 'gift',
         img: '/systems/vtm5e/assets/icons/powers/gift.png',
         system: {
@@ -272,7 +272,7 @@ export class WerewolfActorSheet extends WoDActor {
       const template = `
         <form>
             <div class="form-group">
-                <label>${game.i18n.localize('WOD5E.SelectGift')}</label>
+                <label>${game.i18n.localize('WOD5E.WTA.SelectGift')}</label>
                 <select id="giftSelect">${options}</select>
             </div>
         </form>`
@@ -287,7 +287,7 @@ export class WerewolfActorSheet extends WoDActor {
 
             // Prepare the item object.
             const itemData = {
-              name: game.i18n.localize('WOD5E.NewGift'),
+              name: game.i18n.localize('WOD5E.WTA.NewGift'),
               type: 'gift',
               img: '/systems/vtm5e/assets/icons/powers/gift.png',
               system: {
@@ -309,7 +309,7 @@ export class WerewolfActorSheet extends WoDActor {
 
       // Display the dialog
       new Dialog({
-        title: game.i18n.localize('WOD5E.AddGift'),
+        title: game.i18n.localize('WOD5E.WTA.AddGift'),
         content: template,
         buttons,
         default: 'submit'
@@ -333,7 +333,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     // Prepare the item object.
     const itemData = {
-      name: game.i18n.localize('WOD5E.NewRite'),
+      name: game.i18n.localize('WOD5E.WTA.NewRite'),
       type: 'gift',
       img: '/systems/vtm5e/assets/icons/powers/gift.png',
       system: {

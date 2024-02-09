@@ -1,0 +1,158 @@
+{
+    "WOD5E": {
+        "Name": "Name",
+        "Confirm": "Confirm",
+        "Close": "Close",
+        "Save": "Save",
+        "Submit": "Submit",
+        "System": "System",
+        "Edit": "Edit",
+        "Delete": "Delete",
+        "Level": "Level",
+        "Add": "Add",
+        "Cancel": "Cancel",
+        "Health": "Health",
+        "Willpower": "Willpower",
+        "Exp": "Exp",
+
+        "Mortal": "Mortal",
+
+        "Roll": {
+            "Label": "Roll",
+            "RollMode": "Roll Mode",
+            "MortalDice": "Mortal Dice",
+            "Success": "Success",
+            "Successes": "Successes",
+            "CriticalSuccess": "Critical Success!",
+            "Fail": "Fail",
+            "Modifier": "Modifier",
+            "Difficulty": "Difficulty"
+        },
+
+        "SPC": {
+            "Label": "Story Character",
+            "GeneralDifficulty": "Difficulty",
+            "StandardDicePools": "Standard Dice Pools",
+            "ExceptionalDicePools": "Exceptional Dice Pools",
+            "Physical": "Physical",
+            "Mental": "Mental",
+            "Social": "Social",
+            "AddSkill": "Add Skill",
+            "SelectSkill": "Select Skill"
+        },
+
+        "Damage": {
+            "Superficial": "Superficial",
+            "Aggravated": "Aggravated",
+            "Value": "Value",
+            "Stains": "Stains",
+            "Max": "Max"
+        },
+
+        "Tabs": {
+            "Stats": "Stats",
+            "Features": "Features",
+            "Description": "Description",
+            "Equipment": "Equipment",
+            "Notes": "Notes",
+            "Boons": "Boons",
+            "Type": "Type",
+            "Other": "Other"
+        },
+
+        "Attributes": {
+            "Label": "Attribute",
+            "Attributes": "Attributes",
+            "Abilities": "Abilities",
+            "Strength": "Strength",
+            "Charisma": "Charisma",
+            "Intelligence": "Intelligence",
+            "Dexterity": "Dexterity",
+            "Manipulation": "Manipulation",
+            "Wits": "Wits",
+            "Stamina": "Stamina",
+            "Composure": "Composure",
+            "Resolve": "Resolve"
+        },
+
+        "Skills": {
+            "Label": "Skill",
+            "Skills": "Skills",
+            "Specialty": "Specialty",
+            "Specialties": "Specialties",
+            "Athletics": "Athletics",
+            "AnimalKen": "Animal Ken",
+            "Academics": "Academics",
+            "Brawl": "Brawl",
+            "Etiquette": "Etiquette",
+            "Awareness": "Awareness",
+            "Craft": "Craft",
+            "Insight": "Insight",
+            "Finance": "Finance",
+            "Drive": "Drive",
+            "Intimidation": "Intimidation",
+            "Investigation": "Investigation",
+            "Firearms": "Firearms",
+            "Leadership": "Leadership",
+            "Medicine": "Medicine",
+            "Melee": "Melee",
+            "Performance": "Performance",
+            "Occult": "Occult",
+            "Larceny": "Larceny",
+            "Persuasion": "Persuasion",
+            "Politics": "Politics",
+            "Stealth": "Stealth",
+            "Streetwise": "Streetwise",
+            "Science": "Science",
+            "Survival": "Survival",
+            "Subterfuge": "Subterfuge",
+            "Technology": "Technology"
+        },
+
+        "Items": {
+            "Label": "Items",
+            "ShowToChat": "Show to Chat",
+            "CustomRolls": "Custom Rolls",
+            "CustomRoll": "Custom Roll",
+            "Boon": "Boon",
+            "Merit": "Merit",
+            "Cost": "Cost",
+            "Flaw": "Flaw",
+            "Bonuses": "Bonuses",
+            "Background": "Background",
+            "Points": "Points",
+            "UseSkill": "Use Skills",
+            "Rollable": "Rollable",
+            "FeatureType": "Feature Type"
+        },
+
+        "Biography": {
+            "Label": "Biography",
+            "Concept": "Concept",
+            "Chronicle": "Chronicle",
+            "Ambition": "Ambition",
+            "Desire": "Desire",
+            "ChronicleTenets": "Chronicle Tenets",
+            "TouchstonesAndConvictions": "Touchstones & Convictions",
+            "Appearance": "Appearance",
+            "History": "History"
+        },
+
+        "DiceRoller": {
+            "AttributeShortLabel": "A",
+            "SkillShortLabel": "S",
+            "DisciplineShortLabel": "D",
+            "NothingShortLabel": "⊘",
+            "SelectAbility": "Select Ability"
+        },
+
+        "Chat": {
+            "RollingWillpower": "Rolling Willpower",
+            "Rolling": "Rolling",
+            "RollWillpower": "Roll Willpower Check",
+            "WillpowerReroll": "Willpower Reroll",
+            "WillpowerFullTitle": "Willpower Tracker Full",
+            "WillpowerFull": "Willpower is fully damaged, cannot damage it further."
+        }
+    }
+}

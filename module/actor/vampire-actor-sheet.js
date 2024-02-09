@@ -49,7 +49,7 @@ export class VampireActorSheet extends GhoulActorSheet {
   async getData () {
     const data = await super.getData()
 
-    data.sheetType = `${game.i18n.localize('WOD5E.Vampire')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.VTM.Label')}`
 
     this._prepareItems(data)
 

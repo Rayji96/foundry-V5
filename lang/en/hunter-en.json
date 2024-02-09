@@ -1,0 +1,41 @@
+{
+  "WOD5E": {
+    "HTR": {
+      "Label": "Hunter",
+
+      "HunterDice": "Hunter Dice",
+      "DesperationDice": "Desperation Dice",
+        
+      "Despair": "Despair",
+      "Creed": "Creed",
+      "CreedFields": "Creed Fields",
+      "Cell": "Cell",
+      "Redemption": "Redemption",
+      "Edges": "Edges",
+      "EdgeType": "Edge Type",
+      "AddEdge": "Add Edge",
+      "SelectEdge": "Select Edge",
+      "AddPerk": "Add Perk",
+      "Desperation": "Desperation",
+      "Danger": "Danger",
+      "DesperationSuccess": "Success with Overreach, or Despair Failure!",
+      "PossibleDesperationFailure": "Possible Overreach or Despair Failure!",
+      "DespairFailure": "Despair Failure!",
+      "DesperationUnavailable": "Desperation unavailable while in Despair",
+      "Drive": "Drive",
+
+      "Arsenal": "Arsenal",
+      "Fleet": "Fleet",
+      "Ordnance": "Ordnance",
+      "Library": "Library",
+      "ImprovisedGear": "Improvised Gear",
+      "GlobalAccess": "Global Access",
+      "DroneJockey": "Drone Jockey",
+      "BeastWhisperer": "Beast Whisperer",
+      "SenseTheUnnatural": "Sense the Unnatural",
+      "RepelTheUnnatural": "Repel the Unnatural",
+      "ThwartTheUnnatural": "Thwart the Unnatural",
+      "Artifact": "Artifact"
+    }
+  }
+}

@@ -238,9 +238,9 @@ export async function generateRollMessage ({
       if (system === 'vampire' && advancedDice.critFails > 0) { // Handle bestial failures
         resultLabel += `<div class="roll-result-label bestial-failure">${game.i18n.localize('WOD5E.PossibleBestialFailure')}</div>`
       } else if (system === 'werewolf' && advancedDice.critFails > 0) { // Handle brutal outcomes
-        resultLabel += `<div class="roll-result-label rage-failure">${game.i18n.localize('WOD5E.PossibleRageFailure')}</div>`
+        resultLabel += `<div class="roll-result-label rage-failure">${game.i18n.localize('WOD5E.WTA.PossibleRageFailure')}</div>`
       } else if (system === 'hunter' && advancedDice.critFails > 0) { // Handle desperation failures
-        resultLabel += `<div class="roll-result-label desperation-failure">${game.i18n.localize('WOD5E.PossibleDesperationFailure')}</div>`
+        resultLabel += `<div class="roll-result-label desperation-failure">${game.i18n.localize('WOD5E.HTR.PossibleDesperationFailure')}</div>`
       } else {
         if (totalResult === 0) { // Handle failures
           resultLabel = `<div class="roll-result-label failure">${game.i18n.localize('WOD5E.Fail')}</div>`

@@ -40,44 +40,62 @@
   "languages": [
     {
       "lang": "en",
-      "name": "English",
-      "path": "lang/en.json",
+      "name": "Core (English)",
+      "path": "lang/en/core-en.json",
+      "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "Vampire (English)",
+      "path": "lang/en/vampire-en.json",
+      "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "Werewolf (English)",
+      "path": "lang/en/werewolf-en.json",
+      "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "Hunter (English)",
+      "path": "lang/en/hunter-en.json",
       "flags": {}
     },
     {
       "lang": "fr",
-      "name": "French",
-      "path": "lang/fr.json",
+      "name": "Core (French)",
+      "path": "lang/fr/core-fr.json",
       "flags": {}
     },
     {
       "lang": "pt-BR",
-      "name": "Brazilian Portuguese",
-      "path": "lang/pt-BR.json",
+      "name": "Core (Brazilian Portuguese)",
+      "path": "lang/pt-BR/core-pt-BR.json",
       "flags": {}
     },
     {
       "lang": "es",
-      "name": "Spanish",
-      "path": "lang/es.json",
+      "name": "Core (Spanish)",
+      "path": "lang/es/core-es.json",
       "flags": {}
     },
     {
       "lang": "de",
-      "name": "German",
-      "path": "lang/de.json",
+      "name": "Core (German)",
+      "path": "lang/de/core-de.json",
       "flags": {}
     },
     {
       "lang": "it",
-      "name": "Italian",
-      "path": "lang/it.json",
+      "name": "Core (Italian)",
+      "path": "lang/it/core-it.json",
       "flags": {}
     },
     {
       "lang": "pl",
-      "name": "Polish",
-      "path": "lang/pl.json",
+      "name": "Core (Polish)",
+      "path": "lang/pl/core-pl.json",
       "flags": {}
     }
   ],
