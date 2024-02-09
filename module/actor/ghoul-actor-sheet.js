@@ -48,7 +48,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     const actor = this.actor
 
     // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.Ghoul')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.VTM.Ghoul')}`
 
     // Prepare items.
     if (actor.type === 'ghoul') {
@@ -188,7 +188,7 @@ export class GhoulActorSheet extends MortalActorSheet {
         // Send the roll to the system
         WOD5eDice.Roll({
           advancedDice: cost + activeBonuses,
-          title: game.i18n.localize('WOD5E.RousingBlood'),
+          title: game.i18n.localize('WOD5E.VTM.RousingBlood'),
           actor,
           disableBasicDice: true,
           rerollHunger: rouseRerolls,
@@ -240,7 +240,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectDiscipline')}</label>
+              <label>${game.i18n.localize('WOD5E.VTM.SelectDiscipline')}</label>
               <select id="disciplineSelect">${options}</select>
           </div>
       </form>`
@@ -266,7 +266,7 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     // Render the dialog window
     new Dialog({
-      title: game.i18n.localize('WOD5E.AddDiscipline'),
+      title: game.i18n.localize('WOD5E.VTM.AddDiscipline'),
       content: template,
       buttons,
       default: 'submit'

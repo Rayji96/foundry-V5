@@ -8,6 +8,115 @@ export const MigrateLocalization2 = async function () {
     let counter = 0
 
     const LocalizationComparisons = [
+      // Vampire updates
+      {
+        old: 'WOD5E.Animalism',
+        new: 'WOD5E.VTM.Animalism'
+      },
+      {
+        old: 'WOD5E.Auspex',
+        new: 'WOD5E.VTM.Auspex'
+      },
+      {
+        old: 'WOD5E.Celerity',
+        new: 'WOD5E.VTM.Celerity'
+      },
+      {
+        old: 'WOD5E.Dominate',
+        new: 'WOD5E.VTM.Dominate'
+      },
+      {
+        old: 'WOD5E.Fortitude',
+        new: 'WOD5E.VTM.Fortitude'
+      },
+      {
+        old: 'WOD5E.Obfuscate',
+        new: 'WOD5E.VTM.Obfuscate'
+      },
+      {
+        old: 'WOD5E.Potence',
+        new: 'WOD5E.VTM.Potence'
+      },
+      {
+        old: 'WOD5E.Presence',
+        new: 'WOD5E.VTM.Presence'
+      },
+      {
+        old: 'WOD5E.Protean',
+        new: 'WOD5E.VTM.Protean'
+      },
+      {
+        old: 'WOD5E.BloodSorcery',
+        new: 'WOD5E.VTM.BloodSorcery'
+      },
+      {
+        old: 'WOD5E.Oblivion',
+        new: 'WOD5E.VTM.Oblivion'
+      },
+      {
+        old: 'WOD5E.ThinBloodAlchemy',
+        new: 'WOD5E.VTM.ThinBloodAlchemy'
+      },
+      {
+        old: 'WOD5E.Rituals',
+        new: 'WOD5E.VTM.Rituals'
+      },
+      {
+        old: 'WOD5E.Ceremonies',
+        new: 'WOD5E.VTM.Ceremonies'
+      },
+
+      // Hunter updates
+      {
+        old: 'WOD5E.Arsenal',
+        new: 'WOD5E.HTR.Arsenal'
+      },
+      {
+        old: 'WOD5E.Artifact',
+        new: 'WOD5E.HTR.Artifact'
+      },
+      {
+        old: 'WOD5E.Fleet',
+        new: 'WOD5E.HTR.Fleet'
+      },
+      {
+        old: 'WOD5E.Ordnance',
+        new: 'WOD5E.HTR.Ordnance'
+      },
+      {
+        old: 'WOD5E.Library',
+        new: 'WOD5E.HTR.Library'
+      },
+      {
+        old: 'WOD5E.ImprovisedGear',
+        new: 'WOD5E.HTR.ImprovisedGear'
+      },
+      {
+        old: 'WOD5E.GlobalAccess',
+        new: 'WOD5E.HTR.GlobalAccess'
+      },
+      {
+        old: 'WOD5E.DroneJockey',
+        new: 'WOD5E.HTR.DroneJockey'
+      },
+      {
+        old: 'WOD5E.BeastWhisperer',
+        new: 'WOD5E.HTR.BeastWhisperer'
+      },
+      {
+        old: 'WOD5E.SenseTheUnnatural',
+        new: 'WOD5E.HTR.SenseTheUnnatural'
+      },
+      {
+        old: 'WOD5E.RepelTheUnnatural',
+        new: 'WOD5E.HTR.RepelTheUnnatural'
+      },
+      {
+        old: 'WOD5E.ThwartTheUnnatural',
+        new: 'WOD5E.HTR.ThwartTheUnnatural'
+      },
+
+      // Werewolf updates
       {
         old: 'WOD5E.HomidName',
         new: 'WOD5E.WTA.HomidName'

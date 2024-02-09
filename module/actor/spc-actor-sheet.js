@@ -191,7 +191,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectDiscipline')}</label>
+              <label>${game.i18n.localize('WOD5E.VTM.SelectDiscipline')}</label>
               <select id="disciplineSelect">${options}</select>
           </div>
       </form>`
@@ -217,7 +217,7 @@ export class SPCActorSheet extends CoterieActorSheet {
 
     // Display the dialog
     new Dialog({
-      title: game.i18n.localize('WOD5E.AddDiscipline'),
+      title: game.i18n.localize('WOD5E.VTM.AddDiscipline'),
       content: template,
       buttons,
       default: 'submit'

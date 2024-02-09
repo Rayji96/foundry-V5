@@ -149,7 +149,7 @@ function rollDice () {
 export function prepareRouseShortcut ($content, data) {
   $content.find('.dice-tray-button[data=rollRouse]').on('click', event => {
     event.preventDefault()
-    rollDice(1, data.selectedCharacter, game.i18n.localize('WOD5E.RousingBlood'), 1, true, true, false)
+    rollDice(1, data.selectedCharacter, game.i18n.localize('WOD5E.VTM.RousingBlood'), 1, true, true, false)
   })
 }
 
@@ -169,7 +169,7 @@ export function prepareFrenzyShortcut ($content, data) {
     const actor = data.selectedCharacter
     const actorData = actor.system
     const dicepool = (actorData.willpower.max - actorData.willpower.aggravated - actorData.willpower.superficial) + Math.floor(actorData.humanity.value / 3)
-    rollDice(dicepool, actor, `${game.i18n.localize('WOD5E.ResistingFrenzy')}...`, 0, false)
+    rollDice(dicepool, actor, `${game.i18n.localize('WOD5E.VTM.ResistingFrenzy')}...`, 0, false)
   })
 }
 
@@ -179,6 +179,6 @@ export function prepareHumanityShortcut ($content, data) {
     const actor = data.selectedCharacter
     const actorData = actor.system
     const dicepool = (10 - actorData.humanity.value - actorData.humanity.stains)
-    rollDice(dicepool, actor, game.i18n.localize('WOD5E.RollingRemorse'), 0, false)
+    rollDice(dicepool, actor, game.i18n.localize('WOD5E.VTM.RollingRemorse'), 0, false)
   })
 }

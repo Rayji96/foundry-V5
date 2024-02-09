@@ -50,8 +50,7 @@
       "ThinBloodAlchemy": "Thin-Blood Alchemy",
       "Rituals": "Rituals",
       "Ceremonies": "Ceremonies",
-
-      "None": "None",
+      
       "Add1Dice": "Add 1 die",
       "Add2Dice": "Add 2 dice",
       "Add3Dice": "Add 3 dice",
@@ -77,7 +76,6 @@
       "FeedingPenalty6": "Animal and bagged blood slakes no Hunger. Slake 2 less Hunger per human. Must drain and kill a human to reduce Hunger below 3",
       "FeedingPenalty7": "Animal and bagged blood slakes no Hunger. Slake 3 less Hunger per human. Must drain and kill a human to reduce Hunger below 3",
 
-      "Discipline": "Discipline",
       "Sire": "Sire",
       "ClanBane": "Clan Bane",
       "Amalgam": "Amalgam",

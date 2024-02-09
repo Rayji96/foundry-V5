@@ -291,20 +291,20 @@ export const getAdvancedDice = async function (actor) {
 
 export const generateLabelAndLocalize = async function (str) {
   const disciplines = {
-    animalism: 'WOD5E.Animalism',
-    auspex: 'WOD5E.Auspex',
-    celerity: 'WOD5E.Celerity',
-    dominate: 'WOD5E.Dominate',
-    fortitude: 'WOD5E.Fortitude',
-    obfuscate: 'WOD5E.Obfuscate',
-    potence: 'WOD5E.Potence',
-    presence: 'WOD5E.Presence',
-    protean: 'WOD5E.Protean',
-    sorcery: 'WOD5E.BloodSorcery',
-    oblivion: 'WOD5E.Oblivion',
-    alchemy: 'WOD5E.ThinBloodAlchemy',
-    rituals: 'WOD5E.Rituals',
-    ceremonies: 'WOD5E.Ceremonies'
+    animalism: 'WOD5E.VTM.Animalism',
+    auspex: 'WOD5E.VTM.Auspex',
+    celerity: 'WOD5E.VTM.Celerity',
+    dominate: 'WOD5E.VTM.Dominate',
+    fortitude: 'WOD5E.VTM.Fortitude',
+    obfuscate: 'WOD5E.VTM.Obfuscate',
+    potence: 'WOD5E.VTM.Potence',
+    presence: 'WOD5E.VTM.Presence',
+    protean: 'WOD5E.VTM.Protean',
+    sorcery: 'WOD5E.VTM.BloodSorcery',
+    oblivion: 'WOD5E.VTM.Oblivion',
+    alchemy: 'WOD5E.VTM.ThinBloodAlchemy',
+    rituals: 'WOD5E.VTM.Rituals',
+    ceremonies: 'WOD5E.VTM.Ceremonies'
   }
 
   if (Object.prototype.hasOwnProperty.call(disciplines, str)) {

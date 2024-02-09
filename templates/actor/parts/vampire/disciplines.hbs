@@ -6,9 +6,9 @@
             <div class="item-name header-level">{{localize "WOD5E.Level"}}</div>
             <!-- Item controls for adding new discipline lists -->
             <div class="item-controls">
-                <a class="item-control discipline-create" title="{{localize 'WOD5E.AddDiscipline'}}">
+                <a class="item-control discipline-create" title="{{localize 'WOD5E.VTM.AddDiscipline'}}">
                     <i class="fas fa-plus"></i>
-                    {{localize "WOD5E.AddDiscipline"}}
+                    {{localize "WOD5E.VTM.AddDiscipline"}}
                 </a>
             </div>
         </li>
@@ -32,7 +32,7 @@
                     <!-- Item controls for Discipline sections -->
                     <div class="item-controls">
                         <!-- Add new discipline power -->
-                        <a class="item-control item-create" title="{{localize 'WOD5E.AddPower'}}" data-type="power" data-discipline="{{key}}">
+                        <a class="item-control item-create" title="{{localize 'WOD5E.VTM.AddPower'}}" data-type="power" data-discipline="{{key}}">
                             <i class="fas fa-plus"></i>
                         </a>
                         <!-- Icon to roll the discipline with an attribute -->
@@ -74,7 +74,7 @@
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rouse check, if applicable -->
                                 {{#if item.system.rouse}}
-                                    <a class="item-control item-rouse" title="{{localize 'WOD5E.RollRouse'}}" data-cost="{{discipline.cost}}">
+                                    <a class="item-control item-rouse" title="{{localize 'WOD5E.VTM.RollRouse'}}" data-cost="{{discipline.cost}}">
                                         <i class="fas fa-dice-d20"></i>
                                     </a>
                                 {{/if}}
