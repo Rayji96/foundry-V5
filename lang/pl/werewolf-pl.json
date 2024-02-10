@@ -2,44 +2,36 @@
   "WOD5E": {
     "WTA": {
       "Label": "",
-
       "WerewolfDice": "",
       "RageDice": "",
-
       "GiftsandRites": "",
       "Rage": "",
       "PossibleRageFailure": "",
       "RollRage": "",
-
       "SelectGift": "",
       "GiftType": "",
       "AddGift": "",
       "NewGift": "",
       "AddRite": "",
       "NewRite": "",
-
       "TheWolf": "",
       "Tribe": "",
       "Auspice": "",
-
       "Harano": "",
       "HaranoTest": "",
       "Hauglosk": "",
       "HaugloskTest": "",
-
-      "Frenzy": "",
+      "Frenzy": "Szał",
       "EnterFrenzy": "",
       "EndFrenzy": "",
       "FrenzyActiveWarning": "",
       "Active": "",
       "FrenzyActiveWarning2": "",
       "LostWolfFormChange": "",
-
       "Renown": "",
       "Wisdom": "",
       "Glory": "",
       "Honor": "",
-
       "FormsOfGarou": "",
       "HomidName": "",
       "HomidTitle": "",
@@ -52,11 +44,9 @@
       "LupusName": "",
       "LupusTitle": "",
       "PostFormToChat": "",
-
       "Patron": "",
       "Favor": "",
       "Ban": "",
-
       "Native": "",
       "Ragabash": "",
       "Theurge": "",
