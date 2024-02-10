@@ -3,10 +3,10 @@
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
     "Name": "Nombre",
-    "Confirm": "Confirm",
-    "Close": "Close",
-    "Save": "Save",
-    "Submit": "Submit",
+    "_Confirm": "",
+    "_Close": "",
+    "_Save": "",
+    "_Submit": "",
     "System": "Sistema",
     "Edit": "Editar",
     "Delete": "Borrar",
@@ -15,7 +15,7 @@
     "Cancel": "Cancelar",
     "Health": "Salud",
     "Willpower": "Fuerza de Voluntad",
-    "Exp": "Exp",
+    "_Exp": "",
     "None": "Ninguno",
     
     "Mortal": "Mortal",
