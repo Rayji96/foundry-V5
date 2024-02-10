@@ -55,7 +55,7 @@ export const willpowerReroll = async (roll) => {
 
   // Dialog object
   new Dialog({
-    title: game.i18n.localize('WOD5E.WillpowerReroll'),
+    title: game.i18n.localize('WOD5E.Chat.WillpowerReroll'),
     content: template,
     buttons,
     render: function () {
@@ -97,7 +97,7 @@ export const willpowerReroll = async (roll) => {
       WOD5eDice.Roll({
         basicDice: diceSelected - rageDiceSelected,
         advancedDice: rageDiceSelected,
-        title: game.i18n.localize('WOD5E.WillpowerReroll'),
+        title: game.i18n.localize('WOD5E.Chat.WillpowerReroll'),
         actor,
         damageWillpower: true,
         quickRoll: true,

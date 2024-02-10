@@ -45,8 +45,8 @@
         "Damage": {
             "Superficial": "Superficial",
             "Aggravated": "Aggravated",
-            "Value": "Value",
             "Stains": "Stains",
+            "Value": "Value",
             "Max": "Max"
         },
 
@@ -56,15 +56,12 @@
             "Description": "Description",
             "Equipment": "Equipment",
             "Notes": "Notes",
-            "Boons": "Boons",
-            "Type": "Type",
             "Other": "Other"
         },
 
         "Attributes": {
             "Label": "Attribute",
             "Attributes": "Attributes",
-            "Abilities": "Abilities",
             "Strength": "Strength",
             "Charisma": "Charisma",
             "Intelligence": "Intelligence",
@@ -114,7 +111,6 @@
             "Label": "Items",
             "ShowToChat": "Show to Chat",
             "CustomRolls": "Custom Rolls",
-            "CustomRoll": "Custom Roll",
             "Boon": "Boon",
             "Merit": "Merit",
             "Cost": "Cost",
@@ -124,7 +120,8 @@
             "Points": "Points",
             "UseSkill": "Use Skills",
             "Rollable": "Rollable",
-            "FeatureType": "Feature Type"
+            "FeatureType": "Feature Type",
+            "Type": "Type"
         },
 
         "Biography": {

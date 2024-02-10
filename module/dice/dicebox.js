@@ -159,7 +159,7 @@ export function prepareWillpowerShortcut ($content, data) {
     const actor = data.selectedCharacter
     const actorData = actor.system
     const dicepool = (actorData.willpower.max - actorData.willpower.aggravated - actorData.willpower.superficial)
-    rollDice(dicepool, actor, game.i18n.localize('WOD5E.RollingWillpower'), 0, false, false, true)
+    rollDice(dicepool, actor, game.i18n.localize('WOD5E.Chat.RollingWillpower'), 0, false, false, true)
   })
 }
 

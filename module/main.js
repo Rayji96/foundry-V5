@@ -115,7 +115,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
 // Display the willpower reroll option in the chat when messages are right clicked
 Hooks.on('getChatLogEntryContext', (html, options) => {
   options.push({
-    name: game.i18n.localize('WOD5E.WillpowerReroll'),
+    name: game.i18n.localize('WOD5E.Chat.WillpowerReroll'),
     icon: '<i class="fas fa-redo"></i>',
     condition: li => {
       // Only show this context menu if the person is GM or author of the message
