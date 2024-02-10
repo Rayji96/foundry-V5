@@ -26,10 +26,10 @@
       "MortalDice": "Mortal Dice",
       "Success": "Erfolg",
       "Successes": "Erfolge",
-      "CriticalSuccess": "Kritischer Erfolg!",
+      "CriticalSuccess": "Kritischer Erfolg",
       "Fail": "Fehlschlag",
-      "Modifier": "Modifikator?",
-      "Difficulty": "Schwierigkeit?"
+      "Modifier": "Modifikator",
+      "Difficulty": "Schwierigkeit"
     },
 
     "SPC": {
