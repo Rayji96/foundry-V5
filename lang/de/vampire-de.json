@@ -1,6 +1,8 @@
 {
   "WOD5E": {
     "VTM": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
       "Label": "Vampir",
       "Coterie": "Klüngel",
       "Ghoul": "Ghoul",
@@ -10,13 +12,13 @@
       "Humanity": "Menschlichkeit",
       "Predator": "Jagdverhalten",
       "Hunger": "Hunger",
-      "HungerFull1": "",
+      "_HungerFull1": "",
       "HungerFull2": "Maximalem Hunger, kann ihn nicht erhöhren.",
       "Rouse": "Wallung",
       "Frenzy": "Raserei",
       "Remorse": "Reue",
       "Disciplines": "Disziplinen",
-      "DisciplineType": "",
+      "_DisciplineType": "",
       "Blood": "Blut",
       "BloodPotency": "Blutmacht",
       "BloodResonance": "Resonanz",

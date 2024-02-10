@@ -1,8 +1,10 @@
 {
   "WOD5E": {
     "HTR": {
-      "Label": "",
-      "HunterDice": "",
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+      "_Label": "",
+      "_HunterDice": "",
       "DesperationDice": "Kostki Desperacji",
       "Despair": "Rozpacz",
       "Creed": "Kredo",
@@ -10,7 +12,7 @@
       "Cell": "Komórka",
       "Redemption": "Odkupienie",
       "Edges": "Przewagi",
-      "EdgeType": "",
+      "_EdgeType": "",
       "AddEdge": "Dodaj Przewagę",
       "SelectEdge": "Wybierz Przewagę",
       "AddPerk": "Dodaj Perk",

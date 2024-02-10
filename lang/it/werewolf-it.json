@@ -1,8 +1,10 @@
 {
   "WOD5E": {
     "WTA": {
-      "Label": "",
-      "WerewolfDice": "",
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+      "_Label": "",
+      "_WerewolfDice": "",
       "RageDice": "Dadi Furia",
       "GiftsandRites": "Doni e Riti",
       "Rage": "Furia",
