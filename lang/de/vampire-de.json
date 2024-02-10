@@ -4,11 +4,16 @@
       "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
       "Label": "Vampir",
+
       "Coterie": "Klüngel",
       "Ghoul": "Ghoul",
       "Domitor": "Domitor",
       "Clan": "Clan",
       "Generation": "Generation",
+
+      "_VampireDice": "",
+      "_HungerDice": "",
+
       "Humanity": "Menschlichkeit",
       "Predator": "Jagdverhalten",
       "Hunger": "Hunger",
@@ -17,6 +22,7 @@
       "Rouse": "Wallung",
       "Frenzy": "Raserei",
       "Remorse": "Reue",
+
       "Disciplines": "Disziplinen",
       "_DisciplineType": "",
       "Blood": "Blut",
@@ -28,6 +34,7 @@
       "RouseReRoll": "Wallungs Wiederholung",
       "FeedingPenalty": "Beuteausschluss",
       "BaneSeverity": "Schwere des Fluchs",
+
       "AddPower": "Hinzufügen",
       "SelectDiscipline": "Wähle Disziplin",
       "AddDiscipline": "Disziplin Hinzufügen",
@@ -45,6 +52,7 @@
       "ThinBloodAlchemy": "Dünnblütige Alchemie",
       "Rituals": "Rituale",
       "Ceremonies": "Zeremonien",
+
       "Add1Dice": "1 Würfel hinzufügen",
       "Add2Dice": "2 Würfel hinzufügen",
       "Add3Dice": "3 Würfel hinzufügen",
@@ -69,9 +77,11 @@
       "FeedingPenalty5": "Tier- und Blutkonserven stillen keinen Hunger. Stillt pro Mensch 2 Punkt Hunger weniger. Muss einen Menschen ausbluten und töten, um den Hunger unter 2 senken zu können",
       "FeedingPenalty6": "Tier- und Blutkonserven stillen keinen Hunger. Stillt pro Mensch 2 Punkt Hunger weniger. Muss einen Menschen ausbluten und töten, um den Hunger unter 3 senken zu können",
       "FeedingPenalty7": "Tier- und Blutkonserven stillen keinen Hunger. Stillt pro Mensch 3 Punkt Hunger weniger. Muss einen Menschen ausbluten und töten, um den Hunger unter 3 senken zu können",
+
       "Sire": "Erzeuger/in",
       "ClanBane": "Clansfluch",
       "Amalgam": "Amalgam",
+      
       "RollRouse": "Wallung Rollen",
       "RollFrenzy": "Raserei Rollen",
       "RollRemorse": "Reue Rollen",

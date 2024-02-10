@@ -1,8 +1,13 @@
 {
   "WOD5E": {
     "HTR": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
       "Label": "Jäger",
+
+      "_HunterDice": "",
       "DesperationDice": "Verzweiflungswürfel",
+
       "Despair": "Verzweifeln",
       "Creed": "Kredo",
       "CreedFields": "Kredobereiche",
@@ -20,6 +25,7 @@
       "DespairFailure": "Verzweifelter Fehlschlag!",
       "DesperationUnavailable": "Verzweiflung ist während des Verzweiflens nicht möglich!",
       "Drive": "Fahren",
+      
       "Arsenal": "Arsenal",
       "Fleet": "Flotte",
       "Ordnance": "Artillerie",

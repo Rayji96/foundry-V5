@@ -4,25 +4,31 @@
       "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
       "_Label": "",
+
       "_WerewolfDice": "",
       "_RageDice": "",
+
       "_GiftsandRites": "",
       "_Rage": "",
       "_PossibleRageFailure": "",
       "_RollRage": "",
+
       "_SelectGift": "",
       "_GiftType": "",
       "_AddGift": "",
       "_NewGift": "",
       "_AddRite": "",
       "_NewRite": "",
+
       "_TheWolf": "",
       "_Tribe": "",
       "_Auspice": "",
+
       "_Harano": "",
       "_HaranoTest": "",
       "_Hauglosk": "",
       "_HaugloskTest": "",
+
       "Frenzy": "Raserei",
       "_EnterFrenzy": "",
       "_EndFrenzy": "",
@@ -30,10 +36,12 @@
       "_Active": "",
       "_FrenzyActiveWarning2": "",
       "_LostWolfFormChange": "",
+
       "_Renown": "",
       "_Wisdom": "",
       "_Glory": "",
       "_Honor": "",
+
       "_FormsOfGarou": "",
       "_HomidName": "",
       "_HomidTitle": "",
@@ -46,9 +54,11 @@
       "_LupusName": "",
       "_LupusTitle": "",
       "_PostFormToChat": "",
+
       "_Patron": "",
       "_Favor": "",
       "_Ban": "",
+      
       "_Native": "",
       "_Ragabash": "",
       "_Theurge": "",
