@@ -38,8 +38,8 @@
       "StandardDicePools": "Grupos de dados estándar",
       "ExceptionalDicePools": "Piscinas de dados excepcionales",
       "Physical": "Físico",
-      "Mental": "Mental",
-      "Social": "Social",
+      "_Mental": "",
+      "_Social": "",
       "AddSkill": "Agregar habilidad",
       "SelectSkill": "Seleccionar habilidad"
     },
