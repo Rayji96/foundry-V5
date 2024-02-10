@@ -325,8 +325,6 @@ export class WoDActor extends ActorSheet {
 
   // Function to grab the default name of an item.
   getItemDefaultName (type, data) {
-    console.log(type)
-
     // Items
     if (type === 'feature') {
       return `${game.i18n.localize('WOD5E.Items.' + data.featuretype.capitalize())}`
@@ -359,6 +357,12 @@ export class WoDActor extends ActorSheet {
       return `${game.i18n.localize('WOD5E.HTR.' + data.edge.capitalize())}`
     }
 
+    // Boons
+    if (type === 'boon') {
+      return game.i18n.localize('WOD5E.Items.Boon')
+    }
+
+    // Custom rolls
     if (type === 'customRoll') {
       return game.i18n.localize('WOD5E.Items.CustomRoll')
     }

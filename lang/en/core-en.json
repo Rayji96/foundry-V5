@@ -112,7 +112,6 @@
             "ShowToChat": "Show to Chat",
             "CustomRoll": "Custom Roll",
             "CustomRolls": "Custom Rolls",
-            "Boons": "Boons",
             "Merit": "Merit",
             "Cost": "Cost",
             "Flaw": "Flaw",
@@ -123,7 +122,9 @@
             "Rollable": "Rollable",
             "FeatureType": "Feature Type",
             "Type": "Type",
-            "NewSpecialty": "New Specialty"
+            "NewSpecialty": "New Specialty",
+            "Boon": "Boon",
+            "Boons": "Boons"
         },
 
         "Biography": {
