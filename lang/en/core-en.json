@@ -110,6 +110,7 @@
         "Items": {
             "Label": "Items",
             "ShowToChat": "Show to Chat",
+            "CustomRoll": "Custom Roll",
             "CustomRolls": "Custom Rolls",
             "Boons": "Boons",
             "Merit": "Merit",
@@ -121,7 +122,8 @@
             "UseSkill": "Use Skills",
             "Rollable": "Rollable",
             "FeatureType": "Feature Type",
-            "Type": "Type"
+            "Type": "Type",
+            "NewSpecialty": "New Specialty"
         },
 
         "Biography": {

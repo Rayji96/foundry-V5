@@ -325,9 +325,14 @@ export class WoDActor extends ActorSheet {
 
   // Function to grab the default name of an item.
   getItemDefaultName (type, data) {
+    console.log(type)
+
+    // Items
     if (type === 'feature') {
-      return `${game.i18n.localize('WOD5E.' + data.featuretype.capitalize())}`
+      return `${game.i18n.localize('WOD5E.Items.' + data.featuretype.capitalize())}`
     }
+
+    // Vampire disciplines
     if (type === 'power') {
       const disciplines = {
         animalism: 'WOD5E.VTM.Animalism',
@@ -348,9 +353,17 @@ export class WoDActor extends ActorSheet {
 
       return `${game.i18n.localize(disciplines[data.discipline])}`
     }
+
+    // Hunter perks
     if (type === 'perk') {
-      return `${game.i18n.localize('WOD5E.' + data.edge.capitalize())}`
+      return `${game.i18n.localize('WOD5E.HTR.' + data.edge.capitalize())}`
     }
+
+    if (type === 'customRoll') {
+      return game.i18n.localize('WOD5E.Items.CustomRoll')
+    }
+
+    // Anything else
     return `${game.i18n.localize('WOD5E.' + type.capitalize())}`
   }
 
