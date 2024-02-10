@@ -115,16 +115,16 @@
       "CustomRoll": "Jet Personnalisé",
       "CustomRolls": "Jets Personnalisés",
       "Merit": "Avantage",
-      "Cost": "Cost",
+      "_Cost": "",
       "Flaw": "Handicap",
-      "Bonuses": "Bonuses",
+      "_Bonuses": "",
       "Background": "Historique",
-      "Points": "Points",
+      "_Points": "",
       "UseSkill": "Utiliser des Compétences",
       "Rollable": "Jet de dés",
       "FeatureType": "Type d'Atout",
-      "Type": "Type",
-      "NewSpecialty": "New Specialty",
+      "_Type": "",
+      "_NewSpecialty": "",
       "Boon": "Dette",
       "Boons": "Dettes"
     },
@@ -154,7 +154,7 @@
       "Rolling": "Jet",
       "RollWillpower": "Test la volonté",
       "WillpowerReroll": "Relance du test de Volonté",
-      "WillpowerFullTitle": "Willpower Tracker Full",
+      "_WillpowerFullTitle": "",
       "WillpowerFull": "La volonté est entièrement endommagée, ne peut pas l'endommager davantage."
     }
   }

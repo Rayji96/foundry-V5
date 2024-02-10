@@ -115,7 +115,7 @@
       "CustomRoll": "Tirada Personalizadas",
       "CustomRolls": "Tiradas Personalizadas",
       "Merit": "Ventaja",
-      "Cost": "Cost",
+      "_Cost": "",
       "Flaw": "Defecto",
       "Bonuses": "Bonuses",
       "Background": "Transfondo",
@@ -124,7 +124,7 @@
       "Rollable": "Tirable",
       "FeatureType": "Tipo de rasgo",
       "Type": "Tipo",
-      "NewSpecialty": "New Specialty",
+      "_NewSpecialty": "",
       "Boon": "Bendición",
       "Boons": "Favores"
     },
