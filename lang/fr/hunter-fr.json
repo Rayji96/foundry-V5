@@ -3,7 +3,7 @@
     "HTR": {
       "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
-      "_Label": "",
+      "Label": "Chasseur",
       "_HunterDice": "",
       "DesperationDice": "Dés de désespoir ?",
       "Despair": "Desespéré",
