@@ -14,7 +14,7 @@
       "Humanity": "Humanidade",
       "Predator": "Predador",
       "Hunger": "Fome",
-      "_HungerFull1": "",
+      "HungerFull1": "Fome máxima",
       "HungerFull2": "Já na fome máxima, não pode aumentar ainda mais.",
       "Rouse": "Inflamar",
       "Frenzy": "Frenesi",
