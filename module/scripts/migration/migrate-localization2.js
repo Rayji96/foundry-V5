@@ -8,6 +8,154 @@ export const MigrateLocalization2 = async function () {
     let counter = 0
 
     const LocalizationComparisons = [
+      // Attribute updates
+      {
+        old: 'WOD5E.Strength',
+        new: 'WOD5E.Attributes.Strength'
+      },
+      {
+        old: 'WOD5E.Charisma',
+        new: 'WOD5E.Attributes.Charisma'
+      },
+      {
+        old: 'WOD5E.Intelligence',
+        new: 'WOD5E.Attributes.Intelligence'
+      },
+      {
+        old: 'WOD5E.Dexterity',
+        new: 'WOD5E.Attributes.Dexterity'
+      },
+      {
+        old: 'WOD5E.Manipulation',
+        new: 'WOD5E.Attributes.Manipulation'
+      },
+      {
+        old: 'WOD5E.Wits',
+        new: 'WOD5E.Attributes.Wits'
+      },
+      {
+        old: 'WOD5E.Stamina',
+        new: 'WOD5E.Attributes.Stamina'
+      },
+      {
+        old: 'WOD5E.Composure',
+        new: 'WOD5E.Attributes.Composure'
+      },
+      {
+        old: 'WOD5E.Resolve',
+        new: 'WOD5E.Attributes.Resolve'
+      },
+
+      // Skill updates
+      {
+        old: 'WOD5E.Athletics',
+        new: 'WOD5E.Skills.Athletics'
+      },
+      {
+        old: 'WOD5E.AnimalKen',
+        new: 'WOD5E.Skills.AnimalKen'
+      },
+      {
+        old: 'WOD5E.Academics',
+        new: 'WOD5E.Skills.Academics'
+      },
+      {
+        old: 'WOD5E.Brawl',
+        new: 'WOD5E.Skills.Brawl'
+      },
+      {
+        old: 'WOD5E.Etiquette',
+        new: 'WOD5E.Skills.Etiquette'
+      },
+      {
+        old: 'WOD5E.Awareness',
+        new: 'WOD5E.Skills.Awareness'
+      },
+      {
+        old: 'WOD5E.Craft',
+        new: 'WOD5E.Skills.Craft'
+      },
+      {
+        old: 'WOD5E.Insight',
+        new: 'WOD5E.Skills.Insight'
+      },
+      {
+        old: 'WOD5E.Finance',
+        new: 'WOD5E.Skills.Finance'
+      },
+      {
+        old: 'WOD5E.Drive',
+        new: 'WOD5E.Skills.Drive'
+      },
+      {
+        old: 'WOD5E.Intimidation',
+        new: 'WOD5E.Skills.Intimidation'
+      },
+      {
+        old: 'WOD5E.Investigation',
+        new: 'WOD5E.Skills.Investigation'
+      },
+      {
+        old: 'WOD5E.Firearms',
+        new: 'WOD5E.Skills.Firearms'
+      },
+      {
+        old: 'WOD5E.Leadership',
+        new: 'WOD5E.Skills.Leadership'
+      },
+      {
+        old: 'WOD5E.Medicine',
+        new: 'WOD5E.Skills.Medicine'
+      },
+      {
+        old: 'WOD5E.Melee',
+        new: 'WOD5E.Skills.Melee'
+      },
+      {
+        old: 'WOD5E.Performance',
+        new: 'WOD5E.Skills.Performance'
+      },
+      {
+        old: 'WOD5E.Occult',
+        new: 'WOD5E.Skills.Occult'
+      },
+      {
+        old: 'WOD5E.Larceny',
+        new: 'WOD5E.Skills.Larceny'
+      },
+      {
+        old: 'WOD5E.Persuasion',
+        new: 'WOD5E.Skills.Persuasion'
+      },
+      {
+        old: 'WOD5E.Politics',
+        new: 'WOD5E.Skills.Politics'
+      },
+      {
+        old: 'WOD5E.Stealth',
+        new: 'WOD5E.Skills.Stealth'
+      },
+      {
+        old: 'WOD5E.Streetwise',
+        new: 'WOD5E.Skills.Streetwise'
+      },
+      {
+        old: 'WOD5E.Science',
+        new: 'WOD5E.Skills.Science'
+      },
+      {
+        old: 'WOD5E.Survival',
+        new: 'WOD5E.Skills.Survival'
+      },
+      {
+        old: 'WOD5E.Subterfuge',
+        new: 'WOD5E.Skills.Subterfuge'
+      },
+      {
+        old: 'WOD5E.Technology',
+        new: 'WOD5E.Skills.Technology'
+      },
+
       // Vampire updates
       {
         old: 'WOD5E.Animalism',
