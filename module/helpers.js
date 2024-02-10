@@ -67,11 +67,11 @@ export const loadHelpers = async function () {
   })
 
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    return 'WOD5E.'.concat(capitalize(str))
+    return 'WOD5E.Items.'.concat(capitalize(str))
   })
 
   Handlebars.registerHelper('generateSkillLabel', function (str) {
-    return 'WOD5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
+    return 'WOD5E.Skills.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
   })
 
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
