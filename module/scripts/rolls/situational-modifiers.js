@@ -58,8 +58,8 @@ export async function getSituationalModifiers ({
 
       // Check if 'unless' is present in 'modifiers.path' array
       if (unless && modifiers.paths.includes(unless)) {
-        modifier.isActive = false;
-        return false;
+        modifier.isActive = false
+        return false
       }
 
       // As long as the path is found, the modifier will be active
