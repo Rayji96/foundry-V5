@@ -19,6 +19,7 @@ import { loadDiceSoNice } from './dice/dice-so-nice.js'
 import { loadHelpers } from './helpers.js'
 import { loadSettings } from './settings.js'
 import { willpowerReroll } from './scripts/willpower-reroll.js'
+import { wod5eAPI } from './api/wod5e-api.js'
 
 // Anything that needs to be ran alongside the initialisation of the world
 Hooks.once('init', async function () {
@@ -100,6 +101,13 @@ Hooks.once('init', async function () {
 
 // Anything that needs to run once the world is ready
 Hooks.once('ready', async function () {
+    // Activate the API
+    window.WOD5E = {
+      api: {
+        Roll: wod5eAPI.Roll
+      }
+    }
+
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createVampireMacro(data, slot))
 
