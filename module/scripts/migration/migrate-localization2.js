@@ -374,7 +374,7 @@ export const MigrateLocalization2 = async function () {
 
     // Function to search through the actorObject and replace
     // all found instances
-    function findAndReplace(obj, comparisons) {
+    function findAndReplace (obj, comparisons) {
       if (Array.isArray(obj)) {
         return obj.map(item => findAndReplace(item, comparisons))
       } else if (typeof obj === 'object' && obj !== null) {
@@ -395,33 +395,33 @@ export const MigrateLocalization2 = async function () {
     }
 
     // Function to search through a given object and hunt all instances of "target"
-    function countInstances(jsonObj, comparisons) {
-      let count = 0;
+    function countInstances (jsonObj, comparisons) {
+      let count = 0
 
-      function search(obj) {
+      function search (obj) {
         for (const key in obj) {
           if (typeof obj[key] === 'object' && obj[key] !== null) {
             // Recursively look deeper into the JSON structure
-            search(obj[key]);
+            search(obj[key])
           } else if (typeof obj[key] === 'string') {
             // Iterate through comparisons and count matches
             comparisons.forEach(({ old }) => {
-              const regex = new RegExp(`\\b${old}\\b`, 'g');
-              const matches = obj[key].match(regex);
+              const regex = new RegExp(`\\b${old}\\b`, 'g')
+              const matches = obj[key].match(regex)
 
               // So long as there are matches, increase the count
               if (matches !== null) {
-                count += matches.length;
+                count += matches.length
               }
-            });
+            })
           }
         }
       }
 
       // Search through the JSON object and return the number of instances
       // of the "target" afterwards
-      search(jsonObj);
-      return count;
+      search(jsonObj)
+      return count
     }
   })
 }
