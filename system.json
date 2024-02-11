@@ -69,9 +69,45 @@
       "flags": {}
     },
     {
+      "lang": "fr",
+      "name": "Vampire (French)",
+      "path": "lang/fr/vampire-fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "Werewolf (French)",
+      "path": "lang/fr/werewolf-fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "Hunter (French)",
+      "path": "lang/fr/hunter-fr.json",
+      "flags": {}
+    },
+    {
       "lang": "pt-BR",
       "name": "Core (Brazilian Portuguese)",
       "path": "lang/pt-BR/core-pt-BR.json",
+      "flags": {}
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Vampire (Brazilian Portuguese)",
+      "path": "lang/pt-BR/vampire-pt-BR.json",
+      "flags": {}
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Werewolf (Brazilian Portuguese)",
+      "path": "lang/pt-BR/werewolf-pt-BR.json",
+      "flags": {}
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Hunter (Brazilian Portuguese)",
+      "path": "lang/pt-BR/hunter-pt-BR.json",
       "flags": {}
     },
     {
@@ -81,9 +117,45 @@
       "flags": {}
     },
     {
+      "lang": "es",
+      "name": "Vampire (Spanish)",
+      "path": "lang/es/vampire-es.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Werewolf (Spanish)",
+      "path": "lang/es/werewolf-es.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Hunter (Spanish)",
+      "path": "lang/es/hunter-es.json",
+      "flags": {}
+    },
+    {
       "lang": "de",
       "name": "Core (German)",
       "path": "lang/de/core-de.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "Vampire (German)",
+      "path": "lang/de/vampire-de.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "Werewolf (German)",
+      "path": "lang/de/werewolf-de.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "Hunter (German)",
+      "path": "lang/de/hunter-de.json",
       "flags": {}
     },
     {
@@ -93,9 +165,45 @@
       "flags": {}
     },
     {
+      "lang": "it",
+      "name": "Vampire (Italian)",
+      "path": "lang/it/vampire-it.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Werewolf (Italian)",
+      "path": "lang/it/werewolf-it.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Hunter (Italian)",
+      "path": "lang/it/hunter-it.json",
+      "flags": {}
+    },
+    {
       "lang": "pl",
       "name": "Core (Polish)",
       "path": "lang/pl/core-pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Vampire (Polish)",
+      "path": "lang/pl/vampire-pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Werewolf (Polish)",
+      "path": "lang/pl/werewolf-pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Hunter (Polish)",
+      "path": "lang/pl/hunter-pl.json",
       "flags": {}
     }
   ],
