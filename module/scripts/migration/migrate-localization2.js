@@ -333,6 +333,18 @@ export const MigrateLocalization2 = async function () {
       {
         old: 'WOD5E.SPC',
         new: 'WOD5E.SPC.Label'
+      },
+      {
+        old: 'WOD5E.Mental',
+        new: 'WOD5E.SPC.Mental'
+      },
+      {
+        old: 'WOD5E.Social',
+        new: 'WOD5E.SPC.Social'
+      },
+      {
+        old: 'WOD5E.Physical',
+        new: 'WOD5E.SPC.Physical'
       }
     ]
 
