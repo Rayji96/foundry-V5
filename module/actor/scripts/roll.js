@@ -290,25 +290,84 @@ export const getAdvancedDice = async function (actor) {
 }
 
 export const generateLabelAndLocalize = async function (str) {
+  // Lists
+  const attributes = {
+    strength: 'WOD5E.Attributes.Strength',
+    dexterity: 'WOD5E.Attributes.Dexterity',
+    stamina: 'WOD5E.Attributes.Stamina',
+    charisma: 'WOD5E.Attributes.Charisma',
+    manipulation: 'WOD5E.Attributes.Manipulation',
+    composure: 'WOD5E.Attributes.Composure',
+    intelligence: 'WOD5E.Attributes.Intelligence',
+    wits: 'WOD5E.Attributes.Wits',
+    resolve: 'WOD5E.Attributes.Resolve'
+  }
+  const skills = {
+    athletics: 'WOD5E.Skills.Athletics',
+    brawl: 'WOD5E.Skills.Brawl',
+    craft: 'WOD5E.Skills.Craft',
+    drive: 'WOD5E.Skills.Drive',
+    firearms: 'WOD5E.Skills.Firearms',
+    larceny: 'WOD5E.Skills.Larceny',
+    melee: 'WOD5E.Skills.Melee',
+    stealth: 'WOD5E.Skills.Stealth',
+    survival: 'WOD5E.Skills.Survival',
+    animalken: 'WOD5E.Skills.AnimalKen',
+    etiquette: 'WOD5E.Skills.Etiquette',
+    insight: 'WOD5E.Skills.Insight',
+    intimidation: 'WOD5E.Skills.Intimidation',
+    leadership: 'WOD5E.Skills.Leadership',
+    performance: 'WOD5E.Skills.Performance',
+    persuasion: 'WOD5E.Skills.Persuasion',
+    streetwise: 'WOD5E.Skills.Streetwise',
+    subterfuge: 'WOD5E.Skills.Subterfuge',
+    academics: 'WOD5E.Skills.Academics',
+    awareness: 'WOD5E.Skills.Awareness',
+    finance: 'WOD5E.Skills.Finance',
+    investigation: 'WOD5E.Skills.Investigation',
+    medicine: 'WOD5E.Skills.Medicine',
+    occult: 'WOD5E.Skills.Occult',
+    politics: 'WOD5E.Skills.Politics',
+    science: 'WOD5E.Skills.Science',
+    technology: 'WOD5E.Skills.Technology'
+  }
   const disciplines = {
-    animalism: 'WOD5E.Animalism',
-    auspex: 'WOD5E.Auspex',
-    celerity: 'WOD5E.Celerity',
-    dominate: 'WOD5E.Dominate',
-    fortitude: 'WOD5E.Fortitude',
-    obfuscate: 'WOD5E.Obfuscate',
-    potence: 'WOD5E.Potence',
-    presence: 'WOD5E.Presence',
-    protean: 'WOD5E.Protean',
-    sorcery: 'WOD5E.BloodSorcery',
-    oblivion: 'WOD5E.Oblivion',
-    alchemy: 'WOD5E.ThinBloodAlchemy',
-    rituals: 'WOD5E.Rituals',
-    ceremonies: 'WOD5E.Ceremonies'
+    animalism: 'WOD5E.VTM.Animalism',
+    auspex: 'WOD5E.VTM.Auspex',
+    celerity: 'WOD5E.VTM.Celerity',
+    dominate: 'WOD5E.VTM.Dominate',
+    fortitude: 'WOD5E.VTM.Fortitude',
+    obfuscate: 'WOD5E.VTM.Obfuscate',
+    potence: 'WOD5E.VTM.Potence',
+    presence: 'WOD5E.VTM.Presence',
+    protean: 'WOD5E.VTM.Protean',
+    sorcery: 'WOD5E.VTM.BloodSorcery',
+    oblivion: 'WOD5E.VTM.Oblivion',
+    alchemy: 'WOD5E.VTM.ThinBloodAlchemy',
+    rituals: 'WOD5E.VTM.Rituals',
+    ceremonies: 'WOD5E.VTM.Ceremonies'
+  }
+  const renown = {
+    glory: 'WOD5E.WTA.Glory',
+    honor: 'WOD5E.WTA.Honor',
+    wisdom: 'WOD5E.WTA.Wisdom'
   }
 
+  // Attributes
+  if (Object.prototype.hasOwnProperty.call(attributes, str)) {
+    return `${game.i18n.localize(attributes[str])}`
+  }
+  // Skills
+  if (Object.prototype.hasOwnProperty.call(skills, str)) {
+    return `${game.i18n.localize(skills[str])}`
+  }
+  // Disciplines
   if (Object.prototype.hasOwnProperty.call(disciplines, str)) {
     return `${game.i18n.localize(disciplines[str])}`
+  }
+  // Renown
+  if (Object.prototype.hasOwnProperty.call(renown, str)) {
+    return `${game.i18n.localize(renown[str])}`
   }
 
   return `${game.i18n.localize('WOD5E.' + str.capitalize())}`

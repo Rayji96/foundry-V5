@@ -1,5 +1,5 @@
 <div class="tab flex-center" data-group="primary" data-tab="stats">
-    <label class="resource-label">{{localize "WOD5E.Attributes"}}</label>
+    <label class="resource-label">{{localize "WOD5E.Attributes.Attributes"}}</label>
     <div class="abilities grid grid-3col flex-group-center">
         {{#each actor.system.abilities as |ability key|}}
             <div class="ability flexrow flex-center">
@@ -15,7 +15,7 @@
         {{/each}}
     </div>
 
-    <label class="resource-label">{{localize "WOD5E.Skills"}}</label>
+    <label class="resource-label">{{localize "WOD5E.Skills.Skills"}}</label>
     <div class="skills grid grid-3col flex-group-center">
         {{#each actor.system.skills as |skill key|}}
         <div class="skill flexrow flex-center">
@@ -40,16 +40,16 @@
         {{/each}}
     </div>
 
-    <label class="resource-label">{{localize "WOD5E.CustomRolls"}}</label>
+    <label class="resource-label">{{localize "WOD5E.Items.CustomRolls"}}</label>
     <ol class="items-list flex-left">
         <li class="item flexrow item-header">
             <div class="item-image"></div>
             <div class="item-name">{{localize "WOD5E.Name"}}</div>
-            <div class="item-name">{{localize "WOD5E.Attribute"}}</div>
-            <div class="item-name">{{localize "WOD5E.Skill"}}</div>
+            <div class="item-name">{{localize "WOD5E.Attributes.Label"}}</div>
+            <div class="item-name">{{localize "WOD5E.Skills.Label"}}</div>
             <div class="item-controls">
-                <a class="item-control item-create" title="{{localize 'WOD5E.AddItem'}}"
-                    data-type="customRoll"><i class="fas fa-plus"></i> {{localize "WOD5E.AddItem"}}
+                <a class="item-control item-create" title="{{localize 'WOD5E.Add'}}"
+                    data-type="customRoll"><i class="fas fa-plus"></i> {{localize "WOD5E.Add"}}
                 </a>
             </div>
         </li>
@@ -62,7 +62,7 @@
                     <img src="{{roll.img}}" title="{{roll.name}}" width="24" height="24" alt="{{roll.name}}" />
                 </div>
                 <h4 class="item-name">{{roll.name}}</h4>
-                <h4 class="item-name">{{localize (generateSkillLabel roll.system.dice1)}}</h4>
+                <h4 class="item-name">{{localize (generateAttributeLabel roll.system.dice1)}}</h4>
                 <h4 class="item-name">{{localize (generateSkillLabel roll.system.dice2)}}</h4>
                 <div class="item-controls">
                     <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}"><i

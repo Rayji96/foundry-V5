@@ -11,9 +11,9 @@ export async function _damageWillpower (actor) {
   // then tell the chat and don't increase any values.
   if (aggrWillpower >= maxWillpower) {
     renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
-      name: game.i18n.localize('WOD5E.WillpowerFullTitle'),
+      name: game.i18n.localize('WOD5E.Chat.WillpowerFullTitle'),
       img: 'systems/vtm5e/assets/icons/dice/vampire/bestial-failure.png',
-      description: game.i18n.localize('WOD5E.WillpowerFull')
+      description: game.i18n.localize('WOD5E.Chat.WillpowerFull')
     }).then(html => {
       ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor }),

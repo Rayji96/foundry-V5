@@ -53,7 +53,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     const data = await super.getData()
 
     // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.SPC')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.SPC.Label')}`
 
     // Prepare items
     if (this.actor.type === 'spc') {
@@ -131,7 +131,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectSkill')}</label>
+              <label>${game.i18n.localize('WOD5E.SPC.SelectSkill')}</label>
               <select id="skillSelect">${options}</select>
           </div>
       </form>`
@@ -157,7 +157,7 @@ export class SPCActorSheet extends CoterieActorSheet {
 
     // Display the dialog
     new Dialog({
-      title: game.i18n.localize('WOD5E.AddSkill'),
+      title: game.i18n.localize('WOD5E.SPC.AddSkill'),
       content: template,
       buttons,
       default: 'submit'
@@ -191,7 +191,7 @@ export class SPCActorSheet extends CoterieActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectDiscipline')}</label>
+              <label>${game.i18n.localize('WOD5E.VTM.SelectDiscipline')}</label>
               <select id="disciplineSelect">${options}</select>
           </div>
       </form>`
@@ -217,7 +217,7 @@ export class SPCActorSheet extends CoterieActorSheet {
 
     // Display the dialog
     new Dialog({
-      title: game.i18n.localize('WOD5E.AddDiscipline'),
+      title: game.i18n.localize('WOD5E.VTM.AddDiscipline'),
       content: template,
       buttons,
       default: 'submit'

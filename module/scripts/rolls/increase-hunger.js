@@ -9,9 +9,9 @@ export async function _increaseHunger (actor, amount) {
   // below 5, send a message in the chat to warn them.
   if (newHungerAmount > 4 && currentHunger < 5) {
     renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
-      name: game.i18n.localize('WOD5E.HungerFull1'),
+      name: game.i18n.localize('WOD5E.VTM.HungerFull1'),
       img: 'systems/vtm5e/assets/icons/dice/vampire/bestial-failure.png',
-      description: game.i18n.localize('WOD5E.HungerFull2')
+      description: game.i18n.localize('WOD5E.VTM.HungerFull2')
     }).then(html => {
       ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor }),

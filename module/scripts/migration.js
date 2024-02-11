@@ -5,6 +5,7 @@ import { MigrateLocalization } from './migration/migrate-localization.js'
 import { MigrateGamesystem } from './migration/migrate-gamesystem.js'
 import { MigrateTrackers } from './migration/migrate-trackers.js'
 import { MigrateSpecialties } from './migration/migrate-specialties.js'
+import { MigrateLocalization2 } from './migration/migrate-localization2.js'
 
 let worldVersion
 
@@ -50,6 +51,10 @@ export const migrateWorld = async () => {
         // Migrate specialties into their respective skills
         const migrationIDs5 = await MigrateSpecialties()
         updates.concat(migrationIDs5)
+
+        // Second localization migration
+        const migrationIDs6 = await MigrateLocalization2()
+        updates.concat(migrationIDs6)
 
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {

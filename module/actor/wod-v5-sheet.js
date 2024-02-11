@@ -325,32 +325,49 @@ export class WoDActor extends ActorSheet {
 
   // Function to grab the default name of an item.
   getItemDefaultName (type, data) {
+    // Items
     if (type === 'feature') {
-      return `${game.i18n.localize('WOD5E.' + data.featuretype.capitalize())}`
+      return `${game.i18n.localize('WOD5E.Items.' + data.featuretype.capitalize())}`
     }
+
+    // Vampire disciplines
     if (type === 'power') {
       const disciplines = {
-        animalism: 'WOD5E.Animalism',
-        auspex: 'WOD5E.Auspex',
-        celerity: 'WOD5E.Celerity',
-        dominate: 'WOD5E.Dominate',
-        fortitude: 'WOD5E.Fortitude',
-        obfuscate: 'WOD5E.Obfuscate',
-        potence: 'WOD5E.Potence',
-        presence: 'WOD5E.Presence',
-        protean: 'WOD5E.Protean',
-        sorcery: 'WOD5E.BloodSorcery',
-        oblivion: 'WOD5E.Oblivion',
-        alchemy: 'WOD5E.ThinBloodAlchemy',
-        rituals: 'WOD5E.Rituals',
-        ceremonies: 'WOD5E.Ceremonies'
+        animalism: 'WOD5E.VTM.Animalism',
+        auspex: 'WOD5E.VTM.Auspex',
+        celerity: 'WOD5E.VTM.Celerity',
+        dominate: 'WOD5E.VTM.Dominate',
+        fortitude: 'WOD5E.VTM.Fortitude',
+        obfuscate: 'WOD5E.VTM.Obfuscate',
+        potence: 'WOD5E.VTM.Potence',
+        presence: 'WOD5E.VTM.Presence',
+        protean: 'WOD5E.VTM.Protean',
+        sorcery: 'WOD5E.VTM.BloodSorcery',
+        oblivion: 'WOD5E.VTM.Oblivion',
+        alchemy: 'WOD5E.VTM.ThinBloodAlchemy',
+        rituals: 'WOD5E.VTM.Rituals',
+        ceremonies: 'WOD5E.VTM.Ceremonies'
       }
 
       return `${game.i18n.localize(disciplines[data.discipline])}`
     }
+
+    // Hunter perks
     if (type === 'perk') {
-      return `${game.i18n.localize('WOD5E.' + data.edge.capitalize())}`
+      return `${game.i18n.localize('WOD5E.HTR.' + data.edge.capitalize())}`
     }
+
+    // Boons
+    if (type === 'boon') {
+      return game.i18n.localize('WOD5E.Items.Boon')
+    }
+
+    // Custom rolls
+    if (type === 'customRoll') {
+      return game.i18n.localize('WOD5E.Items.CustomRoll')
+    }
+
+    // Anything else
     return `${game.i18n.localize('WOD5E.' + type.capitalize())}`
   }
 

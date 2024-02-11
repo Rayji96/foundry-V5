@@ -56,7 +56,7 @@ export class HunterActorSheet extends CellActorSheet {
     const actor = this.actor
 
     // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.Hunter')}`
+    data.sheetType = `${game.i18n.localize('WOD5E.HTR.Label')}`
 
     // Prepare items
     if (actor.type === 'hunter') {
@@ -220,7 +220,7 @@ export class HunterActorSheet extends CellActorSheet {
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectEdge')}</label>
+              <label>${game.i18n.localize('WOD5E.HTR.SelectEdge')}</label>
               <select id="edgeSelect">${options}</select>
           </div>
       </form>`
@@ -242,7 +242,7 @@ export class HunterActorSheet extends CellActorSheet {
     }
 
     new Dialog({
-      title: game.i18n.localize('WOD5E.AddEdge'),
+      title: game.i18n.localize('WOD5E.HTR.AddEdge'),
       content: template,
       buttons,
       default: 'submit'

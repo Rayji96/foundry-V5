@@ -1,0 +1,161 @@
+{
+  "WOD5E": {
+    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+    "Name": "Nom",
+    "_Confirm": "",
+    "_Close": "",
+    "_Save": "",
+    "_Submit": "",
+    "System": "Système",
+    "Edit": "Éditer",
+    "Delete": "Supprimer",
+    "Level": "Niveau",
+    "Add": "Ajouter",
+    "Cancel": "Annuler",
+    "Health": "Santé",
+    "Willpower": "Volonté",
+    "_Exp": "",
+    "None": "Aucun",
+    
+    "Mortal": "Mortel",
+
+    "Roll": {
+      "_Label": "",
+      "_RollMode": "",
+      "_MortalDice": "",
+      "Success": "Succès",
+      "Successes": "Succès",
+      "CriticalSuccess": "Succès Critique",
+      "Fail": "Échouer",
+      "Modifier": "Modificateur",
+      "Difficulty": "Difficulté"
+    },
+
+    "SPC": {
+      "_Label": "",
+      "GeneralDifficulty": "Difficulté générale",
+      "StandardDicePools": "Piscines de dés standard",
+      "ExceptionalDicePools": "Piscines de dés exceptionnelles",
+      "Physical": "Physique",
+      "_Mental": "",
+      "_Social": "",
+      "AddSkill": "Ajouter des compétences",
+      "SelectSkill": "Sélectionnez les compétences"
+    },
+
+    "Damage": {
+      "Superficial": "Superficiel",
+      "Aggravated": "Aggravé",
+      "Stains": "Flétr.",
+      "Value": "Valeur",
+      "_Max": ""
+    },
+
+    "Tabs": {
+      "_Stats": "",
+      "Features": "Atouts",
+      "_Description": "",
+      "Equipment": "Équipement",
+      "Notes": "Notes",
+      "Other": "Autre"
+    },
+
+    "Attributes": {
+      "_Label": "",
+      "Attributes": "Attributs",
+      "Strength": "Force",
+      "Charisma": "Charisme",
+      "Intelligence": "Intelligence",
+      "Dexterity": "Dextérité",
+      "Manipulation": "Manipulation",
+      "Wits": "Astuce",
+      "Stamina": "Vigueur",
+      "Composure": "Sang-froid",
+      "Resolve": "Résolution"
+    },
+
+    "Skills": {
+      "_Label": "",
+      "Skills": "Compétences",
+      "Specialty": "Spécialité",
+      "Specialties": "Spécialités",
+      "Athletics": "Athlétisme",
+      "AnimalKen": "Animaux",
+      "Academics": "Érudition",
+      "Brawl": "Bagarre",
+      "Etiquette": "Étiquette",
+      "Awareness": "Vigilance",
+      "Craft": "Artisanat",
+      "Insight": "Empathie",
+      "Finance": "Finances",
+      "Drive": "Conduite",
+      "Intimidation": "Intimidation",
+      "Investigation": "Investigation",
+      "Firearms": "Armes à feu",
+      "Leadership": "Commandement",
+      "Medicine": "Médecine",
+      "Melee": "Mêlée",
+      "Performance": "Représentation",
+      "Occult": "Occultisme",
+      "Larceny": "Larcin",
+      "Persuasion": "Persuasion",
+      "Politics": "Politique",
+      "Stealth": "Furtivité",
+      "Streetwise": "Expérience de la rue",
+      "Science": "Sciences",
+      "Survival": "Survie",
+      "Subterfuge": "Subterfuge",
+      "Technology": "Technologie"
+    },
+
+    "Items": {
+      "_Label": "",
+      "ShowToChat": "Afficher pour discuter",
+      "CustomRoll": "Jet Personnalisé",
+      "CustomRolls": "Jets Personnalisés",
+      "Merit": "Avantage",
+      "_Cost": "",
+      "Flaw": "Handicap",
+      "_Bonuses": "",
+      "Background": "Historique",
+      "_Points": "",
+      "UseSkill": "Utiliser des Compétences",
+      "Rollable": "Jet de dés",
+      "FeatureType": "Type d'Atout",
+      "_Type": "",
+      "_NewSpecialty": "",
+      "Boon": "Dette",
+      "Boons": "Dettes"
+    },
+
+    "Biography": {
+      "_Label": "",
+      "Concept": "Concept",
+      "Chronicle": "Chronique",
+      "Ambition": "Ambition",
+      "Desire": "Désir",
+      "ChronicleTenets": "Principes de la Chronique",
+      "TouchstonesAndConvictions": "Attaches et Convictions",
+      "Appearance": "Apparence",
+      "History": "Histoire"
+    },
+
+    "DiceRoller": {
+      "AttributeShortLabel": "A",
+      "SkillShortLabel": "C",
+      "DisciplineShortLabel": "D",
+      "NothingShortLabel": "⊘",
+      "SelectAbility": "Selectionner un attribut"
+    },
+
+    "Chat": {
+      "RollingWillpower": "Jet de Volonté",
+      "Rolling": "Jet",
+      "RollWillpower": "Test la volonté",
+      "WillpowerReroll": "Relance du test de Volonté",
+      "_WillpowerFullTitle": "",
+      "WillpowerFull": "La volonté est entièrement endommagée, ne peut pas l'endommager davantage."
+    }
+  }
+}

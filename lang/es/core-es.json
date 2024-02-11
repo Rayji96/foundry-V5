@@ -1,0 +1,161 @@
+{
+  "WOD5E": {
+    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+    "Name": "Nombre",
+    "_Confirm": "",
+    "_Close": "",
+    "_Save": "",
+    "_Submit": "",
+    "System": "Sistema",
+    "Edit": "Editar",
+    "Delete": "Borrar",
+    "Level": "Nivel",
+    "Add": "Añadir",
+    "Cancel": "Cancelar",
+    "Health": "Salud",
+    "Willpower": "Fuerza de Voluntad",
+    "_Exp": "",
+    "None": "Ninguno",
+    
+    "Mortal": "Mortal",
+
+    "Roll": {
+      "_Label": "",
+      "_RollMode": "",
+      "_MortalDice": "",
+      "Success": "Éxito",
+      "Successes": "Éxitos",
+      "CriticalSuccess": "Éxito crítico",
+      "Fail": "Fallo",
+      "Modifier": "Modificador",
+      "Difficulty": "Dificultad"
+    },
+
+    "SPC": {
+      "_Label": "",
+      "GeneralDifficulty": "Dificultad general",
+      "StandardDicePools": "Grupos de dados estándar",
+      "ExceptionalDicePools": "Piscinas de dados excepcionales",
+      "Physical": "Físico",
+      "_Mental": "",
+      "_Social": "",
+      "AddSkill": "Agregar habilidad",
+      "SelectSkill": "Seleccionar habilidad"
+    },
+
+    "Damage": {
+      "_Superficial": "",
+      "Aggravated": "Agravado",
+      "Stains": "Máculas",
+      "Value": "Valor",
+      "_Max": ""
+    },
+
+    "Tabs": {
+      "Stats": "Estadísticas",
+      "Features": "Rasgos",
+      "Description": "Descripción",
+      "Equipment": "Equipo",
+      "Notes": "Notas",
+      "Other": "Otro"
+    },
+
+    "Attributes": {
+      "_Label": "",
+      "Attributes": "Atributos",
+      "Strength": "Fuerza",
+      "Charisma": "Carisma",
+      "Intelligence": "Inteligencia",
+      "Dexterity": "Destreza",
+      "Manipulation": "Manipulación",
+      "Wits": "Astucia",
+      "Stamina": "Resistencia",
+      "Composure": "Compostura",
+      "Resolve": "Resolución"
+    },
+
+    "Skills": {
+      "_Label": "",
+      "Skills": "Habilidades",
+      "Specialty": "Especialidad",
+      "Specialties": "Especialidades",
+      "Athletics": "Atletismo",
+      "AnimalKen": "Trato con Animales",
+      "Academics": "Academicismo",
+      "Brawl": "Pelea",
+      "Etiquette": "Etiqueta",
+      "Awareness": "Consciencia",
+      "Craft": "Artesanía",
+      "Insight": "Perspicacia",
+      "Finance": "Finanzas",
+      "Drive": "Conducir",
+      "Intimidation": "Intimidación",
+      "Investigation": "Investigación",
+      "Firearms": "Armas de Fuego",
+      "Leadership": "Liderazgo",
+      "Medicine": "Medicina",
+      "Melee": "Pelea con Armas",
+      "Performance": "Interpretación",
+      "Occult": "Ocultismo",
+      "Larceny": "Latrocinio",
+      "Persuasion": "Persuasión",
+      "Politics": "Política",
+      "Stealth": "Sigilo",
+      "Streetwise": "Callejeo",
+      "Science": "Ciencia",
+      "Survival": "Supervivencia",
+      "Subterfuge": "Subterfugio",
+      "Technology": "Tecnología"
+    },
+
+    "Items": {
+      "_Label": "",
+      "ShowToChat": "Mostrar al chat",
+      "CustomRoll": "Tirada Personalizadas",
+      "CustomRolls": "Tiradas Personalizadas",
+      "Merit": "Ventaja",
+      "_Cost": "",
+      "Flaw": "Defecto",
+      "Bonuses": "Bonuses",
+      "Background": "Transfondo",
+      "Points": "Puntos",
+      "UseSkill": "Usar Habilidades",
+      "Rollable": "Tirable",
+      "FeatureType": "Tipo de rasgo",
+      "Type": "Tipo",
+      "_NewSpecialty": "",
+      "Boon": "Bendición",
+      "Boons": "Favores"
+    },
+
+    "Biography": {
+      "_Label": "",
+      "Concept": "Concepto",
+      "Chronicle": "Crónica",
+      "Ambition": "Ambición",
+      "Desire": "Deseo",
+      "ChronicleTenets": "Principios de la crónica",
+      "TouchstonesAndConvictions": "Piedras de Toque y Convicciones",
+      "Appearance": "Apariencia",
+      "History": "Historia"
+    },
+
+    "DiceRoller": {
+      "AttributeShortLabel": "A",
+      "SkillShortLabel": "H",
+      "DisciplineShortLabel": "D",
+      "NothingShortLabel": "⊘",
+      "SelectAbility": "Elegir Atributo"
+    },
+
+    "Chat": {
+      "RollingWillpower": "Tirando Fuerza de Voluntad",
+      "Rolling": "Tirando",
+      "RollWillpower": "Control de Fuerza de Voluntad",
+      "WillpowerReroll": "Repetición",
+      "WillpowerFullTitle": "Willpower Tracker Full",
+      "WillpowerFull": "La fuerza de voluntad está totalmente dañada, ya no puede dañarla."  
+    }
+  }
+}

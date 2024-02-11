@@ -67,11 +67,15 @@ export const loadHelpers = async function () {
   })
 
   Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    return 'WOD5E.'.concat(capitalize(str))
+    return 'WOD5E.Items.'.concat(capitalize(str))
   })
 
   Handlebars.registerHelper('generateSkillLabel', function (str) {
-    return 'WOD5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
+    return 'WOD5E.Skills.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
+  })
+
+  Handlebars.registerHelper('generateAttributeLabel', function (str) {
+    return 'WOD5E.Attributes.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
   })
 
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
@@ -162,20 +166,20 @@ export const loadHelpers = async function () {
 
   Handlebars.registerHelper('getDisciplineName', function (key, roll = false) {
     const disciplines = {
-      animalism: 'WOD5E.Animalism',
-      auspex: 'WOD5E.Auspex',
-      celerity: 'WOD5E.Celerity',
-      dominate: 'WOD5E.Dominate',
-      fortitude: 'WOD5E.Fortitude',
-      obfuscate: 'WOD5E.Obfuscate',
-      potence: 'WOD5E.Potence',
-      presence: 'WOD5E.Presence',
-      protean: 'WOD5E.Protean',
-      sorcery: 'WOD5E.BloodSorcery',
-      oblivion: 'WOD5E.Oblivion',
-      alchemy: 'WOD5E.ThinBloodAlchemy',
-      rituals: 'WOD5E.Rituals',
-      ceremonies: 'WOD5E.Ceremonies'
+      animalism: 'WOD5E.VTM.Animalism',
+      auspex: 'WOD5E.VTM.Auspex',
+      celerity: 'WOD5E.VTM.Celerity',
+      dominate: 'WOD5E.VTM.Dominate',
+      fortitude: 'WOD5E.VTM.Fortitude',
+      obfuscate: 'WOD5E.VTM.Obfuscate',
+      potence: 'WOD5E.VTM.Potence',
+      presence: 'WOD5E.VTM.Presence',
+      protean: 'WOD5E.VTM.Protean',
+      sorcery: 'WOD5E.VTM.BloodSorcery',
+      oblivion: 'WOD5E.VTM.Oblivion',
+      alchemy: 'WOD5E.VTM.ThinBloodAlchemy',
+      rituals: 'WOD5E.VTM.Rituals',
+      ceremonies: 'WOD5E.VTM.Ceremonies'
     }
     if (roll) {
       if (key === 'rituals') {
@@ -189,17 +193,18 @@ export const loadHelpers = async function () {
 
   Handlebars.registerHelper('getEdgeName', function (key) {
     const edges = {
-      arsenal: 'WOD5E.Arsenal',
-      ordnance: 'WOD5E.Ordnance',
-      library: 'WOD5E.Library',
-      improvisedgear: 'WOD5E.ImprovisedGear',
-      globalaccess: 'WOD5E.GlobalAccess',
-      dronejockey: 'WOD5E.DroneJockey',
-      beastwhisperer: 'WOD5E.BeastWhisperer',
-      sensetheunnatural: 'WOD5E.SenseTheUnnatural',
-      repeltheunnatural: 'WOD5E.RepelTheUnnatural',
-      thwarttheunnatural: 'WOD5E.ThwartTheUnnatural',
-      artifact: 'WOD5E.Artifact'
+      arsenal: 'WOD5E.HTR.Arsenal',
+      fleet: 'WOD5E.HTR.Fleet',
+      ordnance: 'WOD5E.HTR.Ordnance',
+      library: 'WOD5E.HTR.Library',
+      improvisedgear: 'WOD5E.HTR.ImprovisedGear',
+      globalaccess: 'WOD5E.HTR.GlobalAccess',
+      dronejockey: 'WOD5E.HTR.DroneJockey',
+      beastwhisperer: 'WOD5E.HTR.BeastWhisperer',
+      sensetheunnatural: 'WOD5E.HTR.SenseTheUnnatural',
+      repeltheunnatural: 'WOD5E.HTR.RepelTheUnnatural',
+      thwarttheunnatural: 'WOD5E.HTR.ThwartTheUnnatural',
+      artifact: 'WOD5E.HTR.Artifact'
     }
     return edges[key]
   })
