@@ -253,7 +253,6 @@ export async function generateRollMessage ({
 
           resultLabel = `<div class="roll-result-label">${totalResult} ${game.i18n.localize(successText)}</div>`
         }
-        
       }
     } else {
       if (totalResult >= difficulty) { // If the difficulty is matched or exceeded...
