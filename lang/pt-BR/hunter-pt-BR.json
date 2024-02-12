@@ -4,7 +4,7 @@
       "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
       "Label": "Caçador",
-      "_HunterDice": "Dados de Caçador",
+      "HunterDice": "Dados de Caçador",
       "DesperationDice": "Dados de Desespero",
       "Despair": "Aflição",
       "Creed": "Credo",
@@ -12,7 +12,7 @@
       "Cell": "Célula",
       "Redemption": "Redenção",
       "Edges": "Trunfos",
-      "_EdgeType": "Tipo de Trunfo",
+      "EdgeType": "Tipo de Trunfo",
       "AddEdge": "Adicionar Trunfo",
       "SelectEdge": "Selecionar Trunfo",
       "AddPerk": "Adicionar Distinção",
