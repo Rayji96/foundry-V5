@@ -14,4 +14,15 @@ export class Renown {
     return game.i18n.localize(this[renown].label)
   }
   
+  static glory = {
+    label: 'WOD5E.WTA.Glory'
+  }
+
+  static honor = {
+    label: 'WOD5E.WTA.Honor'
+  }
+
+  static wisdom = {
+    label: 'WOD5E.WTA.Wisdom'
+  }
 }
