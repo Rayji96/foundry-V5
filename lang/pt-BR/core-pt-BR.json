@@ -3,10 +3,10 @@
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
     "Name": "Nome",
-    "_Confirm": "",
-    "_Close": "",
-    "_Save": "",
-    "_Submit": "",
+    "Confirm": "Confirmar",
+    "Close": "Fechar",
+    "Save": "Salvar",
+    "Submit": "Enviar",
     "System": "Sistema",
     "Edit": "Editar",
     "Delete": "Apagar",
@@ -15,15 +15,15 @@
     "Cancel": "Cancelar",
     "Health": "Vitalidade",
     "Willpower": "Força de Vontade",
-    "_Exp": "",
+    "Exp": "Experiência",
     "None": "Nenhum",
     
-    "_Mortal": "",
+    "Mortal": "Mortal",
 
     "Roll": {
       "Label": "Rolagem",
-      "_RollMode": "",
-      "_MortalDice": "",
+      "RollMode": "Modo de Rolagem",
+      "MortalDice": "Dados de Mortal",
       "Success": "Sucesso",
       "Successes": "Sucessos",
       "CriticalSuccess": "Sucesso Crítico",
@@ -33,19 +33,19 @@
     },
 
     "SPC": {
-      "_Label": "",
+      "Label": "Personagem do Narrador",
       "GeneralDifficulty": "Dificuldade geral",
       "StandardDicePools": "Pool de dados padrão",
       "ExceptionalDicePools": "Pools de dados excepcionais",
       "Physical": "Fisica",
-      "_Mental": "",
-      "_Social": "",
+      "Mental": "Mental",
+      "Social": "Social",
       "AddSkill": "Adicione habilidade",
       "SelectSkill": "Selecione Habilidade"
     },
 
     "Damage": {
-      "_Superficial": "",
+      "Superficial": "Superficial",
       "Aggravated": "Agravado",
       "Stains": "Máculas",
       "Value": "Valor",
@@ -62,7 +62,7 @@
     },
 
     "Attributes": {
-      "Label": "Atributo",
+      "Label": "Atributos",
       "Attributes": "Atributos",
       "Strength": "Força",
       "Charisma": "Carisma",
@@ -76,7 +76,7 @@
     },
 
     "Skills": {
-      "Label": "Habilidade",
+      "Label": "Habilidades",
       "Skills": "Habilidades",
       "Specialty": "Especialização",
       "Specialties": "Especializações",
@@ -110,14 +110,14 @@
     },
 
     "Items": {
-      "_Label": "",
+      "Label": "Items",
       "ShowToChat": "Mostrar no Chat",
       "CustomRoll": "Rolagem Personalizada",
       "CustomRolls": "Rolagens Personalizadas",
       "Merit": "Qualidade",
-      "_Cost": "",
+      "Cost": "Custo",
       "Flaw": "Defeito",
-      "_Bonuses": "",
+      "Bonuses": "Bônus",
       "Background": "Antecedente",
       "Points": "Pontos",
       "UseSkill": "Usar Habilidades",
@@ -130,7 +130,7 @@
     },
 
     "Biography": {
-      "_Label": "",
+      "Label": "Biografia",
       "Concept": "Conceito",
       "Chronicle": "Crônica",
       "Ambition": "Ambição",
@@ -154,7 +154,7 @@
       "Rolling": "Rolando",
       "RollWillpower": "Rolar Teste de Força de Vontade",
       "WillpowerReroll": "Rerrolagem com Força de Vontade",
-      "_WillpowerFullTitle": "",
+      "WillpowerFullTitle": "Barra de Força de Vontade completa",
       "WillpowerFull": "A força de vontade está totalmente danificada, não pode danificá-la mais."  
     }
   }
