@@ -15,7 +15,7 @@
     "Cancel": "Cancelar",
     "Health": "Vitalidade",
     "Willpower": "Força de Vontade",
-    "_Exp": "",
+    "Exp": "Experiência",
     "None": "Nenhum",
     
     "Mortal": "Mortal",
@@ -33,7 +33,7 @@
     },
 
     "SPC": {
-      "_Label": "",
+      "Label": "Personagem do Narrador",
       "GeneralDifficulty": "Dificuldade geral",
       "StandardDicePools": "Pool de dados padrão",
       "ExceptionalDicePools": "Pools de dados excepcionais",
@@ -62,7 +62,7 @@
     },
 
     "Attributes": {
-      "Label": "Atributo",
+      "Label": "Atributos",
       "Attributes": "Atributos",
       "Strength": "Força",
       "Charisma": "Carisma",
@@ -76,7 +76,7 @@
     },
 
     "Skills": {
-      "Label": "Habilidade",
+      "Label": "Habilidades",
       "Skills": "Habilidades",
       "Specialty": "Especialização",
       "Specialties": "Especializações",
