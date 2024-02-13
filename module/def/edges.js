@@ -6,7 +6,7 @@ export class Edges {
   static getList() {
     return Object.entries(this)
       .filter(([key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
-      .map(([key, value]) => ({ [key]: value }));
+      .map(([key, value]) => ({ [key]: value }))
   }
 
   // Localize the labels

@@ -28,7 +28,8 @@ import { Skills } from './def/skills.js'
 import { Disciplines } from './def/disciplines.js'
 import { Edges } from './def/edges.js'
 import { Renown } from './def/renown.js'
-
+import { WereForms } from './def/were-forms.js'
+import { Gifts } from './def/gifts.js'
 
 // Anything that needs to be ran alongside the initialisation of the world
 Hooks.once('init', async function () {
@@ -119,7 +120,9 @@ Hooks.once('ready', async function () {
       Skills,
       Disciplines,
       Edges,
-      Renown
+      Renown,
+      Gifts,
+      WereForms
     }
 
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to

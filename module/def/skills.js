@@ -7,7 +7,7 @@ export class Skills {
   static getList(type) {
     return Object.entries(this)
       .filter(([key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) && (!type || value.type === type))
-      .map(([key, value]) => ({ [key]: value }));
+      .map(([key, value]) => ({ [key]: value }))
   }
 
   // Localize the labels
