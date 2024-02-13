@@ -29,7 +29,7 @@ export class wod5eAPI {
     basicDice = 0,
     advancedDice = 0,
     actor = game.actors.get(ChatMessage.getSpeaker().actor),
-    data = game.actors.get(ChatMessage.getSpeaker().actor).system,
+    data = game.actors.get(ChatMessage.getSpeaker().actor)?.system || {},
     title = "Rolling",
     disableBasicDice = false,
     disableAdvancedDice = false,
@@ -44,6 +44,12 @@ export class wod5eAPI {
     rerollHunger = false,
     selectors = []
   }) {
+    if (!actor || !data) {
+      ui.notifications.error('Error: No actor defined.')
+      
+      return
+    }
+
     // Send the roll to the system
     await WOD5eDice.Roll({
       basicDice,
