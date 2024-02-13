@@ -111,19 +111,19 @@ Hooks.once('init', async function () {
 
 // Anything that needs to run once the world is ready
 Hooks.once('ready', async function () {
-    // Activate the API
-    window.WOD5E = {
-      api: {
-        Roll: wod5eAPI.Roll
-      },
-      Attributes,
-      Skills,
-      Disciplines,
-      Edges,
-      Renown,
-      Gifts,
-      WereForms
-    }
+  // Activate the API
+  window.WOD5E = {
+    api: {
+      Roll: wod5eAPI.Roll
+    },
+    Attributes,
+    Skills,
+    Disciplines,
+    Edges,
+    Renown,
+    Gifts,
+    WereForms
+  }
 
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createVampireMacro(data, slot))

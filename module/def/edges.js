@@ -5,13 +5,13 @@ export class Edges {
   // Will only retrieve objects (definitions)
   static getList () {
     return Object.entries(this)
-      .filter(([_key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
+      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
       .map(([key, value]) => ({ [key]: value }))
   }
 
   // Localize the labels
   static initializeLabels () {
-    for (const [_key, value] of Object.entries(this)) {
+    for (const [, value] of Object.entries(this)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         value.label = game.i18n.localize(value.label)
       }
@@ -22,7 +22,7 @@ export class Edges {
   static onReady () {
     Edges.initializeLabels()
   }
-  
+
   static arsenal = {
     label: 'WOD5E.HTR.Arsenal'
   }
