@@ -7,10 +7,14 @@
     {{/if}}
 
     {{!-- Sheet Header --}}
-    <header class="actor-header">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
-            alt="Profile Image" />
-        <h2 class="limited-charname">{{actor.name}}</h2>
+    <header class="limited-actor-header">
+        <div style="flex-grow: 0;">
+            <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
+                alt="Profile Image" />
+        </div>
+        <div style="flex-grow: 1;">
+            <h2 class="limited-charname">{{actor.name}}</h2>
+        </div>
     </header>
 
     {{!-- Sheet Body --}}

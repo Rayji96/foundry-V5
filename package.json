@@ -8,7 +8,7 @@
     "watch": "gulp",
     "gulp": "gulp",
     "eslint": "eslint -c .github/linters/.eslintrc.yml *",
-    "convert-packs": "fvtt package unpack -n Macros --inputDirectory ./packs/macros --outputDirectory ./packs/macros/_macros && fvtt package pack -n Macros --inputDirectory ./packs/macros/_macros --outputDirectory ./packs --nedb"
+    "convert-packs": "fvtt package unpack -n Macros --inputDirectory ./packs/ --outputDirectory ./packs/unpacked/_macros && fvtt package pack -n Macros --inputDirectory ./packs/unpacked/_macros --outputDirectory ./packs --nedb"
   },
   "browserslist": [
     "last 3 versions"

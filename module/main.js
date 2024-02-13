@@ -1,12 +1,7 @@
 /* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui */
 
-// Import Modules
-import { preloadHandlebarsTemplates } from './templates.js'
-import { migrateWorld } from './scripts/migration.js'
+// Actor sheets
 import { ActorInfo } from './actor/actor.js'
-import { ItemInfo } from './item/item.js'
-import { WoDItemSheet } from './item/item-sheet.js'
-import { MortalDie, VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/splat-dice.js'
 import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
 import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
 import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
@@ -15,10 +10,26 @@ import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
 import { CellActorSheet } from './actor/cell-actor-sheet.js'
 import { SPCActorSheet } from './actor/spc-actor-sheet.js'
 import { WerewolfActorSheet } from './actor/werewolf-actor-sheet.js'
+// Item sheets
+import { ItemInfo } from './item/item.js'
+import { WoDItemSheet } from './item/item-sheet.js'
+// FVTT and module functionality
+import { preloadHandlebarsTemplates } from './templates.js'
 import { loadDiceSoNice } from './dice/dice-so-nice.js'
 import { loadHelpers } from './helpers.js'
 import { loadSettings } from './settings.js'
+// WOD5E functions and classes
+import { MortalDie, VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/splat-dice.js'
+import { migrateWorld } from './scripts/migration.js'
 import { willpowerReroll } from './scripts/willpower-reroll.js'
+import { wod5eAPI } from './api/wod5e-api.js'
+import { Attributes } from './def/attributes.js'
+import { Skills } from './def/skills.js'
+import { Disciplines } from './def/disciplines.js'
+import { Edges } from './def/edges.js'
+import { Renown } from './def/renown.js'
+import { WereForms } from './def/were-forms.js'
+import { Gifts } from './def/gifts.js'
 
 // Anything that needs to be ran alongside the initialisation of the world
 Hooks.once('init', async function () {
@@ -100,6 +111,20 @@ Hooks.once('init', async function () {
 
 // Anything that needs to run once the world is ready
 Hooks.once('ready', async function () {
+  // Activate the API
+  window.WOD5E = {
+    api: {
+      Roll: wod5eAPI.Roll
+    },
+    Attributes,
+    Skills,
+    Disciplines,
+    Edges,
+    Renown,
+    Gifts,
+    WereForms
+  }
+
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createVampireMacro(data, slot))
 
