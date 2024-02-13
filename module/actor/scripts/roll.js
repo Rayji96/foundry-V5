@@ -1,4 +1,4 @@
-/* global renderTemplate, Dialog, game */
+/* global renderTemplate, Dialog, game, WOD5E */
 
 import { WOD5eDice } from '../../scripts/system-rolls.js'
 import { getActiveBonuses } from '../../scripts/rolls/situational-modifiers.js'
@@ -298,23 +298,23 @@ export const generateLabelAndLocalize = async function (str) {
 
   // Attributes
   if (attributes.find(obj => str in obj)) {
-    return findLabel (attributes, str)
+    return findLabel(attributes, str)
   }
   // Skills
   if (skills.find(obj => str in obj)) {
-    return findLabel (skills, str)
+    return findLabel(skills, str)
   }
   // Disciplines
   if (disciplines.find(obj => str in obj)) {
-    return findLabel (disciplines, str)
+    return findLabel(disciplines, str)
   }
   // Renown
   if (renown.find(obj => str in obj)) {
-    return findLabel (renown, str)
+    return findLabel(renown, str)
   }
 
   // Return the base localization if nothing else is found
-  return game.i18n.localize(`WOD5E.${str}`) 
+  return game.i18n.localize(`WOD5E.${str}`)
 
   // Function to actually grab the localized label
   function findLabel (list, string) {
@@ -322,7 +322,7 @@ export const generateLabelAndLocalize = async function (str) {
 
     // Return the localized string if found
     if (stringObject) return stringObject[string].label
-    
+
     // Return nothing
     return ''
   }

@@ -1,6 +1,6 @@
-/* global ChatMessage, game */
+/* global ChatMessage, game, ui */
 
-import { WOD5eDice } from "../scripts/system-rolls.js"
+import { WOD5eDice } from '../scripts/system-rolls.js'
 
 export class wod5eAPI {
   /**
@@ -30,7 +30,7 @@ export class wod5eAPI {
     advancedDice = 0,
     actor = game.actors.get(ChatMessage.getSpeaker().actor),
     data = game.actors.get(ChatMessage.getSpeaker().actor)?.system || {},
-    title = "Rolling",
+    title = 'Rolling',
     disableBasicDice = false,
     disableAdvancedDice = false,
     damageWillpower = false,
@@ -46,7 +46,7 @@ export class wod5eAPI {
   }) {
     if (!actor || !data) {
       ui.notifications.error('Error: No actor defined.')
-      
+
       return
     }
 

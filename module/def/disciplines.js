@@ -1,82 +1,82 @@
-/* global game */
+/* global game, Hooks */
 
 export class Disciplines {
   // Function to help with quickly grabbing all the listed values;
   // Will only retrieve objects (definitions)
-  static getList() {
+  static getList () {
     return Object.entries(this)
-      .filter(([key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
+      .filter(([_key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
       .map(([key, value]) => ({ [key]: value }));
   }
 
   // Localize the labels
-  static initializeLabels() {
-    for (const [key, value] of Object.entries(this)) {
+  static initializeLabels () {
+    for (const [_key, value] of Object.entries(this)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         value.label = game.i18n.localize(value.label)
       }
     }
   }
-  
+
   // Run any necessary compilation on ready
-  static onReady() {
+  static onReady () {
     Disciplines.initializeLabels()
   }
 
   static animalism = {
-    label: "WOD5E.VTM.Animalism"
+    label: 'WOD5E.VTM.Animalism'
   }
 
   static auspex = {
-    label: "WOD5E.VTM.Auspex"
+    label: 'WOD5E.VTM.Auspex'
   }
 
   static celerity = {
-    label: "WOD5E.VTM.Celerity"
+    label: 'WOD5E.VTM.Celerity'
   }
 
   static dominate = {
-    label: "WOD5E.VTM.Dominate"
+    label: 'WOD5E.VTM.Dominate'
   }
 
   static fortitude = {
-    label: "WOD5E.VTM.Fortitude"
+    label: 'WOD5E.VTM.Fortitude'
   }
 
   static obfuscate = {
-    label: "WOD5E.VTM.Obfuscate"
+    label: 'WOD5E.VTM.Obfuscate'
   }
 
   static potence = {
-    label: "WOD5E.VTM.Potence"
+    label: 'WOD5E.VTM.Potence'
   }
 
   static presence = {
-    label: "WOD5E.VTM.Presence"
+    label: 'WOD5E.VTM.Presence'
   }
 
   static protean = {
-    label: "WOD5E.VTM.Protean"
+    label: 'WOD5E.VTM.Protean'
   }
 
   static sorcery = {
-    label: "WOD5E.VTM.BloodSorcery"
+    label: 'WOD5E.VTM.BloodSorcery'
   }
 
   static oblivion = {
-    label: "WOD5E.VTM.Oblivion"
+    label: 'WOD5E.VTM.Oblivion'
   }
 
   static alchemy = {
-    label: "WOD5E.VTM.ThinBloodAlchemy"
+    label: 'WOD5E.VTM.ThinBloodAlchemy'
   }
 
   static rituals = {
-    label: "WOD5E.VTM.Rituals"
+    label: 'WOD5E.VTM.Rituals'
   }
 
   static ceremonies = {
-    label: "WOD5E.VTM.Ceremonies"
+    label: 'WOD5E.VTM.Ceremonies'
   }
 }
 

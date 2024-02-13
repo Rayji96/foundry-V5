@@ -1,74 +1,74 @@
-/* global game */
+/* global game, Hooks */
 
 export class Edges {
   // Function to help with quickly grabbing all the listed values;
   // Will only retrieve objects (definitions)
-  static getList() {
+  static getList () {
     return Object.entries(this)
-      .filter(([key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
+      .filter(([_key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
       .map(([key, value]) => ({ [key]: value }))
   }
 
   // Localize the labels
-  static initializeLabels() {
-    for (const [key, value] of Object.entries(this)) {
+  static initializeLabels () {
+    for (const [_key, value] of Object.entries(this)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         value.label = game.i18n.localize(value.label)
       }
     }
   }
-  
+
   // Run any necessary compilation on ready
-  static onReady() {
+  static onReady () {
     Edges.initializeLabels()
   }
   
   static arsenal = {
-    label: "WOD5E.HTR.Arsenal"
+    label: 'WOD5E.HTR.Arsenal'
   }
 
   static fleet = {
-    label: "WOD5E.HTR.Fleet"
+    label: 'WOD5E.HTR.Fleet'
   }
 
   static ordnance = {
-    label: "WOD5E.HTR.Ordnance"
+    label: 'WOD5E.HTR.Ordnance'
   }
 
   static library = {
-    label: "WOD5E.HTR.Library"
+    label: 'WOD5E.HTR.Library'
   }
 
   static improvisedgear = {
-    label: "WOD5E.HTR.ImprovisedGear"
+    label: 'WOD5E.HTR.ImprovisedGear'
   }
 
   static globalaccess = {
-    label: "WOD5E.HTR.GlobalAccess"
+    label: 'WOD5E.HTR.GlobalAccess'
   }
 
   static dronejockey = {
-    label: "WOD5E.HTR.DroneJockey"
+    label: 'WOD5E.HTR.DroneJockey'
   }
 
   static beastwhisperer = {
-    label: "WOD5E.HTR.BeastWhisperer"
+    label: 'WOD5E.HTR.BeastWhisperer'
   }
 
   static sensetheunnatural = {
-    label: "WOD5E.HTR.SenseTheUnnatural"
+    label: 'WOD5E.HTR.SenseTheUnnatural'
   }
 
   static repeltheunnatural = {
-    label: "WOD5E.HTR.RepelTheUnnatural"
+    label: 'WOD5E.HTR.RepelTheUnnatural'
   }
 
   static thwarttheunnatural = {
-    label: "WOD5E.HTR.ThwartTheUnnatural"
+    label: 'WOD5E.HTR.ThwartTheUnnatural'
   }
 
   static artifact = {
-    label: "WOD5E.HTR.Artifact"
+    label: 'WOD5E.HTR.Artifact'
   }
 }
 

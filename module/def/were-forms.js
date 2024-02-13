@@ -1,18 +1,18 @@
-/* global game */
+/* global game, Hooks */
 
 export class WereForms {
     // Function to help with quickly grabbing all the listed values;
   // Will only retrieve objects (definitions)
   // Optional string can be provided to filter by type
-  static getList(type) {
+  static getList (type) {
     return Object.entries(this)
-      .filter(([key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) && (!type || value.type === type))
+      .filter(([_key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) && (!type || value.type === type))
       .map(([key, value]) => ({ [key]: value }))
   }
 
   // Localize the labels
-  static initializeLabels() {
-    for (const [key, value] of Object.entries(this)) {
+  static initializeLabels () {
+    for (const [_key, value] of Object.entries(this)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         value.label = game.i18n.localize(value.label)
         value.nickname = game.i18n.localize(value.nickname)
@@ -21,7 +21,7 @@ export class WereForms {
   }
 
   // Run any necessary compilation on ready
-  static onReady() {
+  static onReady () {
     WereForms.initializeLabels()
   }
 

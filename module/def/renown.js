@@ -1,25 +1,25 @@
-/* global game */
+/* global game, Hooks */
 
 export class Renown {
   // Function to help with quickly grabbing all the listed values;
   // Will only retrieve objects (definitions)
-  static getList() {
+  static getList () {
     return Object.entries(this)
-      .filter(([key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
+      .filter(([_key, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
       .map(([key, value]) => ({ [key]: value }))
   }
 
   // Localize the labels
-  static initializeLabels() {
-    for (const [key, value] of Object.entries(this)) {
+  static initializeLabels () {
+    for (const [_key, value] of Object.entries(this)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         value.label = game.i18n.localize(value.label)
       }
     }
   }
-  
+
   // Run any necessary compilation on ready
-  static onReady() {
+  static onReady () {
     Renown.initializeLabels()
   }
   
