@@ -15,6 +15,7 @@ export class WereForms {
     for (const [key, value] of Object.entries(this)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         value.label = game.i18n.localize(value.label)
+        value.nickname = game.i18n.localize(value.nickname)
       }
     }
   }
