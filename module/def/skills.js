@@ -18,7 +18,7 @@ export class Skills {
       }
     }
   }
-  
+
   // Run any necessary compilation on ready
   static onReady() {
     Skills.initializeLabels()
