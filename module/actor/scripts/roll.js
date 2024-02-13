@@ -321,7 +321,7 @@ export const generateLabelAndLocalize = async function (str) {
     const stringObject = list.find(obj => string in obj)
 
     // Return the localized string if found
-    if (stringObject)  return game.i18n.localize(stringObject[string].label) 
+    if (stringObject) return stringObject[string].label
     
     // Return nothing
     return ''

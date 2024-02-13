@@ -9,9 +9,18 @@ export class Edges {
       .map(([key, value]) => ({ [key]: value }));
   }
 
-  // Function to help with quick localization
-  static localize (edge) {
-    return game.i18n.localize(this[edge].label)
+  // Localize the labels
+  static initializeLabels() {
+    for (const [key, value] of Object.entries(this)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        value.label = game.i18n.localize(value.label)
+      }
+    }
+  }
+  
+  // Run any necessary compilation on ready
+  static onReady() {
+    Edges.initializeLabels()
   }
   
   static arsenal = {
@@ -62,3 +71,6 @@ export class Edges {
     label: "WOD5E.HTR.Artifact"
   }
 }
+
+// Hook to call onReady when the game is ready
+Hooks.once('ready', Edges.onReady)

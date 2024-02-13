@@ -9,9 +9,18 @@ export class Renown {
       .map(([key, value]) => ({ [key]: value }));
   }
 
-  // Function to help with quick localization
-  static localize (renown) {
-    return game.i18n.localize(this[renown].label)
+  // Localize the labels
+  static initializeLabels() {
+    for (const [key, value] of Object.entries(this)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        value.label = game.i18n.localize(value.label)
+      }
+    }
+  }
+  
+  // Run any necessary compilation on ready
+  static onReady() {
+    Renown.initializeLabels()
   }
   
   static glory = {
@@ -26,3 +35,6 @@ export class Renown {
     label: 'WOD5E.WTA.Wisdom'
   }
 }
+
+// Hook to call onReady when the game is ready
+Hooks.once('ready', Renown.onReady)

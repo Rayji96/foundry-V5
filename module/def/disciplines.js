@@ -9,9 +9,18 @@ export class Disciplines {
       .map(([key, value]) => ({ [key]: value }));
   }
 
-  // Function to help with quick localization
-  static localize (discipline) {
-    return game.i18n.localize(this[discipline].label)
+  // Localize the labels
+  static initializeLabels() {
+    for (const [key, value] of Object.entries(this)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        value.label = game.i18n.localize(value.label)
+      }
+    }
+  }
+  
+  // Run any necessary compilation on ready
+  static onReady() {
+    Disciplines.initializeLabels()
   }
 
   static animalism = {
@@ -70,3 +79,6 @@ export class Disciplines {
     label: "WOD5E.VTM.Ceremonies"
   }
 }
+
+// Hook to call onReady when the game is ready
+Hooks.once('ready', Disciplines.onReady)

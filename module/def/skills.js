@@ -10,9 +10,18 @@ export class Skills {
       .map(([key, value]) => ({ [key]: value }));
   }
 
-  // Function to help with quick localization
-  static localize (skill) {
-    return game.i18n.localize(this[skill].label)
+  // Localize the labels
+  static initializeLabels() {
+    for (const [key, value] of Object.entries(this)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        value.label = game.i18n.localize(value.label)
+      }
+    }
+  }
+  
+  // Run any necessary compilation on ready
+  static onReady() {
+    Skills.initializeLabels()
   }
 
   static athletics = {
@@ -150,3 +159,6 @@ export class Skills {
     type: 'mental'
   }
 }
+
+// Hook to call onReady when the game is ready
+Hooks.once('ready', Skills.onReady)

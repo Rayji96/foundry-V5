@@ -10,9 +10,21 @@ export class GiftsRites {
       .map(([key, value]) => ({ [key]: value }));
   }
 
-  // Function to help with quick localization
-  static localize (gift) {
-    return game.i18n.localize(this[gift].label)
+  // Localize the labels
+  static initializeLabels() {
+    for (const [key, value] of Object.entries(this)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        value.label = game.i18n.localize(value.label)
+      }
+    }
+  }
+  
+  // Run any necessary compilation on ready
+  static onReady() {
+    GiftsRites.initializeLabels()
   }
   
 }
+
+// Hook to call onReady when the game is ready
+Hooks.once('ready', GiftsRites.onReady)
