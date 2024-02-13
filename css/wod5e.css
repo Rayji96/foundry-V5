@@ -327,12 +327,17 @@
     font-weight: 700;
 }
 
-.wod5e .actor-header h2.limited-charname {
+.wod5e .limited-actor-header {
+    flex-direction: row;
+    display: flex;
+    max-height: 106px;
+}
+
+.wod5e .limited-actor-header h2.limited-charname {
     font-weight: 700;
     font-size: 50px;
     text-align: center;
     flex: 0;
-    width: 100%;
     font-family: Amarante, serif;
 }
 
