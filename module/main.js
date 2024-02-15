@@ -114,7 +114,8 @@ Hooks.once('ready', async function () {
   // Activate the API
   window.WOD5E = {
     api: {
-      Roll: wod5eAPI.Roll
+      Roll: wod5eAPI.Roll,
+      RunMigration: migrateWorld
     },
     Attributes,
     Skills,
