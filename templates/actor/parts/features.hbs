@@ -2,7 +2,7 @@
     <ol class="items-list">
         {{#each actor.features as |feature key|}}
         <li class="flexrow item-header">
-            <div class="item-name">{{localize (generateFeatureLabel key)}}</div>
+            <div class="item-name">{{localize (generateLocalizedLabel key)}}</div>
             <div class="item-controls">
                 <a class="item-control item-create" title="{{localize 'WOD5E.Add'}}" data-type="feature"
                     data-featuretype="{{key}}"><i class="fas fa-plus"></i> {{localize "WOD5E.Add"}}</a>

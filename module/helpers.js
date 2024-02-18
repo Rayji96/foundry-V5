@@ -66,16 +66,43 @@ export const loadHelpers = async function () {
     return arr.join('; ')
   })
 
-  Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    return 'WOD5E.Items.'.concat(capitalize(str))
-  })
+  Handlebars.registerHelper('generateLocalizedLabel', function (str) {
+    // Lists
+    const attributes = WOD5E.Attributes.getList()
+    const skills = WOD5E.Skills.getList()
+    const disciplines = WOD5E.Disciplines.getList()
+    const renown = WOD5E.Renown.getList()
 
-  Handlebars.registerHelper('generateSkillLabel', function (str) {
-    return 'WOD5E.Skills.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
-  })
+    // Attributes
+    if (attributes.find(obj => str in obj)) {
+      return findLabel(attributes, str)
+    }
+    // Skills
+    if (skills.find(obj => str in obj)) {
+      return findLabel(skills, str)
+    }
+    // Disciplines
+    if (disciplines.find(obj => str in obj)) {
+      return findLabel(disciplines, str)
+    }
+    // Renown
+    if (renown.find(obj => str in obj)) {
+      return findLabel(renown, str)
+    }
 
-  Handlebars.registerHelper('generateAttributeLabel', function (str) {
-    return 'WOD5E.Attributes.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
+    // Return the base localization if nothing else is found
+    return game.i18n.localize(`WOD5E.${str}`)
+
+    // Function to actually grab the localized label
+    function findLabel (list, string) {
+      const stringObject = list.find(obj => string in obj)
+
+      // Return the localized string if found
+      if (stringObject) return stringObject[string].label
+
+      // Return nothing
+      return ''
+    }
   })
 
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
@@ -162,33 +189,6 @@ export const loadHelpers = async function () {
     }
 
     return ret
-  })
-
-  Handlebars.registerHelper('getDisciplineName', function (key, roll = false) {
-    const disciplines = {
-      animalism: 'WOD5E.VTM.Animalism',
-      auspex: 'WOD5E.VTM.Auspex',
-      celerity: 'WOD5E.VTM.Celerity',
-      dominate: 'WOD5E.VTM.Dominate',
-      fortitude: 'WOD5E.VTM.Fortitude',
-      obfuscate: 'WOD5E.VTM.Obfuscate',
-      potence: 'WOD5E.VTM.Potence',
-      presence: 'WOD5E.VTM.Presence',
-      protean: 'WOD5E.VTM.Protean',
-      sorcery: 'WOD5E.VTM.BloodSorcery',
-      oblivion: 'WOD5E.VTM.Oblivion',
-      alchemy: 'WOD5E.VTM.ThinBloodAlchemy',
-      rituals: 'WOD5E.VTM.Rituals',
-      ceremonies: 'WOD5E.VTM.Ceremonies'
-    }
-    if (roll) {
-      if (key === 'rituals') {
-        return disciplines.sorcery
-      } else if (key === 'ceremonies') {
-        return disciplines.oblivion
-      }
-    }
-    return disciplines[key]
   })
 
   Handlebars.registerHelper('getEdgeName', function (key) {
