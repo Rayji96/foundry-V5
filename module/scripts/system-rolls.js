@@ -29,6 +29,7 @@ class WOD5eDice {
    * @param rollMode                  (Optional, default FVTT's current roll mode) Which roll mode the message should default as
    * @param rerollHunger              (Optional, default false) Whether to reroll failed hunger dice
    * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
+   * @param macro                     (Optional, default '') A macro to run after the roll has been made
    *
    */
   static async Roll ({
@@ -48,7 +49,8 @@ class WOD5eDice {
     quickRoll = false,
     rollMode = game.settings.get('core', 'rollMode'),
     rerollHunger = false,
-    selectors = []
+    selectors = [],
+    macro = ''
   }) {
     // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systemsList
     const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
@@ -85,6 +87,14 @@ class WOD5eDice {
 
       // Send the results of the roll back to any functions that need it
       if (callback) callback(roll)
+
+      // Run any macros that need to be ran
+      if (macro) {
+        game.macros.get(macro).execute({
+          actor,
+          token: actor.token ?? actor.getActiveTokens[0]
+        })
+      }
 
       // Determine any active modifiers
       const activeModifiers = []
@@ -124,6 +134,7 @@ class WOD5eDice {
         activeModifiers
       })
 
+      // Post the message to the chat
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor }),
         content
