@@ -85,111 +85,138 @@
         "skills": {
           "athletics": {
             "value": 0,
-            "name": "WOD5E.Skills.Athletics"
+            "name": "WOD5E.Skills.Athletics",
+            "bonuses": []
           },
           "animal ken": {
             "value": 0,
-            "name": "WOD5E.Skills.AnimalKen"
+            "name": "WOD5E.Skills.AnimalKen",
+            "bonuses": []
           },
           "academics": {
             "value": 0,
-            "name": "WOD5E.Skills.Academics"
+            "name": "WOD5E.Skills.Academics",
+            "bonuses": []
           },
           "brawl": {
             "value": 0,
-            "name": "WOD5E.Skills.Brawl"
+            "name": "WOD5E.Skills.Brawl",
+            "bonuses": []
           },
           "etiquette": {
             "value": 0,
-            "name": "WOD5E.Skills.Etiquette"
+            "name": "WOD5E.Skills.Etiquette",
+            "bonuses": []
           },
           "awareness": {
             "value": 0,
-            "name": "WOD5E.Skills.Awareness"
+            "name": "WOD5E.Skills.Awareness",
+            "bonuses": []
           },
           "craft": {
             "value": 0,
-            "name": "WOD5E.Skills.Craft"
+            "name": "WOD5E.Skills.Craft",
+            "bonuses": []
           },
           "insight": {
             "value": 0,
-            "name": "WOD5E.Skills.Insight"
+            "name": "WOD5E.Skills.Insight",
+            "bonuses": []
           },
           "finance": {
             "value": 0,
-            "name": "WOD5E.Skills.Finance"
+            "name": "WOD5E.Skills.Finance",
+            "bonuses": []
           },
           "drive": {
             "value": 0,
-            "name": "WOD5E.Skills.Drive"
+            "name": "WOD5E.Skills.Drive",
+            "bonuses": []
           },
           "intimidation": {
             "value": 0,
-            "name": "WOD5E.Skills.Intimidation"
+            "name": "WOD5E.Skills.Intimidation",
+            "bonuses": []
           },
           "investigation": {
             "value": 0,
-            "name": "WOD5E.Skills.Investigation"
+            "name": "WOD5E.Skills.Investigation",
+            "bonuses": []
           },
           "firearms": {
             "value": 0,
-            "name": "WOD5E.Skills.Firearms"
+            "name": "WOD5E.Skills.Firearms",
+            "bonuses": []
           },
           "leadership": {
             "value": 0,
-            "name": "WOD5E.Skills.Leadership"
+            "name": "WOD5E.Skills.Leadership",
+            "bonuses": []
           },
           "medicine": {
             "value": 0,
-            "name": "WOD5E.Skills.Medicine"
+            "name": "WOD5E.Skills.Medicine",
+            "bonuses": []
           },
           "larceny": {
             "value": 0,
-            "name": "WOD5E.Skills.Larceny"
+            "name": "WOD5E.Skills.Larceny",
+            "bonuses": []
           },
           "performance": {
             "value": 0,
-            "name": "WOD5E.Skills.Performance"
+            "name": "WOD5E.Skills.Performance",
+            "bonuses": []
           },
           "occult": {
             "value": 0,
-            "name": "WOD5E.Skills.Occult"
+            "name": "WOD5E.Skills.Occult",
+            "bonuses": []
           },
           "melee": {
             "value": 0,
-            "name": "WOD5E.Skills.Melee"
+            "name": "WOD5E.Skills.Melee",
+            "bonuses": []
           },
           "persuasion": {
             "value": 0,
-            "name": "WOD5E.Skills.Persuasion"
+            "name": "WOD5E.Skills.Persuasion",
+            "bonuses": []
           },
           "politics": {
             "value": 0,
-            "name": "WOD5E.Skills.Politics"
+            "name": "WOD5E.Skills.Politics",
+            "bonuses": []
           },
           "stealth": {
             "value": 0,
-            "name": "WOD5E.Skills.Stealth"
+            "name": "WOD5E.Skills.Stealth",
+            "bonuses": []
           },
           "streetwise": {
             "value": 0,
-            "name": "WOD5E.Skills.Streetwise"
+            "name": "WOD5E.Skills.Streetwise",
+            "bonuses": []
           },
           "science": {
             "value": 0,
-            "name": "WOD5E.Skills.Science"
+            "name": "WOD5E.Skills.Science",
+            "bonuses": []
           },
           "survival": {
             "value": 0,
-            "name": "WOD5E.Skills.Survival"
+            "name": "WOD5E.Skills.Survival",
+            "bonuses": []
           },
           "subterfuge": {
             "value": 0,
-            "name": "WOD5E.Skills.Subterfuge"
+            "name": "WOD5E.Skills.Subterfuge",
+            "bonuses": []
           },
           "technology": {
             "value": 0,
-            "name": "WOD5E.Skills.Technology"
+            "name": "WOD5E.Skills.Technology",
+            "bonuses": []
           }
         }
       },
@@ -902,7 +929,8 @@
     "types": ["feature", "power", "boon", "customRoll", "perk", "gift"],
     "templates": {
       "base": {
-        "description": ""
+        "description": "",
+        "bonuses": []
       }
     },
     "feature": {

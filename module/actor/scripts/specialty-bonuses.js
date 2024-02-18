@@ -17,9 +17,9 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
       source: game.i18n.localize('WOD5E.Items.NewSpecialty'),
       value: 1,
       paths: [`skills.${skill}`],
-      displayWhenInactive: false,
+      displayWhenInactive: true,
       activeWhen: {
-        check: 'always'
+        check: 'never'
       }
     }
   }
@@ -69,10 +69,12 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
 
             // Define the existing list of bonuses
             const parentKeys = bonusPath.split('.')
-            const actorBonuses = parentKeys.reduce((obj, key) => obj && obj[key], actor.system) || { bonuses: [] }
+            const actorBonuses = parentKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
 
             // Add the new bonus to the list
             actorBonuses.push(newBonus)
+
+            console.log(actorBonuses)
 
             // Update the actor
             actor.update({ [`system.${bonusPath}`]: actorBonuses })
