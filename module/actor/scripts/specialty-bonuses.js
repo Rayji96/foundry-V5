@@ -56,6 +56,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
             activeWhen.value = html.find('[id=activeWhenValue]').val()
 
             const unless = html.find('[id=unless]').val()
+            const macro = html.find('[id=macro]').val()
 
             let newBonus = {}
             newBonus = {
@@ -63,6 +64,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
               value,
               paths,
               unless,
+              macro,
               displayWhenInactive,
               activeWhen
             }
@@ -73,8 +75,6 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
 
             // Add the new bonus to the list
             actorBonuses.push(newBonus)
-
-            console.log(actorBonuses)
 
             // Update the actor
             actor.update({ [`system.${bonusPath}`]: actorBonuses })
@@ -180,6 +180,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
             activeWhen.value = html.find('[id=activeWhenValue]').val()
 
             const unless = html.find('[id=unlessValue]').val()
+            const macro = html.find('[id=macro]').val()
 
             // Define the existing list of bonuses
             const bonusKeys = bonusPath.split('.')
@@ -191,6 +192,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
               value,
               paths,
               unless,
+              macro,
               displayWhenInactive,
               activeWhen
             }

@@ -5,9 +5,6 @@
             <b>Value</b>
             <input id="bonusValue" type="number" value="{{bonus.value}}"/>
         </div>
-        <div class="flexrow flex-center">
-            <input id="displayBonusWhenInactive" type="checkbox"{{#if bonus.displayWhenInactive}} checked{{/if}}>Display when inactive</input>
-        </div>
         <div class="flexcol">
             <b>Active When</b>
             <select id="activeWhenCheck" type="number">
@@ -26,6 +23,17 @@
                 <input id="activeWhenValue" type="text" value="{{bonus.activeWhen.value}}" placeholder="Value to check"/>
             </div>
         {{/ifeq}}
+        <div>
+            <b>Unless</b>
+            <input id="unless" type="text" value="{{bonus.unless}}" placeholder="Unless"/>
+        </div>
+        <div>
+            <b>Macro</b>
+            <input id="macro" type="text" value="{{bonus.macro}}" placeholder="Macro ID"/>
+        </div>
+        <div class="flexrow flex-center">
+            <input id="displayBonusWhenInactive" type="checkbox"{{#if bonus.displayWhenInactive}} checked{{/if}}>Display when inactive</input>
+        </div>
     </div>
     <div class="flexcol">
         <b>Paths, separated by semicolons (;)</b>

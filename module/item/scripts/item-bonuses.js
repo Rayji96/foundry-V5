@@ -49,12 +49,14 @@ export const _onAddBonus = async function (event, item) {
             activeWhen.value = html.find('[id=activeWhenValue]').val()
 
             const unless = html.find('[id=unless]').val()
+            const macro = html.find('[id=macro]').val()
 
             newBonus = {
               source,
               value,
               paths,
               unless,
+              macro,
               displayWhenInactive,
               activeWhen
             }
@@ -138,6 +140,7 @@ export const _onEditBonus = async function (event, item) {
             activeWhen.value = html.find('[id=activeWhenValue]').val()
 
             const unless = html.find('[id=unlessValue]').val()
+            const macro = html.find('[id=macro]').val()
 
             // Define the existing list of bonuses
             const itemBonuses = item.system.bonuses
@@ -148,6 +151,7 @@ export const _onEditBonus = async function (event, item) {
               value,
               paths,
               unless,
+              macro,
               displayWhenInactive,
               activeWhen
             }
