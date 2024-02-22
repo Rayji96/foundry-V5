@@ -263,6 +263,7 @@ export class HunterActorSheet extends CellActorSheet {
 
     // Secondary variables
     const edgeValue = 1
+    const macro = item.system.macroid
 
     // Variables yet to be defined
     let dice2
@@ -297,7 +298,8 @@ export class HunterActorSheet extends CellActorSheet {
       actor,
       data: item.system,
       title: item.name,
-      selectors
+      selectors,
+      macro
     })
   }
 }

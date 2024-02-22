@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor */
+/* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
 
 import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
@@ -255,9 +255,8 @@ export class WoDActor extends ActorSheet {
     const header = event.currentTarget
     const skill = header.dataset.skill
 
-    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-    const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-    const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
     // Secondary variables
     const skillData = {
@@ -281,9 +280,12 @@ export class WoDActor extends ActorSheet {
         close: (html) => {
           // Top-level variables
           const newDescription = html.find('#description')[0].value
+          const newMacro = html.find('#macroid')[0].value
 
           // Update the description of the skill
           actor.update({ [`system.skills.${skill}.description`]: newDescription })
+          // Update the macro ID
+          actor.update({ [`system.skills.${skill}.macroid`]: newMacro })
 
           // Remove the dialog from the actor's apps on close.
           delete actor.apps[SkillEditDialog.appId]

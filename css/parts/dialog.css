@@ -62,6 +62,21 @@
   background-color: #faf5ed;
 }
 
+.wod5e .dialog-contents .custom-modifiers .mod-delete {
+  margin: 5px;
+}
+
+.wod5e .dialog-contents .custom-modifiers .mod-label {
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.wod5e .dialog-contents .custom-modifiers .mod-value {
+  max-width: 30px;
+  margin-right: 45px;
+}
+
 .wod5e .dialog-contents .situational-modifiers .mod-header {
   font-weight: bold;
 }

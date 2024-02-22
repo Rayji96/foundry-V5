@@ -25,8 +25,6 @@
                             <option value="ifEquals"{{#ifeq bonus.activeWhen.check "ifEquals"}} selected{{/ifeq}} disabled="true">If equals...</option>
                         </select>
                     </div>
-                    <b>Display when inactive</b>
-                    <input name="displayWhenInactive" type="checkbox"{{#if bonus.displayWhenInactive}} checked{{/if}} disabled="true"/> 
                     {{#ifeq bonus.activeWhen.check 'ifEquals'}}
                         <div>
                             <b>Path</b>
@@ -37,6 +35,14 @@
                             <input name="value" type="text" value="{{bonus.activeWhen.value}}" placeholder="Value to check" disabled="true"/>
                         </div>
                     {{/ifeq}}
+                    <div>
+                        <b>Unless</b>
+                        <input name="path" type="text" value="{{bonus.unless}}" placeholder="Unless" disabled="true"/>
+                    </div>
+                    <div>
+                        <b>Display when inactive</b>
+                        <input name="displayWhenInactive" type="checkbox"{{#if bonus.displayWhenInactive}} checked{{/if}} disabled="true"/>
+                    </div>
                 </div>
                 <div class="flexcol">
                     <b>Paths, separated by semicolons (;)</b>

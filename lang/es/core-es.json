@@ -29,7 +29,12 @@
       "CriticalSuccess": "Éxito crítico",
       "Fail": "Fallo",
       "Modifier": "Modificador",
-      "Difficulty": "Dificultad"
+      "Difficulty": "Dificultad",
+      "_SelectableModifiers": "Selectable Modifiers",
+      "_Source": "Source",
+      "_Value": "Value",
+      "_Active": "Active",
+      "_CustomModifiers": "Custom Modifiers"
     },
 
     "SPC": {
@@ -126,7 +131,8 @@
       "Type": "Tipo",
       "_NewSpecialty": "",
       "Boon": "Bendición",
-      "Boons": "Favores"
+      "Boons": "Favores",
+      "_Macro": "Macro"
     },
 
     "Biography": {

@@ -25,7 +25,7 @@
                 </a>
                 <label for="actor.system.skills.{{key}}.value" class="rollable{{#if skill.bonuses}} specialty-available{{/if}}" data-value-paths="skills.{{key}}.value"
                 data-label="{{localize skill.name}}" data-selectors="skills skills.{{key}}" data-skill="{{key}}" data-select-dialog="true"
-                data-use-flavor-path="true" data-flavor-path="skills.{{key}}.description">{{localize skill.name}}</label>
+                data-use-flavor-path="true" data-flavor-path="skills.{{key}}.description" data-macroid="{{skill.macroid}}">{{localize skill.name}}</label>
                 {{#if skill.bonuses}}
                     <label class="specialty" title="Specialties:{{#each skill.bonuses as |bonus key|}} {{bonus.source}}{{#unless @last}},{{/unless}}{{/each}}">S</label>
                 {{/if}}
@@ -62,8 +62,8 @@
                     <img src="{{roll.img}}" title="{{roll.name}}" width="24" height="24" alt="{{roll.name}}" />
                 </div>
                 <h4 class="item-name">{{roll.name}}</h4>
-                <h4 class="item-name">{{localize (generateAttributeLabel roll.system.dice1)}}</h4>
-                <h4 class="item-name">{{localize (generateSkillLabel roll.system.dice2)}}</h4>
+                <h4 class="item-name">{{localize (generateLocalizedLabel roll.system.dice1)}}</h4>
+                <h4 class="item-name">{{localize (generateLocalizedLabel roll.system.dice2)}}</h4>
                 <div class="item-controls">
                     <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}"><i
                             class="fas fa-edit"></i></a>

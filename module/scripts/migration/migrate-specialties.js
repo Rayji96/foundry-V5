@@ -41,8 +41,9 @@ export const MigrateSpecialties = async function () {
               source: `${item.name}`,
               value: 1,
               paths: [`skills.${skill}`],
+              displayWhenInactive: true,
               activeWhen: {
-                check: 'always'
+                check: 'never'
               }
             }
 

@@ -1,4 +1,4 @@
-/* global ChatMessage, Roll, game, renderTemplate, CONFIG, Dialog */
+/* global ChatMessage, Roll, game, renderTemplate, CONFIG, Dialog, WOD5E */
 
 // Import various helper functions
 import { generateRollFormula } from './rolls/roll-formula.js'
@@ -29,6 +29,7 @@ class WOD5eDice {
    * @param rollMode                  (Optional, default FVTT's current roll mode) Which roll mode the message should default as
    * @param rerollHunger              (Optional, default false) Whether to reroll failed hunger dice
    * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
+   * @param macro                     (Optional, default '') A macro to run after the roll has been made
    *
    */
   static async Roll ({
@@ -48,11 +49,11 @@ class WOD5eDice {
     quickRoll = false,
     rollMode = game.settings.get('core', 'rollMode'),
     rerollHunger = false,
-    selectors = []
+    selectors = [],
+    macro = ''
   }) {
-    // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systemsList
-    const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-    const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+    // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systems list
+    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
     // Handle getting any situational modifiers
     const situationalModifiers = await getSituationalModifiers({
@@ -86,6 +87,14 @@ class WOD5eDice {
       // Send the results of the roll back to any functions that need it
       if (callback) callback(roll)
 
+      // Run any macros that need to be ran
+      if (macro) {
+        game.macros.get(macro).execute({
+          actor,
+          token: actor.token ?? actor.getActiveTokens[0]
+        })
+      }
+
       // Determine any active modifiers
       const activeModifiers = []
       if ($form) {
@@ -102,12 +111,34 @@ class WOD5eDice {
               // Add a plus sign if the value is positive
               const valueWithSign = (value > 0 ? '+' : '') + value
 
-              // Push the values to the activeModifiers array
+              // Push the object to the activeModifiers array
               activeModifiers.push({
                 label,
                 value: valueWithSign
               })
             }
+          })
+        }
+
+        const customModifiersList = $form.find('.custom-modifier')
+        if (customModifiersList.length > 0) {
+          // Go through each custom modifier and add it to the array
+          customModifiersList.each(function () {
+            // Get the label and value from the current .custom-modifier element
+            const label = $(this).find('.mod-name').val()
+            const value = $(this).find('.mod-value').val()
+
+            // Add a plus sign if the value is positive
+            const valueWithSign = (value > 0 ? '+' : '') + value
+
+            // Create an object with label and value fields
+            const modifierObject = {
+              label,
+              value: valueWithSign
+            }
+
+            // Add the object to the activeModifiers array
+            activeModifiers.push(modifierObject)
           })
         }
       }
@@ -124,6 +155,7 @@ class WOD5eDice {
         activeModifiers
       })
 
+      // Post the message to the chat
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor }),
         content
@@ -172,8 +204,21 @@ class WOD5eDice {
                   const advancedDiceInput = html.find('#inputAdvancedDice')
 
                   // Get the values
-                  const basicValue = basicDiceInput.val() ? basicDiceInput.val() : 0
+                  let basicValue = basicDiceInput.val() ? basicDiceInput.val() : 0
                   const advancedValue = advancedDiceInput.val() ? advancedDiceInput.val() : 0
+
+                  // Add any custom modifiers
+                  const customModifiersList = html.find('.custom-modifier')
+                  if (customModifiersList.length > 0) {
+                    // Go through each custom modifier and add it to the array
+                    customModifiersList.each(function () {
+                      // Get the value from the current .custom-modifier element
+                      const value = $(this).find('.mod-value').val()
+
+                      // Add the value to the basicValue
+                      basicValue = parseInt(basicValue) + parseInt(value)
+                    })
+                  }
 
                   // Send the roll to the _roll function
                   roll = await _roll(basicValue, advancedValue, html)
@@ -243,6 +288,26 @@ class WOD5eDice {
 
                 // Plug in the new value to the input
                 basicDiceInput.val(newValue)
+              })
+
+              // Add event listener to the add custo mmodifier button
+              html.find('.add-custom-mod').click(function (event) {
+                event.preventDefault()
+
+                // Define the custom modifiers list and a custom modifier element
+                const customModList = $('#custom-modifiers-list')
+                const customModElement = `<div class="form-group custom-modifier">
+                    <div class="mod-label">
+                      <a class="mod-delete" title="` + game.i18n.localize('WOD5E.Delete') + `">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                      <input class="mod-name" type="text" value="Custom"/>
+                    </div>
+                    <input class="mod-value" type="number" value="1"/>
+                  </div>`
+
+                // Append a new custom modifier element to the list
+                customModList.append(customModElement)
               })
             }
           },

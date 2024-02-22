@@ -167,6 +167,11 @@ export class WerewolfActorSheet extends WoDActor {
     })
   }
 
+  /**
+     * Handle rolling gifts
+     * @param {Event} event   The originating click event
+     * @private
+     */
   async _onGiftRoll (event) {
     event.preventDefault()
 
@@ -180,6 +185,7 @@ export class WerewolfActorSheet extends WoDActor {
     const rageDice = Math.max(actor.system.rage.value, 0)
     const itemRenown = item.system.renown
     const renownValue = actor.system.renown[itemRenown].value
+    const macro = item.system.macroid
 
     // Variables yet to be defined
     const selectors = []
@@ -225,7 +231,8 @@ export class WerewolfActorSheet extends WoDActor {
       title: item.name,
       actor,
       data: item.system,
-      selectors
+      selectors,
+      macro
     })
   }
 

@@ -27,7 +27,12 @@
             "CriticalSuccess": "Critical Success!",
             "Fail": "Fail",
             "Modifier": "Modifier",
-            "Difficulty": "Difficulty"
+            "Difficulty": "Difficulty",
+            "SelectableModifiers": "Selectable Modifiers",
+            "Source": "Source",
+            "Value": "Value",
+            "Active": "Active",
+            "CustomModifiers": "Custom Modifiers"
         },
 
         "SPC": {
@@ -124,7 +129,8 @@
             "Type": "Type",
             "NewSpecialty": "New Specialty",
             "Boon": "Boon",
-            "Boons": "Boons"
+            "Boons": "Boons",
+            "Macro": "Macro"
         },
 
         "Biography": {

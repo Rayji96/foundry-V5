@@ -22,9 +22,8 @@ export const _onRoll = async function (event) {
   // Secondary variables
   const { skill, attribute, discipline, renown } = dataset
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Render selecting a skill/attribute to roll
   const dialogTemplate = 'systems/vtm5e/templates/ui/select-dice-dialog.hbs'
@@ -135,6 +134,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
   const flatMod = parseInt(dataset.flatMod) || 0
   const absoluteValue = parseInt(dataset.absoluteValue) || 0
   const selectors = dataset.selectors ? dataset.selectors.split(' ') : []
+  const macro = dataset.itemId ? data.macroid : dataset.macroid
 
   // Variables yet to be defined
   let basicDice, advancedDice
@@ -172,9 +172,8 @@ export const _onConfirmRoll = async function (dataset, actor) {
     advancedDice = disableAdvancedDice ? 0 : await getAdvancedDice(actor)
   }
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Some quick modifications to vampire and werewolf rolls
   // in order to properly display the dice in the dialog window
@@ -216,7 +215,8 @@ export const _onConfirmRoll = async function (dataset, actor) {
     rerollHunger,
     increaseHunger,
     decreaseRage,
-    selectors
+    selectors,
+    macro
   })
 }
 
@@ -268,9 +268,8 @@ export const getAdvancedDice = async function (actor) {
   // Top-level variables
   const actorData = actor.system
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actorData.gamesystem) > -1 ? actorData.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   if (system === 'vampire' && actor.type !== 'ghoul') {
     // Define actor's hunger dice, ensuring it can't go below 0

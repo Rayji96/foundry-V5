@@ -27,6 +27,7 @@
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</a>
         <a class="item" data-tab="attributes">{{localize "WOD5E.Attributes.Attributes"}}</a>
+        <a class="item" data-tab="macro">{{localize "WOD5E.Items.Macro"}}</a>
         <a class="item" data-tab="bonuses">{{localize "WOD5E.Items.Bonuses"}}</a>
     </nav>
 
@@ -46,7 +47,7 @@
                 <select name="system.dice1" data-type="String">
                     {{#select item.system.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
-                    <option value="discipline">{{localize (getDisciplineName item.system.discipline)}}</option>
+                    <option value="discipline">{{localize (generateLocalizedLabel item.system.discipline)}}</option>
                     {{/select}}
                 </select>
                 <label class="resource-label">+</label>
@@ -66,7 +67,7 @@
                     <select name="system.dice2" data-type="String">
                         {{#select item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
-                        <option value="discipline">{{localize (getDisciplineName item.system.discipline)}}</option>
+                        <option value="discipline">{{localize (generateLocalizedLabel item.system.discipline)}}</option>
                         {{/select}}
                     </select>
                 {{/if}}
@@ -102,6 +103,9 @@
                 {{/if}}
             </div>
         </div>
+
+        {{!-- Macro Tab --}}
+        {{> "systems/vtm5e/templates/item/parts/macro.hbs"}}
 
         {{!-- Bonuses Tab --}}
         {{> "systems/vtm5e/templates/item/parts/bonuses.hbs"}}

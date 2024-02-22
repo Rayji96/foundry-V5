@@ -11,6 +11,7 @@
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</a>
         <a class="item" data-tab="type">{{localize "WOD5E.Items.Type"}}</a>
+        <a class="item" data-tab="macro">{{localize "WOD5E.Items.Macro"}}</a>
         <a class="item" data-tab="bonuses">{{localize "WOD5E.Items.Bonuses"}}</a>
     </nav>
 
@@ -28,6 +29,9 @@
                 <input type="text" name="system.boontype" value="{{item.system.boontype}}" />
             </div>
         </div>
+
+        {{!-- Macro Tab --}}
+        {{> "systems/vtm5e/templates/item/parts/macro.hbs"}}
 
         {{!-- Bonuses Tab --}}
         {{> "systems/vtm5e/templates/item/parts/bonuses.hbs"}}

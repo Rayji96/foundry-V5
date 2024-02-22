@@ -23,8 +23,11 @@ import { MortalDie, VampireDie, VampireHungerDie, HunterDie, HunterDesperationDi
 import { migrateWorld } from './scripts/migration.js'
 import { willpowerReroll } from './scripts/willpower-reroll.js'
 import { wod5eAPI } from './api/wod5e-api.js'
+// WOD5E Definitions
+import { Systems } from './def/systems.js'
 import { Attributes } from './def/attributes.js'
 import { Skills } from './def/skills.js'
+import { Features } from './def/features.js'
 import { Disciplines } from './def/disciplines.js'
 import { Edges } from './def/edges.js'
 import { Renown } from './def/renown.js'
@@ -117,8 +120,10 @@ Hooks.once('ready', async function () {
       Roll: wod5eAPI.Roll,
       RunMigration: migrateWorld
     },
+    Systems,
     Attributes,
     Skills,
+    Features,
     Disciplines,
     Edges,
     Renown,

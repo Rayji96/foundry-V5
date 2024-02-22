@@ -29,7 +29,12 @@
       "CriticalSuccess": "Kritischer Erfolg",
       "Fail": "Fehlschlag",
       "Modifier": "Modifikator",
-      "Difficulty": "Schwierigkeit"
+      "Difficulty": "Schwierigkeit",
+      "_SelectableModifiers": "Selectable Modifiers",
+      "_Source": "Source",
+      "_Value": "Value",
+      "_Active": "Active",
+      "_CustomModifiers": "Custom Modifiers"
     },
 
     "SPC": {
@@ -126,7 +131,8 @@
       "Type": "Typ",
       "_NewSpecialty": "",
       "Boon": "Gefallen",
-      "Boons": "Gefallen"
+      "Boons": "Gefallen",
+      "_Macro": "Macro"
     },
 
     "Biography": {

@@ -29,7 +29,12 @@
       "CriticalSuccess": "Succès Critique",
       "Fail": "Échouer",
       "Modifier": "Modificateur",
-      "Difficulty": "Difficulté"
+      "Difficulty": "Difficulté",
+      "_SelectableModifiers": "Selectable Modifiers",
+      "_Source": "Source",
+      "_Value": "Value",
+      "_Active": "Active",
+      "_CustomModifiers": "Custom Modifiers"
     },
 
     "SPC": {
@@ -126,7 +131,8 @@
       "_Type": "",
       "_NewSpecialty": "",
       "Boon": "Dette",
-      "Boons": "Dettes"
+      "Boons": "Dettes",
+      "_Macro": "Macro"
     },
 
     "Biography": {

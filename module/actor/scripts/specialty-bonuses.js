@@ -1,4 +1,4 @@
-/* global renderTemplate, Dialog, game */
+/* global renderTemplate, Dialog, game, WOD5E */
 
 export const _onAddBonus = async function (event, actor, data, SkillEditDialog) {
   // Top-level variables
@@ -6,9 +6,8 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
   const skill = header.dataset.skill
   const bonusPath = header.dataset.bonusPath
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Secondary variables
   const bonusData = {
@@ -17,9 +16,9 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
       source: game.i18n.localize('WOD5E.Items.NewSpecialty'),
       value: 1,
       paths: [`skills.${skill}`],
-      displayWhenInactive: false,
+      displayWhenInactive: true,
       activeWhen: {
-        check: 'always'
+        check: 'never'
       }
     }
   }
@@ -69,7 +68,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
 
             // Define the existing list of bonuses
             const parentKeys = bonusPath.split('.')
-            const actorBonuses = parentKeys.reduce((obj, key) => obj && obj[key], actor.system) || { bonuses: [] }
+            const actorBonuses = parentKeys.reduce((obj, key) => obj && obj[key], actor.system) || []
 
             // Add the new bonus to the list
             actorBonuses.push(newBonus)
@@ -106,9 +105,8 @@ export const _onDeleteBonus = async function (event, actor, data, SkillEditDialo
   const key = header.dataset.bonus
   const bonusPath = header.dataset.bonusPath
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Define the existing list of bonuses
   const bonusKeys = bonusPath.split('.')
@@ -142,9 +140,8 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
     bonus: data.skill.bonuses[key]
   }
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Render the template
   const bonusTemplate = 'systems/vtm5e/templates/item/parts/bonus-display.hbs'
