@@ -52,23 +52,37 @@
 
   <!-- If the actor is a vampire, show option to add Discipline dots -->
   {{#ifeq system "vampire"}}
-    <div class="secondary-selector">
-      <div>Add Discipline:</div>
-      <select id="disciplineSelect">
-        <option value="">None</option>
-        {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
-      </select>
-    </div>
+    <!-- If a discipline is already selected, display the selected discipline -->
+    {{#if discipline}}
+      <div class="secondary-selector">
+        <b>{{localize (generateLocalizedLabel discipline)}}</b>
+      </div>
+    {{else}}
+      <div class="secondary-selector">
+        <div>Add Discipline:</div>
+        <select id="disciplineSelect">
+          <option value="">None</option>
+          {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
+        </select>
+      </div>
+    {{/if}}
   {{/ifeq}}
 
   <!-- If the actor is a werewolf, show option to add Renown dots-->
   {{#ifeq system "werewolf"}}
-    <div class="secondary-selector">
-      <div>Add Renown:</div>
-      <select id="renownSelect">
-        <option value="">None</option>
-        {{> "systems/vtm5e/templates/item/parts/renown.hbs"}}
-      </select>
-    </div>
+    <!-- If renown is already selected, display the selected renown -->
+    {{#if renown}}
+      <div class="secondary-selector">
+        <b>{{localize (generateLocalizedLabel renown)}}</b>
+      </div>
+    {{else}}
+      <div class="secondary-selector">
+        <div>Add Renown:</div>
+        <select id="renownSelect">
+          <option value="">None</option>
+          {{> "systems/vtm5e/templates/item/parts/renown.hbs"}}
+        </select>
+      </div>
+    {{/if}}
   {{/ifeq}}
 </form>

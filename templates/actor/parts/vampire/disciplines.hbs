@@ -36,8 +36,8 @@
                             <i class="fas fa-plus"></i>
                         </a>
                         <!-- Icon to roll the discipline with an attribute -->
-                        <a class="rollable discipline-dice" title="{{localize 'WOD5E.Roll.Label'}}" data-use-absolute-value="true" data-absolute-value="{{discipline.value}}"
-                            data-label="{{key}}">
+                        <a class="rollable discipline-dice" title="{{localize 'WOD5E.Roll.Label'}}" data-value-paths="disciplines.{{key}}.value"
+                            data-label="{{localize discipline.name}}" data-selectors="discipline disciplines.{{key}}" data-discipline="{{key}}" data-select-dialog="true">
                             <i class="fas fa-dice-d20"></i>
                         </a>
                         <!-- Icon to show the discipline description to the chat-->
