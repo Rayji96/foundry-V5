@@ -281,9 +281,12 @@ export class WoDActor extends ActorSheet {
         close: (html) => {
           // Top-level variables
           const newDescription = html.find('#description')[0].value
+          const newMacro = html.find('#macroid')[0].value
 
           // Update the description of the skill
           actor.update({ [`system.skills.${skill}.description`]: newDescription })
+          // Update the macro ID
+          actor.update({ [`system.skills.${skill}.macroid`]: newMacro })
 
           // Remove the dialog from the actor's apps on close.
           delete actor.apps[SkillEditDialog.appId]
