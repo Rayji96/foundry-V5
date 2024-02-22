@@ -124,7 +124,8 @@
             "Type": "Type",
             "NewSpecialty": "New Specialty",
             "Boon": "Boon",
-            "Boons": "Boons"
+            "Boons": "Boons",
+            "Macro": "Macro"
         },
 
         "Biography": {

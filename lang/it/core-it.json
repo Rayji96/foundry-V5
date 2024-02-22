@@ -126,7 +126,8 @@
       "Type": "Tipo",
       "_NewSpecialty": "",
       "Boon": "Favore",
-      "Boons": "Favori"
+      "Boons": "Favori",
+      "_Macro": "Macro"
     },
 
     "Biography": {

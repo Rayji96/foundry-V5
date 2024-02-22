@@ -126,7 +126,8 @@
       "Type": "Typ",
       "_NewSpecialty": "",
       "Boon": "Gefallen",
-      "Boons": "Gefallen"
+      "Boons": "Gefallen",
+      "_Macro": "Macro"
     },
 
     "Biography": {

@@ -126,7 +126,8 @@
       "Type": "Tipo",
       "_NewSpecialty": "",
       "Boon": "Bendición",
-      "Boons": "Favores"
+      "Boons": "Favores",
+      "_Macro": "Macro"
     },
 
     "Biography": {

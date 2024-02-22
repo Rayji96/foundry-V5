@@ -126,7 +126,8 @@
       "Type": "Typ",
       "_NewSpecialty": "",
       "Boon": "Przysługa",
-      "Boons": "Przysługi"
+      "Boons": "Przysługi",
+      "_Macro": "Macro"
     },
 
     "Biography": {
