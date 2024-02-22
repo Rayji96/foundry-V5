@@ -255,9 +255,8 @@ export class WoDActor extends ActorSheet {
     const header = event.currentTarget
     const skill = header.dataset.skill
 
-    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-    const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-    const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
     // Secondary variables
     const skillData = {

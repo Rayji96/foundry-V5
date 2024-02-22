@@ -6,9 +6,8 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
   const skill = header.dataset.skill
   const bonusPath = header.dataset.bonusPath
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Secondary variables
   const bonusData = {
@@ -106,9 +105,8 @@ export const _onDeleteBonus = async function (event, actor, data, SkillEditDialo
   const key = header.dataset.bonus
   const bonusPath = header.dataset.bonusPath
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Define the existing list of bonuses
   const bonusKeys = bonusPath.split('.')
@@ -142,9 +140,8 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
     bonus: data.skill.bonuses[key]
   }
 
-  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systemsList
-  const systemsList = ['vampire', 'werewolf', 'hunter', 'mortal']
-  const system = systemsList.indexOf(actor.system.gamesystem) > -1 ? actor.system.gamesystem : 'mortal'
+  // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Render the template
   const bonusTemplate = 'systems/vtm5e/templates/item/parts/bonus-display.hbs'
