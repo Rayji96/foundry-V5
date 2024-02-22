@@ -25,6 +25,7 @@ import { willpowerReroll } from './scripts/willpower-reroll.js'
 import { wod5eAPI } from './api/wod5e-api.js'
 import { Attributes } from './def/attributes.js'
 import { Skills } from './def/skills.js'
+import { Features } from './def/features.js'
 import { Disciplines } from './def/disciplines.js'
 import { Edges } from './def/edges.js'
 import { Renown } from './def/renown.js'
@@ -119,6 +120,7 @@ Hooks.once('ready', async function () {
     },
     Attributes,
     Skills,
+    Features,
     Disciplines,
     Edges,
     Renown,

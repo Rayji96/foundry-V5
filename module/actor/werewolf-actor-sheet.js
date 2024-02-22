@@ -180,6 +180,7 @@ export class WerewolfActorSheet extends WoDActor {
     const rageDice = Math.max(actor.system.rage.value, 0)
     const itemRenown = item.system.renown
     const renownValue = actor.system.renown[itemRenown].value
+    const macro = item.system.macroid
 
     // Variables yet to be defined
     const selectors = []
@@ -225,7 +226,8 @@ export class WerewolfActorSheet extends WoDActor {
       title: item.name,
       actor,
       data: item.system,
-      selectors
+      selectors,
+      macro
     })
   }
 

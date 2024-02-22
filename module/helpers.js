@@ -70,6 +70,7 @@ export const loadHelpers = async function () {
     // Lists
     const attributes = WOD5E.Attributes.getList()
     const skills = WOD5E.Skills.getList()
+    const features = WOD5E.Features.getList()
     const disciplines = WOD5E.Disciplines.getList()
     const renown = WOD5E.Renown.getList()
 
@@ -81,6 +82,10 @@ export const loadHelpers = async function () {
     if (skills.find(obj => str in obj)) {
       return findLabel(skills, str)
     }
+    // Features
+    if (features.find(obj => str in obj)) {
+      return findLabel(features, str)
+    }
     // Disciplines
     if (disciplines.find(obj => str in obj)) {
       return findLabel(disciplines, str)
@@ -91,7 +96,8 @@ export const loadHelpers = async function () {
     }
 
     // Return the base localization if nothing else is found
-    return game.i18n.localize(`WOD5E.${str}`)
+    const otherLocalizationString = str.capitalize()
+    return game.i18n.localize(`WOD5E.${otherLocalizationString}`)
 
     // Function to actually grab the localized label
     function findLabel (list, string) {

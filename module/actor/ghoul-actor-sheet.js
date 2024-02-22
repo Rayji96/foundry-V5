@@ -173,6 +173,7 @@ export class GhoulActorSheet extends MortalActorSheet {
       const level = item.system.level
       const cost = item.system.cost > 0 ? item.system.cost : 1
       const selectors = ['rouse']
+      const macro = item.system.macroid
 
       // Vampires roll rouse checks
       if (actor.type === 'vampire') {
@@ -193,7 +194,8 @@ export class GhoulActorSheet extends MortalActorSheet {
           disableBasicDice: true,
           rerollHunger: rouseRerolls,
           increaseHunger: true,
-          selectors
+          selectors,
+          macro
         })
       } else if (actor.type === 'ghoul' && level > 1) {
         // Ghouls take aggravated damage for using powers above level 1 instead of rolling rouse checks
@@ -288,6 +290,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     // Secondary variables
     const itemDiscipline = item.system.discipline
     const hunger = actor.type === 'vampire' ? actor.system.hunger.value : 0
+    const macro = item.system.macroid
 
     // Variables yet to be defined
     let disciplineValue, dice1, dice2
@@ -365,7 +368,8 @@ export class GhoulActorSheet extends MortalActorSheet {
       title: item.name,
       actor,
       data: item.system,
-      selectors
+      selectors,
+      macro
     })
   }
 
