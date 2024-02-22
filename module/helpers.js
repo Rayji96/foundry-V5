@@ -73,6 +73,7 @@ export const loadHelpers = async function () {
     const features = WOD5E.Features.getList()
     const disciplines = WOD5E.Disciplines.getList()
     const renown = WOD5E.Renown.getList()
+    const edges = WOD5E.Edges.getList()
 
     // Attributes
     if (attributes.find(obj => str in obj)) {
@@ -93,6 +94,10 @@ export const loadHelpers = async function () {
     // Renown
     if (renown.find(obj => str in obj)) {
       return findLabel(renown, str)
+    }
+    // Edges
+    if (edges.find(obj => str in obj)) {
+      return findLabel(edges, str)
     }
 
     // Return the base localization if nothing else is found
