@@ -1,4 +1,4 @@
-/* global game, Dialog */
+/* global game, Dialog, WOD5E */
 
 // Import modules
 import { WOD5eDice } from './system-rolls.js'
@@ -13,7 +13,7 @@ export const willpowerReroll = async (roll) => {
   const diceRolls = []
   const message = game.messages.get(roll.attr('data-message-id'))
   const actor = game.actors.get(message.speaker.actor)
-  
+
   // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systems list
   const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 

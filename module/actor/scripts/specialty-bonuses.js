@@ -1,4 +1,4 @@
-/* global renderTemplate, Dialog, game */
+/* global renderTemplate, Dialog, game, WOD5E */
 
 export const _onAddBonus = async function (event, actor, data, SkillEditDialog) {
   // Top-level variables

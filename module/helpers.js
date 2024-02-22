@@ -1,4 +1,4 @@
-/* global Handlebars, game, TextEditor */
+/* global Handlebars, game, TextEditor, WOD5E */
 
 /**
  * Define any helpers necessary for working with Handlebars
@@ -52,11 +52,6 @@ export const loadHelpers = async function () {
   Handlebars.registerHelper('toUpperCaseFirstLetter', function (str) {
     return str.charAt(0).toUpperCase() + str.slice(1)
   })
-
-  const capitalize = (s) => {
-    if (typeof s !== 'string') return ''
-    return s.charAt(0).toUpperCase() + s.slice(1)
-  }
 
   Handlebars.registerHelper('splitArray', function (arr) {
     if (!Array.isArray(arr)) {

@@ -1,4 +1,4 @@
-/* global ChatMessage, Roll, game, renderTemplate, CONFIG, Dialog */
+/* global ChatMessage, Roll, game, renderTemplate, CONFIG, Dialog, WOD5E */
 
 // Import various helper functions
 import { generateRollFormula } from './rolls/roll-formula.js'
@@ -123,7 +123,7 @@ class WOD5eDice {
         const customModifiersList = $form.find('.custom-modifier')
         if (customModifiersList.length > 0) {
           // Go through each custom modifier and add it to the array
-          customModifiersList.each(function() {
+          customModifiersList.each(function () {
             // Get the label and value from the current .custom-modifier element
             const label = $(this).find('.mod-name').val()
             const value = $(this).find('.mod-value').val()
@@ -211,10 +211,10 @@ class WOD5eDice {
                   const customModifiersList = html.find('.custom-modifier')
                   if (customModifiersList.length > 0) {
                     // Go through each custom modifier and add it to the array
-                    customModifiersList.each(function() {
+                    customModifiersList.each(function () {
                       // Get the value from the current .custom-modifier element
                       const value = $(this).find('.mod-value').val()
-          
+
                       // Add the value to the basicValue
                       basicValue = parseInt(basicValue) + parseInt(value)
                     })
