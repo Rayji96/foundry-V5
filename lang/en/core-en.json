@@ -31,7 +31,8 @@
             "SelectableModifiers": "Selectable Modifiers",
             "Source": "Source",
             "Value": "Value",
-            "Active": "Active"
+            "Active": "Active",
+            "CustomModifiers": "Custom Modifiers"
         },
 
         "SPC": {
