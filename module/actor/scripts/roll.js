@@ -135,6 +135,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
   const flatMod = parseInt(dataset.flatMod) || 0
   const absoluteValue = parseInt(dataset.absoluteValue) || 0
   const selectors = dataset.selectors ? dataset.selectors.split(' ') : []
+  const macro = dataset.itemId ? data.macroid : dataset.macroid
 
   // Variables yet to be defined
   let basicDice, advancedDice
@@ -216,7 +217,8 @@ export const _onConfirmRoll = async function (dataset, actor) {
     rerollHunger,
     increaseHunger,
     decreaseRage,
-    selectors
+    selectors,
+    macro
   })
 }
 
