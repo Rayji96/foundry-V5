@@ -29,7 +29,11 @@
       "CriticalSuccess": "Sucesso Crítico",
       "Fail": "Falha",
       "Modifier": "Modificador",
-      "Difficulty": "Dificuldade"
+      "Difficulty": "Dificuldade",
+      "_SelectableModifiers": "Selectable Modifiers",
+      "_Source": "Source",
+      "_Value": "Value",
+      "_Active": "Active"
     },
 
     "SPC": {

@@ -1,10 +1,10 @@
 {{#if situationalModifiers}}
   <div class="flex-group-center situational-modifiers">
-    <h3>Selectable Modifiers</h3>
+    <h3>{{localize 'WOD5E.Roll.SelectableModifiers'}}</h3>
     <div class="form-group mod-header">
-      <div>Source</div>
-      <div>Value</div>
-      <div>Active</div>
+      <div>{{localize 'WOD5E.Roll.Source'}}</div>
+      <div>{{localize 'WOD5E.Roll.Value'}}</div>
+      <div>{{localize 'WOD5E.Roll.Active'}}</div>
     </div>
     {{#each situationalModifiers as |mod key|}}
       <div class="form-group modifier">
