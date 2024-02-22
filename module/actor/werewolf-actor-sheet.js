@@ -167,6 +167,11 @@ export class WerewolfActorSheet extends WoDActor {
     })
   }
 
+  /**
+     * Handle rolling gifts
+     * @param {Event} event   The originating click event
+     * @private
+     */
   async _onGiftRoll (event) {
     event.preventDefault()
 
