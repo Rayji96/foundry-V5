@@ -24,7 +24,6 @@
 
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
-            {{!-- As you add new fields, add them in here! --}}
             <div class="resource grid grid-2col flex-center">
                 <label class="resource-label">{{localize "WOD5E.Attributes.Label"}}: </label>
                 <select name="system.dice1" data-type="String">
@@ -38,6 +37,8 @@
                     {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
                     {{/select}}
                 </select>
+                <label class="resource-label">{{localize "WOD5E.Roll.Modifier"}}: </label>
+                <input name="system.modifier" value="{{item.system.modifier}}" type="number"/>
             </div>
         </div>
 
