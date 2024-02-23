@@ -243,7 +243,7 @@ export async function generateRollMessage ({
           resultLabel = totalAndDifficulty + `<div class="roll-result-label failure">${game.i18n.localize('WOD5E.Roll.Fail')}</div>`
         } else { // Show the number of successes
           // Handle pluralizing based on the number of successes
-          let successText = totalResult > 1 ? 'WOD5E.Roll.Successes' : 'WOD5E.Roll.Success'
+          const successText = totalResult > 1 ? 'WOD5E.Roll.Successes' : 'WOD5E.Roll.Success'
 
           resultLabel = `<div class="roll-result-label">${totalResult} ${game.i18n.localize(successText)}</div>`
         }

@@ -59,17 +59,17 @@
 }
 
 .chat-message .roll-result-label.failure {
-  background-color: #990000;
+  background-color: #900;
   color: #dbdbdb;
 }
 
 .chat-message .roll-result-label.critical-failure {
-  background-color: #990000;
+  background-color: #900;
   color: #dbdbdb;
 }
 
 .chat-message .roll-result-label.bestial-failure {
-  background-color: #990000;
+  background-color: #900;
   color: #dbdbdb;
 }
 
