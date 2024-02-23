@@ -958,7 +958,8 @@
     "customRoll": {
       "templates": ["base"],
       "dice1" : "",
-      "dice2" : ""
+      "dice2" : "",
+      "modifier": 0
     },
     "perk": {
       "templates": ["base"],
