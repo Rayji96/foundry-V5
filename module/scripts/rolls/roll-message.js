@@ -232,24 +232,18 @@ export async function generateRollMessage ({
 
     // Generate the result label depending on the splat and difficulty
     if (totalResult < difficulty || difficulty === 0) { // Handle failures...
-      // Add total and difficulty to all failure rolls
-      resultLabel += totalAndDifficulty
-
       if (system === 'vampire' && advancedDice.critFails > 0) { // Handle bestial failures
-        resultLabel += `<div class="roll-result-label bestial-failure">${game.i18n.localize('WOD5E.VTM.PossibleBestialFailure')}</div>`
+        resultLabel += totalAndDifficulty + `<div class="roll-result-label bestial-failure">${game.i18n.localize('WOD5E.VTM.PossibleBestialFailure')}</div>`
       } else if (system === 'werewolf' && advancedDice.critFails > 0) { // Handle brutal outcomes
-        resultLabel += `<div class="roll-result-label rage-failure">${game.i18n.localize('WOD5E.WTA.PossibleRageFailure')}</div>`
+        resultLabel += totalAndDifficulty + `<div class="roll-result-label rage-failure">${game.i18n.localize('WOD5E.WTA.PossibleRageFailure')}</div>`
       } else if (system === 'hunter' && advancedDice.critFails > 0) { // Handle desperation failures
-        resultLabel += `<div class="roll-result-label desperation-failure">${game.i18n.localize('WOD5E.HTR.PossibleDesperationFailure')}</div>`
+        resultLabel += totalAndDifficulty + `<div class="roll-result-label desperation-failure">${game.i18n.localize('WOD5E.HTR.PossibleDesperationFailure')}</div>`
       } else {
-        if (totalResult === 0) { // Handle failures
-          resultLabel = `<div class="roll-result-label failure">${game.i18n.localize('WOD5E.Roll.Fail')}</div>`
+        if (totalResult === 0 || difficulty > 0) { // Handle failures
+          resultLabel = totalAndDifficulty + `<div class="roll-result-label failure">${game.i18n.localize('WOD5E.Roll.Fail')}</div>`
         } else { // Show the number of successes
           // Handle pluralizing based on the number of successes
-          let successText = 'WOD5E.Roll.Success'
-          if (totalResult > 1) {
-            successText = 'WOD5E.Roll.Successes'
-          }
+          let successText = totalResult > 1 ? 'WOD5E.Roll.Successes' : 'WOD5E.Roll.Success'
 
           resultLabel = `<div class="roll-result-label">${totalResult} ${game.i18n.localize(successText)}</div>`
         }

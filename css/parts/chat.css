@@ -44,13 +44,13 @@
 }
 
 .chat-message .roll-result-label.success {
-  background-color: #128d08;
+  background-color: #065200;
   color: #dbd6d6;
 }
 
 .chat-message .roll-result-label.critical-success {
-  background-color: #00a80e;
-  color: #fff;
+  background-color: #065200;
+  color: #dbd6d6;
 }
 
 .chat-message .roll-result-label.messy-critical {
@@ -59,23 +59,27 @@
 }
 
 .chat-message .roll-result-label.failure {
-  background-color: #e56e3b;
+  background-color: #990000;
+  color: #dbdbdb;
 }
 
 .chat-message .roll-result-label.critical-failure {
-  background-color: #dd3636;
+  background-color: #990000;
+  color: #dbdbdb;
 }
 
 .chat-message .roll-result-label.bestial-failure {
-  background-color: #cf4848;
+  background-color: #990000;
+  color: #dbdbdb;
 }
 
 .chat-message .roll-result-label.desperation-failure {
-  background-color: #dfdc1b;
+  background-color: #e97c00;
 }
 
 .chat-message .roll-result-label.rage-failure {
-  background-color: #b35700;
+  background-color: #783b01;
+  color: #dbdbdb;
 }
 
 /* These are also used for willpower rerolls */
