@@ -245,7 +245,12 @@ export async function generateRollMessage ({
           // Handle pluralizing based on the number of successes
           const successText = totalResult > 1 ? 'WOD5E.Roll.Successes' : 'WOD5E.Roll.Success'
 
-          resultLabel = `<div class="roll-result-label">${totalResult} ${game.i18n.localize(successText)}</div>`
+          if (system === 'vampire' && advancedDice.criticals > 1) { // Handle messy criticals if no difficulty is set
+            resultLabel = + `<div class="roll-result-label messy-critical">${game.i18n.localize('WOD5E.VTM.MessyCritical')}</div>
+            <div class="roll-result-label">${totalResult} ${game.i18n.localize(successText)}</div>`
+          } else {
+            resultLabel = `<div class="roll-result-label">${totalResult} ${game.i18n.localize(successText)}</div>`
+          }
         }
       }
     } else {
