@@ -234,7 +234,7 @@ export async function generateRollMessage ({
     if (totalResult < difficulty || difficulty === 0) { // Handle failures...
       if (system === 'vampire' && advancedDice.critFails > 0) { // Handle bestial failures
         resultLabel += totalAndDifficulty + `<div class="roll-result-label bestial-failure">${game.i18n.localize('WOD5E.VTM.PossibleBestialFailure')}</div>`
-      } else if (system === 'werewolf' && advancedDice.critFails > 0) { // Handle brutal outcomes
+      } else if (system === 'werewolf' && advancedDice.critFails > 1) { // Handle brutal outcomes
         resultLabel += totalAndDifficulty + `<div class="roll-result-label rage-failure">${game.i18n.localize('WOD5E.WTA.PossibleRageFailure')}</div>`
       } else if (system === 'hunter' && advancedDice.critFails > 0) { // Handle desperation failures
         resultLabel += totalAndDifficulty + `<div class="roll-result-label desperation-failure">${game.i18n.localize('WOD5E.HTR.PossibleDesperationFailure')}</div>`
@@ -255,7 +255,9 @@ export async function generateRollMessage ({
       }
     } else {
       if (totalResult >= difficulty) { // If the difficulty is matched or exceeded...
-        if (critTotal > 0) { // If there's at least one set of critical dice...
+        if (system === 'werewolf' && advancedDice.critFails > 1) { // Handle brutal outcomes
+          resultLabel += totalAndDifficulty + `<div class="roll-result-label rage-failure">${game.i18n.localize('WOD5E.WTA.PossibleRageFailure')}</div>`
+        } else if (critTotal > 0) { // If there's at least one set of critical dice...
           if (system === 'vampire' && advancedDice.criticals > 1) { // Handle messy criticals
             resultLabel = totalAndDifficulty + `<div class="roll-result-label messy-critical">${game.i18n.localize('WOD5E.VTM.MessyCritical')}</div>`
           } else { // Everything else is just a normal critical success
