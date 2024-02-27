@@ -96,8 +96,6 @@ class WOD5eDice {
       }
 
       // The below isn't needed if there's no dice being rolled
-      console.log(inputBasicDice)
-      console.log(inputAdvancedDice)
       if (inputBasicDice == 0 && inputAdvancedDice == 0) return roll
 
       // Determine any active modifiers
