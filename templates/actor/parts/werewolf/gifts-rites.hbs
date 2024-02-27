@@ -50,18 +50,24 @@
                 {{#each gift.powers as |item id|}}
                     <li class="item flexcol" data-item-id="{{item._id}}">
                         <div class="flexrow">
-                            <!-- Whether the button is clickable or not to post the power in chat -->
-                            {{#if item.system.rollable}}
-                                <div class="item-image gift-rollable" data-id="{{item._id}}">
-                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
-                                </div>
-                            {{else}}
-                                <div class="item-image" data-id="{{item._id}}">
-                                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
-                                </div>
-                            {{/if}}
-                            <!-- gift power name -->
-                            <h4 class="item-name collapsible">{{item.name}}</h4>
+                            <div class="flexrow">
+                                <!-- Whether the button is clickable or not to post the power in chat -->
+                                {{#if item.system.rollable}}
+                                    <div class="item-image gift-rollable" data-id="{{item._id}}">
+                                        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                    </div>
+                                {{else}}
+                                    <div class="item-image" data-id="{{item._id}}">
+                                        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                    </div>
+                                {{/if}}
+                                <!-- Gift name -->
+                                <h4 class="item-name collapsible">{{item.name}}</h4>
+                            </div>
+                            <!-- Renown Type -->
+                            <div class="renown-type">
+                                {{generateLocalizedLabel item.system.renown}}
+                            </div>
                             <!-- Item controls for gift powers -->
                             <div class="item-controls">
                                 <!-- Icon to roll the power's rage check, if applicable -->
@@ -113,18 +119,24 @@
         {{#each actor.system.ritesList as |item id|}}
             <li class="item flexcol" data-item-id="{{item._id}}">
                 <div class="flexrow">
-                    <!-- Whether the button is clickable or not to post the power in chat -->
-                    {{#if item.system.rollable}}
-                        <div class="item-image gift-rollable" data-id="{{item._id}}">
-                            <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
-                        </div>
-                    {{else}}
-                        <div class="item-image" data-id="{{item._id}}">
-                            <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
-                        </div>
-                    {{/if}}
-                    <!-- gift power name -->
-                    <h4 class="item-name collapsible">{{item.name}}</h4>
+                    <div class="flexrow">
+                        <!-- Whether the button is clickable or not to post the power in chat -->
+                        {{#if item.system.rollable}}
+                            <div class="item-image gift-rollable" data-id="{{item._id}}">
+                                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                            </div>
+                        {{else}}
+                            <div class="item-image" data-id="{{item._id}}">
+                                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                            </div>
+                        {{/if}}
+                        <!-- Gift name -->
+                        <h4 class="item-name collapsible">{{item.name}}</h4>
+                    </div>
+                    <!-- Renown Type -->
+                    <div class="renown-type">
+                        {{generateLocalizedLabel item.system.renown}}
+                    </div>
                     <!-- Item controls for gift powers -->
                     <div class="item-controls">
                         <!-- Icon to roll the power's rage check, if applicable -->
