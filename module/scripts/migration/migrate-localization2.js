@@ -330,72 +330,72 @@ export const MigrateLocalization2 = async function () {
         new: 'WOD5E.WTA.LupusTitle'
       },
       {
-        old: "WOD5E.Native",
-        new: "WOD5E.WTA.Native"
+        old: 'WOD5E.Native',
+        new: 'WOD5E.WTA.Native'
       },
       {
-        old: "WOD5E.Ragabash",
-        new: "WOD5E.WTA.Ragabash"
+        old: 'WOD5E.Ragabash',
+        new: 'WOD5E.WTA.Ragabash'
       },
       {
-        old: "WOD5E.Theurge",
-        new: "WOD5E.WTA.Theurge"
+        old: 'WOD5E.Theurge',
+        new: 'WOD5E.WTA.Theurge'
       },
       {
-        old: "WOD5E.Philodox",
-        new: "WOD5E.WTA.Philodox"
+        old: 'WOD5E.Philodox',
+        new: 'WOD5E.WTA.Philodox'
       },
       {
-        old: "WOD5E.Galliard",
-        new: "WOD5E.WTA.Galliard"
+        old: 'WOD5E.Galliard',
+        new: 'WOD5E.WTA.Galliard'
       },
       {
-        old: "WOD5E.Ahroun",
-        new: "WOD5E.WTA.Ahroun"
+        old: 'WOD5E.Ahroun',
+        new: 'WOD5E.WTA.Ahroun'
       },
       {
-        old: "WOD5E.BlackFury",
-        new: "WOD5E.WTA.BlackFury"
+        old: 'WOD5E.BlackFury',
+        new: 'WOD5E.WTA.BlackFury'
       },
       {
-        old: "WOD5E.BoneGnawer",
-        new: "WOD5E.WTA.BoneGnawer"
+        old: 'WOD5E.BoneGnawer',
+        new: 'WOD5E.WTA.BoneGnawer'
       },
       {
-        old: "WOD5E.ChildrenOfGaia",
-        new: "WOD5E.WTA.ChildrenOfGaia"
+        old: 'WOD5E.ChildrenOfGaia',
+        new: 'WOD5E.WTA.ChildrenOfGaia'
       },
       {
-        old: "WOD5E.Galestalker",
-        new: "WOD5E.WTA.Galestalker"
+        old: 'WOD5E.Galestalker',
+        new: 'WOD5E.WTA.Galestalker'
       },
       {
-        old: "WOD5E.GhostCouncil",
-        new: "WOD5E.WTA.GhostCouncil"
+        old: 'WOD5E.GhostCouncil',
+        new: 'WOD5E.WTA.GhostCouncil'
       },
       {
-        old: "WOD5E.GlassWalker",
-        new: "WOD5E.WTA.GlassWalker"
+        old: 'WOD5E.GlassWalker',
+        new: 'WOD5E.WTA.GlassWalker'
       },
       {
-        old: "WOD5E.HartWarden",
-        new: "WOD5E.WTA.HartWarden"
+        old: 'WOD5E.HartWarden',
+        new: 'WOD5E.WTA.HartWarden'
       },
       {
-        old: "WOD5E.RedTalon",
-        new: "WOD5E.WTA.RedTalon"
+        old: 'WOD5E.RedTalon',
+        new: 'WOD5E.WTA.RedTalon'
       },
       {
-        old: "WOD5E.ShadowLord",
-        new: "WOD5E.WTA.ShadowLord"
+        old: 'WOD5E.ShadowLord',
+        new: 'WOD5E.WTA.ShadowLord'
       },
       {
-        old: "WOD5E.SilentStrider",
-        new: "WOD5E.WTA.SilentStrider"
+        old: 'WOD5E.SilentStrider',
+        new: 'WOD5E.WTA.SilentStrider'
       },
       {
-        old: "WOD5E.SilverFang",
-        new: "WOD5E.WTA.SilverFang"
+        old: 'WOD5E.SilverFang',
+        new: 'WOD5E.WTA.SilverFang'
       },
       // SPC updates
       {
