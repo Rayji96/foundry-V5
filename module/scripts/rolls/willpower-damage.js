@@ -1,15 +1,11 @@
 /* global ChatMessage, renderTemplate, game */
 
-export async function _damageWillpower(actor, willpowerDamage) {
+export async function _damageWillpower (actor, willpowerDamage) {
   // Get the actor's willpower and define it for convenience
   const actorWillpower = actor.system.willpower
   const maxWillpower = actorWillpower.max
   let aggrWillpower = actorWillpower.aggravated
   let superWillpower = actorWillpower.superficial
-
-  // If the willpower boxes are fully ticked with aggravated damage
-  // then tell the chat and don't increase any values.
-
 
   // Loop to handle willpower damage tick by tick
   for (let i = 0; i < willpowerDamage; i++) {
@@ -23,6 +19,9 @@ export async function _damageWillpower(actor, willpowerDamage) {
       superWillpower--
       aggrWillpower++
     } else {
+      // If the willpower boxes are fully ticked with aggravated damage
+      // then tell the chat and don't increase any values.
+
       renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
         name: game.i18n.localize('WOD5E.Chat.WillpowerFullTitle'),
         img: 'systems/vtm5e/assets/icons/dice/vampire/bestial-failure.png',
@@ -39,10 +38,12 @@ export async function _damageWillpower(actor, willpowerDamage) {
     }
 
     // Update the actor sheet
-    await actor.update({ 'system.willpower': {
+    await actor.update({
+      'system.willpower': {
         superficial: superWillpower,
         aggravated: aggrWillpower
-    } })
+      }
+    })
   }
 
   renderTemplate('systems/vtm5e/templates/chat/willpower-damage.hbs', {

@@ -96,7 +96,7 @@ class WOD5eDice {
       }
 
       // The below isn't needed if there's no dice being rolled
-      if (inputBasicDice == 0 && inputAdvancedDice == 0) return roll
+      if (parseInt(inputBasicDice) === 0 && parseInt(inputAdvancedDice) === 0) return roll
 
       // Determine any active modifiers
       const activeModifiers = []
