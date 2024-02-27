@@ -161,7 +161,9 @@
       "RollWillpower": "Willpower Rollen",
       "WillpowerReroll": "Willenskraft Wiederholung",
       "WillpowerFullTitle": "Willpower Tracker Full",
-      "WillpowerFull": "Willenskraft ist vollständig beschädigt, kann sie nicht weiter beschädigen."
+      "WillpowerFull": "Willenskraft ist vollständig beschädigt, kann sie nicht weiter beschädigen.",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
     }
   }
 }

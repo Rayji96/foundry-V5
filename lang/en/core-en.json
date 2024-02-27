@@ -159,7 +159,9 @@
             "RollWillpower": "Roll Willpower Check",
             "WillpowerReroll": "Willpower Reroll",
             "WillpowerFullTitle": "Willpower Tracker Full",
-            "WillpowerFull": "Willpower is fully damaged, cannot damage it further."
+            "WillpowerFull": "Willpower is fully damaged, cannot damage it further.",
+            "WillpowerDamage": "Willpower Damage",
+            "HasReceivedWillpowerDamage": "{actor} has received {willpowerDamage} willpower damage."
         }
     }
 }

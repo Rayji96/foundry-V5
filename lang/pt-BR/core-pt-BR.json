@@ -161,7 +161,9 @@
       "RollWillpower": "Rolar Teste de Força de Vontade",
       "WillpowerReroll": "Rerrolagem com Força de Vontade",
       "WillpowerFullTitle": "Barra de Força de Vontade completa",
-      "WillpowerFull": "A força de vontade está totalmente danificada, não pode danificá-la mais."  
+      "WillpowerFull": "A força de vontade está totalmente danificada, não pode danificá-la mais.",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
     }
   }
 }

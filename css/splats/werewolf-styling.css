@@ -84,6 +84,11 @@
   text-align: left;
 }
 
+.wod5e.werewolf-sheet .gifts .renown-type {
+  text-align: center;
+  font-weight: bold;
+}
+
 /* buttons.css */
 .wod5e.werewolf-sheet button {
   background: var(--werewolf-primary);

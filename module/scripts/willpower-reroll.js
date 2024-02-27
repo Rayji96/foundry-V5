@@ -101,7 +101,7 @@ export const willpowerReroll = async (roll) => {
         advancedDice: rageDiceSelected,
         title: game.i18n.localize('WOD5E.Chat.WillpowerReroll'),
         actor,
-        damageWillpower: true,
+        willpowerDamage: 1,
         quickRoll: true,
         selectors
       })

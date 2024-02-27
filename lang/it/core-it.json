@@ -161,7 +161,9 @@
       "RollWillpower": "Tira Volontà",
       "WillpowerReroll": "Ritira con Volontà",
       "WillpowerFullTitle": "Willpower Tracker Full",
-      "WillpowerFull": "La forza di volontà è completamente danneggiata, non può danneggiarla ulteriormente."  
+      "WillpowerFull": "La forza di volontà è completamente danneggiata, non può danneggiarla ulteriormente.",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
     }
   }
 }

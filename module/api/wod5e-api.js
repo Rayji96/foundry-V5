@@ -13,7 +13,7 @@ export class wod5eAPI {
    * @param title                     (Optional, default "Rolling") Title of the roll for the dialog/chat message
    * @param disableBasicDice          (Optional, default false) Whether to disable basic dice on this roll
    * @param disableAdvancedDice       (Optional, default false) Whether to disable advanced dice on this roll
-   * @param damageWillpower           (Optional, default false) Whether to damage willpower after the roll is complete
+   * @param willpowerDamage           (Optional, default 0) How much to damage willpower after the roll is complete
    * @param increaseHunger            (Optional, default false) Whether to increase hunger on failures
    * @param decreaseRage              (Optional, default false) Whether to reduce rage on failures
    * @param difficulty                (Optional, default 0) The number that the roll must succeed to count as a success
@@ -34,7 +34,7 @@ export class wod5eAPI {
     title = 'Rolling',
     disableBasicDice = false,
     disableAdvancedDice = false,
-    damageWillpower = false,
+    willpowerDamage = 0,
     increaseHunger = false,
     decreaseRage = false,
     difficulty = 0,
@@ -61,7 +61,7 @@ export class wod5eAPI {
       title,
       disableBasicDice,
       disableAdvancedDice,
-      damageWillpower,
+      willpowerDamage,
       difficulty,
       flavor,
       callback,

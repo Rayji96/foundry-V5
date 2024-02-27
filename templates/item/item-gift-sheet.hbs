@@ -87,11 +87,16 @@
                 {{/if}}
 
                 <!-- If the item has a rage check to roll or not -->
-                <label class="resource-label">{{localize "WOD5E.WTA.Rage"}}: </label>
+                <label class="resource-label">{{localize "WOD5E.WTA.HasCost"}}: </label>
                 <input type="checkbox" id="system.rage" name="system.rage" {{checked item.system.rage}}>
 
-                <label class="resource-label">{{localize "WOD5E.Items.Cost"}}: </label>
-                <input class="itemsheet-textbox" name="system.cost" value="{{item.system.cost}}" type="number" min="0" max="5"/>
+                {{#if item.system.rage}}
+                    <label class="resource-label">{{localize "WOD5E.WTA.RageCost"}}: </label>
+                    <input class="itemsheet-textbox" name="system.cost" value="{{item.system.cost}}" type="number" min="0" max="5"/>
+
+                    <label class="resource-label">{{localize "WOD5E.WTA.WillpowerCost"}}: </label>
+                    <input class="itemsheet-textbox" name="system.willpowercost" value="{{item.system.willpowercost}}" type="number" min="0" max="5"/>
+                {{/if}}
             </div>
         </div>
 
