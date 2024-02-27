@@ -8,8 +8,11 @@
 
       "GiftsandRites": "Gifts & Rites",
       "Rage": "Rage",
+      "RageCost": "Rage Cost",
+      "WillpowerCost": "Willpower Cost",
       "PossibleRageFailure": "Possible Brutal Outcome",
-      "RollRage": "Roll Rage",
+      "RollRageDamageWillpower": "Roll Rage, Damage Willpower",
+      "HasCost": "Has Cost",
 
       "SelectGift": "Select Gift",
       "GiftType": "Gift Type",

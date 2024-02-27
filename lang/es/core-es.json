@@ -161,7 +161,9 @@
       "RollWillpower": "Control de Fuerza de Voluntad",
       "WillpowerReroll": "Repetición",
       "WillpowerFullTitle": "Willpower Tracker Full",
-      "WillpowerFull": "La fuerza de voluntad está totalmente dañada, ya no puede dañarla."  
+      "WillpowerFull": "La fuerza de voluntad está totalmente dañada, ya no puede dañarla.",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
     }
   }
 }

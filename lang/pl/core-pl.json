@@ -161,7 +161,9 @@
       "RollWillpower": "Test Siły Woli",
       "WillpowerReroll": "Przerzut Siły Woli",
       "WillpowerFullTitle": "Willpower Tracker Full",
-      "WillpowerFull": "Nie można użyć Siły Woli, cała została wydana"  
+      "WillpowerFull": "Nie można użyć Siły Woli, cała została wydana",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
     }
   }
 }

@@ -19,7 +19,7 @@ class WOD5eDice {
    * @param title                     Title of the roll for the dialog/chat message
    * @param disableBasicDice          (Optional, default false) Whether to disable basic dice on this roll
    * @param disableAdvancedDice       (Optional, default false) Whether to disable advanced dice on this roll
-   * @param damageWillpower           (Optional, default false) Whether to damage willpower after the roll is complete
+   * @param willpowerDamage           (Optional, default 0) How much to damage willpower after the roll is complete
    * @param increaseHunger            (Optional, default false) Whether to increase hunger on failures
    * @param decreaseRage              (Optional, default false) Whether to reduce rage on failures
    * @param difficulty                (Optional, default 0) The number that the roll must succeed to count as a success
@@ -40,7 +40,7 @@ class WOD5eDice {
     title,
     disableBasicDice,
     disableAdvancedDice,
-    damageWillpower = false,
+    willpowerDamage = 0,
     increaseHunger = false,
     decreaseRage = false,
     difficulty = 0,
@@ -82,18 +82,21 @@ class WOD5eDice {
       if (roll.terms[2]) await handleFailure(system, roll.terms[2].results)
 
       // Handle willpower damage
-      if (damageWillpower && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor)
+      if (willpowerDamage > 0 && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor, willpowerDamage)
 
       // Send the results of the roll back to any functions that need it
       if (callback) callback(roll)
 
       // Run any macros that need to be ran
-      if (macro) {
+      if (macro && game.macros.get(macro)) {
         game.macros.get(macro).execute({
           actor,
           token: actor.token ?? actor.getActiveTokens[0]
         })
       }
+
+      // The below isn't needed if there's no dice being rolled
+      if (parseInt(inputBasicDice) === 0 && parseInt(inputAdvancedDice) === 0) return roll
 
       // Determine any active modifiers
       const activeModifiers = []

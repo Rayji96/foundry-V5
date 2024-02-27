@@ -127,7 +127,7 @@ export const _onRoll = async function (event) {
 */
 export const _onConfirmRoll = async function (dataset, actor) {
   // Secondary variables
-  const { damageWillpower, difficulty, disableBasicDice, disableAdvancedDice, quickRoll, rerollHunger, useAbsoluteValue, increaseHunger, decreaseRage } = dataset
+  const { willpowerDamage, difficulty, disableBasicDice, disableAdvancedDice, quickRoll, rerollHunger, useAbsoluteValue, increaseHunger, decreaseRage } = dataset
   const title = dataset.label
   const data = dataset.itemId ? actor.items.get(dataset.itemId).system : actor.system
   const flavor = dataset.useFlavorPath ? await getFlavorDescription(dataset.flavorPath, data) : dataset.flavor
@@ -208,7 +208,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
     title,
     disableBasicDice,
     disableAdvancedDice,
-    damageWillpower,
+    willpowerDamage,
     difficulty,
     flavor,
     quickRoll,

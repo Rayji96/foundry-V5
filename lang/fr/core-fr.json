@@ -161,7 +161,9 @@
       "RollWillpower": "Test la volonté",
       "WillpowerReroll": "Relance du test de Volonté",
       "_WillpowerFullTitle": "",
-      "WillpowerFull": "La volonté est entièrement endommagée, ne peut pas l'endommager davantage."
+      "WillpowerFull": "La volonté est entièrement endommagée, ne peut pas l'endommager davantage.",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
     }
   }
 }

@@ -977,6 +977,7 @@
       "giftType": "native",
       "renown": "honor",
       "cost": 0,
+      "willpowercost": 0,
       "rollable": false,
       "rage": false,
       "action": "",

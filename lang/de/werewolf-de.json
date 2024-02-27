@@ -10,8 +10,11 @@
 
       "_GiftsandRites": "",
       "_Rage": "",
+      "_RageCost": "",
+      "_WillpowerCost": "",
       "_PossibleRageFailure": "",
-      "_RollRage": "",
+      "_RollRageDamageWillpower": "",
+      "_HasCost": "",
 
       "_SelectGift": "",
       "_GiftType": "",
