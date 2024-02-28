@@ -107,7 +107,7 @@ export const willpowerReroll = async (roll) => {
         selectors,
         disableMessageOutput: true,
         callback: async (reroll) => {
-          let messageRolls = message.rolls
+          const messageRolls = message.rolls
 
           diceSelected.each(function (index) {
             const dieHTML = diceSelected.eq(index)
