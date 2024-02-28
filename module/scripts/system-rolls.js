@@ -30,6 +30,7 @@ class WOD5eDice {
    * @param rerollHunger              (Optional, default false) Whether to reroll failed hunger dice
    * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
    * @param macro                     (Optional, default '') A macro to run after the roll has been made
+   * @param disableMessageOutput      (optional, default false) Whether to display the message output of a roll
    *
    */
   static async Roll ({
@@ -50,7 +51,8 @@ class WOD5eDice {
     rollMode = game.settings.get('core', 'rollMode'),
     rerollHunger = false,
     selectors = [],
-    macro = ''
+    macro = '',
+    disableMessageOutput = false
   }) {
     // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systems list
     const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
@@ -72,31 +74,6 @@ class WOD5eDice {
         data,
         rerollHunger
       })
-
-      // Send the roll to chat
-      const roll = await new Roll(rollFormula, data).roll({
-        async: true
-      })
-
-      // Handle failures for werewolves and vampires
-      if (roll.terms[2]) await handleFailure(system, roll.terms[2].results)
-
-      // Handle willpower damage
-      if (willpowerDamage > 0 && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor, willpowerDamage)
-
-      // Send the results of the roll back to any functions that need it
-      if (callback) callback(roll)
-
-      // Run any macros that need to be ran
-      if (macro && game.macros.get(macro)) {
-        game.macros.get(macro).execute({
-          actor,
-          token: actor.token ?? actor.getActiveTokens[0]
-        })
-      }
-
-      // The below isn't needed if there's no dice being rolled
-      if (parseInt(inputBasicDice) === 0 && parseInt(inputAdvancedDice) === 0) return roll
 
       // Determine any active modifiers
       const activeModifiers = []
@@ -146,6 +123,34 @@ class WOD5eDice {
         }
       }
 
+      // Send the roll to chat
+      const roll = await new Roll(rollFormula, data).roll({
+        async: true
+      })
+
+      // Handle failures for werewolves and vampires
+      if (roll.terms[2]) await handleFailure(system, roll.terms[2].results)
+
+      // Handle willpower damage
+      if (willpowerDamage > 0 && game.settings.get('vtm5e', 'automatedWillpower')) _damageWillpower(actor, willpowerDamage)
+
+      // Send the results of the roll back to any functions that need it
+      if (callback) callback(roll)
+
+      // Run any macros that need to be ran
+      if (macro && game.macros.get(macro)) {
+        game.macros.get(macro).execute({
+          actor,
+          token: actor.token ?? actor.getActiveTokens[0]
+        })
+      }
+
+      // The below isn't needed if there's no dice being rolled
+      if (parseInt(inputBasicDice) === 0 && parseInt(inputAdvancedDice) === 0) return roll
+
+      // The below isn't needed if disableMessageOutput is set to true
+      if (disableMessageOutput) return roll
+
       // Construct the proper message content from the generateRollMessage function
       const content = await generateRollMessage({
         system,
@@ -161,7 +166,13 @@ class WOD5eDice {
       // Post the message to the chat
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor }),
-        content
+        content,
+        flags: {
+          system,
+          title,
+          flavor,
+          activeModifiers
+        }
       },
       {
         rollMode: $form ? $form.find('[name=rollMode]').val() : rollMode
