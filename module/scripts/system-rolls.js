@@ -149,7 +149,13 @@ class WOD5eDice {
       if (parseInt(inputBasicDice) === 0 && parseInt(inputAdvancedDice) === 0) return roll
 
       // The below isn't needed if disableMessageOutput is set to true
-      if (disableMessageOutput) return roll
+      if (disableMessageOutput) {
+        // Send notice to DiceSoNice because we're not making a new chat message
+        game.dice3d.showForRoll(roll)
+
+        // End function here
+        return roll
+      }
 
       // Construct the proper message content from the generateRollMessage function
       const content = await generateRollMessage({
