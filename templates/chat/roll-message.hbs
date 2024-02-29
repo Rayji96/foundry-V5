@@ -9,10 +9,10 @@
   </div>
   <div class="dice-result">
     {{#each basicDice.results as |die key|}}
-      <img src="{{die.img}}" class="{{die.classes}}" alt="{{die.altText}}"/>
+      <img src="{{die.img}}" class="{{die.classes}}" data-index="{{die.index}}" alt="{{die.altText}}"/>
     {{/each}}
     {{#each advancedDice.results as |die key|}}
-      <img src="{{die.img}}" class="{{die.classes}}" alt="{{die.altText}}"/>
+      <img src="{{die.img}}" class="{{die.classes}}" data-index="{{die.index}}" alt="{{die.altText}}"/>
     {{/each}}
     {{#if flavor}}
       <hr>

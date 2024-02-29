@@ -109,12 +109,6 @@
   border-color: black;
 }
 
-.roll-img.hunger-dice.rerolled {
-  background: #7b7b7b80;
-  border-color: #d3d3d3;
-  filter: invert(1);
-}
-
 .roll-img.desperation-dice {
   background: black;
   border-color: #cc6d28;
@@ -128,4 +122,13 @@
 .roll-img.rage-dice {
   background: #9b0b00;
   border-color: #330300;
+}
+
+.roll-img.rerolled {
+  background: #7b7b7b80;
+}
+
+.roll-img.hunger-dice.rerolled, .roll-img.rage-dice.rerolled {
+  border-color: #d3d3d3;
+  filter: invert(1);
 }
