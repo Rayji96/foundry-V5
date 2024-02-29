@@ -155,8 +155,11 @@ Hooks.on('getChatLogEntryContext', (html, options) => {
       // Only show this context menu if there are re-rollable dice in the message
       const rerollableDice = li.find('.rerollable').length
 
+      // Only show this context menu if there's not any already rerolled dice in the message
+      const rerolledDice = li.find('.rerolled').length
+
       // All must be true to show the reroll dialog
-      return (game.user.isGM || message.isAuthor) && (rerollableDice > 0)
+      return (game.user.isGM || message.isAuthor) && (rerollableDice > 0) && (rerolledDice === 0)
     },
     callback: li => willpowerReroll(li)
   })

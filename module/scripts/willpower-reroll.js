@@ -2,6 +2,7 @@
 
 // Import modules
 import { WOD5eDice } from './system-rolls.js'
+import { generateRollMessage } from './rolls/roll-message.js'
 
 /**
  * Initalise willpower rerolls and its functions
@@ -84,8 +85,8 @@ export const willpowerReroll = async (roll) => {
   // For now this works well enough as "roll three new dice"
   async function rerollDie (roll) {
     // Variables
-    const diceSelected = $('.willpower-reroll .selected').length
-    const rageDiceSelected = $('.willpower-reroll .selected .rage-dice').length
+    const diceSelected = $('.willpower-reroll .selected')
+    const rageDiceSelected = $('.willpower-reroll .selected .rage-dice')
     const selectors = ['willpower', 'willpower-reroll']
 
     // Get the actor associated with the message
@@ -95,15 +96,68 @@ export const willpowerReroll = async (roll) => {
     const actor = game.actors.get(message.speaker.actor)
 
     // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-    if ((diceSelected > 0) && (diceSelected < 4)) {
+    if ((diceSelected.length > 0) && (diceSelected.length < 4)) {
       WOD5eDice.Roll({
-        basicDice: diceSelected - rageDiceSelected,
-        advancedDice: rageDiceSelected,
+        basicDice: diceSelected.length - rageDiceSelected.length,
+        advancedDice: rageDiceSelected.length,
         title: game.i18n.localize('WOD5E.Chat.WillpowerReroll'),
         actor,
         willpowerDamage: 1,
         quickRoll: true,
-        selectors
+        selectors,
+        disableMessageOutput: true,
+        callback: async (reroll) => {
+          const messageRolls = message.rolls
+
+          diceSelected.each(function (index) {
+            const dieHTML = diceSelected.eq(index)
+            const imgElement = dieHTML.find('img')
+
+            if (!imgElement.length) {
+              console.error('Image element not found in dieHTML:', dieHTML)
+              return // Skip this iteration if image element is not found
+            }
+
+            const dieIndex = imgElement.data('index')
+
+            if (imgElement.hasClass('rage-dice')) {
+              const die = messageRolls[0].terms[2].results.find(die => die.index === dieIndex)
+
+              if (die) {
+                die.discarded = true
+              } else {
+                console.error('Die not found in rage diceset:', dieIndex)
+              }
+            } else {
+              const die = messageRolls[0].terms[0].results.find(die => die.index === dieIndex)
+
+              if (die) {
+                die.discarded = true
+              } else {
+                console.error('Die not found in base diceset:', dieIndex)
+              }
+            }
+          })
+
+          // Merge "results" arrays
+          messageRolls[0].terms[0].results = messageRolls[0].terms[0].results.concat(reroll.terms[0].results)
+          messageRolls[0].terms[2].results = messageRolls[0].terms[2].results.concat(reroll.terms[2].results)
+
+          // Update the "content" field
+          const newContent = await generateRollMessage({
+            system: message.flags.system,
+            roll: messageRolls[0],
+            data: message.flags.data,
+            title: message.flags.title,
+            flavor: message.flags.flavor,
+            activeModifiers: message.flags.activeModifiers
+          })
+
+          message.update({
+            content: newContent,
+            rolls: messageRolls
+          })
+        }
       })
     }
   }

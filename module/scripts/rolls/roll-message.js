@@ -64,6 +64,9 @@ export async function generateRollMessage ({
       let dieResult, dieImg, dieAltText
       const dieClasses = ['roll-img', 'rerollable']
 
+      // Mark any die that were rerolled / not used
+      if (die.discarded) dieClasses.push(['rerolled'])
+
       // Basic die results
       if (die.result === 10) dieResult = 'critical' // Critical successes
       else if (die.result < 10 && die.result > 5) dieResult = 'success' // Successes
@@ -103,6 +106,8 @@ export async function generateRollMessage ({
 
       // Increase the number of criticals collected across the dice
       if (dieResult === 'critical') criticals++
+
+      die.index = index
     })
 
     // Add in critical data as its own property
@@ -179,6 +184,8 @@ export async function generateRollMessage ({
       // Increase the number of criticals collected across the dice
       if (dieResult === 'critical') criticals++
       if (dieResult === 'criticalFailure' || dieResult === 'bestial' || dieResult === 'brutal') critFails++
+
+      die.index = index
     })
 
     // Add in critical data as its own properties
