@@ -37,9 +37,10 @@ export class ActorInfo extends Actor {
     for (const i in actorTemplateTypes) {
       const actorType = actorTemplateTypes[i]
 
-      // If the actor template has a label, add it to the types list
-      // Otherwise, default to the actor's key
-      actorTypes[actorType] = actorTemplates[actorType].label ? game.i18n.localize(actorTemplates[actorType].label) : actorType
+       // If the actor template has a label, add it to the types list
+       // Otherwise, default to the actor's key
+       const actorFromList = WOD5E.ActorTypes.getList().find(obj => actorType in obj)
+       actorTypes[actorType] = actorFromList ? actorFromList[actorType].label : actorType
     }
 
     // Render the document creation form

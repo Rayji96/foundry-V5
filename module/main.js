@@ -28,7 +28,8 @@ import { Systems } from './def/systems.js'
 import { Attributes } from './def/attributes.js'
 import { Skills } from './def/skills.js'
 import { Features } from './def/features.js'
-import { ItemTypes } from './def/items.js'
+import { ActorTypes } from './def/actortypes.js'
+import { ItemTypes } from './def/itemtypes.js'
 import { Disciplines } from './def/disciplines.js'
 import { Edges } from './def/edges.js'
 import { Renown } from './def/renown.js'
@@ -125,6 +126,7 @@ Hooks.once('ready', async function () {
     Attributes,
     Skills,
     Features,
+    ActorTypes,
     ItemTypes,
     Disciplines,
     Edges,
