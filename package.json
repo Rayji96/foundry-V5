@@ -20,8 +20,7 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "standard": "^16.0.3"
+    "gulp-sourcemaps": "^2.6.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.5",
@@ -31,7 +30,8 @@
     "eslint": "^7.17.0",
     "htmlhint": "^0.14.2",
     "stylelint": "^13.8.0",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "standard": "^16.0.3"
   },
   "babel": {},
   "standard": {
@@ -39,5 +39,20 @@
     "globals": [
       "$"
     ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "jquery": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module",
+      "requireConfigFile": false
+    }
   }
 }
