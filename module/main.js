@@ -2,14 +2,6 @@
 
 // Actor sheets
 import { ActorInfo } from './actor/actor.js'
-import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
-import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
-import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
-import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
-import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
-import { CellActorSheet } from './actor/cell-actor-sheet.js'
-import { SPCActorSheet } from './actor/spc-actor-sheet.js'
-import { WerewolfActorSheet } from './actor/werewolf-actor-sheet.js'
 // Item sheets
 import { ItemInfo } from './item/item.js'
 import { WoDItemSheet } from './item/item-sheet.js'
@@ -59,40 +51,21 @@ Hooks.once('init', async function () {
   CONFIG.Dice.terms.w = WerewolfDie
   CONFIG.Dice.terms.r = WerewolfRageDie
 
-  // Register sheet application classes
+  // Register actor sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
-  Actors.registerSheet('vtm5e', MortalActorSheet, {
-    types: ['mortal'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', HunterActorSheet, {
-    types: ['hunter'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', VampireActorSheet, {
-    types: ['vampire'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', WerewolfActorSheet, {
-    types: ['werewolf'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', GhoulActorSheet, {
-    types: ['ghoul'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', CellActorSheet, {
-    types: ['cell'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', CoterieActorSheet, {
-    types: ['coterie'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', SPCActorSheet, {
-    types: ['spc'],
-    makeDefault: true
-  })
+  // Loop through each entry in the actorTypesList and register their sheet classes
+  const actorTypesList = ActorTypes.getList()
+  for (const entry of actorTypesList) {
+    const [key, value] = Object.entries(entry)[0]
+    const { types, sheetClass } = value
+  
+    Actors.registerSheet('vtm5e', sheetClass, {
+      types,
+      makeDefault: true
+    })
+  }
+
+  // Register the WoDItemSheet class, used for all items
   Items.unregisterSheet('core', ItemSheet)
   Items.registerSheet('vtm5e', WoDItemSheet, {
     makeDefault: true
