@@ -1,12 +1,10 @@
 {
   "WOD5E": {
-    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
-
     "Name": "Nombre",
-    "_Confirm": "",
-    "_Close": "",
-    "_Save": "",
-    "_Submit": "",
+    "Confirm": "Confirmar",
+    "Close": "Cerrar",
+    "Save": "Guardar",
+    "Submit": "Enviar",
     "System": "Sistema",
     "Edit": "Editar",
     "Delete": "Borrar",
@@ -15,46 +13,46 @@
     "Cancel": "Cancelar",
     "Health": "Salud",
     "Willpower": "Fuerza de Voluntad",
-    "_Exp": "",
+    "Exp": "Experiencia",
     "None": "Ninguno",
     
     "Mortal": "Mortal",
 
     "Roll": {
-      "_Label": "",
-      "_RollMode": "",
-      "_MortalDice": "",
+      "Label": "Tirada",
+      "RollMode": "Modo de tirada",
+      "MortalDice": "Dados de mortal",
       "Success": "Éxito",
       "Successes": "Éxitos",
       "CriticalSuccess": "Éxito crítico",
       "Fail": "Fallo",
       "Modifier": "Modificador",
       "Difficulty": "Dificultad",
-      "_SelectableModifiers": "Selectable Modifiers",
-      "_Source": "Source",
-      "_Value": "Value",
-      "_Active": "Active",
-      "_CustomModifiers": "Custom Modifiers"
+      "SelectableModifiers": "Modificadores seleccionables",
+      "Source": "Origen",
+      "Value": "Valor",
+      "Active": "Activo",
+      "CustomModifiers": "Modificadores personalizados"
     },
 
     "SPC": {
-      "_Label": "",
+      "Label": "Personaje del narrador",
       "GeneralDifficulty": "Dificultad general",
       "StandardDicePools": "Grupos de dados estándar",
       "ExceptionalDicePools": "Piscinas de dados excepcionales",
       "Physical": "Físico",
-      "_Mental": "",
-      "_Social": "",
+      "Mental": "Mental",
+      "Social": "Social",
       "AddSkill": "Agregar habilidad",
       "SelectSkill": "Seleccionar habilidad"
     },
 
     "Damage": {
-      "_Superficial": "",
+      "Superficial": "Superficial",
       "Aggravated": "Agravado",
       "Stains": "Máculas",
       "Value": "Valor",
-      "_Max": ""
+      "Max": "Máximo"
     },
 
     "Tabs": {
@@ -67,7 +65,7 @@
     },
 
     "Attributes": {
-      "_Label": "",
+      "Label": "Atributo",
       "Attributes": "Atributos",
       "Strength": "Fuerza",
       "Charisma": "Carisma",
@@ -81,7 +79,7 @@
     },
 
     "Skills": {
-      "_Label": "",
+      "Label": "Habilidad",
       "Skills": "Habilidades",
       "Specialty": "Especialidad",
       "Specialties": "Especialidades",
@@ -115,12 +113,12 @@
     },
 
     "Items": {
-      "_Label": "",
+      "Label": "Objeto",
       "ShowToChat": "Mostrar al chat",
       "CustomRoll": "Tirada Personalizadas",
       "CustomRolls": "Tiradas Personalizadas",
       "Merit": "Ventaja",
-      "_Cost": "",
+      "Cost": "Coste",
       "Flaw": "Defecto",
       "Bonuses": "Bonuses",
       "Background": "Transfondo",
@@ -129,14 +127,14 @@
       "Rollable": "Tirable",
       "FeatureType": "Tipo de rasgo",
       "Type": "Tipo",
-      "_NewSpecialty": "",
+      "NewSpecialty": "Nueva Especialidad",
       "Boon": "Bendición",
       "Boons": "Favores",
-      "_Macro": "Macro"
+      "Macro": "Macro"
     },
 
     "Biography": {
-      "_Label": "",
+      "Label": "Biografía",
       "Concept": "Concepto",
       "Chronicle": "Crónica",
       "Ambition": "Ambición",
@@ -160,10 +158,10 @@
       "Rolling": "Tirando",
       "RollWillpower": "Control de Fuerza de Voluntad",
       "WillpowerReroll": "Repetición",
-      "WillpowerFullTitle": "Willpower Tracker Full",
+      "WillpowerFullTitle": "Registro de fuerza de voluntad lleno",
       "WillpowerFull": "La fuerza de voluntad está totalmente dañada, ya no puede dañarla.",
-      "_WillpowerDamage": "",
-      "_HasReceivedWillpowerDamage": ""
+      "WillpowerDamage": "Daño a la fuerza de voluntad",
+      "HasReceivedWillpowerDamage": "{actor} ha recibido {willpowerDamage} de daño a la fuerza de voluntad."
     }
   }
 }
