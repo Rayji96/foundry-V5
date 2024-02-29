@@ -326,7 +326,7 @@ class WOD5eDice {
     // Function to help with handling additional functions as a result
     // of failures
     async function handleFailure (system, diceResults) {
-      const failures = diceResults.filter(result => result.success === false).length
+      const failures = diceResults.filter(result => result.success === false && !result.discarded).length
 
       if (failures > 0) {
         if (system === 'vampire' && increaseHunger && game.settings.get('vtm5e', 'automatedRouse')) {
