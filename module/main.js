@@ -62,48 +62,39 @@ Hooks.once('init', async function () {
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
   Actors.registerSheet('vtm5e', MortalActorSheet, {
-    label: 'Mortal Sheet',
     types: ['mortal'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', HunterActorSheet, {
-    label: 'Hunter Sheet',
     types: ['hunter'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', VampireActorSheet, {
-    label: 'Vampire Sheet',
     types: ['vampire'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', WerewolfActorSheet, {
-    label: 'Werewolf Sheet',
     types: ['werewolf'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', GhoulActorSheet, {
-    label: 'Ghoul Sheet',
     types: ['ghoul'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', CellActorSheet, {
-    label: 'Cell Sheet',
     types: ['cell'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', CoterieActorSheet, {
-    label: 'Coterie Sheet',
     types: ['coterie'],
     makeDefault: true
   })
   Actors.registerSheet('vtm5e', SPCActorSheet, {
-    label: 'SPC Sheet',
     types: ['spc'],
     makeDefault: true
   })
   Items.unregisterSheet('core', ItemSheet)
   Items.registerSheet('vtm5e', WoDItemSheet, {
-    label: 'Item Sheet',
     makeDefault: true
   })
 
