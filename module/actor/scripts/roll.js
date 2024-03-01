@@ -289,7 +289,9 @@ export const getAdvancedDice = async function (actor) {
 }
 
 export const generateLabelAndLocalize = async function (string) {
-  const str = string.toLowerCase()
+  // Always lowercase any labels we're localizing
+  // customRoll is the one exception to this rule
+  const str = string === 'customRoll' ? 'customRoll' : string.toLowerCase()
 
   // Lists
   const attributes = WOD5E.Attributes.getList()
