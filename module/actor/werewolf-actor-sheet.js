@@ -1,4 +1,4 @@
-/* global game, mergeObject, renderTemplate, ChatMessage, Dialog */
+/* global game, mergeObject, renderTemplate, ChatMessage, Dialog, WOD5E */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -14,11 +14,6 @@ export class WerewolfActorSheet extends WoDActor {
   static get defaultOptions () {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'werewolf-sheet', 'actor', 'sheet', 'werewolf']
-
-    // If the user has darkmode enabled, then push it to the class list
-    if (game.settings.get('vtm5e', 'darkTheme')) {
-      classList.push('dark-theme')
-    }
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
@@ -254,11 +249,15 @@ export class WerewolfActorSheet extends WoDActor {
 
     // If the type of gift is already set, we don't need to ask for it
     if (header.dataset.gift) {
+      // Get the image for the item, if one is available from the item definitions
+      const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
+      const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+
       // Prepare the item object.
       const itemData = {
         name: game.i18n.localize('WOD5E.WTA.NewGift'),
         type: 'gift',
-        img: '/systems/vtm5e/assets/icons/powers/gift.png',
+        img,
         system: {
           giftType: header.dataset.gift
         }
@@ -292,11 +291,15 @@ export class WerewolfActorSheet extends WoDActor {
           callback: async (html) => {
             const gift = html.find('#giftSelect')[0].value
 
+            // Get the image for the item, if one is available from the item definitions
+            const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
+            const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+
             // Prepare the item object.
             const itemData = {
               name: game.i18n.localize('WOD5E.WTA.NewGift'),
               type: 'gift',
-              img: '/systems/vtm5e/assets/icons/powers/gift.png',
+              img,
               system: {
                 giftType: gift
               }
@@ -338,11 +341,15 @@ export class WerewolfActorSheet extends WoDActor {
     // Top-level variables
     const actor = this.actor
 
+    // Get the image for the item, if one is available from the item definitions
+    const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
+    const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+
     // Prepare the item object.
     const itemData = {
       name: game.i18n.localize('WOD5E.WTA.NewRite'),
       type: 'gift',
-      img: '/systems/vtm5e/assets/icons/powers/gift.png',
+      img,
       system: {
         giftType: 'rite'
       }

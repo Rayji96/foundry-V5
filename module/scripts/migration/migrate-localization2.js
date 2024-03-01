@@ -158,18 +158,6 @@ export const MigrateLocalization2 = async function () {
 
       // Vampire updates
       {
-        old: 'WOD5E.Vampire',
-        new: 'WOD5E.VTM.Label'
-      },
-      {
-        old: 'WOD5E.Ghoul',
-        new: 'WOD5E.VTM.Ghoul'
-      },
-      {
-        old: 'WOD5E.Coterie',
-        new: 'WOD5E.VTM.Coterie'
-      },
-      {
         old: 'WOD5E.Animalism',
         new: 'WOD5E.VTM.Animalism'
       },
@@ -228,14 +216,6 @@ export const MigrateLocalization2 = async function () {
 
       // Hunter updates
       {
-        old: 'WOD5E.Hunter',
-        new: 'WOD5E.HTR.Label'
-      },
-      {
-        old: 'WOD5E.Cell',
-        new: 'WOD5E.HTR.Cell'
-      },
-      {
         old: 'WOD5E.Arsenal',
         new: 'WOD5E.HTR.Arsenal'
       },
@@ -285,10 +265,6 @@ export const MigrateLocalization2 = async function () {
       },
 
       // Werewolf updates
-      {
-        old: 'WOD5E.Werewolf',
-        new: 'WOD5E.WTA.Label'
-      },
       {
         old: 'WOD5E.HomidName',
         new: 'WOD5E.WTA.HomidName'
@@ -398,10 +374,6 @@ export const MigrateLocalization2 = async function () {
         new: 'WOD5E.WTA.SilverFang'
       },
       // SPC updates
-      {
-        old: 'WOD5E.SPC',
-        new: 'WOD5E.SPC.Label'
-      },
       {
         old: 'WOD5E.Mental',
         new: 'WOD5E.SPC.Mental'

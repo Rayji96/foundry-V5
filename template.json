@@ -826,12 +826,10 @@
     },
    
     "mortal": {
-      "label": "WOD5E.Mortal",
       "templates": ["base"],
       "gamesystem": "mortal"
     },
     "vampire": {
-      "label": "WOD5E.VTM.Label",
       "templates": ["base","disciplines"],
       "gamesystem": "vampire",
       "headers":{
@@ -852,7 +850,6 @@
       }
     },
     "werewolf": {
-      "label": "WOD5E.WTA.Label",
       "templates": ["base","renown","werewolfForms","gifts"],
       "gamesystem": "werewolf",
       "headers": {
@@ -883,7 +880,6 @@
       }
     },
     "hunter": {
-      "label": "WOD5E.HTR.Label",
       "templates": ["base","edges"],
       "gamesystem": "hunter",
       "headers":{
@@ -893,7 +889,6 @@
       }
     },
     "coterie" : {
-      "label": "WOD5E.VTM.Coterie",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -902,7 +897,6 @@
       }
     },
     "cell" : {
-      "label": "WOD5E.HTR.Cell",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -911,7 +905,6 @@
       }
     },
     "ghoul": {
-      "label": "WOD5E.VTM.Ghoul",
       "templates": ["base","disciplines"],
       "gamesystem": "vampire",
       "headers":{
@@ -920,7 +913,6 @@
       }
     },
     "spc" : {
-      "label": "WOD5E.SPC.Label",
       "templates": ["abbreviated","disciplines"],
       "gamesystem": "mortal"
     }

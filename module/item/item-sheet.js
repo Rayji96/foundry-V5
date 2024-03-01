@@ -12,11 +12,6 @@ export class WoDItemSheet extends ItemSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'item']
 
-    // If the user has darkmode enabled, then push it to the class list
-    if (game.settings.get('vtm5e', 'darkTheme')) { // eslint-disable-line
-      classList.push('dark-theme')
-    }
-
     return mergeObject(super.defaultOptions, {
       classes: classList,
       width: 520,

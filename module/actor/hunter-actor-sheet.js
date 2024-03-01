@@ -16,11 +16,6 @@ export class HunterActorSheet extends CellActorSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'hunter-sheet', 'sheet', 'actor', 'hunter']
 
-    // If the user has darkmode enabled, then push it to the class list
-    if (game.settings.get('vtm5e', 'darkTheme')) {
-      classList.push('dark-theme')
-    }
-
     return mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/hunter-sheet.hbs',

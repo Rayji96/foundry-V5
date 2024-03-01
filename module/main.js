@@ -2,14 +2,6 @@
 
 // Actor sheets
 import { ActorInfo } from './actor/actor.js'
-import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
-import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
-import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
-import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
-import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
-import { CellActorSheet } from './actor/cell-actor-sheet.js'
-import { SPCActorSheet } from './actor/spc-actor-sheet.js'
-import { WerewolfActorSheet } from './actor/werewolf-actor-sheet.js'
 // Item sheets
 import { ItemInfo } from './item/item.js'
 import { WoDItemSheet } from './item/item-sheet.js'
@@ -28,6 +20,8 @@ import { Systems } from './def/systems.js'
 import { Attributes } from './def/attributes.js'
 import { Skills } from './def/skills.js'
 import { Features } from './def/features.js'
+import { ActorTypes } from './def/actortypes.js'
+import { ItemTypes } from './def/itemtypes.js'
 import { Disciplines } from './def/disciplines.js'
 import { Edges } from './def/edges.js'
 import { Renown } from './def/renown.js'
@@ -38,8 +32,13 @@ import { Gifts } from './def/gifts.js'
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
 
+  // Load settings into Foundry
   loadSettings()
 
+  // After settings are loaded, check if we need to apply dark theme
+  document.body.classList.toggle('dark-theme', game.settings.get('vtm5e', 'darkTheme'))
+
+  // Some basic info for the gamesystem
   game.wod5e = {
     ActorInfo,
     ItemInfo,
@@ -57,51 +56,23 @@ Hooks.once('init', async function () {
   CONFIG.Dice.terms.w = WerewolfDie
   CONFIG.Dice.terms.r = WerewolfRageDie
 
-  // Register sheet application classes
+  // Register actor sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
-  Actors.registerSheet('vtm5e', MortalActorSheet, {
-    label: 'Mortal Sheet',
-    types: ['mortal'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', HunterActorSheet, {
-    label: 'Hunter Sheet',
-    types: ['hunter'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', VampireActorSheet, {
-    label: 'Vampire Sheet',
-    types: ['vampire'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', WerewolfActorSheet, {
-    label: 'Werewolf Sheet',
-    types: ['werewolf'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', GhoulActorSheet, {
-    label: 'Ghoul Sheet',
-    types: ['ghoul'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', CellActorSheet, {
-    label: 'Cell Sheet',
-    types: ['cell'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', CoterieActorSheet, {
-    label: 'Coterie Sheet',
-    types: ['coterie'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', SPCActorSheet, {
-    label: 'SPC Sheet',
-    types: ['spc'],
-    makeDefault: true
-  })
+  // Loop through each entry in the actorTypesList and register their sheet classes
+  const actorTypesList = ActorTypes.getList()
+  for (const entry of actorTypesList) {
+    const [, value] = Object.entries(entry)[0]
+    const { types, sheetClass } = value
+
+    Actors.registerSheet('vtm5e', sheetClass, {
+      types,
+      makeDefault: true
+    })
+  }
+
+  // Register the WoDItemSheet class, used for all items
   Items.unregisterSheet('core', ItemSheet)
   Items.registerSheet('vtm5e', WoDItemSheet, {
-    label: 'Item Sheet',
     makeDefault: true
   })
 
@@ -124,6 +95,8 @@ Hooks.once('ready', async function () {
     Attributes,
     Skills,
     Features,
+    ActorTypes,
+    ItemTypes,
     Disciplines,
     Edges,
     Renown,
