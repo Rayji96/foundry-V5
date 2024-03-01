@@ -1,9 +1,8 @@
 /* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
 
-import { _onRoll } from './scripts/roll.js'
+import { _onRoll, generateLabelAndLocalize } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/specialty-bonuses.js'
-import { generateLabelAndLocalize } from './scripts/roll.js'
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here

@@ -36,7 +36,7 @@ Hooks.once('init', async function () {
   loadSettings()
 
   // After settings are loaded, check if we need to apply dark theme
-  document.body.classList.toggle("dark-theme", game.settings.get('vtm5e', 'darkTheme'))
+  document.body.classList.toggle('dark-theme', game.settings.get('vtm5e', 'darkTheme'))
 
   // Some basic info for the gamesystem
   game.wod5e = {
@@ -61,9 +61,9 @@ Hooks.once('init', async function () {
   // Loop through each entry in the actorTypesList and register their sheet classes
   const actorTypesList = ActorTypes.getList()
   for (const entry of actorTypesList) {
-    const [key, value] = Object.entries(entry)[0]
+    const [, value] = Object.entries(entry)[0]
     const { types, sheetClass } = value
-  
+
     Actors.registerSheet('vtm5e', sheetClass, {
       types,
       makeDefault: true

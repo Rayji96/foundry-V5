@@ -24,7 +24,7 @@ export const loadSettings = async function () {
     default: false,
     type: Boolean,
     onChange: (value) => {
-      document.body.classList.toggle("dark-theme", value)
+      document.body.classList.toggle('dark-theme', value)
     }
   })
 

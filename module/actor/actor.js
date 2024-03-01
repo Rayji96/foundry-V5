@@ -1,4 +1,4 @@
-/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry */
+/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E */
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -22,7 +22,6 @@ export class ActorInfo extends Actor {
     const documentName = this.metadata.name
 
     // List of actor templates
-    const actorTemplates = game.template.Actor
     const actorTemplateTypes = game.template.Actor.types
 
     // List of folders in the game, if there is at least 1
@@ -37,10 +36,10 @@ export class ActorInfo extends Actor {
     for (const i in actorTemplateTypes) {
       const actorType = actorTemplateTypes[i]
 
-       // If the actor template has a label, add it to the types list
-       // Otherwise, default to the actor's key
-       const actorFromList = WOD5E.ActorTypes.getList().find(obj => actorType in obj)
-       actorTypes[actorType] = actorFromList ? actorFromList[actorType].label : actorType
+      // If the actor template has a label, add it to the types list
+      // Otherwise, default to the actor's key
+      const actorFromList = WOD5E.ActorTypes.getList().find(obj => actorType in obj)
+      actorTypes[actorType] = actorFromList ? actorFromList[actorType].label : actorType
     }
 
     // Render the document creation form

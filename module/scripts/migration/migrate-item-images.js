@@ -10,7 +10,7 @@ export const MigrateItemImages = async function () {
     // Fix image data across items (v4.0.0)
     for (const actor of actorsList) {
       const actorItems = actor.items
-      let updatedItems = []
+      const updatedItems = []
       let hasFixedItems = false
 
       for (const item of actorItems) {
@@ -50,7 +50,7 @@ export const MigrateItemImages = async function () {
       let count = 0
 
       // Regex
-      const regex = new RegExp(/\/systems\/vtm5e\/assets\/icons\/powers\//, 'g')
+      const regex = /\/systems\/vtm5e\/assets\/icons\/powers\//g
       const matches = string.match(regex)
 
       // So long as there's some matches, increase the count

@@ -1,4 +1,4 @@
-/* global game, mergeObject, renderTemplate, ChatMessage, Dialog */
+/* global game, mergeObject, renderTemplate, ChatMessage, Dialog, WOD5E */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -249,10 +249,9 @@ export class WerewolfActorSheet extends WoDActor {
 
     // If the type of gift is already set, we don't need to ask for it
     if (header.dataset.gift) {
-
       // Get the image for the item, if one is available from the item definitions
       const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-      const img = itemFromList['gift'].img ? itemFromList['gift'].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+      const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
 
       // Prepare the item object.
       const itemData = {
@@ -294,7 +293,7 @@ export class WerewolfActorSheet extends WoDActor {
 
             // Get the image for the item, if one is available from the item definitions
             const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-            const img = itemFromList['gift'].img ? itemFromList['gift'].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+            const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
 
             // Prepare the item object.
             const itemData = {
@@ -344,7 +343,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     // Get the image for the item, if one is available from the item definitions
     const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-    const img = itemFromList['gift'].img ? itemFromList['gift'].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+    const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
 
     // Prepare the item object.
     const itemData = {
