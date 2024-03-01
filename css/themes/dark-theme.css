@@ -235,3 +235,7 @@
 .dark-theme .wod5e.hunter-sheet .despair-box .despair-toggle {
   border-color: white;
 }
+
+.dark-theme .dialog-content .situational-modifiers {
+  background: #121212;
+}
