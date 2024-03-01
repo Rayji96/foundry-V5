@@ -141,7 +141,8 @@ export const willpowerReroll = async (roll) => {
 
           // Merge "results" arrays
           messageRolls[0].terms[0].results = messageRolls[0].terms[0].results.concat(reroll.terms[0].results)
-          messageRolls[0].terms[2].results = messageRolls[0].terms[2].results.concat(reroll.terms[2].results)
+          // Only merge the 2nd dicepool if one even exists
+          if (messageRolls[0].terms[2]) messageRolls[0].terms[2].results = messageRolls[0].terms[2].results.concat(reroll.terms[2].results)
 
           // Update the "content" field
           const newContent = await generateRollMessage({
