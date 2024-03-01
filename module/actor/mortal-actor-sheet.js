@@ -14,11 +14,6 @@ export class MortalActorSheet extends CoterieActorSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'mortal']
 
-    // If the user has darkmode enabled, then push it to the class list
-    if (game.settings.get('vtm5e', 'darkTheme')) {
-      classList.push('dark-theme')
-    }
-
     return mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/mortal-sheet.hbs',

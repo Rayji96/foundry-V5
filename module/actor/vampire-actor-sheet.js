@@ -1,7 +1,7 @@
 /* global game, mergeObject */
 
 import { GhoulActorSheet } from './ghoul-actor-sheet.js'
-import { getBloodPotencyValues, getBloodPotencyText } from './blood-potency.js'
+import { getBloodPotencyValues, getBloodPotencyText } from './scripts/blood-potency.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -13,11 +13,6 @@ export class VampireActorSheet extends GhoulActorSheet {
   static get defaultOptions () {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'vampire', 'vampire-sheet']
-
-    // If the user has darkmode enabled, then push it to the class list
-    if (game.settings.get('vtm5e', 'darkTheme')) {
-      classList.push('dark-theme')
-    }
 
     return mergeObject(super.defaultOptions, {
       classes: classList,

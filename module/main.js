@@ -32,8 +32,13 @@ import { Gifts } from './def/gifts.js'
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
 
+  // Load settings into Foundry
   loadSettings()
 
+  // After settings are loaded, check if we need to apply dark theme
+  document.body.classList.toggle("dark-theme", game.settings.get('vtm5e', 'darkTheme'))
+
+  // Some basic info for the gamesystem
   game.wod5e = {
     ActorInfo,
     ItemInfo,

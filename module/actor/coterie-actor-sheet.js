@@ -13,11 +13,6 @@ export class CoterieActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'coterie', 'coterie-sheet']
 
-    // If the user has darkmode enabled, then push it to the class list
-    if (game.settings.get('vtm5e', 'darkTheme')) {
-      classList.push('dark-theme')
-    }
-
     return mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/coterie-sheet.hbs',

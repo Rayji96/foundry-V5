@@ -346,7 +346,7 @@ class WOD5eDice {
       const failures = diceResults.filter(result => result.success === false && !result.discarded).length
 
       if (failures > 0) {
-        if (system === 'vampire' && increaseHunger && game.settings.get('vtm5e', 'automatedRouse')) {
+        if (system === 'vampire' && increaseHunger && game.settings.get('vtm5e', 'automatedHunger')) {
           _increaseHunger(actor, failures)
         } else if (system === 'werewolf' && decreaseRage && game.settings.get('vtm5e', 'automatedRage')) {
           _decreaseRage(actor, failures)
