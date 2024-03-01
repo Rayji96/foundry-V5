@@ -23,7 +23,6 @@ export class WoDActor extends ActorSheet {
     }
 
     data.displayBanner = game.settings.get('vtm5e', 'actorBanner')
-    data.darkTheme = game.settings.get('vtm5e', 'darkTheme')
 
     // Enrich non-header editor fields
     if (actorData.biography) { data.enrichedBiography = await TextEditor.enrichHTML(actorData.biography, { async: true }) }
@@ -106,10 +105,6 @@ export class WoDActor extends ActorSheet {
 
     // Top-level variables
     const actor = this.actor
-
-    // Activate darkmode if needed
-    console.log(html)
-    html.find('.window-app').addClass('dark-theme')
 
     // Resource squares (Health, Willpower)
     html.find('.resource-counter > .resource-counter-step').click(_onSquareCounterChange.bind(this))
