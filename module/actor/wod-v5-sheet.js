@@ -3,6 +3,7 @@
 import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/specialty-bonuses.js'
+import { generateLabelAndLocalize } from './scripts/roll.js'
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -196,7 +197,7 @@ export class WoDActor extends ActorSheet {
    * @param {Event} event   The originating click event
    * @protected
    */
-  _onItemCreate (event) {
+  async _onItemCreate (event) {
     event.preventDefault()
 
     // Top-level variables
@@ -205,28 +206,35 @@ export class WoDActor extends ActorSheet {
     const type = header.dataset.type
 
     // Secondary variables
-    let img = '/icons/svg/item-bag.svg'
     const data = duplicate(header.dataset)
 
+    // Variables yet to be defined
+    let prelocalizeString
+
     // Handle situational variable changing
+    if (type === 'power') { // Vampire disciplines
+      prelocalizeString = data.discipline
+    } else if (type === 'perk') {
+      prelocalizeString = data.edge
+    } else if (type === 'feature') {
+      prelocalizeString = data.featuretype
+    } else {
+      prelocalizeString = type
+    }
+    // Handle situational variable changing part 2
     if (type === 'boon') {
       data.boontype = 'Trivial'
-    }
-    if (type === 'customRoll') {
+    } else if (type === 'customRoll') {
       data.dice1 = 'strength'
       data.dice2 = 'athletics'
     }
 
-    // Handle changing the item image if needed
-    if (type === 'power') {
-      img = '/systems/vtm5e/assets/icons/powers/discipline.png'
-    }
-    if (type === 'perk') {
-      img = '/systems/vtm5e/assets/icons/powers/edge.png'
-    }
+    // Get the image for the item, if one is available from the item definitions
+    const itemFromList = WOD5E.ItemTypes.getList().find(obj => type in obj)
+    const img = itemFromList[type].img ? itemFromList[type].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
 
     // Initialize a default name.
-    const name = this.getItemDefaultName(type, data)
+    const name = await generateLabelAndLocalize(prelocalizeString)
 
     // Prepare the item object.
     const itemData = {
@@ -323,54 +331,6 @@ export class WoDActor extends ActorSheet {
     // Add the dialog to the list of apps on the actor
     // This re-renders the dialog every actor update
     actor.apps[SkillEditDialog.appId] = SkillEditDialog
-  }
-
-  // Function to grab the default name of an item.
-  getItemDefaultName (type, data) {
-    // Items
-    if (type === 'feature') {
-      return `${game.i18n.localize('WOD5E.Items.' + data.featuretype.capitalize())}`
-    }
-
-    // Vampire disciplines
-    if (type === 'power') {
-      const disciplines = {
-        animalism: 'WOD5E.VTM.Animalism',
-        auspex: 'WOD5E.VTM.Auspex',
-        celerity: 'WOD5E.VTM.Celerity',
-        dominate: 'WOD5E.VTM.Dominate',
-        fortitude: 'WOD5E.VTM.Fortitude',
-        obfuscate: 'WOD5E.VTM.Obfuscate',
-        potence: 'WOD5E.VTM.Potence',
-        presence: 'WOD5E.VTM.Presence',
-        protean: 'WOD5E.VTM.Protean',
-        sorcery: 'WOD5E.VTM.BloodSorcery',
-        oblivion: 'WOD5E.VTM.Oblivion',
-        alchemy: 'WOD5E.VTM.ThinBloodAlchemy',
-        rituals: 'WOD5E.VTM.Rituals',
-        ceremonies: 'WOD5E.VTM.Ceremonies'
-      }
-
-      return `${game.i18n.localize(disciplines[data.discipline])}`
-    }
-
-    // Hunter perks
-    if (type === 'perk') {
-      return `${game.i18n.localize('WOD5E.HTR.' + data.edge.capitalize())}`
-    }
-
-    // Boons
-    if (type === 'boon') {
-      return game.i18n.localize('WOD5E.Items.Boon')
-    }
-
-    // Custom rolls
-    if (type === 'customRoll') {
-      return game.i18n.localize('WOD5E.Items.CustomRoll')
-    }
-
-    // Anything else
-    return `${game.i18n.localize('WOD5E.' + type.capitalize())}`
   }
 
   // Handle changes to health

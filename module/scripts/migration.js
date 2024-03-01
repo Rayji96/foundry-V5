@@ -6,6 +6,7 @@ import { MigrateGamesystem } from './migration/migrate-gamesystem.js'
 import { MigrateTrackers } from './migration/migrate-trackers.js'
 import { MigrateSpecialties } from './migration/migrate-specialties.js'
 import { MigrateLocalization2 } from './migration/migrate-localization2.js'
+import { MigrateItemImages } from './migration/migrate-item-images.js'
 
 let worldVersion
 
@@ -56,6 +57,10 @@ export const migrateWorld = async () => {
         const migrationIDs6 = await MigrateLocalization2()
         updates.concat(migrationIDs6)
 
+        // Migrate item images
+        const migrationIDs7 = await MigrateItemImages()
+        updates.concat(migrationIDs7)
+
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {
           ui.notifications.info('Upgrade complete! Foundry will now refresh in 10 seconds...')
@@ -65,7 +70,7 @@ export const migrateWorld = async () => {
             foundry.utils.debouncedReload()
           }, 10000)
         } else {
-          ui.notifications.info('No changes necessary! Welcome to version ' + currentVersion)
+          ui.notifications.info('Welcome to version ' + currentVersion)
         }
 
         // Update game version

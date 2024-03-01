@@ -63,6 +63,8 @@ export class ItemInfo extends Item {
          const form = html[0].querySelector('form')
          const fd = new FormDataExtended(form)
          data = foundry.utils.mergeObject(data, fd.object)
+         const itemFromList = WOD5E.ItemTypes.getList().find(obj => data.type in obj)
+         data.img = itemFromList[data.type].img ? itemFromList[data.type].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
          if (!data.folder) delete data.folder
          if (itemTypes.length === 1) data.type = itemTypes[0]
          return this.create(data, { renderSheet: true })

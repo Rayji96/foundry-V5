@@ -288,12 +288,17 @@ export const getAdvancedDice = async function (actor) {
   }
 }
 
-export const generateLabelAndLocalize = async function (str) {
+export const generateLabelAndLocalize = async function (string) {
+  const str = string.toLowerCase()
+
   // Lists
   const attributes = WOD5E.Attributes.getList()
   const skills = WOD5E.Skills.getList()
+  const features = WOD5E.Features.getList()
+  const items = WOD5E.ItemTypes.getList()
   const disciplines = WOD5E.Disciplines.getList()
   const renown = WOD5E.Renown.getList()
+  const edges = WOD5E.Edges.getList()
 
   // Attributes
   if (attributes.find(obj => str in obj)) {
@@ -303,6 +308,14 @@ export const generateLabelAndLocalize = async function (str) {
   if (skills.find(obj => str in obj)) {
     return findLabel(skills, str)
   }
+  // Features
+  if (features.find(obj => str in obj)) {
+    return findLabel(features, str)
+  }
+  // Items
+  if (items.find(obj => str in obj)) {
+    return findLabel(items, str)
+  }
   // Disciplines
   if (disciplines.find(obj => str in obj)) {
     return findLabel(disciplines, str)
@@ -310,6 +323,10 @@ export const generateLabelAndLocalize = async function (str) {
   // Renown
   if (renown.find(obj => str in obj)) {
     return findLabel(renown, str)
+  }
+  // Edges
+  if (edges.find(obj => str in obj)) {
+    return findLabel(edges, str)
   }
 
   // Return the base localization if nothing else is found
