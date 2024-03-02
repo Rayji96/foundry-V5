@@ -242,16 +242,13 @@
         },
         "standarddicepools": {
           "physical": {
-            "value": 1,
-            "name": "WOD5E.SPC.Physical"
+            "value": 1
           },
           "social": {
-            "value": 1,
-            "name": "WOD5E.SPC.Social"
+            "value": 1
           },
           "mental": {
-            "value": 1,
-            "name": "WOD5E.SPC.Mental"
+            "value": 1
           }
         },
         "exceptionaldicepools": {
