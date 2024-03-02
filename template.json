@@ -88,7 +88,7 @@
             "name": "WOD5E.Skills.Athletics",
             "bonuses": []
           },
-          "animal ken": {
+          "animalken": {
             "value": 0,
             "name": "WOD5E.Skills.AnimalKen",
             "bonuses": []
@@ -257,7 +257,7 @@
             "name": "WOD5E.Skills.Athletics",
             "visible": false
           },
-          "animal ken": {
+          "animalken": {
             "value": 0,
             "name": "WOD5E.Skills.AnimalKen",
             "visible": false

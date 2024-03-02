@@ -7,6 +7,7 @@ import { MigrateTrackers } from './migration/migrate-trackers.js'
 import { MigrateSpecialties } from './migration/migrate-specialties.js'
 import { MigrateLocalization2 } from './migration/migrate-localization2.js'
 import { MigrateItemImages } from './migration/migrate-item-images.js'
+import { MigrateAnimalKen } from './migration/migrate-animal-ken.js'
 
 let worldVersion
 
@@ -60,6 +61,10 @@ export const migrateWorld = async () => {
         // Migrate item images
         const migrationIDs7 = await MigrateItemImages()
         updates.concat(migrationIDs7)
+
+        // Migrate the Animal Ken skill
+        const migrationIDs8 = await MigrateAnimalKen()
+        updates.concat(migrationIDs8)
 
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {
