@@ -13,7 +13,7 @@ export const MigrateAnimalKen = async function () {
 
       // Handle SPC sheets first
       if (actor.type === 'spc') {
-        // Check if the actor already has animalken (the broken skill)
+        // Check if the actor has animal ken (the broken skill)
         if (hasProperty(actorData, 'exceptionaldicepools.animal ken')) {
           // Define the new actor skill we'll derive the data from
           // only if animalken (the new skill) doesn't already exist
@@ -32,7 +32,7 @@ export const MigrateAnimalKen = async function () {
           actor.update({ exceptionaldicepools: actorData.exceptionaldicepools })
         }
       } else if (actor.type !== 'cell' && actor.type !== 'coterie') { // Ignore cell and coterie sheets
-        // Check if the actor already has animal ken (the broken skill)
+        // Check if the actor has animal ken (the broken skill)
         if (hasProperty(actorData, 'skills.animal ken')) {
           // Define the new actor skill we'll derive the data from
           // only if animalken (the new skill) doesn't already exist
