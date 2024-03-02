@@ -392,7 +392,7 @@ export const MigrateLocalization2 = async function () {
     for (const actor of actorsList) {
       const actorData = actor.system
 
-      // Check if there are any instances of VTM5E in the actor data
+      // Check if there are any instances of any of the localization comparisons in the actor data
       if (countInstances(actorData, LocalizationComparisons) > 0) {
         const newData = findAndReplace(actorData, LocalizationComparisons)
 

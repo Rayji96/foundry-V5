@@ -166,10 +166,10 @@ export class WoDActor extends ActorSheet {
     // Collapsible items and other elements
     $('.collapsible').on('click', function () {
       $(this).toggleClass('active')
-    
+
       const content = $(this).closest('.collapsible-container').find('.collapsible-content')
 
-      if (content.css('maxHeight') == '0px') {
+      if (content.css('maxHeight') === '0px') {
         content.css('maxHeight', content.prop('scrollHeight') + 'px')
       } else {
         content.css('maxHeight', '0px')

@@ -1,4 +1,4 @@
-/* global ChatMessage, game, ui */
+/* global renderTemplate, Dialog, ChatMessage, game, ui, WOD5E */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { _onConfirmRoll } from '../actor/scripts/roll.js'
@@ -81,15 +81,13 @@ export class wod5eAPI {
    *
    * @param dataset                   A formatted dataset with various roll variables
    * @param actor                     (Optional, default to speaker actor) The actor that the roll is coming from
-   * @param data                      (Optional, default actor.system) Actor or item data to pass along with the roll
   */
   static async RollFromDataset ({
     dataset,
-    actor = game.actors.get(ChatMessage.getSpeaker().actor),
-    data = game.actors.get(ChatMessage.getSpeaker().actor)?.system || {}
+    actor = game.actors.get(ChatMessage.getSpeaker().actor)
   }) {
     // If there's no dataset, send an error and then stop the function
-    if(!dataset) return console.error('No dataset defined.')
+    if (!dataset) return console.error('No dataset defined.')
 
     // If selectDialog isn't set, just skip to the next dialog immediately
     if (!dataset.selectDialog) return _onConfirmRoll(dataset, actor)
@@ -196,7 +194,7 @@ export class wod5eAPI {
   }
 
   // Function to grab the values of any given paths and add them up as the total number of basic dice for the roll
-  static async getFlavorDescription({
+  static async getFlavorDescription ({
     valuePath = '',
     data = {}
   }) {
