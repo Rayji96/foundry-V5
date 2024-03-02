@@ -9,7 +9,7 @@
             </div>
         </li>
         {{#each feature as |item id|}}
-        <li class="item flexcol" data-item-id="{{item._id}}">
+        <li class="item flexcol collapsible-container" data-item-id="{{item._id}}">
             <div class="flexrow">
                 <div class="flexrow collapsible">
                     <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"
@@ -60,7 +60,7 @@
             </div>
         </li>
         {{#each actor.boons as |item id|}}
-        <li class="item flexcol" data-item-id="{{item._id}}">
+        <li class="item flexcol collapsible-container" data-item-id="{{item._id}}">
             <div class="flexrow">
                 <div class="flexrow collapsible">
                     <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"

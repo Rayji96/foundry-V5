@@ -453,7 +453,7 @@ p .collapsible-content{
     background: #eeece8;
 }
 
-.wod5e .discipline-description {
+.wod5e .discipline-description, .edge-description, .gift-description {
     width: 100%;
     resize: none;
     font-family: Vollkorn, serif;

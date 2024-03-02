@@ -14,33 +14,35 @@
         <!-- Iterate through each of the edge lists -->
         {{#each actor.system.edges as |edge key|}}
             {{#if edge.visible}}
-                <li class="flexrow item-header">
-                    <div class="item-name collapsible">
-                        {{localize edge.name}}
+                <div class="collapsible-container">
+                    <li class="flexrow item-header">
+                        <div class="item-name collapsible">
+                            {{localize edge.name}}
+                        </div>
+                        <!-- Item controls for Edge sections -->
+                        <div class="item-controls">
+                            <!-- Add new edge perk -->
+                            <a class="item-control item-create" title="{{localize 'WOD5E.HTR.AddPerk'}}" data-type="perk" data-edge="{{key}}">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                            <!-- Icon to show the edge description to the chat-->
+                            <a class="item-control edge-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}" data-type="perk" data-edge="{{key}}">
+                                <i class="fas fa-comment-alt"></i>
+                            </a>
+                            <!-- Icon to delete the edge (as long as it doesn't have any perks) -->
+                            <a class="item-control edge-delete" title="{{localize 'WOD5E.Delete'}}" data-edge="{{key}}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <!-- Edge description -->
+                    <div class="collapsible-content">
+                        <textarea class="edge-description" name="system.edges.{{key}}.description">{{edge.description}}</textarea>
                     </div>
-                    <!-- Item controls for Edge sections -->
-                    <div class="item-controls">
-                        <!-- Add new edge perk -->
-                        <a class="item-control item-create" title="{{localize 'WOD5E.HTR.AddPerk'}}" data-type="perk" data-edge="{{key}}">
-                            <i class="fas fa-plus"></i>
-                        </a>
-                        <!-- Icon to show the edge description to the chat-->
-                        <a class="item-control edge-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}" data-type="perk" data-edge="{{key}}">
-                            <i class="fas fa-comment-alt"></i>
-                        </a>
-                        <!-- Icon to delete the edge (as long as it doesn't have any perks) -->
-                        <a class="item-control edge-delete" title="{{localize 'WOD5E.Delete'}}" data-edge="{{key}}">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
-                </li>
-                <!-- Edge description -->
-                <div class="collapsible-content">
-                    <textarea class="edge-description" name="system.edges.{{key}}.description">{{edge.description}}</textarea>
                 </div>
                 <!-- Iterate through each of the edge perks -->
                 {{#each (lookup ../actor.edges_list key) as |item id|}}
-                    <li class="item flexcol" data-item-id="{{item._id}}">
+                    <li class="item flexcol collapsible-container" data-item-id="{{item._id}}">
                         <div class="flexrow">
                             <!-- Whether the button is clickable or not to post the perk in chat -->
                             {{#if item.system.rollable}}
