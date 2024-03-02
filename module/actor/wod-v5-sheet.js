@@ -1,6 +1,6 @@
 /* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
 
-import { _onRoll, generateLabelAndLocalize } from './scripts/roll.js'
+import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/specialty-bonuses.js'
 
@@ -233,7 +233,7 @@ export class WoDActor extends ActorSheet {
     const img = itemFromList[type].img ? itemFromList[type].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
 
     // Initialize a default name.
-    const name = await generateLabelAndLocalize(prelocalizeString)
+    const name = await WOD5E.api.generateLabelAndLocalize({ string: prelocalizeString })
 
     // Prepare the item object.
     const itemData = {

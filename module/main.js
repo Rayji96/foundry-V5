@@ -89,7 +89,11 @@ Hooks.once('ready', async function () {
   window.WOD5E = {
     api: {
       Roll: wod5eAPI.Roll,
-      RunMigration: migrateWorld
+      RollFromDataset: wod5eAPI.RollFromDataset,
+      getBasicDice: wod5eAPI.getBasicDice,
+      getAdvancedDice: wod5eAPI.getAdvancedDice,
+      getFlavorDescription: wod5eAPI.getFlavorDescription,
+      generateLabelAndLocalize: wod5eAPI.generateLabelAndLocalize
     },
     Systems,
     Attributes,
