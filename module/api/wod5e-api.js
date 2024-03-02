@@ -81,14 +81,13 @@ export class wod5eAPI {
    *
    * @param dataset                   A formatted dataset with various roll variables
    * @param actor                     (Optional, default to speaker actor) The actor that the roll is coming from
-   * 
   */
   static async RollFromDataset ({
     dataset,
     actor = game.actors.get(ChatMessage.getSpeaker().actor)
   }) {
     // If there's no dataset, send an error and then stop the function
-    if(!dataset) return console.error('No dataset defined.')
+    if (!dataset) return console.error('No dataset defined.')
 
     // If selectDialog isn't set, just skip to the next dialog immediately
     if (!dataset.selectDialog) return _onConfirmRoll(dataset, actor)
