@@ -1,4 +1,4 @@
-/* global renderTemplate, Dialog, game, WOD5E */
+/* global WOD5E */
 
 import { WOD5eDice } from '../../scripts/system-rolls.js'
 import { getActiveBonuses } from '../../scripts/rolls/situational-modifiers.js'

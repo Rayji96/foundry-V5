@@ -25,7 +25,7 @@ export const MigrateAnimalKen = async function () {
           migrationIDs.push(actor.uuid)
 
           // Update the actor's data with the new information
-          actor.update({ 'exceptionaldicepools':  actorData.exceptionaldicepools})
+          actor.update({ exceptionaldicepools: actorData.exceptionaldicepools })
         }
       } else if (actor.type !== 'cell' && actor.type !== 'coterie') { // Ignore cell and coterie sheets
         // Check if the actor already has animalken (the fixed skill)
@@ -40,7 +40,7 @@ export const MigrateAnimalKen = async function () {
           migrationIDs.push(actor.uuid)
 
           // Update the actor's data with the new information
-          actor.update({ 'skills': actorData.skills })
+          actor.update({ skills: actorData.skills })
         }
       }
 
