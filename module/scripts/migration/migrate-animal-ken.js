@@ -13,10 +13,14 @@ export const MigrateAnimalKen = async function () {
 
       // Handle SPC sheets first
       if (actor.type === 'spc') {
-        // Check if the actor already has animalken (the fixed skill)
-        if (actorData.exceptionaldicepools['animal ken']) {
+        // Check if the actor already has animalken (the broken skill)
+        if (hasProperty(actorData, 'exceptionaldicepools.animal ken')) {
           // Define the new actor skill we'll derive the data from
-          actorData.exceptionaldicepools.animalken = actorData.exceptionaldicepools['animal ken']
+          // only if animalken (the new skill) doesn't already exist
+          if (!hasProperty(actorData, 'exceptionaldicepools.animalken')) {
+            actorData.exceptionaldicepools.animalken = actorData.exceptionaldicepools['animal ken']
+          }
+
           // Delete the old skill
           delete actorData.exceptionaldicepools['animal ken']
 
@@ -28,10 +32,14 @@ export const MigrateAnimalKen = async function () {
           actor.update({ exceptionaldicepools: actorData.exceptionaldicepools })
         }
       } else if (actor.type !== 'cell' && actor.type !== 'coterie') { // Ignore cell and coterie sheets
-        // Check if the actor already has animalken (the fixed skill)
-        if (actorData.skills['animal ken']) {
+        // Check if the actor already has animal ken (the broken skill)
+        if (hasProperty(actorData, 'skills.animal ken')) {
           // Define the new actor skill we'll derive the data from
-          actorData.skills.animalken = actorData.skills['animal ken']
+          // only if animalken (the new skill) doesn't already exist
+          if (!hasProperty(actorData, 'skills.animalken')) {
+            actorData.skills.animalken = actorData.skills['animal ken']
+          }
+
           // Delete the old skill
           delete actorData.skills['animal ken']
 
@@ -51,6 +59,11 @@ export const MigrateAnimalKen = async function () {
       if (counter === totalIterations) {
         resolve(migrationIDs)
       }
+    }
+
+    // Quick function to check if a property exists on an object
+    function hasProperty(obj, path) {
+      return path.split('.').every(prop => prop in obj && (obj = obj[prop]));
     }
   })
 }
