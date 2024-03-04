@@ -125,7 +125,7 @@ export class HunterActorSheet extends CellActorSheet {
     }
 
     // Assign and return the edges list
-    actorData.edges_list = edges
+    actorData.system.edges_list = edges
   }
   /* -------------------------------------------- */
 

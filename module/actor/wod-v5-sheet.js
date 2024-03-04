@@ -90,10 +90,10 @@ export class WoDActor extends ActorSheet {
     }
 
     // Assign and return
-    actorData.boons = boons
-    actorData.customRolls = customRolls
-    actorData.gear = gear
-    actorData.features = features
+    actorData.system.boons = boons
+    actorData.system.customRolls = customRolls
+    actorData.system.gear = gear
+    actorData.system.features = features
   }
 
   /* -------------------------------------------- */

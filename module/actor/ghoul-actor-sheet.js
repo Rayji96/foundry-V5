@@ -114,7 +114,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     }
 
     // Assign and return the disciplines list
-    actorData.disciplines_list = disciplines
+    actorData.system.disciplines_list = disciplines
   }
 
   /* -------------------------------------------- */

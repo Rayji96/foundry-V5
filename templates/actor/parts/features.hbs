@@ -1,6 +1,6 @@
 <div class="tab features" data-group="primary" data-tab="features">
     <ol class="items-list">
-        {{#each actor.features as |feature key|}}
+        {{#each actor.system.features as |feature key|}}
         <li class="flexrow item-header">
             <div class="item-name">{{localize (generateLocalizedLabel key)}}</div>
             <div class="item-controls">
@@ -59,7 +59,7 @@
                 </a>
             </div>
         </li>
-        {{#each actor.boons as |item id|}}
+        {{#each actor.system.boons as |item id|}}
         <li class="item flexcol collapsible-container" data-item-id="{{item._id}}">
             <div class="flexrow">
                 <div class="flexrow collapsible">
