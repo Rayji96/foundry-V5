@@ -67,15 +67,15 @@ export class VampireActorSheet extends GhoulActorSheet {
     const actor = this.actor
 
     // Define various blood potency values
-    actorData.system.blood.bloodPotencyValue = parseInt(actor.system.blood.potency)
-    sheetData.blood.blood_potency_text = getBloodPotencyText(actorData.system.blood.bloodPotencyValue)
-    actorData.system.blood.bloodPotency = getBloodPotencyValues(actorData.system.blood.bloodPotencyValue)
+    actorData.system.bloodPotencyValue = parseInt(actor.system.blood.potency)
+    sheetData.blood_potency_text = getBloodPotencyText(actorData.system.bloodPotencyValue)
+    actorData.system.bloodPotency = getBloodPotencyValues(actorData.system.bloodPotencyValue)
 
     // Handle adding blood potency bonuses
     actorData.system.blood.bonuses = [
       {
         source: 'Blood Potency',
-        value: actorData.system.blood.bloodPotency.power,
+        value: actorData.system.bloodPotency.power,
         paths: ['disciplines'],
         activeWhen: {
           check: 'always'
@@ -83,7 +83,7 @@ export class VampireActorSheet extends GhoulActorSheet {
       },
       {
         source: 'Blood Surge',
-        value: actorData.system.blood.bloodPotency.surge,
+        value: actorData.system.bloodPotency.surge,
         paths: ['blood-surge'],
         activeWhen: {
           check: 'always'
