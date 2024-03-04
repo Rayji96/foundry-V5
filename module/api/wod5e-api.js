@@ -136,6 +136,9 @@ export class wod5eAPI {
 
                 // If using absolute values instead of value paths, add the values together
                 if (dataset.useAbsoluteValue && dataset.absoluteValue) dataset.absoluteValue += actor.system.skills[skillSelect].value
+
+                // Add the attribute selectors to the roll
+                dataset.selectors += ` skills skills.${attributeSelect}`
               }
               // Handle adding an attribute to the dicepool
               if (attributeSelect) {
@@ -147,6 +150,9 @@ export class wod5eAPI {
 
                 // If using absolute values instead of value paths, add the values together
                 if (dataset.useAbsoluteValue && dataset.absoluteValue) dataset.absoluteValue += actor.system.abilities[attributeSelect].value
+
+                // Add the attribute selectors to the roll
+                dataset.selectors += ` abilities abilities.${attributeSelect}`
               }
               // Handle adding a discipline to the dicepool
               if (disciplineSelect) {

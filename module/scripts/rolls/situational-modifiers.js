@@ -56,8 +56,8 @@ export async function getSituationalModifiers ({
       const displayWhenInactive = modifier.displayWhenInactive
       const unless = modifier.unless
 
-      // Check if 'unless' is present in 'modifiers.path' array
-      if (unless && modifiers.paths.includes(unless)) {
+      // Check if any 'unless' strings are present in the 'selectors' array
+      if (unless && unless.some(value => selectors.indexOf(value) !== -1)) {
         modifier.isActive = false
         return false
       }
@@ -99,7 +99,8 @@ export async function getActiveBonuses ({
   selectors
 }) {
   const situationalModifiers = await getSituationalModifiers({
-    actor, selectors
+    actor,
+    selectors
   })
   const activeModifiers = situationalModifiers.filter(modifier => modifier.isActive === true)
   let totalValue = 0

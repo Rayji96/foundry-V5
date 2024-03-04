@@ -1,6 +1,5 @@
 /* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
-// Export this function to be used in other scripts
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
 import { CellActorSheet } from './cell-actor-sheet.js'
