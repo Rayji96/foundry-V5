@@ -74,7 +74,7 @@ export const _onAddBonus = async function (event, item) {
           label: game.i18n.localize('WOD5E.Cancel')
         }
       },
-      default: 'cancel'
+      default: 'add'
     }
   ).render(true)
 }
@@ -161,7 +161,7 @@ export const _onEditBonus = async function (event, item) {
           label: game.i18n.localize('WOD5E.Cancel')
         }
       },
-      default: 'cancel'
+      default: 'save'
     }
   ).render(true)
 }

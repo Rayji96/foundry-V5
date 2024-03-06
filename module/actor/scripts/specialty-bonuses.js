@@ -91,7 +91,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
           label: game.i18n.localize('WOD5E.Cancel')
         }
       },
-      default: 'cancel'
+      default: 'add'
     },
     {
       classes: ['wod5e', `${system}-dialog`, `${system}-sheet`]
@@ -208,7 +208,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
           label: game.i18n.localize('WOD5E.Cancel')
         }
       },
-      default: 'cancel'
+      default: 'save'
     },
     {
       classes: ['wod5e', `${system}-dialog`, `${system}-sheet`]
