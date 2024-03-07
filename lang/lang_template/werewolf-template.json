@@ -1,0 +1,84 @@
+{
+  "WOD5E": {
+    "WTA": {
+      "Label": "",
+
+      "WerewolfDice": "",
+      "RageDice": "",
+
+      "GiftsandRites": "",
+      "Rage": "",
+      "RageCost": "",
+      "WillpowerCost": "",
+      "PossibleRageFailure": "",
+      "RollRageDamageWillpower": "",
+      "HasCost": "",
+
+      "Gift": "",
+      "SelectGift": "",
+      "GiftType": "",
+      "AddGift": "",
+      "NewGift": "",
+      "AddRite": "",
+      "NewRite": "",
+
+      "TheWolf": "",
+      "Tribe": "",
+      "Auspice": "",
+
+      "Harano": "",
+      "HaranoTest": "",
+      "Hauglosk": "",
+      "HaugloskTest": "",
+
+      "Frenzy": "Frenesi",
+      "EnterFrenzy": "",
+      "EndFrenzy": "",
+      "FrenzyActiveWarning": "",
+      "Active": "",
+      "FrenzyActiveWarning2": "",
+      "LostWolfFormChange": "",
+
+      "Renown": "",
+      "Wisdom": "",
+      "Glory": "",
+      "Honor": "",
+
+      "FormsOfGarou": "",
+      "HomidName": "",
+      "HomidTitle": "",
+      "GlabroName": "",
+      "GlabroTitle": "",
+      "CrinosName": "",
+      "CrinosTitle": "",
+      "HispoName": "",
+      "HispoTitle": "",
+      "LupusName": "",
+      "LupusTitle": "",
+      "PostFormToChat": "",
+
+      "Patron": "",
+      "Favor": "",
+      "Ban": "",
+
+      "Native": "",
+      "Ragabash": "",
+      "Theurge": "",
+      "Philodox": "",
+      "Galliard": "",
+      "Ahroun": "",
+      "BlackFury": "",
+      "BoneGnawer": "",
+      "ChildrenOfGaia": "",
+      "Galestalker": "",
+      "GhostCouncil": "",
+      "GlassWalker": "",
+      "HartWarden": "",
+      "RedTalon": "",
+      "ShadowLord": "",
+      "SilentStrider": "",
+      "SilverFang": "",
+      "Rite": ""
+    }
+  }
+}
