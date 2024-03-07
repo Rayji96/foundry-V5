@@ -74,7 +74,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
             actorBonuses.push(newBonus)
 
             // Update the actor
-            actor.update({ [`system.${bonusPath}`]: actorBonuses })
+            await actor.update({ [`system.${bonusPath}`]: actorBonuses })
 
             // Re-render the skill edit dialog
             SkillEditDialog.data.content = await renderTemplate('systems/vtm5e/templates/actor/parts/skill-dialog.hbs', {
@@ -116,7 +116,7 @@ export const _onDeleteBonus = async function (event, actor, data, SkillEditDialo
   actorBonuses.splice(key, 1)
 
   // Update the actor
-  actor.update({ [`system.${bonusPath}`]: actorBonuses })
+  await actor.update({ [`system.${bonusPath}`]: actorBonuses })
 
   // Re-render the skill edit dialog
   SkillEditDialog.data.content = await renderTemplate('systems/vtm5e/templates/actor/parts/skill-dialog.hbs', {
@@ -191,7 +191,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
             }
 
             // Update the actor
-            actor.update({ [`system.${bonusPath}`]: actorBonuses })
+            await actor.update({ [`system.${bonusPath}`]: actorBonuses })
 
             // Re-render the skill edit dialog
             SkillEditDialog.data.content = await renderTemplate('systems/vtm5e/templates/actor/parts/skill-dialog.hbs', {

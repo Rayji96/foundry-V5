@@ -262,18 +262,15 @@ export class WoDActor extends ActorSheet {
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
     const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
-    // Secondary variables
-    const skillData = {
+    // Render selecting a skill/attribute to roll
+    const skillTemplate = 'systems/vtm5e/templates/actor/parts/skill-dialog.hbs'
+    // Render the template
+    const content = await renderTemplate(skillTemplate, {
       id: skill,
       actor,
       system,
       skill: actor.system.skills[skill]
-    }
-
-    // Render selecting a skill/attribute to roll
-    const skillTemplate = 'systems/vtm5e/templates/actor/parts/skill-dialog.hbs'
-    // Render the template
-    const content = await renderTemplate(skillTemplate, skillData)
+    })
 
     // Render the dialog window to select which skill/attribute combo to use
     const SkillEditDialog = new Dialog(
@@ -295,6 +292,14 @@ export class WoDActor extends ActorSheet {
           delete actor.apps[SkillEditDialog.appId]
         },
         render: (html) => {
+          // Define the skill data to send along with any functions
+          const skillData = {
+            id: skill,
+            actor,
+            system,
+            skill: actor.system.skills[skill]
+          }
+
           // Prompt the dialog to add a new bonus
           html.find('.add-bonus').click(event => {
             _onAddBonus(event, actor, skillData, SkillEditDialog)

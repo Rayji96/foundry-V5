@@ -66,7 +66,7 @@ export const _onAddBonus = async function (event, item) {
             itemBonuses.push(newBonus)
 
             // Update the item
-            item.update({ 'system.bonuses': itemBonuses })
+            await item.update({ 'system.bonuses': itemBonuses })
           }
         },
         cancel: {
@@ -91,7 +91,7 @@ export const _onDeleteBonus = async function (event, item) {
   itemBonuses.splice(key, 1)
 
   // Update the item
-  item.update({ 'system.bonuses': itemBonuses })
+  await item.update({ 'system.bonuses': itemBonuses })
 }
 
 export const _onEditBonus = async function (event, item) {
@@ -153,7 +153,7 @@ export const _onEditBonus = async function (event, item) {
             }
 
             // Update the item
-            item.update({ 'system.bonuses': itemBonuses })
+            await item.update({ 'system.bonuses': itemBonuses })
           }
         },
         cancel: {
