@@ -205,6 +205,30 @@
       "name": "Hunter (Polish)",
       "path": "lang/pl/hunter-pl.json",
       "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Core (Russian)",
+      "path": "lang/pl/core-pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Vampire (Russian)",
+      "path": "lang/ru/vampire-ru.json",
+      "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Werewolf (Russian)",
+      "path": "lang/ru/werewolf-ru.json",
+      "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Hunter (Russian)",
+      "path": "lang/ru/hunter-ru.json",
+      "flags": {}
     }
   ],
   "packs": [
