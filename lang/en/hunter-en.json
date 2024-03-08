@@ -19,9 +19,9 @@
       "AddPerk": "Add Perk",
       "Desperation": "Desperation",
       "Danger": "Danger",
-      "DesperationSuccess": "Success with Overreach, or Despair Failure!",
-      "PossibleDesperationFailure": "Possible Overreach or Despair Failure!",
-      "DespairFailure": "Despair Failure!",
+      "DesperationSuccess": "Success with Overreach, or Despair Failure",
+      "PossibleDesperationFailure": "Possible Overreach or Despair Failure",
+      "DespairFailure": "Despair Failure",
       "DesperationUnavailable": "Desperation unavailable while in Despair",
       "Drive": "Drive",
 
