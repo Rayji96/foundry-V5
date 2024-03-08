@@ -21,10 +21,10 @@ export const MigrateAnimalKen = async function () {
 
         // Delete the old skill
         delete actorData.exceptionaldicepools['animal ken']
-        await actor.update({ ['system.exceptionaldicepools.-=animal ken']: null});
+        await actor.update({ 'system.exceptionaldicepools.-=animal ken': null })
 
         // Update the actor's data with the new information
-        await actor.update({ ['system.exceptionaldicepools']: actorData.exceptionaldicepools })
+        await actor.update({ 'system.exceptionaldicepools': actorData.exceptionaldicepools })
 
         // Send a notification and push the actor ID to the migration IDs list
         ui.notifications.info(`Fixing actor ${actor.name}: Migrating Animal Ken data.`)
@@ -38,10 +38,10 @@ export const MigrateAnimalKen = async function () {
 
         // Delete the old skill
         delete actorData.skills['animal ken']
-        await actor.update({ ['system.skills.-=animal ken']: null});
+        await actor.update({ 'system.skills.-=animal ken': null })
 
         // Update the actor's data with the new information
-        await actor.update({ ['system.skills']: actorData.skills })
+        await actor.update({ 'system.skills': actorData.skills })
 
         // Send a notification and push the actor ID to the migration IDs list
         ui.notifications.info(`Fixing actor ${actor.name}: Migrating Animal Ken data.`)
