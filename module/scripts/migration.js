@@ -30,50 +30,50 @@ export const migrateWorld = async () => {
     if (worldVersion !== currentVersion || worldVersion === '1.5') {
       const updates = []
 
-      ui.notifications.info('New version detected Updating SchreckNet, please wait.')
+      ui.notifications.info('New version detected. Updating SchreckNet, please wait.')
       console.log('Obtaining SchreckNet Layer v' + currentVersion)
 
       try {
         // Migrate legacy sheets
         const migrationIDs1 = await MigrateLegacySheets()
-        updates.concat(migrationIDs1)
+        updates.push(...migrationIDs1)
 
         // Migrate localization
         const migrationIDs2 = await MigrateLocalization()
-        updates.concat(migrationIDs2)
+        updates.push(...migrationIDs2)
 
         // Migrate gamesystem data
         const migrationIDs3 = await MigrateGamesystem()
-        updates.concat(migrationIDs3)
+        updates.push(...migrationIDs3)
 
         // Migrate health and willpower tracker data
         const migrationIDs4 = await MigrateTrackers()
-        updates.concat(migrationIDs4)
+        updates.push(...migrationIDs4)
 
         // Migrate specialties into their respective skills
         const migrationIDs5 = await MigrateSpecialties()
-        updates.concat(migrationIDs5)
+        updates.push(...migrationIDs5)
 
         // Second localization migration
         const migrationIDs6 = await MigrateLocalization2()
-        updates.concat(migrationIDs6)
+        updates.push(...migrationIDs6)
 
         // Migrate item images
         const migrationIDs7 = await MigrateItemImages()
-        updates.concat(migrationIDs7)
+        updates.push(...migrationIDs7)
 
         // Migrate the Animal Ken skill
         const migrationIDs8 = await MigrateAnimalKen()
-        updates.concat(migrationIDs8)
+        updates.push(...migrationIDs8)
 
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {
-          ui.notifications.info('Upgrade complete! Foundry will now refresh in 10 seconds...')
+          ui.notifications.info('Upgrade complete! Foundry will now refresh in 20 seconds...')
 
-          // Reload to implement the fixes after 10 seconds
+          // Reload to implement the fixes after 20 seconds
           setTimeout(() => {
             foundry.utils.debouncedReload()
-          }, 10000)
+          }, 20000)
         } else {
           ui.notifications.info('Welcome to version ' + currentVersion)
         }
