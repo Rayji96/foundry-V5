@@ -183,7 +183,7 @@ export class WerewolfActorSheet extends WoDActor {
     const macro = item.system.macroid
 
     // Variables yet to be defined
-    const selectors = []
+    const selectors = ['gift']
 
     // Handle dice1 as either renown or an ability
     const dice1 = item.system.dice1 === 'renown' ? renownValue : actor.system.abilities[item.system.dice1].value
