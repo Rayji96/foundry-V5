@@ -209,7 +209,7 @@
     {
       "lang": "ru",
       "name": "Core (Russian)",
-      "path": "lang/pl/core-ru.json",
+      "path": "lang/ru/core-ru.json",
       "flags": {}
     },
     {
@@ -259,6 +259,7 @@
   "gridDistance": 5,
   "gridUnits": "ft",
   "initiative": "1d10",
+  "changelog": "https://veilza.github.io/wod5e-docs/changelog.html",
   "license": "./LICENSE",
   "url": "https://github.com/Rayji96/foundry-V5",
   "bugs": "https://github.com/Rayji96/foundry-V5/issues",
