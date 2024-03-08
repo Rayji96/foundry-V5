@@ -8,7 +8,7 @@ export const MigrateLegacySheets = async function () {
     let counter = 0
 
     // If there's nothing to go through, then just resolve and move on.
-    if (!totalIterations) { resolve() }
+    if (!totalIterations) { resolve([]) }
 
     // Collect invalid actors and correct them (v3.0.0)
     for (const id of invalidActorsList) {
