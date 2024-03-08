@@ -62,8 +62,8 @@ export const MigrateAnimalKen = async function () {
     }
 
     // Quick function to check if a property exists on an object
-    function hasProperty(obj, path) {
-      return path.split('.').every(prop => prop in obj && (obj = obj[prop]));
+    function hasProperty (obj, path) {
+      return path.split('.').every(prop => prop in obj && (obj = obj[prop]))
     }
   })
 }

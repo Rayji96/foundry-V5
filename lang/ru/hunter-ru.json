@@ -1,0 +1,42 @@
+{
+  "WOD5E": {
+    "HTR": {
+      "Label": "Охотник",
+
+      "_HunterDice": "",
+      "DesperationDice": "Кости Отчаяния",
+        
+      "Despair": "Безысходность",
+      "Creed": "Кредо",
+      "CreedFields": "Поля Кредо",
+      "Cell": "Целла",
+      "Redemption": "Искупление",
+      "_Edge": "",
+      "Edges": "Черты",
+      "_EdgeType": "",
+      "AddEdge": "Добавить Черту",
+      "SelectEdge": "Выбор Черты",
+      "AddPerk": "Добавить Улучшение",
+      "Desperation": "Отчаяние",
+      "Danger": "Опасность",
+      "DesperationSuccess": "Успех с Перебором или Безысходный провал",
+      "PossibleDesperationFailure": "Возможный Перебор или Безысходный провал",
+      "DespairFailure": "Безысходный провал",
+      "DesperationUnavailable": "Отчаяние недоступно при Безысходности",
+      "_Drive": "",
+
+      "Arsenal": "Арсенал",
+      "Fleet": "Автопарк",
+      "Ordnance": "Взрывчатка",
+      "Library": "Библиотека",
+      "ImprovisedGear": "Импровизированное снаряжение",
+      "GlobalAccess": "Всеобщий доступ",
+      "DroneJockey": "Оператор дрона",
+      "BeastWhisperer": "Говорящий с животными",
+      "SenseTheUnnatural": "Чутьё на сверхъестественное",
+      "RepelTheUnnatural": "Отринуть сверхъестественное",
+      "ThwartTheUnnatural": "Воспротивиться сверхъестественному",
+      "Artifact": "Артефакт"
+    }
+  }
+}
