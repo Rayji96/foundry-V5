@@ -5,7 +5,7 @@
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
-This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System. For a list of the latest changes, see [Changelog.md](https://veilza.github.io/wod5e-docs/changelog.html)
+This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System. For a list of the latest changes, see the [Changelog](https://veilza.github.io/wod5e-docs/changelog.html)
 
 Current supported systems include:
 * Vampire the Masquerade, 5th Edition
