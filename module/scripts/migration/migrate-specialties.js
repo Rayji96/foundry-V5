@@ -33,7 +33,9 @@ export const MigrateSpecialties = async function () {
           const skill = item.system.skill
 
           // If 'bonuses' doesn't already exist for this skill, create it
-          if (!Object.prototype.hasOwnProperty.call(actorData.skills[skill], 'bonuses')) {
+          if (!actorData.skills[skill]) {
+            actorData.skills[skill] = { bonuses: [] }
+          } else if (!Object.prototype.hasOwnProperty.call(actorData.skills[skill], 'bonuses')) {
             actorData.skills[skill].bonuses = []
           }
 
