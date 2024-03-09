@@ -93,7 +93,8 @@ Hooks.once('ready', async function () {
       getBasicDice: wod5eAPI.getBasicDice,
       getAdvancedDice: wod5eAPI.getAdvancedDice,
       getFlavorDescription: wod5eAPI.getFlavorDescription,
-      generateLabelAndLocalize: wod5eAPI.generateLabelAndLocalize
+      generateLabelAndLocalize: wod5eAPI.generateLabelAndLocalize,
+      migrateWorld
     },
     Systems,
     Attributes,
