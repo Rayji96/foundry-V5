@@ -30,7 +30,7 @@ export const MigrateSpecialties = async function () {
 
         invalidSpecialties.map(item => {
           // Define what skill we're using
-          const skill = item.system.skill
+          const skill = item.system.skill.toLowerCase()
 
           // If 'bonuses' doesn't already exist for this skill, create it
           if (!actorData.skills[skill]) {
