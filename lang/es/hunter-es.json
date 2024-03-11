@@ -1,0 +1,41 @@
+{
+  "WOD5E": {
+    "HTR": {
+      "Label": "Cazador",
+      
+      "HunterDice": "Dados de Cazador",
+      "DesperationDice": "Dados de desesperación",
+      
+      "Despair": "Desesperación",
+      "Creed": "Credo",
+      "CreedFields": "Campos de credo",
+      "Cell": "Célula",
+      "Redemption": "Redención",
+      "Edges": "Facultad",
+      "EdgeType": "Tipo de facultad",
+      "AddEdge": "Agregar facultad",
+      "SelectEdge": "Seleccionar facultad",
+      "AddPerk": "Agregar beneficio",
+      "Desperation": "Desesperación",
+      "Danger": "Peligro",
+      "DesperationSuccess": "¡Éxito con extralimitación o fallo con desesperanza",
+      "PossibleDesperationFailure": "¡Posible extralimitación o fallo con desesperanza",
+      "DespairFailure": "¡Fallo con desesperanza",
+      "DesperationUnavailable": "Desesperación no disponible en desesperanza",
+      "Drive": "Motivación",
+      
+      "Arsenal": "Arsenal",
+      "Fleet": "Flota",
+      "Ordnance": "Artillería",
+      "Library": "Biblioteca",
+      "ImprovisedGear": "Equipamiento improvisado",
+      "GlobalAccess": "Acceso global",
+      "DroneJockey": "Piloto de drones",
+      "BeastWhisperer": "Encantador de bestias",
+      "SenseTheUnnatural": "Sentir lo antinatural",
+      "RepelTheUnnatural": "Repeler lo antinatural",
+      "ThwartTheUnnatural": "Frustrar lo antinatural",
+      "Artifact": "Artefacto"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-/* global Handlebars, game, TextEditor */
+/* global Handlebars, game, TextEditor, WOD5E */
 
 /**
  * Define any helpers necessary for working with Handlebars
@@ -31,8 +31,14 @@ export const loadHelpers = async function () {
     return options.inverse(this)
   })
 
-  Handlebars.registerHelper('or', function (bool1, bool2) {
-    return bool1 || bool2
+  Handlebars.registerHelper('or', function () {
+    for (let i = 0; i < arguments.length - 1; i++) {
+      if (arguments[i]) {
+        return true
+      }
+    }
+
+    return false
   })
 
   Handlebars.registerHelper('and', function (bool1, bool2) {
@@ -47,17 +53,62 @@ export const loadHelpers = async function () {
     return str.charAt(0).toUpperCase() + str.slice(1)
   })
 
-  const capitalize = (s) => {
-    if (typeof s !== 'string') return ''
-    return s.charAt(0).toUpperCase() + s.slice(1)
-  }
+  Handlebars.registerHelper('splitArray', function (arr) {
+    if (!Array.isArray(arr)) {
+      return ''
+    }
 
-  Handlebars.registerHelper('generateFeatureLabel', function (str) {
-    return 'WOD5E.'.concat(capitalize(str))
+    return arr.join('; ')
   })
 
-  Handlebars.registerHelper('generateSkillLabel', function (str) {
-    return 'WOD5E.'.concat(str.split(' ').flatMap(word => capitalize(word)).join(''))
+  Handlebars.registerHelper('generateLocalizedLabel', function (str) {
+    // Lists
+    const attributes = WOD5E.Attributes.getList()
+    const skills = WOD5E.Skills.getList()
+    const features = WOD5E.Features.getList()
+    const disciplines = WOD5E.Disciplines.getList()
+    const renown = WOD5E.Renown.getList()
+    const edges = WOD5E.Edges.getList()
+
+    // Attributes
+    if (attributes.find(obj => str in obj)) {
+      return findLabel(attributes, str)
+    }
+    // Skills
+    if (skills.find(obj => str in obj)) {
+      return findLabel(skills, str)
+    }
+    // Features
+    if (features.find(obj => str in obj)) {
+      return findLabel(features, str)
+    }
+    // Disciplines
+    if (disciplines.find(obj => str in obj)) {
+      return findLabel(disciplines, str)
+    }
+    // Renown
+    if (renown.find(obj => str in obj)) {
+      return findLabel(renown, str)
+    }
+    // Edges
+    if (edges.find(obj => str in obj)) {
+      return findLabel(edges, str)
+    }
+
+    // Return the base localization if nothing else is found
+    const otherLocalizationString = str.capitalize()
+    return game.i18n.localize(`WOD5E.${otherLocalizationString}`)
+
+    // Function to actually grab the localized label
+    function findLabel (list, string) {
+      const stringObject = list.find(obj => string in obj)
+
+      // Return the localized string if found
+      if (stringObject) return stringObject[string].label
+
+      // Return nothing
+      return ''
+    }
   })
 
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
@@ -146,46 +197,20 @@ export const loadHelpers = async function () {
     return ret
   })
 
-  Handlebars.registerHelper('getDisciplineName', function (key, roll = false) {
-    const disciplines = {
-      animalism: 'WOD5E.Animalism',
-      auspex: 'WOD5E.Auspex',
-      celerity: 'WOD5E.Celerity',
-      dominate: 'WOD5E.Dominate',
-      fortitude: 'WOD5E.Fortitude',
-      obfuscate: 'WOD5E.Obfuscate',
-      potence: 'WOD5E.Potence',
-      presence: 'WOD5E.Presence',
-      protean: 'WOD5E.Protean',
-      sorcery: 'WOD5E.BloodSorcery',
-      oblivion: 'WOD5E.Oblivion',
-      alchemy: 'WOD5E.ThinBloodAlchemy',
-      rituals: 'WOD5E.Rituals',
-      ceremonies: 'WOD5E.Ceremonies'
-    }
-    if (roll) {
-      if (key === 'rituals') {
-        return disciplines.sorcery
-      } else if (key === 'ceremonies') {
-        return disciplines.oblivion
-      }
-    }
-    return disciplines[key]
-  })
-
   Handlebars.registerHelper('getEdgeName', function (key) {
     const edges = {
-      arsenal: 'WOD5E.Arsenal',
-      ordnance: 'WOD5E.Ordnance',
-      library: 'WOD5E.Library',
-      improvisedgear: 'WOD5E.ImprovisedGear',
-      globalaccess: 'WOD5E.GlobalAccess',
-      dronejockey: 'WOD5E.DroneJockey',
-      beastwhisperer: 'WOD5E.BeastWhisperer',
-      sensetheunnatural: 'WOD5E.SenseTheUnnatural',
-      repeltheunnatural: 'WOD5E.RepelTheUnnatural',
-      thwarttheunnatural: 'WOD5E.ThwartTheUnnatural',
-      artifact: 'WOD5E.Artifact'
+      arsenal: 'WOD5E.HTR.Arsenal',
+      fleet: 'WOD5E.HTR.Fleet',
+      ordnance: 'WOD5E.HTR.Ordnance',
+      library: 'WOD5E.HTR.Library',
+      improvisedgear: 'WOD5E.HTR.ImprovisedGear',
+      globalaccess: 'WOD5E.HTR.GlobalAccess',
+      dronejockey: 'WOD5E.HTR.DroneJockey',
+      beastwhisperer: 'WOD5E.HTR.BeastWhisperer',
+      sensetheunnatural: 'WOD5E.HTR.SenseTheUnnatural',
+      repeltheunnatural: 'WOD5E.HTR.RepelTheUnnatural',
+      thwarttheunnatural: 'WOD5E.HTR.ThwartTheUnnatural',
+      artifact: 'WOD5E.HTR.Artifact'
     }
     return edges[key]
   })

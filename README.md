@@ -5,7 +5,7 @@
 [![MIT License]][MIT URL]
 [![GitHub Super-Linter]][Super-Linter URL]
 
-This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System. For a list of the latest changes, see [Changelog.md](./changelog.md)
+This system is for playing multiple World of Darkness 5th edition systems on the Foundry Virtual Tabletop System. For a list of the latest changes, see the [Changelog](https://veilza.github.io/wod5e-docs/changelog.html). You can also read further about the system in general on the [WOD5E Docs](https://veilza.github.io/wod5e-docs/index.html) site!
 
 Current supported systems include:
 * Vampire the Masquerade, 5th Edition
@@ -23,13 +23,13 @@ The information for how to roll the splat-unique dice is like so:
 * To roll Hunter dice, roll `1dh`. To roll Desperation dice, roll `1ds`.
 * To roll Werewolf dice, roll `1dw`. To roll Rage dice, roll `1dr`.
 
-Replace the 1s with however many you want to roll for each type, and let the dice flow!
+Replace the 1s with however many you want to roll for each type, and let the dice roll!
 
 ## Feedback
 
-Bugs or feature requests created to this repository are greatly appreciate. Please use the Issues tab on GitHub.
+Bugs or feature requests created to this repository are greatly appreciate. Please use the [Issues](https://github.com/Rayji96/foundry-V5/issues) page for these!
 
-Please reach out to me at weinerdolphin#3175 on Discord with any pressing issues, I'd love to help you get your game running smoothly!
+Please reach out to me at "weinerdolphin" or "veilza" on Discord with any pressing issues, I'd love to help you get your game running smoothly!
 
 Please check the issues list before suggesting new features.
 
@@ -60,6 +60,7 @@ Huge thanks to these folks for their contributions!
 * Spanish localization started by [erizocosmico]
 * Spanish localization help by [Musrha]
 * Polish localization help by [gbursson]
+* Russian localization help by [Xuula]
 
 ### Additional Contributions
 * This system was initially based on the [boilerplate system] by @asacolips#1867
@@ -106,3 +107,4 @@ Licensed WoD 5e materials will not be provided as this system is provided for pu
 [gbursson]: https://github.com/gbursson
 [MrDionysus]: https://github.com/MrDionysus
 [LorduFreeman]: https://github.com/LorduFreeman
+[Xuula]: https://github.com/Xuula

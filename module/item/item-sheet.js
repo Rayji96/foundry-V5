@@ -1,5 +1,7 @@
 /* global ItemSheet, mergeObject, TextEditor */
 
+import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/item-bonuses.js'
+
 /**
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
@@ -9,11 +11,6 @@ export class WoDItemSheet extends ItemSheet {
   static get defaultOptions () {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'item']
-
-    // If the user's enabled darkmode, then push it to the class list
-    if (game.settings.get('vtm5e', 'darkTheme')) { // eslint-disable-line
-      classList.push('dark-theme')
-    }
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
@@ -30,12 +27,8 @@ export class WoDItemSheet extends ItemSheet {
   /** @override */
   get template () {
     const path = 'systems/vtm5e/templates/item'
-    // Return a single sheet for all item types.
-    // return `${path}/item-sheet.html`;
 
-    // Alternatively, you could use the following return statement to do a
-    // unique item sheet by type, like `weapon-sheet.html`.
-    return `${path}/item-${this.item.type}-sheet.html`
+    return `${path}/item-${this.item.type}-sheet.hbs`
   }
 
   /* -------------------------------------------- */
@@ -46,6 +39,7 @@ export class WoDItemSheet extends ItemSheet {
 
     // Encrich editor content
     data.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description, { async: true })
+    data.bonuses = this.object.system.bonuses
 
     return data
   }
@@ -69,6 +63,9 @@ export class WoDItemSheet extends ItemSheet {
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
+
+    // Top-level Variables
+    const item = this.item
 
     // Rollable Checkbox Handler.
     const rollCheckbox = document.querySelector('input[type="checkbox"][name="system.rollable"]')
@@ -95,5 +92,20 @@ export class WoDItemSheet extends ItemSheet {
         }
       })
     }
+
+    // Prompt the dialog to add a new bonus
+    html.find('.add-bonus').click(event => {
+      _onAddBonus(event, item)
+    })
+
+    // Delete a bonus
+    html.find('.delete-bonus').click(event => {
+      _onDeleteBonus(event, item)
+    })
+
+    // Prompt the dialog to edit a bonus
+    html.find('.edit-bonus').click(event => {
+      _onEditBonus(event, item)
+    })
   }
 }

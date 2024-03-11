@@ -1,0 +1,170 @@
+{
+  "WOD5E": {
+    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+    "Name": "Nazwa",
+    "_Confirm": "",
+    "_Close": "",
+    "_Save": "",
+    "_Submit": "",
+    "_System": "",
+    "Edit": "Edytuj",
+    "Delete": "Usuń",
+    "Level": "Poziom",
+    "Add": "Dodaj",
+    "Cancel": "Anuluj",
+    "Health": "Zdrowie",
+    "Willpower": "Siła Woli",
+    "Exp": "PD",
+    "None": "Brak",
+    
+    "Mortal": "Śmiertelnik",
+
+    "Roll": {
+      "Label": "Rzut",
+      "_RollMode": "",
+      "_MortalDice": "",
+      "Success": "Sukces",
+      "Successes": "Sukcesy",
+      "CriticalSuccess": "Krytyczny Sukces",
+      "Fail": "Porażka",
+      "Modifier": "Modyfikator",
+      "Difficulty": "Trudność",
+      "_SelectableModifiers": "Selectable Modifiers",
+      "_Source": "Source",
+      "_Value": "Value",
+      "_Active": "Active",
+      "_CustomModifiers": "Custom Modifiers"
+    },
+
+    "SPC": {
+      "_Label": "",
+      "GeneralDifficulty": "Ogólna trudność",
+      "StandardDicePools": "Standardowe pule kości",
+      "ExceptionalDicePools": "Wyjątkowe pule kości",
+      "Physical": "Fizyczne",
+      "Mental": "Psychiczne",
+      "Social": "Społeczne",
+      "AddSkill": "Dodaj umiejętność",
+      "SelectSkill": "Wybierz umiejętność"
+    },
+
+    "Damage": {
+      "Superficial": "Powierzchowne",
+      "Aggravated": "Poważne",
+      "Stains": "Skazy",
+      "Value": "Wartość",
+      "Max": "Maks"
+    },
+
+    "Tabs": {
+      "Stats": "Statystyki",
+      "Features": "Atuty",
+      "Description": "Opis",
+      "Equipment": "Ekwipunek",
+      "Notes": "Notatki",
+      "Other": "Inne"
+    },
+
+    "Attributes": {
+      "Label": "Atrybut",
+      "Attributes": "Atrybuty",
+      "Strength": "Siła",
+      "Charisma": "Charyzma",
+      "Intelligence": "Inteligencja",
+      "Dexterity": "Zręczność",
+      "Manipulation": "Manipulacja",
+      "Wits": "Spryt",
+      "Stamina": "Kondycja",
+      "Composure": "Opanowanie",
+      "Resolve": "Determinacja"
+    },
+
+    "Skills": {
+      "Label": "Umiejętność",
+      "Skills": "Umiejętności",
+      "Specialty": "Specjalizacja",
+      "Specialties": "Specjalizacje",
+      "Athletics": "Wysportowanie",
+      "AnimalKen": "Rozumienie zwierząt",
+      "Academics": "Wykształcenie",
+      "Brawl": "Walka wręcz",
+      "Etiquette": "Etykieta",
+      "Awareness": "Spostrzegawczość",
+      "Craft": "Rzemiosło",
+      "Insight": "Intuicja",
+      "Finance": "Finanse",
+      "Drive": "Prowadzenie pojazdów",
+      "Intimidation": "Zastraszanie",
+      "Investigation": "Śledztwo",
+      "Firearms": "Strzelanie",
+      "Leadership": "Zdolności przywódcze",
+      "Medicine": "Medycyna",
+      "Melee": "Broń biała",
+      "Performance": "Występy publiczne",
+      "Occult": "Okultyzm",
+      "Larceny": "Kradzież",
+      "Persuasion": "Perswazja",
+      "Politics": "Polityka",
+      "Stealth": "Krycie się",
+      "Streetwise": "Cwaniactwo",
+      "Science": "Nauka",
+      "Survival": "Sztuka przetrwania",
+      "Subterfuge": "Przebiegłość",
+      "Technology": "Technika"
+    },
+
+    "Items": {
+      "_Label": "",
+      "ShowToChat": "Pokaż na czacie",
+      "CustomRoll": "Własny Rzut",
+      "CustomRolls": "Własne Rzuty",
+      "Merit": "Zaleta",
+      "_Cost": "",
+      "Flaw": "Wada",
+      "_Bonuses": "",
+      "Background": "Zaplecze",
+      "Points": "Punkty",
+      "UseSkill": "Użyj Umiejętności",
+      "Rollable": "Użyj Rzutu",
+      "_Feature": "",
+      "FeatureType": "Rodzaj Cechy",
+      "Type": "Typ",
+      "_NewSpecialty": "",
+      "Boon": "Przysługa",
+      "Boons": "Przysługi",
+      "_Macro": "Macro"
+    },
+
+    "Biography": {
+      "Label": "Biografia",
+      "Concept": "Koncept",
+      "Chronicle": "Kronika",
+      "Ambition": "Ambicja",
+      "Desire": "Pragnienie",
+      "ChronicleTenets": "Założenia Kroniki",
+      "TouchstonesAndConvictions": "Probierze i Przekonania",
+      "Appearance": "Wygląd",
+      "History": "Historia"
+    },
+
+    "DiceRoller": {
+      "AttributeShortLabel": "A",
+      "SkillShortLabel": "U",
+      "DisciplineShortLabel": "D",
+      "NothingShortLabel": "⊘",
+      "SelectAbility": "Wybierz Umiejętność"
+    },
+
+    "Chat": {
+      "RollingWillpower": "Test Siły Woli",
+      "Rolling": "Rzucanie",
+      "RollWillpower": "Test Siły Woli",
+      "WillpowerReroll": "Przerzut Siły Woli",
+      "WillpowerFullTitle": "Willpower Tracker Full",
+      "WillpowerFull": "Nie można użyć Siły Woli, cała została wydana",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
+    }
+  }
+}

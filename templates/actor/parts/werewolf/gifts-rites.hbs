@@ -1,0 +1,172 @@
+<div class="tab gifts" data-group="primary" data-tab="gifts-rites">
+    {{> "systems/vtm5e/templates/actor/parts/werewolf/renown.hbs"}}
+    {{#if actor.system.frenzyActive}}
+        <div class="frenzyNotification flex-center">
+            <h1>{{localize 'WOD5E.WTA.FrenzyActiveWarning'}}</h1>
+            <h3>{{localize 'WOD5E.WTA.FrenzyActiveWarning2'}}</h3>
+        </div>
+    {{/if}}
+    <ol class="items-list">
+        <!-- Header of the gifts lists -->
+        <li class="item flexrow item-header">
+            <div class="item-name">{{localize "WOD5E.Name"}}</div>
+            <div class="item-name header-level">{{localize "WOD5E.WTA.Renown"}}</div>
+            <!-- Item controls for adding new gift lists -->
+            <div class="item-controls">
+                <a class="item-control gift-create" title="{{localize 'WOD5E.WTA.AddGift'}}">
+                    <i class="fas fa-plus"></i>
+                    {{localize "WOD5E.WTA.AddGift"}}
+                </a>
+            </div>
+        </li>
+        <!-- Iterate through each of the gifts lists -->
+        {{#each actor.system.giftsList as |gift key|}}
+            {{#if gift.powers}}
+                <div class="collapsible-container">
+                    <li class="flexrow item-header">
+                        <div class="item-name collapsible">
+                            {{localize gift.name}}
+                        </div>
+                        <!-- Item controls for Gifts sections -->
+                        <div class="item-controls">
+                            <!-- Add new gift -->
+                            <a class="item-control gift-create" title="{{localize 'WOD5E.WTA.AddGift'}}" data-gift="{{key}}">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                            <!-- Icon to show the gift description to the chat-->
+                            <a class="item-control gift-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}" data-type="power" data-gift="{{key}}">
+                                <i class="fas fa-comment-alt"></i>
+                            </a>
+                            <!-- Icon to delete the gift (as long as it doesn't have any powers) -->
+                            <a class="item-control gift-delete" title="{{localize 'WOD5E.Delete'}}" data-gift="{{key}}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <!-- Gift description -->
+                    <div class="collapsible-content">
+                        <textarea class="gift-description" name="system.giftsList.{{key}}.description">{{gift.description}}</textarea>
+                    </div>
+                </div>
+                <!-- Iterate through each of the gift powers -->
+                {{#each gift.powers as |item id|}}
+                    <li class="item flexcol collapsible-container" data-item-id="{{item._id}}">
+                        <div class="flexrow">
+                            <div class="flexrow">
+                                <!-- Whether the button is clickable or not to post the power in chat -->
+                                {{#if item.system.rollable}}
+                                    <div class="item-image gift-rollable" data-id="{{item._id}}">
+                                        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                    </div>
+                                {{else}}
+                                    <div class="item-image" data-id="{{item._id}}">
+                                        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                                    </div>
+                                {{/if}}
+                                <!-- Gift name -->
+                                <h4 class="item-name collapsible">{{item.name}}</h4>
+                            </div>
+                            <!-- Renown Type -->
+                            <div class="renown-type">
+                                {{generateLocalizedLabel item.system.renown}}
+                            </div>
+                            <!-- Item controls for gift powers -->
+                            <div class="item-controls">
+                                <!-- Icon to roll the power's rage check or willpower damage, if applicable -->
+                                {{#if item.system.rage}}
+                                    <a class="item-control rollable" title="{{localize 'WOD5E.WTA.RollRageDamageWillpower'}}" data-disable-basic-dice="true" data-use-absolute-value="true"
+                                        data-absolute-value="{{item.system.cost}}" data-decrease-rage="true" data-label="{{localize 'WOD5E.WTA.RageDice'}}" data-willpower-damage="{{item.system.willpowercost}}">
+                                        <i class="fas fa-dice-d20"></i>
+                                    </a>
+                                {{/if}}
+                                <!-- Icon to edit the power-->
+                                <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <!-- Icon to display the power in chat -->
+                                <a class="item-control item-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}">
+                                    <i class="fas fa-comment-alt"></i>
+                                </a>
+                                <!-- Icon to delete the power -->
+                                <a class="item-control item-delete" title="{{localize 'WOD5E.Delete'}}">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Power description, expandable by a collapse -->
+                        <div class="collapsible-content">
+                            {{{enrichHTML item.system.description}}}
+                        </div>
+                    </li>
+                {{/each}}
+            {{/if}}
+        {{/each}}
+    </ol>
+
+
+    <ol class="items-list">
+        <!-- Header of the rites lists -->
+        <li class="item flexrow item-header">
+            <div class="item-name">{{localize "WOD5E.Name"}}</div>
+            <div class="item-name header-level">{{localize "WOD5E.WTA.Renown"}}</div>
+            <!-- Item controls for adding new gift lists -->
+            <div class="item-controls">
+                <a class="item-control rite-create" title="{{localize 'WOD5E.WTA.AddRite'}}">
+                    <i class="fas fa-plus"></i>
+                    {{localize "WOD5E.WTA.AddRite"}}
+                </a>
+            </div>
+        </li>
+        <!-- Iterate through each of the rites -->
+        {{#each actor.system.ritesList as |item id|}}
+            <li class="item flexcol collapsible-container" data-item-id="{{item._id}}">
+                <div class="flexrow">
+                    <div class="flexrow">
+                        <!-- Whether the button is clickable or not to post the power in chat -->
+                        {{#if item.system.rollable}}
+                            <div class="item-image gift-rollable" data-id="{{item._id}}">
+                                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                            </div>
+                        {{else}}
+                            <div class="item-image" data-id="{{item._id}}">
+                                <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" alt="{{item.name}}"/>
+                            </div>
+                        {{/if}}
+                        <!-- Gift name -->
+                        <h4 class="item-name collapsible">{{item.name}}</h4>
+                    </div>
+                    <!-- Renown Type -->
+                    <div class="renown-type">
+                        {{generateLocalizedLabel item.system.renown}}
+                    </div>
+                    <!-- Item controls for gift powers -->
+                    <div class="item-controls">
+                        <!-- Icon to roll the power's rage check or willpower damage, if applicable -->
+                        {{#if item.system.rage}}
+                            <a class="item-control rollable" title="{{localize 'WOD5E.WTA.RollRageDamageWillpower'}}" data-disable-basic-dice="true" data-use-absolute-value="true"
+                                data-absolute-value="{{item.system.cost}}" data-decrease-rage="true" data-label="{{localize 'WOD5E.WTA.RageDice'}}"  data-willpower-damage="{{item.system.willpowercost}}">
+                                <i class="fas fa-dice-d20"></i>
+                            </a>
+                        {{/if}}
+                        <!-- Icon to edit the power-->
+                        <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <!-- Icon to display the power in chat -->
+                        <a class="item-control item-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}">
+                            <i class="fas fa-comment-alt"></i>
+                        </a>
+                        <!-- Icon to delete the power -->
+                        <a class="item-control item-delete" title="{{localize 'WOD5E.Delete'}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Power description, expandable by a collapse -->
+                <div class="collapsible-content">
+                    {{{enrichHTML item.system.description}}}
+                </div>
+            </li>
+        {{/each}}
+    </ol>
+</div>

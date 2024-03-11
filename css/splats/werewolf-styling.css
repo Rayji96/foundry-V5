@@ -1,0 +1,184 @@
+:root {
+  --werewolf-primary: #4e2100ef;
+}
+
+/* wod5e.css */
+.wod5e.werewolf-sheet.window-app {
+  border: 4px solid var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet.window-app .window-header {
+  border-bottom: 4px double var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet.window-app .window-resizable-handle {
+  border-top: 3px double #997018;
+  border-left: 3px double #997018;
+  border-bottom: 1px solid #997018;
+  border-radius: 0;
+}
+
+.wod5e.werewolf-sheet.window-app .fa-arrows-alt-h::before,
+.wod5e.werewolf-sheet.window-app .fa-left-right::before {
+    color: #997018;
+}
+
+.wod5e.werewolf-sheet .wolf .resource-label {
+  margin-bottom: 5px;
+}
+
+.wod5e.werewolf-sheet .window-content .sheet-body .tab > .resource-label, .wod5e.werewolf-sheet .items-list .item-header {
+  color: var(--werewolf-primary);
+  border-color: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet h1, .wod5e.werewolf-sheet .flex-group-center, .wod5e.werewolf-sheet .flex-group-left, .wod5e.werewolf-sheet .flex-group-right, .wod5e.werewolf-sheet .window-content nav.sheet-tabs .item.active, .wod5e.werewolf-sheet .actor-header .resource, .wod5e.werewolf-sheet .items-list .item, .wod5e.werewolf-sheet.window-app, .wod5e.werewolf-sheet.window-app .window-header {
+  border-color: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet ::-webkit-scrollbar-thumb {
+  background: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet .profile-img,
+.wod5e.werewolf-sheet .item-image img {
+  background: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet .item-image.gift-rollable img {
+  box-shadow: inset 0 0 5px 0 red;
+}
+
+.wod5e.werewolf-sheet .sheet-banner {
+  background: var(--werewolf-primary);
+  color: #CCC;
+}
+
+.wod5e.werewolf-sheet .actor-header .profile-img-zone h1 {
+  color: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet .harano {
+  margin-right: auto;
+}
+
+.wod5e.werewolf-sheet .hauglosk {
+  margin-left: auto;
+}
+
+.wod5e.werewolf-sheet .garou-forms-label {
+  font-size: 1.5em !important;
+  margin: 0 0 0.5rem;
+}
+
+.wod5e.werewolf-sheet .were-form-nickname {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.wod5e.werewolf-sheet .renown .resource {
+  border: 0;
+}
+
+.wod5e.werewolf-sheet .form-abilities {
+  text-align: left;
+}
+
+.wod5e.werewolf-sheet .gifts .renown-type {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* buttons.css */
+.wod5e.werewolf-sheet button {
+  background: var(--werewolf-primary);
+  color: #fff;
+  font-family: cormorantLight, serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: none;
+  box-shadow: none;
+}
+
+.wod5e.werewolf-sheet button:hover,
+.wod5e.werewolf-sheet button:focus {
+  outline: none;
+  box-shadow: inset 0 0 5px #000;
+  background: #ff6400;
+  color: #f7f3eb;
+  transition-duration: 0.3s;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}
+
+.wod5e.werewolf-sheet button.werewolf-button.active, .wod5e.werewolf-sheet button.werewolf-button.active:hover {
+  font-size: 20pt;
+  color: #FFF;
+  cursor: default;
+  margin-bottom: 10px;
+}
+
+.wod5e.werewolf-sheet button.werewolf-button.disabled, .wod5e.werewolf-sheet button.werewolf-button.disabled:hover {
+  color: #000;
+  cursor: default;
+  background: #562f13ef;
+}
+
+.wod5e.werewolf-sheet .forms .form-active {
+  background: #d985359a;
+}
+
+/* dialog.css */
+.wod5e.werewolf-dialog .dialog-contents .dice-group-header {
+  background-color: var(--werewolf-primary);
+}
+
+/* resource-counters.css */
+.wod5e.werewolf-sheet .resource-value .resource-value-step.active {
+  background-color: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet .resource-value-static .resource-value-static-step {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.wod5e.werewolf-sheet .wolf-resource {
+  display: flex;
+  flex-grow: 1;
+}
+
+.wod5e.werewolf-sheet .wolf-resource .resource-value-step, .wod5e.werewolf-sheet .wolf-resource .resource-value-empty {
+  border-radius: 0;
+}
+
+.wod5e.werewolf-sheet .resource-value-static .resource-value-static-step.active {
+  background-color: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet .resource-counter .resource-counter-step[data-state="-"] {
+  background-color: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+  background-color: var(--werewolf-primary);
+}
+
+.wod5e.werewolf-sheet .crinos-health .resource-counter-step {
+  border: 1px solid #c11f1f;
+}
+
+/* groupings.css */
+.wod5e.werewolf-sheet .flex-group-center,
+.wod5e.werewolf-sheet .flex-group-left,
+.wod5e.werewolf-sheet .flex-group-right {
+    border: 1px solid var(--werewolf-primary);
+}
+
+/* inputs.css */
+.wod5e.werewolf-sheet input, .wod5e select {
+  border: 1px solid var(--werewolf-primary);
+}

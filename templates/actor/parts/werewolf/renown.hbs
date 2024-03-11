@@ -1,0 +1,48 @@
+<label class="resource-label flex-center">{{localize "WOD5E.WTA.Renown"}}</label>
+<div class="resource flexrow grid grid-3col renown">
+  <!-- Glory-->
+  <div class="resource flex-group-center glory-value">
+    <label for="actor.system.renown.glory.value" class="resource-label rollable" data-value-paths="renown.glory.value"
+        data-label="{{localize "WOD5E.WTA.Glory"}}" data-selectors="renown renown.glory" data-renown="glory" data-select-dialog="true">
+        {{localize "WOD5E.WTA.Glory"}}
+    </label>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-value" data-value="{{actor.system.renown.glory.value}}" data-name="system.renown.glory.value">
+            <span class="resource-value-empty glory-value"></span>
+            {{#numLoop 5}}
+            <span class="resource-value-step glory-value" data-index="{{this}}"></span>
+            {{/numLoop}}
+        </div>
+    </div>
+  </div>
+  <!-- Honor -->
+  <div class="resource flex-group-center honor-value">
+    <label for="actor.system.renown.honor.value" class="resource-label rollable" data-value-paths="renown.honor.value"
+        data-label="{{localize "WOD5E.WTA.Honor"}}" data-selectors="renown renown.honor" data-renown="honor" data-select-dialog="true">
+        {{localize "WOD5E.WTA.Honor"}}
+    </label>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-value" data-value="{{actor.system.renown.honor.value}}" data-name="system.renown.honor.value">
+            <span class="resource-value-empty honor-value"></span>
+            {{#numLoop 5}}
+            <span class="resource-value-step honor-value" data-index="{{this}}"></span>
+            {{/numLoop}}
+        </div>
+    </div>
+  </div>
+  <!-- Wisdom -->
+  <div class="resource flex-group-center wisdom-value">
+    <label for="actor.system.renown.wisdom.value" class="resource-label rollable" data-value-paths="renown.wisdom.value"
+        data-label="{{localize "WOD5E.WTA.Wisdom"}}" data-selectors="renown renown.wisdom" data-renown="wisdom" data-select-dialog="true">
+        {{localize "WOD5E.WTA.Wisdom"}}
+    </label>
+    <div class="resource-content flexrow flex-center flex-between">
+        <div class="resource-value" data-value="{{actor.system.renown.wisdom.value}}" data-name="system.renown.wisdom.value">
+            <span class="resource-value-empty wisdom-value"></span>
+            {{#numLoop 5}}
+            <span class="resource-value-step wisdom-value" data-index="{{this}}"></span>
+            {{/numLoop}}
+        </div>
+    </div>
+  </div>
+</div>

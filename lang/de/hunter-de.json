@@ -1,0 +1,44 @@
+{
+  "WOD5E": {
+    "HTR": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+      "Label": "Jäger",
+
+      "_HunterDice": "",
+      "DesperationDice": "Verzweiflungswürfel",
+
+      "Despair": "Verzweifeln",
+      "Creed": "Kredo",
+      "CreedFields": "Kredobereiche",
+      "Cell": "Zelle",
+      "Redemption": "Erlösung",
+      "_Edge": "",
+      "Edges": "Vorsprung",
+      "EdgeType": "",
+      "AddEdge": "Vorsprung hinzufügen",
+      "SelectEdge": "Wähle einen Vorsprung",
+      "AddPerk": "Nimm einen Vorteil",
+      "Desperation": "Verzweiflung",
+      "Danger": "Gefahr",
+      "DesperationSuccess": "Erfolg überanstrengen oder verzweifelter Fehlschlag",
+      "PossibleDesperationFailure": "Mögliches Überanstrengen- oder verzweifelter Fehlschlag",
+      "DespairFailure": "Verzweifelter Fehlschlag",
+      "DesperationUnavailable": "Verzweiflung ist während des Verzweiflens nicht möglich",
+      "Drive": "Fahren",
+      
+      "Arsenal": "Arsenal",
+      "Fleet": "Flotte",
+      "Ordnance": "Artillerie",
+      "Library": "Bibliothek",
+      "ImprovisedGear": "Improvisierte Ausrüstung",
+      "GlobalAccess": "Globaler Zugang",
+      "DroneJockey": "Drohnenjockey",
+      "BeastWhisperer": "Tierflüsterer",
+      "SenseTheUnnatural": "Das Unnatürliche spüren",
+      "RepelTheUnnatural": "Das Unnatürliche abwehren",
+      "ThwartTheUnnatural": "Die Unnatürliche verhindern",
+      "Artifact": "Artefakt"
+    }
+  }
+}

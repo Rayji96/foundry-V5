@@ -17,3 +17,4 @@ packs/*
 
 # Old Graphics
 assets/images/old/
+*.zip

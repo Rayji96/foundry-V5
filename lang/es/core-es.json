@@ -1,0 +1,168 @@
+{
+  "WOD5E": {
+    "Name": "Nombre",
+    "Confirm": "Confirmar",
+    "Close": "Cerrar",
+    "Save": "Guardar",
+    "Submit": "Enviar",
+    "System": "Sistema",
+    "Edit": "Editar",
+    "Delete": "Borrar",
+    "Level": "Nivel",
+    "Add": "Añadir",
+    "Cancel": "Cancelar",
+    "Health": "Salud",
+    "Willpower": "Fuerza de Voluntad",
+    "Exp": "Experiencia",
+    "None": "Ninguno",
+    
+    "Mortal": "Mortal",
+
+    "Roll": {
+      "Label": "Tirada",
+      "RollMode": "Modo de tirada",
+      "MortalDice": "Dados de mortal",
+      "Success": "Éxito",
+      "Successes": "Éxitos",
+      "CriticalSuccess": "Éxito crítico",
+      "Fail": "Fallo",
+      "Modifier": "Modificador",
+      "Difficulty": "Dificultad",
+      "SelectableModifiers": "Modificadores seleccionables",
+      "Source": "Origen",
+      "Value": "Valor",
+      "Active": "Activo",
+      "CustomModifiers": "Modificadores personalizados"
+    },
+
+    "SPC": {
+      "Label": "Personaje del narrador",
+      "GeneralDifficulty": "Dificultad general",
+      "StandardDicePools": "Grupos de dados estándar",
+      "ExceptionalDicePools": "Piscinas de dados excepcionales",
+      "Physical": "Físico",
+      "Mental": "Mental",
+      "Social": "Social",
+      "AddSkill": "Agregar habilidad",
+      "SelectSkill": "Seleccionar habilidad"
+    },
+
+    "Damage": {
+      "Superficial": "Superficial",
+      "Aggravated": "Agravado",
+      "Stains": "Máculas",
+      "Value": "Valor",
+      "Max": "Máximo"
+    },
+
+    "Tabs": {
+      "Stats": "Estadísticas",
+      "Features": "Rasgos",
+      "Description": "Descripción",
+      "Equipment": "Equipo",
+      "Notes": "Notas",
+      "Other": "Otro"
+    },
+
+    "Attributes": {
+      "Label": "Atributo",
+      "Attributes": "Atributos",
+      "Strength": "Fuerza",
+      "Charisma": "Carisma",
+      "Intelligence": "Inteligencia",
+      "Dexterity": "Destreza",
+      "Manipulation": "Manipulación",
+      "Wits": "Astucia",
+      "Stamina": "Resistencia",
+      "Composure": "Compostura",
+      "Resolve": "Resolución"
+    },
+
+    "Skills": {
+      "Label": "Habilidad",
+      "Skills": "Habilidades",
+      "Specialty": "Especialidad",
+      "Specialties": "Especialidades",
+      "Athletics": "Atletismo",
+      "AnimalKen": "Trato con Animales",
+      "Academics": "Academicismo",
+      "Brawl": "Pelea",
+      "Etiquette": "Etiqueta",
+      "Awareness": "Consciencia",
+      "Craft": "Artesanía",
+      "Insight": "Perspicacia",
+      "Finance": "Finanzas",
+      "Drive": "Conducir",
+      "Intimidation": "Intimidación",
+      "Investigation": "Investigación",
+      "Firearms": "Armas de Fuego",
+      "Leadership": "Liderazgo",
+      "Medicine": "Medicina",
+      "Melee": "Pelea con Armas",
+      "Performance": "Interpretación",
+      "Occult": "Ocultismo",
+      "Larceny": "Latrocinio",
+      "Persuasion": "Persuasión",
+      "Politics": "Política",
+      "Stealth": "Sigilo",
+      "Streetwise": "Callejeo",
+      "Science": "Ciencia",
+      "Survival": "Supervivencia",
+      "Subterfuge": "Subterfugio",
+      "Technology": "Tecnología"
+    },
+
+    "Items": {
+      "Label": "Objeto",
+      "ShowToChat": "Mostrar al chat",
+      "CustomRoll": "Tirada Personalizadas",
+      "CustomRolls": "Tiradas Personalizadas",
+      "Merit": "Ventaja",
+      "Cost": "Coste",
+      "Flaw": "Defecto",
+      "Bonuses": "Bonuses",
+      "Background": "Transfondo",
+      "Points": "Puntos",
+      "UseSkill": "Usar Habilidades",
+      "Rollable": "Tirable",
+      "_Feature": "",
+      "FeatureType": "Tipo de rasgo",
+      "Type": "Tipo",
+      "NewSpecialty": "Nueva Especialidad",
+      "Boon": "Bendición",
+      "Boons": "Favores",
+      "Macro": "Macro"
+    },
+
+    "Biography": {
+      "Label": "Biografía",
+      "Concept": "Concepto",
+      "Chronicle": "Crónica",
+      "Ambition": "Ambición",
+      "Desire": "Deseo",
+      "ChronicleTenets": "Principios de la crónica",
+      "TouchstonesAndConvictions": "Piedras de Toque y Convicciones",
+      "Appearance": "Apariencia",
+      "History": "Historia"
+    },
+
+    "DiceRoller": {
+      "AttributeShortLabel": "A",
+      "SkillShortLabel": "H",
+      "DisciplineShortLabel": "D",
+      "NothingShortLabel": "⊘",
+      "SelectAbility": "Elegir Atributo"
+    },
+
+    "Chat": {
+      "RollingWillpower": "Tirando Fuerza de Voluntad",
+      "Rolling": "Tirando",
+      "RollWillpower": "Control de Fuerza de Voluntad",
+      "WillpowerReroll": "Repetición",
+      "WillpowerFullTitle": "Registro de fuerza de voluntad lleno",
+      "WillpowerFull": "La fuerza de voluntad está totalmente dañada, ya no puede dañarla.",
+      "WillpowerDamage": "Daño a la fuerza de voluntad",
+      "HasReceivedWillpowerDamage": "{actor} ha recibido {willpowerDamage} de daño a la fuerza de voluntad."
+    }
+  }
+}

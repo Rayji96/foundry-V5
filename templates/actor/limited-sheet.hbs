@@ -1,0 +1,46 @@
+<form class="{{cssClass}} flexcol limited" autocomplete="off">
+    {{!-- Actor Type Banner --}}
+    {{#if displayBanner}}
+    <div class="sheet-banner">
+      <h1>{{ sheetType }}</h1>
+    </div>
+    {{/if}}
+
+    {{!-- Sheet Header --}}
+    <header class="limited-actor-header">
+        <div style="flex-grow: 0;">
+            <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" width="100"
+                alt="Profile Image" />
+        </div>
+        <div style="flex-grow: 1;">
+            <h2 class="limited-charname">{{actor.name}}</h2>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{#unless actor.system.clan.value}}
+        <div class="tab appearance description-content">
+            <div class="flex-center">
+                <label class="resource-label"><h2>{{localize "WOD5E.Tabs.Notes"}}</h2></label>
+            </div>                  
+            {{editor enrichedNotes target="system.notes" button=true editable=editable}}
+        </div>
+        {{else}}
+        <div class="grid grid-2col flexrow">                    
+            <div class="tab appearance description-content">
+                <div class="flex-center">
+                    <label class="resource-label"><h2>{{localize "WOD5E.Biography.Label"}}</h2></label>
+                </div>              
+                {{editor enrichedBiography target="system.biography" button=true editable=editable}}
+            </div>              
+            <div class="tab appearance description-content">
+                <div class="flex-center">
+                    <label class="resource-label"><h2>{{localize "WOD5E.Biography.Appearance"}}</h2></label>
+                </div>              
+                {{editor enrichedAppearance target="system.appearance" button=true editable=editable}}
+            </div>
+        </div>
+        {{/unless}}
+    </section>
+</form>

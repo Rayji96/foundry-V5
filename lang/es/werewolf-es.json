@@ -1,0 +1,85 @@
+{
+  "WOD5E": {
+    "WTA": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+      
+      "Label": "Hombre lobo",
+      
+      "WerewolfDice": "Dados de hombre lobo",
+      "RageDice": "Dados de rabia",
+      
+      "_GiftsandRites": "",
+      "Rage": "Rabia",
+      "RageCost": "Coste de rabia",
+      "WillpowerCost": "Coste de fuerza de voluntad",
+      "PossibleRageFailure": "Posible fallo brutal",
+      "RollRageDamageWillpower": "Tirar rabia, daña la fuerza de voluntad",
+      "HasCost": "Tiene coste",
+      
+      "_SelectGift": "",
+      "_GiftType": "",
+      "_AddGift": "",
+      "_NewGift": "",
+      "_AddRite": "",
+      "_NewRite": "",
+      
+      "TheWolf": "El lobo",
+      "Tribe": "Tribu",
+      "Auspice": "Auspicio",
+      
+      "Harano": "Harano",
+      "_HaranoTest": "",
+      "Hauglosk": "Hauglosk",
+      "_HaugloskTest": "",
+      
+      "Frenzy": "Frenesí",
+      "_EnterFrenzy": "",
+      "_EndFrenzy": "",
+      "_FrenzyActiveWarning": "",
+      "Active": "Activo",
+      "_FrenzyActiveWarning2": "",
+      "_LostWolfFormChange": "",
+      
+      "Renown": "Renombre",
+      "Wisdom": "Sabiduría",
+      "Glory": "Gloria",
+      "Honor": "Honor",
+      
+      "FormsOfGarou": "Formas de Garou",
+      "HomidName": "Homid",
+      "HomidTitle": "El humano",
+      "GlabroName": "Glabro",
+      "_GlabroTitle": "",
+      "CrinosName": ""Crinos,
+      "_CrinosTitle": "",
+      "HispoName": "Hispo",
+      "_HispoTitle": "",
+      "LupusName": "Lupus",
+      "_LupusTitle": "",
+      "PostFormToChat": "Chat",
+      
+      "_Patron": "",
+      "_Favor": "",
+      "_Ban": "",
+      
+      "_Native": "",
+      "_Ragabash": "",
+      "_Theurge": "",
+      "_Philodox": "",
+      "_Galliard": "",
+      "_Ahroun": "",
+      "_BlackFury": "",
+      "_BoneGnawer": "",
+      "_ChildrenOfGaia": "",
+      "_Galestalker": "",
+      "_GhostCouncil": "",
+      "_GlassWalker": "",
+      "_HartWarden": "",
+      "_RedTalon": "",
+      "_ShadowLord": "",
+      "_SilentStrider": "",
+      "_SilverFang": "",
+      "_Rite": ""
+    }
+  }
+}

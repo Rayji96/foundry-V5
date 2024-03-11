@@ -1,9 +1,13 @@
 /* global ui, game, foundry */
 
-import { MigrateLegacySheets } from './migrate-legacy-sheets.js'
-import { MigrateLocalization } from './migrate-localization.js'
-import { MigrateGamesystem } from './migrate-gamesystem.js'
-import { MigrateTrackers } from './migrate-trackers.js'
+import { MigrateLegacySheets } from './migration/migrate-legacy-sheets.js'
+import { MigrateLocalization } from './migration/migrate-localization.js'
+import { MigrateGamesystem } from './migration/migrate-gamesystem.js'
+import { MigrateTrackers } from './migration/migrate-trackers.js'
+import { MigrateSpecialties } from './migration/migrate-specialties.js'
+import { MigrateLocalization2 } from './migration/migrate-localization2.js'
+import { MigrateItemImages } from './migration/migrate-item-images.js'
+import { MigrateAnimalKen } from './migration/migrate-animal-ken.js'
 
 let worldVersion
 
@@ -22,55 +26,65 @@ export const migrateWorld = async () => {
 
   console.log('Current SchreckNet Layer v' + worldVersion)
 
-  // If the world version is old, then push updates
-  if (worldVersion !== currentVersion || worldVersion === '1.5') {
-    const updates = []
+  async function updateWorld () {
+    if (worldVersion !== currentVersion || worldVersion === '1.5') {
+      const updates = []
 
-    ui.notifications.info('New version detected; Updating SchreckNet, please wait.')
-    console.log('Obtaining SchreckNet Layer v' + currentVersion)
+      ui.notifications.info('New version detected. Updating SchreckNet, please wait.')
+      console.log('Obtaining SchreckNet Layer v' + currentVersion)
 
-    // Promise chain to go through the migration functions here
-    // Migrate legacy sheets
-    MigrateLegacySheets()
-      .then(migrationIDs => {
-        // Merge any updates
-        updates.concat(migrationIDs)
+      try {
+        // Migrate legacy sheets
+        const migrationIDs1 = await MigrateLegacySheets()
+        updates.push(...migrationIDs1)
 
         // Migrate localization
-        return MigrateLocalization()
-      })
-      .then(migrationIDs => {
-        // Merge any updates
-        updates.concat(migrationIDs)
+        const migrationIDs2 = await MigrateLocalization()
+        updates.push(...migrationIDs2)
 
         // Migrate gamesystem data
-        return MigrateGamesystem()
-      })
-      .then(migrationIDs => {
-        // Merge any updates
-        updates.concat(migrationIDs)
+        const migrationIDs3 = await MigrateGamesystem()
+        updates.push(...migrationIDs3)
 
         // Migrate health and willpower tracker data
-        return MigrateTrackers()
-      })
-      .then(migrationIDs => {
-        // Merge any updates
-        updates.concat(migrationIDs)
+        const migrationIDs4 = await MigrateTrackers()
+        updates.push(...migrationIDs4)
+
+        // Migrate specialties into their respective skills
+        const migrationIDs5 = await MigrateSpecialties()
+        updates.push(...migrationIDs5)
+
+        // Second localization migration
+        const migrationIDs6 = await MigrateLocalization2()
+        updates.push(...migrationIDs6)
+
+        // Migrate item images
+        const migrationIDs7 = await MigrateItemImages()
+        updates.push(...migrationIDs7)
+
+        // Migrate the Animal Ken skill
+        const migrationIDs8 = await MigrateAnimalKen()
+        updates.push(...migrationIDs8)
 
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {
-          ui.notifications.info('Upgrade complete! Foundry will now refresh in 10 seconds...')
+          ui.notifications.info('Upgrade complete! Foundry will now refresh in 20 seconds...')
 
-          // Reload to implement the fixes after 10 seconds
-          setTimeout(function () {
+          // Reload to implement the fixes after 20 seconds
+          setTimeout(() => {
             foundry.utils.debouncedReload()
-          }, 10000)
+          }, 20000)
         } else {
-          ui.notifications.info('No changes necessary! Welcome to version ' + currentVersion)
+          ui.notifications.info('Welcome to version ' + currentVersion)
         }
-      })
 
-    // Update game version
-    game.settings.set('vtm5e', 'worldVersion', currentVersion)
+        // Update game version
+        game.settings.set('vtm5e', 'worldVersion', currentVersion)
+      } catch (error) {
+        console.error('Error during update:', error)
+      }
+    }
   }
+
+  updateWorld()
 }

@@ -1,0 +1,11 @@
+<div class="resource flex-group-center rage-value">
+  <label for="actor.system.rage.value" class="resource-label">{{localize "WOD5E.WTA.Rage"}}</label>
+  <div class="resource-content flexrow flex-center flex-between">
+      <div class="resource-value" data-value="{{actor.system.rage.value}}" data-name="system.rage.value">
+          <span class="resource-value-empty rage-value"></span>
+          {{#numLoop 5}}
+          <span class="resource-value-step rage-value" data-index="{{this}}"></span>
+          {{/numLoop}}
+      </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+{
+  "WOD5E": {
+    "HTR": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+      "Label": "Caçador",
+      "HunterDice": "Dados de Caçador",
+      "DesperationDice": "Dados de Desespero",
+      "Despair": "Aflição",
+      "Creed": "Credo",
+      "CreedFields": "Áreas de Credo",
+      "Cell": "Célula",
+      "Redemption": "Redenção",
+      "_Edge": "",
+      "Edges": "Trunfos",
+      "EdgeType": "Tipo de Trunfo",
+      "AddEdge": "Adicionar Trunfo",
+      "SelectEdge": "Selecionar Trunfo",
+      "AddPerk": "Adicionar Distinção",
+      "Desperation": "Desespero",
+      "Danger": "Perigo",
+      "DesperationSuccess": "Sucesso ao Forçar a Barra ou Aflição",
+      "PossibleDesperationFailure": "Possível Forçar a Barra ou Aflição",
+      "DespairFailure": "Aflição",
+      "DesperationUnavailable": "Dados de Desespero indisponíveis enquanto em Aflição",
+      "Drive": "Ímpeto",
+      "Arsenal": "Arsenal",
+      "Fleet": "Frota",
+      "Ordnance": "Artilharia",
+      "Library": "Biblioteca",
+      "ImprovisedGear": "Equipamento Improvisado",
+      "GlobalAccess": "Acesso Global",
+      "DroneJockey": "Jóquei de Drones",
+      "BeastWhisperer": "Encantador de Feras",
+      "SenseTheUnnatural": "Sentir o Sobrenatural",
+      "RepelTheUnnatural": "Repelir o Sobrenatural",
+      "ThwartTheUnnatural": "Frustrar o Sobrenatural",
+      "Artifact": "Artefato"
+    }
+  }
+}

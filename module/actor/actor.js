@@ -1,4 +1,4 @@
-/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry */
+/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E */
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -17,12 +17,11 @@ export class ActorInfo extends Actor {
    * @memberof ClientDocumentMixin
    */
   static async createDialog (data = {}, options = {}) {
-    // Define data from the system and the game to be used when rendering the new actor dialogue
+    // Define data from the system and the game to be used when rendering the new actor dialog
     // Actor name
     const documentName = this.metadata.name
 
     // List of actor templates
-    const actorTemplates = game.template.Actor
     const actorTemplateTypes = game.template.Actor.types
 
     // List of folders in the game, if there is at least 1
@@ -39,7 +38,8 @@ export class ActorInfo extends Actor {
 
       // If the actor template has a label, add it to the types list
       // Otherwise, default to the actor's key
-      actorTypes[actorType] = actorTemplates[actorType].label ? game.i18n.localize(actorTemplates[actorType].label) : actorType
+      const actorFromList = WOD5E.ActorTypes.getList().find(obj => actorType in obj)
+      actorTypes[actorType] = actorFromList ? actorFromList[actorType].label : actorType
     }
 
     // Render the document creation form

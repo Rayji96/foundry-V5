@@ -1,0 +1,168 @@
+{
+    "WOD5E": {
+        "Name": "",
+        "Confirm": "",
+        "Close": "",
+        "Save": "",
+        "Submit": "",
+        "System": "",
+        "Edit": "",
+        "Delete": "",
+        "Level": "",
+        "Add": "",
+        "Cancel": "",
+        "Health": "",
+        "Willpower": "",
+        "Exp": "",
+        "None": "",
+
+        "Mortal": "",
+
+        "Roll": {
+            "Label": "",
+            "RollMode": "",
+            "MortalDice": "",
+            "Success": "",
+            "Successes": "",
+            "CriticalSuccess": "",
+            "Fail": "",
+            "Modifier": "",
+            "Difficulty": "",
+            "SelectableModifiers": "",
+            "Source": "",
+            "Value": "",
+            "Active": "",
+            "CustomModifiers": ""
+        },
+
+        "SPC": {
+            "Label": "",
+            "GeneralDifficulty": "",
+            "StandardDicePools": "",
+            "ExceptionalDicePools": "",
+            "Physical": "",
+            "Mental": "",
+            "Social": "",
+            "AddSkill": "",
+            "SelectSkill": ""
+        },
+
+        "Damage": {
+            "Superficial": "",
+            "Aggravated": "",
+            "Stains": "",
+            "Value": "",
+            "Max": ""
+        },
+
+        "Tabs": {
+            "Stats": "",
+            "Features": "",
+            "Description": "",
+            "Equipment": "",
+            "Notes": "",
+            "Other": ""
+        },
+
+        "Attributes": {
+            "Label": "",
+            "Attributes": "",
+            "Strength": "",
+            "Charisma": "",
+            "Intelligence": "",
+            "Dexterity": "",
+            "Manipulation": "",
+            "Wits": "",
+            "Stamina": "",
+            "Composure": "",
+            "Resolve": ""
+        },
+
+        "Skills": {
+            "Label": "",
+            "Skills": "",
+            "Specialty": "",
+            "Specialties": "",
+            "Athletics": "",
+            "AnimalKen": "",
+            "Academics": "",
+            "Brawl": "",
+            "Etiquette": "",
+            "Awareness": "",
+            "Craft": "",
+            "Insight": "",
+            "Finance": "",
+            "Drive": "",
+            "Intimidation": "",
+            "Investigation": "",
+            "Firearms": "",
+            "Leadership": "",
+            "Medicine": "",
+            "Melee": "",
+            "Performance": "",
+            "Occult": "",
+            "Larceny": "",
+            "Persuasion": "",
+            "Politics": "",
+            "Stealth": "",
+            "Streetwise": "",
+            "Science": "",
+            "Survival": "",
+            "Subterfuge": "",
+            "Technology": ""
+        },
+
+        "Items": {
+            "Label": "",
+            "ShowToChat": "",
+            "CustomRoll": "",
+            "CustomRolls": "",
+            "Merit": "",
+            "Cost": "",
+            "Flaw": "",
+            "Bonuses": "",
+            "Background": "",
+            "Points": "",
+            "UseSkill": "",
+            "Rollable": "",
+            "Feature": "",
+            "FeatureType": "",
+            "Type": "",
+            "NewSpecialty": "",
+            "Boon": "",
+            "Boons": "",
+            "Macro": ""
+        },
+
+        "Biography": {
+            "Label": "",
+            "Concept": "",
+            "Chronicle": "",
+            "Ambition": "",
+            "Desire": "",
+            "ChronicleTenets": "",
+            "TouchstonesAndConvictions": "",
+            "Appearance": "",
+            "History": ""
+        },
+
+        "DiceRoller": {
+            "AttributeShortLabel": "",
+            "SkillShortLabel": "",
+            "DisciplineShortLabel": "",
+            "NothingShortLabel": "⊘",
+            "SelectAbility": ""
+        },
+
+        "Chat": {
+            "RollingWillpower": "",
+            "Rolling": "",
+            "RollWillpower": "",
+            "WillpowerReroll": "",
+            "WillpowerFullTitle": "",
+            "WillpowerFull": "",
+            "WillpowerDamage": "",
+            "HasReceivedWillpowerDamage": "{actor} {willpowerDamage}"
+        }
+    }
+}

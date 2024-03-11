@@ -1,0 +1,170 @@
+{
+  "WOD5E": {
+    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+    "Name": "Nome",
+    "Confirm": "Confirmar",
+    "Close": "Fechar",
+    "Save": "Salvar",
+    "Submit": "Enviar",
+    "System": "Sistema",
+    "Edit": "Editar",
+    "Delete": "Apagar",
+    "Level": "Nível",
+    "Add": "Adicionar",
+    "Cancel": "Cancelar",
+    "Health": "Vitalidade",
+    "Willpower": "Força de Vontade",
+    "Exp": "Experiência",
+    "None": "Nenhum",
+    
+    "Mortal": "Mortal",
+
+    "Roll": {
+      "Label": "Rolagem",
+      "RollMode": "Modo de Rolagem",
+      "MortalDice": "Dados de Mortal",
+      "Success": "Sucesso",
+      "Successes": "Sucessos",
+      "CriticalSuccess": "Sucesso Crítico",
+      "Fail": "Falha",
+      "Modifier": "Modificador",
+      "Difficulty": "Dificuldade",
+      "_SelectableModifiers": "Selectable Modifiers",
+      "_Source": "Source",
+      "_Value": "Value",
+      "_Active": "Active",
+      "_CustomModifiers": "Custom Modifiers"
+    },
+
+    "SPC": {
+      "Label": "Personagem do Narrador",
+      "GeneralDifficulty": "Dificuldade geral",
+      "StandardDicePools": "Pool de dados padrão",
+      "ExceptionalDicePools": "Pools de dados excepcionais",
+      "Physical": "Fisica",
+      "Mental": "Mental",
+      "Social": "Social",
+      "AddSkill": "Adicione habilidade",
+      "SelectSkill": "Selecione Habilidade"
+    },
+
+    "Damage": {
+      "Superficial": "Superficial",
+      "Aggravated": "Agravado",
+      "Stains": "Máculas",
+      "Value": "Valor",
+      "Max": "Máx"
+    },
+
+    "Tabs": {
+      "Stats": "Características",
+      "Features": "Vantagens",
+      "Description": "Descrição",
+      "Equipment": "Equipamento",
+      "Notes": "Notas",
+      "Other": "Outro"
+    },
+
+    "Attributes": {
+      "Label": "Atributos",
+      "Attributes": "Atributos",
+      "Strength": "Força",
+      "Charisma": "Carisma",
+      "Intelligence": "Inteligência",
+      "Dexterity": "Destreza",
+      "Manipulation": "Manipulação",
+      "Wits": "Raciocínio",
+      "Stamina": "Vigor",
+      "Composure": "Autocontrole",
+      "Resolve": "Determinação"
+    },
+
+    "Skills": {
+      "Label": "Habilidades",
+      "Skills": "Habilidades",
+      "Specialty": "Especialização",
+      "Specialties": "Especializações",
+      "Athletics": "Atletismo",
+      "AnimalKen": "Empatia com Animais",
+      "Academics": "Erudição",
+      "Brawl": "Briga",
+      "Etiquette": "Etiqueta",
+      "Awareness": "Percepção",
+      "Craft": "Ofícios",
+      "Insight": "Sagacidade",
+      "Finance": "Finanças",
+      "Drive": "Condução",
+      "Intimidation": "Intimidação",
+      "Investigation": "Investigação",
+      "Firearms": "Armas de Fogo",
+      "Leadership": "Liderança",
+      "Medicine": "Medicina",
+      "Melee": "Armas Brancas",
+      "Performance": "Performance",
+      "Occult": "Ocultismo",
+      "Larceny": "Ladroagem",
+      "Persuasion": "Persuasão",
+      "Politics": "Política",
+      "Stealth": "Furtividade",
+      "Streetwise": "Manha",
+      "Science": "Ciência",
+      "Survival": "Sobrevivência",
+      "Subterfuge": "Subterfúgio",
+      "Technology": "Tecnologia"
+    },
+
+    "Items": {
+      "Label": "Items",
+      "ShowToChat": "Mostrar no Chat",
+      "CustomRoll": "Rolagem Personalizada",
+      "CustomRolls": "Rolagens Personalizadas",
+      "Merit": "Qualidade",
+      "Cost": "Custo",
+      "Flaw": "Defeito",
+      "Bonuses": "Bônus",
+      "Background": "Antecedente",
+      "Points": "Pontos",
+      "UseSkill": "Usar Habilidades",
+      "Rollable": "Rolável",
+      "_Feature": "",
+      "FeatureType": "Tipo de Vantagem",
+      "Type": "Tipo",
+      "NewSpecialty": "New Specialty",
+      "Boon": "Favor",
+      "Boons": "Favores",
+      "_Macro": "Macro"
+    },
+
+    "Biography": {
+      "Label": "Biografia",
+      "Concept": "Conceito",
+      "Chronicle": "Crônica",
+      "Ambition": "Ambição",
+      "Desire": "Desejo",
+      "ChronicleTenets": "Princípios da Crônica",
+      "TouchstonesAndConvictions": "Pilares & Convicções",
+      "Appearance": "Aparência",
+      "History": "História"
+    },
+
+    "DiceRoller": {
+      "AttributeShortLabel": "A",
+      "SkillShortLabel": "H",
+      "DisciplineShortLabel": "D",
+      "NothingShortLabel": "⊘",
+      "SelectAbility": "Escolher Atributo"
+    },
+
+    "Chat": {
+      "RollingWillpower": "Rolando Força de Vontade",
+      "Rolling": "Rolando",
+      "RollWillpower": "Rolar Teste de Força de Vontade",
+      "WillpowerReroll": "Rerrolagem com Força de Vontade",
+      "WillpowerFullTitle": "Barra de Força de Vontade completa",
+      "WillpowerFull": "A força de vontade está totalmente danificada, não pode danificá-la mais.",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
+    }
+  }
+}
