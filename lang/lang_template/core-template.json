@@ -49,7 +49,9 @@
             "Path": "",
             "PathsSeparatedBySemicolons": "",
             "DisplayWhenInactive": "",
-            "Unless": ""
+            "Unless": "",
+            "_PathToCheck": "",
+            "_ValueToCheck": ""
         },
 
         "SPC": {

@@ -12,11 +12,21 @@
                         <i class="fas fa-trash"></i>
                     </a>
                 </h3>
-                <div class="grid grid-2col flex-center">
-                    <div class="flexcol">
+                <div class="grid grid-3col flex-center">
+                    <div class="flexcol flex-center">
                         <b>{{localize "WOD5E.Value"}}</b>
                         <input name="value" type="number" value="{{bonus.value}}" disabled="true"/>
                     </div>
+                    <div>
+                        <b>{{localize "WOD5E.Bonus.Unless"}}</b>
+                        <input name="path" type="text" value="{{bonus.unless}}" placeholder="{{localize 'WOD5E.Bonus.Unless'}}" disabled="true"/>
+                    </div>
+                    <div class="flexcol flex-center">
+                        <b>{{localize "WOD5E.Bonus.DisplayWhenInactive"}}</b>
+                        <input name="displayWhenInactive" type="checkbox"{{#if bonus.displayWhenInactive}} checked{{/if}} disabled="true"/>
+                    </div>
+                </div>
+                <div class="grid grid-3col flex-center">
                     <div class="flexcol">
                         <b>{{localize "WOD5E.Bonus.ActiveWhen"}}</b>
                         <select name="check" type="number">
@@ -27,22 +37,14 @@
                     </div>
                     {{#ifeq bonus.activeWhen.check 'ifEquals'}}
                         <div>
-                            <b>{{localize "WOD5E.Bonus.Path"}}</b>
+                            <b>{{localize "WOD5E.Bonus.PathToCheck"}}</b>
                             <input name="path" type="text" value="{{bonus.activeWhen.path}}" placeholder="{{localize 'WOD5E.Bonus.PathToCheck'}}" disabled="true"/>
                         </div>
                         <div>
-                            <b>{{localize "WOD5E.Value"}}</b>
+                            <b>{{localize "WOD5E.Bonus.ValueToCheck"}}</b>
                             <input name="value" type="text" value="{{bonus.activeWhen.value}}" placeholder="{{localize 'WOD5E.Bonus.ValueToCheck'}}" disabled="true"/>
                         </div>
                     {{/ifeq}}
-                    <div>
-                        <b>{{localize "WOD5E.Bonus.Unless"}}</b>
-                        <input name="path" type="text" value="{{bonus.unless}}" placeholder="{{localize 'WOD5E.Bonus.Unless'}}" disabled="true"/>
-                    </div>
-                    <div>
-                        <b>{{localize "WOD5E.Bonus.DisplayWhenInactive"}}</b>
-                        <input name="displayWhenInactive" type="checkbox"{{#if bonus.displayWhenInactive}} checked{{/if}} disabled="true"/>
-                    </div>
                 </div>
                 <div class="flexcol">
                     <b>{{localize "WOD5E.Bonus.PathsSeparatedBySemicolons"}}</b>

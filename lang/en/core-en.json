@@ -48,7 +48,9 @@
             "Path": "Path",
             "PathsSeparatedBySemicolons": "Paths, Separated By Semicolons (;)",
             "DisplayWhenInactive": "Display When Inactive",
-            "Unless": "Unless"
+            "Unless": "Unless",
+            "PathToCheck": "Path to Check",
+            "ValueToCheck": "Value to Check"
         },
 
         "SPC": {
