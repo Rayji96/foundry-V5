@@ -52,9 +52,9 @@ export async function getSituationalModifiers ({
 
   function filterModifiers (data, modifiers) {
     return modifiers.filter(modifier => {
-      const { check, path, value } = modifier.activeWhen
-      const displayWhenInactive = modifier.displayWhenInactive
-      const unless = modifier.unless
+      const { check, path, value } = modifier?.activeWhen || {}
+      const displayWhenInactive = modifier?.displayWhenInactive || ''
+      const unless = modifier?.unless || ''
 
       // Check if any 'unless' strings are present in the 'selectors' array
       if (unless && unless.some(value => selectors.indexOf(value) !== -1)) {

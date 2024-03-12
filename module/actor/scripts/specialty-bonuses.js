@@ -9,22 +9,18 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
   const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
-  // Secondary variables
+  // Default values for a new specialty
   const bonusData = {
     actor,
     bonus: {
       source: game.i18n.localize('WOD5E.Items.NewSpecialty'),
       value: 1,
-      paths: [`skills.${skill}`],
-      displayWhenInactive: true,
-      activeWhen: {
-        check: 'never'
-      }
+      paths: [`skills.${skill}`]
     }
   }
 
   // Render the template
-  const bonusTemplate = 'systems/vtm5e/templates/item/parts/bonus-display.hbs'
+  const bonusTemplate = 'systems/vtm5e/templates/actor/parts/specialty-display.hbs'
   const bonusContent = await renderTemplate(bonusTemplate, bonusData)
 
   new Dialog(
@@ -36,10 +32,11 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize('WOD5E.Add'),
           callback: async html => {
+            // Get the source (name) and the value (modifier) from the dialogue
             const source = html.find('[id=bonusSource]').val()
             const value = html.find('[id=bonusValue]').val()
-            const displayWhenInactive = html.find('[id=displayBonusWhenInactive]').is(':checked')
 
+            // Handle the bonus pathing and making it into an array
             const rawPaths = html.find('[id=bonusPaths]').val()
             const arrPaths = rawPaths.split(';')
             const cleanPaths = arrPaths.map(function (item) {
@@ -49,21 +46,16 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
               return item !== ''
             })
 
-            const activeWhen = {}
-            activeWhen.check = html.find('[id=activeWhenCheck]').val()
-            activeWhen.path = html.find('[id=activeWhenPath]').val()
-            activeWhen.value = html.find('[id=activeWhenValue]').val()
+            // displayWhenInactive is ALWAYS true for specialties
+            const displayWhenInactive = true
 
-            const unless = html.find('[id=unless]').val()
-
+            // Put the new bonus into an object
             let newBonus = {}
             newBonus = {
               source,
               value,
               paths,
-              unless,
-              displayWhenInactive,
-              activeWhen
+              displayWhenInactive
             }
 
             // Define the existing list of bonuses
@@ -144,7 +136,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
   const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
   // Render the template
-  const bonusTemplate = 'systems/vtm5e/templates/item/parts/bonus-display.hbs'
+  const bonusTemplate = 'systems/vtm5e/templates/actor/parts/specialty-display.hbs'
   const bonusContent = await renderTemplate(bonusTemplate, bonusData)
 
   new Dialog(
@@ -156,10 +148,11 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize('WOD5E.Save'),
           callback: async html => {
+            // Get the source (name) and the value (modifier) from the dialogue
             const source = html.find('[id=bonusSource]').val()
             const value = html.find('[id=bonusValue]').val()
-            const displayWhenInactive = html.find('[id=displayBonusWhenInactive]').is(':checked')
 
+            // Handle the bonus pathing and making it into an array
             const rawPaths = html.find('[id=bonusPaths]').val()
             const arrPaths = rawPaths.split(';')
             const cleanPaths = arrPaths.map(function (item) {
@@ -169,12 +162,8 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
               return item !== ''
             })
 
-            const activeWhen = {}
-            activeWhen.check = html.find('[id=activeWhenCheck]').val()
-            activeWhen.path = html.find('[id=activeWhenPath]').val()
-            activeWhen.value = html.find('[id=activeWhenValue]').val()
-
-            const unless = html.find('[id=unlessValue]').val()
+            // displayWhenInactive is ALWAYS true for specialties
+            const displayWhenInactive = true
 
             // Define the existing list of bonuses
             const bonusKeys = bonusPath.split('.')
@@ -185,9 +174,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
               source,
               value,
               paths,
-              unless,
-              displayWhenInactive,
-              activeWhen
+              displayWhenInactive
             }
 
             // Update the actor
