@@ -70,3 +70,12 @@ input[type="search"] {
 .wod5e input[type="checkbox"] {
   cursor: pointer;
 }
+
+.wod5e .input-value {
+  max-width: 45px;
+}
+
+.wod5e .tox-editor-container button {
+  background-color: #fff !important;
+  color: #000 !important;
+}

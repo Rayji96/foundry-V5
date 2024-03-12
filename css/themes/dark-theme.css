@@ -94,16 +94,17 @@
     );
 }
 
-.dark-theme .wod5e .resource-value .resource-value-step, .dark-theme .wod5e .resource-value-static .resource-value-static-step {
-  border: 1px solid #cdcdcd;
+.dark-theme .wod5e .resource-value-step, .dark-theme .wod5e .resource-value-static-step {
+  border: 1px solid #cdcdcd !important;
 }
 
-.dark-theme .wod5e .resource-value .resource-value-step.active, .dark-theme .wod5e .resource-value-static .resource-value-static-step.active {
+.dark-theme .wod5e .resource-value-step.active, .dark-theme .wod5e .resource-value-static-step.active {
   background-color: #790813;
 }
 
 .dark-theme .wod5e .resource-counter .resource-counter-step {
   border: 1px solid white;
+  background-color: #f9f9f9;
 }
 
 .dark-theme .wod5e .resource-counter .resource-counter-step[data-state="-"] {
@@ -125,6 +126,7 @@
       transparent 57%,
       transparent 100%
     );
+  background-color: #f9f9f9;
 }
 
 .dark-theme .wod5e .resource-counter .resource-counter-step[data-state="x"] {
@@ -147,6 +149,7 @@
       transparent 57%,
       transparent 100%
     );
+  background-color: #f9f9f9;
 }
 
 .dark-theme .wod5e .cell-resource-counter .cell-resource-counter-step {
@@ -197,11 +200,11 @@
 }
 
 .dark-theme .wod5e input {
-  color: #faf5ed;
+  color: #FFF;
 }
 
-.dark-theme .wod5e .wod5e input {
-  color: #faf5ed;
+.dark-theme .wod5e input::placeholder {
+  color: #CCC;
 }
 
 .dark-theme .wod5e input[name="system.blood.resonance"] {
@@ -224,7 +227,7 @@
 }
 
 .dark-theme .wod5e .tab.blood.active p {
-  color: #bb1020;
+  color: #FFF;
 }
 
 .dark-theme .wod5e.werewolf-sheet .window-content .sheet-body .tab > .resource-label, .dark-theme .wod5e.werewolf-sheet .items-list .item-header {
@@ -238,4 +241,16 @@
 
 .dark-theme .dialog-content .situational-modifiers {
   background: #121212;
+}
+
+.dark-theme textarea {
+  color: #FFF;
+}
+
+.dark-theme .wod5e .actor-header .header-fields-top .header-row-2 .resource {
+  background-color: #3e3e3e;
+}
+
+.dark-theme .wod5e.vampire-sheet .resource-value .resource-value-step.active, .dark-theme .wod5e .resource-value-static .resource-value-static-step.active {
+  background-color: #f30018;
 }

@@ -1,0 +1,14 @@
+<div class="bonus">
+    <h3><input class="no-border" id="bonusSource" type="text" value="{{bonus.source}}" placeholder="{{localize 'WOD5E.Bonus.NewSpecialty'}}"/></h3>
+    <div class="grid grid-2col flex-center">
+        <div class="flexcol flex-center">
+            <b>{{localize "WOD5E.Value"}}</b>
+            <input class="input-value" id="bonusValue" type="number" value="{{bonus.value}}"/>
+        </div>
+        <div class="flexcol flex-center">
+            <b>{{localize "WOD5E.Bonus.PathsSeparatedBySemicolons"}}</b>
+            <input id="bonusPaths" type="text" value="{{splitArray bonus.paths}}" placeholder="skills.athletics; abilities.strength"/>
+        </div>
+    </div>
+    <hr>
+</div>
