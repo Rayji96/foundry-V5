@@ -3,9 +3,9 @@
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
     "Name": "Nome",
-    "_Confirm": "",
-    "_Close": "",
-    "_Save": "",
+    "Confirm": "Conferma",
+    "_Close": "Chiudi",
+    "_Save": "Salva",
     "Submit": "Invia",
     "System": "Sistema",
     "Edit": "Modifica",
@@ -22,19 +22,19 @@
 
     "Roll": {
       "Label": "Tira",
-      "RollMode": "Roll Mode",
-      "MortalDice": "Mortal Dice",
+      "RollMode": "Modalità di tiro",
+      "MortalDice": "Dadi mortale",
       "Success": "Successo",
       "Successes": "Successi",
       "CriticalSuccess": "Successo critico",
       "Fail": "Fallimento",
       "Modifier": "Modificatori",
       "Difficulty": "Difficoltà",
-      "_SelectableModifiers": "Selectable Modifiers",
-      "_Source": "Source",
-      "_Value": "Value",
-      "_Active": "Active",
-      "_CustomModifiers": "Custom Modifiers",
+      "SelectableModifiers": "Modificatori selezionabili",
+      "Source": "Fonte",
+      "Value": "Valore",
+      "Active": "Attiva",
+      "CustomModifiers": "Modificatori personalizzati",
       "_AddCustomModifier": ""
     },
 
@@ -55,7 +55,7 @@
       "Aggravated": "Aggravato",
       "Stains": "Macchie",
       "Value": "Valori",
-      "_Max": ""
+      "Max": "Massimo"
     },
 
     "Tabs": {
@@ -116,25 +116,25 @@
     },
 
     "Items": {
-      "_Label": "",
+      "Label": "Etichetta",
       "ShowToChat": "Mostra in chat",
       "CustomRoll": "Tiro personalizzato",
       "CustomRolls": "Tiri personalizzati",
       "Merit": "Vantaggi",
       "Cost": "Costo",
       "Flaw": "Difetti",
-      "_Bonuses": "",
-      "_Background": "",
+      "Bonuses": "Bonus",
+      "Background": "Background",
       "Points": "Punti",
       "UseSkill": "Usa Abilità",
       "Rollable": "Tirabile",
-      "_Feature": "",
+      "Feature": "Caratteristica",
       "FeatureType": "Tipo di caratteristica",
       "Type": "Tipo",
-      "_NewSpecialty": "",
+      "NewSpecialty": "Nuova Specialità",
       "Boon": "Favore",
       "Boons": "Favori",
-      "_Macro": "Macro"
+      "Macro": "Macro"
     },
 
     "Biography": {
@@ -162,10 +162,10 @@
       "Rolling": "Tirando",
       "RollWillpower": "Tira Volontà",
       "WillpowerReroll": "Ritira con Volontà",
-      "WillpowerFullTitle": "Willpower Tracker Full",
+      "WillpowerFullTitle": "La volontà è piena",
       "WillpowerFull": "La forza di volontà è completamente danneggiata, non può danneggiarla ulteriormente.",
-      "_WillpowerDamage": "",
-      "_HasReceivedWillpowerDamage": ""
+      "WillpowerDamage": "Danno alla forza di volontà",
+      "HasReceivedWillpowerDamage": "{actor} Ha ricevuto {willpowerDamage} danni alla forza di volontà."
     }
   }
 }
