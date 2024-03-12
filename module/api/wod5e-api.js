@@ -23,7 +23,7 @@ export class wod5eAPI {
    * @param quickRoll                 (Optional, default false) Whether the roll was called to bypass the roll dialog or not
    * @param rollMode                  (Optional, default FVTT's current roll mode) Which roll mode the message should default as
    * @param rerollHunger              (Optional, default false) Whether to reroll failed hunger dice
-   * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers,
+   * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
    * @param macro                     (Optional, default '') A macro to run after the roll has been made
    *
    */

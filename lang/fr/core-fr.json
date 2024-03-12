@@ -17,6 +17,7 @@
     "Willpower": "Volonté",
     "Exp": "Exp",
     "None": "Aucun",
+    "Value": "Valeur",
     
     "Mortal": "Mortel",
 
@@ -32,10 +33,25 @@
       "Difficulty": "Difficulté",
       "SelectableModifiers": "Modificateur sélectionnable",
       "Source": "Source",
-      "Value": "Valeur",
       "Active": "Actif",
       "CustomModifiers": "Modificateur personnalisé",
       "AddCustomModifier":"Ajouter un modificateur perso."
+    },
+
+    "Bonus": {
+        "_NewSpecialty": "",
+        "_AddNewSpecialty": "",
+        "_NewBonus": "",
+        "_AddNewBonus": "",
+        "_Active": "",
+        "_ActiveWhen": "",
+        "_Always": "",
+        "_Never": "",
+        "_IfEquals": "",
+        "_Path": "",
+        "_PathsSeparatedBySemicolons": "",
+        "_DisplayWhenInactive": "",
+        "_Unless": ""
     },
 
     "SPC": {
@@ -54,7 +70,6 @@
       "Superficial": "Superficiel",
       "Aggravated": "Aggravé",
       "Stains": "Flétr.",
-      "Value": "Valeur",
       "Max": "Max"
     },
 
