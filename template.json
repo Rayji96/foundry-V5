@@ -967,6 +967,7 @@
       "templates": ["base"],
       "giftType": "native",
       "renown": "honor",
+      "level": 1,
       "cost": 0,
       "willpowercost": 0,
       "rollable": false,
