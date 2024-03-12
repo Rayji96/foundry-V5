@@ -32,7 +32,8 @@
       "Source": "Origen",
       "Value": "Valor",
       "Active": "Activo",
-      "CustomModifiers": "Modificadores personalizados"
+      "CustomModifiers": "Modificadores personalizados",
+      "_AddCustomModifier": ""
     },
 
     "SPC": {
