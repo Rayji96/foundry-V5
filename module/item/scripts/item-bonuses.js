@@ -1,4 +1,4 @@
-/* global renderTemplate, Dialog, game, ui */
+/* global renderTemplate, Dialog, game */
 
 export const _onAddBonus = async function (event, item) {
   // Secondary variables
@@ -168,7 +168,7 @@ export const _onEditBonus = async function (event, item) {
         const activeWhenPath = html.find('#activeWhenPath').parent()
         const activeWhenValue = html.find('#activeWhenValue').parent()
 
-        activeWhenCheck.on('change', function() {
+        activeWhenCheck.on('change', function () {
           if (activeWhenCheck.val() === 'ifEquals') {
             activeWhenPath.css('visibility', 'visible')
             activeWhenValue.css('visibility', 'visible')
