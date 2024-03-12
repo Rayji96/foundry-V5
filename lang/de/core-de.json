@@ -17,6 +17,7 @@
     "Willpower": "Willenskraft",
     "Exp": "EP",
     "None": "Kein",
+    "Value": "Wert",
 
     "Mortal": "Sterblicher",
 
@@ -30,11 +31,26 @@
       "Fail": "Fehlschlag",
       "Modifier": "Modifikator",
       "Difficulty": "Schwierigkeit",
-      "_SelectableModifiers": "Selectable Modifiers",
-      "_Source": "Source",
-      "_Value": "Value",
-      "_Active": "Active",
-      "_CustomModifiers": "Custom Modifiers"
+      "_SelectableModifiers": "",
+      "_Source": "",
+      "_Active": "",
+      "_CustomModifiers": ""
+    },
+
+    "Bonus": {
+        "_NewSpecialty": "",
+        "_AddNewSpecialty": "",
+        "_NewBonus": "",
+        "_AddNewBonus": "",
+        "_Active": "",
+        "_ActiveWhen": "",
+        "_Always": "",
+        "_Never": "",
+        "_IfEquals": "",
+        "_Path": "",
+        "_PathsSeparatedBySemicolons": "",
+        "_DisplayWhenInactive": "",
+        "_Unless": ""
     },
 
     "SPC": {
@@ -53,7 +69,6 @@
       "Superficial": "Leichter",
       "Aggravated": "Schwerer",
       "Stains": "Makel",
-      "Value": "Wert",
       "_Max": ""
     },
 

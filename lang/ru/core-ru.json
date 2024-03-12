@@ -17,6 +17,7 @@
         "Willpower": "Воля",
         "Exp": "Опыт",
         "None": "Нет",
+        "Value": "Значение",
 
         "Mortal": "Смертный",
 
@@ -32,10 +33,25 @@
             "Difficulty": "Сложность",
             "_SelectableModifiers": "",
             "_Source": "",
-            "Value": "Значение",
             "_Active": "",
             "_CustomModifiers": "",
             "_AddCustomModifier": ""
+        },
+
+        "Bonus": {
+            "_NewSpecialty": "",
+            "_AddNewSpecialty": "",
+            "_NewBonus": "",
+            "_AddNewBonus": "",
+            "_Active": "",
+            "_ActiveWhen": "",
+            "_Always": "",
+            "_Never": "",
+            "_IfEquals": "",
+            "_Path": "",
+            "_PathsSeparatedBySemicolons": "",
+            "_DisplayWhenInactive": "",
+            "_Unless": ""
         },
 
         "SPC": {
@@ -53,7 +69,6 @@
         "Damage": {
             "Superficial": "Лёгкий",
             "Aggravated": "Тяжёлый",
-            "Value": "Значение",
             "Stains": "Сомнения",
             "Max": "Максимум"
         },

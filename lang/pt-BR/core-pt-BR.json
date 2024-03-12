@@ -17,6 +17,7 @@
     "Willpower": "Força de Vontade",
     "Exp": "Experiência",
     "None": "Nenhum",
+    "Value": "Valor",
     
     "Mortal": "Mortal",
 
@@ -30,12 +31,27 @@
       "Fail": "Falha",
       "Modifier": "Modificador",
       "Difficulty": "Dificuldade",
-      "_SelectableModifiers": "Selectable Modifiers",
-      "_Source": "Source",
-      "_Value": "Value",
-      "_Active": "Active",
-      "_CustomModifiers": "Custom Modifiers",
+      "_SelectableModifiers": "",
+      "_Source": "",
+      "_Active": "",
+      "_CustomModifiers": "",
       "_AddCustomModifier": ""
+    },
+
+    "Bonus": {
+        "_NewSpecialty": "",
+        "_AddNewSpecialty": "",
+        "_NewBonus": "",
+        "_AddNewBonus": "",
+        "_Active": "",
+        "_ActiveWhen": "",
+        "_Always": "",
+        "_Never": "",
+        "_IfEquals": "",
+        "_Path": "",
+        "_PathsSeparatedBySemicolons": "",
+        "_DisplayWhenInactive": "",
+        "_Unless": ""
     },
 
     "SPC": {
@@ -54,7 +70,6 @@
       "Superficial": "Superficial",
       "Aggravated": "Agravado",
       "Stains": "Máculas",
-      "Value": "Valor",
       "Max": "Máx"
     },
 
