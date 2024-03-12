@@ -3,10 +3,10 @@
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
     "Name": "Nom",
-    "_Confirm": "",
-    "_Close": "",
-    "_Save": "",
-    "_Submit": "",
+    "Confirm": "Confirmer",
+    "Close": "Fermer",
+    "Save": "Enregistrer",
+    "Submit": "Valider",
     "System": "Système",
     "Edit": "Éditer",
     "Delete": "Supprimer",
@@ -15,36 +15,37 @@
     "Cancel": "Annuler",
     "Health": "Santé",
     "Willpower": "Volonté",
-    "_Exp": "",
+    "Exp": "Exp",
     "None": "Aucun",
     
     "Mortal": "Mortel",
 
     "Roll": {
-      "_Label": "",
-      "_RollMode": "",
-      "_MortalDice": "",
+      "Label": "Jet",
+      "RollMode": "Type de jet",
+      "MortalDice": "Dé mortel",
       "Success": "Succès",
       "Successes": "Succès",
       "CriticalSuccess": "Succès Critique",
       "Fail": "Échouer",
       "Modifier": "Modificateur",
       "Difficulty": "Difficulté",
-      "_SelectableModifiers": "Selectable Modifiers",
-      "_Source": "Source",
-      "_Value": "Value",
-      "_Active": "Active",
-      "_CustomModifiers": "Custom Modifiers"
+      "SelectableModifiers": "Modificateur sélectionnable",
+      "Source": "Source",
+      "Value": "Valeur",
+      "Active": "Actif",
+      "CustomModifiers": "Modificateur personnalisé",
+      "AddCustomModifier":"Ajouter un modificateur perso."
     },
 
     "SPC": {
-      "_Label": "",
+      "Label": "Personnage d'histoire",
       "GeneralDifficulty": "Difficulté générale",
       "StandardDicePools": "Piscines de dés standard",
       "ExceptionalDicePools": "Piscines de dés exceptionnelles",
       "Physical": "Physique",
-      "_Mental": "",
-      "_Social": "",
+      "Mental": "Mental",
+      "Social": "Social",
       "AddSkill": "Ajouter des compétences",
       "SelectSkill": "Sélectionnez les compétences"
     },
@@ -54,20 +55,20 @@
       "Aggravated": "Aggravé",
       "Stains": "Flétr.",
       "Value": "Valeur",
-      "_Max": ""
+      "Max": "Max"
     },
 
     "Tabs": {
-      "_Stats": "",
+      "Stats": "Stats",
       "Features": "Atouts",
-      "_Description": "",
+      "Description": "Description",
       "Equipment": "Équipement",
       "Notes": "Notes",
       "Other": "Autre"
     },
 
     "Attributes": {
-      "_Label": "",
+      "Label": "Attribut",
       "Attributes": "Attributs",
       "Strength": "Force",
       "Charisma": "Charisme",
@@ -81,7 +82,7 @@
     },
 
     "Skills": {
-      "_Label": "",
+      "Label": "Compétence",
       "Skills": "Compétences",
       "Specialty": "Spécialité",
       "Specialties": "Spécialités",
@@ -115,29 +116,29 @@
     },
 
     "Items": {
-      "_Label": "",
+      "Label": "Objets",
       "ShowToChat": "Afficher pour discuter",
       "CustomRoll": "Jet Personnalisé",
       "CustomRolls": "Jets Personnalisés",
       "Merit": "Avantage",
-      "_Cost": "",
+      "Cost": "Coût",
       "Flaw": "Handicap",
-      "_Bonuses": "",
+      "Bonuses": "Bonus",
       "Background": "Historique",
-      "_Points": "",
+      "Points": "Points",
       "UseSkill": "Utiliser des Compétences",
       "Rollable": "Jet de dés",
-      "_Feature": "",
+      "Feature": "Atout",
       "FeatureType": "Type d'Atout",
-      "_Type": "",
-      "_NewSpecialty": "",
+      "Type": "Type",
+      "NewSpecialty": "Nouvelle Spécialité",
       "Boon": "Dette",
       "Boons": "Dettes",
-      "_Macro": "Macro"
+      "Macro": "Macro"
     },
 
     "Biography": {
-      "_Label": "",
+      "Label": "Biographie",
       "Concept": "Concept",
       "Chronicle": "Chronique",
       "Ambition": "Ambition",
@@ -161,10 +162,10 @@
       "Rolling": "Jet",
       "RollWillpower": "Test la volonté",
       "WillpowerReroll": "Relance du test de Volonté",
-      "_WillpowerFullTitle": "",
-      "WillpowerFull": "La volonté est entièrement endommagée, ne peut pas l'endommager davantage.",
-      "_WillpowerDamage": "",
-      "_HasReceivedWillpowerDamage": ""
+      "WillpowerFullTitle": "Compteur de volonté au max",
+      "WillpowerFull": "La volonté est entièrement endommagée, impossible de l'endommager davantage.",
+      "WillpowerDamage": "Dégâts de volonté",
+      "HasReceivedWillpowerDamage": "{actor} a reçu {willpowerDamage} dégâts de volonté."
     }
   }
 }
