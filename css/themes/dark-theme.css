@@ -246,3 +246,11 @@
 .dark-theme textarea {
   color: #FFF;
 }
+
+.dark-theme .wod5e .actor-header .header-fields-top .header-row-2 .resource {
+  background-color: #3e3e3e;
+}
+
+.dark-theme .wod5e.vampire-sheet .resource-value .resource-value-step.active, .dark-theme .wod5e .resource-value-static .resource-value-static-step.active {
+  background-color: #f30018;
+}
