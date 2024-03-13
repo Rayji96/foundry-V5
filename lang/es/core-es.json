@@ -15,7 +15,7 @@
     "Willpower": "Fuerza de Voluntad",
     "Exp": "Experiencia",
     "None": "Ninguno",
-    
+
     "Mortal": "Mortal",
 
     "Roll": {
@@ -125,7 +125,7 @@
       "Points": "Puntos",
       "UseSkill": "Usar Habilidades",
       "Rollable": "Tirable",
-      "_Feature": "",
+      "Feature": "Rasgo",
       "FeatureType": "Tipo de rasgo",
       "Type": "Tipo",
       "NewSpecialty": "Nueva Especialidad",

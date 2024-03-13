@@ -8,7 +8,7 @@
         </div>
         <div class="selector-content">
           <select id="skillSelect">
-            <option value="">None</option>
+            <option value="">{{localize "WOD5E.None"}}</option>
             {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
           </select>
         </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="selector-content">
           <select id="attributeSelect">
-            <option value="">None</option>
+            <option value="">{{localize "WOD5E.None"}}</option>
             {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
           </select>
         </div>
@@ -59,9 +59,9 @@
       </div>
     {{else}}
       <div class="secondary-selector">
-        <div>Add Discipline:</div>
+        <div>{{localize "WOD5E.VTM.AddDiscipline"}}:</div>
         <select id="disciplineSelect">
-          <option value="">None</option>
+          <option value="">{{localize "WOD5E.None"}}</option>
           {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
         </select>
       </div>
@@ -77,9 +77,9 @@
       </div>
     {{else}}
       <div class="secondary-selector">
-        <div>Add Renown:</div>
+        <div>{{localize "WOD5E.WTA.AddRenown"}}:</div>
         <select id="renownSelect">
-          <option value="">None</option>
+          <option value="">{{localize "WOD5E.None"}}</option>
           {{> "systems/vtm5e/templates/item/parts/renown.hbs"}}
         </select>
       </div>
