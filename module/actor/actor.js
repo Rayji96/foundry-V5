@@ -69,7 +69,8 @@ export class ActorInfo extends Actor {
         data = foundry.utils.mergeObject(data, fd.object)
         if (!data.folder) delete data.folder
         if (actorTypes.length === 1) data.type = actorTypes[0]
-        return this.create(data, { renderSheet: true,
+        return this.create(data, {
+          renderSheet: true,
           pack: options.pack || ''
         })
       },
