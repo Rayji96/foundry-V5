@@ -24,8 +24,13 @@ export class ItemInfo extends Item {
     // List of item templates
     const itemTemplateTypes = game.template.Item.types
 
-    // List of folders in the game, if there is at least 1
-    const gameFolders = game.folders.filter(f => (f.type === documentName) && f.displayed)
+    // List of folders; either in the compendium pack the item's being made in, or the world itself
+    let gameFolders = []
+    if (options.pack) {
+      gameFolders = game.packs.get(options.pack).folders.filter(f => (f.type === documentName) && f.displayed)
+    } else {
+      gameFolders = game.folders.filter(f => (f.type === documentName) && f.displayed)
+    }
 
     // Localize the label and title
     const label = game.i18n.localize(this.metadata.label)
@@ -48,7 +53,7 @@ export class ItemInfo extends Item {
       folder: data.folder,
       folders: gameFolders,
       hasFolders: gameFolders.length > 0,
-      type: data.type || 'base',
+      type: data.type || 'feature',
       types: itemTypes,
       hasTypes: true
     })
@@ -66,7 +71,11 @@ export class ItemInfo extends Item {
         data.img = itemFromList[data.type].img ? itemFromList[data.type].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
         if (!data.folder) delete data.folder
         if (itemTypes.length === 1) data.type = itemTypes[0]
-        return this.create(data, { renderSheet: true })
+
+        return this.create(data, {
+          renderSheet: true,
+          pack: options.pack || ''
+        })
       },
       rejectClose: false,
       options
