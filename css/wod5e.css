@@ -147,6 +147,7 @@
     text-transform: uppercase;
     font-family: cormorantLight, serif;
     font-weight: 700;
+    padding: 8px 12px;
 }
 
 .wod5e .items-list .item {

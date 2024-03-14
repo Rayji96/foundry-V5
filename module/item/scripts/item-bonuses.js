@@ -161,7 +161,23 @@ export const _onEditBonus = async function (event, item) {
           label: game.i18n.localize('WOD5E.Cancel')
         }
       },
-      default: 'save'
+      default: 'save',
+      render: (html) => {
+        // Active When Handler
+        const activeWhenCheck = html.find('#activeWhenCheck')
+        const activeWhenPath = html.find('#activeWhenPath').parent()
+        const activeWhenValue = html.find('#activeWhenValue').parent()
+
+        activeWhenCheck.on('change', function () {
+          if (activeWhenCheck.val() === 'ifEquals') {
+            activeWhenPath.css('visibility', 'visible')
+            activeWhenValue.css('visibility', 'visible')
+          } else {
+            activeWhenPath.css('visibility', 'hidden')
+            activeWhenValue.css('visibility', 'hidden')
+          }
+        })
+      }
     }
   ).render(true)
 }

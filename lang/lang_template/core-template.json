@@ -15,6 +15,7 @@
         "Willpower": "",
         "Exp": "",
         "None": "",
+        "Value": "",
 
         "Mortal": "",
 
@@ -30,9 +31,27 @@
             "Difficulty": "",
             "SelectableModifiers": "",
             "Source": "",
-            "Value": "",
             "Active": "",
-            "CustomModifiers": ""
+            "CustomModifiers": "",
+            "AddCustomModifier": ""
+        },
+
+        "Bonus": {
+            "NewSpecialty": "",
+            "AddNewSpecialty": "",
+            "NewBonus": "",
+            "AddNewBonus": "",
+            "Active": "",
+            "ActiveWhen": "",
+            "Always": "",
+            "Never": "",
+            "IfEquals": "",
+            "Path": "",
+            "PathsSeparatedBySemicolons": "",
+            "DisplayWhenInactive": "",
+            "Unless": "",
+            "_PathToCheck": "",
+            "_ValueToCheck": ""
         },
 
         "SPC": {
@@ -51,7 +70,6 @@
             "Superficial": "",
             "Aggravated": "",
             "Stains": "",
-            "Value": "",
             "Max": ""
         },
 
