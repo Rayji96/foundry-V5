@@ -252,7 +252,7 @@ export async function generateRollMessage ({
           // Handle pluralizing based on the number of successes
           const successText = totalResult > 1 ? 'WOD5E.Roll.Successes' : 'WOD5E.Roll.Success'
 
-          if (system === 'vampire' && advancedDice.criticals > 1) { // Handle messy criticals if no difficulty is set
+          if (system === 'vampire' && (advancedDice.criticals > 1 || (basicDice.criticals > 0 && advancedDice.criticals > 0))) { // Handle messy criticals if no difficulty is set
             resultLabel = `<div class="roll-result-label messy-critical">${game.i18n.localize('WOD5E.VTM.MessyCritical')}</div>
             <div class="roll-result-label">${totalResult} ${game.i18n.localize(successText)}</div>`
           } else {
@@ -265,7 +265,7 @@ export async function generateRollMessage ({
         if (system === 'werewolf' && advancedDice.critFails > 1) { // Handle brutal outcomes
           resultLabel += totalAndDifficulty + `<div class="roll-result-label rage-failure">${game.i18n.localize('WOD5E.WTA.PossibleRageFailure')}</div>`
         } else if (critTotal > 0) { // If there's at least one set of critical dice...
-          if (system === 'vampire' && advancedDice.criticals > 1) { // Handle messy criticals
+          if (system === 'vampire' && (advancedDice.criticals > 1 || (basicDice.criticals > 0 && advancedDice.criticals > 0))) { // Handle messy criticals
             resultLabel = totalAndDifficulty + `<div class="roll-result-label messy-critical">${game.i18n.localize('WOD5E.VTM.MessyCritical')}</div>`
           } else { // Everything else is just a normal critical success
             resultLabel = totalAndDifficulty + `<div class="roll-result-label critical-success">${game.i18n.localize('WOD5E.Roll.CriticalSuccess')}</div>`
