@@ -17,6 +17,7 @@
     "Willpower": "Siła Woli",
     "Exp": "PD",
     "None": "Brak",
+    "Value": "Wartość",
     
     "Mortal": "Śmiertelnik",
 
@@ -30,11 +31,29 @@
       "Fail": "Porażka",
       "Modifier": "Modyfikator",
       "Difficulty": "Trudność",
-      "_SelectableModifiers": "Selectable Modifiers",
-      "_Source": "Source",
-      "_Value": "Value",
-      "_Active": "Active",
-      "_CustomModifiers": "Custom Modifiers"
+      "_SelectableModifiers": "",
+      "_Source": "",
+      "_Active": "",
+      "_CustomModifiers": "",
+      "_AddCustomModifier": ""
+    },
+
+    "Bonus": {
+        "_NewSpecialty": "",
+        "_AddNewSpecialty": "",
+        "_NewBonus": "",
+        "_AddNewBonus": "",
+        "_Active": "",
+        "_ActiveWhen": "",
+        "_Always": "",
+        "_Never": "",
+        "_IfEquals": "",
+        "_Path": "",
+        "_PathsSeparatedBySemicolons": "",
+        "_DisplayWhenInactive": "",
+        "_Unless": "",
+        "_PathToCheck": "",
+        "_ValueToCheck": ""
     },
 
     "SPC": {
@@ -53,7 +72,6 @@
       "Superficial": "Powierzchowne",
       "Aggravated": "Poważne",
       "Stains": "Skazy",
-      "Value": "Wartość",
       "Max": "Maks"
     },
 

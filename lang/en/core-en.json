@@ -15,6 +15,7 @@
         "Willpower": "Willpower",
         "Exp": "Exp",
         "None": "None",
+        "Value": "Value",
 
         "Mortal": "Mortal",
 
@@ -28,11 +29,28 @@
             "Fail": "Fail",
             "Modifier": "Modifier",
             "Difficulty": "Difficulty",
-            "SelectableModifiers": "Selectable Modifiers",
             "Source": "Source",
-            "Value": "Value",
+            "SelectableModifiers": "Selectable Modifiers",
+            "CustomModifiers": "Custom Modifiers",
+            "AddCustomModifier": "Add Custom Modifier"
+        },
+
+        "Bonus": {
+            "NewSpecialty": "New Specialty",
+            "AddNewSpecialty": "Add New Specialty",
+            "NewBonus": "New Bonus",
+            "AddNewBonus": "Add New Bonus",
             "Active": "Active",
-            "CustomModifiers": "Custom Modifiers"
+            "ActiveWhen": "Active When",
+            "Always": "Always",
+            "Never": "Never",
+            "IfEquals": "If equals...",
+            "Path": "Path",
+            "PathsSeparatedBySemicolons": "Paths, Separated By Semicolons (;)",
+            "DisplayWhenInactive": "Display When Inactive",
+            "Unless": "Unless",
+            "PathToCheck": "Path to Check",
+            "ValueToCheck": "Value to Check"
         },
 
         "SPC": {
@@ -51,7 +69,6 @@
             "Superficial": "Superficial",
             "Aggravated": "Aggravated",
             "Stains": "Stains",
-            "Value": "Value",
             "Max": "Max"
         },
 

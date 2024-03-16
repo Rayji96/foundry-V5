@@ -151,7 +151,7 @@ class WOD5eDice {
       // The below isn't needed if disableMessageOutput is set to true
       if (disableMessageOutput) {
         // Send notice to DiceSoNice because we're not making a new chat message
-        game.dice3d.showForRoll(roll)
+        game.dice3d.showForRoll(roll, game.user, true)
 
         // End function here
         return roll
