@@ -68,8 +68,5 @@ export class CellActorSheet extends WoDActor {
   activateListeners (html) {
     // Activate listeners
     super.activateListeners(html)
-
-    // Everything below here is only needed if the sheet is editable
-    if (!this.options.editable) return
   }
 }
