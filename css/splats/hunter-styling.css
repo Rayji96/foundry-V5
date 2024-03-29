@@ -23,12 +23,21 @@
     color: #ff9a02;
 }
 
-.wod5e.hunter-sheet .window-content .sheet-body .tab > .resource-label, .wod5e.hunter-sheet .items-list .item-header {
+.wod5e.hunter-sheet .window-content .sheet-body .tab > .resource-label,
+.wod5e.hunter-sheet .items-list .item-header {
   color: var(--hunter-primary);
   border-color: var(--hunter-primary);
 }
 
-.wod5e.hunter-sheet h1, .wod5e.hunter-sheet .flex-group-center, .wod5e.hunter-sheet .flex-group-left, .wod5e.hunter-sheet .flex-group-right, .wod5e.hunter-sheet .window-content nav.sheet-tabs .item.active, .wod5e.hunter-sheet .actor-header .resource, .wod5e.hunter-sheet .items-list .item, .wod5e.hunter-sheet.window-app, .wod5e.hunter-sheet.window-app .window-header {
+.wod5e.hunter-sheet h1,
+.wod5e.hunter-sheet .flex-group-center,
+.wod5e.hunter-sheet .flex-group-left,
+.wod5e.hunter-sheet .flex-group-right,
+.wod5e.hunter-sheet .window-content nav.sheet-tabs .item.active,
+.wod5e.hunter-sheet .actor-header .resource,
+.wod5e.hunter-sheet .items-list .item,
+.wod5e.hunter-sheet.window-app,
+.wod5e.hunter-sheet.window-app .window-header {
   border-color: var(--hunter-primary);
 }
 
@@ -103,11 +112,13 @@
   background-color: var(--hunter-primary);
 }
 
-.wod5e .cell-resource-counter .cell-resource-counter-step[data-state="-"], .wod5e.hunter-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
+.wod5e .cell-resource-counter .cell-resource-counter-step[data-state="-"],
+.wod5e.hunter-sheet .cell-resource-counter .cell-resource-counter-step[data-state="-"] {
   background-color: var(--hunter-primary);
 }
 
-.wod5e.hunter-sheet .resource-counter .resource-counter-step[data-state="-"], .wod5e.hunter-sheet .despair-box .despair-toggle.active {
+.wod5e.hunter-sheet .resource-counter .resource-counter-step[data-state="-"],
+.wod5e.hunter-sheet .despair-box .despair-toggle.active {
   background-color: var(--hunter-primary);
 }
 

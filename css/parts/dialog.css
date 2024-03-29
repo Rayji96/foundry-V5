@@ -14,7 +14,9 @@
   flex-direction: row;
 }
 
-.wod5e .dialog-contents .base-dice-group .basic-dice, .wod5e .dialog-contents .base-dice-group .advanced-dice, .wod5e .dialog-contents .dice-group-header label {
+.wod5e .dialog-contents .base-dice-group .basic-dice,
+.wod5e .dialog-contents .base-dice-group .advanced-dice,
+.wod5e .dialog-contents .dice-group-header label {
   margin-left: auto;
   margin-right: auto;
 }
@@ -102,7 +104,8 @@
   font-size: 20pt;
 }
 
-.wod5e .dialog-contents .selectors-group .selector-title, .selector-content {
+.wod5e .dialog-contents .selectors-group .selector-title,
+.selector-content {
   margin: auto;
 }
 
