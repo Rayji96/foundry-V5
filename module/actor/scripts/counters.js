@@ -60,6 +60,8 @@ export const _setupSquareCounters = async function (html) {
     const states = parseCounterStates(data.states)
     const humanity = data.name === 'system.humanity'
     const despair = data.name === 'system.despair'
+    const desperation = data.name === 'system.desperation'
+    const danger = data.name === 'system.danger'
 
     const fulls = parseInt(data[states['-']]) || 0
     const halfs = parseInt(data[states['/']]) || 0
@@ -74,7 +76,7 @@ export const _setupSquareCounters = async function (html) {
       values = new Array(fulls)
 
       values.fill('-', 0, fulls)
-    } else if (humanity) { // Vampire-specific
+    } else if (humanity || desperation || danger) { // Vampire-specific
       values = new Array(fulls + halfs)
 
       values.fill('-', 0, fulls)
@@ -167,11 +169,15 @@ export const _onSquareCounterChange = async function (event) {
   const states = parseCounterStates(data.states)
   const fields = data.name.split('.')
   const steps = parent.find('.resource-counter-step')
-  const humanity = data.name === 'system.humanity'
-  const despair = data.name === 'system.despair'
   const fulls = parseInt(data[states['-']]) || 0
   const halfs = parseInt(data[states['/']]) || 0
   const crossed = parseInt(data[states.x]) || 0
+
+  // Square counter types
+  const humanity = data.name === 'system.humanity'
+  const despair = data.name === 'system.despair'
+  const desperation = data.name === 'system.desperation'
+  const danger = data.name === 'system.danger'
 
   if (index < 0 || index > steps.length) {
     return
@@ -186,12 +192,12 @@ export const _onSquareCounterChange = async function (event) {
   const newState = allStates[(currentState + 1) % allStates.length]
   steps[index].dataset.state = newState
 
-  if ((oldState !== '' && oldState !== '-') || (oldState !== '' && humanity)) {
+  if ((oldState !== '' && oldState !== '-') || (oldState !== '' && humanity) || (oldState !== '' && desperation) || (oldState !== '' && danger)) {
     data[states[oldState]] = parseInt(data[states[oldState]]) - 1
   }
 
   // If the step was removed we also need to subtract from the maximum.
-  if (oldState !== '' && newState === '' && !humanity && !despair) {
+  if (oldState !== '' && newState === '' && !humanity && !despair && !desperation && !danger) {
     data[states['-']] = parseInt(data[states['-']]) - 1
   }
 
@@ -217,7 +223,7 @@ function parseCounterStates (states) {
 }
 
 // There's gotta be a better way to do this but for the life of me I can't figure it out
-function _assignToActorField (fields, value, actor) {
+export const _assignToActorField = async function (fields, value, actor) {
   // Top-level variables
   const actorData = duplicate(actor)
 
