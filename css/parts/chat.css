@@ -25,14 +25,16 @@
   border-bottom: 0;
 }
 
-.chat-message .roll-total, .chat-message .roll-difficulty {
+.chat-message .roll-total,
+.chat-message .roll-difficulty {
   display: flex;
   flex-grow: 1;
   text-align: center;
   justify-content: space-evenly;
 }
 
-.chat-message .total-title, .chat-message .difficulty-title {
+.chat-message .total-title,
+.chat-message .difficulty-title {
   font-weight: bold;
 }
 
@@ -128,7 +130,8 @@
   background: #7b7b7b80;
 }
 
-.roll-img.hunger-dice.rerolled, .roll-img.rage-dice.rerolled {
+.roll-img.hunger-dice.rerolled,
+.roll-img.rage-dice.rerolled {
   border-color: #d3d3d3;
   filter: invert(1);
 }

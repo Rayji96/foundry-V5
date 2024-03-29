@@ -901,6 +901,12 @@
       "notes": "",
       "headers":{
         "concept": ""
+      },
+      "desperation": {
+        "value": 0
+      },
+      "danger": {
+        "value": 0
       }
     },
     "ghoul": {

@@ -58,7 +58,9 @@
   background: #fff;
 }
 
-.dark-theme .wod5e .discipline-description, .edge-description, .gift-description {
+.dark-theme .wod5e .discipline-description,
+.edge-description,
+.gift-description {
   color: hwb(0deg 7% 98% / 100%);
   background: #eeece8;
 }
@@ -94,21 +96,19 @@
     );
 }
 
-.dark-theme .wod5e .resource-value-step, .dark-theme .wod5e .resource-value-static-step {
+.dark-theme .wod5e .resource-value-step,
+.dark-theme .wod5e .resource-value-static-step {
   border: 1px solid #cdcdcd !important;
 }
 
-.dark-theme .wod5e .resource-value-step.active, .dark-theme .wod5e .resource-value-static-step.active {
+.dark-theme .wod5e .resource-value-step.active,
+.dark-theme .wod5e .resource-value-static-step.active {
   background-color: #790813;
 }
 
 .dark-theme .wod5e .resource-counter .resource-counter-step {
   border: 1px solid white;
   background-color: #f9f9f9;
-}
-
-.dark-theme .wod5e .resource-counter .resource-counter-step[data-state="-"] {
-  background-color: #790813;
 }
 
 .dark-theme .wod5e select {
@@ -230,7 +230,8 @@
   color: #FFF;
 }
 
-.dark-theme .wod5e.werewolf-sheet .window-content .sheet-body .tab > .resource-label, .dark-theme .wod5e.werewolf-sheet .items-list .item-header {
+.dark-theme .wod5e.werewolf-sheet .window-content .sheet-body .tab > .resource-label,
+.dark-theme .wod5e.werewolf-sheet .items-list .item-header {
   color: #cd7a3def;
   border-color: #cd7a3def;
 }
@@ -251,6 +252,9 @@
   background-color: #3e3e3e;
 }
 
-.dark-theme .wod5e.vampire-sheet .resource-value .resource-value-step.active, .dark-theme .wod5e .resource-value-static .resource-value-static-step.active {
+.dark-theme .wod5e .resource-value .resource-value-step.active,
+.dark-theme .wod5e.vampire-sheet .resource-value .resource-value-step.active,
+.dark-theme .wod5e .resource-value-static .resource-value-static-step.active,
+.dark-theme .wod5e .resource-counter .resource-counter-step[data-state="-"] {
   background-color: #f30018;
 }

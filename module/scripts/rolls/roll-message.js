@@ -105,7 +105,7 @@ export async function generateRollMessage ({
       rollData.results[index].altText = dieAltText
 
       // Increase the number of criticals collected across the dice
-      if (dieResult === 'critical') criticals++
+      if (dieResult === 'critical' && !die.discarded) criticals++
 
       die.index = index
     })
@@ -182,8 +182,8 @@ export async function generateRollMessage ({
       rollData.results[index].altText = dieAltText
 
       // Increase the number of criticals collected across the dice
-      if (dieResult === 'critical') criticals++
-      if (dieResult === 'criticalFailure' || dieResult === 'bestial' || dieResult === 'brutal') critFails++
+      if (dieResult === 'critical' && !die.discarded) criticals++
+      if ((dieResult === 'criticalFailure' || dieResult === 'bestial' || dieResult === 'brutal') && !die.discarded) critFails++
 
       die.index = index
     })

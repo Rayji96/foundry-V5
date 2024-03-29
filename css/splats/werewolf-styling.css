@@ -32,7 +32,15 @@
   border-color: var(--werewolf-primary);
 }
 
-.wod5e.werewolf-sheet h1, .wod5e.werewolf-sheet .flex-group-center, .wod5e.werewolf-sheet .flex-group-left, .wod5e.werewolf-sheet .flex-group-right, .wod5e.werewolf-sheet .window-content nav.sheet-tabs .item.active, .wod5e.werewolf-sheet .actor-header .resource, .wod5e.werewolf-sheet .items-list .item, .wod5e.werewolf-sheet.window-app, .wod5e.werewolf-sheet.window-app .window-header {
+.wod5e.werewolf-sheet h1,
+.wod5e.werewolf-sheet .flex-group-center,
+.wod5e.werewolf-sheet .flex-group-left,
+.wod5e.werewolf-sheet .flex-group-right,
+.wod5e.werewolf-sheet .window-content nav.sheet-tabs .item.active,
+.wod5e.werewolf-sheet .actor-header .resource,
+.wod5e.werewolf-sheet .items-list .item,
+.wod5e.werewolf-sheet.window-app,
+.wod5e.werewolf-sheet.window-app .window-header {
   border-color: var(--werewolf-primary);
 }
 
@@ -111,14 +119,16 @@
   cursor: pointer;
 }
 
-.wod5e.werewolf-sheet button.werewolf-button.active, .wod5e.werewolf-sheet button.werewolf-button.active:hover {
+.wod5e.werewolf-sheet button.werewolf-button.active,
+.wod5e.werewolf-sheet button.werewolf-button.active:hover {
   font-size: 20pt;
   color: #FFF;
   cursor: default;
   margin-bottom: 10px;
 }
 
-.wod5e.werewolf-sheet button.werewolf-button.disabled, .wod5e.werewolf-sheet button.werewolf-button.disabled:hover {
+.wod5e.werewolf-sheet button.werewolf-button.disabled,
+.wod5e.werewolf-sheet button.werewolf-button.disabled:hover {
   color: #000;
   cursor: default;
   background: #562f13ef;
@@ -151,7 +161,8 @@
   flex-grow: 1;
 }
 
-.wod5e.werewolf-sheet .wolf-resource .resource-value-step, .wod5e.werewolf-sheet .wolf-resource .resource-value-empty {
+.wod5e.werewolf-sheet .wolf-resource .resource-value-step,
+.wod5e.werewolf-sheet .wolf-resource .resource-value-empty {
   border-radius: 0;
 }
 

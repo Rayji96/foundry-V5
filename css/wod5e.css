@@ -191,7 +191,8 @@
     margin-top: 0.5em;
 }
 
-.wod5e .actor-header .resource.exp, .wod5e .actor-header .resource.generaldifficulty {
+.wod5e .actor-header .resource.exp,
+.wod5e .actor-header .resource.generaldifficulty {
     max-width: 100px;
 }
 
@@ -533,7 +534,9 @@ p.roll-label.uppercase {
     margin: -10px -10px 5px;
 }
 
-.wod5e.vampire-sheet .sheet-banner, .wod5e.ghoul-sheet .sheet-banner, .wod5e.coterie-sheet .sheet-banner {
+.wod5e.vampire-sheet .sheet-banner,
+.wod5e.ghoul-sheet .sheet-banner,
+.wod5e.coterie-sheet .sheet-banner {
     color: #CCC;
 }
 
