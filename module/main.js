@@ -120,6 +120,22 @@ Hooks.once('ready', async function () {
   migrateWorld()
 })
 
+Hooks.once('setup', () => {
+  // Forced panning is intrinsically annoying: change default to false
+  game.settings.settings.get("core.chatBubblesPan").default = false
+
+  // Improve discoverability of map notes
+  game.settings.settings.get("core.notesDisplayToggle").default = true
+
+  // Set Hover by Owner as defaults for Default Token Configuration
+  const defaultTokenSettingsDefaults = game.settings.settings.get("core.defaultToken").default
+  defaultTokenSettingsDefaults.displayName = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
+  defaultTokenSettingsDefaults.displayBars = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
+
+  // Default token dispositions to neutral
+  defaultTokenSettingsDefaults.disposition = CONST.TOKEN_DISPOSITIONS.NEUTRAL
+})
+
 // DiceSoNice functionality
 Hooks.once('diceSoNiceReady', (dice3d) => {
   loadDiceSoNice(dice3d)
