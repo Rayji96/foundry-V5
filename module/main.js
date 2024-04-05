@@ -32,12 +32,6 @@ import { Gifts } from './def/gifts.js'
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
 
-  // Load settings into Foundry
-  loadSettings()
-
-  // After settings are loaded, check if we need to apply dark theme
-  document.body.classList.toggle('dark-theme', game.settings.get('vtm5e', 'darkTheme'))
-
   // Some basic info for the gamesystem
   game.wod5e = {
     ActorInfo,
@@ -85,6 +79,16 @@ Hooks.once('init', async function () {
 
 // Anything that needs to run once the world is ready
 Hooks.once('ready', async function () {
+  // Load settings into Foundry
+  loadSettings()
+
+  // After settings are loaded, check if we need to apply dark theme
+  document.body.classList.toggle('dark-theme', game.settings.get('vtm5e', 'darkTheme'))
+
+  // Apply the currently selected language as a CSS class so we can
+  // modify elements based on locale if needed
+  document.body.classList.add(game.settings.get("core", "language"))
+
   // Activate the API
   window.WOD5E = {
     api: {
