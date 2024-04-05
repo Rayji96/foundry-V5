@@ -113,3 +113,22 @@
 .item-header .grid-3col {
   margin-bottom: 10px;
 }
+
+.stats-container {
+    margin-top: 5px;
+    display: flex;
+    flex-flow: row;
+}
+
+.stats-list {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+}
+
+.attribute, .skill {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+}
