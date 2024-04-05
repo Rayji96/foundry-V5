@@ -612,3 +612,11 @@ h3.item-name.chat-portrait-text-size-name-generic {
     background: url("/systems/vtm5e/assets/images/background-black-marble.jpg"), #000;
     border: 2px solid #000;
 }
+
+.compendium .directory-list, .compendium .compendium-name {
+    color: #CCC;
+}
+
+.compendium .header-control {
+    color: #CCC;
+}
