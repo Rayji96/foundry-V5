@@ -70,7 +70,7 @@ export const loadSettings = async function () {
     name: "Automation Settings",
     label: "WOD5E Automation",
     hint: "Access various automation settings.",
-    icon: "fas fa-bars",
+    icon: "fas fa-wrench",
     type: AutomationMenu,
     restricted: true
   })
