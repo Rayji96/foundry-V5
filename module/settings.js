@@ -1,5 +1,6 @@
 /* global game */
 
+import { AutomationMenu } from './menus/automation-menu.js'
 import { resetActors } from './scripts/reset-actors.js'
 
 /**
@@ -61,29 +62,64 @@ export const loadSettings = async function () {
   })
   */
 
+  /*
+    Automation Settings
+  */
+
+  game.settings.registerMenu("vtm5e", "automationMenu", {
+    name: "Automation Settings",
+    label: "WOD5E Automation",
+    hint: "Access various automation settings.",
+    icon: "fas fa-bars",
+    type: AutomationMenu,
+    restricted: true
+  })
+
+  game.settings.register('vtm5e', 'disableAutomation', {
+    name: 'Disable All Automation',
+    hint: 'Disables all automation without having to individually press all the below buttons.',
+    scope: 'world',
+    config: false,
+    default: false,
+    type: Boolean,
+    onChange: (value) => {
+      if (value) {
+        game.settings.set('vtm5e', 'automatedWillpower', false)
+        game.settings.set('vtm5e', 'automatedHunger', false)
+        game.settings.set('vtm5e', 'automatedOblivion', false)
+        game.settings.set('vtm5e', 'automatedRage', false)
+      } else {
+        game.settings.set('vtm5e', 'automatedWillpower', true)
+        game.settings.set('vtm5e', 'automatedHunger', true)
+        game.settings.set('vtm5e', 'automatedOblivion', true)
+        game.settings.set('vtm5e', 'automatedRage', true)
+      }
+    }
+  })
+
   game.settings.register('vtm5e', 'automatedWillpower', {
     name: 'Automate Willpower Damage',
-    hint: 'If enabled, using features that deal willpower damage to the associated actor.',
+    hint: 'If enabled, using features that deal Willpower damage will automatically tick Willpower damage on the associated actor.',
     scope: 'world',
-    config: true,
+    config: false,
     default: true,
     type: Boolean
   })
 
   game.settings.register('vtm5e', 'automatedHunger', {
     name: 'Automate Hunger Increase',
-    hint: 'If enabled, rolling Hunger Dice and failing will automatically increase the hunger of the associated actor.',
+    hint: 'If enabled, rolling Hunger Dice and failing will automatically increase the Hunger of the associated actor.',
     scope: 'world',
-    config: true,
+    config: false,
     default: true,
     type: Boolean
   })
 
   game.settings.register('vtm5e', 'automatedOblivion', {
     name: 'Automate Oblivion Stains',
-    hint: 'If enabled, rolling 1 or 10 on rouse checks on Oblivion discipline powers will grant a stain on the associated actor.',
+    hint: 'If enabled, rolling 1 or 10 on rouse checks on Oblivion discipline powers will grant a stain on the humanity of the associated actor.',
     scope: 'world',
-    config: true,
+    config: false,
     default: true,
     type: Boolean
   })
@@ -92,7 +128,7 @@ export const loadSettings = async function () {
     name: 'Automate Rage Dice',
     hint: 'If enabled, rolling Rage Dice and failing will automatically decrease Rage from the associated actor.',
     scope: 'world',
-    config: true,
+    config: false,
     default: true,
     type: Boolean
   })
