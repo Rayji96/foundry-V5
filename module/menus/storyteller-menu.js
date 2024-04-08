@@ -1,7 +1,7 @@
 /* global game, WOD5E, FormApplication, foundry, renderTemplate, Dialog */
 
 export class StorytellerMenu extends FormApplication {
-  static get defaultOptions() {
+  static get defaultOptions () {
     return foundry.utils.mergeObject(super.defaultOptions, {
       title: 'Storyteller Settings',
       id: 'wod5e-storyteller',
@@ -93,7 +93,7 @@ export class StorytellerMenu extends FormApplication {
 async function generatePrompt (type) {
   if (type === 'attribute') {
     const attributes = WOD5E.Attributes.getList()
-    let attributesList = []
+    const attributesList = []
 
     for (const attribute of attributes) {
       // Assign the data to a value
@@ -111,7 +111,7 @@ async function generatePrompt (type) {
     renderPromptDialog('attribute', attributesList, game.i18n.localize('WOD5E.Attributes.Label'))
   } else if (type === 'skill') {
     const skills = WOD5E.Skills.getList()
-    let skillsList = []
+    const skillsList = []
 
     for (const skill of skills) {
       // Assign the data to a value
@@ -153,10 +153,10 @@ async function renderPromptDialog (type, list, title) {
 
             if (type === 'attribute') {
               // Get the list of modified attributes
-              let modifiedAttributes = game.settings.get('vtm5e', 'modifiedAttributes')
+              const modifiedAttributes = game.settings.get('vtm5e', 'modifiedAttributes')
 
               // Define the new attribute and push it to the list
-              let newAttribute = {
+              const newAttribute = {
                 id,
                 label,
                 rename: '',
@@ -168,10 +168,10 @@ async function renderPromptDialog (type, list, title) {
               game.settings.set('vtm5e', 'modifiedAttributes', modifiedAttributes)
             } else if (type === 'skill') {
               // Get the list of modified skills
-              let modifiedSkills = game.settings.get('vtm5e', 'modifiedSkills')
+              const modifiedSkills = game.settings.get('vtm5e', 'modifiedSkills')
 
               // Define the new skill and push it to the list
-              let newSkill = {
+              const newSkill = {
                 id,
                 label,
                 rename: '',

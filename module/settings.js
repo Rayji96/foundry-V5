@@ -67,11 +67,11 @@ export const loadSettings = async function () {
     Automation Settings
   */
 
-  game.settings.registerMenu("vtm5e", "automationMenu", {
-    name: "Automation Settings",
-    label: "WOD5E Automation",
-    hint: "Access various automation settings.",
-    icon: "fas fa-wrench",
+  game.settings.registerMenu('vtm5e', 'automationMenu', {
+    name: 'Automation Settings',
+    label: 'WOD5E Automation',
+    hint: 'Access various automation settings.',
+    icon: 'fas fa-wrench',
     type: AutomationMenu,
     restricted: true
   })
@@ -144,11 +144,11 @@ export const loadSettings = async function () {
     Storyteller Settings
   */
 
-  game.settings.registerMenu("vtm5e", "storytellerMenu", {
-    name: "Storyteller Menu",
-    label: "Storyteller Settings",
-    hint: "Modify the system, such as renaming skills and attributes.",
-    icon: "fas fa-bars",
+  game.settings.registerMenu('vtm5e', 'storytellerMenu', {
+    name: 'Storyteller Menu',
+    label: 'Storyteller Settings',
+    hint: 'Modify the system, such as renaming skills and attributes.',
+    icon: 'fas fa-bars',
     type: StorytellerMenu,
     restricted: true
   })

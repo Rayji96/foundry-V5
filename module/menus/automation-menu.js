@@ -1,7 +1,7 @@
-/* global game, FormApplication, foundry, appId */
+/* global game, FormApplication, foundry */
 
 export class AutomationMenu extends FormApplication {
-  static get defaultOptions() {
+  static get defaultOptions () {
     return foundry.utils.mergeObject(super.defaultOptions, {
       title: 'Automation Settings',
       id: 'wod5e-automation',
