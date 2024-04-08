@@ -61,7 +61,7 @@ export class WoDActor extends ActorSheet {
      */
   _prepareItems (sheetData) {
     const actorData = sheetData.actor
-    
+
     const attributes = {
       physical: [],
       social: [],
@@ -94,7 +94,7 @@ export class WoDActor extends ActorSheet {
       let attributeData = {}
 
       // If the actor has an attribute with the key, grab its current values
-      if (actorAttributes?.hasOwnProperty(id)) {
+      if (Object.prototype.hasOwnProperty.call(actorAttributes, id)) {
         attributeData = Object.assign({
           id,
           value: actorAttributes[id].value
@@ -120,7 +120,7 @@ export class WoDActor extends ActorSheet {
       let skillData = {}
 
       // If the actor has a skill with the key, grab its current values
-      if (actorSkills?.hasOwnProperty(id)) {
+      if (Object.prototype.hasOwnProperty.call(actorSkills, id)) {
         skillData = Object.assign({
           id,
           value: actorSkills[id].value,

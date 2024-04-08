@@ -1,4 +1,4 @@
-/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui */
+/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui, CONST */
 
 // Actor sheets
 import { ActorInfo } from './actor/actor.js'
@@ -87,7 +87,7 @@ Hooks.once('ready', async function () {
 
   // Apply the currently selected language as a CSS class so we can
   // modify elements based on locale if needed
-  document.body.classList.add(game.settings.get("core", "language"))
+  document.body.classList.add(game.settings.get('core', 'language'))
 
   // Activate the API
   window.WOD5E = {
@@ -122,13 +122,13 @@ Hooks.once('ready', async function () {
 
 Hooks.once('setup', () => {
   // Forced panning is intrinsically annoying: change default to false
-  game.settings.settings.get("core.chatBubblesPan").default = false
+  game.settings.settings.get('core.chatBubblesPan').default = false
 
   // Improve discoverability of map notes
-  game.settings.settings.get("core.notesDisplayToggle").default = true
+  game.settings.settings.get('core.notesDisplayToggle').default = true
 
   // Set Hover by Owner as defaults for Default Token Configuration
-  const defaultTokenSettingsDefaults = game.settings.settings.get("core.defaultToken").default
+  const defaultTokenSettingsDefaults = game.settings.settings.get('core.defaultToken').default
   defaultTokenSettingsDefaults.displayName = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
   defaultTokenSettingsDefaults.displayBars = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
 

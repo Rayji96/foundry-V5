@@ -1,18 +1,18 @@
-/* global game, render, WOD5E */
+/* global game, WOD5E, FormApplication, foundry, renderTemplate, Dialog */
 
 export class StorytellerMenu extends FormApplication {
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			title: 'Storyteller Settings',
-			id: 'wod5e-storyteller',
-			classes: ['wod5e'],
-			template: 'systems/vtm5e/templates/ui/storyteller-menu.hbs',
-			width: 500,
-			height: 'auto',
-			resizable: true,
-			closeOnSubmit: true
-		})
-	}
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      title: 'Storyteller Settings',
+      id: 'wod5e-storyteller',
+      classes: ['wod5e'],
+      template: 'systems/vtm5e/templates/ui/storyteller-menu.hbs',
+      width: 500,
+      height: 'auto',
+      resizable: true,
+      closeOnSubmit: true
+    })
+  }
 
   /* -------------------------------------------- */
 
@@ -37,7 +37,7 @@ export class StorytellerMenu extends FormApplication {
       const data = event.target.dataset
       const type = data.type
 
-      generatePrompt(type, html)
+      generatePrompt(type)
     })
 
     html.find('.remove-mod-button').click(function (event) {
@@ -53,8 +53,8 @@ export class StorytellerMenu extends FormApplication {
     html.find('.save-modifications').click(function (event) {
       event.preventDefault()
 
-      let attribute_modifications = []
-      let skill_modifications = []
+      const attributeModifications = []
+      const skillModifications = []
 
       html.find('.modification-row').each(function () {
         const modification = $(this)[0]
@@ -66,14 +66,14 @@ export class StorytellerMenu extends FormApplication {
         const hidden = $(this).find('.mod-hidden')[0].checked
 
         if (type === 'attribute') {
-          attribute_modifications.push({
+          attributeModifications.push({
             id,
             rename,
             label,
             hidden
           })
         } else if (type === 'skill') {
-          skill_modifications.push({
+          skillModifications.push({
             id,
             rename,
             label,
@@ -83,17 +83,17 @@ export class StorytellerMenu extends FormApplication {
       })
 
       // Save the new settings
-      game.settings.set('vtm5e', 'modifiedAttributes', attribute_modifications)
-      game.settings.set('vtm5e', 'modifiedSkills', skill_modifications)
+      game.settings.set('vtm5e', 'modifiedAttributes', attributeModifications)
+      game.settings.set('vtm5e', 'modifiedSkills', skillModifications)
     })
   }
 }
 
 // Function for getting the information necessary for the selection dialog
-async function generatePrompt (type, parentHtml) {
+async function generatePrompt (type) {
   if (type === 'attribute') {
     const attributes = WOD5E.Attributes.getList()
-    let attributes_list = []
+    let attributesList = []
 
     for (const attribute of attributes) {
       // Assign the data to a value
@@ -101,17 +101,17 @@ async function generatePrompt (type, parentHtml) {
       const id = Object.getOwnPropertyNames(attribute)[0]
       const label = value.label
 
-      attributes_list.push({
+      attributesList.push({
         id,
         label
       })
     }
 
     // Render the dialog
-    renderPromptDialog('attribute', attributes_list, game.i18n.localize('WOD5E.Attributes.Label'))
+    renderPromptDialog('attribute', attributesList, game.i18n.localize('WOD5E.Attributes.Label'))
   } else if (type === 'skill') {
     const skills = WOD5E.Skills.getList()
-    let skills_list = []
+    let skillsList = []
 
     for (const skill of skills) {
       // Assign the data to a value
@@ -120,19 +120,19 @@ async function generatePrompt (type, parentHtml) {
 
       const label = value.label
 
-      skills_list.push({
+      skillsList.push({
         id,
         label
       })
     }
 
     // Render the dialog
-    renderPromptDialog('skill', skills_list, game.i18n.localize('WOD5E.Skills.Label'), parentHtml)
+    renderPromptDialog('skill', skillsList, game.i18n.localize('WOD5E.Skills.Label'))
   }
 }
 
 // Function for rendering the dialog for adding a new modification
-async function renderPromptDialog (type, list, title, parentHtml) {
+async function renderPromptDialog (type, list, title) {
   // Render the template
   const template = 'systems/vtm5e/templates/ui/select-dialog.hbs'
   const content = await renderTemplate(template, { list })

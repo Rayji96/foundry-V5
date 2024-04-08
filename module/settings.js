@@ -1,4 +1,4 @@
-/* global game */
+/* global game, ui, WOD5E */
 
 import { AutomationMenu } from './menus/automation-menu.js'
 import { StorytellerMenu } from './menus/storyteller-menu.js'

@@ -1,18 +1,18 @@
-/* global game */
+/* global game, FormApplication, foundry, appId */
 
 export class AutomationMenu extends FormApplication {
-	static get defaultOptions() {
-		return foundry.utils.mergeObject(super.defaultOptions, {
-			title: 'Automation Settings',
-			id: 'wod5e-automation',
-			classes: ['wod5e'],
-			template: 'systems/vtm5e/templates/ui/automation-menu.hbs',
-			width: 500,
-			height: 'auto',
-			resizable: true,
-			closeOnSubmit: false
-		})
-	}
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      title: 'Automation Settings',
+      id: 'wod5e-automation',
+      classes: ['wod5e'],
+      template: 'systems/vtm5e/templates/ui/automation-menu.hbs',
+      width: 500,
+      height: 'auto',
+      resizable: true,
+      closeOnSubmit: false
+    })
+  }
 
   /* -------------------------------------------- */
 
@@ -34,12 +34,10 @@ export class AutomationMenu extends FormApplication {
 
   /** @override */
   activateListeners (html) {
-    const appId = html[0].offsetParent.dataset.appid
-
     html.find('input').on('change', function (event) {
       event.preventDefault()
       const data = event.target.dataset
-      
+
       if (data?.id) {
         const settingId = data.id
         const value = event.target.checked

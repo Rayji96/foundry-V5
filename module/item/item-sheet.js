@@ -1,4 +1,4 @@
-/* global ItemSheet, mergeObject, TextEditor */
+/* global ItemSheet, mergeObject, TextEditor, WOD5E */
 
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/item-bonuses.js'
 
@@ -36,7 +36,7 @@ export class WoDItemSheet extends ItemSheet {
   /** @override */
   async getData () {
     const data = super.getData()
-    
+
     // Attribute definitions
     const attributes = WOD5E.Attributes.getList()
     data.attributes_list = []

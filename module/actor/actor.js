@@ -1,4 +1,4 @@
-/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E */
+/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E, CONST */
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -79,7 +79,7 @@ export class ActorInfo extends Actor {
     })
   }
 
-  async _preCreate(data, context, user) {
+  async _preCreate (data, context, user) {
     await super._preCreate(data, context, user)
 
     const tokenUpdate = {}
@@ -94,13 +94,13 @@ export class ActorInfo extends Actor {
     }
   }
 
-  async _onUpdate(data, options, user) {
+  async _onUpdate (data, options, user) {
     await super._onUpdate(data, options, user)
 
     const actor = game.actors.get(data._id)
     let isPlayerCharacter = false
 
-    if(data?.ownership) {
+    if (data?.ownership) {
       const players = game.users.players
 
       // Iterate through the players and check if any are the owner of this character
