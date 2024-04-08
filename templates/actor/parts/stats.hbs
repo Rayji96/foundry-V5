@@ -32,8 +32,8 @@
                             <label for="actor.system.skills.{{skill.id}}.value" class="rollable{{#if skill.bonuses}} specialty-available{{/if}}" data-value-paths="skills.{{skill.id}}.value"
                             data-label="{{skill.displayName}}" data-selectors="skills skills.{{skill.id}}" data-skill="{{skill.id}}" data-select-dialog="true"
                             data-use-flavor-path="true" data-flavor-path="skills.{{skill.id}}.description" data-macroid="{{skill.macroid}}">{{skill.displayName}}</label>
-                            {{#if skill.bonuses}}
-                                <label class="specialty" title="{{WOD5E.Skills.Specialties}}:{{#each skill.bonuses as |bonus key|}} {{bonus.source}}{{#unless @last}},{{/unless}}{{/each}}">S</label>
+                            {{#if hasSpecialties}}
+                                <label class="specialty">S</label>
                             {{/if}}
                         </div>
                         <div class="resource-value" data-value="{{skill.value}}" data-name="system.skills.{{skill.id}}.value">
