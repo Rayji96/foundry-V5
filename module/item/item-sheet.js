@@ -39,7 +39,7 @@ export class WoDItemSheet extends ItemSheet {
 
     // Attribute definitions
     const attributes = WOD5E.Attributes.getList()
-    data.attributes_list = []
+    data.attributesList = []
 
     for (const attribute of attributes) {
       // Assign the data to a value
@@ -47,7 +47,7 @@ export class WoDItemSheet extends ItemSheet {
       const id = Object.getOwnPropertyNames(attribute)[0]
       const displayName = value.displayName
 
-      data.attributes_list.push({
+      data.attributesList.push({
         id,
         displayName
       })
@@ -55,7 +55,7 @@ export class WoDItemSheet extends ItemSheet {
 
     // Skill definitions
     const skills = WOD5E.Skills.getList()
-    data.skills_list = []
+    data.skillsList = []
 
     for (const skill of skills) {
       // Assign the data to a value
@@ -64,7 +64,7 @@ export class WoDItemSheet extends ItemSheet {
 
       const displayName = value.displayName
 
-      data.skills_list.push({
+      data.skillsList.push({
         id,
         displayName
       })
