@@ -174,3 +174,7 @@
     outline: none;
     transition-duration: 0.3s;
 }
+
+.wod5e-config-form.storyteller-menu .remove-mod-button {
+    cursor: pointer;
+}

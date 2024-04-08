@@ -40,6 +40,16 @@ export class StorytellerMenu extends FormApplication {
       generatePrompt(type, html)
     })
 
+    html.find('.remove-mod-button').click(function (event) {
+      event.preventDefault()
+
+      const data = event.target.dataset
+      const type = data.type
+      const id = data.id
+
+      removeChange(type, id)
+    })
+
     html.find('.save-modifications').click(function (event) {
       event.preventDefault()
 
@@ -79,6 +89,7 @@ export class StorytellerMenu extends FormApplication {
   }
 }
 
+// Function for getting the information necessary for the selection dialog
 async function generatePrompt (type, parentHtml) {
   if (type === 'attribute') {
     const attributes = WOD5E.Attributes.getList()
@@ -120,6 +131,7 @@ async function generatePrompt (type, parentHtml) {
   }
 }
 
+// Function for rendering the dialog for adding a new modification
 async function renderPromptDialog (type, list, title, parentHtml) {
   // Render the template
   const template = 'systems/vtm5e/templates/ui/select-dialog.hbs'
@@ -134,11 +146,16 @@ async function renderPromptDialog (type, list, title, parentHtml) {
           icon: '<i class="fas fa-check"></i>',
           label: game.i18n.localize('WOD5E.Add'),
           callback: async html => {
+            // Grab the id from the select element
             const id = html.find('[id=optionSelect]').val()
+            // Define the label
             const label = list.filter(item => item.id === id)[0].label
 
             if (type === 'attribute') {
+              // Get the list of modified attributes
               let modifiedAttributes = game.settings.get('vtm5e', 'modifiedAttributes')
+
+              // Define the new attribute and push it to the list
               let newAttribute = {
                 id,
                 label,
@@ -147,9 +164,13 @@ async function renderPromptDialog (type, list, title, parentHtml) {
               }
               modifiedAttributes.push(newAttribute)
 
+              // Set the new list of attributes
               game.settings.set('vtm5e', 'modifiedAttributes', modifiedAttributes)
             } else if (type === 'skill') {
+              // Get the list of modified skills
               let modifiedSkills = game.settings.get('vtm5e', 'modifiedSkills')
+
+              // Define the new skill and push it to the list
               let newSkill = {
                 id,
                 label,
@@ -158,6 +179,7 @@ async function renderPromptDialog (type, list, title, parentHtml) {
               }
               modifiedSkills.push(newSkill)
 
+              // Set the new list of skills
               game.settings.set('vtm5e', 'modifiedSkills', modifiedSkills)
             }
           }
@@ -170,4 +192,23 @@ async function renderPromptDialog (type, list, title, parentHtml) {
       default: 'add'
     }
   ).render(true)
+}
+
+// Function for removing a change
+async function removeChange (type, id) {
+  if (type === 'attribute') {
+    // Get the list of modified attributes
+    let modifiedAttributes = game.settings.get('vtm5e', 'modifiedAttributes')
+
+    // Remove the attribute by id then update the game settings
+    modifiedAttributes = modifiedAttributes.filter(attribute => (attribute.id !== id))
+    game.settings.set('vtm5e', 'modifiedAttributes', modifiedAttributes)
+  } else if (type === 'skill') {
+    // Get the list of modified skills
+    let modifiedSkills = game.settings.get('vtm5e', 'modifiedSkills')
+
+    // Remove the skill by id then update the game settings
+    modifiedSkills = modifiedSkills.filter(skill => (skill.id !== id))
+    game.settings.set('vtm5e', 'modifiedSkills', modifiedSkills)
+  }
 }

@@ -10,7 +10,10 @@
       </div>
       {{#each attributeModifications as |attribute id|}}
         <div class="modification-row grid grid-3col" data-type="attribute" data-id="{{attribute.id}}" data-label="{{attribute.label}}">
-          <div class="mod-label">{{attribute.label}}</div>
+          <div class="mod-label">
+            <i class="fas fa-trash remove-mod-button" data-type="attribute" data-id="{{attribute.id}}"></i>
+            {{attribute.label}}
+          </div>
           <input type="text" class="mod-rename" placeholder="{{attribute.label}}" value="{{attribute.rename}}">
           <input type="checkbox" class="mod-hidden"{{#if skill.hidden}} checked{{/if}}/>
         </div>
@@ -32,7 +35,10 @@
       </div>
       {{#each skillModifications as |skill id|}}
         <div class="modification-row grid grid-3col" data-type="skill" data-id="{{skill.id}}" data-label="{{skill.label}}">
-          <div class="mod-label">{{skill.label}}</div>
+          <div class="mod-label">
+            <i class="fas fa-trash remove-mod-button" data-type="skill" data-id="{{skill.id}}"></i>
+            {{skill.label}}
+          </div>
           <input type="text" class="mod-rename" placeholder="{{skill.label}}" value="{{skill.rename}}">
           <input type="checkbox" data-type="skill" class="mod-hidden"{{#if skill.hidden}} checked{{/if}}/>
         </div>
