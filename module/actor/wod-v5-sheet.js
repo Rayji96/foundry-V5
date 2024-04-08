@@ -125,19 +125,24 @@ export class WoDActor extends ActorSheet {
         const [, value] = Object.entries(entry)[0]
         const id = Object.getOwnPropertyNames(entry)[0]
         let skillData = {}
+        let hasSpecialties = false
+
+        if (actorSkills[id].bonuses.length > 0) {
+          hasSpecialties = true
+        }
 
         // If the actor has a skill with the key, grab its current values
         if (Object.prototype.hasOwnProperty.call(actorSkills, id)) {
           skillData = Object.assign({
             id,
             value: actorSkills[id].value,
-            hasSpecialties: actorSkills[id].bonuses.length > 0 ? true : false
+            hasSpecialties
           }, value)
         } else { // Otherwise, use the default
           skillData = Object.assign({
             id,
             value: 0,
-            hasSpecialties: false
+            hasSpecialties
           }, value)
         }
 
