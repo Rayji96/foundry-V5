@@ -15,6 +15,13 @@ export class Renown {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         value.label = game.i18n.localize(value.label)
       }
+
+      // Handle which label to display
+      if (value.rename) {
+        value.displayName = value.rename
+      } else {
+        value.displayName = value.label
+      }
     }
   }
 

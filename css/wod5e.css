@@ -13,6 +13,8 @@
 @import url("./splats/vampire-styling.css");
 @import url("./splats/hunter-styling.css");
 @import url("./splats/werewolf-styling.css");
+@import url("./lang/pl.css");
+@import url("./lang/de.css");
 
 :root {
     --color-text-light-highlight: #f9f5ed;
@@ -609,4 +611,12 @@ h3.item-name.chat-portrait-text-size-name-generic {
 .dice-tray {
     background: url("/systems/vtm5e/assets/images/background-black-marble.jpg"), #000;
     border: 2px solid #000;
+}
+
+.compendium .directory-list, .compendium .compendium-name {
+    color: #CCC;
+}
+
+.compendium .header-control {
+    color: #CCC;
 }

@@ -12,9 +12,25 @@ export class Attributes {
 
   // Localize the labels
   static initializeLabels () {
-    for (const [, value] of Object.entries(this)) {
+    const modifications = game.settings.get('vtm5e', 'modifiedAttributes')
+
+    for (const [key, value] of Object.entries(this)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        const checkModification = modifications.filter(attribute => attribute.id === key)
+
         value.label = game.i18n.localize(value.label)
+
+        if (checkModification.length > 0) {
+          value.rename = checkModification[0].rename
+          value.hidden = checkModification[0].hidden
+        }
+      }
+
+      // Handle which label to display
+      if (value.rename) {
+        value.displayName = value.rename
+      } else {
+        value.displayName = value.label
       }
     }
   }

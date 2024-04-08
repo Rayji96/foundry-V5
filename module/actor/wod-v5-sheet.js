@@ -3,6 +3,8 @@
 import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/specialty-bonuses.js'
+import { Attributes } from '../def/attributes.js'
+import { Skills } from '../def/skills.js'
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -60,6 +62,17 @@ export class WoDActor extends ActorSheet {
   _prepareItems (sheetData) {
     const actorData = sheetData.actor
 
+    const attributes = {
+      physical: [],
+      social: [],
+      mental: []
+    }
+    const skills = {
+      physical: [],
+      social: [],
+      mental: []
+    }
+
     const features = {
       background: [],
       merit: [],
@@ -70,6 +83,60 @@ export class WoDActor extends ActorSheet {
     const boons = []
     const customRolls = []
     const gear = []
+
+    // Loop through each entry in the attributes list, get the data (if available), and then push to the containers
+    const attributesList = Attributes.getList()
+    const actorAttributes = actorData.system.abilities
+    for (const entry of attributesList) {
+      // Assign the data to a value
+      const [, value] = Object.entries(entry)[0]
+      const id = Object.getOwnPropertyNames(entry)[0]
+      let attributeData = {}
+
+      // If the actor has an attribute with the key, grab its current values
+      if (Object.prototype.hasOwnProperty.call(actorAttributes, id)) {
+        attributeData = Object.assign({
+          id,
+          value: actorAttributes[id].value
+        }, value)
+      } else { // Otherwise, use the default
+        attributeData = Object.assign({
+          id,
+          value: 1
+        }, value)
+      }
+
+      // Push to the container in the appropraite type
+      attributes[value.type].push(attributeData)
+    }
+
+    // Loop through each entry in the skills list, get the data (if available), and then push to the containers
+    const skillsList = Skills.getList()
+    const actorSkills = actorData.system.skills
+    for (const entry of skillsList) {
+      // Assign the data to a value
+      const [, value] = Object.entries(entry)[0]
+      const id = Object.getOwnPropertyNames(entry)[0]
+      let skillData = {}
+
+      // If the actor has a skill with the key, grab its current values
+      if (Object.prototype.hasOwnProperty.call(actorSkills, id)) {
+        skillData = Object.assign({
+          id,
+          value: actorSkills[id].value,
+          bonuses: actorSkills[id].bonuses
+        }, value)
+      } else { // Otherwise, use the default
+        skillData = Object.assign({
+          id,
+          value: 0,
+          bonuses: []
+        }, value)
+      }
+
+      // Push to the container in the appropraite type
+      skills[value.type].push(skillData)
+    }
 
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
@@ -90,6 +157,8 @@ export class WoDActor extends ActorSheet {
     }
 
     // Assign and return
+    actorData.system.attributes_list = attributes
+    actorData.system.skills_list = skills
     actorData.system.boons = boons
     actorData.system.customRolls = customRolls
     actorData.system.gear = gear
