@@ -93,7 +93,7 @@ export class WoDActor extends ActorSheet {
         const [, value] = Object.entries(entry)[0]
         const id = Object.getOwnPropertyNames(entry)[0]
         let attributeData = {}
-  
+
         // If the actor has an attribute with the key, grab its current values
         if (Object.prototype.hasOwnProperty.call(actorAttributes, id)) {
           attributeData = Object.assign({
@@ -106,7 +106,7 @@ export class WoDActor extends ActorSheet {
             value: 1
           }, value)
         }
-  
+
         // Push to the container in the appropraite type
         // as long as the attribute isn't "hidden"
         if (!attributeData.hidden) {
@@ -125,7 +125,7 @@ export class WoDActor extends ActorSheet {
         const [, value] = Object.entries(entry)[0]
         const id = Object.getOwnPropertyNames(entry)[0]
         let skillData = {}
-  
+
         // If the actor has a skill with the key, grab its current values
         if (Object.prototype.hasOwnProperty.call(actorSkills, id)) {
           skillData = Object.assign({
@@ -140,7 +140,7 @@ export class WoDActor extends ActorSheet {
             bonuses: []
           }, value)
         }
-  
+
         // Push to the container in the appropraite type
         // as long as the skill isn't "hidden"
         if (!skillData.hidden) {
