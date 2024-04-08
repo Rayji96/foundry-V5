@@ -17,6 +17,13 @@ export class WereForms {
         value.label = game.i18n.localize(value.label)
         value.nickname = game.i18n.localize(value.nickname)
       }
+
+      // Handle which label to display
+      if (value.rename) {
+        value.displayName = value.rename
+      } else {
+        value.displayName = value.label
+      }
     }
   }
 

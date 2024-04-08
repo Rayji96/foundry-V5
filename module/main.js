@@ -1,4 +1,4 @@
-/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui */
+/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui, CONST */
 
 // Actor sheets
 import { ActorInfo } from './actor/actor.js'
@@ -31,12 +31,6 @@ import { Gifts } from './def/gifts.js'
 // Anything that needs to be ran alongside the initialisation of the world
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
-
-  // Load settings into Foundry
-  loadSettings()
-
-  // After settings are loaded, check if we need to apply dark theme
-  document.body.classList.toggle('dark-theme', game.settings.get('vtm5e', 'darkTheme'))
 
   // Some basic info for the gamesystem
   game.wod5e = {
@@ -81,10 +75,20 @@ Hooks.once('init', async function () {
 
   // Make helpers accessible to the system
   loadHelpers()
+
+  // Load settings into Foundry
+  loadSettings()
 })
 
 // Anything that needs to run once the world is ready
 Hooks.once('ready', async function () {
+  // After settings are loaded, check if we need to apply dark theme
+  document.body.classList.toggle('dark-theme', game.settings.get('vtm5e', 'darkTheme'))
+
+  // Apply the currently selected language as a CSS class so we can
+  // modify elements based on locale if needed
+  document.body.classList.add(game.settings.get('core', 'language'))
+
   // Activate the API
   window.WOD5E = {
     api: {
@@ -114,6 +118,22 @@ Hooks.once('ready', async function () {
 
   // Migration functions
   migrateWorld()
+})
+
+Hooks.once('setup', () => {
+  // Forced panning is intrinsically annoying: change default to false
+  game.settings.settings.get('core.chatBubblesPan').default = false
+
+  // Improve discoverability of map notes
+  game.settings.settings.get('core.notesDisplayToggle').default = true
+
+  // Set Hover by Owner as defaults for Default Token Configuration
+  const defaultTokenSettingsDefaults = game.settings.settings.get('core.defaultToken').default
+  defaultTokenSettingsDefaults.displayName = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
+  defaultTokenSettingsDefaults.displayBars = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
+
+  // Default token dispositions to neutral
+  defaultTokenSettingsDefaults.disposition = CONST.TOKEN_DISPOSITIONS.NEUTRAL
 })
 
 // DiceSoNice functionality

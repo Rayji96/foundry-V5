@@ -1,0 +1,9 @@
+<form class="dialog-contents flex-group-center">
+  <select id="optionSelect">
+    {{#each list as |item|}}
+      {{#unless item.modified}}
+        <option value="{{item.id}}" data-label="{{item.label}}">{{item.label}}</option>
+      {{/unless}}
+    {{/each}}
+  </select>
+</form>

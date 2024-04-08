@@ -1,4 +1,4 @@
-/* global ItemSheet, mergeObject, TextEditor */
+/* global ItemSheet, mergeObject, TextEditor, WOD5E */
 
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/item-bonuses.js'
 
@@ -36,6 +36,39 @@ export class WoDItemSheet extends ItemSheet {
   /** @override */
   async getData () {
     const data = super.getData()
+
+    // Attribute definitions
+    const attributes = WOD5E.Attributes.getList()
+    data.attributes_list = []
+
+    for (const attribute of attributes) {
+      // Assign the data to a value
+      const [, value] = Object.entries(attribute)[0]
+      const id = Object.getOwnPropertyNames(attribute)[0]
+      const displayName = value.displayName
+
+      data.attributes_list.push({
+        id,
+        displayName
+      })
+    }
+
+    // Skill definitions
+    const skills = WOD5E.Skills.getList()
+    data.skills_list = []
+
+    for (const skill of skills) {
+      // Assign the data to a value
+      const [, value] = Object.entries(skill)[0]
+      const id = Object.getOwnPropertyNames(skill)[0]
+
+      const displayName = value.displayName
+
+      data.skills_list.push({
+        id,
+        displayName
+      })
+    }
 
     // Encrich editor content
     data.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description, { async: true })

@@ -329,7 +329,7 @@ export class wod5eAPI {
       const stringObject = list.find(obj => string in obj)
 
       // Return the localized string if found
-      if (stringObject) return stringObject[string].label
+      if (stringObject) return stringObject[string].displayName
 
       // Return nothing
       return ''

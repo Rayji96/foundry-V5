@@ -1,4 +1,4 @@
-/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E */
+/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E, CONST */
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -77,5 +77,50 @@ export class ActorInfo extends Actor {
       rejectClose: false,
       options
     })
+  }
+
+  async _preCreate (data, context, user) {
+    await super._preCreate(data, context, user)
+
+    const tokenUpdate = {}
+
+    // Link non-SPC token data by default
+    if (data.prototypeToken?.actorLink === undefined && data.type !== 'spc') {
+      tokenUpdate.actorLink = true
+    }
+
+    if (!foundry.utils.isEmpty(tokenUpdate)) {
+      this.prototypeToken.updateSource(tokenUpdate)
+    }
+  }
+
+  async _onUpdate (data, options, user) {
+    await super._onUpdate(data, options, user)
+
+    const actor = game.actors.get(data._id)
+    let isPlayerCharacter = false
+
+    if (data?.ownership) {
+      const players = game.users.players
+
+      // Iterate through the players and check if any are the owner of this character
+      players.forEach(player => {
+        const playerId = player.id
+
+        if (data.ownership[playerId] === 3) {
+          isPlayerCharacter = true
+        }
+      })
+    }
+
+    // If the character is a player, update disposition to friendly
+    if (isPlayerCharacter) {
+      // Update things here
+      actor.update({
+        'prototypeToken.disposition': CONST.TOKEN_DISPOSITIONS.FRIENDLY
+      })
+    }
+
+    return data
   }
 }
