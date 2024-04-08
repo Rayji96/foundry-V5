@@ -100,7 +100,7 @@ export class wod5eAPI {
 
     // Attribute definitions
     const attributes = WOD5E.Attributes.getList()
-    const attributes_list = []
+    const attributesList = []
 
     for (const attribute of attributes) {
       // Assign the data to a value
@@ -108,7 +108,7 @@ export class wod5eAPI {
       const id = Object.getOwnPropertyNames(attribute)[0]
       const displayName = value.displayName
 
-      attributes_list.push({
+      attributesList.push({
         id,
         displayName
       })
@@ -116,7 +116,7 @@ export class wod5eAPI {
 
     // Skill definitions
     const skills = WOD5E.Skills.getList()
-    const skills_list = []
+    const skillsList = []
 
     for (const skill of skills) {
       // Assign the data to a value
@@ -125,7 +125,7 @@ export class wod5eAPI {
 
       const displayName = value.displayName
 
-      skills_list.push({
+      skillsList.push({
         id,
         displayName
       })
@@ -139,8 +139,8 @@ export class wod5eAPI {
       attribute,
       discipline,
       renown,
-      attributes_list,
-      skills_list
+      attributesList,
+      skillsList
     }
     // Render the template
     const content = await renderTemplate(dialogTemplate, dialogData)
