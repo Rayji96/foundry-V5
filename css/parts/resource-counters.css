@@ -134,12 +134,14 @@
   margin-top: 5px;
 }
 
-.wod5e .tab.disciplines .resource-value, .wod5e .tab.edges .resource-value {
+.wod5e .tab.disciplines .resource-value,
+.wod5e .tab.edges .resource-value {
   margin-top: 2px;
   text-align: center;
 }
 
-.wod5e .tab.features .resource-value, .wod5e .tab.features .resource-value-static {
+.wod5e .tab.features .resource-value,
+.wod5e .tab.features .resource-value-static {
   margin-top: 2px;
   text-align: center;
 }

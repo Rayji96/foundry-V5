@@ -98,6 +98,39 @@ export class wod5eAPI {
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
     const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
+    // Attribute definitions
+    const attributes = WOD5E.Attributes.getList()
+    const attributesList = []
+
+    for (const attribute of attributes) {
+      // Assign the data to a value
+      const [, value] = Object.entries(attribute)[0]
+      const id = Object.getOwnPropertyNames(attribute)[0]
+      const displayName = value.displayName
+
+      attributesList.push({
+        id,
+        displayName
+      })
+    }
+
+    // Skill definitions
+    const skills = WOD5E.Skills.getList()
+    const skillsList = []
+
+    for (const skill of skills) {
+      // Assign the data to a value
+      const [, value] = Object.entries(skill)[0]
+      const id = Object.getOwnPropertyNames(skill)[0]
+
+      const displayName = value.displayName
+
+      skillsList.push({
+        id,
+        displayName
+      })
+    }
+
     // Render selecting a skill/attribute to roll
     const dialogTemplate = 'systems/vtm5e/templates/ui/select-dice-dialog.hbs'
     const dialogData = {
@@ -105,7 +138,9 @@ export class wod5eAPI {
       skill,
       attribute,
       discipline,
-      renown
+      renown,
+      attributesList,
+      skillsList
     }
     // Render the template
     const content = await renderTemplate(dialogTemplate, dialogData)
@@ -329,7 +364,7 @@ export class wod5eAPI {
       const stringObject = list.find(obj => string in obj)
 
       // Return the localized string if found
-      if (stringObject) return stringObject[string].label
+      if (stringObject) return stringObject[string].displayName
 
       // Return nothing
       return ''

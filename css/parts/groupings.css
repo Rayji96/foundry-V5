@@ -113,3 +113,68 @@
 .item-header .grid-3col {
   margin-bottom: 10px;
 }
+
+.stats-container {
+    margin-top: 5px;
+    display: flex;
+    flex-flow: row;
+}
+
+.stats-list {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+}
+
+.attribute, .skill {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.wod5e-config-form .config-category .subcategory {
+    margin-bottom: 15px;
+}
+
+.wod5e-config-form.storyteller-menu .mod-header {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.wod5e-config-form.storyteller-menu .modification-row {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.wod5e-config-form.storyteller-menu .modification-row .mod-label {
+    font-weight: bold;
+    text-align: center;
+}
+
+.wod5e-config-form.storyteller-menu .modification-row .mod-hidden {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wod5e-config-form.storyteller-menu .mod-footer {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.wod5e-config-form.storyteller-menu .add-mod-button {
+    border-radius: 0;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.wod5e-config-form.storyteller-menu .add-mod-button:hover {
+    cursor: pointer;
+    outline: none;
+    transition-duration: 0.3s;
+}
+
+.wod5e-config-form.storyteller-menu .remove-mod-button {
+    cursor: pointer;
+}
