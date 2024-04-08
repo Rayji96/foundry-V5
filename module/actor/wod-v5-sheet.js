@@ -108,7 +108,10 @@ export class WoDActor extends ActorSheet {
         }
   
         // Push to the container in the appropraite type
-        attributes[value.type].push(attributeData)
+        // as long as the attribute isn't "hidden"
+        if (!attributeData.hidden) {
+          attributes[value.type].push(attributeData)
+        }
       }
     }
 
@@ -139,7 +142,10 @@ export class WoDActor extends ActorSheet {
         }
   
         // Push to the container in the appropraite type
-        skills[value.type].push(skillData)
+        // as long as the skill isn't "hidden"
+        if (!skillData.hidden) {
+          skills[value.type].push(skillData)
+        }
       }
     }
 
