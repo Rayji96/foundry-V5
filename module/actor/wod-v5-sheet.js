@@ -130,14 +130,12 @@ export class WoDActor extends ActorSheet {
         if (Object.prototype.hasOwnProperty.call(actorSkills, id)) {
           skillData = Object.assign({
             id,
-            value: actorSkills[id].value,
-            bonuses: actorSkills[id].bonuses
+            value: actorSkills[id].value
           }, value)
         } else { // Otherwise, use the default
           skillData = Object.assign({
             id,
-            value: 0,
-            bonuses: []
+            value: 0
           }, value)
         }
 
