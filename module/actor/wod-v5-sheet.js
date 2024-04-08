@@ -86,56 +86,61 @@ export class WoDActor extends ActorSheet {
 
     // Loop through each entry in the attributes list, get the data (if available), and then push to the containers
     const attributesList = Attributes.getList()
-    const actorAttributes = actorData.system.abilities
-    for (const entry of attributesList) {
-      // Assign the data to a value
-      const [, value] = Object.entries(entry)[0]
-      const id = Object.getOwnPropertyNames(entry)[0]
-      let attributeData = {}
-
-      // If the actor has an attribute with the key, grab its current values
-      if (Object.prototype.hasOwnProperty.call(actorAttributes, id)) {
-        attributeData = Object.assign({
-          id,
-          value: actorAttributes[id].value
-        }, value)
-      } else { // Otherwise, use the default
-        attributeData = Object.assign({
-          id,
-          value: 1
-        }, value)
+    const actorAttributes = actorData.system?.abilities
+    if (actorAttributes) {
+      for (const entry of attributesList) {
+        // Assign the data to a value
+        const [, value] = Object.entries(entry)[0]
+        const id = Object.getOwnPropertyNames(entry)[0]
+        let attributeData = {}
+  
+        // If the actor has an attribute with the key, grab its current values
+        if (Object.prototype.hasOwnProperty.call(actorAttributes, id)) {
+          attributeData = Object.assign({
+            id,
+            value: actorAttributes[id].value
+          }, value)
+        } else { // Otherwise, use the default
+          attributeData = Object.assign({
+            id,
+            value: 1
+          }, value)
+        }
+  
+        // Push to the container in the appropraite type
+        attributes[value.type].push(attributeData)
       }
-
-      // Push to the container in the appropraite type
-      attributes[value.type].push(attributeData)
     }
 
     // Loop through each entry in the skills list, get the data (if available), and then push to the containers
     const skillsList = Skills.getList()
-    const actorSkills = actorData.system.skills
-    for (const entry of skillsList) {
-      // Assign the data to a value
-      const [, value] = Object.entries(entry)[0]
-      const id = Object.getOwnPropertyNames(entry)[0]
-      let skillData = {}
+    const actorSkills = actorData.system?.skills
 
-      // If the actor has a skill with the key, grab its current values
-      if (Object.prototype.hasOwnProperty.call(actorSkills, id)) {
-        skillData = Object.assign({
-          id,
-          value: actorSkills[id].value,
-          bonuses: actorSkills[id].bonuses
-        }, value)
-      } else { // Otherwise, use the default
-        skillData = Object.assign({
-          id,
-          value: 0,
-          bonuses: []
-        }, value)
+    if (actorSkills) {
+      for (const entry of skillsList) {
+        // Assign the data to a value
+        const [, value] = Object.entries(entry)[0]
+        const id = Object.getOwnPropertyNames(entry)[0]
+        let skillData = {}
+  
+        // If the actor has a skill with the key, grab its current values
+        if (Object.prototype.hasOwnProperty.call(actorSkills, id)) {
+          skillData = Object.assign({
+            id,
+            value: actorSkills[id].value,
+            bonuses: actorSkills[id].bonuses
+          }, value)
+        } else { // Otherwise, use the default
+          skillData = Object.assign({
+            id,
+            value: 0,
+            bonuses: []
+          }, value)
+        }
+  
+        // Push to the container in the appropraite type
+        skills[value.type].push(skillData)
       }
-
-      // Push to the container in the appropraite type
-      skills[value.type].push(skillData)
     }
 
     // Iterate through items, allocating to containers
