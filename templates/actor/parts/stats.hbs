@@ -6,7 +6,7 @@
                 {{#each type as |attribute key|}}
                     <div class="attribute">
                         <label for="actor.system.abilities.{{attribute.id}}.value" class="resource-label rollable" data-value-paths="abilities.{{attribute.id}}.value" data-select-dialog="true"
-                            data-label="{{attribute.label}}" data-selectors="abilities abilities.{{attribute.id}}" data-attribute="{{attribute.id}}">{{attribute.label}}</label>
+                            data-label="{{attribute.displayName}}" data-selectors="abilities abilities.{{attribute.id}}" data-attribute="{{attribute.id}}">{{attribute.displayName}}</label>
                         <div class="resource-value" data-value="{{attribute.value}}" data-name="system.abilities.{{attribute.id}}.value">
                             <span class="resource-value-empty"></span>
                             {{#numLoop 5}}
@@ -30,8 +30,8 @@
                                 <i class="fas fa-edit"></i>
                             </a>
                             <label for="actor.system.skills.{{skill.id}}.value" class="rollable{{#if skill.bonuses}} specialty-available{{/if}}" data-value-paths="skills.{{skill.id}}.value"
-                            data-label="{{skill.label}}" data-selectors="skills skills.{{skill.id}}" data-skill="{{skill.id}}" data-select-dialog="true"
-                            data-use-flavor-path="true" data-flavor-path="skills.{{skill.id}}.description" data-macroid="{{skill.macroid}}">{{skill.label}}</label>
+                            data-label="{{skill.displayName}}" data-selectors="skills skills.{{skill.id}}" data-skill="{{skill.id}}" data-select-dialog="true"
+                            data-use-flavor-path="true" data-flavor-path="skills.{{skill.id}}.description" data-macroid="{{skill.macroid}}">{{skill.displayName}}</label>
                             {{#if skill.bonuses}}
                                 <label class="specialty" title="{{WOD5E.Skills.Specialties}}:{{#each skill.bonuses as |bonus key|}} {{bonus.source}}{{#unless @last}},{{/unless}}{{/each}}">S</label>
                             {{/if}}

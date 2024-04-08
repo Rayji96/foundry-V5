@@ -1,6 +1,7 @@
 /* global game */
 
 import { AutomationMenu } from './menus/automation-menu.js'
+import { StorytellerMenu } from './menus/storyteller-menu.js'
 import { resetActors } from './scripts/reset-actors.js'
 
 /**
@@ -82,17 +83,23 @@ export const loadSettings = async function () {
     config: false,
     default: false,
     type: Boolean,
-    onChange: (value) => {
+    onChange: async (value) => {
       if (value) {
-        game.settings.set('vtm5e', 'automatedWillpower', false)
-        game.settings.set('vtm5e', 'automatedHunger', false)
-        game.settings.set('vtm5e', 'automatedOblivion', false)
-        game.settings.set('vtm5e', 'automatedRage', false)
+        await game.settings.set('vtm5e', 'automatedWillpower', false)
+        await game.settings.set('vtm5e', 'automatedHunger', false)
+        await game.settings.set('vtm5e', 'automatedOblivion', false)
+        await game.settings.set('vtm5e', 'automatedRage', false)
       } else {
-        game.settings.set('vtm5e', 'automatedWillpower', true)
-        game.settings.set('vtm5e', 'automatedHunger', true)
-        game.settings.set('vtm5e', 'automatedOblivion', true)
-        game.settings.set('vtm5e', 'automatedRage', true)
+        await game.settings.set('vtm5e', 'automatedWillpower', true)
+        await game.settings.set('vtm5e', 'automatedHunger', true)
+        await game.settings.set('vtm5e', 'automatedOblivion', true)
+        await game.settings.set('vtm5e', 'automatedRage', true)
+      }
+
+      // Re-render the automation window once settings are updated
+      const AutomationWindow = Object.values(ui.windows).filter(w => (w.id === 'wod5e-automation'))[0]
+      if (AutomationWindow) {
+        AutomationWindow.render()
       }
     }
   })
@@ -131,5 +138,64 @@ export const loadSettings = async function () {
     config: false,
     default: true,
     type: Boolean
+  })
+
+  /*
+    Storyteller Settings
+  */
+
+  game.settings.registerMenu("vtm5e", "storytellerMenu", {
+    name: "Storyteller Menu",
+    label: "Storyteller Settings",
+    hint: "Modify the system, such as renaming skills and attributes.",
+    icon: "fas fa-bars",
+    type: StorytellerMenu,
+    restricted: true
+  })
+
+  game.settings.register('vtm5e', 'modifiedAttributes', {
+    name: 'Attribute Modifications',
+    hint: 'Allows for modification of existing attributes.',
+    scope: 'world',
+    config: false,
+    default: [],
+    type: Array,
+    onChange: async () => {
+      // Re-render the storyteller menu window once settings are updated
+      const StorytellerWindow = Object.values(ui.windows).filter(w => (w.id === 'wod5e-storyteller'))[0]
+
+      if (StorytellerMenu) {
+        StorytellerWindow.render()
+      }
+
+      // Re-init labels
+      WOD5E.Attributes.initializeLabels()
+
+      // Reload actorsheets
+      resetActors()
+    }
+  })
+
+  game.settings.register('vtm5e', 'modifiedSkills', {
+    name: 'Skill Modifications',
+    hint: 'Allows for modification of existing skills.',
+    scope: 'world',
+    config: false,
+    default: [],
+    type: Array,
+    onChange: async () => {
+      // Re-render the storyteller menu window once settings are updated
+      const StorytellerWindow = Object.values(ui.windows).filter(w => (w.id === 'wod5e-storyteller'))[0]
+
+      if (StorytellerWindow) {
+        StorytellerWindow.render()
+      }
+
+      // Re-init labels
+      WOD5E.Skills.initializeLabels()
+
+      // Reload actorsheets
+      resetActors()
+    }
   })
 }

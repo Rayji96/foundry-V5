@@ -75,13 +75,13 @@ Hooks.once('init', async function () {
 
   // Make helpers accessible to the system
   loadHelpers()
+
+  // Load settings into Foundry
+  loadSettings()
 })
 
 // Anything that needs to run once the world is ready
 Hooks.once('ready', async function () {
-  // Load settings into Foundry
-  loadSettings()
-
   // After settings are loaded, check if we need to apply dark theme
   document.body.classList.toggle('dark-theme', game.settings.get('vtm5e', 'darkTheme'))
 

@@ -1,3 +1,5 @@
+/* global game */
+
 export class AutomationMenu extends FormApplication {
 	static get defaultOptions() {
 		return foundry.utils.mergeObject(super.defaultOptions, {
@@ -42,11 +44,7 @@ export class AutomationMenu extends FormApplication {
         const settingId = data.id
         const value = event.target.checked
 
-        game.settings.set('vtm5e', settingId, value).then(function() {
-          if (settingId === 'disableAutomation') {
-            ui.windows[appId].render()
-          }
-        })
+        game.settings.set('vtm5e', settingId, value)
       }
     })
   }

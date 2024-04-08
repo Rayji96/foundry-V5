@@ -86,7 +86,9 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/chat/willpower-reroll.hbs',
 
     // Menu Partials
-    'systems/vtm5e/templates/ui/automation-menu.hbs'
+    'systems/vtm5e/templates/ui/automation-menu.hbs',
+    'systems/vtm5e/templates/ui/storyteller-menu.hbs',
+    'systems/vtm5e/templates/ui/select-dialog.hbs'
   ]
 
   /* Load the template parts
