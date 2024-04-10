@@ -59,8 +59,8 @@
 }
 
 .dark-theme .wod5e .discipline-description,
-.edge-description,
-.gift-description {
+.dark-theme .edge-description,
+.dark-theme .gift-description {
   color: hwb(0deg 7% 98% / 100%);
   background: #eeece8;
 }
