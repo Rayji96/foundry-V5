@@ -613,7 +613,7 @@ h3.item-name.chat-portrait-text-size-name-generic {
     border: 2px solid #000;
 }
 
-.compendium .directory-list, .compendium .compendium-name {
+.compendium .directory-list, .compendium .compendium-name, .sidebar-popout {
     color: #CCC;
 }
 
