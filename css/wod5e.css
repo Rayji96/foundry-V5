@@ -15,6 +15,7 @@
 @import url("./splats/werewolf-styling.css");
 @import url("./lang/pl.css");
 @import url("./lang/de.css");
+@import url("./lang/ru.css");
 
 :root {
     --color-text-light-highlight: #f9f5ed;
