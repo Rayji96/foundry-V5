@@ -37,42 +37,6 @@ export class WoDItemSheet extends ItemSheet {
   async getData () {
     const data = super.getData()
 
-    // Attribute definitions
-    const attributes = WOD5E.Attributes.getList()
-    data.attributesList = []
-
-    for (const attribute of attributes) {
-      // Assign the data to a value
-      const [, value] = Object.entries(attribute)[0]
-      const id = Object.getOwnPropertyNames(attribute)[0]
-      const displayName = value.displayName
-      const hidden = value.hidden
-
-      data.attributesList.push({
-        id,
-        displayName,
-        hidden
-      })
-    }
-
-    // Skill definitions
-    const skills = WOD5E.Skills.getList()
-    data.skillsList = []
-
-    for (const skill of skills) {
-      // Assign the data to a value
-      const [, value] = Object.entries(skill)[0]
-      const id = Object.getOwnPropertyNames(skill)[0]
-      const displayName = value.displayName
-      const hidden = value.hidden
-
-      data.skillsList.push({
-        id,
-        displayName,
-        hidden
-      })
-    }
-
     // Encrich editor content
     data.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description, { async: true })
     data.bonuses = this.object.system.bonuses
