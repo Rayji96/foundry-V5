@@ -12,7 +12,7 @@ export const _onResourceChange = async function (event) {
   const resource = dataset.resource
 
   // Don't let things be edited if the sheet is locked
-  if (this.locked) return
+  if (actorData.locked) return
 
   // Handle adding and subtracting the number of boxes
   if (dataset.action === 'plus') {
@@ -137,6 +137,7 @@ export const _onDotCounterEmpty = async function (event) {
   event.preventDefault()
 
   // Top-level variables
+  const actor = this.actor
   const element = event.currentTarget
   const parent = $(element.parentNode)
 
@@ -147,7 +148,7 @@ export const _onDotCounterEmpty = async function (event) {
 
   // Make sure that the dot counter can only be changed if the sheet is
   // unlocked or if it's the hunger track.
-  if (this.locked && !parent.has('.hunger-value').length) return
+  if (actor.system.locked && !parent.has('.hunger-value').length) return
 
   // Update the actor field
   steps.removeClass('active')

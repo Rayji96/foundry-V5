@@ -3,6 +3,7 @@
     "types": ["vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc", "werewolf"],
     "templates": {
       "base": {
+        "locked": false,
         "biography": "",
         "appearance": "",
         "equipment": "",
