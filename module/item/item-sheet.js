@@ -46,10 +46,12 @@ export class WoDItemSheet extends ItemSheet {
       const [, value] = Object.entries(attribute)[0]
       const id = Object.getOwnPropertyNames(attribute)[0]
       const displayName = value.displayName
+      const hidden = value.hidden
 
       data.attributesList.push({
         id,
-        displayName
+        displayName,
+        hidden
       })
     }
 
@@ -61,12 +63,13 @@ export class WoDItemSheet extends ItemSheet {
       // Assign the data to a value
       const [, value] = Object.entries(skill)[0]
       const id = Object.getOwnPropertyNames(skill)[0]
-
       const displayName = value.displayName
+      const hidden = value.hidden
 
       data.skillsList.push({
         id,
-        displayName
+        displayName,
+        hidden
       })
     }
 
