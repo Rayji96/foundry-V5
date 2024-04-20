@@ -62,7 +62,7 @@
             </div>
         </li>
         {{#each actor.system.customRolls as |roll id|}}
-            <li class="item flexrow" data-item-id="{{roll._id}}">
+            <li class="item flexrow" data-item-id="{{roll._id}}" draggable="true">
                 <div class="item-image rollable" data-value-paths="abilities.{{roll.system.dice1}}.value skills.{{roll.system.dice2}}.value"
                     data-name="{{roll.name}}" data-label="{{roll.name}}" data-use-flavor-path="true" data-flavor-path="description" data-item-id="{{roll._id}}"
                     data-selectors="abilities abilities.{{roll.system.dice1}} skills skills.{{roll.system.dice2}}" data-skill="{{roll.system.dice2}}"
