@@ -858,7 +858,8 @@
       "notes": "",
       "headers":{
         "concept": ""
-      }
+      },
+      "members": []
     },
     "cell" : {
       "biography": "",
@@ -872,7 +873,8 @@
       },
       "danger": {
         "value": 0
-      }
+      },
+      "members": []
     },
     "ghoul": {
       "templates": ["base","disciplines"],
