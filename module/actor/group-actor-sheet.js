@@ -39,19 +39,34 @@ export class GroupActorSheet extends WoDActor {
   /** @override */
   get template () {
     if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.hbs'
-    return 'systems/vtm5e/templates/actor/group-sheet.hbs'
+
+    // Switch-case for the sheet type to determine which template to display
+    switch (this.actor.system.groupType) {
+      case 'cell':
+        return 'systems/vtm5e/templates/actor/cell-sheet.hbs'
+        break
+
+      case 'coterie':
+        return 'systems/vtm5e/templates/actor/coterie-sheet.hbs'
+        break
+
+      default:
+        console.log('Oops! Something broke...')
+        return 'systems/vtm5e/templates/actor/coterie-sheet.hbs'
+    }
   }
 
   /* -------------------------------------------- */
 
   // Response to an actor being dropped onto the sheet
-  async _onDrop(event) {
-    let data
+  async _onDrop (event) {
+    let data = {}
 
     try {
       data = JSON.parse(event.dataTransfer.getData('text/plain'))
-    }
-    catch (err) {
+    } catch (err) {
+      console.log(err)
+
       return false
     }
 
@@ -78,8 +93,6 @@ export class GroupActorSheet extends WoDActor {
     // Define data types
     data.dtypes = ['String', 'Number', 'Boolean']
 
-    console.log(actorElement)
-
     return data
   }
 
@@ -89,10 +102,14 @@ export class GroupActorSheet extends WoDActor {
   activateListeners (html) {
     // Activate listeners
     super.activateListeners(html)
+
+    if (this.actor.system.groupType === 'cell') {
+      $(html[0].offsetParent).addClass('hunter-sheet')
+    }
   }
 
   // Add a new actor to the active players list
-  _addActor(actorID) {
+  _addActor (actorID) {
     // Define the actor data
     const actor = fromUuidSync(actorID)
 
@@ -103,23 +120,23 @@ export class GroupActorSheet extends WoDActor {
     // If the actor exists and is unique
     if (!actorUniqueCheck) {
       // Push to the players list
-      this._updateActors("add", actorID)
+      this._updateActors('add', actorID)
     }
   }
 
-  _removeActor(player) {
+  _removeActor (player) {
     const actorID = player.currentTarget.id
     const newList = this.actor.system.members.filter(actor => actor !== actorID)
 
-    this._updateActors("replace", newList)
+    this._updateActors('replace', newList)
   }
 
   // Function to update the actors setting
-  _updateActors(operation, newData) {
+  _updateActors (operation, newData) {
     // Switch case to determine what to do with the data
-    switch(operation){
+    switch (operation) {
       // Append new actors to the list
-      case "add":
+      case 'add':
         const membersList = this.actor.system.members
         // Push actor to the list
         membersList.push(newData)
@@ -128,7 +145,7 @@ export class GroupActorSheet extends WoDActor {
         break
 
       // Wholly replace the previous list with the new data
-      case "replace":
+      case 'replace':
         // Fill in the list with the new data
         this.actor.update({ 'system.members': newData })
 

@@ -210,7 +210,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
         event.preventDefault()
         event.stopPropagation()
   
-        game.actors.get(group.id).sheet._render(true)
+        game.actors.get(group.id).sheet.render(true)
       })
 
       // Move each group member's element to be a child of this group
