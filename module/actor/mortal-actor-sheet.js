@@ -47,9 +47,6 @@ export class MortalActorSheet extends CoterieActorSheet {
     const data = await super.getData()
     const actor = this.actor
 
-    // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.Mortal')}`
-
     // Prepare items
     if (actor.type === 'mortal') {
       this._prepareItems(data)

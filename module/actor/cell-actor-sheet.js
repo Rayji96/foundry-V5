@@ -65,9 +65,6 @@ export class CellActorSheet extends WoDActor {
     const data = await super.getData()
     const actor = this.actor
 
-    // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.HTR.Cell')}`
-
     // Prepare items.
     if (actor.type === 'cell') {
       this._prepareItems(data)

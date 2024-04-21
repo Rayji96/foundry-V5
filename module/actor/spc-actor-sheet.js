@@ -47,9 +47,6 @@ export class SPCActorSheet extends CoterieActorSheet {
     // Top-level variables
     const data = await super.getData()
 
-    // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.SPC.Label')}`
-
     // Prepare items
     if (this.actor.type === 'spc') {
       this._prepareItems(data)

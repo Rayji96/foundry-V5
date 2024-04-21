@@ -49,9 +49,6 @@ export class HunterActorSheet extends CellActorSheet {
     const data = await super.getData()
     const actor = this.actor
 
-    // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.HTR.Label')}`
-
     // Prepare items
     if (actor.type === 'hunter') {
       this._prepareItems(data)
