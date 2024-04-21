@@ -2,14 +2,14 @@
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
-import { CellActorSheet } from './cell-actor-sheet.js'
+import { WoDActor } from './wod-v5-sheet.js'
 
 /**
- * Extend the basic ActorSheet with some very simple modifications
- * @extends {CellActorSheet}
+ * Extend the WOD5E ActorSheet with some very simple modifications
+ * @extends {WoDActor}
  */
 
-export class HunterActorSheet extends CellActorSheet {
+export class HunterActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes

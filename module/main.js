@@ -174,7 +174,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
       const groupMembers = group.system?.members
 
       // Header element for the "folder."
-      const headerElement = `<header class='folder-header flexrow'>
+      const headerElement = `<header class='group-header flexrow'>
         <h3 class='noborder'>
           <i class='fas fa-folder-open fa-fw'></i>
           ${group.name}
@@ -187,10 +187,23 @@ Hooks.on('renderSidebarTab', async (object, html) => {
 
       // Append the above elements to the group element and turn it into a folder
       groupElement.attr('data-uuid', `Actor.${group.id}`)
-      groupElement.attr('class', 'directory-item group-item folder flexcol')
+      groupElement.attr('class', 'directory-item group-item flexcol')
+      if (group.system?.collapsed) {
+        groupElement.addClass('collapsed')
+      }
       groupElement.find('.entry-name, .thumbnail').remove()
       groupElement.append(headerElement)
       groupElement.append(subdirectoryElement)
+
+      // Add an event listener for toggling the group collapse
+      groupElement.find('.group-header').click(event => {
+        event.preventDefault()
+
+        const collapsed = !group.system.collapsed
+        
+        groupElement.toggleClass('collapsed')
+        group.update({ 'system.collapsed': collapsed})
+      })
 
       // Add an event listener for opening the group sheet
       groupElement.find('.open-sheet').click(event => {
@@ -261,4 +274,8 @@ function rollItemMacro (itemName) {
 
   // Trigger the item roll
   return item.roll()
+}
+
+async function updateGroup (group, sidebar) {
+
 }

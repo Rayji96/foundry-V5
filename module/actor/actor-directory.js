@@ -24,8 +24,8 @@ export class WOD5EActorDirectory extends ActorDirectory {
     // List of actors in groups
     const actorsInGroups = []
 
-    // Push each cell and coterie into the groupsList
-    this.groups = sidebarStructure.entries.filter(actor => actor.type === 'coterie' || actor.type === 'cell')
+    // Push each group sheet into the groupsList
+    this.groups = sidebarStructure.entries.filter(actor => actor.type === 'group')
 
     // Iterate through each group's members list
     this.groups.forEach(group => {

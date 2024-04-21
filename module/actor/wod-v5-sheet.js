@@ -19,7 +19,7 @@ export class WoDActor extends ActorSheet {
     data.isCharacter = this.isCharacter
     data.locked = actorData.locked
 
-    if (this.object.type !== 'cell' && this.object.type !== 'coterie') {
+    if (this.object.type !== 'group') {
       this._onHealthChange()
       this._onWillpowerChange()
     }

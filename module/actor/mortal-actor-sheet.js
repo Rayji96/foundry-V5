@@ -1,14 +1,14 @@
 /* global game, mergeObject */
 
 // Export this function to be used in other scripts
-import { CoterieActorSheet } from './coterie-actor-sheet.js'
+import { WoDActor } from './wod-v5-sheet.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {CoterieActorSheet}
+ * @extends {WoDActor}
  */
 
-export class MortalActorSheet extends CoterieActorSheet {
+export class MortalActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
@@ -46,6 +46,9 @@ export class MortalActorSheet extends CoterieActorSheet {
     // Top-level variables
     const data = await super.getData()
     const actor = this.actor
+
+    // Define the type of sheet
+    data.sheetType = `${game.i18n.localize('WOD5E.Mortal')}`
 
     // Prepare items
     if (actor.type === 'mortal') {

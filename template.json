@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["vampire", "ghoul", "mortal", "coterie", "hunter", "cell", "spc", "werewolf"],
+    "types": ["mortal", "vampire", "ghoul", "hunter", "werewolf", "group", "spc"],
     "templates": {
       "base": {
         "locked": false,
@@ -792,7 +792,7 @@
       "gamesystem": "mortal"
     },
     "vampire": {
-      "templates": ["base","disciplines"],
+      "templates": ["base", "disciplines"],
       "gamesystem": "vampire",
       "headers":{
         "predator":"",
@@ -813,7 +813,7 @@
       }
     },
     "werewolf": {
-      "templates": ["base","renown","werewolfForms","gifts"],
+      "templates": ["base", "renown", "werewolfForms", "gifts"],
       "gamesystem": "werewolf",
       "headers": {
         "auspice": "",
@@ -844,7 +844,7 @@
       }
     },
     "hunter": {
-      "templates": ["base","edges"],
+      "templates": ["base", "edges"],
       "gamesystem": "hunter",
       "headers":{
         "cellname": "",
@@ -852,16 +852,16 @@
         "drive": ""
       }
     },
-    "coterie" : {
-      "biography": "",
-      "equipment": "",
-      "notes": "",
+    "ghoul": {
+      "templates": ["base", "disciplines"],
+      "gamesystem": "vampire",
       "headers":{
-        "concept": ""
-      },
-      "members": []
+        "domitor":"",
+        "creedfields":""
+      }
     },
-    "cell" : {
+    "group": {
+      "groupType": "coterie",
       "biography": "",
       "equipment": "",
       "notes": "",
@@ -874,18 +874,11 @@
       "danger": {
         "value": 0
       },
-      "members": []
+      "members": [],
+      "collapsed": true
     },
-    "ghoul": {
-      "templates": ["base","disciplines"],
-      "gamesystem": "vampire",
-      "headers":{
-        "domitor":"",
-        "creedfields":""
-      }
-    },
-    "spc" : {
-      "templates": ["abbreviated","disciplines"],
+    "spc": {
+      "templates": ["abbreviated", "disciplines"],
       "gamesystem": "mortal"
     }
   },

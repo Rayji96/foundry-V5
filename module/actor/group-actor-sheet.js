@@ -7,15 +7,15 @@ import { WoDActor } from './wod-v5-sheet.js'
  * @extends {WoDActor}
  */
 
-export class CellActorSheet extends WoDActor {
+export class GroupActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['wod5e', 'hunter-sheet', 'sheet', 'actor', 'cell']
+    const classList = ['wod5e', 'sheet', 'actor']
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/vtm5e/templates/actor/cell-sheet.hbs',
+      template: 'systems/vtm5e/templates/actor/group-sheet.hbs',
       width: 650,
       height: 600,
       tabs: [{
@@ -32,13 +32,14 @@ export class CellActorSheet extends WoDActor {
 
   constructor (actor, options) {
     super(actor, options)
+
     this.isCharacter = false
   }
 
   /** @override */
   get template () {
     if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.hbs'
-    return 'systems/vtm5e/templates/actor/cell-sheet.hbs'
+    return 'systems/vtm5e/templates/actor/group-sheet.hbs'
   }
 
   /* -------------------------------------------- */
@@ -64,9 +65,10 @@ export class CellActorSheet extends WoDActor {
     // Top-level variables
     const data = await super.getData()
     const actor = this.actor
+    const actorElement = this.element
 
     // Prepare items.
-    if (actor.type === 'cell') {
+    if (actor.type === 'group') {
       this._prepareItems(data)
     }
 
@@ -75,6 +77,8 @@ export class CellActorSheet extends WoDActor {
 
     // Define data types
     data.dtypes = ['String', 'Number', 'Boolean']
+
+    console.log(actorElement)
 
     return data
   }

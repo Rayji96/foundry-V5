@@ -1,14 +1,14 @@
 /* global Dialog, game, mergeObject */
 
 // Export this function to be used in other scripts
-import { CoterieActorSheet } from './coterie-actor-sheet.js'
+import { WoDActor } from './wod-v5-sheet.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {CoterieActorSheet}
+ * @extends {WoDActor}
  */
 
-export class SPCActorSheet extends CoterieActorSheet {
+export class SPCActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes

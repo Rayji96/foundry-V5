@@ -8,6 +8,7 @@ import { MigrateSpecialties } from './migration/migrate-specialties.js'
 import { MigrateLocalization2 } from './migration/migrate-localization2.js'
 import { MigrateItemImages } from './migration/migrate-item-images.js'
 import { MigrateAnimalKen } from './migration/migrate-animal-ken.js'
+import { MigrateGroupSheets } from './migration/migrate-group-sheets.js'
 
 let worldVersion
 
@@ -65,6 +66,10 @@ export const migrateWorld = async () => {
         // Migrate the Animal Ken skill
         const migrationIDs8 = await MigrateAnimalKen()
         updates.push(...migrationIDs8)
+
+        // Unify Cell and Coterie sheets into one "Group" type
+        const migrationIDs9 = await MigrateGroupSheets()
+        updates.push(...migrationIDs9)
 
         // Only reload if there's 1 or more updates
         if (updates.length > 0) {
