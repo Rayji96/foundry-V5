@@ -1,0 +1,189 @@
+{
+  "WOD5E": {
+    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+    "Name": "Nome",
+    "Confirm": "Conferma",
+    "_Close": "Chiudi",
+    "_Save": "Salva",
+    "Submit": "Invia",
+    "System": "Sistema",
+    "Edit": "Modifica",
+    "Delete": "Cancella",
+    "Level": "Livello",
+    "Add": "Aggiungi",
+    "Cancel": "Cancella",
+    "Health": "Salute",
+    "Willpower": "Volontà",
+    "Exp": "Esp",
+    "None": "Nssuno",
+    "Value": "Valore",
+    
+    "Mortal": "Mortale",
+    "_GroupSheet": "",
+
+    "Roll": {
+      "Label": "Tira",
+      "RollMode": "Modalità di tiro",
+      "MortalDice": "Dadi mortale",
+      "Success": "Successo",
+      "Successes": "Successi",
+      "CriticalSuccess": "Successo critico",
+      "Fail": "Fallimento",
+      "Modifier": "Modificatori",
+      "Difficulty": "Difficoltà",
+      "SelectableModifiers": "Modificatori selezionabili",
+      "Source": "Fonte",
+      "Active": "Attiva",
+      "CustomModifiers": "Modificatori personalizzati",
+      "_AddCustomModifier": ""
+    },
+
+    "Bonus": {
+        "_NewSpecialty": "",
+        "_AddNewSpecialty": "",
+        "_NewBonus": "",
+        "_AddNewBonus": "",
+        "_Active": "",
+        "_ActiveWhen": "",
+        "_Always": "",
+        "_Never": "",
+        "_IfEquals": "",
+        "_Path": "",
+        "_PathsSeparatedBySemicolons": "",
+        "_DisplayWhenInactive": "",
+        "_Unless": "",
+        "_PathToCheck": "",
+        "_ValueToCheck": ""
+    },
+
+    "SPC": {
+      "Label": "PNG",
+      "GeneralDifficulty": "Difficoltà generale",
+      "StandardDicePools": "Pool di dadi standard",
+      "ExceptionalDicePools": "Pool di dadi eccezionali",
+      "Physical": "Fisico",
+      "Mental": "Mentale",
+      "Social": "Sociale",
+      "AddSkill": "Aggiungi abilità",
+      "SelectSkill": "Seleziona abilità"
+    },
+
+    "Damage": {
+      "Superficial": "Superficiale",
+      "Aggravated": "Aggravato",
+      "Stains": "Macchie",
+      "Max": "Massimo"
+    },
+
+    "Tabs": {
+      "Stats": "Statistiche",
+      "Features": "Caratteristiche",
+      "Description": "Descrizioni",
+      "Equipment": "Equipaggiamento",
+      "Notes": "Note",
+      "Other": "Altro"
+    },
+
+    "Attributes": {
+      "Label": "Attributo",
+      "Attributes": "Attributi",
+      "Strength": "Forza",
+      "Charisma": "Carisma",
+      "Intelligence": "Intelligenza",
+      "Dexterity": "Destrezza",
+      "Manipulation": "Persuasione",
+      "Wits": "Prontezza",
+      "Stamina": "Costituzione",
+      "Composure": "Autocontrollo",
+      "Resolve": "Fermezza"
+    },
+
+    "Skills": {
+      "Label": "Abilità",
+      "Skills": "Abilità",
+      "Specialty": "Specialità",
+      "Specialties": "Specialità",
+      "Athletics": "Atletica",
+      "AnimalKen": "Affinità animale",
+      "Academics": "Accademiche",
+      "Brawl": "Rissa",
+      "Etiquette": "Galateo",
+      "Awareness": "Allerta",
+      "Craft": "Manualità",
+      "Insight": "Intuito",
+      "Finance": "Finanza",
+      "Drive": "Guidare",
+      "Intimidation": "Intimidire",
+      "Investigation": "Investigare",
+      "Firearms": "Armi da fuoco",
+      "Leadership": "Autorità",
+      "Medicine": "Medicina",
+      "Melee": "Mischia",
+      "Performance": "Espressività",
+      "Occult": "Occulto",
+      "Larceny": "Criminalità",
+      "Persuasion": "Convincere",
+      "Politics": "Politica",
+      "Stealth": "Furtività",
+      "Streetwise": "Bassifondi",
+      "Science": "Scienze",
+      "Survival": "Sopravvivenza",
+      "Subterfuge": "Sotterfugio",
+      "Technology": "Tecnologia"
+    },
+
+    "Items": {
+      "Label": "Etichetta",
+      "ShowToChat": "Mostra in chat",
+      "CustomRoll": "Tiro personalizzato",
+      "CustomRolls": "Tiri personalizzati",
+      "Merit": "Vantaggi",
+      "Cost": "Costo",
+      "Flaw": "Difetti",
+      "Bonuses": "Bonus",
+      "Background": "Background",
+      "Points": "Punti",
+      "UseSkill": "Usa Abilità",
+      "Rollable": "Tirabile",
+      "Feature": "Caratteristica",
+      "FeatureType": "Tipo di caratteristica",
+      "Type": "Tipo",
+      "NewSpecialty": "Nuova Specialità",
+      "Boon": "Favore",
+      "Boons": "Favori",
+      "Macro": "Macro"
+    },
+
+    "Biography": {
+      "Label": "Biografia",
+      "Concept": "Concetto",
+      "Chronicle": "Cronaca",
+      "Ambition": "Ambizione",
+      "Desire": "Desiderio",
+      "ChronicleTenets": "Precetti della cronaca",
+      "TouchstonesAndConvictions": "Punti di riferimento e convinzioni",
+      "Appearance": "Aspetto esteriore",
+      "History": "Storia"
+    },
+
+    "DiceRoller": {
+      "AttributeShortLabel": "A",
+      "SkillShortLabel": "Ab",
+      "DisciplineShortLabel": "D",
+      "NothingShortLabel": "⊘",
+      "SelectAbility": "Seleziona Attributo"
+    },
+
+    "Chat": {
+      "RollingWillpower": "Tirando forza di volontà",
+      "Rolling": "Tirando",
+      "RollWillpower": "Tira Volontà",
+      "WillpowerReroll": "Ritira con Volontà",
+      "WillpowerFullTitle": "La volontà è piena",
+      "WillpowerFull": "La forza di volontà è completamente danneggiata, non può danneggiarla ulteriormente.",
+      "WillpowerDamage": "Danno alla forza di volontà",
+      "HasReceivedWillpowerDamage": "{actor} Ha ricevuto {willpowerDamage} danni alla forza di volontà."
+    }
+  }
+}

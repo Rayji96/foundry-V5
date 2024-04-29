@@ -1,0 +1,88 @@
+<form class="dialog-contents">
+  <div class="selectors-group">
+    {{#unless (or skill attribute)}}
+      <!-- Unless a skill/attribute is already selected, show skill selection -->
+      <div class="primary-selector">
+        <div class="selector-sitle">
+          {{localize "WOD5E.Skills.Label"}}
+        </div>
+        <div class="selector-content">
+          <select id="skillSelect">
+            <option value="">{{localize "WOD5E.None"}}</option>
+            {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
+          </select>
+        </div>
+      </div>
+    {{else}}
+      <!-- If a skill/attribute is already selected, present its label -->
+      <div class="primary-selector">
+        {{#if skill}}
+          <div class="selector-title">
+            {{localize "WOD5E.Skills.Label"}}
+          </div>
+          <div class="selector-content">
+            {{generateLocalizedLabel skill}}
+          </div>
+        {{else if attribute}}
+          <div class="selector-title">
+            {{localize "WOD5E.Attributes.Label"}}
+          </div>
+          <div class="selector-content">
+            {{generateLocalizedLabel attribute}}
+          </div>
+        {{/if}}
+      </div>
+    {{/unless}}
+
+    <div class="middle">+</div>
+
+    <!-- Attribute selection -->
+    <div class="primary-selector">
+        <div class="selector-title">
+          {{localize "WOD5E.Attributes.Label"}}
+        </div>
+        <div class="selector-content">
+          <select id="attributeSelect">
+            <option value="">{{localize "WOD5E.None"}}</option>
+            {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
+          </select>
+        </div>
+    </div>
+  </div>
+
+  <!-- If the actor is a vampire, show option to add Discipline dots -->
+  {{#ifeq system "vampire"}}
+    <!-- If a discipline is already selected, display the selected discipline -->
+    {{#if discipline}}
+      <div class="secondary-selector">
+        <b>{{generateLocalizedLabel discipline}}</b>
+      </div>
+    {{else}}
+      <div class="secondary-selector">
+        <div>{{localize "WOD5E.VTM.AddDiscipline"}}</div>
+        <select id="disciplineSelect">
+          <option value="">{{localize "WOD5E.None"}}</option>
+          {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
+        </select>
+      </div>
+    {{/if}}
+  {{/ifeq}}
+
+  <!-- If the actor is a werewolf, show option to add Renown dots-->
+  {{#ifeq system "werewolf"}}
+    <!-- If renown is already selected, display the selected renown -->
+    {{#if renown}}
+      <div class="secondary-selector">
+        <b>{{generateLocalizedLabel renown}}</b>
+      </div>
+    {{else}}
+      <div class="secondary-selector">
+        <div>{{localize "WOD5E.WTA.AddRenown"}}</div>
+        <select id="renownSelect">
+          <option value="">{{localize "WOD5E.None"}}</option>
+          {{> "systems/vtm5e/templates/item/parts/renown.hbs"}}
+        </select>
+      </div>
+    {{/if}}
+  {{/ifeq}}
+</form>

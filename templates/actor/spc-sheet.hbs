@@ -1,0 +1,41 @@
+<form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} spc-sheet" autocomplete="off">
+  {{#if displayBanner}}
+  <div class="sheet-banner">
+    <h1>{{localize "WOD5E.SPC.Label"}}</h1>
+  </div>
+  {{/if}}
+
+  {{!-- SPC Sheet Header --}}
+  <header class="actor-header">
+      <div class="header-fields-top">
+        <div class="header-profile-img">
+            {{!-- Actor image and sheet lock toggle button --}}
+            {{> "systems/vtm5e/templates/actor/parts/profile-img.hbs"}}
+        </div>
+        <div class="header-rows-top">
+            <div class="header-row-1 grid-4col">
+                {{!-- Text input header fields --}}
+                <h1 class="charname"><input class="no-border" name="name" type="text" value="{{actor.name}}"
+                  placeholder="{{localize 'WOD5E.Name'}}" /></h1>
+                  
+                {{> "systems/vtm5e/templates/actor/parts/spc/generaldifficulty.hbs"}}
+                {{> "systems/vtm5e/templates/actor/parts/health.hbs"}}
+                {{> "systems/vtm5e/templates/actor/parts/willpower.hbs"}}
+            </div>
+        </div>
+    </div>
+  </header>
+
+  {{!-- SPC Sheet Body --}}
+  <section class="sheet-body">
+      <div class="resource grid grid-2col flexrow">
+      {{> "systems/vtm5e/templates/actor/parts/spc/standard-dice-pools.hbs"}}
+      
+      {{> "systems/vtm5e/templates/actor/parts/spc/exceptional-dice-pools.hbs"}}
+      
+      {{> "systems/vtm5e/templates/actor/parts/notes.hbs"}}
+
+      {{> "systems/vtm5e/templates/actor/parts/spc/spc-disciplines.hbs"}}
+      </div>
+  </section>
+</form>

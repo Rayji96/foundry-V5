@@ -1,0 +1,188 @@
+{
+  "WOD5E": {
+    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+    "_Name": "",
+    "_Confirm": "",
+    "_Close": "",
+    "_Save": "",
+    "_Submit": "",
+    "_System": "",
+    "Edit": "Bearbeiten",
+    "Delete": "Löschen",
+    "_Level": "",
+    "Add": "Hinzufügen",
+    "Cancel": "Abbrechen",
+    "Health": "Gesundheit",
+    "Willpower": "Willenskraft",
+    "Exp": "EP",
+    "None": "Kein",
+    "Value": "Wert",
+
+    "Mortal": "Sterblicher",
+    "_GroupSheet": "",
+
+    "Roll": {
+      "_Label": "",
+      "_RollMode": "",
+      "_MortalDice": "",
+      "Success": "Erfolg",
+      "Successes": "Erfolge",
+      "CriticalSuccess": "Kritischer Erfolg",
+      "Fail": "Fehlschlag",
+      "Modifier": "Modifikator",
+      "Difficulty": "Schwierigkeit",
+      "_SelectableModifiers": "",
+      "_Source": "",
+      "_Active": "",
+      "_CustomModifiers": ""
+    },
+
+    "Bonus": {
+        "_NewSpecialty": "",
+        "_AddNewSpecialty": "",
+        "_NewBonus": "",
+        "_AddNewBonus": "",
+        "_Active": "",
+        "_ActiveWhen": "",
+        "_Always": "",
+        "_Never": "",
+        "_IfEquals": "",
+        "_Path": "",
+        "_PathsSeparatedBySemicolons": "",
+        "_DisplayWhenInactive": "",
+        "_Unless": "",
+        "_PathToCheck": "",
+        "_ValueToCheck": ""
+    },
+
+    "SPC": {
+      "_Label": "",
+      "GeneralDifficulty": "Allgemeine Schwierigkeit",
+      "StandardDicePools": "Standardwürfelpools",
+      "ExceptionalDicePools": "Besondere Würfelpools",
+      "Physical": "Physisch",
+      "_Mental": "",
+      "Social": "Sozial",
+      "AddSkill": "Fertigkeit hinzufügen",
+      "SelectSkill": "Wähle Fähigkeit"
+    },
+
+    "Damage": {
+      "Superficial": "Leichter",
+      "Aggravated": "Schwerer",
+      "Stains": "Makel",
+      "_Max": ""
+    },
+
+    "Tabs": {
+      "Stats": "Werte",
+      "Features": "Merkmale",
+      "Description": "Beschreibung",
+      "Equipment": "Ausrüstung",
+      "Notes": "Notizen",
+      "Other": "Sonstige"
+    },
+
+    "Attributes": {
+      "_Label": "",
+      "_Attributes": "",
+      "Strength": "Körperkraft",
+      "Charisma": "Charisma",
+      "Intelligence": "Intelligenz",
+      "Dexterity": "Geschicklichkeit",
+      "Manipulation": "Manipulation",
+      "Wits": "Geistesschärfe",
+      "Stamina": "Widerstandsfähigkeit",
+      "Composure": "Fassung",
+      "Resolve": "Entschlossenheit"
+    },
+
+    "Skills": {
+      "Label": "Fähigkeiten",
+      "Skills": "Fähigkeiten",
+      "Specialty": "Spezialisierung",
+      "Specialties": "Spezialisierungen",
+      "Athletics": "Sportlichkeit",
+      "AnimalKen": "Tierkunde",
+      "Academics": "Geisteswissenschaften",
+      "Brawl": "Handgemenge",
+      "Etiquette": "Etikette",
+      "Awareness": "Wahrnehmung",
+      "Craft": "Handwerk",
+      "Insight": "Menschenkenntnis",
+      "Finance": "Finanzen",
+      "Drive": "Fahren",
+      "Intimidation": "Einschüchtern",
+      "Investigation": "Ermitteln",
+      "Firearms": "Schusswaffen",
+      "Leadership": "Anführen",
+      "Medicine": "Medizin",
+      "Melee": "Nahkampf",
+      "Performance": "Darbietung",
+      "Occult": "Okultismus",
+      "Larceny": "Diebeshandwerk",
+      "Persuasion": "Überzeugen",
+      "Politics": "Politik",
+      "Stealth": "Heimlichkeit",
+      "Streetwise": "Szenekenntnis",
+      "Science": "Naturwissenschaften",
+      "Survival": "Überleben",
+      "Subterfuge": "Ausflüchte",
+      "Technology": "Technologie"
+    },
+
+    "Items": {
+      "_Label": "",
+      "ShowToChat": "Zum Chatten anzeigen",
+      "CustomRoll": "Benutzerdefinierter Wurf",
+      "CustomRolls": "Benutzerdefinierte Würfe",
+      "Merit": "Vorteile",
+      "_Cost": "",
+      "Flaw": "Schwächen",
+      "_Bonuses": "",
+      "Background": "Hintergrund",
+      "Points": "Punkte",
+      "UseSkill": "Fähigkeiten Einsetzen",
+      "Rollable": "Würfelbar",
+      "_Feature": "",
+      "FeatureType": "Merkmal Typ",
+      "Type": "Typ",
+      "_NewSpecialty": "",
+      "Boon": "Gefallen",
+      "Boons": "Gefallen",
+      "_Macro": "Macro"
+    },
+
+    "Biography": {
+      "Label": "Geschichte",
+      "Concept": "Konzept",
+      "Chronicle": "Chronik",
+      "Ambition": "Ambition",
+      "Desire": "Verlangen",
+      "ChronicleTenets": "Grundsätze der Chronik",
+      "TouchstonesAndConvictions": "Anker & Überzeugungen",
+      "Appearance": "Aussehen",
+      "History": "Geschichte"
+    },
+
+    "DiceRoller": {
+      "AttributeShortLabel": "A",
+      "SkillShortLabel": "F",
+      "DisciplineShortLabel": "D",
+      "NothingShortLabel": "⊘",
+      "SelectAbility": "Wähle Attribut"
+    },
+
+    "Chat": {
+      "RollingWillpower": "Rolle Willenskraft",
+      "Rolling": "Würfeln",
+      "RollWillpower": "Willpower Rollen",
+      "WillpowerReroll": "Willenskraft Wiederholung",
+      "WillpowerFullTitle": "Willpower Tracker Full",
+      "WillpowerFull": "Willenskraft ist vollständig beschädigt, kann sie nicht weiter beschädigen.",
+      "_WillpowerDamage": "",
+      "_HasReceivedWillpowerDamage": ""
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<label class="resource-label garou-forms-label">{{localize "WOD5E.WTA.FormsOfGarou"}}</label>
+<div class="resource flexrow grid grid-5col forms">
+  {{#each actor.system.forms as |form id|}}
+  <div>
+    <label class="resource-label were-form-name"><h3>{{localize form.name}}</h3></label>
+    <div class="were-form-title flexcol flex-center">
+      <label class="were-form-nickname">{{localize form.nickname}}</label>
+    </div>
+    <div class="resource flex-group-center{{#ifeq ../actor.system.activeForm id}} form-active{{/ifeq}}">
+      {{#ifeq ../actor.system.activeForm id}}
+      <button class="werewolf-button active">{{localize "WOD5E.WTA.Active"}}</button>
+      {{else}}
+      <button class="werewolf-button change-form{{#ifeq ../actor.system.rage.value 0}}{{#ifnoteq form.cost 0}} disabled{{/ifnoteq}}{{/ifeq}}" 
+      title="{{#ifeq ../actor.system.rage.value 0}}{{#ifnoteq form.cost 0}}{{localize 'WOD5E.WTA.LostWolfFormChange'}}{{/ifnoteq}}{{/ifeq}}"
+      data-form="{{id}}" data-rage-cost="{{form.cost}}" type="button" name="{{id}}">
+        {{form.cost}} {{localize "WOD5E.WTA.RageDice"}}
+      </button>
+      {{/ifeq}}
+      <div class="resource-content">
+        <hr/>
+        {{#if form.description}}
+        <p class="flex-center">{{form.description}}</p>
+        <hr>
+        {{/if}}
+        <ul class="form-abilities">
+          {{#each form.abilities as |ability|}}
+          <li>{{ability}}</li>
+          {{/each}}
+        </ul>
+        <div class="flexrow">
+          <button class="werewolf-button were-form-chat" data-form="{{id}}">{{localize "WOD5E.WTA.PostFormToChat"}}</button>
+          <button class="werewolf-button were-form-edit lockable-button" data-form="{{id}}">{{localize "WOD5E.Edit"}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

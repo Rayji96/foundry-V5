@@ -1,0 +1,69 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="item-header">
+        <div class="header-fields">
+            <h1 class="charname">{{localize skill.name}}</h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <div class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</div>
+        <div class="item" data-tab="macro">{{localize "WOD5E.Items.Macro"}}</div>
+        <div class="item" data-tab="bonuses">{{localize "WOD5E.Skills.Specialties"}}</div>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab description" data-group="primary" data-tab="description">
+            <textarea id="description">{{skill.description}}</textarea>
+        </div>
+
+        {{!-- Macro Tab --}}
+        <div class="tab macro" data-group="primary" data-tab="macro">
+            <div>
+                If a macro is listed, then it will execute directly after the item is clicked or the roll is made.
+            </div>
+            <hr>
+            <div class="grid grid-2col">
+                <b>Macro ID</b>
+                <input id="macroid" name="macroid" type="text" value="{{skill.macroid}}"/>
+            </div>
+        </div>
+
+        {{!-- Bonuses Tab --}}
+        <div class="tab bonuses" data-group="primary" data-tab="bonuses">
+            <div class="bonuses-list">
+                {{#each skill.bonuses as |bonus key|}}
+                    <div class="bonus" style="margin-top: 5px;">
+                        <h3>
+                            <a class="edit-bonus" title="Edit bonus" data-bonus-path="skills.{{../id}}.bonuses" data-bonus="{{key}}" style="margin-right: 5px; margin-top: 5px; font-size: 13pt;">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            {{bonus.source}}
+                            <a class="delete-bonus" title="Delete bonus" data-bonus-path="skills.{{../id}}.bonuses" data-bonus="{{key}}" style="float: right;">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </h3>
+                        <div class="grid grid-2col flex-center">
+                            <div class="flexcol flex-center">
+                                <b>{{localize 'WOD5E.Value'}}</b>
+                                <input class="input-value" name="value" type="number" value="{{bonus.value}}" disabled="true"/>
+                            </div>
+                            <div class="flexcol flex-center">
+                                <b>{{localize "WOD5E.Bonus.PathsSeparatedBySemicolons"}}</b>
+                                <input name="paths" type="text" value="{{splitArray bonus.paths}}" placeholder="skills.athletics; abilities.strength" disabled="true"/>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+            <hr>
+            <div class="flex-center">
+                <b>
+                    <a class="add-bonus" data-skill="{{id}}" data-bonus-path="skills.{{id}}.bonuses">{{localize 'WOD5E.Bonus.AddNewSpecialty'}}</a>
+                </b>
+            </div>
+        </div>
+    </section>
+</form>

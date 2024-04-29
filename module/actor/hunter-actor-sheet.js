@@ -1,28 +1,23 @@
 /* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
 
-// Export this function to be used in other scripts
-import { CellActorSheet } from './cell-actor-sheet.js'
-import { rollHunterDice } from './roll-hunter-dice.js'
+import { WOD5eDice } from '../scripts/system-rolls.js'
+import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
+import { WoDActor } from './wod-v5-sheet.js'
 
 /**
- * Extend the basic ActorSheet with some very simple modifications
- * @extends {CellActorSheet}
+ * Extend the WOD5E ActorSheet with some very simple modifications
+ * @extends {WoDActor}
  */
 
-export class HunterActorSheet extends CellActorSheet {
+export class HunterActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'hunter-sheet', 'sheet', 'actor', 'hunter']
 
-    // If the user's enabled darkmode, then push it to the class list
-    if (game.settings.get('vtm5e', 'darkTheme')) {
-      classList.push('dark-theme')
-    }
-
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/vtm5e/templates/actor/hunter-sheet.html',
+      template: 'systems/vtm5e/templates/actor/hunter-sheet.hbs',
       width: 940,
       height: 700,
       tabs: [{
@@ -42,20 +37,20 @@ export class HunterActorSheet extends CellActorSheet {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.html'
-    return 'systems/vtm5e/templates/actor/hunter-sheet.html'
+    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.hbs'
+    return 'systems/vtm5e/templates/actor/hunter-sheet.hbs'
   }
 
   /* -------------------------------------------- */
 
   /** @override */
   async getData () {
+    // Top-level variables
     const data = await super.getData()
-    // TODO: confirm that I can finish and use this list
-    data.sheetType = `${game.i18n.localize('WOD5E.Hunter')}`
+    const actor = this.actor
 
-    // Prepare items.
-    if (this.actor.type === 'hunter') {
+    // Prepare items
+    if (actor.type === 'hunter') {
       this._prepareItems(data)
     }
 
@@ -63,21 +58,21 @@ export class HunterActorSheet extends CellActorSheet {
   }
 
   /**
-     * Organize and classify Items for all sheets.
+     * Organize and classify Items for all sheets
      *
-     * @param {Object} actorData The actor to prepare.
+     * @param {Object} actorData The actor to prepare
      * @return {undefined}
      * @override
      */
   _prepareItems (sheetData) {
+    // Prepare items
     super._prepareItems(sheetData)
+
+    // Top-level variables
     const actorData = sheetData.actor
+    const actor = this.actor
 
-    // Track whether despair is toggled on or not
-    if (this.actor.system.despair.value > 0) {
-      actorData.system.despairActive = true
-    }
-
+    // Variables yet to be defined
     const edges = {
       arsenal: [],
       fleet: [],
@@ -93,15 +88,21 @@ export class HunterActorSheet extends CellActorSheet {
       artifact: []
     }
 
+    // Track whether despair is toggled on or not
+    if (actor.system.despair.value > 0) {
+      actorData.system.despairActive = true
+    }
+
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
-      if (i.type === 'perk') {
-        // Append to edges.
-        if (i.system.edge !== undefined) {
-          edges[i.system.edge].push(i)
-          if (!this.actor.system.edges[i.system.edge].visible) {
-            this.actor.update({ [`system.edges.${i.system.edge}.visible`]: true })
-          }
+      // Make sure the item is a perk and has an edge set
+      if (i.type === 'perk' && i.system.edge) {
+        // Append to edges
+        edges[i.system.edge].push(i)
+
+        // If the edge isn't already visible, make it visible
+        if (!actor.system.edges[i.system.edge].visible) {
+          actor.update({ [`system.edges.${i.system.edge}.visible`]: true })
         }
       }
     }
@@ -119,17 +120,21 @@ export class HunterActorSheet extends CellActorSheet {
       })
     }
 
-    // Assign and return
-    actorData.edges_list = edges
+    // Assign and return the edges list
+    actorData.system.edges_list = edges
   }
   /* -------------------------------------------- */
 
   /** @override */
   activateListeners (html) {
+    // Activate listeners
     super.activateListeners(html)
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
+
+    // Top-level variables
+    const actor = this.actor
 
     // Toggle despair
     html.find('.despair-toggle').click(this._onToggleDespair.bind(this))
@@ -140,18 +145,18 @@ export class HunterActorSheet extends CellActorSheet {
     // Make Edge hidden
     html.find('.edge-delete').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
-      this.actor.update({ [`system.edges.${data.edge}.visible`]: false })
+      actor.update({ [`system.edges.${data.edge}.visible`]: false })
     })
 
     // Rollable Edge powers
     html.find('.edge-rollable').click(this._onEdgeRoll.bind(this))
 
     // Post Edge description to the chat
-    html.find('.edge-chat').click(ev => {
-      const data = $(ev.currentTarget)[0].dataset
-      const edge = this.actor.system.edges[data.edge]
+    html.find('.edge-chat').click(event => {
+      const data = $(event.currentTarget)[0].dataset
+      const edge = actor.system.edges[data.edge]
 
-      renderTemplate('systems/vtm5e/templates/actor/parts/chat-message.html', {
+      renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
         name: game.i18n.localize(edge.name),
         img: 'icons/svg/dice-target.svg',
         description: edge.description
@@ -167,8 +172,11 @@ export class HunterActorSheet extends CellActorSheet {
   _onToggleDespair (event) {
     event.preventDefault()
 
+    // Top-level variables
+    const actor = this.actor
+
     // I really only do this so it's clear what we're doing here
-    const currentDespair = this.actor.system.despairActive
+    const currentDespair = actor.system.despairActive
     const newDespair = !currentDespair
 
     // Have to do this silly thing in order to prevent old versions of the Hunter sheet from freaking out
@@ -177,9 +185,9 @@ export class HunterActorSheet extends CellActorSheet {
     // It's dumb, I know, and I hope to set up a migration function to fix it sometime
     // but I don't want to delay this release more than I already had to-
     if (newDespair) { // Set as "true"
-      this.actor.update({ 'system.despair.value': 1 })
+      actor.update({ 'system.despair.value': 1 })
     } else { // Set as "false"
-      this.actor.update({ 'system.despair.value': 0 })
+      actor.update({ 'system.despair.value': 0 })
     }
   }
 
@@ -190,27 +198,32 @@ export class HunterActorSheet extends CellActorSheet {
      */
   _onShowEdge (event) {
     event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+
+    // Variables yet to be defined
     let options = ''
-    for (const [key, value] of Object.entries(this.actor.system.edges)) {
+    for (const [key, value] of Object.entries(actor.system.edges)) {
       options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
     }
 
     const template = `
       <form>
           <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.SelectEdge')}</label>
+              <label>${game.i18n.localize('WOD5E.HTR.SelectEdge')}</label>
               <select id="edgeSelect">${options}</select>
           </div>
       </form>`
 
     let buttons = {}
     buttons = {
-      draw: {
+      submit: {
         icon: '<i class="fas fa-check"></i>',
         label: game.i18n.localize('WOD5E.Add'),
         callback: async (html) => {
           const edge = html.find('#edgeSelect')[0].value
-          this.actor.update({ [`system.edges.${edge}.visible`]: true })
+          actor.update({ [`system.edges.${edge}.visible`]: true })
         }
       },
       cancel: {
@@ -220,34 +233,64 @@ export class HunterActorSheet extends CellActorSheet {
     }
 
     new Dialog({
-      title: game.i18n.localize('WOD5E.AddEdge'),
+      title: game.i18n.localize('WOD5E.HTR.AddEdge'),
       content: template,
       buttons,
-      default: 'draw'
+      default: 'submit'
+    },
+    {
+      classes: ['wod5e', 'hunter-dialog', 'hunter-sheet']
     }).render(true)
   }
 
-  _onEdgeRoll (event) {
+  async _onEdgeRoll (event) {
     event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
     const element = event.currentTarget
-    const dataset = element.dataset
-    const item = this.actor.items.get(dataset.id)
+    const dataset = Object.assign({}, element.dataset)
+    const item = actor.items.get(dataset.id)
+
+    // Secondary variables
     const edgeValue = 1
+    const macro = item.system.macroid
 
-    const dice1 = item.system.dice1 === 'edge' ? edgeValue : this.actor.system.abilities[item.system.dice1].value
-
+    // Variables yet to be defined
     let dice2
+    const selectors = []
+
+    // Determine the value of dice1
+    const dice1 = item.system.dice1 === 'edge' ? edgeValue : actor.system.abilities[item.system.dice1].value
+
+    // Determine the value of dice2
     if (item.system.dice2 === 'edge') {
       dice2 = edgeValue
     } else if (item.system.skill) {
-      dice2 = this.actor.system.skills[item.system.dice2].value
+      dice2 = actor.system.skills[item.system.dice2].value
     } else if (item.system.amalgam) {
-      dice2 = this.actor.system.edges[item.system.dice2].value
+      dice2 = actor.system.edges[item.system.dice2].value
     } else {
-      dice2 = this.actor.system.abilities[item.system.dice2].value
+      dice2 = actor.system.abilities[item.system.dice2].value
     }
 
-    const dicePool = dice1 + dice2
-    rollHunterDice(dicePool, this.actor, `${item.name}`, 0)
+    // Handle getting any situational modifiers
+    const activeBonuses = await getActiveBonuses({
+      actor,
+      selectors
+    })
+
+    // Add it all together
+    const dicePool = dice1 + dice2 + activeBonuses
+
+    // Send the roll to the system
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      actor,
+      data: item.system,
+      title: item.name,
+      selectors,
+      macro
+    })
   }
 }

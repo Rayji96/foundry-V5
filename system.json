@@ -2,7 +2,7 @@
   "id": "vtm5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "3.0.0",
+  "version": "4.1.1",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -40,44 +40,194 @@
   "languages": [
     {
       "lang": "en",
-      "name": "English",
-      "path": "lang/en.json",
+      "name": "Core (English)",
+      "path": "lang/en/core-en.json",
+      "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "Vampire (English)",
+      "path": "lang/en/vampire-en.json",
+      "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "Werewolf (English)",
+      "path": "lang/en/werewolf-en.json",
+      "flags": {}
+    },
+    {
+      "lang": "en",
+      "name": "Hunter (English)",
+      "path": "lang/en/hunter-en.json",
       "flags": {}
     },
     {
       "lang": "fr",
-      "name": "French",
-      "path": "lang/fr.json",
+      "name": "Core (French)",
+      "path": "lang/fr/core-fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "Vampire (French)",
+      "path": "lang/fr/vampire-fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "Werewolf (French)",
+      "path": "lang/fr/werewolf-fr.json",
+      "flags": {}
+    },
+    {
+      "lang": "fr",
+      "name": "Hunter (French)",
+      "path": "lang/fr/hunter-fr.json",
       "flags": {}
     },
     {
       "lang": "pt-BR",
-      "name": "Brazilian Portuguese",
-      "path": "lang/pt-BR.json",
+      "name": "Core (Brazilian Portuguese)",
+      "path": "lang/pt-BR/core-pt-BR.json",
+      "flags": {}
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Vampire (Brazilian Portuguese)",
+      "path": "lang/pt-BR/vampire-pt-BR.json",
+      "flags": {}
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Werewolf (Brazilian Portuguese)",
+      "path": "lang/pt-BR/werewolf-pt-BR.json",
+      "flags": {}
+    },
+    {
+      "lang": "pt-BR",
+      "name": "Hunter (Brazilian Portuguese)",
+      "path": "lang/pt-BR/hunter-pt-BR.json",
       "flags": {}
     },
     {
       "lang": "es",
-      "name": "Spanish",
-      "path": "lang/es.json",
+      "name": "Core (Spanish)",
+      "path": "lang/es/core-es.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Vampire (Spanish)",
+      "path": "lang/es/vampire-es.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Werewolf (Spanish)",
+      "path": "lang/es/werewolf-es.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Hunter (Spanish)",
+      "path": "lang/es/hunter-es.json",
       "flags": {}
     },
     {
       "lang": "de",
-      "name": "German",
-      "path": "lang/de.json",
+      "name": "Core (German)",
+      "path": "lang/de/core-de.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "Vampire (German)",
+      "path": "lang/de/vampire-de.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "Werewolf (German)",
+      "path": "lang/de/werewolf-de.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "Hunter (German)",
+      "path": "lang/de/hunter-de.json",
       "flags": {}
     },
     {
       "lang": "it",
-      "name": "Italian",
-      "path": "lang/it.json",
+      "name": "Core (Italian)",
+      "path": "lang/it/core-it.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Vampire (Italian)",
+      "path": "lang/it/vampire-it.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Werewolf (Italian)",
+      "path": "lang/it/werewolf-it.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Hunter (Italian)",
+      "path": "lang/it/hunter-it.json",
       "flags": {}
     },
     {
       "lang": "pl",
-      "name": "Polish",
-      "path": "lang/pl.json",
+      "name": "Core (Polish)",
+      "path": "lang/pl/core-pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Vampire (Polish)",
+      "path": "lang/pl/vampire-pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Werewolf (Polish)",
+      "path": "lang/pl/werewolf-pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Hunter (Polish)",
+      "path": "lang/pl/hunter-pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Core (Russian)",
+      "path": "lang/ru/core-ru.json",
+      "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Vampire (Russian)",
+      "path": "lang/ru/vampire-ru.json",
+      "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Werewolf (Russian)",
+      "path": "lang/ru/werewolf-ru.json",
+      "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Hunter (Russian)",
+      "path": "lang/ru/hunter-ru.json",
       "flags": {}
     }
   ],
@@ -108,11 +258,14 @@
   "secondaryTokenAttribute": "willpower",
   "gridDistance": 5,
   "gridUnits": "ft",
-  "license": "LICENSE.txt",
+  "initiative": "1d10",
+  "changelog": "https://veilza.github.io/wod5e-docs/changelog.html",
+  "license": "./LICENSE",
   "url": "https://github.com/Rayji96/foundry-V5",
+  "bugs": "https://github.com/Rayji96/foundry-V5/issues",
   "background": "systems/vtm5e/assets/images/wodcity.jpg",
-  "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/3.0.0/system.json",
-  "download": "https://github.com/Rayji96/foundry-V5/releases/download/3.0.0/vtm5e-3.0.0.zip",
+  "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/4.1.1/system.json",
+  "download": "https://github.com/Rayji96/foundry-V5/releases/download/4.1.1/vtm5e-4.1.1.zip",
   "flags": {
     "hotReload": {
       "extensions": ["css", "hbs", "json"],

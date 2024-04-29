@@ -4,8 +4,7 @@ input[type="password"],
 input[type="date"],
 input[type="time"],
 input[type="search"] {
-    border: 1px solid var(--color-shadow-highlight);
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .wod5e input {
@@ -17,7 +16,7 @@ input[type="search"] {
 .wod5e.item .window-content input {
   float: left;
   background-color: white;
-border: 1px solid var(--color-border-highlight);
+  border: 1px solid var(--color-border-highlight);
 }
 
 .wod5e.item.sheet .window-content input[type="number"] {
@@ -66,4 +65,17 @@ border: 1px solid var(--color-border-highlight);
 
 #hud .placeable-hud .middle .attribute input {
   pointer-events: none;
+}
+
+.wod5e input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.wod5e .input-value {
+  max-width: 45px;
+}
+
+.wod5e .tox-editor-container button {
+  background-color: #fff !important;
+  color: #000 !important;
 }

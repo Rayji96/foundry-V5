@@ -1,0 +1,42 @@
+{
+  "WOD5E": {
+    "HTR": {
+      "Label": "",
+
+      "HunterDice": "",
+      "DesperationDice": "",
+        
+      "Despair": "",
+      "Creed": "",
+      "CreedFields": "",
+      "Cell": "",
+      "Redemption": "",
+      "Edge": "",
+      "Edges": "",
+      "EdgeType": "",
+      "AddEdge": "",
+      "SelectEdge": "",
+      "AddPerk": "",
+      "Desperation": "",
+      "Danger": "",
+      "DesperationSuccess": "",
+      "PossibleDesperationFailure": "",
+      "DespairFailure": "",
+      "DesperationUnavailable": "",
+      "Drive": "",
+
+      "Arsenal": "",
+      "Fleet": "",
+      "Ordnance": "",
+      "Library": "",
+      "ImprovisedGear": "",
+      "GlobalAccess": "",
+      "DroneJockey": "",
+      "BeastWhisperer": "",
+      "SenseTheUnnatural": "",
+      "RepelTheUnnatural": "",
+      "ThwartTheUnnatural": "",
+      "Artifact": ""
+    }
+  }
+}

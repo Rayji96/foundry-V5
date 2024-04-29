@@ -1,61 +1,50 @@
-/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Dialog, Items, ItemSheet, Macro, game, ui, renderTemplate, getProperty */
+/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui, CONST */
 
-// Import Modules
-import { preloadHandlebarsTemplates } from './templates.js'
-import { migrateWorld } from './scripts/migration.js'
+// Actor sheets
 import { ActorInfo } from './actor/actor.js'
+import { WOD5EActorDirectory } from './actor/actor-directory.js'
+// Item sheets
 import { ItemInfo } from './item/item.js'
 import { WoDItemSheet } from './item/item-sheet.js'
-import { VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/dice.js'
-import { rollDice } from './actor/roll-dice.js'
-import { rollHunterDice } from './actor/roll-hunter-dice.js'
-import { rollWerewolfDice } from './actor/roll-werewolf-dice.js'
-import { CoterieActorSheet } from './actor/coterie-actor-sheet.js'
-import { MortalActorSheet } from './actor/mortal-actor-sheet.js'
-import { GhoulActorSheet } from './actor/ghoul-actor-sheet.js'
-import { VampireActorSheet } from './actor/vampire-actor-sheet.js'
-import { HunterActorSheet } from './actor/hunter-actor-sheet.js'
-import { CellActorSheet } from './actor/cell-actor-sheet.js'
-import { SPCActorSheet } from './actor/spc-actor-sheet.js'
-import { WerewolfActorSheet } from './actor/werewolf-actor-sheet.js'
-import {
-  prepareSearchableSelection,
-  prepareRouseShortcut,
-  prepareWillpowerShortcut,
-  prepareFrenzyShortcut,
-  prepareHumanityShortcut,
-  watchPool1Filters,
-  watchPool2Filters,
-  prepareCustomRollButton
-} from './dice/dicebox.js'
-import { loadDiceSoNice } from './dice-so-nice.js'
+// FVTT and module functionality
+import { preloadHandlebarsTemplates } from './templates.js'
+import { loadDiceSoNice } from './dice/dice-so-nice.js'
 import { loadHelpers } from './helpers.js'
 import { loadSettings } from './settings.js'
+// WOD5E functions and classes
+import { MortalDie, VampireDie, VampireHungerDie, HunterDie, HunterDesperationDie, WerewolfDie, WerewolfRageDie } from './dice/splat-dice.js'
+import { migrateWorld } from './scripts/migration.js'
+import { willpowerReroll } from './scripts/willpower-reroll.js'
+import { wod5eAPI } from './api/wod5e-api.js'
+// WOD5E Definitions
+import { Systems } from './def/systems.js'
+import { Attributes } from './def/attributes.js'
+import { Skills } from './def/skills.js'
+import { Features } from './def/features.js'
+import { ActorTypes } from './def/actortypes.js'
+import { ItemTypes } from './def/itemtypes.js'
+import { Disciplines } from './def/disciplines.js'
+import { Edges } from './def/edges.js'
+import { Renown } from './def/renown.js'
+import { WereForms } from './def/were-forms.js'
+import { Gifts } from './def/gifts.js'
 
-const OWNED_PERMISSION = 3
-
+// Anything that needs to be ran alongside the initialisation of the world
 Hooks.once('init', async function () {
   console.log('Initializing Schrecknet...')
 
-  loadSettings()
-
+  // Some basic info for the gamesystem
   game.wod5e = {
     ActorInfo,
     ItemInfo,
     rollItemMacro
   }
 
-  /**
-     * Set an initiative formula for the system
-     * @type {String}
-     */
-  CONFIG.Combat.initiative = {
-    formula: '1d20'
-  }
-
   // Define custom Entity classes
   CONFIG.Actor.documentClass = ActorInfo
   CONFIG.Item.documentClass = ItemInfo
+  CONFIG.ui.actors = WOD5EActorDirectory
+  CONFIG.Dice.terms.m = MortalDie
   CONFIG.Dice.terms.v = VampireDie
   CONFIG.Dice.terms.g = VampireHungerDie
   CONFIG.Dice.terms.h = HunterDie
@@ -63,126 +52,101 @@ Hooks.once('init', async function () {
   CONFIG.Dice.terms.w = WerewolfDie
   CONFIG.Dice.terms.r = WerewolfRageDie
 
-  // Register sheet application classes
+  // Register actor sheet application classes
   Actors.unregisterSheet('core', ActorSheet)
+  // Loop through each entry in the actorTypesList and register their sheet classes
+  const actorTypesList = ActorTypes.getList()
+  for (const entry of actorTypesList) {
+    const [, value] = Object.entries(entry)[0]
+    const { types, sheetClass } = value
 
-  Actors.registerSheet('vtm5e', MortalActorSheet, {
-    label: 'Mortal Sheet',
-    types: ['mortal'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', HunterActorSheet, {
-    label: 'Hunter Sheet',
-    types: ['hunter'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', VampireActorSheet, {
-    label: 'Vampire Sheet',
-    types: ['vampire'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', WerewolfActorSheet, {
-    label: 'Werewolf Sheet',
-    types: ['werewolf'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', GhoulActorSheet, {
-    label: 'Ghoul Sheet',
-    types: ['ghoul'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', CellActorSheet, {
-    label: 'Cell Sheet',
-    types: ['cell'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', CoterieActorSheet, {
-    label: 'Coterie Sheet',
-    types: ['coterie'],
-    makeDefault: true
-  })
-  Actors.registerSheet('vtm5e', SPCActorSheet, {
-    label: 'SPC Sheet',
-    types: ['spc'],
-    makeDefault: true
-  })
+    Actors.registerSheet('vtm5e', sheetClass, {
+      types,
+      makeDefault: true
+    })
+  }
+
+  // Register the WoDItemSheet class, used for all items
   Items.unregisterSheet('core', ItemSheet)
   Items.registerSheet('vtm5e', WoDItemSheet, {
-    label: 'Item Sheet',
     makeDefault: true
   })
 
+  // Make Handlebars templates accessible to the system
   preloadHandlebarsTemplates()
 
+  // Make helpers accessible to the system
   loadHelpers()
+
+  // Load settings into Foundry
+  loadSettings()
 })
 
+// Anything that needs to run once the world is ready
 Hooks.once('ready', async function () {
+  // After settings are loaded, check if we need to apply dark theme
+  document.body.classList.toggle('dark-theme', game.settings.get('vtm5e', 'darkTheme'))
+
+  // Apply the currently selected language as a CSS class so we can
+  // modify elements based on locale if needed
+  document.body.classList.add(game.settings.get('core', 'language'))
+
+  // Activate the API
+  window.WOD5E = {
+    api: {
+      Roll: wod5eAPI.Roll,
+      RollFromDataset: wod5eAPI.RollFromDataset,
+      getBasicDice: wod5eAPI.getBasicDice,
+      getAdvancedDice: wod5eAPI.getAdvancedDice,
+      getFlavorDescription: wod5eAPI.getFlavorDescription,
+      generateLabelAndLocalize: wod5eAPI.generateLabelAndLocalize,
+      migrateWorld
+    },
+    Systems,
+    Attributes,
+    Skills,
+    Features,
+    ActorTypes,
+    ItemTypes,
+    Disciplines,
+    Edges,
+    Renown,
+    Gifts,
+    WereForms
+  }
+
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on('hotbarDrop', (bar, data, slot) => createVampireMacro(data, slot))
+
+  // Migration functions
+  migrateWorld()
 })
 
+Hooks.once('setup', () => {
+  // Forced panning is intrinsically annoying: change default to false
+  game.settings.settings.get('core.chatBubblesPan').default = false
+
+  // Improve discoverability of map notes
+  game.settings.settings.get('core.notesDisplayToggle').default = true
+
+  // Set Hover by Owner as defaults for Default Token Configuration
+  const defaultTokenSettingsDefaults = game.settings.settings.get('core.defaultToken').default
+  defaultTokenSettingsDefaults.displayName = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
+  defaultTokenSettingsDefaults.displayBars = CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER
+
+  // Default token dispositions to neutral
+  defaultTokenSettingsDefaults.disposition = CONST.TOKEN_DISPOSITIONS.NEUTRAL
+})
+
+// DiceSoNice functionality
 Hooks.once('diceSoNiceReady', (dice3d) => {
   loadDiceSoNice(dice3d)
 })
 
-/* -------------------------------------------- */
-/*  Add chat dicebox                            */
-/* -------------------------------------------- */
-Hooks.on('renderSidebarTab', (app, html) => {
-  if (!game.settings.get('vtm5e', 'useChatRoller')) {
-    return
-  }
-
-  const $chatForm = html.find('#chat-form')
-  const template = 'systems/vtm5e/templates/ui/tray.html'
-  const ownedCharacters = Array.from(game.actors)
-    .filter((c) => c.permission === OWNED_PERMISSION)
-  const options = {
-    characters: ownedCharacters,
-    selectedCharacter: ownedCharacters[0],
-    pool1Type: 'abilities',
-    pool1: null,
-    pool2Type: 'skills',
-    pool2: null,
-    updateDiceTray: (options) => {
-      renderTemplate(template, options).then((c) => {
-        if (c.length > 0) {
-          const $content = $(c)
-          html.find('.dice-tray').remove()
-          $chatForm.after($content)
-
-          prepareSearchableSelection('selectedCharacter', $content, options, (event) => game.actors.get(event.target.value))
-
-          prepareSearchableSelection('pool1', $content, options, (event) => event.target.value)
-          options.pool1 = options.pool1 && $content.find(`#pool1 option[value=${options.pool1}]`).length > 0 ? options.pool1 : $content.find('#pool1 option').attr('value')
-          prepareSearchableSelection('pool2', $content, options, (event) => event.target.value)
-          options.pool2 = options.pool2 && $content.find(`#pool2 option[value=${options.pool2}]`).length > 0 ? options.pool2 : $content.find('#pool2 option').attr('value')
-
-          watchPool1Filters($content, options)
-          watchPool2Filters($content, options)
-
-          prepareCustomRollButton($content, options)
-
-          prepareRouseShortcut($content, options)
-          prepareWillpowerShortcut($content, options)
-          prepareFrenzyShortcut($content, options)
-          prepareHumanityShortcut($content, options)
-        }
-      })
-    }
-  }
-  options.updateDiceTray(options)
-})
-
-/* -------------------------------------------- */
-/*  Add willpower reroll                        */
-/* -------------------------------------------- */
-
-// Create context menu option on selection
-Hooks.on('getChatLogEntryContext', function (html, options) {
+// Display the willpower reroll option in the chat when messages are right clicked
+Hooks.on('getChatLogEntryContext', (html, options) => {
   options.push({
-    name: game.i18n.localize('WOD5E.WillpowerReroll'),
+    name: game.i18n.localize('WOD5E.Chat.WillpowerReroll'),
     icon: '<i class="fas fa-redo"></i>',
     condition: li => {
       // Only show this context menu if the person is GM or author of the message
@@ -191,107 +155,75 @@ Hooks.on('getChatLogEntryContext', function (html, options) {
       // Only show this context menu if there are re-rollable dice in the message
       const rerollableDice = li.find('.rerollable').length
 
-      // All must be true to show the reroll dialogue
-      return (game.user.isGM || message.isAuthor) && (rerollableDice > 0)
+      // Only show this context menu if there's not any already rerolled dice in the message
+      const rerolledDice = li.find('.rerolled').length
+
+      // All must be true to show the reroll dialog
+      return (game.user.isGM || message.isAuthor) && (rerollableDice > 0) && (rerolledDice === 0)
     },
     callback: li => willpowerReroll(li)
   })
 })
 
-Hooks.once('ready', function () {
-  migrateWorld()
+Hooks.on('renderSidebarTab', async (object, html) => {
+  if (object instanceof ActorDirectory) {
+    const groups = object.groups
+
+    groups.forEach(group => {
+      const groupElement = $(`[data-entry-id='${group.id}'`)
+      const groupMembers = group.system?.members
+
+      // Header element for the "folder."
+      const headerElement = `<header class='group-header flexrow'>
+        <h3 class='noborder'>
+          <i class='fas fa-folder-open fa-fw'></i>
+          ${group.name}
+        </h3>
+        <a class='create-button open-sheet' data-uuid='Actor.${group.id}'>
+          <i class="fas fa-user"></i>
+        </a>
+      </header>`
+      const subdirectoryElement = `<ol class='subdirectory'></ol>`
+
+      // Append the above elements to the group element and turn it into a folder
+      groupElement.attr('data-uuid', `Actor.${group.id}`)
+      groupElement.attr('class', 'directory-item group-item flexcol')
+      if (group.system?.collapsed) {
+        groupElement.addClass('collapsed')
+      }
+      groupElement.find('.entry-name, .thumbnail').remove()
+      groupElement.append(headerElement)
+      groupElement.append(subdirectoryElement)
+
+      // Add an event listener for toggling the group collapse
+      groupElement.find('.group-header').click(event => {
+        event.preventDefault()
+
+        const collapsed = !group.system.collapsed
+        
+        groupElement.toggleClass('collapsed')
+        group.update({ 'system.collapsed': collapsed})
+      })
+
+      // Add an event listener for opening the group sheet
+      groupElement.find('.open-sheet').click(event => {
+        event.preventDefault()
+        event.stopPropagation()
+  
+        game.actors.get(group.id).sheet.render(true)
+      })
+
+      // Move each group member's element to be a child of this group
+      groupMembers.forEach(actor => {
+        const actorId = fromUuidSync(actor).id
+        const actorElement = $(`[data-entry-id='${actorId}'`)
+        const groupListElement = $(`[data-entry-id='${group.id}'`).find('.subdirectory')[0]
+
+        actorElement.appendTo(groupListElement)
+      })
+    })
+  }
 })
-
-async function willpowerReroll (roll) {
-  // Variables
-  const dice = roll.find('.rerollable')
-  const diceRolls = []
-
-  // Go through the message's dice and add them to the diceRolls array
-  Object.keys(dice).forEach(function (i) {
-    // This for some reason returns "prevObject" and "length"
-    // Fixes will be attempted, but for now solved by just ensuring the index is a number
-    if (i > -1) {
-      diceRolls.push(`<div class="die">${dice[i].outerHTML}</div>`)
-    }
-  })
-
-  // Create dialog for rerolling dice
-  // HTML of the dialog
-  const template = `
-    <form>
-        <div class="window-content">
-            <label><b>Select dice to reroll (Max 3)</b></label>
-            <hr>
-            <span class="dice-tooltip">
-              <div class="dice-rolls flexrow willpower-reroll">
-                ${diceRolls.reverse().join('')}
-              </div>
-            </span>
-        </div>
-    </form>`
-
-  // Button defining
-  let buttons = {}
-  buttons = {
-    submit: {
-      icon: '<i class="fas fa-check"></i>',
-      label: 'Reroll',
-      callback: () => rerollDie(roll)
-    },
-    cancel: {
-      icon: '<i class="fas fa-times"></i>',
-      label: 'Cancel'
-    }
-  }
-
-  // Dialog object
-  new Dialog({
-    title: game.i18n.localize('WOD5E.WillpowerReroll'),
-    content: template,
-    buttons,
-    render: function () {
-      $('.willpower-reroll .die').on('click', dieSelect)
-    },
-    default: 'submit'
-  }).render(true)
-}
-
-// Handles selecting and de-selecting the die
-function dieSelect () {
-  // If the die isn't already selected and there aren't 3 already selected, add selected to the die
-  if (!($(this).hasClass('selected')) && ($('.willpower-reroll .selected').length < 3)) {
-    $(this).addClass('selected')
-  } else {
-    $(this).removeClass('selected')
-  }
-}
-
-// Handles rerolling the number of dice selected
-// TODO: Make this function duplicate/replace the previous roll with the new results
-// For now this works well enough as "roll three new dice"
-function rerollDie (roll) {
-  // Variables
-  const diceSelected = $('.willpower-reroll .selected').length
-
-  // Get the actor associated with the message
-  // Theoretically I should error-check this, but there shouldn't be any
-  // messages that call for a WillpowerReroll without an associated actor
-  const message = game.messages.get(roll.attr('data-message-id'))
-  const speaker = game.actors.get(message.speaker.actor)
-  const charactertype = getProperty(speaker, 'type', { strict: true })
-
-  // If there is at least 1 die selected and aren't any more than 3 die selected, reroll the total number of die and generate a new message.
-  if ((diceSelected > 0) && (diceSelected < 4)) {
-    if (charactertype === 'hunter') { // Hunter-specific dice
-      rollHunterDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, true)
-    } else if (charactertype === 'werewolf') { // Werewolf-specific dice
-      rollWerewolfDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, true)
-    } else { // Everything else
-      rollDice(diceSelected, speaker, game.i18n.localize('WOD5E.WillpowerReroll'), 0, 0, false, true)
-    }
-  }
-}
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */
@@ -305,6 +237,7 @@ function rerollDie (roll) {
  * @returns {Promise}
  */
 async function createVampireMacro (data, slot) {
+  console.log(data)
   if (data.type !== 'Item') return
   if (!('data' in data)) return ui.notifications.warn('You can only create macro buttons for owned Items')
   const item = data.system
@@ -341,4 +274,8 @@ function rollItemMacro (itemName) {
 
   // Trigger the item roll
   return item.roll()
+}
+
+async function updateGroup (group, sidebar) {
+
 }

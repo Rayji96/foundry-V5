@@ -1,0 +1,54 @@
+<form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} mortal-sheet" autocomplete="off">
+{{!-- Actor Type Banner --}}
+{{#if displayBanner}}
+<div class="sheet-banner">
+    <h1>{{localize "WOD5E.Mortal"}}</h1>
+</div>
+{{/if}}
+
+{{!-- Mortal Sheet Header --}}
+<header class="actor-header">
+    <div class="header-fields-top">
+        <div class="header-profile-img">
+            {{!-- Actor image and sheet lock toggle button --}}
+            {{> "systems/vtm5e/templates/actor/parts/profile-img.hbs"}}
+        </div>
+        <div class="header-rows-top">
+            <div class="header-row-2">
+                {{!-- Text input header fields --}}
+                <h1 class="charname"><input class="no-border" name="name" type="text" value="{{actor.name}}"
+                placeholder="{{localize 'WOD5E.Name'}}" /></h1>
+
+                {{> "systems/vtm5e/templates/actor/parts/exp.hbs"}}
+
+                {{> "systems/vtm5e/templates/actor/parts/health.hbs"}}
+
+                {{> "systems/vtm5e/templates/actor/parts/willpower.hbs"}}
+            </div>
+        </div>
+    </div>
+</header>
+
+{{!-- Mortal Sheet Tab Navigation --}}
+<nav class="sheet-tabs tabs" data-group="primary">
+    <div class="item" data-tab="stats">{{localize "WOD5E.Tabs.Stats"}}</div>
+    <div class="item" data-tab="features">{{localize "WOD5E.Tabs.Features"}}</div>
+    <div class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</div>
+    <div class="item" data-tab="other">{{localize "WOD5E.Tabs.Other"}}</div>
+</nav>
+
+{{!-- Mortal Sheet Body --}}
+<section class="sheet-body">
+    {{!-- Stats Tab --}}
+    {{> "systems/vtm5e/templates/actor/parts/stats.hbs"}}
+
+    {{!-- Owned Features Tab --}}
+    {{> "systems/vtm5e/templates/actor/parts/features.hbs"}}
+
+    {{!-- Biography Tab --}}
+    {{> "systems/vtm5e/templates/actor/parts/biography.hbs"}}
+
+    {{!-- Other Tab --}}
+    {{> "systems/vtm5e/templates/actor/parts/other.hbs"}}
+</section>
+</form>

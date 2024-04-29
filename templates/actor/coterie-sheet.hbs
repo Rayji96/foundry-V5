@@ -1,0 +1,50 @@
+<form class="{{cssClass}} flexcol{{#if locked}} locked{{/if}}" autocomplete="off">
+    {{!-- Actor Type Banner --}}
+    {{#if displayBanner}}
+    <div class="sheet-banner">
+      <h1>{{localize "WOD5E.VTM.Coterie"}}</h1>
+    </div>
+    {{/if}}
+
+    {{!-- Coterie Sheet Header --}}
+    <header class="actor-header">
+        <div class="header-fields-top">
+          <div class="header-profile-img">
+              {{!-- Actor image and sheet lock toggle button --}}
+              {{> "systems/vtm5e/templates/actor/parts/profile-img.hbs"}}
+          </div>
+          <div class="header-rows-top">
+              <div class="header-row-1">
+                  {{!-- Text input header fields --}}
+                  <h1 class="charname"><input class="no-border" name="name" type="text" value="{{actor.name}}"
+                    placeholder="{{localize 'WOD5E.Name'}}" /></h1>
+                    
+                  <h1 class="charname"><input class="no-border" name="system.headers.concept" type="text" value="{{actor.system.headers.concept}}"
+                    placeholder="{{localize 'WOD5E.Biography.Concept'}}" /></h1>
+                    
+                  <h1 class="charname"><input class="no-border" name="system.headers.chronicle" type="text" value="{{actor.system.headers.chronicle}}"
+                    placeholder="{{localize 'WOD5E.Biography.Chronicle'}}" /></h1>
+              </div>
+          </div>
+      </div>
+    </header>
+
+    {{!-- Coterie Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <div class="item" data-tab="features">{{localize "WOD5E.Tabs.Features"}}</div>
+        <div class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</div>
+        <div class="item" data-tab="other">{{localize "WOD5E.Tabs.Other"}}</div>
+    </nav>
+
+    {{!-- Coterie Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Shared Features Tab --}}
+        {{> "systems/vtm5e/templates/actor/parts/features.hbs"}}
+
+        {{!-- Biography Tab --}}
+        {{> "systems/vtm5e/templates/actor/parts/biography.hbs"}}
+
+        {{!-- Other Tab --}}
+        {{> "systems/vtm5e/templates/actor/parts/other.hbs"}}
+    </section>
+</form>

@@ -1,0 +1,189 @@
+{
+    "WOD5E": {
+        "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+        "Name": "Название",
+        "_Confirm": "",
+        "Close": "Отмена",
+        "_Save": "",
+        "_Submit": "",
+        "System": "Бросок",
+        "Edit": "Изменить",
+        "Delete": "Удалить",
+        "Level": "Уровень",
+        "Add": "Добавить",
+        "Cancel": "Отмена",
+        "Health": "Здоровье",
+        "Willpower": "Воля",
+        "Exp": "Опыт",
+        "None": "Нет",
+        "Value": "Значение",
+
+        "Mortal": "Смертный",
+        "_GroupSheet": "",
+
+        "Roll": {
+            "Label": "Бросить",
+            "_RollMode": "",
+            "_MortalDice": "",
+            "Success": "Успех",
+            "Successes": "Успехов",
+            "CriticalSuccess": "Триумф",
+            "Fail": "Провал",
+            "Modifier": "Модификатор",
+            "Difficulty": "Сложность",
+            "_SelectableModifiers": "",
+            "_Source": "",
+            "_Active": "",
+            "_CustomModifiers": "",
+            "_AddCustomModifier": ""
+        },
+
+        "Bonus": {
+            "_NewSpecialty": "",
+            "_AddNewSpecialty": "",
+            "_NewBonus": "",
+            "_AddNewBonus": "",
+            "_Active": "",
+            "_ActiveWhen": "",
+            "_Always": "",
+            "_Never": "",
+            "_IfEquals": "",
+            "_Path": "",
+            "_PathsSeparatedBySemicolons": "",
+            "_DisplayWhenInactive": "",
+            "_Unless": "",
+            "_PathToCheck": "",
+            "_ValueToCheck": ""
+        },
+
+        "SPC": {
+            "Label": "Персонаж Рассказчика",
+            "GeneralDifficulty": "Общая сложность",
+            "StandardDicePools": "Универсальные пулы",
+            "ExceptionalDicePools": "Профессиональные навыки",
+            "Physical": "Физическтй",
+            "Mental": "Ментальный",
+            "Social": "Социальный",
+            "AddSkill": "Добавить навык",
+            "SelectSkill": "Выбор навыка"
+        },
+
+        "Damage": {
+            "Superficial": "Лёгкий",
+            "Aggravated": "Тяжёлый",
+            "Stains": "Сомнения",
+            "Max": "Максимум"
+        },
+
+        "Tabs": {
+            "Stats": "Параметры",
+            "Features": "Преимущества",
+            "Description": "Описание",
+            "Equipment": "Снаряжение",
+            "Notes": "Заметки",
+            "Other": "Прочее"
+        },
+
+        "Attributes": {
+            "Label": "Характеристика",
+            "Attributes": "Характеристики",
+            "Strength": "Сила",
+            "Charisma": "Обаяние",
+            "Intelligence": "Интеллект",
+            "Dexterity": "Ловкость",
+            "Manipulation": "Манипуляция",
+            "Wits": "Смекалка",
+            "Stamina": "Выносливость",
+            "Composure": "Самообладание",
+            "Resolve": "Упорство"
+        },
+
+        "Skills": {
+            "Label": "Навык",
+            "Skills": "Навыки",
+            "Specialty": "Специализация",
+            "Specialties": "Специализации",
+            "Athletics": "Атлетика",
+            "AnimalKen": "Обращение с животными",
+            "Academics": "Гуманитарные науки",
+            "Brawl": "Драка",
+            "Etiquette": "Этикет",
+            "Awareness": "Наблюдательность",
+            "Craft": "Ремесло",
+            "Insight": "Проницательность",
+            "Finance": "Финансы",
+            "Drive": "Вождение",
+            "Intimidation": "Запугивание",
+            "Investigation": "Расследование",
+            "Firearms": "Стрельба",
+            "Leadership": "Лидерство",
+            "Medicine": "Медицина",
+            "Melee": "Фехтование",
+            "Performance": "Исполнение",
+            "Occult": "Оккультизм",
+            "Larceny": "Воровство",
+            "Persuasion": "Убеждение",
+            "Politics": "Политика",
+            "Stealth": "Скрытность",
+            "Streetwise": "Уличное чутьё",
+            "Science": "Естественные науки",
+            "Survival": "Выживание",
+            "Subterfuge": "Хитрость",
+            "Technology": "Техника"
+        },
+
+        "Items": {
+            "_Label": "",
+            "ShowToChat": "Вывести в чат",
+            "CustomRoll": "Уникальная проверка",
+            "CustomRolls": "Уникальные проверки",
+            "Merit": "Достоинства",
+            "_Cost": "",
+            "Flaw": "Недостатки",
+            "_Bonuses": "",
+            "Background": "Факты биографии",
+            "Points": "Точки",
+            "UseSkill": "Использовать навыки",
+            "Rollable": "Требует броска",
+            "Feature": "Преимущества",
+            "FeatureType": "Тип преимущества",
+            "Type": "Тип",
+            "_NewSpecialty": "",
+            "Boon": "Долг",
+            "Boons": "Долги",
+            "_Macro": ""
+        },
+
+        "Biography": {
+            "Label": "Биография",
+            "Concept": "Концепция",
+            "Chronicle": "Хроника",
+            "Ambition": "Цель",
+            "Desire": "Прихоть",
+            "ChronicleTenets": "Тема хроники",
+            "TouchstonesAndConvictions": "Опоры и принципы",
+            "Appearance": "Внешность",
+            "History": "История"
+        },
+
+        "DiceRoller": {
+            "AttributeShortLabel": "Х",
+            "SkillShortLabel": "Н",
+            "DisciplineShortLabel": "Д",
+            "NothingShortLabel": "⊘",
+            "SelectAbility": "Выбор Характеристики"
+        },
+
+        "Chat": {
+            "RollingWillpower": "Бросок Воли",
+            "Rolling": "Бросок",
+            "_RollWillpower": "",
+            "WillpowerReroll": "Переброс за Волю",
+            "_WillpowerFullTitle": "",
+            "WillpowerFull": "Воля исчерпана, нельзя нанести больше урона Воле.",
+            "_WillpowerDamage": "",
+            "_HasReceivedWillpowerDamage": "{actor} {willpowerDamage}"
+        }
+    }
+}

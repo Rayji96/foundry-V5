@@ -1,0 +1,85 @@
+{
+  "WOD5E": {
+    "WTA": {
+      "Label": "Werewolf",
+
+      "WerewolfDice": "Werewolf Dice",
+      "RageDice": "Rage Dice",
+
+      "GiftsandRites": "Gifts & Rites",
+      "Rage": "Rage",
+      "RageCost": "Rage Cost",
+      "WillpowerCost": "Willpower Cost",
+      "PossibleRageFailure": "Possible Brutal Outcome",
+      "RollRageDamageWillpower": "Roll Rage, Damage Willpower",
+      "HasCost": "Has Cost",
+
+      "Gift": "Gift",
+      "SelectGift": "Select Gift",
+      "GiftType": "Gift Type",
+      "AddGift": "Add Gift",
+      "NewGift": "New Gift",
+      "AddRite": "Add Rite",
+      "NewRite": "New Rite",
+
+      "TheWolf": "The Wolf",
+      "Tribe": "Tribe",
+      "Auspice": "Auspice",
+
+      "Harano": "Harano",
+      "HaranoTest": "Harano Test",
+      "Hauglosk": "Hauglosk",
+      "HaugloskTest": "Hauglosk Test",
+
+      "Frenzy": "Frenzy",
+      "EnterFrenzy": "Enter Frenzy",
+      "EndFrenzy": "End Frenzy",
+      "FrenzyActiveWarning": "Frenzy is active.",
+      "Active": "Active",
+      "FrenzyActiveWarning2": "You cannot use gifts or rites while in a frenzy.",
+      "LostWolfFormChange": "Lost the Wolf: You cannot shift into supernatural forms right now.",
+
+      "Renown": "Renown",
+      "AddRenown": "Add Renown",
+      "Wisdom": "Wisdom",
+      "Glory": "Glory",
+      "Honor": "Honor",
+
+      "FormsOfGarou": "Forms of the Garou",
+      "HomidName": "Homid",
+      "HomidTitle": "The Human",
+      "GlabroName": "Glabro",
+      "GlabroTitle": "The Near-Human",
+      "CrinosName": "Crinos",
+      "CrinosTitle": "The War-Form, The Monster",
+      "HispoName": "Hispo",
+      "HispoTitle": "The Dire Wolf",
+      "LupusName": "Lupus",
+      "LupusTitle": "The Wolf",
+      "PostFormToChat": "Chat",
+
+      "Patron": "Patron Spirit",
+      "Favor": "Favor",
+      "Ban": "Ban",
+
+      "Native": "Native",
+      "Ragabash": "Ragabash",
+      "Theurge": "Theurge",
+      "Philodox": "Philodox",
+      "Galliard": "Galliard",
+      "Ahroun": "Ahroun",
+      "BlackFury": "Black Fury",
+      "BoneGnawer": "Bone Gnawer",
+      "ChildrenOfGaia": "Children of Gaia",
+      "Galestalker": "Galestalker",
+      "GhostCouncil": "Ghost Council",
+      "GlassWalker": "Glass Walker",
+      "HartWarden": "Hart Warden",
+      "RedTalon": "Red Talon",
+      "ShadowLord": "Shadow Lord",
+      "SilentStrider": "Silent Strider",
+      "SilverFang": "Silver fang",
+      "Rite": "Rite"
+    }
+  }
+}

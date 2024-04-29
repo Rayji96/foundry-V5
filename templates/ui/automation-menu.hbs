@@ -1,0 +1,56 @@
+<form autocomplete="off" class="wod5e-config-form">
+  <div class="config-category">
+    <h2>World of Darkness</h2>
+    <div class="subcategory">
+      <div class="form-group">
+        <label>Disable All Automation</label>
+        <div class="form-fields">
+          <input type="checkbox" data-id="disableAutomation" data-dtype="Boolean"{{#if disableAutomation}} checked{{/if}}>
+        </div>
+        <p class="notes">Disables all automation without having to individually press all the below buttons.</p>
+      </div>
+    </div>
+
+    {{#unless disableAutomation}}
+      <div class="subcategory">
+        <div class="form-group">
+          <label>Automate Willpower</label>
+          <div class="form-fields">
+            <input type="checkbox" data-id="automatedWillpower" data-dtype="Boolean"{{#if automatedWillpower}} checked{{/if}}>
+          </div>
+          <p class="notes">If enabled, using features that deal Willpower damage will automatically tick Willpower damage on the associated actor.</p>
+        </div>
+      </div>
+
+      <h2>Vampire the Masquerade</h2>
+      <div class="subcategory">
+        <div class="form-group">
+          <label>Automate Hunger</label>
+          <div class="form-fields">
+            <input type="checkbox" data-id="automatedHunger" data-dtype="Boolean"{{#if automatedHunger}} checked{{/if}}>
+          </div>
+          <p class="notes">If enabled, rolling Hunger Dice and failing will automatically increase the Hunger of the associated actor.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Automate Oblivion</label>
+        <div class="form-fields">
+          <input type="checkbox" data-id="automatedOblivion" data-dtype="Boolean"{{#if automatedOblivion}} checked{{/if}}>
+        </div>
+        <p class="notes">If enabled, rolling 1 or 10 on rouse checks on Oblivion discipline powers will grant a stain on the humanity of the associated actor.</p>
+      </div>
+
+      <h2>Werewolf the Apocalypse</h2>
+      <div class="subcategory">
+        <div class="form-group">
+          <label>Automate Rage</label>
+          <div class="form-fields">
+            <input type="checkbox" data-id="automatedRage" data-dtype="Boolean"{{#if automatedRage}} checked{{/if}}>
+          </div>
+          <p class="notes">If enabled, rolling Rage Dice and failing will automatically decrease Rage from the associated actor.</p>
+        </div>
+      </div>
+    {{/unless}}
+  </div>
+</form>

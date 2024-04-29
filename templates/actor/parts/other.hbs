@@ -1,0 +1,20 @@
+<div class="tab other" data-group="primary" data-tab="other">
+    <div class="resource flexrow grid grid-2col" style="min-height: 264px;"> 
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.Tabs.Notes"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedNotes target="system.notes" button=true editable=editable}}
+            </div>
+        </div>
+        <div class="flex-group-left">
+            <div class="flex-center">
+                <label class="resource-label">{{localize "WOD5E.Tabs.Equipment"}}</label>
+            </div>
+            <div class="description-content">
+                {{editor enrichedEquipment target="system.equipment" button=true editable=editable}}
+            </div>
+        </div>
+    </div>
+</div>

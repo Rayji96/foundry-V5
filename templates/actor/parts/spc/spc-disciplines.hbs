@@ -1,0 +1,32 @@
+<div class="tab flex-center" data-group="primary">
+    <label class="resource-label">{{localize "WOD5E.VTM.Disciplines"}}</label>
+      <div class="item-controls">
+        <a class="item-control discipline-create" title="{{localize 'WOD5E.VTM.AddDiscipline'}}">
+            <i class="fas fa-plus"></i>
+            {{localize "WOD5E.VTM.AddDiscipline"}}
+        </a>
+      </div>
+    <ol class="items-list">
+        <!-- Iterate through each of the discipline lists -->
+        {{#each actor.system.disciplines as |discipline key|}}
+            {{#if discipline.visible}}
+                <li class="flexrow item-header">
+                    <label for="{{discipline.name}}" class="resource-label rollable" data-use-absolute-value="true"
+                      data-absolute-value="{{discipline.value}}" data-label="{{localize discipline.name}}">{{localize discipline.name}} 
+                    </label>
+                    <div class="resource-value">
+                        <input type="number" name="system.disciplines.{{key}}.value" 
+                        value="{{discipline.value}}" data-name="system.disciplines.{{key}}.value" />
+                    </div>
+                    <!-- Item controls for Discipline sections -->
+                    <div class="item-controls">
+                        <!-- Icon to delete the discipline (as long as it doesn't have any powers) -->
+                        <a class="item-control discipline-delete" title="{{localize 'WOD5E.Delete'}}" data-discipline="{{key}}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+                </li>
+            {{/if}}
+        {{/each}}
+    </ol>
+</div>

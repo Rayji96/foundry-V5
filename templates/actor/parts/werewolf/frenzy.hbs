@@ -1,0 +1,10 @@
+<div class="resource flex-group-center frenzy">
+    <label for="placeholder" class="resource-label">{{localize "WOD5E.WTA.Frenzy"}}</label>
+    <div class="resource-content flexrow flex-center flex-between">
+        {{#if actor.system.frenzyActive}}
+            <button class="werewolf-button end-frenzy" type="button" name="endfrenzy">{{localize "WOD5E.WTA.EndFrenzy"}}</button>
+        {{else}}
+            <button class="werewolf-button begin-frenzy" type="button" name="beginfrenzy">{{localize "WOD5E.WTA.EnterFrenzy"}}</button>
+        {{/if}}
+    </div>
+</div>

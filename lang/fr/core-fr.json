@@ -1,0 +1,189 @@
+{
+  "WOD5E": {
+    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+    "Name": "Nom",
+    "Confirm": "Confirmer",
+    "Close": "Fermer",
+    "Save": "Enregistrer",
+    "Submit": "Valider",
+    "System": "Système",
+    "Edit": "Éditer",
+    "Delete": "Supprimer",
+    "Level": "Niveau",
+    "Add": "Ajouter",
+    "Cancel": "Annuler",
+    "Health": "Santé",
+    "Willpower": "Volonté",
+    "Exp": "Exp",
+    "None": "Aucun",
+    "Value": "Valeur",
+    
+    "Mortal": "Mortel",
+    "_GroupSheet": "",
+
+    "Roll": {
+      "Label": "Jet",
+      "RollMode": "Type de jet",
+      "MortalDice": "Dé mortel",
+      "Success": "Succès",
+      "Successes": "Succès",
+      "CriticalSuccess": "Succès Critique",
+      "Fail": "Échouer",
+      "Modifier": "Modificateur",
+      "Difficulty": "Difficulté",
+      "SelectableModifiers": "Modificateur sélectionnable",
+      "Source": "Source",
+      "Active": "Actif",
+      "CustomModifiers": "Modificateur personnalisé",
+      "AddCustomModifier":"Ajouter un modificateur perso."
+    },
+
+    "Bonus": {
+        "_NewSpecialty": "",
+        "_AddNewSpecialty": "",
+        "_NewBonus": "",
+        "_AddNewBonus": "",
+        "_Active": "",
+        "_ActiveWhen": "",
+        "_Always": "",
+        "_Never": "",
+        "_IfEquals": "",
+        "_Path": "",
+        "_PathsSeparatedBySemicolons": "",
+        "_DisplayWhenInactive": "",
+        "_Unless": "",
+        "_PathToCheck": "",
+        "_ValueToCheck": ""
+    },
+
+    "SPC": {
+      "Label": "Personnage d'histoire",
+      "GeneralDifficulty": "Difficulté générale",
+      "StandardDicePools": "Piscines de dés standard",
+      "ExceptionalDicePools": "Piscines de dés exceptionnelles",
+      "Physical": "Physique",
+      "Mental": "Mental",
+      "Social": "Social",
+      "AddSkill": "Ajouter des compétences",
+      "SelectSkill": "Sélectionnez les compétences"
+    },
+
+    "Damage": {
+      "Superficial": "Superficiel",
+      "Aggravated": "Aggravé",
+      "Stains": "Flétr.",
+      "Max": "Max"
+    },
+
+    "Tabs": {
+      "Stats": "Stats",
+      "Features": "Atouts",
+      "Description": "Description",
+      "Equipment": "Équipement",
+      "Notes": "Notes",
+      "Other": "Autre"
+    },
+
+    "Attributes": {
+      "Label": "Attribut",
+      "Attributes": "Attributs",
+      "Strength": "Force",
+      "Charisma": "Charisme",
+      "Intelligence": "Intelligence",
+      "Dexterity": "Dextérité",
+      "Manipulation": "Manipulation",
+      "Wits": "Astuce",
+      "Stamina": "Vigueur",
+      "Composure": "Sang-froid",
+      "Resolve": "Résolution"
+    },
+
+    "Skills": {
+      "Label": "Compétence",
+      "Skills": "Compétences",
+      "Specialty": "Spécialité",
+      "Specialties": "Spécialités",
+      "Athletics": "Athlétisme",
+      "AnimalKen": "Animaux",
+      "Academics": "Érudition",
+      "Brawl": "Bagarre",
+      "Etiquette": "Étiquette",
+      "Awareness": "Vigilance",
+      "Craft": "Artisanat",
+      "Insight": "Empathie",
+      "Finance": "Finances",
+      "Drive": "Conduite",
+      "Intimidation": "Intimidation",
+      "Investigation": "Investigation",
+      "Firearms": "Armes à feu",
+      "Leadership": "Commandement",
+      "Medicine": "Médecine",
+      "Melee": "Mêlée",
+      "Performance": "Représentation",
+      "Occult": "Occultisme",
+      "Larceny": "Larcin",
+      "Persuasion": "Persuasion",
+      "Politics": "Politique",
+      "Stealth": "Furtivité",
+      "Streetwise": "Expérience de la rue",
+      "Science": "Sciences",
+      "Survival": "Survie",
+      "Subterfuge": "Subterfuge",
+      "Technology": "Technologie"
+    },
+
+    "Items": {
+      "Label": "Objets",
+      "ShowToChat": "Afficher pour discuter",
+      "CustomRoll": "Jet Personnalisé",
+      "CustomRolls": "Jets Personnalisés",
+      "Merit": "Avantage",
+      "Cost": "Coût",
+      "Flaw": "Handicap",
+      "Bonuses": "Bonus",
+      "Background": "Historique",
+      "Points": "Points",
+      "UseSkill": "Utiliser des Compétences",
+      "Rollable": "Jet de dés",
+      "Feature": "Atout",
+      "FeatureType": "Type d'Atout",
+      "Type": "Type",
+      "NewSpecialty": "Nouvelle Spécialité",
+      "Boon": "Dette",
+      "Boons": "Dettes",
+      "Macro": "Macro"
+    },
+
+    "Biography": {
+      "Label": "Biographie",
+      "Concept": "Concept",
+      "Chronicle": "Chronique",
+      "Ambition": "Ambition",
+      "Desire": "Désir",
+      "ChronicleTenets": "Principes de la Chronique",
+      "TouchstonesAndConvictions": "Attaches et Convictions",
+      "Appearance": "Apparence",
+      "History": "Histoire"
+    },
+
+    "DiceRoller": {
+      "AttributeShortLabel": "A",
+      "SkillShortLabel": "C",
+      "DisciplineShortLabel": "D",
+      "NothingShortLabel": "⊘",
+      "SelectAbility": "Selectionner un attribut"
+    },
+
+    "Chat": {
+      "RollingWillpower": "Jet de Volonté",
+      "Rolling": "Jet",
+      "RollWillpower": "Test la volonté",
+      "WillpowerReroll": "Relance du test de Volonté",
+      "WillpowerFullTitle": "Compteur de volonté au max",
+      "WillpowerFull": "La volonté est entièrement endommagée, impossible de l'endommager davantage.",
+      "WillpowerDamage": "Dégâts de volonté",
+      "HasReceivedWillpowerDamage": "{actor} a reçu {willpowerDamage} dégâts de volonté."
+    }
+  }
+}

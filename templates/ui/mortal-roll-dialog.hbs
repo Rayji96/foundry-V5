@@ -1,0 +1,18 @@
+<form class="dialog-contents">
+  <div class="dice-group-header flex-group-center">
+    <label>{{localize 'WOD5E.Roll.MortalDice' }}</label>
+  </div>
+  <div class="base-dice-group flex-group-center">
+    <div class="basic-dice">
+      <div class="dice-input">
+        <img width="50" height="50" src="/systems/vtm5e/assets/icons/dialog/mortal-dice.png"/>
+        <div class="flexrow">
+          <i class="fas fa-minus dialog-control dialog-minus" data-resource="inputBasicDice" data-action="minus"></i>
+          <input type="text" id="inputBasicDice" value="{{basicDice}}">
+          <i class="fas fa-plus dialog-control dialog-plus" data-resource="inputBasicDice" data-action="plus"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{> "systems/vtm5e/templates/ui/parts/roll-dialog-base.hbs"}}
+</form>

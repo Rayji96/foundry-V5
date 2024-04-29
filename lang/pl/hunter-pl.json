@@ -1,0 +1,41 @@
+{
+  "WOD5E": {
+    "HTR": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+      "Label": "Łowca",
+      "_HunterDice": "",
+      "DesperationDice": "Kostki Desperacji",
+      "Despair": "Rozpacz",
+      "Creed": "Kredo",
+      "CreedFields": "Pula Kredo",
+      "Cell": "Komórka",
+      "Redemption": "Odkupienie",
+      "_Edge": "",
+      "Edges": "Przewagi",
+      "_EdgeType": "",
+      "AddEdge": "Dodaj Przewagę",
+      "SelectEdge": "Wybierz Przewagę",
+      "AddPerk": "Dodaj Perk",
+      "Desperation": "Desperacja",
+      "Danger": "Zagrożenie",
+      "DesperationSuccess": "Przesadny lub rozpaczliwy sukces",
+      "PossibleDesperationFailure": "Możliwa przesadna lub rozpaczliwa porażka",
+      "DespairFailure": "Rozpaczliwa porażka",
+      "DesperationUnavailable": "W stanie Rozpaczy nie można używać Desperacji",
+      "Drive": "Prowadzenie pojazdów",
+      "Arsenal": "Arsenał",
+      "Fleet": "Flota",
+      "Ordnance": "Środki bojowe",
+      "Library": "Biblioteka",
+      "ImprovisedGear": "Sprzęt improwizowany",
+      "GlobalAccess": "Globalny dostęp",
+      "DroneJockey": "Dronowy dżokej",
+      "BeastWhisperer": "Zaklinacz Bestii",
+      "SenseTheUnnatural": "Wyczucie nienaturalnego",
+      "RepelTheUnnatural": "Odparcie nienaturalnego",
+      "ThwartTheUnnatural": "Udaremnij nienaturalne",
+      "Artifact": "Artefakt"
+    }
+  }
+}

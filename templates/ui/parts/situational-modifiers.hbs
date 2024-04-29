@@ -1,0 +1,29 @@
+
+  <div class="flex-group-center situational-modifiers">
+    {{#if situationalModifiers}}
+      <h3 class="list-title">{{localize 'WOD5E.Roll.SelectableModifiers'}}</h3>
+      <div class="form-group mod-header">
+        <div>{{localize 'WOD5E.Roll.Source'}}</div>
+        <div>{{localize 'WOD5E.Value'}}</div>
+        <div>{{localize 'WOD5E.Bonus.Active'}}</div>
+      </div>
+      {{#each situationalModifiers as |mod key|}}
+        <div class="form-group modifier">
+          <div class="mod-label">{{localize mod.source}}</div>
+          <div class="mod-value">{{mod.value}}</div>
+          <div class="mod-active">
+            <input type="checkbox" class="mod-checkbox" data-value="{{mod.value}}" data-label="{{localize mod.source}}" {{#if mod.isActive}}checked{{/if}}>
+          </div>
+        </div>
+      {{/each}}
+    {{/if}}
+    <h3 class="list-title">{{localize 'WOD5E.Roll.CustomModifiers'}}</h3>
+    <div class="form-group mod-header">
+      <div>{{localize 'WOD5E.Roll.Source'}}</div>
+      <div>{{localize 'WOD5E.Value'}}</div>
+    </div>
+    <div class="form-group custom-modifiers">
+      <div id="custom-modifiers-list"></div>
+    </div>
+    <a class="add-custom-mod">{{localize 'WOD5E.Roll.AddCustomModifier'}}</a>
+  </div>
