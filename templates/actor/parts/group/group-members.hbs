@@ -1,0 +1,66 @@
+<div class="tab members" data-group="primary" data-tab="members">
+  {{#each groupMembers as |actor id|}}
+    <div class="flexcol group-member">
+      <div class="flexrow">
+        <div class="actor-image">
+          <img src="{{actor.img}}" title="{{actor.name}}" width="50" height="50"
+            alt="{{actor.name}}" />
+        </div>
+        <div class="flexcol">
+          <div class="flexrow">
+            <div class="actor-name">
+              {{actor.name}}
+            </div>
+            <div class="sup-item type">{{actor.type}}</div>
+            <div class="sup-item">
+              <a class="open-sheet" data-id="{{id}}">
+                <i class="fas fa-user"></i>
+              </a>
+            </div>
+          </div>
+          <div class="flexrow">
+              {{#ifeq actor.type 'vampire'}}
+                <div class="sub-item">
+                    <div class="sub-item-name">Hunger</div>
+                    <div class="vampire-member-resource resource-content flexrow flex-center flex-between">
+                        <div class="resource-value" data-value="{{actor.system.hunger.value}}" data-name="system.hunger.value">
+                            <span class="resource-value-empty member-hunger" data-actor-id="{{actor.id}}"></span>
+                            {{#numLoop 5}}
+                            <span class="resource-value-step member-hunger" data-index="{{this}}" data-actor-id="{{actor.id}}"></span>
+                            {{/numLoop}}
+                        </div>
+                    </div>
+                </div>
+              {{/ifeq}}
+
+              {{#ifeq actor.type 'werewolf'}}
+                <div class="sub-item">
+                    <div class="sub-item-name">Rage</div>
+                    <div class="werewolf-member-resource resource-content flexrow flex-center flex-between">
+                        <div class="resource-value" data-value="{{actor.system.rage.value}}" data-name="system.rage.value">
+                            <span class="resource-value-empty member-rage" data-actor-id="{{actor.id}}"></span>
+                            {{#numLoop 5}}
+                            <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{actor.id}}"></span>
+                            {{/numLoop}}
+                        </div>
+                    </div>
+                </div>
+              {{/ifeq}}
+          </div>
+        </div>
+      </div>
+      <!-- Not sure if I want to keep this, maybe limit it to storyteller view
+      <li class="actor flexcol collapsible-container" data-actor-id="{{actor._id}}">
+          <div class="flexrow">
+              <div class="flexrow collapsible">
+                  <h4>Actor Biography</h4>
+              </div>
+          </div>
+          <div class="collapsible-content">
+              {{{enrichHTML actor.system.biography}}}
+          </div>
+      </li>
+      -->
+    </div>
+  {{/each}}
+</div>

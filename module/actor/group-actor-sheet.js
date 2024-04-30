@@ -11,17 +11,16 @@ export class GroupActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
-    const classList = ['wod5e', 'sheet', 'actor']
+    const classList = ['wod5e', 'sheet', 'actor', 'group', 'group-sheet']
 
     return mergeObject(super.defaultOptions, {
       classes: classList,
-      template: 'systems/vtm5e/templates/actor/group-sheet.hbs',
-      width: 650,
-      height: 600,
+      width: 700,
+      height: 700,
       tabs: [{
         navSelector: '.sheet-tabs',
         contentSelector: '.sheet-body',
-        initial: 'features'
+        initial: 'members'
       }],
       dragDrop: [{
         dragSelector: '.entity.actor',
@@ -41,17 +40,21 @@ export class GroupActorSheet extends WoDActor {
     if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.hbs'
 
     // Switch-case for the sheet type to determine which template to display
+    // Includes initialization for the CSS classes
     switch (this.actor.system.groupType) {
       case 'cell':
+        this.options.classes.push(...['hunter-sheet'])
         return 'systems/vtm5e/templates/actor/cell-sheet.hbs'
         break
 
       case 'coterie':
+        this.options.classes.push(...['coterie-sheet'])
         return 'systems/vtm5e/templates/actor/coterie-sheet.hbs'
         break
 
       default:
         console.log('Oops! Something broke...')
+        this.options.classes.push(...['coterie-sheet'])
         return 'systems/vtm5e/templates/actor/coterie-sheet.hbs'
     }
   }
@@ -80,18 +83,24 @@ export class GroupActorSheet extends WoDActor {
     // Top-level variables
     const data = await super.getData()
     const actor = this.actor
-    const actorElement = this.element
 
     // Prepare items.
-    if (actor.type === 'group') {
-      this._prepareItems(data)
-    }
+    this._prepareItems(data)
 
     // Show boons on the sheet
     data.hasBoons = this.hasBoons
 
-    // Define data types
-    data.dtypes = ['String', 'Number', 'Boolean']
+    // Make a list of group members
+    data.groupMembers = []
+
+    // Push each group member's data to the groupMembers list
+    actor.system.members.forEach(actorID => {
+      const actor = fromUuidSync(actorID)
+      data.groupMembers.push(actor)
+    })
+
+    // Apply new CSS classes to the sheet, if necessary
+    this._applyClasses()
 
     return data
   }
@@ -102,10 +111,6 @@ export class GroupActorSheet extends WoDActor {
   activateListeners (html) {
     // Activate listeners
     super.activateListeners(html)
-
-    if (this.actor.system.groupType === 'cell') {
-      $(html[0].offsetParent).addClass('hunter-sheet')
-    }
   }
 
   // Add a new actor to the active players list
@@ -153,6 +158,36 @@ export class GroupActorSheet extends WoDActor {
 
       default:
         console.log('Error! Something broke...')
+    }
+  }
+
+  // Function to open an actor sheet
+  _openActorSheet (event) {
+
+  }
+
+  // Called to re-apply the CSS classes if the sheet type is changed
+  _applyClasses () {
+    // Grab the default list of sheet classes
+    const classList = this.options.classes
+    const sheetElement = $(this.document._sheet.element)
+
+    // Add a new sheet class depending on the type of sheet
+    switch (this.actor.system.groupType) {
+      case 'cell':
+        sheetElement.removeClass('coterie-sheet')
+        sheetElement.addClass('hunter-sheet')
+        break
+
+      case 'coterie':
+        sheetElement.removeClass('hunter-sheet')
+        sheetElement.addClass('coterie-sheet')
+        break
+
+      default:
+        console.log('Oops! Something broke...')
+        sheetElement.removeClass('hunter-sheet')
+        sheetElement.addClass('coterie-sheet')
     }
   }
 }

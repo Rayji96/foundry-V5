@@ -74,6 +74,7 @@
         },
 
         "Tabs": {
+            "Members": "Members",
             "Stats": "Stats",
             "Features": "Features",
             "Description": "Description",

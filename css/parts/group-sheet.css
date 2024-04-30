@@ -1,0 +1,53 @@
+.group-header.coterie {
+  background-color: rgba(121, 8, 19, 0.8) !important;
+}
+
+.group-header.cell {
+  background-color: rgba(204, 109, 40, 0.8) !important;
+}
+
+.group-sheet .group-type-field {
+  margin-bottom: 0;
+}
+
+.group-sheet .group-type-selector {
+  height: 40px;
+  cursor: pointer;
+}
+
+.group-sheet .members .group-member {
+  padding: 5px 0;
+}
+
+.group-sheet .members .group-member .actor-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.group-sheet .members .group-member .actor-image {
+  max-width: 60px;
+}
+
+.group-sheet .members .group-member .actor-image img {
+  margin: 0px 3px 0px 3px;
+}
+
+.group-sheet .members .group-member .sub-item {
+  flex-grow: 0;
+  display: contents;
+}
+
+.group-sheet .members .group-member .sup-item {
+  flex-grow: 0;
+  display: flex;
+}
+
+.group-sheet .members .group-member .sup-item.type {
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.group-sheet .members .group-member .sub-item .sub-item-name {
+  padding: 0 5px;
+  font-weight: bold;
+}

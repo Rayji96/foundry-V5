@@ -96,9 +96,11 @@ export class ActorInfo extends Actor {
 
   async _onUpdate (data, options, user) {
     await super._onUpdate(data, options, user)
-
     const actor = game.actors.get(data._id)
     let isPlayerCharacter = false
+
+    // Only run through this for the storyteller
+    if (!game.user.isGM) return
 
     if (data?.ownership) {
       const players = game.users.players

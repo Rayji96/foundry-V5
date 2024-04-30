@@ -9,6 +9,8 @@
 @import url("./parts/dialog.css");
 @import url("./parts/chat.css");
 @import url("./parts/locked.css");
+@import url("./parts/menus.css");
+@import url("./parts/group-sheet.css");
 @import url("./themes/dark-theme.css");
 @import url("./splats/vampire-styling.css");
 @import url("./splats/hunter-styling.css");

@@ -167,14 +167,19 @@ Hooks.on('getChatLogEntryContext', (html, options) => {
 
 Hooks.on('renderSidebarTab', async (object, html) => {
   if (object instanceof ActorDirectory) {
+    // Define the list of groups we're going to be modifying
     const groups = object.groups
 
+    // Define the directory list so that we can modify its structure
+    const directoryList = html.find('.directory-list')
+
+    // Iterate through each group and make a "folder-like" element out of them
     groups.forEach(group => {
       const groupElement = $(`[data-entry-id='${group.id}'`)
       const groupMembers = group.system?.members
 
-      // Header element for the "folder."
-      const headerElement = `<header class='group-header flexrow'>
+      // Header element for the "folder"
+      const headerElement = `<header class='group-header ${group.system.groupType} flexrow'>
         <h3 class='noborder'>
           <i class='fas fa-folder-open fa-fw'></i>
           ${group.name}
@@ -221,6 +226,11 @@ Hooks.on('renderSidebarTab', async (object, html) => {
 
         actorElement.appendTo(groupListElement)
       })
+
+      // If Ownership Viewer is enabled, crop out the symbol because it gets placed weirdly
+      groupElement.find('.ownership-viewer').remove()
+
+      groupElement.prependTo(directoryList)
     })
   }
 })
