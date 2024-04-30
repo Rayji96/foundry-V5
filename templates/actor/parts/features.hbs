@@ -17,7 +17,7 @@
                     </div>
                     <h4 class="item-name">{{item.name}}</h4>
                 </div>
-                {{#if (ne key "background")}}
+                {{#if (eq key "boon")}}
                 <div class="resource-value-static" data-value="{{item.system.points}}" data-name="items.{{item._id}}">
                     {{#numLoop 5}}
                     <span class="resource-value-static-step" data-index="{{this}}"></span>

@@ -27,7 +27,7 @@
             "Success": "Success",
             "Successes": "Successes",
             "CriticalSuccess": "Critical Success",
-            "Fail": "Fail",
+            "Fail": "Failure",
             "Modifier": "Modifier",
             "Difficulty": "Difficulty",
             "Source": "Source",
