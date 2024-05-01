@@ -17,20 +17,12 @@
                     </div>
                     <h4 class="item-name">{{item.name}}</h4>
                 </div>
-                {{#if (ne key "background")}}
-                <div class="resource-value-static" data-value="{{item.system.points}}" data-name="items.{{item._id}}">
-                    {{#numLoop 5}}
-                    <span class="resource-value-static-step" data-index="{{this}}"></span>
-                    {{/numLoop}}
-                </div>
-                {{else}}
                 <div class="resource-value" data-value="{{item.system.points}}" data-name="items.{{item._id}}">
                     <span class="resource-value-empty"></span>
                     {{#numLoop 5}}
                     <span class="resource-value-step" data-index="{{this}}"></span>
                     {{/numLoop}}
                 </div>
-                {{/if}}
                 <div class="item-controls">
                     <a class="item-control item-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}"><i
                         class="fas fa-comment-alt"></i></a>
