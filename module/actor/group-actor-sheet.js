@@ -37,8 +37,6 @@ export class GroupActorSheet extends WoDActor {
 
   /** @override */
   get template () {
-    if (!game.user.isGM && this.actor.limited) return 'systems/vtm5e/templates/actor/limited-sheet.hbs'
-
     // Switch-case for the sheet type to determine which template to display
     // Includes initialization for the CSS classes
     switch (this.actor.system.groupType) {
@@ -69,6 +67,8 @@ export class GroupActorSheet extends WoDActor {
   // Response to an actor being dropped onto the sheet
   async _onDrop (event) {
     let data = {}
+
+    if (!this.actor.isOwner) return
 
     try {
       data = JSON.parse(event.dataTransfer.getData('text/plain'))
@@ -117,15 +117,23 @@ export class GroupActorSheet extends WoDActor {
     // Activate listeners
     super.activateListeners(html)
 
-    html.find('.remove-actor').click(this._removeActor.bind(this))
     html.find('.open-sheet').click(this._openActorSheet.bind(this))
+
+    // Only activate the below listeners for the storyteller
+    if (!this.actor.isOwner) return
+    html.find('.remove-actor').click(this._removeActor.bind(this))
   }
 
   // Add a new actor to the active players list
   async _addActor (actorUUID) {
+    if (!this.actor.isOwner) return
+
     // Define the actor data
     const actor = fromUuidSync(actorUUID)
     const group = this.actor
+
+    // Don't let group sheets be added to group sheets
+    if (actor.type === 'group') return
 
     // Check if the actor is unique in the already existing list;
     // Returns true if it's found, or false if it's not found
@@ -145,6 +153,11 @@ export class GroupActorSheet extends WoDActor {
       // Set the actor's group to the group's ID
       await actor.update({ 'system.group': group.id })
 
+      // Update the group's permissions to include the player as an observer
+      if (actor.hasPlayerOwner) {
+        //await group.update({ 'ownership': })
+      }
+
       // Re-render the actors list
       await game.actors.render()
     }
@@ -152,6 +165,8 @@ export class GroupActorSheet extends WoDActor {
 
   async _removeActor (event) {
     event.preventDefault()
+
+    if (!this.actor.isOwner) return
 
     // Define variables
     const data = $(event.currentTarget)[0].dataset

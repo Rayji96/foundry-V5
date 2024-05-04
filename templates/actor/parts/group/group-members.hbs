@@ -1,50 +1,60 @@
 <div class="tab members" data-group="primary" data-tab="members">
   {{#if groupMembers}}
-    {{#each groupMembers as |actor id|}}
+    {{#each groupMembers as |member id|}}
       <div class="flexcol group-member">
         <div class="flexrow">
           <div class="actor-image">
-            <img src="{{actor.img}}" title="{{actor.name}}" width="50" height="50"
-              alt="{{actor.name}}" />
+            <img src="{{member.img}}" title="{{member.name}}" width="50" height="50"
+              alt="{{member.name}}" />
           </div>
           <div class="flexcol">
             <div class="flexrow">
               <div class="actor-name">
-                {{actor.name}}
+                {{member.name}}
               </div>
-              <div class="sup-item type">{{actor.type}}</div>
+              <div class="sup-item type">{{member.type}}</div>
               <div class="sup-item">
-                <a class="open-sheet" data-uuid="{{actor.uuid}}" title="{{localize 'WOD5E.OpenSheet'}}">
+                <a class="open-sheet" data-uuid="{{member.uuid}}" title="{{localize 'WOD5E.OpenSheet'}}">
                   <i class="fas fa-user"></i>
                 </a>
-                <a class="remove-actor" data-uuid="{{actor.uuid}}" title="{{localize 'WOD5E.RemoveFromGroup'}}">
-                  <i class="fas fa-trash"></i>
-                </a>
+                {{#unless actor.limited}}
+                  <a class="remove-actor" data-uuid="{{member.uuid}}" title="{{localize 'WOD5E.RemoveFromGroup'}}">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                {{/unless}}
               </div>
             </div>
             <div class="flexrow">
-                {{#ifeq actor.type 'vampire'}}
+                {{#ifeq member.type 'vampire'}}
                   <div class="sub-item">
                       <div class="sub-item-name">Hunger</div>
                       <div class="vampire-member-resource resource-content flexrow flex-center flex-between">
-                          <div class="resource-value" data-value="{{actor.system.hunger.value}}" data-name="system.hunger.value">
-                              <span class="resource-value-empty member-hunger" data-actor-id="{{actor.id}}"></span>
+                        {{#if member.isOwner}}
+                          <div class="resource-value" data-value="{{member.system.hunger.value}}" data-name="system.hunger.value">
+                              <span class="resource-value-empty member-hunger" data-actor-id="{{member.id}}"></span>
                               {{#numLoop 5}}
-                              <span class="resource-value-step member-hunger" data-index="{{this}}" data-actor-id="{{actor.id}}"></span>
+                              <span class="resource-value-step member-hunger" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
                               {{/numLoop}}
                           </div>
+                        {{else}}
+                          <div class="resource-value">
+                              {{#numLoop 5}}
+                              <span class="resource-value-step member-hunger" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
+                              {{/numLoop}}
+                          </div>
+                        {{/if}}
                       </div>
                   </div>
                 {{/ifeq}}
 
-                {{#ifeq actor.type 'werewolf'}}
+                {{#ifeq member.type 'werewolf'}}
                   <div class="sub-item">
                       <div class="sub-item-name">Rage</div>
                       <div class="werewolf-member-resource resource-content flexrow flex-center flex-between">
-                          <div class="resource-value" data-value="{{actor.system.rage.value}}" data-name="system.rage.value">
-                              <span class="resource-value-empty member-rage" data-actor-id="{{actor.id}}"></span>
+                          <div class="resource-value" data-value="{{member.system.rage.value}}" data-name="system.rage.value">
+                              <span class="resource-value-empty member-rage" data-actor-id="{{member.id}}"></span>
                               {{#numLoop 5}}
-                              <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{actor.id}}"></span>
+                              <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
                               {{/numLoop}}
                           </div>
                       </div>
@@ -54,14 +64,14 @@
           </div>
         </div>
         <!-- Not sure if I want to keep this, maybe limit it to storyteller view
-        <li class="actor flexcol collapsible-container" data-actor-id="{{actor._id}}">
+        <li class="actor flexcol collapsible-container" data-actor-id="{{member._id}}">
             <div class="flexrow">
                 <div class="flexrow collapsible">
                     <h4>Actor Biography</h4>
                 </div>
             </div>
             <div class="collapsible-content">
-                {{{enrichHTML actor.system.biography}}}
+                {{{enrichHTML member.system.biography}}}
             </div>
         </li>
         -->
