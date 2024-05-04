@@ -1,4 +1,4 @@
-/* global game, mergeObject */
+/* global game, mergeObject, fromUuidSync */
 
 import { WoDActor } from './wod-v5-sheet.js'
 
@@ -43,17 +43,14 @@ export class GroupActorSheet extends WoDActor {
       case 'cell':
         this.options.classes.push(...['hunter-sheet'])
         return 'systems/vtm5e/templates/actor/cell-sheet.hbs'
-        break
 
       case 'coterie':
         this.options.classes.push(...['coterie-sheet'])
         return 'systems/vtm5e/templates/actor/coterie-sheet.hbs'
-        break
 
       case 'pack':
         this.options.classes.push(...['werewolf-sheet'])
         return 'systems/vtm5e/templates/actor/pack-sheet.hbs'
-        break
 
       default:
         console.log('Oops! Something broke...')
@@ -78,7 +75,7 @@ export class GroupActorSheet extends WoDActor {
       return false
     }
 
-    if (data.type == 'Actor') {
+    if (data.type === 'Actor') {
       this._addActor(data.uuid)
     }
   }
@@ -137,7 +134,7 @@ export class GroupActorSheet extends WoDActor {
 
     // Check if the actor is unique in the already existing list;
     // Returns true if it's found, or false if it's not found
-    const actorUniqueCheck = group.system.members.find(players => players == actorUUID)
+    const actorUniqueCheck = group.system.members.find(players => players === actorUUID)
 
     // If the actor exists and is unique
     if (!actorUniqueCheck) {
@@ -201,7 +198,6 @@ export class GroupActorSheet extends WoDActor {
   // Called to re-apply the CSS classes if the sheet type is changed
   async _applyClasses () {
     // Grab the default list of sheet classes
-    const classList = this.options.classes
     const sheetElement = $(this.document._sheet.element)
 
     // Add a new sheet class depending on the type of sheet

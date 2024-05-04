@@ -1,4 +1,4 @@
-/* global CONFIG, Hooks, Actors, ActorSheet, ChatMessage, Items, ItemSheet, Macro, game, ui, CONST */
+/* global CONFIG, Hooks, Actors, ActorSheet, ActorDirectory, fromUuidSync, ChatMessage, Items, ItemSheet, Macro, game, ui, CONST */
 
 // Actor sheets
 import { ActorInfo } from './actor/actor.js'

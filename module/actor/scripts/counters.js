@@ -1,4 +1,4 @@
-/* global duplicate */
+/* global duplicate, game */
 
 // Handle all types of resource changes
 export const _onResourceChange = async function (event) {

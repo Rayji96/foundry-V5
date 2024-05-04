@@ -639,7 +639,7 @@ h3.item-name.chat-portrait-text-size-name-generic {
 li.group-item > .group-header {
     padding: 6px;
     line-height: 24px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 20%);
     border-top: 1px solid var(--color-border-dark);
     border-bottom: 1px solid var(--color-border-dark);
 }
@@ -686,23 +686,24 @@ li.group-item.collapsed .subdirectory {
 }
 
 li.group-item.collapsed > .group-header {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-li.group-item.collapsed > .group-header h3 {
-    text-shadow: none;
-}
-li.group-item.collapsed > .group-header h3 > i:before {
-    content: "\f07b";
-}
-
-li.group-item.collapsed > .group-header .create-folder {
-    display: none;
+    background: rgba(0, 0, 0, 50%);
 }
 
 li.group-item.droptarget > header h3 {
     text-shadow: 1px 1px 3px var(--color-shadow-dark);
     font-size: 1.2em;
+}
+
+li.group-item.collapsed > .group-header h3 {
+    text-shadow: none;
+}
+
+li.group-item.collapsed > .group-header h3 > i::before {
+    content: "\f07b";
+}
+
+li.group-item.collapsed > .group-header .create-folder {
+    display: none;
 }
 
 li.group-item.droptarget > header h3 i {

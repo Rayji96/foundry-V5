@@ -1,13 +1,13 @@
 .group-header.coterie {
-  background-color: rgba(121, 8, 19, 0.8) !important;
+  background-color: rgba(121, 8, 19, 80%) !important;
 }
 
 .group-header.cell {
-  background-color: rgba(204, 109, 40, 0.8) !important;
+  background-color: rgba(204, 109, 40, 80%) !important;
 }
 
 .group-header.pack {
-  background-color: rgba(78, 33, 0, 0.8) !important;
+  background-color: rgba(78, 33, 0, 80%) !important;
 }
 
 .group-sheet .group-type-field {
@@ -33,7 +33,7 @@
 }
 
 .group-sheet .members .group-member .actor-image img {
-  margin: 0px 3px 0px 3px;
+  margin: 0 3px;
 }
 
 .group-sheet .members .group-member .sub-item {

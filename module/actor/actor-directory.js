@@ -1,4 +1,4 @@
-/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E, CONST */
+/* global ActorDirectory, fromUuidSync */
 
 /**
  * Extend the base ActorDirectory functionality
@@ -6,12 +6,12 @@
  */
 export class WOD5EActorDirectory extends ActorDirectory {
   constructor (...args) {
-    super (...args)
+    super(...args)
 
     this.groups = {}
   }
 
-  activateListeners(html) {
+  activateListeners (html) {
     super.activateListeners(html)
   }
 

@@ -1,4 +1,4 @@
-/* global ItemSheet, mergeObject, TextEditor, WOD5E */
+/* global ItemSheet, mergeObject, TextEditor */
 
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/item-bonuses.js'
 
