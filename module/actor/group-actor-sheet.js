@@ -153,9 +153,9 @@ export class GroupActorSheet extends WoDActor {
       // Set the actor's group to the group's ID
       await actor.update({ 'system.group': group.id })
 
-      // Update the group's permissions to include the player as an observer
+      // Update the group's permissions to include the players as limited by default
       if (actor.hasPlayerOwner) {
-        //await group.update({ 'ownership': })
+        await group.update({ 'ownership': { default: 1 } })
       }
 
       // Re-render the actors list

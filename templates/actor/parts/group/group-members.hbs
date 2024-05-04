@@ -51,30 +51,26 @@
                   <div class="sub-item">
                       <div class="sub-item-name">Rage</div>
                       <div class="werewolf-member-resource resource-content flexrow flex-center flex-between">
+                        {{#if member.isOwner}}
                           <div class="resource-value" data-value="{{member.system.rage.value}}" data-name="system.rage.value">
                               <span class="resource-value-empty member-rage" data-actor-id="{{member.id}}"></span>
                               {{#numLoop 5}}
                               <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
                               {{/numLoop}}
                           </div>
+                        {{else}}
+                          <div class="resource-value">
+                              {{#numLoop 5}}
+                              <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
+                              {{/numLoop}}
+                          </div>
+                        {{/if}}
                       </div>
                   </div>
                 {{/ifeq}}
             </div>
           </div>
         </div>
-        <!-- Not sure if I want to keep this, maybe limit it to storyteller view
-        <li class="actor flexcol collapsible-container" data-actor-id="{{member._id}}">
-            <div class="flexrow">
-                <div class="flexrow collapsible">
-                    <h4>Actor Biography</h4>
-                </div>
-            </div>
-            <div class="collapsible-content">
-                {{{enrichHTML member.system.biography}}}
-            </div>
-        </li>
-        -->
       </div>
     {{/each}}
   {{else}}

@@ -193,7 +193,8 @@ Hooks.on('renderSidebarTab', async (object, html) => {
       // Append the above elements to the group element and turn it into a folder
       groupElement.attr('data-uuid', `Actor.${group.id}`)
       groupElement.attr('class', 'directory-item group-item flexcol document')
-      if (group.system?.collapsed) {
+      // GMs follow the collapsed value, players don't
+      if (group.system?.collapsed && game.user.isGM) {
         groupElement.addClass('collapsed')
       }
       groupElement.find('.entry-name, .thumbnail').remove()
@@ -207,7 +208,11 @@ Hooks.on('renderSidebarTab', async (object, html) => {
         const collapsed = !group.system.collapsed
         
         groupElement.toggleClass('collapsed')
-        group.update({ 'system.collapsed': collapsed})
+
+        // Players don't have to update the system.collapsed value
+        if (game.user.isGM) {
+          group.update({ 'system.collapsed': collapsed})
+        }
       })
 
       // Add an event listener for opening the group sheet
@@ -240,6 +245,11 @@ Hooks.on('renderSidebarTab', async (object, html) => {
 
 // Handle actor updates
 Hooks.on('updateActor', (actor) => {
+  if (actor.type === 'group') {
+    // Re-render the actors directory
+    game.actors.render()
+  }
+
   // Only do this if the actor has an associated group with them
   if (actor.system?.group) {
     // Update the group sheet
