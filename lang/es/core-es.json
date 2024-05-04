@@ -20,6 +20,10 @@
     "Mortal": "Mortal",
     "_GroupSheet": "",
 
+    "_OpenSheet": "",
+    "_RemoveFromGroup": "",
+    "_NoGroupMembers": "",
+
     "Roll": {
       "Label": "Tirada",
       "RollMode": "Modo de tirada",
@@ -75,6 +79,7 @@
     },
 
     "Tabs": {
+      "_Members": "",
       "Stats": "Estadísticas",
       "Features": "Rasgos",
       "Description": "Descripción",

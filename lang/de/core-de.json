@@ -22,6 +22,10 @@
     "Mortal": "Sterblicher",
     "GroupSheet": "Gruppen-Bogen",
 
+    "_OpenSheet": "",
+    "_RemoveFromGroup": "",
+    "_NoGroupMembers": "",
+
     "Roll": {
       "Label": "Wurf",
       "RollMode": "Wurf-Modus",
@@ -77,6 +81,7 @@
     },
 
     "Tabs": {
+      "_Members": "",
       "Stats": "Werte",
       "Features": "Merkmale",
       "Description": "Beschreibung",

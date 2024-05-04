@@ -22,6 +22,10 @@
     "Mortal": "Mortel",
     "_GroupSheet": "",
 
+    "_OpenSheet": "",
+    "_RemoveFromGroup": "",
+    "_NoGroupMembers": "",
+
     "Roll": {
       "Label": "Jet",
       "RollMode": "Type de jet",
@@ -77,6 +81,7 @@
     },
 
     "Tabs": {
+      "_Members": "",
       "Stats": "Stats",
       "Features": "Atouts",
       "Description": "Description",

@@ -22,6 +22,10 @@
     "Mortal": "Mortal",
     "_GroupSheet": "",
 
+    "_OpenSheet": "",
+    "_RemoveFromGroup": "",
+    "_NoGroupMembers": "",
+
     "Roll": {
       "Label": "Rolagem",
       "RollMode": "Modo de Rolagem",
@@ -77,6 +81,7 @@
     },
 
     "Tabs": {
+      "_Members": "",
       "Stats": "Características",
       "Features": "Vantagens",
       "Description": "Descrição",

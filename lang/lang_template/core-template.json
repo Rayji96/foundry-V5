@@ -20,6 +20,10 @@
         "Mortal": "",
         "GroupSheet": "",
 
+        "OpenSheet": "",
+        "RemoveFromGroup": "",
+        "NoGroupMembers": "",
+
         "Roll": {
             "Label": "",
             "RollMode": "",
