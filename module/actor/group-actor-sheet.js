@@ -52,6 +52,11 @@ export class GroupActorSheet extends WoDActor {
         return 'systems/vtm5e/templates/actor/coterie-sheet.hbs'
         break
 
+      case 'pack':
+        this.options.classes.push(...['werewolf-sheet'])
+        return 'systems/vtm5e/templates/actor/pack-sheet.hbs'
+        break
+
       default:
         console.log('Oops! Something broke...')
         this.options.classes.push(...['coterie-sheet'])
@@ -111,63 +116,75 @@ export class GroupActorSheet extends WoDActor {
   activateListeners (html) {
     // Activate listeners
     super.activateListeners(html)
+
+    html.find('.remove-actor').click(this._removeActor.bind(this))
+    html.find('.open-sheet').click(this._openActorSheet.bind(this))
   }
 
   // Add a new actor to the active players list
-  _addActor (actorID) {
+  async _addActor (actorUUID) {
     // Define the actor data
-    const actor = fromUuidSync(actorID)
+    const actor = fromUuidSync(actorUUID)
+    const group = this.actor
 
     // Check if the actor is unique in the already existing list;
     // Returns true if it's found, or false if it's not found
-    const actorUniqueCheck = this.actor.system.members.find(players => players == actorID)
+    const actorUniqueCheck = group.system.members.find(players => players == actorUUID)
 
     // If the actor exists and is unique
     if (!actorUniqueCheck) {
-      // Push to the players list
-      this._updateActors('add', actorID)
+      // Define the current members list
+      const membersList = group.system.members
+
+      // Push actor to the list
+      membersList.push(actorUUID)
+
+      // Update the group sheet with the new actor
+      await group.update({ 'system.members': membersList })
+
+      // Set the actor's group to the group's ID
+      await actor.update({ 'system.group': group.id })
+
+      // Re-render the actors list
+      await game.actors.render()
     }
   }
 
-  _removeActor (player) {
-    const actorID = player.currentTarget.id
-    const newList = this.actor.system.members.filter(actor => actor !== actorID)
+  async _removeActor (event) {
+    event.preventDefault()
 
-    this._updateActors('replace', newList)
-  }
+    // Define variables
+    const data = $(event.currentTarget)[0].dataset
+    const actorUUID = data.uuid
+    const actor = fromUuidSync(actorUUID)
+    const group = this.actor
 
-  // Function to update the actors setting
-  _updateActors (operation, newData) {
-    // Switch case to determine what to do with the data
-    switch (operation) {
-      // Append new actors to the list
-      case 'add':
-        const membersList = this.actor.system.members
-        // Push actor to the list
-        membersList.push(newData)
-        this.actor.update({ 'system.members': membersList })
+    // Filter out the UUID from the members list
+    const membersList = group.system.members.filter(actor => actor !== actorUUID)
 
-        break
+    // Update the group sheet with the new members list
+    await group.update({ 'system.members': membersList })
 
-      // Wholly replace the previous list with the new data
-      case 'replace':
-        // Fill in the list with the new data
-        this.actor.update({ 'system.members': newData })
+    // Empty the group field on the actor
+    await actor.update({ 'system.group': '' })
 
-        break
-
-      default:
-        console.log('Error! Something broke...')
-    }
+    // Re-render the actors list
+    await game.actors.render()
   }
 
   // Function to open an actor sheet
-  _openActorSheet (event) {
+  async _openActorSheet (event) {
+    event.preventDefault()
 
+    // Define variables
+    const data = $(event.currentTarget)[0].dataset
+    const actorUUID = data.uuid
+
+    fromUuidSync(actorUUID).sheet.render(true)
   }
 
   // Called to re-apply the CSS classes if the sheet type is changed
-  _applyClasses () {
+  async _applyClasses () {
     // Grab the default list of sheet classes
     const classList = this.options.classes
     const sheetElement = $(this.document._sheet.element)
@@ -175,18 +192,23 @@ export class GroupActorSheet extends WoDActor {
     // Add a new sheet class depending on the type of sheet
     switch (this.actor.system.groupType) {
       case 'cell':
-        sheetElement.removeClass('coterie-sheet')
+        sheetElement.removeClass('coterie-sheet werewolf-sheet')
         sheetElement.addClass('hunter-sheet')
         break
 
       case 'coterie':
-        sheetElement.removeClass('hunter-sheet')
+        sheetElement.removeClass('hunter-sheet werewolf-sheet')
         sheetElement.addClass('coterie-sheet')
+        break
+
+      case 'pack':
+        sheetElement.removeClass('hunter-sheet coterie-sheet')
+        sheetElement.addClass('werewolf-sheet')
         break
 
       default:
         console.log('Oops! Something broke...')
-        sheetElement.removeClass('hunter-sheet')
+        sheetElement.removeClass('hunter-sheet werewolf-sheet')
         sheetElement.addClass('coterie-sheet')
     }
   }

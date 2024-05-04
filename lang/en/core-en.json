@@ -20,6 +20,10 @@
         "Mortal": "Mortal",
         "GroupSheet": "Group Sheet",
 
+        "OpenSheet": "Open sheet",
+        "RemoveFromGroup": "Remove from group",
+        "NoGroupMembers": "No group members added. Drag and drop from the actors sidebar to add some!",
+
         "Roll": {
             "Label": "Roll",
             "RollMode": "Roll Mode",

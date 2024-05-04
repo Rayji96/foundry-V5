@@ -4,6 +4,7 @@
     "templates": {
       "base": {
         "locked": false,
+        "group": "",
         "biography": "",
         "appearance": "",
         "equipment": "",

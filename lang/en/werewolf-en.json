@@ -3,6 +3,8 @@
     "WTA": {
       "Label": "Werewolf",
 
+      "Pack": "Pack",
+
       "WerewolfDice": "Werewolf Dice",
       "RageDice": "Rage Dice",
 

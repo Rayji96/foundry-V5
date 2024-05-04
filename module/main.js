@@ -184,7 +184,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
           <i class='fas fa-folder-open fa-fw'></i>
           ${group.name}
         </h3>
-        <a class='create-button open-sheet' data-uuid='Actor.${group.id}'>
+        <a class='create-button open-sheet' data-uuid='Actor.${group.id}' title='` + game.i18n.localize('WOD5E.OpenSheet') + `'>
           <i class="fas fa-user"></i>
         </a>
       </header>`
@@ -192,7 +192,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
 
       // Append the above elements to the group element and turn it into a folder
       groupElement.attr('data-uuid', `Actor.${group.id}`)
-      groupElement.attr('class', 'directory-item group-item flexcol')
+      groupElement.attr('class', 'directory-item group-item flexcol document')
       if (group.system?.collapsed) {
         groupElement.addClass('collapsed')
       }
@@ -219,6 +219,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
       })
 
       // Move each group member's element to be a child of this group
+      // Additionally, we need to give the actor Limited
       groupMembers.forEach(actor => {
         const actorId = fromUuidSync(actor).id
         const actorElement = $(`[data-entry-id='${actorId}'`)
@@ -227,11 +228,22 @@ Hooks.on('renderSidebarTab', async (object, html) => {
         actorElement.appendTo(groupListElement)
       })
 
-      // If Ownership Viewer is enabled, crop out the symbol because it gets placed weirdly
-      groupElement.find('.ownership-viewer').remove()
+      // If Ownership Viewer is enabled, adjust the group sheet's ownership viewer because otherwise it gets wonky by default
+      var ownershipViewer = groupElement.children('.ownership-viewer')
+      groupElement.find('header.group-header').append(ownershipViewer)
 
+      // Add to the directory list
       groupElement.prependTo(directoryList)
     })
+  }
+})
+
+// Handle actor updates
+Hooks.on('updateActor', (actor) => {
+  // Only do this if the actor has an associated group with them
+  if (actor.system?.group) {
+    // Update the group sheet
+    game.actors.get(actor.system.group).sheet.render()
   }
 })
 
@@ -284,8 +296,4 @@ function rollItemMacro (itemName) {
 
   // Trigger the item roll
   return item.roll()
-}
-
-async function updateGroup (group, sidebar) {
-
 }

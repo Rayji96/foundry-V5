@@ -6,6 +6,10 @@
   background-color: rgba(204, 109, 40, 0.8) !important;
 }
 
+.group-header.pack {
+  background-color: rgba(78, 33, 0, 0.8) !important;
+}
+
 .group-sheet .group-type-field {
   margin-bottom: 0;
 }
@@ -40,6 +44,11 @@
 .group-sheet .members .group-member .sup-item {
   flex-grow: 0;
   display: flex;
+}
+
+.group-sheet .members .group-member .sup-item a {
+  margin-left: 2.5px;
+  margin-right: 2.5px;
 }
 
 .group-sheet .members .group-member .sup-item.type {
