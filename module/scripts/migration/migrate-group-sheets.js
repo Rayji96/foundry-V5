@@ -18,14 +18,14 @@ export const MigrateGroupSheets = async function () {
       migrationIDs.push(actor.uuid)
 
       // Update the actor's data with the new information
-      actor.update({ 'type': 'group', 'system.groupType': 'coterie'})
+      actor.update({ type: 'group', 'system.groupType': 'coterie' })
     } else if (actor.type === 'cell') {
       // Cell sheets
       ui.notifications.info(`Fixing actor ${actor.name}: Converting from Cell sheet to Group sheet`)
       migrationIDs.push(actor.uuid)
 
       // Update the actor's data with the new information
-      actor.update({ 'type': 'group', 'system.groupType': 'cell'})
+      actor.update({ type: 'group', 'system.groupType': 'cell' })
     }
   }
 

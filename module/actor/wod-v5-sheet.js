@@ -47,10 +47,6 @@ export class WoDActor extends ActorSheet {
     return data
   }
 
-  constructor (actor, options) {
-    super(actor, options)
-  }
-
   /**
      * Organize and classify Items for all sheets.
      *

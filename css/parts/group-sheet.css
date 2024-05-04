@@ -1,13 +1,13 @@
 .group-header.coterie {
-  background-color: rgba(121, 8, 19, 80%) !important;
+  background-color: rgba(121 8 19 80%) !important;
 }
 
 .group-header.cell {
-  background-color: rgba(204, 109, 40, 80%) !important;
+  background-color: rgba(204 109 40 80%) !important;
 }
 
 .group-header.pack {
-  background-color: rgba(78, 33, 0, 80%) !important;
+  background-color: rgba(78 33 0 80%) !important;
 }
 
 .group-sheet .group-type-field {

@@ -188,7 +188,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
           <i class="fas fa-user"></i>
         </a>
       </header>`
-      const subdirectoryElement = `<ol class='subdirectory'></ol>`
+      const subdirectoryElement = '<ol class="subdirectory"></ol>'
 
       // Append the above elements to the group element and turn it into a folder
       groupElement.attr('data-uuid', `Actor.${group.id}`)
@@ -206,12 +206,12 @@ Hooks.on('renderSidebarTab', async (object, html) => {
         event.preventDefault()
 
         const collapsed = !group.system.collapsed
-        
+
         groupElement.toggleClass('collapsed')
 
         // Players don't have to update the system.collapsed value
         if (game.user.isGM) {
-          group.update({ 'system.collapsed': collapsed})
+          group.update({ 'system.collapsed': collapsed} )
         }
       })
 
@@ -219,7 +219,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
       groupElement.find('.open-sheet').click(event => {
         event.preventDefault()
         event.stopPropagation()
-  
+
         game.actors.get(group.id).sheet.render(true)
       })
 
@@ -234,7 +234,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
       })
 
       // If Ownership Viewer is enabled, adjust the group sheet's ownership viewer because otherwise it gets wonky by default
-      var ownershipViewer = groupElement.children('.ownership-viewer')
+      const ownershipViewer = groupElement.children('.ownership-viewer')
       groupElement.find('header.group-header').append(ownershipViewer)
 
       // Add to the directory list
