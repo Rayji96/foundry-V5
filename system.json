@@ -2,7 +2,7 @@
   "id": "vtm5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "4.1.1",
+  "version": "4.2.0-dev",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
