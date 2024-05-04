@@ -211,7 +211,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
 
         // Players don't have to update the system.collapsed value
         if (game.user.isGM) {
-          group.update({ 'system.collapsed': collapsed} )
+          group.update({ 'system.collapsed': collapsed })
         }
       })
 

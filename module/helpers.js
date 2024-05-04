@@ -62,7 +62,7 @@ export const loadHelpers = async function () {
   })
 
   // Helper to define attributes lists
-  Handlebars.registerHelper ('getAttributesList', function() {
+  Handlebars.registerHelper('getAttributesList', function () {
     // Attribute definitions
     const attributes = WOD5E.Attributes.getList()
     const attributesList = []
@@ -85,7 +85,7 @@ export const loadHelpers = async function () {
   })
 
   // Helper to define skills lists
-  Handlebars.registerHelper ('getSkillsList', function() {
+  Handlebars.registerHelper('getSkillsList', function () {
     // Skill definitions
     const skills = WOD5E.Skills.getList()
     const skillsList = []
