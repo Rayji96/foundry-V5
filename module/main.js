@@ -225,13 +225,15 @@ Hooks.on('renderSidebarTab', async (object, html) => {
 
       // Move each group member's element to be a child of this group
       // Additionally, we need to give the actor Limited
-      groupMembers.forEach(actor => {
-        const actorId = fromUuidSync(actor).id
-        const actorElement = $(`[data-entry-id='${actorId}'`)
-        const groupListElement = $(`[data-entry-id='${group.id}'`).find('.subdirectory')[0]
-
-        actorElement.appendTo(groupListElement)
-      })
+      if (groupMembers) {
+        groupMembers.forEach(actor => {
+          const actorId = fromUuidSync(actor).id
+          const actorElement = $(`[data-entry-id='${actorId}'`)
+          const groupListElement = $(`[data-entry-id='${group.id}'`).find('.subdirectory')[0]
+  
+          actorElement.appendTo(groupListElement)
+        })
+      }
 
       // If Ownership Viewer is enabled, adjust the group sheet's ownership viewer because otherwise it gets wonky by default
       const ownershipViewer = groupElement.children('.ownership-viewer')

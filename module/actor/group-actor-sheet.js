@@ -96,10 +96,12 @@ export class GroupActorSheet extends WoDActor {
     data.groupMembers = []
 
     // Push each group member's data to the groupMembers list
-    actor.system.members.forEach(actorID => {
-      const actor = fromUuidSync(actorID)
-      data.groupMembers.push(actor)
-    })
+    if (actor.system.members) {
+      actor.system.members.forEach(actorID => {
+        const actor = fromUuidSync(actorID)
+        data.groupMembers.push(actor)
+      })
+    }
 
     // Apply new CSS classes to the sheet, if necessary
     this._applyClasses()
@@ -134,12 +136,12 @@ export class GroupActorSheet extends WoDActor {
 
     // Check if the actor is unique in the already existing list;
     // Returns true if it's found, or false if it's not found
-    const actorUniqueCheck = group.system.members.find(players => players === actorUUID)
+    const actorUniqueCheck = group.system.members ? group.system.members.find(players => players === actorUUID) : false
 
     // If the actor exists and is unique
     if (!actorUniqueCheck) {
       // Define the current members list
-      const membersList = group.system.members
+      const membersList = group.system.members ? group.system.members : []
 
       // Push actor to the list
       membersList.push(actorUUID)
