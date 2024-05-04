@@ -14,12 +14,12 @@ export class WoDActor extends ActorSheet {
   /** @override */
   async getData () {
     const data = await super.getData()
-    data.isCharacter = this.isCharacter
-    data.locked = this.locked
     const actorData = this.object.system
     const actorHeaders = actorData.headers
+    data.isCharacter = this.isCharacter
+    data.locked = actorData.locked
 
-    if (this.object.type !== 'cell' && this.object.type !== 'coterie') {
+    if (this.object.type !== 'group') {
       this._onHealthChange()
       this._onWillpowerChange()
     }
@@ -45,11 +45,6 @@ export class WoDActor extends ActorSheet {
     }
 
     return data
-  }
-
-  constructor (actor, options) {
-    super(actor, options)
-    this.locked = true
   }
 
   /**
@@ -266,11 +261,14 @@ export class WoDActor extends ActorSheet {
    * Handle locking and unlocking the actor sheet
    * @param {Event} event   The originating click event
    */
-  _onToggleLocked (event) {
+  async _onToggleLocked (event) {
     event.preventDefault()
 
-    this.locked = !this.locked
-    this._render()
+    // Top-level variables
+    const actor = this.actor
+
+    // Update the locked state
+    await actor.update({ 'system.locked': !actor.system.locked })
   }
 
   /**

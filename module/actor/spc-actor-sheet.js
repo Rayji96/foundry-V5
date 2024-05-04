@@ -1,14 +1,14 @@
 /* global Dialog, game, mergeObject */
 
 // Export this function to be used in other scripts
-import { CoterieActorSheet } from './coterie-actor-sheet.js'
+import { WoDActor } from './wod-v5-sheet.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {CoterieActorSheet}
+ * @extends {WoDActor}
  */
 
-export class SPCActorSheet extends CoterieActorSheet {
+export class SPCActorSheet extends WoDActor {
   /** @override */
   static get defaultOptions () {
     // Define the base list of CSS classes
@@ -46,9 +46,6 @@ export class SPCActorSheet extends CoterieActorSheet {
   async getData () {
     // Top-level variables
     const data = await super.getData()
-
-    // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.SPC.Label')}`
 
     // Prepare items
     if (this.actor.type === 'spc') {

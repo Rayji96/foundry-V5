@@ -12,8 +12,8 @@ export const MigrateGamesystem = async function () {
   for (const actor of actorsList) {
     const actorData = actor.system
 
-    // Ignore cell and coterie sheets
-    if (actor.type !== 'cell' && actor.type !== 'coterie') {
+    // Ignore group sheets
+    if (actor.type !== 'cell' && actor.type !== 'coterie' && actor.type !== 'group') {
       // Check if the actor already has gamesystem defined
       if (!actorData.gamesystem) {
         // Define the actor label which we'll derive the gamesystem from

@@ -62,6 +62,12 @@
   top: 0;
   left: 400px;
   background-color: #faf5ed;
+  box-shadow: 0 0 20px var(--color-shadow-dark);
+  border-width: 3px;
+}
+
+.wod5e .dialog-contents .situational-modifiers .list-title {
+  font-weight: bold;
 }
 
 .wod5e .dialog-contents .custom-modifiers .mod-delete {

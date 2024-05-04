@@ -51,6 +51,11 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/actor/parts/spc/generaldifficulty.hbs',
     'systems/vtm5e/templates/actor/parts/spc/spc-disciplines.hbs',
 
+    // Group Sheet Partials
+    'systems/vtm5e/templates/actor/parts/group/type-selector.hbs',
+    'systems/vtm5e/templates/actor/parts/group/group-members.hbs',
+    'systems/vtm5e/templates/actor/parts/group/description.hbs',
+
     // Item Sheet Partials
     'systems/vtm5e/templates/item/parts/skills.hbs',
     'systems/vtm5e/templates/item/parts/disciplines.hbs',

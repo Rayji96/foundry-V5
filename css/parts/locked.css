@@ -50,3 +50,7 @@
   cursor: default !important;
   display: none;
 }
+
+.wod5e.group-sheet .locked .remove-actor {
+  display: none;
+}

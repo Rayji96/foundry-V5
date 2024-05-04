@@ -45,8 +45,6 @@ export class WerewolfActorSheet extends WoDActor {
   async getData () {
     const data = await super.getData()
 
-    data.sheetType = `${game.i18n.localize('WOD5E.WTA.Label')}`
-
     this._prepareItems(data)
 
     return data
