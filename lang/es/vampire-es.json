@@ -1,12 +1,17 @@
 {
   "WOD5E": {
     "VTM": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
       "Label": "Vampiro",
       "Coterie": "Grupo",
       "Ghoul": "Ghoul",
       "Domitor": "Domitor",
       "Clan": "Clan",
       "Generation": "Generación",
+      "_Chasse": "",
+      "_Lien": "",
+      "_Portillon": "",
       "VampireDice": "Dados de Vampiro",
       "HungerDice": "Dados de Ansia",
       "Humanity": "Humanidad",

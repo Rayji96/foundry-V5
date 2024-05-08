@@ -60,3 +60,9 @@
   padding: 0 5px;
   font-weight: bold;
 }
+
+.group-sheet .hunting-difficulty .resource-value {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}

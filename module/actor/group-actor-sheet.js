@@ -103,6 +103,11 @@ export class GroupActorSheet extends WoDActor {
       })
     }
 
+    // Handle figuring out hunting difficulty
+    if (actor.system.groupType === 'coterie') {
+      data.huntingDifficulty = 7 - actor.system.chasse.value
+    }
+
     // Apply new CSS classes to the sheet, if necessary
     this._applyClasses()
 
@@ -152,8 +157,9 @@ export class GroupActorSheet extends WoDActor {
       // Set the actor's group to the group's ID
       await actor.update({ 'system.group': group.id })
 
-      // Update the group's permissions to include the players as limited by default
-      if (actor.hasPlayerOwner) {
+      // Update the group's permissions to include the players as limited by default if the default ownership is "none"
+      // Otherwise keep whatever default ownership the storyteller has set
+      if (actor.hasPlayerOwner && group.ownership.default === 0) {
         await group.update({ ownership: { default: 1 } })
       }
 

@@ -31,6 +31,14 @@ export const loadHelpers = async function () {
     return options.inverse(this)
   })
 
+  Handlebars.registerHelper('ifgr', function (a, b, options) {
+    if (a > b) {
+      return options.fn(this)
+    }
+
+    return options.inverse(this)
+  })
+
   Handlebars.registerHelper('or', function () {
     for (let i = 0; i < arguments.length - 1; i++) {
       if (arguments[i]) {

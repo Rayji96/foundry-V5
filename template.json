@@ -875,6 +875,15 @@
       "danger": {
         "value": 0
       },
+      "chasse": {
+        "value": 0
+      },
+      "lien": {
+        "value": 0
+      },
+      "portillon": {
+        "value": 0
+      },
       "members": [],
       "collapsed": true
     },

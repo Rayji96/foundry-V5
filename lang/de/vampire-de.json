@@ -11,6 +11,10 @@
       "Clan": "Clan",
       "Generation": "Generation",
 
+      "_Chasse": "",
+      "_Lien": "",
+      "_Portillon": "",
+
       "VampireDice": "Vampir-Würfel",
       "HungerDice": "Hunger-Würfel",
 
