@@ -102,27 +102,21 @@ export class VampireActorSheet extends GhoulActorSheet {
     // Activate listeners
     super.activateListeners(html)
 
-    // Top-level variables
-    const actor = this.actor
-
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return
 
     // Rollable gift buttons
     html.find('.remorse-roll').click(this._onRemorseRoll.bind(this))
     html.find('.frenzy-roll').click(this._onFrenzyRoll.bind(this))
-  
   }
 
   // Roll Handlers
-
   async _onRemorseRoll (event) {
     event.preventDefault()
 
     // Top-level variables
     const actor = this.actor
     const element = event.currentTarget
-    const dataset = Object.assign({}, element.dataset)
 
     // Secondary variables
     const humanity = actor.system.humanity.value
@@ -137,13 +131,13 @@ export class VampireActorSheet extends GhoulActorSheet {
       quickRoll: true,
       disableAdvancedDice: true,
       callback: (rollData) => {
-        const hasSuccess = rollData.terms[0].results.some(result => result.success);
-        
+        const hasSuccess = rollData.terms[0].results.some(result => result.success)
+
         // Reduce humanity by 1 if the roll fails, otherwise reset stain to 0 in any other cases
-        if (hasSuccess) {  
+        if (hasSuccess) {
           actor.update({ 'system.humanity.stains': 0 })
         } else {
-          actor.update({ 'system.humanity.value': Math.max(humanity - 1, 0) })  
+          actor.update({ 'system.humanity.value': Math.max(humanity - 1, 0) })
           actor.update({ 'system.humanity.stains': 0 })
         }
       }

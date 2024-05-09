@@ -465,10 +465,12 @@ export class WerewolfActorSheet extends WoDActor {
 
   // Handle rolling the Harano dice
   async _onHaranoRoll (event) {
+    event.preventDefault()
+
     const actor = this.actor
     const harano = actor.system.balance.harano.value 
     const hauglosk = actor.system.balance.hauglosk.value
-    
+
     const dicePool = Math.max((harano + hauglosk), 1)
 
     WOD5eDice.Roll({
@@ -483,10 +485,12 @@ export class WerewolfActorSheet extends WoDActor {
 
   // Handle rolling the Harano dice
   async _onHaugloskRoll (event) {
+    event.preventDefault()
+
     const actor = this.actor
     const harano = actor.system.balance.harano.value 
     const hauglosk = actor.system.balance.hauglosk.value
-    
+
     const dicePool = Math.max((harano + hauglosk), 1)
 
     WOD5eDice.Roll({
@@ -498,6 +502,7 @@ export class WerewolfActorSheet extends WoDActor {
       disableAdvancedDice: true
     })
   }
+
   // Handle posting an actor's form to the chat.
   _onFormToChat (event) {
     event.preventDefault()

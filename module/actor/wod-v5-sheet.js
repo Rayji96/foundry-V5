@@ -122,7 +122,7 @@ export class WoDActor extends ActorSheet {
         const id = Object.getOwnPropertyNames(entry)[0]
         let skillData = {}
         let hasSpecialties = false
-        let specialtiesList = []
+        const specialtiesList = []
 
         if (actorSkills[id].bonuses.length > 0) {
           hasSpecialties = true
@@ -485,7 +485,6 @@ export class WoDActor extends ActorSheet {
   }
 
   // Roll Handlers
-
   async _onWillpowerRoll (event) {
     event.preventDefault()
 
@@ -493,9 +492,7 @@ export class WoDActor extends ActorSheet {
     const actor = this.actor
 
     // Secondary variables
-    
-
-    const dicePool = Math.max(this.getWillpowerDicePool(actor),1)
+    const dicePool = Math.max(this.getWillpowerDicePool(actor), 1)
 
     WOD5eDice.Roll({
       basicDice: dicePool,
@@ -506,9 +503,4 @@ export class WoDActor extends ActorSheet {
       disableAdvancedDice: true
     })
   }
-
-  
 }
-
-
-  

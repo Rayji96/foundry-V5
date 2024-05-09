@@ -1,4 +1,4 @@
-/* global game, mergeObject, fromUuidSync */
+/* global game, mergeObject, fromUuidSync, ui */
 
 import { WoDActor } from './wod-v5-sheet.js'
 
@@ -141,16 +141,16 @@ export class GroupActorSheet extends WoDActor {
 
     // Check if the actor is unique in the already existing list;
     // Returns false if it's found, or true if it's not found
-    const actorIsUnique = group.system.members.find(players => players === actorUUID) ? false : true
-    if (!actorIsUnique) {
+    const actorIsntUnique = group.system.members.find(players => players === actorUUID)
+    if (actorIsntUnique) {
       ui.notifications.warn(`Actor ${actor.name} is already part of this group.`)
 
       return
     }
 
     // Check if the actor is already in a group
-    const actorHasNoGroup = actor.system.group ? false : true
-    if (!actorHasNoGroup) {
+    const actorHasGroup = actor.system.group
+    if (actorHasGroup) {
       ui.notifications.warn(`Actor ${actor.name} is already in an existing group.`)
 
       return
