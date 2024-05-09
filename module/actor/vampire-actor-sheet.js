@@ -124,7 +124,7 @@ export class VampireActorSheet extends GhoulActorSheet {
 
     WOD5eDice.Roll({
       basicDice: dicePool,
-      title: `${actor.name} - Remorse Roll`,
+      title: game.i18n.localize('WOD5E.VTM.RollingRemorse'),
       actor,
       data: actor.system,
       quickRoll: true,
@@ -156,7 +156,7 @@ export class VampireActorSheet extends GhoulActorSheet {
 
     WOD5eDice.Roll({
       basicDice: dicePool,
-      title: `${actor.name} - Frenzy Roll`,
+      title: game.i18n.localize('WOD5E.VTM.ResistingFrenzy'),
       actor,
       data: actor.system,
       disableAdvancedDice: true

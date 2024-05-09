@@ -496,7 +496,7 @@ export class WoDActor extends ActorSheet {
 
     WOD5eDice.Roll({
       basicDice: dicePool,
-      title: `${actor.name} - Willpower Roll`,
+      title: game.i18n.localize('WOD5E.Chat.RollingWillpower'),
       actor,
       data: actor.system,
       quickRoll: false,

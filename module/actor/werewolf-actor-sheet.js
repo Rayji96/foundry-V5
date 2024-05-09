@@ -475,7 +475,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     WOD5eDice.Roll({
       basicDice: dicePool,
-      title: `${actor.name} - Harano Roll`,
+      title: game.i18n.localize('WOD5E.WTA.HaranoTest'),
       actor,
       data: actor.system,
       quickRoll: false,
@@ -495,7 +495,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     WOD5eDice.Roll({
       basicDice: dicePool,
-      title: `${actor.name} - Hauglosk Roll`,
+      title: game.i18n.localize('WOD5E.WTA.HaugloskTest'),
       actor,
       data: actor.system,
       quickRoll: false,
