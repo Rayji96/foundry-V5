@@ -219,7 +219,7 @@ export async function generateRollMessage ({
     roll.system = system
     roll.difficulty = difficulty
     roll.totalResult = totalResult
-    roll.rollSuccessful = (totalResult >= difficulty) || (totalResult > 0 && difficulty === 0) ? true : false
+    roll.rollSuccessful = (totalResult >= difficulty) || (totalResult > 0 && difficulty === 0)
 
     // Construct the markup for total and difficulty display
     let totalAndDifficulty = `<div class="total-and-difficulty">

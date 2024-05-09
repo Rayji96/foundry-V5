@@ -230,7 +230,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
           const actorId = fromUuidSync(actor).id
           const actorElement = $(`[data-entry-id='${actorId}'`)
           const groupListElement = $(`[data-entry-id='${group.id}'`).find('.subdirectory')[0]
-  
+
           actorElement.appendTo(groupListElement)
         })
       }

@@ -1,5 +1,6 @@
 /* global game, mergeObject */
 
+import { WOD5eDice } from '../scripts/system-rolls.js'
 import { GhoulActorSheet } from './ghoul-actor-sheet.js'
 import { getBloodPotencyValues, getBloodPotencyText } from './scripts/blood-potency.js'
 
@@ -89,5 +90,76 @@ export class VampireActorSheet extends GhoulActorSheet {
         displayWhenInactive: true
       }
     ]
+  }
+
+  /* -------------------------------------------- */
+  /*  Event Listeners and Handlers                */
+  /* -------------------------------------------- */
+
+  // Event Listeners
+  /** @override */
+  activateListeners (html) {
+    // Activate listeners
+    super.activateListeners(html)
+
+    // Everything below here is only needed if the sheet is editable
+    if (!this.options.editable) return
+
+    // Rollable gift buttons
+    html.find('.remorse-roll').click(this._onRemorseRoll.bind(this))
+    html.find('.frenzy-roll').click(this._onFrenzyRoll.bind(this))
+  }
+
+  // Roll Handlers
+  async _onRemorseRoll (event) {
+    event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+
+    // Secondary variables
+    const humanity = actor.system.humanity.value
+    const stain = actor.system.humanity.stains
+    const dicePool = Math.max((10 - humanity - stain), 1)
+
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      title: game.i18n.localize('WOD5E.VTM.RollingRemorse'),
+      actor,
+      data: actor.system,
+      quickRoll: true,
+      disableAdvancedDice: true,
+      callback: (rollData) => {
+        const hasSuccess = rollData.terms[0].results.some(result => result.success)
+
+        // Reduce humanity by 1 if the roll fails, otherwise reset stain to 0 in any other cases
+        if (hasSuccess) {
+          actor.update({ 'system.humanity.stains': 0 })
+        } else {
+          actor.update({ 'system.humanity.value': Math.max(humanity - 1, 0) })
+          actor.update({ 'system.humanity.stains': 0 })
+        }
+      }
+    })
+  }
+
+  async _onFrenzyRoll (event) {
+    event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+
+    // Secondary variables
+    const willpowerDicePool = this.getWillpowerDicePool(actor)
+    const humanity = actor.system.humanity.value
+    const dicePool = Math.max(willpowerDicePool + Math.floor(humanity / 3), 1)
+
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      title: game.i18n.localize('WOD5E.VTM.ResistingFrenzy'),
+      actor,
+      data: actor.system,
+      disableAdvancedDice: true
+    })
   }
 }

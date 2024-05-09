@@ -35,7 +35,7 @@ export class WOD5EActorDirectory extends ActorDirectory {
       if (groupMembers) {
         groupMembers.forEach(actor => {
           const actorId = fromUuidSync(actor).id
-  
+
           actorsInGroups.push(actorId)
         })
       }
