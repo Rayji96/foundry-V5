@@ -1,3 +1,5 @@
-{{#each attributesList as |attribute|}}
-  <option value="{{attribute.id}}">{{attribute.displayName}}</option>
+{{#each (getAttributesList) as |attribute|}}
+  {{#unless attribute.hidden}}
+    <option value="{{attribute.id}}">{{attribute.displayName}}</option>
+  {{/unless}}
 {{/each}}

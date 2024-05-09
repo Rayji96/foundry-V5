@@ -65,6 +65,9 @@ class WOD5eDice {
 
     // Inner roll function
     const _roll = async (inputBasicDice, inputAdvancedDice, $form) => {
+      // Get the difficulty and store it
+      difficulty = $form ? $form.find('[id=inputDifficulty]').val() : difficulty
+
       // Construct the proper roll formula by sending it to the generateRollFormula function
       const rollFormula = await generateRollFormula({
         basicDice: inputBasicDice,
@@ -165,7 +168,7 @@ class WOD5eDice {
         data,
         title,
         flavor,
-        difficulty: $form ? $form.find('[id=inputDifficulty]').val() : difficulty,
+        difficulty,
         activeModifiers
       })
 
@@ -174,6 +177,7 @@ class WOD5eDice {
         speaker: ChatMessage.getSpeaker({ actor }),
         content,
         flags: {
+          difficulty,
           system,
           title,
           flavor,

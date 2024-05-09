@@ -177,7 +177,7 @@ export function getBloodPotencyText (level) {
       feeding: game.i18n.localize('WOD5E.VTM.FeedingPenalty6')
     },
     {
-      surge: game.i18n.localize('WOD5E.Add6Dice'),
+      surge: game.i18n.localize('WOD5E.VTM.Add6Dice'),
       mend: game.i18n.localize('WOD5E.VTM.4SuperficialDamage'),
       power: game.i18n.localize('WOD5E.VTM.Add4Dice'),
       rouse: game.i18n.localize('WOD5E.VTM.Level5'),
@@ -185,7 +185,7 @@ export function getBloodPotencyText (level) {
       feeding: game.i18n.localize('WOD5E.VTM.FeedingPenalty6')
     },
     {
-      surge: game.i18n.localize('WOD5E.Add6Dice'),
+      surge: game.i18n.localize('WOD5E.VTM.Add6Dice'),
       mend: game.i18n.localize('WOD5E.VTM.5SuperficialDamage'),
       power: game.i18n.localize('WOD5E.VTM.Add5Dice'),
       rouse: game.i18n.localize('WOD5E.VTM.Level5'),

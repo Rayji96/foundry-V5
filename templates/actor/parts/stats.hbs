@@ -33,7 +33,7 @@
                             data-label="{{skill.displayName}}" data-selectors="skills skills.{{skill.id}}" data-skill="{{skill.id}}" data-select-dialog="true"
                             data-use-flavor-path="true" data-flavor-path="skills.{{skill.id}}.description" data-macroid="{{skill.macroid}}">{{skill.displayName}}</label>
                             {{#if hasSpecialties}}
-                                <label class="specialty">S</label>
+                                <label class="specialty" title="{{localize "WOD5E.Skills.Specialties"}}:{{#each skill.specialtiesList as |bonus|}} {{bonus}}{{#unless @last}},{{/unless}}{{/each}}">S</label>
                             {{/if}}
                         </div>
                         <div class="resource-value" data-value="{{skill.value}}" data-name="system.skills.{{skill.id}}.value">
@@ -62,7 +62,7 @@
             </div>
         </li>
         {{#each actor.system.customRolls as |roll id|}}
-            <li class="item flexrow" data-item-id="{{roll._id}}">
+            <li class="item flexrow" data-item-id="{{roll._id}}" draggable="true">
                 <div class="item-image rollable" data-value-paths="abilities.{{roll.system.dice1}}.value skills.{{roll.system.dice2}}.value"
                     data-name="{{roll.name}}" data-label="{{roll.name}}" data-use-flavor-path="true" data-flavor-path="description" data-item-id="{{roll._id}}"
                     data-selectors="abilities abilities.{{roll.system.dice1}} skills skills.{{roll.system.dice2}}" data-skill="{{roll.system.dice2}}"
@@ -70,8 +70,8 @@
                     <img src="{{roll.img}}" title="{{roll.name}}" width="24" height="24" alt="{{roll.name}}" />
                 </div>
                 <h4 class="item-name">{{roll.name}}</h4>
-                <h4 class="item-name">{{localize (generateLocalizedLabel roll.system.dice1)}}</h4>
-                <h4 class="item-name">{{localize (generateLocalizedLabel roll.system.dice2)}}</h4>
+                <h4 class="item-name">{{generateLocalizedLabel roll.system.dice1}}</h4>
+                <h4 class="item-name">{{generateLocalizedLabel roll.system.dice2}}</h4>
                 <div class="item-controls">
                     <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}"><i
                             class="fas fa-edit"></i></a>

@@ -1,7 +1,7 @@
-<form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} cell-sheet" autocomplete="off">
-  {{!-- Cell Sheet Header --}}
+<form class="{{cssClass}} flexcol{{#if locked}} locked{{/if}}" autocomplete="off">
+  {{!-- Coterie Sheet Header --}}
   <header class="actor-header">
-    <div class="header-fields-top">
+      <div class="header-fields-top">
       <div class="header-profile-img">
         {{!-- Actor image and sheet lock toggle button --}}
         {{> "systems/vtm5e/templates/actor/parts/profile-img.hbs"}}
@@ -16,16 +16,11 @@
             
           {{> "systems/vtm5e/templates/actor/parts/group/type-selector.hbs"}}
         </div>
-        <div class="header-row-2">
-          {{> "systems/vtm5e/templates/actor/parts/hunter/desperation.hbs"}}
-
-          {{> "systems/vtm5e/templates/actor/parts/hunter/danger.hbs"}}
-        </div>
       </div>
     </div>
   </header>
 
-  {{!-- Cell Sheet Tab Navigation --}}
+  {{!-- Coterie Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     <div class="item" data-tab="members">{{localize "WOD5E.Tabs.Members"}}</div>
     <div class="item" data-tab="features">{{localize "WOD5E.Tabs.Features"}}</div>
@@ -33,7 +28,7 @@
     <div class="item" data-tab="other">{{localize "WOD5E.Tabs.Other"}}</div>
   </nav>
 
-  {{!-- Cell Sheet Body --}}
+  {{!-- Coterie Sheet Body --}}
   <section class="sheet-body">
     {{!-- Group Members Tab --}}
     {{> "systems/vtm5e/templates/actor/parts/group/group-members.hbs"}}
@@ -48,4 +43,3 @@
     {{> "systems/vtm5e/templates/actor/parts/other.hbs"}}
   </section>
 </form>
-

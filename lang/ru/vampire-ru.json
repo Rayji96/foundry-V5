@@ -10,6 +10,10 @@
       "Domitor": "Домитор",
       "Clan": "Клан",
       "Generation": "Поколение",
+      
+      "_Chasse": "",
+      "_Lien": "",
+      "_Portillon": "",
 
       "_VampireDice": "",
       "_HungerDice": "",
