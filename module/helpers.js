@@ -166,6 +166,7 @@ export const loadHelpers = async function () {
     }
   })
 
+  // Depreciate
   Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
     // Return the result of the stain, or 1 at minimum.
     const stainDice = Math.max((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3), 1)
@@ -173,6 +174,7 @@ export const loadHelpers = async function () {
     return stainDice
   })
 
+  // Depreciate
   Handlebars.registerHelper('willpower', function (willpowerMax, willpowerAgg, willpowerSup) {
     // Return the result of the willpower, or 1 at minimum.
     const willpowerDice = Math.max((willpowerMax - willpowerAgg - willpowerSup), 1)
@@ -180,7 +182,7 @@ export const loadHelpers = async function () {
     return willpowerDice
   })
 
-  // TODO: there exist math helpers for handlebars
+  // Depreciate 
   Handlebars.registerHelper('remorse', function (humanity, stain) {
     // Return the result of the stain, or 1 at minimum.
     const remorseDice = Math.max((10 - humanity - stain), 1)
@@ -188,12 +190,14 @@ export const loadHelpers = async function () {
     return remorseDice
   })
 
+  // Depreciate
   Handlebars.registerHelper('harano-test', function (harano, hauglosk) {
     const haranoDice = Math.max((harano + hauglosk), 1)
 
     return haranoDice
   })
 
+  // Depreciate
   Handlebars.registerHelper('hauglosk-test', function (harano, hauglosk) {
     const haugloskDice = Math.max((harano + hauglosk), 1)
 
