@@ -140,32 +140,43 @@ export class GroupActorSheet extends WoDActor {
     if (actor.type === 'group') return
 
     // Check if the actor is unique in the already existing list;
-    // Returns true if it's found, or false if it's not found
-    const actorUniqueCheck = group.system.members ? group.system.members.find(players => players === actorUUID) : false
+    // Returns false if it's found, or true if it's not found
+    const actorIsUnique = group.system.members.find(players => players === actorUUID) ? false : true
+    if (!actorIsUnique) {
+      ui.notifications.warn(`Actor ${actor.name} is already part of this group.`)
 
-    // If the actor exists and is unique
-    if (!actorUniqueCheck) {
-      // Define the current members list
-      const membersList = group.system.members ? group.system.members : []
-
-      // Push actor to the list
-      membersList.push(actorUUID)
-
-      // Update the group sheet with the new actor
-      await group.update({ 'system.members': membersList })
-
-      // Set the actor's group to the group's ID
-      await actor.update({ 'system.group': group.id })
-
-      // Update the group's permissions to include the players as limited by default if the default ownership is "none"
-      // Otherwise keep whatever default ownership the storyteller has set
-      if (actor.hasPlayerOwner && group.ownership.default === 0) {
-        await group.update({ ownership: { default: 1 } })
-      }
-
-      // Re-render the actors list
-      await game.actors.render()
+      return
     }
+
+    // Check if the actor is already in a group
+    const actorHasNoGroup = actor.system.group ? false : true
+    if (!actorHasNoGroup) {
+      ui.notifications.warn(`Actor ${actor.name} is already in an existing group.`)
+
+      return
+    }
+
+    // If the actor exists, is unique, and does not already belong to a group, continue
+    // Define the current members list
+    const membersList = group.system.members ? group.system.members : []
+
+    // Push actor to the list
+    membersList.push(actorUUID)
+
+    // Update the group sheet with the new actor
+    await group.update({ 'system.members': membersList })
+
+    // Set the actor's group to the group's ID
+    await actor.update({ 'system.group': group.id })
+
+    // Update the group's permissions to include the players as limited by default if the default ownership is "none"
+    // Otherwise keep whatever default ownership the storyteller has set
+    if (actor.hasPlayerOwner && group.ownership.default === 0) {
+      await group.update({ ownership: { default: 1 } })
+    }
+
+    // Re-render the actors list
+    await game.actors.render()
   }
 
   async _removeActor (event) {
