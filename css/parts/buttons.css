@@ -21,7 +21,9 @@ button:focus {
 .edge-rollable:hover,
 .edge-rollable:focus,
 .gift-rollable:hover,
-.gift-rollable:focus {
+.gift-rollable:focus,
+.system-rollable:hover,
+.system-rollable:focus {
     color: #000;
     cursor: pointer;
 }

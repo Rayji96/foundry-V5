@@ -127,6 +127,11 @@ export class WerewolfActorSheet extends WoDActor {
     // Form change buttons
     html.find('.change-form').click(this._onShiftForm.bind(this))
 
+    // Harano buttons
+    html.find('.harano-roll').click(this._onHaranoRoll.bind(this))
+    // Hauglosk buttons
+    html.find('.hauglosk-roll').click(this._onHaugloskRoll.bind(this))
+
     // Form to chat buttons
     html.find('.were-form-chat').click(this._onFormToChat.bind(this))
 
@@ -460,6 +465,41 @@ export class WerewolfActorSheet extends WoDActor {
     }
   }
 
+  // Handle rolling the Harano dice
+  async _onHaranoRoll (event) {
+    const actor = this.actor
+    const harano = actor.system.balance.harano.value 
+    const hauglosk = actor.system.balance.hauglosk.value
+    
+    const dicePool = Math.max((harano + hauglosk), 1)
+
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      title: `${actor.name} - Harano Roll`,
+      actor,
+      data: actor.system,
+      quickRoll: false,
+      disableAdvancedDice: true
+    })
+  }
+
+  // Handle rolling the Harano dice
+  async _onHaugloskRoll (event) {
+    const actor = this.actor
+    const harano = actor.system.balance.harano.value 
+    const hauglosk = actor.system.balance.hauglosk.value
+    
+    const dicePool = Math.max((harano + hauglosk), 1)
+
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      title: `${actor.name} - Hauglosk Roll`,
+      actor,
+      data: actor.system,
+      quickRoll: false,
+      disableAdvancedDice: true
+    })
+  }
   // Handle posting an actor's form to the chat.
   _onFormToChat (event) {
     event.preventDefault()
