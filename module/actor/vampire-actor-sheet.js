@@ -116,7 +116,6 @@ export class VampireActorSheet extends GhoulActorSheet {
 
     // Top-level variables
     const actor = this.actor
-    const element = event.currentTarget
 
     // Secondary variables
     const humanity = actor.system.humanity.value

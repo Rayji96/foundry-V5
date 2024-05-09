@@ -468,7 +468,7 @@ export class WerewolfActorSheet extends WoDActor {
     event.preventDefault()
 
     const actor = this.actor
-    const harano = actor.system.balance.harano.value 
+    const harano = actor.system.balance.harano.value
     const hauglosk = actor.system.balance.hauglosk.value
 
     const dicePool = Math.max((harano + hauglosk), 1)
@@ -488,7 +488,7 @@ export class WerewolfActorSheet extends WoDActor {
     event.preventDefault()
 
     const actor = this.actor
-    const harano = actor.system.balance.harano.value 
+    const harano = actor.system.balance.harano.value
     const hauglosk = actor.system.balance.hauglosk.value
 
     const dicePool = Math.max((harano + hauglosk), 1)
