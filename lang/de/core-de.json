@@ -185,7 +185,7 @@
       "Rolling": "Würfeln",
       "RollWillpower": "Willenskraft würfeln",
       "WillpowerReroll": "Mit Willenskraft neuwürfeln …",
-      "WillpowerFullTitle": "Willpower Tracker Full",
+      "WillpowerFullTitle": "Willenskraft aufgebraucht",
       "WillpowerFull": "Willenskraft ist vollständig aufgebraucht, kann sie nicht weiter verringern.",
       "WillpowerDamage": "Willenskraft-Schaden",
       "HasReceivedWillpowerDamage": "{actor} hat {willpowerDamage} Punkte Willenskraft-Schaden erlitten"
