@@ -229,6 +229,30 @@
       "name": "Hunter (Russian)",
       "path": "lang/ru/hunter-ru.json",
       "flags": {}
+    },
+    {
+      "lang": "uk",
+      "name": "Core (Ukrainian)",
+      "path": "lang/uk/core-uk.json",
+      "flags": {}
+    },
+    {
+      "lang": "uk",
+      "name": "Vampire (Ukrainian)",
+      "path": "lang/uk/vampire-uk.json",
+      "flags": {}
+    },
+    {
+      "lang": "uk",
+      "name": "Werewolf (Ukrainian)",
+      "path": "lang/uk/werewolf-uk.json",
+      "flags": {}
+    },
+    {
+      "lang": "uk",
+      "name": "Hunter (Ukrainian)",
+      "path": "lang/uk/hunter-uk.json",
+      "flags": {}
     }
   ],
   "packs": [

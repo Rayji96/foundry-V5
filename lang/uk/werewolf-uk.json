@@ -1,0 +1,89 @@
+{
+  "WOD5E": {
+    "WTA": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+      "Label": "Перевертень",
+
+      "_Pack": "",
+
+      "_WerewolfDice": "",
+      "RageDice": "Кубик Гніву",
+
+      "GiftsandRites": "Дари й Обряди",
+      "Rage": "Гнів",
+      "_RageCost": "",
+      "_WillpowerCost": "",
+      "PossibleRageFailure": "Можливий Жорстокий наслідок",
+      "RollRageDamageWillpower": "Кидок Гніву",
+      "_HasCost": "",
+
+      "Gift": "Дар",
+      "SelectGift": "Виберіть Дар",
+      "GiftType": "Тип Дару",
+      "AddGift": "Додати Дар",
+      "NewGift": "Новий Дар",
+      "AddRite": "Додати Обряд",
+      "NewRite": "Новий Обряд",
+
+      "TheWolf": "Вовк",
+      "Tribe": "Плем'я",
+      "_Auspice": "",
+
+      "_Harano": "",
+      "HaranoTest": "Перевірка Harano",
+      "_Hauglosk": "",
+      "HaugloskTest": "Перевірка Hauglosk",
+
+      "_Frenzy": "",
+      "EnterFrenzy": "Увійти в Скаженість",
+      "EndFrenzy": "Завершити Скаженість",
+      "FrenzyActiveWarning": "Скаженість активована.",
+      "Active": "Активно",
+      "FrenzyActiveWarning2": "Ви не моежете використовувати Дари та Обряди під час Скаженості.",
+      "LostWolfFormChange": "Втратив вовка: ви не можете зараз перевтілитись у надприродню форму.",
+
+      "Renown": "Репутація",
+      "_AddRenown": "",
+      "Wisdom": "Мудрість",
+      "Glory": "Слава",
+      "Honor": "Честь",
+
+      "FormsOfGarou": "Форми",
+      "_HomidName": "",
+      "HomidTitle": "Людина",
+      "_GlabroName": "",
+      "GlabroTitle": "Напівлюдина",
+      "_CrinosName": "",
+      "CrinosTitle": "Бойова форма, Монстр",
+      "_HispoName": "",
+      "HispoTitle": "Лютововк",
+      "_LupusName": "",
+      "LupusTitle": "Вовк",
+      "_PostFormToChat": "",
+
+      "Patron": "Дух Покровитель",
+      "Favor": "Схвалення",
+      "Ban": "Засудження",
+
+      "_Native": "",
+      "_Ragabash": "",
+      "_Theurge": "",
+      "_Philodox": "",
+      "_Galliard": "",
+      "_Ahroun": "",
+      "_BlackFury": "",
+      "_BoneGnawer": "",
+      "_ChildrenOfGaia": "",
+      "_Galestalker": "",
+      "_GhostCouncil": "",
+      "_GlassWalker": "",
+      "_HartWarden": "",
+      "_RedTalon": "",
+      "_ShadowLord": "",
+      "_SilentStrider": "",
+      "_SilverFang": "",
+      "Rite": "Обряд"
+    }
+  }
+}
