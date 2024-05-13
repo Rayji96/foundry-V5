@@ -56,7 +56,7 @@ Huge thanks to these folks for their contributions!
 * Italian localization started by @Arcadio21#8780
 * Help with french localization by [Lemantia]
 * Brazilian Portuguese localization started by [danielmalka]
-* German localization started and maintained by [tom959]
+* German localization started by [tom959] and maintained by [LorduFreeman]
 * Spanish localization started by [erizocosmico]
 * Spanish localization help by [Musrha]
 * Polish localization help by [gbursson]

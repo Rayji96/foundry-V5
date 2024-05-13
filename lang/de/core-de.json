@@ -22,9 +22,9 @@
     "Mortal": "Sterblicher",
     "GroupSheet": "Gruppen-Bogen",
 
-    "_OpenSheet": "",
-    "_RemoveFromGroup": "",
-    "_NoGroupMembers": "",
+    "OpenSheet": "Bogen öffnen",
+    "RemoveFromGroup": "Aus Gruppe entfernen",
+    "NoGroupMembers": "Keine Gruppenmitglieder. Zum Hinzufügen aus der Akteur-Liste hierher ziehen.",
 
     "Roll": {
       "Label": "Wurf",
@@ -81,7 +81,7 @@
     },
 
     "Tabs": {
-      "_Members": "",
+      "Members": "Mitglieder",
       "Stats": "Werte",
       "Features": "Merkmale",
       "Description": "Beschreibung",
@@ -185,7 +185,7 @@
       "Rolling": "Würfeln",
       "RollWillpower": "Willenskraft würfeln",
       "WillpowerReroll": "Mit Willenskraft neuwürfeln …",
-      "WillpowerFullTitle": "Willpower Tracker Full",
+      "WillpowerFullTitle": "Willenskraft aufgebraucht",
       "WillpowerFull": "Willenskraft ist vollständig aufgebraucht, kann sie nicht weiter verringern.",
       "WillpowerDamage": "Willenskraft-Schaden",
       "HasReceivedWillpowerDamage": "{actor} hat {willpowerDamage} Punkte Willenskraft-Schaden erlitten"
