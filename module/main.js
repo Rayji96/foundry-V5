@@ -233,7 +233,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
           if (actorObject) {
             const actorElement = $(`[data-entry-id='${actorObject.id}'`)
             const groupListElement = $(`[data-entry-id='${group.id}'`).find('.subdirectory')[0]
-  
+
             actorElement.appendTo(groupListElement)
           } else {
             // If the actor doesn't exist, remove it from the group
