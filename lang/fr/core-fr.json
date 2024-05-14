@@ -20,6 +20,11 @@
     "Value": "Valeur",
     
     "Mortal": "Mortel",
+    "_GroupSheet": "",
+
+    "_OpenSheet": "",
+    "_RemoveFromGroup": "",
+    "_NoGroupMembers": "",
 
     "Roll": {
       "Label": "Jet",
@@ -76,6 +81,7 @@
     },
 
     "Tabs": {
+      "_Members": "",
       "Stats": "Stats",
       "Features": "Atouts",
       "Description": "Description",

@@ -1,0 +1,68 @@
+.group-header.coterie {
+  background-color: rgb(121 8 19 / 80%) !important;
+}
+
+.group-header.cell {
+  background-color: rgb(204 109 40 / 80%) !important;
+}
+
+.group-header.pack {
+  background-color: rgb(78 33 0 / 80%) !important;
+}
+
+.group-sheet .group-type-field {
+  margin-bottom: 0;
+}
+
+.group-sheet .group-type-selector {
+  height: 40px;
+  cursor: pointer;
+}
+
+.group-sheet .members .group-member {
+  padding: 5px 0;
+}
+
+.group-sheet .members .group-member .actor-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.group-sheet .members .group-member .actor-image {
+  max-width: 60px;
+}
+
+.group-sheet .members .group-member .actor-image img {
+  margin: 0 3px;
+}
+
+.group-sheet .members .group-member .sub-item {
+  flex-grow: 0;
+  display: contents;
+}
+
+.group-sheet .members .group-member .sup-item {
+  flex-grow: 0;
+  display: flex;
+}
+
+.group-sheet .members .group-member .sup-item a {
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+}
+
+.group-sheet .members .group-member .sup-item.type {
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.group-sheet .members .group-member .sub-item .sub-item-name {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+.group-sheet .hunting-difficulty .resource-value {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}

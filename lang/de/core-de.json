@@ -2,15 +2,15 @@
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
-    "_Name": "",
-    "_Confirm": "",
-    "_Close": "",
-    "_Save": "",
-    "_Submit": "",
-    "_System": "",
+    "Name": "Name",
+    "Confirm": "Bestätigen",
+    "Close": "Schließen",
+    "Save": "Speichern",
+    "Submit": "Absenden",
+    "System": "System",
     "Edit": "Bearbeiten",
     "Delete": "Löschen",
-    "_Level": "",
+    "Level": "Stufe",
     "Add": "Hinzufügen",
     "Cancel": "Abbrechen",
     "Health": "Gesundheit",
@@ -20,50 +20,56 @@
     "Value": "Wert",
 
     "Mortal": "Sterblicher",
+    "GroupSheet": "Gruppen-Bogen",
+
+    "OpenSheet": "Bogen öffnen",
+    "RemoveFromGroup": "Aus Gruppe entfernen",
+    "NoGroupMembers": "Keine Gruppenmitglieder. Zum Hinzufügen aus der Akteur-Liste hierher ziehen.",
 
     "Roll": {
-      "_Label": "",
-      "_RollMode": "",
-      "_MortalDice": "",
+      "Label": "Wurf",
+      "RollMode": "Wurf-Modus",
+      "MortalDice": "Würfel",
       "Success": "Erfolg",
       "Successes": "Erfolge",
       "CriticalSuccess": "Kritischer Erfolg",
       "Fail": "Fehlschlag",
       "Modifier": "Modifikator",
       "Difficulty": "Schwierigkeit",
-      "_SelectableModifiers": "",
-      "_Source": "",
-      "_Active": "",
-      "_CustomModifiers": ""
+      "SelectableModifiers": "Auswählbare Modifikatoren",
+      "Source": "Quelle",
+      "Active": "Aktiv",
+      "CustomModifiers": "Eigene Modifikatoren",
+      "AddCustomModifier": "Eigene Modifikatoren hinzufügen"	  
     },
 
     "Bonus": {
-        "_NewSpecialty": "",
-        "_AddNewSpecialty": "",
-        "_NewBonus": "",
-        "_AddNewBonus": "",
-        "_Active": "",
-        "_ActiveWhen": "",
-        "_Always": "",
-        "_Never": "",
-        "_IfEquals": "",
-        "_Path": "",
-        "_PathsSeparatedBySemicolons": "",
-        "_DisplayWhenInactive": "",
-        "_Unless": "",
-        "_PathToCheck": "",
-        "_ValueToCheck": ""
+        "NewSpecialty": "Neue Spezialisierung",
+        "AddNewSpecialty": "Neue Spezialisierung hinzufügen",
+        "NewBonus": "Neuer Bonus",
+        "AddNewBonus": "Neuen Bonus hinzufügen",
+        "Active": "Aktiv",
+        "ActiveWhen": "Aktiv, wenn",
+        "Always": "Immer",
+        "Never": "Nie",
+        "IfEquals": "Falls gleich …",
+        "Path": "Pfad",
+        "PathsSeparatedBySemicolons": "Pfade, getrennt mit Semikolons (;)",
+        "DisplayWhenInactive": "Anzeigen, wenn inaktiv",
+        "Unless": "Außer, wenn …",
+        "PathToCheck": "Pfad",
+        "ValueToCheck": "Wert"
     },
 
     "SPC": {
-      "_Label": "",
-      "GeneralDifficulty": "Allgemeine Schwierigkeit",
-      "StandardDicePools": "Standardwürfelpools",
+      "Label": "Erzähler-Charakter (NSC)",
+      "GeneralDifficulty": "Allg. SG",
+      "StandardDicePools": "Würfelpools",
       "ExceptionalDicePools": "Besondere Würfelpools",
-      "Physical": "Physisch",
-      "_Mental": "",
-      "Social": "Sozial",
-      "AddSkill": "Fertigkeit hinzufügen",
+      "Physical": "Körperlich",
+      "Mental": "Geistig",
+      "Social": "Gesellschaftlich",
+      "AddSkill": "Fähigkeit hinzufügen",
       "SelectSkill": "Wähle Fähigkeit"
     },
 
@@ -71,10 +77,11 @@
       "Superficial": "Leichter",
       "Aggravated": "Schwerer",
       "Stains": "Makel",
-      "_Max": ""
+      "Max": "Maximum"
     },
 
     "Tabs": {
+      "Members": "Mitglieder",
       "Stats": "Werte",
       "Features": "Merkmale",
       "Description": "Beschreibung",
@@ -84,8 +91,8 @@
     },
 
     "Attributes": {
-      "_Label": "",
-      "_Attributes": "",
+      "Label": "Attribute",
+      "Attributes": "Attribute",
       "Strength": "Körperkraft",
       "Charisma": "Charisma",
       "Intelligence": "Intelligenz",
@@ -132,25 +139,25 @@
     },
 
     "Items": {
-      "_Label": "",
-      "ShowToChat": "Zum Chatten anzeigen",
+      "Label": "Gegenstände",
+      "ShowToChat": "An Chat senden",
       "CustomRoll": "Benutzerdefinierter Wurf",
       "CustomRolls": "Benutzerdefinierte Würfe",
       "Merit": "Vorteile",
-      "_Cost": "",
+      "Cost": "Kosten",
       "Flaw": "Schwächen",
-      "_Bonuses": "",
+      "Bonuses": "Boni",
       "Background": "Hintergrund",
       "Points": "Punkte",
-      "UseSkill": "Fähigkeiten Einsetzen",
+      "UseSkill": "Fähigkeiten einsetzen",
       "Rollable": "Würfelbar",
-      "_Feature": "",
-      "FeatureType": "Merkmal Typ",
+      "Feature": "Merkmal",
+      "FeatureType": "Merkmals-Typ",
       "Type": "Typ",
-      "_NewSpecialty": "",
+      "NewSpecialty": "Neue Spezialisierung",
       "Boon": "Gefallen",
       "Boons": "Gefallen",
-      "_Macro": "Macro"
+      "Macro": "Macro"
     },
 
     "Biography": {
@@ -174,14 +181,14 @@
     },
 
     "Chat": {
-      "RollingWillpower": "Rolle Willenskraft",
+      "RollingWillpower": "Würfle Willenskraft",
       "Rolling": "Würfeln",
-      "RollWillpower": "Willpower Rollen",
-      "WillpowerReroll": "Willenskraft Wiederholung",
-      "WillpowerFullTitle": "Willpower Tracker Full",
-      "WillpowerFull": "Willenskraft ist vollständig beschädigt, kann sie nicht weiter beschädigen.",
-      "_WillpowerDamage": "",
-      "_HasReceivedWillpowerDamage": ""
+      "RollWillpower": "Willenskraft würfeln",
+      "WillpowerReroll": "Mit Willenskraft neuwürfeln …",
+      "WillpowerFullTitle": "Willenskraft aufgebraucht",
+      "WillpowerFull": "Willenskraft ist vollständig aufgebraucht, kann sie nicht weiter verringern.",
+      "WillpowerDamage": "Willenskraft-Schaden",
+      "HasReceivedWillpowerDamage": "{actor} hat {willpowerDamage} Punkte Willenskraft-Schaden erlitten"
     }
   }
 }

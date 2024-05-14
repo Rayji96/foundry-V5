@@ -1,18 +1,23 @@
-/* global duplicate */
+/* global duplicate, game */
 
 // Handle all types of resource changes
 export const _onResourceChange = async function (event) {
   event.preventDefault()
 
   // Top-level variables
-  const actor = this.actor
-  const actorData = duplicate(actor)
+  let actor
   const element = event.currentTarget
   const dataset = Object.assign({}, element.dataset)
   const resource = dataset.resource
+  if (dataset.actorId) {
+    actor = game.actors.get(dataset.actorId)
+  } else {
+    actor = this.actor
+  }
+  const actorData = duplicate(actor)
 
   // Don't let things be edited if the sheet is locked
-  if (this.locked) return
+  if (this.actor.locked || actorData.locked) return
 
   // Handle adding and subtracting the number of boxes
   if (dataset.action === 'plus') {
@@ -103,8 +108,14 @@ export const _onDotCounterChange = async function (event) {
   event.preventDefault()
 
   // Top-level variables
+  let actor
   const element = event.currentTarget
   const dataset = Object.assign({}, element.dataset)
+  if (dataset.actorId) {
+    actor = game.actors.get(dataset.actorId)
+  } else {
+    actor = this.actor
+  }
 
   // Secondary variables
   const index = parseInt(dataset.index)
@@ -115,7 +126,7 @@ export const _onDotCounterChange = async function (event) {
 
   // Make sure that the dot counter can only be changed if the sheet is
   // unlocked or if it's the hunger track.
-  if (this.locked && !parent.has('.hunger-value').length) return
+  if (this.actor.system.locked && !parent.has('.hunger-value').length) return
 
   if (index < 0 || index > steps.length) {
     return
@@ -129,7 +140,7 @@ export const _onDotCounterChange = async function (event) {
     }
   })
   // Update the actor field
-  _assignToActorField(fields, index + 1, this.actor)
+  _assignToActorField(fields, index + 1, actor)
 }
 
 // Set dot counters to an empty value
@@ -137,8 +148,15 @@ export const _onDotCounterEmpty = async function (event) {
   event.preventDefault()
 
   // Top-level variables
+  let actor
   const element = event.currentTarget
+  const dataset = Object.assign({}, element.dataset)
   const parent = $(element.parentNode)
+  if (dataset.actorId) {
+    actor = game.actors.get(dataset.actorId)
+  } else {
+    actor = this.actor
+  }
 
   // Secondary variables
   const fieldStrings = parent[0].dataset.name
@@ -147,11 +165,12 @@ export const _onDotCounterEmpty = async function (event) {
 
   // Make sure that the dot counter can only be changed if the sheet is
   // unlocked or if it's the hunger track.
-  if (this.locked && !parent.has('.hunger-value').length) return
+  // Bypass this if this function is being called from a group sheet
+  if (!(this.actor.type === 'group') && actor.system.locked && !parent.has('.hunger-value').length) return
 
   // Update the actor field
   steps.removeClass('active')
-  _assignToActorField(fields, 0, this.actor)
+  _assignToActorField(fields, 0, actor)
 }
 
 // Handle square counters
@@ -159,8 +178,15 @@ export const _onSquareCounterChange = async function (event) {
   event.preventDefault()
 
   // Top-level variables
+  let actor
   const element = event.currentTarget
+  const dataset = Object.assign({}, element.dataset)
   const index = parseInt(element.dataset.index)
+  if (dataset.actorId) {
+    actor = game.actors.get(dataset.actorId)
+  } else {
+    actor = this.actor
+  }
 
   // Secondary variables
   const oldState = element.dataset.state || ''
@@ -210,7 +236,7 @@ export const _onSquareCounterChange = async function (event) {
     return obj
   }, {})
 
-  _assignToActorField(fields, newValue, this.actor)
+  _assignToActorField(fields, newValue, actor)
 }
 
 // Function to help with counter states

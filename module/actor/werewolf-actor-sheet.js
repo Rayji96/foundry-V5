@@ -45,8 +45,6 @@ export class WerewolfActorSheet extends WoDActor {
   async getData () {
     const data = await super.getData()
 
-    data.sheetType = `${game.i18n.localize('WOD5E.WTA.Label')}`
-
     this._prepareItems(data)
 
     return data
@@ -126,6 +124,11 @@ export class WerewolfActorSheet extends WoDActor {
 
     // Form change buttons
     html.find('.change-form').click(this._onShiftForm.bind(this))
+
+    // Harano buttons
+    html.find('.harano-roll').click(this._onHaranoRoll.bind(this))
+    // Hauglosk buttons
+    html.find('.hauglosk-roll').click(this._onHaugloskRoll.bind(this))
 
     // Form to chat buttons
     html.find('.were-form-chat').click(this._onFormToChat.bind(this))
@@ -458,6 +461,46 @@ export class WerewolfActorSheet extends WoDActor {
         }
       })
     }
+  }
+
+  // Handle rolling the Harano dice
+  async _onHaranoRoll (event) {
+    event.preventDefault()
+
+    const actor = this.actor
+    const harano = actor.system.balance.harano.value
+    const hauglosk = actor.system.balance.hauglosk.value
+
+    const dicePool = Math.max((harano + hauglosk), 1)
+
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      title: game.i18n.localize('WOD5E.WTA.HaranoTest'),
+      actor,
+      data: actor.system,
+      quickRoll: false,
+      disableAdvancedDice: true
+    })
+  }
+
+  // Handle rolling the Harano dice
+  async _onHaugloskRoll (event) {
+    event.preventDefault()
+
+    const actor = this.actor
+    const harano = actor.system.balance.harano.value
+    const hauglosk = actor.system.balance.hauglosk.value
+
+    const dicePool = Math.max((harano + hauglosk), 1)
+
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      title: game.i18n.localize('WOD5E.WTA.HaugloskTest'),
+      actor,
+      data: actor.system,
+      quickRoll: false,
+      disableAdvancedDice: true
+    })
   }
 
   // Handle posting an actor's form to the chat.

@@ -5,6 +5,7 @@ import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCount
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/specialty-bonuses.js'
 import { Attributes } from '../def/attributes.js'
 import { Skills } from '../def/skills.js'
+import { WOD5eDice } from '../scripts/system-rolls.js'
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
@@ -14,12 +15,12 @@ export class WoDActor extends ActorSheet {
   /** @override */
   async getData () {
     const data = await super.getData()
-    data.isCharacter = this.isCharacter
-    data.locked = this.locked
     const actorData = this.object.system
     const actorHeaders = actorData.headers
+    data.isCharacter = this.isCharacter
+    data.locked = actorData.locked
 
-    if (this.object.type !== 'cell' && this.object.type !== 'coterie') {
+    if (this.object.type !== 'group') {
       this._onHealthChange()
       this._onWillpowerChange()
     }
@@ -45,11 +46,6 @@ export class WoDActor extends ActorSheet {
     }
 
     return data
-  }
-
-  constructor (actor, options) {
-    super(actor, options)
-    this.locked = true
   }
 
   /**
@@ -126,9 +122,14 @@ export class WoDActor extends ActorSheet {
         const id = Object.getOwnPropertyNames(entry)[0]
         let skillData = {}
         let hasSpecialties = false
+        const specialtiesList = []
 
         if (actorSkills[id].bonuses.length > 0) {
           hasSpecialties = true
+
+          for (const bonus of actorSkills[id].bonuses) {
+            specialtiesList.push(bonus.source)
+          }
         }
 
         // If the actor has a skill with the key, grab its current values
@@ -136,13 +137,15 @@ export class WoDActor extends ActorSheet {
           skillData = Object.assign({
             id,
             value: actorSkills[id].value,
-            hasSpecialties
+            hasSpecialties,
+            specialtiesList
           }, value)
         } else { // Otherwise, use the default
           skillData = Object.assign({
             id,
             value: 0,
-            hasSpecialties
+            hasSpecialties,
+            specialtiesList
           }, value)
         }
 
@@ -260,17 +263,41 @@ export class WoDActor extends ActorSheet {
         content.css('maxHeight', '0px')
       }
     })
+
+    /* -------------------------------------------- */
+    /*  Rollable Abilities                          */
+    /* -------------------------------------------- */
+    // Willpower
+    html.find('.willpower-roll').click(this._onWillpowerRoll.bind(this))
   }
+  /* -------------------------------------------- */
+  /* TOOLS                                        */
+  /* -------------------------------------------- */
+
+  getWillpowerDicePool (actor) {
+    const willpowerMax = actor.system.willpower.max
+    const willpowerAgg = actor.system.willpower.aggravated
+    const willpowerSup = actor.system.willpower.superficial
+
+    return Math.max((willpowerMax - willpowerAgg - willpowerSup), 0)
+  }
+
+  /* -------------------------------------------- */
+  /* ACTIONS                                      */
+  /* -------------------------------------------- */
 
   /**
    * Handle locking and unlocking the actor sheet
    * @param {Event} event   The originating click event
    */
-  _onToggleLocked (event) {
+  async _onToggleLocked (event) {
     event.preventDefault()
 
-    this.locked = !this.locked
-    this._render()
+    // Top-level variables
+    const actor = this.actor
+
+    // Update the locked state
+    await actor.update({ 'system.locked': !actor.system.locked })
   }
 
   /**
@@ -455,5 +482,25 @@ export class WoDActor extends ActorSheet {
 
     // Update the actor's health.value
     actor.update({ 'system.willpower.value': derivedWillpower })
+  }
+
+  // Roll Handlers
+  async _onWillpowerRoll (event) {
+    event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+
+    // Secondary variables
+    const dicePool = Math.max(this.getWillpowerDicePool(actor), 1)
+
+    WOD5eDice.Roll({
+      basicDice: dicePool,
+      title: game.i18n.localize('WOD5E.Chat.RollingWillpower'),
+      actor,
+      data: actor.system,
+      quickRoll: false,
+      disableAdvancedDice: true
+    })
   }
 }

@@ -27,9 +27,10 @@
   margin-bottom: 10px;
 }
 
-.dark-theme .wod5e.werewolf-sheet .window-content nav.sheet-tabs {
-    border-top: 1px solid #cd7a3def;
-    border-bottom: 1px solid #cd7a3def;
+.dark-theme .wod5e.hunter-sheet .window-content nav.sheet-tabs {
+  color: #cd7a3def;
+  border-top: 1px solid #cd7a3def;
+  border-bottom: 1px solid #cd7a3def;
 }
 
 .dark-theme .wod5e .window-content nav.sheet-tabs .item.active {

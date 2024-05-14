@@ -31,6 +31,14 @@ export const loadHelpers = async function () {
     return options.inverse(this)
   })
 
+  Handlebars.registerHelper('ifgr', function (a, b, options) {
+    if (a > b) {
+      return options.fn(this)
+    }
+
+    return options.inverse(this)
+  })
+
   Handlebars.registerHelper('or', function () {
     for (let i = 0; i < arguments.length - 1; i++) {
       if (arguments[i]) {
@@ -59,6 +67,52 @@ export const loadHelpers = async function () {
     }
 
     return arr.join('; ')
+  })
+
+  // Helper to define attributes lists
+  Handlebars.registerHelper('getAttributesList', function () {
+    // Attribute definitions
+    const attributes = WOD5E.Attributes.getList()
+    const attributesList = []
+
+    for (const attribute of attributes) {
+      // Assign the data to a value
+      const [, value] = Object.entries(attribute)[0]
+      const id = Object.getOwnPropertyNames(attribute)[0]
+      const displayName = value.displayName
+      const hidden = value.hidden
+
+      attributesList.push({
+        id,
+        displayName,
+        hidden
+      })
+    }
+
+    return attributesList
+  })
+
+  // Helper to define skills lists
+  Handlebars.registerHelper('getSkillsList', function () {
+    // Skill definitions
+    const skills = WOD5E.Skills.getList()
+    const skillsList = []
+
+    for (const skill of skills) {
+      // Assign the data to a value
+      const [, value] = Object.entries(skill)[0]
+      const id = Object.getOwnPropertyNames(skill)[0]
+      const displayName = value.displayName
+      const hidden = value.hidden
+
+      skillsList.push({
+        id,
+        displayName,
+        hidden
+      })
+    }
+
+    return skillsList
   })
 
   Handlebars.registerHelper('generateLocalizedLabel', function (str) {
@@ -101,48 +155,15 @@ export const loadHelpers = async function () {
 
     // Function to actually grab the localized label
     function findLabel (list, string) {
-      const stringObject = list.find(obj => string in obj)
+      const stringObject = list.find(obj => string in obj)[string]
 
       // Return the localized string if found
-      if (stringObject) return stringObject[string].label
+      if (stringObject?.displayName) return stringObject.displayName
+      if (stringObject?.label) return stringObject.label
 
       // Return nothing
       return ''
     }
-  })
-
-  Handlebars.registerHelper('frenzy', function (willpowerMax, willpowerAgg, willpowerSup, humanity) {
-    // Return the result of the stain, or 1 at minimum.
-    const stainDice = Math.max((willpowerMax - willpowerAgg - willpowerSup) + Math.floor(humanity / 3), 1)
-
-    return stainDice
-  })
-
-  Handlebars.registerHelper('willpower', function (willpowerMax, willpowerAgg, willpowerSup) {
-    // Return the result of the willpower, or 1 at minimum.
-    const willpowerDice = Math.max((willpowerMax - willpowerAgg - willpowerSup), 1)
-
-    return willpowerDice
-  })
-
-  // TODO: there exist math helpers for handlebars
-  Handlebars.registerHelper('remorse', function (humanity, stain) {
-    // Return the result of the stain, or 1 at minimum.
-    const remorseDice = Math.max((10 - humanity - stain), 1)
-
-    return remorseDice
-  })
-
-  Handlebars.registerHelper('harano-test', function (harano, hauglosk) {
-    const haranoDice = Math.max((harano + hauglosk), 1)
-
-    return haranoDice
-  })
-
-  Handlebars.registerHelper('hauglosk-test', function (harano, hauglosk) {
-    const haugloskDice = Math.max((harano + hauglosk), 1)
-
-    return haugloskDice
   })
 
   Handlebars.registerHelper('attrIf', function (attr, value, test) {

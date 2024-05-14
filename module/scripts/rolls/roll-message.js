@@ -215,6 +215,12 @@ export async function generateRollMessage ({
     // Calculate the total result when factoring in criticals
     const totalResult = basicTotal + advancedTotal + critTotal
 
+    // Append additional data to the original roll
+    roll.system = system
+    roll.difficulty = difficulty
+    roll.totalResult = totalResult
+    roll.rollSuccessful = (totalResult >= difficulty) || (totalResult > 0 && difficulty === 0)
+
     // Construct the markup for total and difficulty display
     let totalAndDifficulty = `<div class="total-and-difficulty">
       <div class="roll-total">

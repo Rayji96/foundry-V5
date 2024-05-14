@@ -1,0 +1,194 @@
+{
+    "WOD5E": {
+        "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+        "Name": "Назва",
+        "_Confirm": "",
+        "_Close": "",
+        "_Save": "",
+        "_Submit": "",
+        "System": "Налаштування",
+        "Edit": "Редагувати",
+        "Delete": "Видалити",
+        "Level": "Рівень",
+        "Add": "Додати",
+        "Cancel": "Скасувати",
+        "Health": "Здоров'я",
+        "Willpower": "Воля",
+        "Exp": "Досвід",
+        "None": "Немає",
+        "Value": "Значення",
+
+        "Mortal": "Смертний",
+        "_GroupSheet": "",
+
+        "_OpenSheet": "",
+        "_RemoveFromGroup": "",
+        "_NoGroupMembers": "",
+
+        "Roll": {
+            "Label": "Перевірка",
+            "_RollMode": "",
+            "_MortalDice": "",
+            "Success": "Успіх",
+            "Successes": "Успіхів",
+            "CriticalSuccess": "Критичний успіх",
+            "Fail": "Провал",
+            "Modifier": "Модифікатор",
+            "Difficulty": "Складність",
+            "_SelectableModifiers": "",
+            "_Source": "",
+            "_Active": "",
+            "_CustomModifiers": "",
+            "_AddCustomModifier": ""
+        },
+
+        "Bonus": {
+            "_NewSpecialty": "",
+            "_AddNewSpecialty": "",
+            "_NewBonus": "",
+            "_AddNewBonus": "",
+            "_Active": "",
+            "_ActiveWhen": "",
+            "_Always": "",
+            "_Never": "",
+            "_IfEquals": "",
+            "_Path": "",
+            "_PathsSeparatedBySemicolons": "",
+            "_DisplayWhenInactive": "",
+            "_Unless": "",
+            "_PathToCheck": "",
+            "_ValueToCheck": ""
+        },
+
+        "SPC": {
+            "Label": "НІП",
+            "GeneralDifficulty": "Загальна складність",
+            "StandardDicePools": "Стандартний пул кубів",
+            "ExceptionalDicePools": "Особливий пул кубів",
+            "Physical": "Фізичні",
+            "Mental": "Ментальні",
+            "Social": "Соціальні",
+            "AddSkill": "Додати навичку",
+            "SelectSkill": "Вибрати навичку"
+        },
+
+        "Damage": {
+            "Superficial": "Легкий",
+            "Aggravated": "Тяжкий",
+            "Stains": "Пляма",
+            "Max": "Макс"
+        },
+
+        "Tabs": {
+            "_Members": "",
+            "Stats": "Хар-ки",
+            "Features": "Особливості",
+            "Description": "Опис",
+            "Equipment": "Інвентар",
+            "Notes": "Нотатки",
+            "Other": "Інше"
+        },
+
+        "Attributes": {
+            "Label": "Атрибут",
+            "Attributes": "Атрибути",
+            "Strength": "Сила",
+            "Charisma": "Харизма",
+            "Intelligence": "Інтелект",
+            "Dexterity": "Спритність",
+            "Manipulation": "Маніпулювання",
+            "Wits": "Кмітливість",
+            "Stamina": "Витривалість",
+            "Composure": "Стриманість",
+            "Resolve": "Зосередженість"
+        },
+
+        "Skills": {
+            "Label": "Навичка",
+            "Skills": "Навички",
+            "Specialty": "Спеціалізація",
+            "Specialties": "Спеціалізації",
+            "Athletics": "Атлетика",
+            "AnimalKen": "Тваринництво",
+            "Academics": "Освіта",
+            "Brawl": "Бійка",
+            "Etiquette": "Етикет",
+            "Awareness": "Уважність",
+            "Craft": "Ремесло",
+            "Insight": "Проникливість",
+            "Finance": "Фінанси",
+            "Drive": "Водіння",
+            "Intimidation": "Залякування",
+            "Investigation": "Розслідування",
+            "Firearms": "Дальній бій",
+            "Leadership": "Лідерство",
+            "Medicine": "Медицина",
+            "Melee": "Ближній бій",
+            "Performance": "Виступ",
+            "Occult": "Окультизм",
+            "Larceny": "Крадіжка",
+            "Persuasion": "Переконливість",
+            "Politics": "Політика",
+            "Stealth": "Непомітність",
+            "Streetwise": "Знання вулиць",
+            "Science": "Наука",
+            "Survival": "Виживання",
+            "Subterfuge": "Хитрість",
+            "Technology": "Технології"
+        },
+
+        "Items": {
+            "_Label": "",
+            "ShowToChat": "Показати в чат",
+            "CustomRoll": "Власна перевірка",
+            "CustomRolls": "Власні перевірки",
+            "Merit": "Перевага",
+            "_Cost": "",
+            "Flaw": "Недолік",
+            "_Bonuses": "",
+            "Background": "Передісторія",
+            "Points": "Крапки",
+            "UseSkill": "Використовує Навички",
+            "Rollable": "Є перевірка",
+            "_Feature": "",
+            "FeatureType": "Тип Особливості",
+            "Type": "Тип",
+            "_NewSpecialty": "",
+            "Boon": "Милість",
+            "Boons": "Милості",
+            "_Macro": ""
+        },
+
+        "Biography": {
+            "Label": "Передісторія",
+            "Concept": "Концепт",
+            "Chronicle": "Хроніка",
+            "Ambition": "Амбіція",
+            "Desire": "Бажання",
+            "ChronicleTenets": "Принципи Хроніки",
+            "TouchstonesAndConvictions": "Цінності та Переконання",
+            "Appearance": "Зовнішність",
+            "History": "Історія"        
+        },
+
+        "DiceRoller": {
+            "_AttributeShortLabel": "",
+            "_SkillShortLabel": "",
+            "_DisciplineShortLabel": "",
+            "_NothingShortLabel": "",
+            "SelectAbility": "Вибрати Атрибут"
+        },
+
+        "Chat": {
+            "RollingWillpower": "Перевірити Силу волі",
+            "Rolling": "Перевірити",
+            "RollWillpower": "Пройти перевірку Силу волі",
+            "WillpowerReroll": "Перекинути за Волю",
+            "_WillpowerFullTitle": "",
+            "WillpowerFull": "Воля повністю пошкоджена, далі шкодити їй не можливо.",
+            "_WillpowerDamage": "",
+            "_HasReceivedWillpowerDamage": "{actor} {willpowerDamage}"
+        }
+    }
+}

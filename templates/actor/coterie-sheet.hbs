@@ -1,50 +1,98 @@
-<form class="{{cssClass}} flexcol {{#if locked}}locked{{/if}} coterie-sheet" autocomplete="off">
-    {{!-- Actor Type Banner --}}
-    {{#if displayBanner}}
-    <div class="sheet-banner">
-      <h1>{{ sheetType }}</h1>
-    </div>
-    {{/if}}
-
-    {{!-- Coterie Sheet Header --}}
-    <header class="actor-header">
-        <div class="header-fields-top">
-          <div class="header-profile-img">
-              {{!-- Actor image and sheet lock toggle button --}}
-              {{> "systems/vtm5e/templates/actor/parts/profile-img.hbs"}}
-          </div>
-          <div class="header-rows-top">
-              <div class="header-row-1">
-                  {{!-- Text input header fields --}}
-                  <h1 class="charname"><input class="no-border" name="name" type="text" value="{{actor.name}}"
-                    placeholder="{{localize 'WOD5E.Name'}}" /></h1>
-                    
-                  <h1 class="charname"><input class="no-border" name="system.headers.concept" type="text" value="{{actor.system.headers.concept}}"
-                    placeholder="{{localize 'WOD5E.Biography.Concept'}}" /></h1>
-                    
-                  <h1 class="charname"><input class="no-border" name="system.headers.chronicle" type="text" value="{{actor.system.headers.chronicle}}"
-                    placeholder="{{localize 'WOD5E.Biography.Chronicle'}}" /></h1>
-              </div>
-          </div>
+<form class="{{cssClass}} flexcol{{#if locked}} locked{{/if}}" autocomplete="off">
+  {{!-- Coterie Sheet Header --}}
+  <header class="actor-header">
+      <div class="header-fields-top">
+      <div class="header-profile-img">
+        {{!-- Actor image and sheet lock toggle button --}}
+        {{> "systems/vtm5e/templates/actor/parts/profile-img.hbs"}}
       </div>
-    </header>
+      <div class="header-rows-top">
+        <div class="header-row-1">
+          {{!-- Text input header fields --}}
+          <h1 class="charname">
+            <input class="no-border" name="name" type="text" value="{{actor.name}}"
+              placeholder="{{localize 'WOD5E.Name'}}" />
+          </h1>
+            
+          {{> "systems/vtm5e/templates/actor/parts/group/type-selector.hbs"}}
+        </div>
+        <div class="header-row-2">
+          <div class="resource flex-group-center chasse">
+            <div class="flexrow">
+                <label for="system.chasse.value" class="resource-label">{{localize "WOD5E.VTM.Chasse"}}</label>
+            </div>
+            <div class="resource-content flexrow flex-center flex-between">
+                <div class="resource-value" data-value="{{actor.system.chasse.value}}" data-name="system.chasse.value">
+                    <span class="resource-value-empty"></span>
+                    {{#numLoop 5}}
+                      <span class="resource-value-step" data-index="{{this}}"></span>
+                    {{/numLoop}}
+                </div>
+            </div>
+          </div>
+          <div class="resource flex-group-center lien">
+            <div class="flexrow">
+                <label for="system.lien.value" class="resource-label">{{localize "WOD5E.VTM.Lien"}}</label>
+            </div>
+            <div class="resource-content flexrow flex-center flex-between">
+                <div class="resource-value" data-value="{{actor.system.lien.value}}" data-name="system.lien.value">
+                    <span class="resource-value-empty"></span>
+                    {{#numLoop 5}}
+                      <span class="resource-value-step" data-index="{{this}}"></span>
+                    {{/numLoop}}
+                </div>
+            </div>
+          </div>
+          <div class="resource flex-group-center portillon">
+            <div class="flexrow">
+                <label for="system.portillon.value" class="resource-label">{{localize "WOD5E.VTM.Portillon"}}</label>
+            </div>
+            <div class="resource-content flexrow flex-center flex-between">
+                <div class="resource-value" data-value="{{actor.system.portillon.value}}" data-name="system.portillon.value">
+                    <span class="resource-value-empty"></span>
+                    {{#numLoop 5}}
+                      <span class="resource-value-step" data-index="{{this}}"></span>
+                    {{/numLoop}}
+                </div>
+            </div>
+          </div>
+          {{#ifgr actor.system.chasse.value 0}}
+            <div class="resource flex-group-center hunting-difficulty">
+              <div class="flexrow">
+                  <label class="resource-label">{{localize "WOD5E.VTM.HuntingDifficulty"}}</label>
+              </div>
+              <div class="resource-content flexrow flex-center flex-between">
+                <div class="resource-value">
+                    {{huntingDifficulty}}
+                </div>
+              </div>
+            </div>
+          {{/ifgr}}
+        </div>
+      </div>
+    </div>
+  </header>
 
-    {{!-- Coterie Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <div class="item" data-tab="features">{{localize "WOD5E.Tabs.Features"}}</div>
-        <div class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</div>
-        <div class="item" data-tab="other">{{localize "WOD5E.Tabs.Other"}}</div>
-    </nav>
+  {{!-- Coterie Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <div class="item" data-tab="members">{{localize "WOD5E.Tabs.Members"}}</div>
+    <div class="item" data-tab="features">{{localize "WOD5E.Tabs.Features"}}</div>
+    <div class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</div>
+    <div class="item" data-tab="other">{{localize "WOD5E.Tabs.Other"}}</div>
+  </nav>
 
-    {{!-- Coterie Sheet Body --}}
-    <section class="sheet-body">
-        {{!-- Shared Features Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/features.hbs"}}
+  {{!-- Coterie Sheet Body --}}
+  <section class="sheet-body">
+    {{!-- Group Members Tab --}}
+    {{> "systems/vtm5e/templates/actor/parts/group/group-members.hbs"}}
 
-        {{!-- Biography Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/biography.hbs"}}
+    {{!-- Shared Features Tab --}}
+    {{> "systems/vtm5e/templates/actor/parts/features.hbs"}}
 
-        {{!-- Other Tab --}}
-        {{> "systems/vtm5e/templates/actor/parts/other.hbs"}}
-    </section>
+    {{!-- Description Tab --}}
+    {{> "systems/vtm5e/templates/actor/parts/group/description.hbs"}}
+
+    {{!-- Other Tab --}}
+    {{> "systems/vtm5e/templates/actor/parts/other.hbs"}}
+  </section>
 </form>

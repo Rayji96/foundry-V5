@@ -30,7 +30,7 @@ export const MigrateAnimalKen = async function () {
         ui.notifications.info(`Fixing actor ${actor.name}: Migrating Animal Ken data.`)
         migrationIDs.push(actor.uuid)
       }
-    } else if (actor.type !== 'cell' && actor.type !== 'coterie') { // Ignore cell and coterie sheets
+    } else if (actor.type !== 'cell' && actor.type !== 'coterie' && actor.type !== 'group') { // Ignore group sheets
       // Check if the actor has animal ken (the broken skill)
       if (hasProperty(actorData, 'skills.animal ken')) {
         // Define the new actor skill we'll derive the data from

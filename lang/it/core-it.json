@@ -20,6 +20,11 @@
     "Value": "Valore",
     
     "Mortal": "Mortale",
+    "_GroupSheet": "",
+
+    "_OpenSheet": "",
+    "_RemoveFromGroup": "",
+    "_NoGroupMembers": "",
 
     "Roll": {
       "Label": "Tira",
@@ -76,6 +81,7 @@
     },
 
     "Tabs": {
+      "_Members": "",
       "Stats": "Statistiche",
       "Features": "Caratteristiche",
       "Description": "Descrizioni",

@@ -42,9 +42,6 @@ export class GhoulActorSheet extends MortalActorSheet {
     const data = await super.getData()
     const actor = this.actor
 
-    // Define the type of sheet
-    data.sheetType = `${game.i18n.localize('WOD5E.VTM.Ghoul')}`
-
     // Prepare items.
     if (actor.type === 'ghoul') {
       this._prepareItems(data)

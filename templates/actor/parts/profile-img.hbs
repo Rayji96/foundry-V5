@@ -1,11 +1,13 @@
 <div class="profile-img-zone">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
-        alt="Profile Image" />
-    <button type="button" class="lock-btn">
-        {{#if locked}}
-        <i class="fa fa-lock"></i>
-        {{ else }}
-        <i class="fa fa-lock-open"></i>
-        {{/if}}
-    </button>
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" alt="Profile Image" />
+
+    {{#if actor.isOwner}}
+        <button type="button" class="lock-btn">
+            {{#if locked}}
+                <i class="fa fa-lock"></i>
+            {{else}}
+                <i class="fa fa-lock-open"></i>
+            {{/if}}
+        </button>
+    {{/if}}
 </div>

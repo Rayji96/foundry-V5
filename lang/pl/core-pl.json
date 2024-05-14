@@ -20,6 +20,11 @@
     "Value": "Wartość",
     
     "Mortal": "Śmiertelnik",
+    "_GroupSheet": "",
+
+    "_OpenSheet": "",
+    "_RemoveFromGroup": "",
+    "_NoGroupMembers": "",
 
     "Roll": {
       "Label": "Rzut",
@@ -76,6 +81,7 @@
     },
 
     "Tabs": {
+      "_Members": "",
       "Stats": "Statystyki",
       "Features": "Atuty",
       "Description": "Opis",

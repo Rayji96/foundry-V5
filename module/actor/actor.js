@@ -96,28 +96,17 @@ export class ActorInfo extends Actor {
 
   async _onUpdate (data, options, user) {
     await super._onUpdate(data, options, user)
-
     const actor = game.actors.get(data._id)
-    let isPlayerCharacter = false
 
-    if (data?.ownership) {
-      const players = game.users.players
-
-      // Iterate through the players and check if any are the owner of this character
-      players.forEach(player => {
-        const playerId = player.id
-
-        if (data.ownership[playerId] === 3) {
-          isPlayerCharacter = true
-        }
-      })
-    }
+    // Only run through this for the storyteller
+    if (!game.user.isGM) return
 
     // If the character is a player, update disposition to friendly
-    if (isPlayerCharacter) {
+    if (actor.hasPlayerOwner && actor.type !== 'group') {
       // Update things here
       actor.update({
-        'prototypeToken.disposition': CONST.TOKEN_DISPOSITIONS.FRIENDLY
+        'prototypeToken.disposition': CONST.TOKEN_DISPOSITIONS.FRIENDLY,
+        ownership: { default: 1 }
       })
     }
 

@@ -18,6 +18,11 @@
         "Value": "",
 
         "Mortal": "",
+        "GroupSheet": "",
+
+        "OpenSheet": "",
+        "RemoveFromGroup": "",
+        "NoGroupMembers": "",
 
         "Roll": {
             "Label": "",
@@ -74,6 +79,7 @@
         },
 
         "Tabs": {
+            "Members": "",
             "Stats": "",
             "Features": "",
             "Description": "",

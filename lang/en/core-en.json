@@ -18,6 +18,11 @@
         "Value": "Value",
 
         "Mortal": "Mortal",
+        "GroupSheet": "Group Sheet",
+
+        "OpenSheet": "Open sheet",
+        "RemoveFromGroup": "Remove from group",
+        "NoGroupMembers": "No group members added. Drag and drop from the actors sidebar to add some!",
 
         "Roll": {
             "Label": "Roll",
@@ -26,7 +31,7 @@
             "Success": "Success",
             "Successes": "Successes",
             "CriticalSuccess": "Critical Success",
-            "Fail": "Fail",
+            "Fail": "Failure",
             "Modifier": "Modifier",
             "Difficulty": "Difficulty",
             "Source": "Source",
@@ -73,6 +78,7 @@
         },
 
         "Tabs": {
+            "Members": "Members",
             "Stats": "Stats",
             "Features": "Features",
             "Description": "Description",

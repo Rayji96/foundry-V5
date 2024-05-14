@@ -1,13 +1,17 @@
 /* global game, Hooks */
 
-import { CoterieActorSheet } from '../actor/coterie-actor-sheet.js'
+// Mortal
 import { MortalActorSheet } from '../actor/mortal-actor-sheet.js'
-import { GhoulActorSheet } from '../actor/ghoul-actor-sheet.js'
+// Vampire system
 import { VampireActorSheet } from '../actor/vampire-actor-sheet.js'
+import { GhoulActorSheet } from '../actor/ghoul-actor-sheet.js'
+// Hunter system
 import { HunterActorSheet } from '../actor/hunter-actor-sheet.js'
-import { CellActorSheet } from '../actor/cell-actor-sheet.js'
-import { SPCActorSheet } from '../actor/spc-actor-sheet.js'
+// Werewolf system
 import { WerewolfActorSheet } from '../actor/werewolf-actor-sheet.js'
+// All systems
+import { SPCActorSheet } from '../actor/spc-actor-sheet.js'
+import { GroupActorSheet } from '../actor/group-actor-sheet.js'
 
 export class ActorTypes {
   // Function to help with quickly grabbing all the listed values;
@@ -75,16 +79,10 @@ export class ActorTypes {
     sheetClass: WerewolfActorSheet
   }
 
-  static coterie = {
-    label: 'WOD5E.VTM.Coterie',
-    types: ['coterie'],
-    sheetClass: CoterieActorSheet
-  }
-
-  static cell = {
-    label: 'WOD5E.HTR.Cell',
-    types: ['cell'],
-    sheetClass: CellActorSheet
+  static group = {
+    label: 'WOD5E.GroupSheet',
+    types: ['group'],
+    sheetClass: GroupActorSheet
   }
 }
 

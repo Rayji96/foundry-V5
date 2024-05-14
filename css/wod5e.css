@@ -9,12 +9,15 @@
 @import url("./parts/dialog.css");
 @import url("./parts/chat.css");
 @import url("./parts/locked.css");
+@import url("./parts/menus.css");
+@import url("./parts/group-sheet.css");
 @import url("./themes/dark-theme.css");
 @import url("./splats/vampire-styling.css");
 @import url("./splats/hunter-styling.css");
 @import url("./splats/werewolf-styling.css");
 @import url("./lang/pl.css");
 @import url("./lang/de.css");
+@import url("./lang/ru.css");
 
 :root {
     --color-text-light-highlight: #f9f5ed;
@@ -619,4 +622,91 @@ h3.item-name.chat-portrait-text-size-name-generic {
 
 .compendium .header-control {
     color: #CCC;
+}
+
+.actors-sidebar .group-item {
+    border: none;
+    border-left: 1px solid var(--color-border-dark-1);
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+}
+
+.actors-sidebar .group-item .context {
+    background-color: transparent !important;
+    border-color: var(--color-border-highlight);
+}
+
+li.group-item > .group-header {
+    padding: 6px;
+    line-height: 24px;
+    background: rgba(255 255 255 20%);
+    border-top: 1px solid var(--color-border-dark);
+    border-bottom: 1px solid var(--color-border-dark);
+}
+
+li.group-item > .group-header h3 {
+    margin: 0;
+    color: var(--color-text-light-highlight);
+    font-size: var(--font-size-16);
+    line-height: 24px;
+}
+
+li.group-item > .group-header h3 > i {
+    margin-right: 10px;
+}
+
+li.group-item > .group-header .create-button {
+    position: relative;
+    flex: 0 0 20px;
+    margin-left: 3px;
+    text-align: center;
+}
+
+li.group-item > .group-header .create-button.create-folder {
+    font-size: 120%;
+}
+
+li.group-item > .group-header .create-button .fa-plus {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    font-size: 0.5rem;
+    background: black;
+    color: var(--color-text-light-highlight);
+    padding: 1px;
+    border-radius: 4px;
+}
+
+li.group-item > .group-header .create-button:hover .fa-plus {
+    color: var(--color-text-hyperlink);
+}
+
+li.group-item.collapsed .subdirectory {
+    display: none;
+}
+
+li.group-item.collapsed > .group-header {
+    background: rgba(0 0 0 50%);
+}
+
+li.group-item.droptarget > header h3 {
+    text-shadow: 1px 1px 3px var(--color-shadow-dark);
+    font-size: 1.2em;
+}
+
+li.group-item.collapsed > .group-header h3 {
+    text-shadow: none;
+}
+
+li.group-item.collapsed > .group-header h3 > i::before {
+    content: "\f07b";
+}
+
+li.group-item.collapsed > .group-header .create-folder {
+    display: none;
+}
+
+li.group-item.droptarget > header h3 i {
+    text-shadow: 0 0 4px var(--color-shadow-primary);
+    transform: scale(1.2);
 }

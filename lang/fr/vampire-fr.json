@@ -4,11 +4,16 @@
       "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
       "Label": "Vampire",
+
       "Coterie": "Coterie",
       "Ghoul": "Goule",
       "Domitor": "Domitor",
       "Clan": "Clan",
       "Generation": "Génération",
+      
+      "_Chasse": "",
+      "_Lien": "",
+      "_Portillon": "",
 
       "VampireDice": "Dé de Vampire",
       "HungerDice": "Dé de Soif",

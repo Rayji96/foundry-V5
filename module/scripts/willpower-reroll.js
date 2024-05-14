@@ -146,6 +146,7 @@ export const willpowerReroll = async (roll) => {
 
           // Update the "content" field
           const newContent = await generateRollMessage({
+            difficulty: message.flags.difficulty,
             system: message.flags.system,
             roll: messageRolls[0],
             data: message.flags.data,

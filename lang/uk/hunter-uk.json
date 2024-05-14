@@ -1,0 +1,44 @@
+{
+  "WOD5E": {
+    "HTR": {
+      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
+
+      "Label": "Мисливець",
+
+      "_HunterDice": "",
+      "DesperationDice": "Кубик Відчайдушності",
+        
+      "Despair": "Відчай",
+      "Creed": "Кредо",
+      "CreedFields": "Області Кредо",
+      "Cell": "Підрозділ",
+      "Redemption": "Спокута",
+      "Edge": "Грань",
+      "Edges": "Грані",
+      "_EdgeType": "",
+      "AddEdge": "Додати Грань",
+      "SelectEdge": "Обрати Грань",
+      "AddPerk": "Додати Вигоду",
+      "Desperation": "Відчайдушність",
+      "Danger": "Загроза",
+      "DesperationSuccess": "Успіх з Перепоною чи Провал з Відчаєм",
+      "PossibleDesperationFailure": "Можливий успіх з Перемоною чи Провал з Відчаєм",
+      "DespairFailure": "Провал з Відчаєм",
+      "DesperationUnavailable": "Відчайдушність недоступна, перебуваючи у Відчаї",
+      "_Drive": "",
+
+      "Arsenal": "Арсенал",
+      "Fleet": "Автопарк",
+      "Ordnance": "Озброєння",
+      "Library": "Бібліотека",
+      "ImprovisedGear": "Саморобні приладдя",
+      "GlobalAccess": "Глобальний доступ",
+      "DroneJockey": "Жокей дронів",
+      "BeastWhisperer": "Заклинач звірів",
+      "SenseTheUnnatural": "Відчуття Химерного",
+      "RepelTheUnnatural": "Відлякування Химерного",
+      "ThwartTheUnnatural": "Протидія Химерному",
+      "Artifact": "Артефакт"
+    }
+  }
+}
