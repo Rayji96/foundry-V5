@@ -226,12 +226,23 @@ Hooks.on('renderSidebarTab', async (object, html) => {
       // Move each group member's element to be a child of this group
       // Additionally, we need to give the actor Limited
       if (groupMembers) {
-        groupMembers.forEach(actor => {
-          const actorId = fromUuidSync(actor).id
-          const actorElement = $(`[data-entry-id='${actorId}'`)
-          const groupListElement = $(`[data-entry-id='${group.id}'`).find('.subdirectory')[0]
+        groupMembers.forEach(actorUuid => {
+          const actorObject = fromUuidSync(actorUuid)
 
-          actorElement.appendTo(groupListElement)
+          // Check to verify the actor exists
+          if (actorObject) {
+            const actorElement = $(`[data-entry-id='${actorObject.id}'`)
+            const groupListElement = $(`[data-entry-id='${group.id}'`).find('.subdirectory')[0]
+
+            actorElement.appendTo(groupListElement)
+          } else {
+            // If the actor doesn't exist, remove it from the group
+            // Filter out the UUID from the members list
+            const membersList = groupMembers.filter(actor => actor !== actorUuid)
+
+            // Update the group sheet with the new members list
+            group.update({ 'system.members': membersList })
+          }
         })
       }
 

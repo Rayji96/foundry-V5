@@ -33,10 +33,13 @@ export class WOD5EActorDirectory extends ActorDirectory {
 
       // Add group members to actorsInGroups list so we can filter them out later
       if (groupMembers) {
-        groupMembers.forEach(actor => {
-          const actorId = fromUuidSync(actor).id
+        groupMembers.forEach(actorUuid => {
+          const actorObject = fromUuidSync(actorUuid)
 
-          actorsInGroups.push(actorId)
+          // Check to verify the actor exists
+          if (actorObject) {
+            actorsInGroups.push(actorObject.id)
+          }
         })
       }
     })

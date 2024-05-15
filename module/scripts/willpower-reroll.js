@@ -125,6 +125,7 @@ export const willpowerReroll = async (roll) => {
 
               if (die) {
                 die.discarded = true
+                die.active = false
               } else {
                 console.error('Die not found in rage diceset:', dieIndex)
               }
@@ -133,6 +134,7 @@ export const willpowerReroll = async (roll) => {
 
               if (die) {
                 die.discarded = true
+                die.active = false
               } else {
                 console.error('Die not found in base diceset:', dieIndex)
               }
