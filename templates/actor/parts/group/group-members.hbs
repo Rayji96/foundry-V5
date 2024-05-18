@@ -29,14 +29,14 @@
               <div class="sub-item">
                   <div class="sub-item-name">{{localize "WOD5E.Health"}}</div>
                   <div class="member-resource flexcol flex-between">
-                      <div class="fake-resource-counter" data-states="/:superficial,x:aggravated" data-max="{{member.system.health.max}}"
+                      <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{member.system.health.max}}"
                           data-superficial="{{member.system.health.superficial}}" data-aggravated="{{member.system.health.aggravated}}">
                           {{#numLoop member.system.health.max}}
                             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
                           {{/numLoop}}
                       </div>
                       {{#ifeq member.system.activeForm "crinos"}}
-                      <div class="fake-resource-counter crinos-health" data-states="/:superficial,x:aggravated" data-max="{{member.system.crinosHealth.max}}"
+                      <div class="resource-counter crinos-health" data-states="/:superficial,x:aggravated" data-max="{{member.system.crinosHealth.max}}"
                           data-superficial="{{member.system.crinosHealth.superficial}}" data-aggravated="{{member.system.crinosHealth.aggravated}}">
                           {{#numLoop member.system.crinosHealth.max}}
                             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
@@ -50,7 +50,7 @@
               <div class="sub-item">
                   <div class="sub-item-name">{{localize "WOD5E.Willpower"}}</div>
                   <div class="member-resource flexrow flex-center flex-between">
-                      <div class="fake-resource-counter" data-states="/:superficial,x:aggravated" data-max="{{member.system.willpower.max}}"
+                      <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{member.system.willpower.max}}"
                           data-superficial="{{member.system.willpower.superficial}}" data-aggravated="{{member.system.willpower.aggravated}}">
                           {{#numLoop member.system.willpower.max}}
                               <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>

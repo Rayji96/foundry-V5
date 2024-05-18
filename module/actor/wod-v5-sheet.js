@@ -195,7 +195,7 @@ export class WoDActor extends ActorSheet {
     const actor = this.actor
 
     // Resource squares (Health, Willpower)
-    html.find('.resource-counter > .resource-counter-step').click(_onSquareCounterChange.bind(this))
+    html.find('.resource-counter.editable > .resource-counter-step').click(_onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(_onResourceChange.bind(this))
     html.find('.resource-minus').click(_onResourceChange.bind(this))
 
