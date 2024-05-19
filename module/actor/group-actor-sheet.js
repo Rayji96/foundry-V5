@@ -148,15 +148,17 @@ export class GroupActorSheet extends WoDActor {
       return
     }
 
-    // Check if the actor is already in a group
+    // Check if the actor is already in a group and if the group still exists
     const actorHasGroup = actor.system.group
-    if (actorHasGroup) {
+    const groupExists = game.actors.get(actorHasGroup)
+
+    if (actorHasGroup && groupExists) {
       ui.notifications.warn(`Actor ${actor.name} is already in an existing group.`)
 
       return
     }
 
-    // If the actor exists, is unique, and does not already belong to a group, continue
+    // If the actor exists, is unique, and does not already belong to an existing group, continue
     // Define the current members list
     const membersList = group.system.members ? group.system.members : []
 
