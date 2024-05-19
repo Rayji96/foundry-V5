@@ -38,6 +38,9 @@ export class WOD5EActorDirectory extends ActorDirectory {
 
           // Check to verify the actor exists
           if (actorObject) {
+            // Make super sure that the actor has its folder field set to an empty string.
+            actorObject.update({ folder: ''})
+
             actorsInGroups.push(actorObject.id)
           }
         })
