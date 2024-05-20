@@ -20,7 +20,8 @@ jobs:
             with:
                 url: 'https://api.foundryvtt.com/_api/packages/release_version/'
                 method: 'POST'
-                # bearerToken: ${{ secrets.FOUNDRY_API_TOKEN }}
+                escapeData: 'false'
+                bearerToken: ${{ secrets.FOUNDRY_API_TOKEN }}
                 data: 
                     '{
                         "id": "vtm5e",
