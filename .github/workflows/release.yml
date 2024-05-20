@@ -2,9 +2,9 @@
     name: Publish-Release
     
     # Run this workflow every time a new release is published
-    on: 
-        release:
-            types: [released]
+    on: pull_request
+        # release:
+        #     types: [released]
     
     jobs:
         publish-release:
@@ -24,16 +24,31 @@
                             "id": "vtm5e",
                             "dry-run": true,
                             "release": {
-                                "version": "${{ github.event.release.tag_name }}",
-                                "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/${{ github.event.release.tag_name }}/system.json",
-                                "notes": "https://github.com/Rayji96/foundry-V5/releases/tag/${{ github.event.release.tag_name }}",
+                                "version": "4.2.2",
+                                "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/4.2.2/system.json",
+                                "notes": "https://github.com/Rayji96/foundry-V5/releases/tag/4.2.2",
                                 "compatibility": {
-                                  "minimum": "11",
-                                  "verified": "11",
-                                  "maximum": ""
+                                "minimum": "11",
+                                "verified": "11",
+                                "maximum": ""
                                 }
                             }
                         }'
+                    # data: >
+                    #     '{
+                    #         "id": "vtm5e",
+                    #         "dry-run": true,
+                    #         "release": {
+                    #             "version": "${{ github.event.release.tag_name }}",
+                    #             "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/${{ github.event.release.tag_name }}/system.json",
+                    #             "notes": "https://github.com/Rayji96/foundry-V5/releases/tag/${{ github.event.release.tag_name }}",
+                    #             "compatibility": {
+                    #               "minimum": "11",
+                    #               "verified": "11",
+                    #               "maximum": ""
+                    #             }
+                    #         }
+                    #     }'
               - name: Show Status
                 run: |
                     echo ${{ steps.myRequest.outputs.status }}
