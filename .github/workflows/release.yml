@@ -25,21 +25,18 @@ jobs:
                 data: 
                     '{
                         "id": "vtm5e",
+                        "dry-run": true,
+                        "release": {
+                            "version": "4.2.2",
+                            "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/4.2.2/system.json",
+                            "notes": "https://github.com/Rayji96/foundry-V5/releases/tag/4.2.2",
+                            "compatibility": {
+                            "minimum": "11",
+                            "verified": "11",
+                            "maximum": ""
+                            }
+                        }
                     }'
-                    # '{
-                    #     "id": "vtm5e",
-                    #     "dry-run": true,
-                    #     "release": {
-                    #         "version": "4.2.2",
-                    #         "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/4.2.2/system.json",
-                    #         "notes": "https://github.com/Rayji96/foundry-V5/releases/tag/4.2.2",
-                    #         "compatibility": {
-                    #         "minimum": "11",
-                    #         "verified": "11",
-                    #         "maximum": ""
-                    #         }
-                    #     }
-                    # }'
                 # data: >
                 #     '{
                 #         "id": "vtm5e",
