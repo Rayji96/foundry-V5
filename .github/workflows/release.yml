@@ -22,7 +22,10 @@ jobs:
                 method: 'POST'
                 escapeData: 'true'
                 # bearerToken: ${{ secrets.FOUNDRY_API_TOKEN }}
-                data: '{}'
+                data: 
+                    '{
+                        "id": "vtm5e",
+                    }'
                     # '{
                     #     "id": "vtm5e",
                     #     "dry-run": true,
