@@ -37,4 +37,3 @@
               - name: Show Status
                 run: |
                     echo ${{ steps.myRequest.outputs.status }}
-    
