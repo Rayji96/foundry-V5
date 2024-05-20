@@ -20,7 +20,6 @@ jobs:
             with:
                 url: 'https://api.foundryvtt.com/_api/packages/release_version/'
                 method: 'POST'
-                escapeData: 'true'
                 # bearerToken: ${{ secrets.FOUNDRY_API_TOKEN }}
                 data: 
                     '{
