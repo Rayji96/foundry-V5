@@ -187,6 +187,11 @@
       "WillpowerFull": "La fuerza de voluntad está totalmente dañada, ya no puede dañarla.",
       "WillpowerDamage": "Daño a la fuerza de voluntad",
       "HasReceivedWillpowerDamage": "{actor} ha recibido {willpowerDamage} de daño a la fuerza de voluntad."
+    },
+
+    "Macro": {
+        "_MacroID": "",
+        "_MacroNote": ""
     }
   }
 }

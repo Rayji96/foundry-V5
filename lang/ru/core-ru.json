@@ -189,6 +189,11 @@
             "WillpowerFull": "Воля исчерпана, нельзя нанести больше урона Воле.",
             "_WillpowerDamage": "",
             "_HasReceivedWillpowerDamage": "{actor} {willpowerDamage}"
+        },
+
+        "Macro": {
+            "_MacroID": "",
+            "_MacroNote": ""
         }
     }
 }
