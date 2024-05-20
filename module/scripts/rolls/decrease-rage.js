@@ -6,8 +6,8 @@ export async function _decreaseRage (actor, amount) {
   const newRageAmount = Math.max(currentRage - amount, 0)
 
   if (newRageAmount === 0 && currentRage > 0) {
-    const chatMessage = `<p class="roll-label uppercase">Lost The Wolf</p>
-    <p class="roll-content result-rage result-possible">This actor has 0 rage and has lost the wolf.</p>`
+    const chatMessage = `<p class="roll-label uppercase">${game.i18n.localize('WOD5E.WTA.LostTheWolf')}</p>
+    <p class="roll-content result-rage result-possible">${game.i18n.localize('WOD5E.WTA.LostWolfWarning')}</p>`
 
     // Post the message to the chat
     ChatMessage.create({

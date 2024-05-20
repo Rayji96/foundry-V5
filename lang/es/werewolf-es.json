@@ -40,7 +40,12 @@
       "_FrenzyActiveWarning": "",
       "Active": "Activo",
       "_FrenzyActiveWarning2": "",
+
+      "_LostTheWolf": "",
+      "_LostWolfWarning": "",
       "_LostWolfFormChange": "",
+      "_LostWolfShiftDown": "",
+      "_LostWolfShiftAnyway": "",
 
       "Renown": "Renombre",
       "AddRenown": "Añadir Renombre",

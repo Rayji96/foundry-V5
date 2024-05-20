@@ -842,7 +842,8 @@
         "aggravated": 0,
         "superficial": 0,
         "max": 4
-      }
+      },
+      "lostTheWolf": false
     },
     "hunter": {
       "templates": ["base", "edges"],
