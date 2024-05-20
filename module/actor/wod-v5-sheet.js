@@ -138,7 +138,8 @@ export class WoDActor extends ActorSheet {
             id,
             value: actorSkills[id].value,
             hasSpecialties,
-            specialtiesList
+            specialtiesList,
+            macroid: actorSkills[id].macroid
           }, value)
         } else { // Otherwise, use the default
           skillData = Object.assign({
