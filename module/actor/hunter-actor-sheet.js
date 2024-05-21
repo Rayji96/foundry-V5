@@ -15,7 +15,7 @@ export class HunterActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'hunter-sheet', 'sheet', 'actor', 'hunter']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/hunter-sheet.hbs',
       width: 940,

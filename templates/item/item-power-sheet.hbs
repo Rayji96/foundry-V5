@@ -14,9 +14,9 @@
                 <div class="flexcol discipline flex-center">
                     <label>{{localize "WOD5E.VTM.DisciplineType"}}</label>
                     <select name="system.discipline" data-type="String">
-                        {{#select item.system.discipline}}
+                        {{#selectOptions item.system.discipline}}
                         {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 </div>
             </div>
@@ -45,30 +45,30 @@
                 <!-- Define the system that the power uses -->
                 <label class="resource-label">{{localize "WOD5E.System"}}: </label>
                 <select name="system.dice1" data-type="String">
-                    {{#select item.system.dice1}}
+                    {{#selectOptions item.system.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
                     <option value="discipline">{{generateLocalizedLabel item.system.discipline}}</option>
-                    {{/select}}
+                    {{/selectOptions}}
                 </select>
                 <label class="resource-label">+</label>
                 {{#if item.system.skill}}
                     <select name="system.dice2" data-type="String">
-                        {{#select item.system.dice2}}
+                        {{#selectOptions item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 {{else if item.system.amalgam}}
                     <select name="system.dice2" data-type="String">
-                        {{#select item.system.dice2}}
+                        {{#selectOptions item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 {{else}}
                     <select name="system.dice2" data-type="String">
-                        {{#select item.system.dice2}}
+                        {{#selectOptions item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
                         <option value="discipline">{{generateLocalizedLabel item.system.discipline}}</option>
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 {{/if}}
 

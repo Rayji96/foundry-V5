@@ -1,4 +1,4 @@
-/* global ItemSheet, mergeObject, TextEditor */
+/* global ItemSheet, foundry, TextEditor */
 
 import { _onAddBonus, _onDeleteBonus, _onEditBonus } from './scripts/item-bonuses.js'
 
@@ -12,7 +12,7 @@ export class WoDItemSheet extends ItemSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'item']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       width: 520,
       height: 480,

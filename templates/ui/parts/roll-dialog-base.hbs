@@ -6,10 +6,10 @@
 <div class="form-group">
   <label>{{localize 'WOD5E.Roll.RollMode'}}</label>
   <select name="rollMode">
-    {{#select rollMode}}
+    {{#selectOptions rollMode}}
       {{#each rollModes as |label mode|}}
         <option value="{{mode}}">{{localize label}}</option>
       {{/each}}
-    {{/select}}
+    {{/selectOptions}}
   </select>
 </div>

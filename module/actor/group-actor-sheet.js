@@ -1,4 +1,4 @@
-/* global game, mergeObject, fromUuidSync, ui */
+/* global game, foundry, fromUuidSync, ui */
 
 import { WoDActor } from './wod-v5-sheet.js'
 
@@ -13,7 +13,7 @@ export class GroupActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'group', 'group-sheet']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       width: 700,
       height: 700,

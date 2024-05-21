@@ -13,18 +13,18 @@
                 <div class="flexcol">
                     <label class="flex-center">{{localize "WOD5E.WTA.Renown"}}</label>
                     <select name="system.renown" value="{{item.system.renown}}" data-type="String">
-                        {{#select item.system.renown}}
+                        {{#selectOptions item.system.renown}}
                         {{> "systems/vtm5e/templates/item/parts/renown.hbs"}}
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 </div>
                 <!-- Select the gift this power belongs to -->
                 <div class="flexcol">
                     <label class="flex-center">{{localize "WOD5E.WTA.GiftType"}}</label>
                     <select name="system.giftType" data-type="String">
-                        {{#select item.system.giftType}}
+                        {{#selectOptions item.system.giftType}}
                         {{> "systems/vtm5e/templates/item/parts/gifts.hbs"}}
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 </div>
             </div>
@@ -53,24 +53,24 @@
                 <!-- Define the system that the power uses -->
                 <label class="resource-label">{{localize "WOD5E.System"}}: </label>
                 <select name="system.dice1" data-type="String">
-                    {{#select item.system.dice1}}
+                    {{#selectOptions item.system.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
                     <option value="renown">{{generateLocalizedLabel item.system.renown}}</option>
-                    {{/select}}
+                    {{/selectOptions}}
                 </select>
                 <label class="resource-label">+</label>
                 {{#if item.system.skill}}
                     <select name="system.dice2" data-type="String">
-                        {{#select item.system.dice2}}
+                        {{#selectOptions item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 {{else}}
                     <select name="system.dice2" data-type="String">
-                        {{#select item.system.dice2}}
+                        {{#selectOptions item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
                         <option value="renown">{{generateLocalizedLabel item.system.renown}}</option>
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 {{/if}}
 

@@ -1,4 +1,4 @@
-/* global Dialog, game, mergeObject, renderTemplate, ChatMessage */
+/* global Dialog, game, foundry, renderTemplate, ChatMessage */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -15,7 +15,7 @@ export class GhoulActorSheet extends MortalActorSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'ghoul', 'ghoul-sheet']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/ghoul-sheet.hbs',
       width: 940,

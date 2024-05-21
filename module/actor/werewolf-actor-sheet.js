@@ -1,4 +1,4 @@
-/* global game, mergeObject, renderTemplate, ChatMessage, Dialog, WOD5E */
+/* global game, foundry, renderTemplate, ChatMessage, Dialog, WOD5E */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -15,7 +15,7 @@ export class WerewolfActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'werewolf-sheet', 'actor', 'sheet', 'werewolf']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/werewolf-sheet.hbs',
       width: 1050,
