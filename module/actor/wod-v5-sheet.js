@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
+/* global DEFAULT_TOKEN, ChatMessage, foundry, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
 
 import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
@@ -315,7 +315,7 @@ export class WoDActor extends ActorSheet {
     const type = header.dataset.type
 
     // Secondary variables
-    const data = duplicate(header.dataset)
+    const data = foundry.utils.duplicate(header.dataset)
 
     // Variables yet to be defined
     let prelocalizeString
