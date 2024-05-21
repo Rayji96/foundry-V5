@@ -129,9 +129,7 @@ class WOD5eDice {
       }
 
       // Send the roll to chat
-      const roll = await new Roll(rollFormula, data).roll({
-        async: true
-      })
+      const roll = await new Roll(rollFormula, data).roll()
 
       // Handle failures for werewolves and vampires
       if (roll.terms[2]) await handleFailure(system, roll.terms[2].results)
