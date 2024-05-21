@@ -103,7 +103,7 @@ export class WerewolfActorSheet extends WoDActor {
 
     // If the actor's rage is above 0, make sure they aren't in "lost the wolf" form
     if (actorData.system.rage.value > 0 && actorData.system.lostTheWolf) {
-      this.actor.update({ 'system.lostTheWolf': false})
+      this.actor.update({ 'system.lostTheWolf': false })
     }
 
     // Check if the actor's rage is 0, they're in a supernatural form, and they haven't already lost the wolf
@@ -418,7 +418,7 @@ export class WerewolfActorSheet extends WoDActor {
     if (actor.system.lostTheWolf) return
 
     // Update the listTheWolf key
-    actor.update({ 'system.lostTheWolf': true})
+    actor.update({ 'system.lostTheWolf': true })
 
     // Define the template to be used
     const template = `

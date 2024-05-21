@@ -207,7 +207,7 @@ export class wod5eAPI {
               }
               // Handle adding a blood surge to the roll
               if (bloodSurgeCheckbox[0]?.checked) {
-                dataset.selectors += ` blood-surge`
+                dataset.selectors += ' blood-surge'
               }
               // Handle adding a renown to the dicepool
               if (renownSelect) {

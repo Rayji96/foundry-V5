@@ -161,8 +161,8 @@ class WOD5eDice {
           advancedDice: advancedCheckDice,
           rollMode,
           quickRoll: true,
-          increaseHunger: system === 'vampire' ? true : false,
-          decreaseRage: system === 'werewolf' ? true : false
+          increaseHunger: system === 'vampire',
+          decreaseRage: system === 'werewolf'
         })
       }
 
@@ -331,16 +331,25 @@ class WOD5eDice {
                 // Determine the new input depending on if the bonus is getting added (checked)
                 // or not (unchecked)
                 let newValue = 0
+                let checkValue = 0
                 if (modCheckbox.prop('checked')) {
                   // Adding the modifier
                   if (applyDiceTo === 'advanced') {
                     // Apply the modifier to advancedDice
                     newValue = advancedValue + modifier
 
-                    if (newValue > actorData?.hunger.value || newValue > actorData?.rage.value) {
+                    // Determine what we're checking against
+                    if (system === 'vampire') {
+                      checkValue = actorData?.hunger.value
+                    }
+                    if (system === 'werewolf') {
+                      checkValue = actorData?.rage.value
+                    }
+
+                    if (newValue > actorData?.hunger.value || newValue > checkValue) {
                       // Check for any excess and apply it to basicDice
-                      const excess = newValue - (actorData?.hunger.value || actorData?.rage.value)
-                      newValue = actorData?.hunger.value || actorData?.rage.value
+                      const excess = newValue - checkValue
+                      newValue = checkValue
                       basicDiceInput.val(basicValue + excess)
                     }
 
