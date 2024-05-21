@@ -189,6 +189,11 @@
       "WillpowerFull": "Willenskraft ist vollständig aufgebraucht, kann sie nicht weiter verringern.",
       "WillpowerDamage": "Willenskraft-Schaden",
       "HasReceivedWillpowerDamage": "{actor} hat {willpowerDamage} Punkte Willenskraft-Schaden erlitten"
+    },
+
+    "Macro": {
+        "_MacroID": "",
+        "_MacroNote": ""
     }
   }
 }

@@ -117,4 +117,10 @@
 
 .wod5e .dialog-contents .secondary-selector {
   text-align: center;
+  margin-bottom: 5px;
+}
+
+.wod5e .dialog-contents .secondary-selector .selector-title {
+  font-weight: bold;
+  text-decoration: underline;
 }

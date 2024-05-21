@@ -189,6 +189,11 @@
       "WillpowerFull": "A força de vontade está totalmente danificada, não pode danificá-la mais.",
       "_WillpowerDamage": "",
       "_HasReceivedWillpowerDamage": ""
+    },
+
+    "Macro": {
+        "_MacroID": "",
+        "_MacroNote": ""
     }
   }
 }

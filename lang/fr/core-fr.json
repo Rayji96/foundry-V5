@@ -189,6 +189,11 @@
       "WillpowerFull": "La volonté est entièrement endommagée, impossible de l'endommager davantage.",
       "WillpowerDamage": "Dégâts de volonté",
       "HasReceivedWillpowerDamage": "{actor} a reçu {willpowerDamage} dégâts de volonté."
+    },
+
+    "Macro": {
+        "_MacroID": "",
+        "_MacroNote": ""
     }
   }
 }

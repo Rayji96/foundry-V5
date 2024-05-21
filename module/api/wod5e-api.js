@@ -140,7 +140,8 @@ export class wod5eAPI {
       discipline,
       renown,
       attributesList,
-      skillsList
+      skillsList,
+      hungerValue: system === 'vampire' ? actor.system.hunger.value : 0
     }
     // Render the template
     const content = await renderTemplate(dialogTemplate, dialogData)
@@ -159,6 +160,7 @@ export class wod5eAPI {
               const skillSelect = html.find('[id=skillSelect]').val()
               const attributeSelect = html.find('[id=attributeSelect]').val()
               const disciplineSelect = html.find('[id=disciplineSelect]').val()
+              const bloodSurgeCheckbox = html.find('[id=bloodSurge]')
               const renownSelect = html.find('[id=renownSelect]').val()
 
               // Handle adding a skill to the dicepool
@@ -202,6 +204,10 @@ export class wod5eAPI {
 
                 // Add the discipline and potency selectors to the roll
                 dataset.selectors += ` disciplines disciplines.${disciplineSelect}.value`
+              }
+              // Handle adding a blood surge to the roll
+              if (bloodSurgeCheckbox[0]?.checked) {
+                dataset.selectors += ' blood-surge'
               }
               // Handle adding a renown to the dicepool
               if (renownSelect) {

@@ -189,6 +189,11 @@
       "WillpowerFull": "Nie można użyć Siły Woli, cała została wydana",
       "_WillpowerDamage": "",
       "_HasReceivedWillpowerDamage": ""
+    },
+
+    "Macro": {
+        "_MacroID": "",
+        "_MacroNote": ""
     }
   }
 }

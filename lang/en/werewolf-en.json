@@ -39,7 +39,12 @@
       "FrenzyActiveWarning": "Frenzy is active.",
       "Active": "Active",
       "FrenzyActiveWarning2": "You cannot use gifts or rites while in a frenzy.",
+
+      "LostTheWolf": "Lost the Wolf",
+      "LostWolfWarning": "This actor has 0 rage and has lost the wolf.",
       "LostWolfFormChange": "Lost the Wolf: You cannot shift into supernatural forms right now.",
+      "LostWolfShiftDown": "This actor has Lost the Wolf and cannot remain in supernatural forms. Choose a form to shift down into.",
+      "LostWolfShiftAnyway": "This actor has Lost the Wolf and cannot transform into supernatural forms due to insufficient rage. Would you like to shift anyway?",
 
       "Renown": "Renown",
       "AddRenown": "Add Renown",
