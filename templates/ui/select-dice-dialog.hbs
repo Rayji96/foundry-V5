@@ -52,24 +52,37 @@
 
   <!-- If the actor is a vampire, show option to add Discipline dots -->
   {{#ifeq system "vampire"}}
-    <!-- If a discipline is already selected, display the selected discipline -->
-    {{#if discipline}}
-      <div class="secondary-selector">
-        <b>{{generateLocalizedLabel discipline}}</b>
-      </div>
-    {{else}}
-      <div class="secondary-selector">
-        <div>{{localize "WOD5E.VTM.AddDiscipline"}}</div>
-        <select id="disciplineSelect">
-          <option value="">{{localize "WOD5E.None"}}</option>
-          {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
-        </select>
-      </div>
-    {{/if}}
+    <hr>
+    <div class="flexrow">
+      <!-- If a discipline is already selected, display the selected discipline -->
+      {{#if discipline}}
+        <div class="secondary-selector">
+          <b>{{generateLocalizedLabel discipline}}</b>
+        </div>
+      {{else}}
+        <div class="secondary-selector">
+          <div class="selector-title">{{localize "WOD5E.VTM.AddDiscipline"}}</div>
+          <select id="disciplineSelect">
+            <option value="">{{localize "WOD5E.None"}}</option>
+            {{> "systems/vtm5e/templates/item/parts/disciplines.hbs"}}
+          </select>
+        </div>
+      {{/if}}
+
+      {{#ifnoteq hungerValue 5}}
+        <div class="secondary-selector">
+          <div class="selector-title">{{localize "WOD5E.VTM.BloodSurge"}}</div>
+            <div class="flexrow flex-center">
+                <input id="bloodSurge" type="checkbox"/>
+            </div>
+        </div>
+      {{/ifnoteq}}
+    </div>
   {{/ifeq}}
 
   <!-- If the actor is a werewolf, show option to add Renown dots-->
   {{#ifeq system "werewolf"}}
+    <hr>
     <!-- If renown is already selected, display the selected renown -->
     {{#if renown}}
       <div class="secondary-selector">

@@ -31,6 +31,7 @@ class WOD5eDice {
    * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
    * @param macro                     (Optional, default '') A macro to run after the roll has been made
    * @param disableMessageOutput      (optional, default false) Whether to display the message output of a roll
+   * @param advancedCheckDice         (optional, default 0) Any dice that, part of an 'advanced' diceset, is rolled separately but at the same time
    *
    */
   static async Roll ({
@@ -52,7 +53,8 @@ class WOD5eDice {
     rerollHunger = false,
     selectors = [],
     macro = '',
-    disableMessageOutput = false
+    disableMessageOutput = false,
+    advancedCheckDice = 0
   }) {
     // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systems list
     const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
@@ -145,6 +147,22 @@ class WOD5eDice {
         game.macros.get(macro).execute({
           actor,
           token: actor.token ?? actor.getActiveTokens[0]
+        })
+      }
+
+      // Roll any advanced check dice that need to be rolled in a separate rollmessage
+      if (advancedCheckDice) {
+        await this.Roll({
+          actor,
+          data,
+          title: `${game.i18n.localize('WOD5E.VTM.RousingBlood')} - ${title}`,
+          system,
+          disableBasicDice: true,
+          advancedDice: advancedCheckDice,
+          rollMode,
+          quickRoll: true,
+          increaseHunger: system === 'vampire' ? true : false,
+          decreaseRage: system === 'werewolf' ? true : false
         })
       }
 

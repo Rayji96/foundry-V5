@@ -73,7 +73,7 @@ export class VampireActorSheet extends GhoulActorSheet {
     // Handle adding blood potency bonuses
     actorData.system.blood.bonuses = [
       {
-        source: 'Blood Potency',
+        source: game.i18n.localize('WOD5E.VTM.BloodPotency'),
         value: actorData.system.bloodPotency.power,
         paths: ['disciplines'],
         activeWhen: {
@@ -81,13 +81,13 @@ export class VampireActorSheet extends GhoulActorSheet {
         }
       },
       {
-        source: 'Blood Surge',
+        source: game.i18n.localize('WOD5E.VTM.BloodSurge'),
         value: actorData.system.bloodPotency.surge,
         paths: ['blood-surge'],
         activeWhen: {
           check: 'always'
         },
-        displayWhenInactive: true
+        forceDiceType: 'advanced'
       }
     ]
   }
