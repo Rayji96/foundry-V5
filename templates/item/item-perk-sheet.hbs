@@ -40,30 +40,30 @@
                 <!-- Define the system that the perk uses -->
                 <label class="resource-label">{{localize "WOD5E.System"}}: </label>
                 <select name="system.dice1" data-type="String">
-                    {{#selectOptions item.system.dice1}}
+                    {{#select item.system.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
                     <option value="edge">{{localize (getEdgeName item.system.edge)}}</option>
-                    {{/selectOptions}}
+                    {{/select}}
                 </select>
                 <label class="resource-label">+</label>
                 {{#if item.system.skill}}
                     <select name="system.dice2" data-type="String">
-                        {{#selectOptions item.system.dice2}}
+                        {{#select item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
-                        {{/selectOptions}}
+                        {{/select}}
                     </select>
                 {{else if item.system.amalgam}}
                     <select name="system.dice2" data-type="String">
-                        {{#selectOptions item.system.dice2}}
+                        {{#select item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/edges.hbs"}}
-                        {{/selectOptions}}
+                        {{/select}}
                     </select>
                 {{else}}
                     <select name="system.dice2" data-type="String">
-                        {{#selectOptions item.system.dice2}}
+                        {{#select item.system.dice2}}
                         {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
                         <option value="edge">{{localize (getEdgeName item.system.edge)}}</option>
-                        {{/selectOptions}}
+                        {{/select}}
                     </select>
                 {{/if}}
 

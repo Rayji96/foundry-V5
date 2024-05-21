@@ -27,11 +27,11 @@
             <div class="resource grid grid-4col flex-center">
                 <label class="resource-label">{{localize "WOD5E.Items.FeatureType"}}: </label>
                 <select name="system.featuretype" data-type="String">
-                    {{#selectOptions item.system.featuretype}}
+                    {{#select item.system.featuretype}}
                     <option value="merit">{{localize "WOD5E.Items.Merit"}}</option>
                     <option value="flaw">{{localize "WOD5E.Items.Flaw"}}</option>
                     <option value="background">{{localize "WOD5E.Items.Background"}}</option>
-                    {{/selectOptions}}
+                    {{/select}}
                 </select>
                 <label class="resource-label">{{localize "WOD5E.Items.Points"}}: </label>
                 <input type="number" name="system.points" value="{{item.system.points}}" />

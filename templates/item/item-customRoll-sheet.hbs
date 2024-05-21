@@ -27,15 +27,15 @@
             <div class="resource grid grid-2col flex-center">
                 <label class="resource-label">{{localize "WOD5E.Attributes.Label"}}: </label>
                 <select name="system.dice1" data-type="String">
-                    {{#selectOptions item.system.dice1}}
+                    {{#select item.system.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
-                    {{/selectOptions}}
+                    {{/select}}
                 </select>
                 <label class="resource-label">{{localize "WOD5E.Skills.Label"}}: </label>
                 <select name="system.dice2" data-type="String">
-                    {{#selectOptions item.system.dice2}}
+                    {{#select item.system.dice2}}
                     {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
-                    {{/selectOptions}}
+                    {{/select}}
                 </select>
                 <label class="resource-label">{{localize "WOD5E.Roll.Modifier"}}: </label>
                 <input name="system.modifier" value="{{item.system.modifier}}" type="number"/>

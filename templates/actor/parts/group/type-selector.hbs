@@ -1,9 +1,5 @@
 <h1 class="group-type-field">
   <select class="no-border group-type-selector" name="system.groupType" data-type="String"{{#if actor.limited}} disabled{{/if}}>
-    {{#selectOptions actor.system.groupType}}
-      <option value="coterie">{{localize "WOD5E.VTM.Coterie"}}</option>
-      <option value="cell">{{localize "WOD5E.HTR.Cell"}}</option>
-      <option value="pack">{{localize "WOD5E.WTA.Pack"}}</option>
-    {{/selectOptions}}
+    {{selectOptions groupTypes selected=actor.system.groupType localize=true}}
   </select>
 </h1>
