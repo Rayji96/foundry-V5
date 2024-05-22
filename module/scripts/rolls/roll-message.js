@@ -1,4 +1,4 @@
-/* global game, renderTemplate */
+/* global game, renderTemplate, TextEditor */
 
 // Import dice face-related variables for icon paths
 import { mortalDiceLocation, vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from '../../dice/icons.js'

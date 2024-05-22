@@ -113,9 +113,9 @@ export class GroupActorSheet extends WoDActor {
 
     // Group type options
     data.groupTypes = {
-      'coterie': 'WOD5E.VTM.Coterie',
-      'cell': 'WOD5E.HTR.Cell',
-      'pack': 'WOD5E.WTA.Pack'
+      coterie: 'WOD5E.VTM.Coterie',
+      cell: 'WOD5E.HTR.Cell',
+      pack: 'WOD5E.WTA.Pack'
     }
 
     return data

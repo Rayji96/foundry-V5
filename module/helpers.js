@@ -1,4 +1,4 @@
-/* global Handlebars, game, TextEditor, WOD5E */
+/* global Handlebars, game, WOD5E */
 
 /**
  * Define any helpers necessary for working with Handlebars
