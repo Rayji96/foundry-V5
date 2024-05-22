@@ -64,7 +64,7 @@ export class HunterActorSheet extends WoDActor {
      * @return {undefined}
      * @override
      */
-  _prepareItems (sheetData) {
+  async _prepareItems (sheetData) {
     // Prepare items
     super._prepareItems(sheetData)
 
@@ -152,7 +152,7 @@ export class HunterActorSheet extends WoDActor {
     html.find('.edge-rollable').click(this._onEdgeRoll.bind(this))
 
     // Post Edge description to the chat
-    html.find('.edge-chat').click(event => {
+    html.find('.edge-chat').click(async event => {
       const data = $(event.currentTarget)[0].dataset
       const edge = actor.system.edges[data.edge]
 

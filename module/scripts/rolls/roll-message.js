@@ -42,11 +42,11 @@ export async function generateRollMessage ({
     advancedDice,
     system,
     title,
-    flavor,
+    enrichedFlavor: await TextEditor.enrichHTML(flavor),
     difficulty,
     totalResult,
     margin: totalResult > difficulty ? totalResult - difficulty : 0,
-    resultLabel,
+    enrichedResultLabel: await TextEditor.enrichHTML(resultLabel),
     activeModifiers
   }
 

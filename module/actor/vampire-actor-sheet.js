@@ -57,7 +57,7 @@ export class VampireActorSheet extends GhoulActorSheet {
      * @return {undefined}
      * @override
      */
-  _prepareItems (sheetData) {
+  async _prepareItems (sheetData) {
     // Prepare items
     super._prepareItems(sheetData)
 

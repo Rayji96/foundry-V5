@@ -38,7 +38,7 @@ export class WoDItemSheet extends ItemSheet {
     const data = super.getData()
 
     // Encrich editor content
-    data.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description, { async: true })
+    data.enrichedDescription = await TextEditor.enrichHTML(this.object.system.description)
     data.bonuses = this.object.system.bonuses
 
     return data
@@ -94,17 +94,17 @@ export class WoDItemSheet extends ItemSheet {
     }
 
     // Prompt the dialog to add a new bonus
-    html.find('.add-bonus').click(event => {
+    html.find('.add-bonus').click(async event => {
       _onAddBonus(event, item)
     })
 
     // Delete a bonus
-    html.find('.delete-bonus').click(event => {
+    html.find('.delete-bonus').click(async event => {
       _onDeleteBonus(event, item)
     })
 
     // Prompt the dialog to edit a bonus
-    html.find('.edit-bonus').click(event => {
+    html.find('.edit-bonus').click(async event => {
       _onEditBonus(event, item)
     })
   }

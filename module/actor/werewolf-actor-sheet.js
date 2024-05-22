@@ -51,7 +51,7 @@ export class WerewolfActorSheet extends WoDActor {
   }
 
   /** Prepare important data for the werewolf actor */
-  _prepareItems (sheetData) {
+  async _prepareItems (sheetData) {
     super._prepareItems(sheetData)
 
     const actorData = sheetData.actor

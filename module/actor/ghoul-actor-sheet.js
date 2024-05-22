@@ -57,7 +57,7 @@ export class GhoulActorSheet extends MortalActorSheet {
      * @return {undefined}
      * @override
      */
-  _prepareItems (sheetData) {
+  async _prepareItems (sheetData) {
     // Prepare items
     super._prepareItems(sheetData)
 
