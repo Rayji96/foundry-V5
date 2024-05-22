@@ -1,4 +1,4 @@
-/* global Dialog, game, mergeObject */
+/* global Dialog, game, foundry */
 
 // Export this function to be used in other scripts
 import { WoDActor } from './wod-v5-sheet.js'
@@ -14,7 +14,7 @@ export class SPCActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'spc']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/spc-sheet.hbs',
       width: 940,
@@ -62,7 +62,7 @@ export class SPCActorSheet extends WoDActor {
      * @return {undefined}
      * @override
      */
-  _prepareItems (sheetData) {
+  async _prepareItems (sheetData) {
     // Prepare items
     super._prepareItems(sheetData)
   }

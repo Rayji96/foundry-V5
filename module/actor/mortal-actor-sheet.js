@@ -1,4 +1,4 @@
-/* global game, mergeObject */
+/* global game, foundry */
 
 // Export this function to be used in other scripts
 import { WoDActor } from './wod-v5-sheet.js'
@@ -14,7 +14,7 @@ export class MortalActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'mortal']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/mortal-sheet.hbs',
       width: 940,

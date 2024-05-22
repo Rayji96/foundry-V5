@@ -1,4 +1,4 @@
-/* global game, renderTemplate */
+/* global game, renderTemplate, TextEditor */
 
 // Import dice face-related variables for icon paths
 import { mortalDiceLocation, vampireDiceLocation, werewolfDiceLocation, hunterDiceLocation, normalDiceFaces, hungerDiceFaces, rageDiceFaces, desperationDiceFaces } from '../../dice/icons.js'
@@ -42,11 +42,11 @@ export async function generateRollMessage ({
     advancedDice,
     system,
     title,
-    flavor,
+    enrichedFlavor: await TextEditor.enrichHTML(flavor),
     difficulty,
     totalResult,
     margin: totalResult > difficulty ? totalResult - difficulty : 0,
-    resultLabel,
+    enrichedResultLabel: await TextEditor.enrichHTML(resultLabel),
     activeModifiers
   }
 

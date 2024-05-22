@@ -129,9 +129,7 @@ class WOD5eDice {
       }
 
       // Send the roll to chat
-      const roll = await new Roll(rollFormula, data).roll({
-        async: true
-      })
+      const roll = await new Roll(rollFormula, data).roll()
 
       // Handle failures for werewolves and vampires
       if (roll.terms[2]) await handleFailure(system, roll.terms[2].results)
@@ -170,7 +168,7 @@ class WOD5eDice {
       if (parseInt(inputBasicDice) === 0 && parseInt(inputAdvancedDice) === 0) return roll
 
       // The below isn't needed if disableMessageOutput is set to true
-      if (disableMessageOutput) {
+      if (disableMessageOutput && game.dice3d) {
         // Send notice to DiceSoNice because we're not making a new chat message
         game.dice3d.showForRoll(roll, game.user, true)
 
@@ -191,7 +189,7 @@ class WOD5eDice {
       })
 
       // Post the message to the chat
-      roll.toMessage({
+      await roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor }),
         content,
         flags: {
