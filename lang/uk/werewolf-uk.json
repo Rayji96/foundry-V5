@@ -41,7 +41,12 @@
       "FrenzyActiveWarning": "Скаженість активована.",
       "Active": "Активно",
       "FrenzyActiveWarning2": "Ви не моежете використовувати Дари та Обряди під час Скаженості.",
+
+      "_LostTheWolf": "",
+      "_LostWolfWarning": "",
       "LostWolfFormChange": "Втратив вовка: ви не можете зараз перевтілитись у надприродню форму.",
+      "_LostWolfShiftDown": "",
+      "_LostWolfShiftAnyway": "",
 
       "Renown": "Репутація",
       "_AddRenown": "",

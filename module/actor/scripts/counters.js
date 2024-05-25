@@ -1,4 +1,4 @@
-/* global duplicate, game */
+/* global foundry, game */
 
 // Handle all types of resource changes
 export const _onResourceChange = async function (event) {
@@ -14,7 +14,7 @@ export const _onResourceChange = async function (event) {
   } else {
     actor = this.actor
   }
-  const actorData = duplicate(actor)
+  const actorData = foundry.utils.duplicate(actor)
 
   // Don't let things be edited if the sheet is locked
   if (this.actor.locked || actorData.locked) return
@@ -251,7 +251,7 @@ function parseCounterStates (states) {
 // There's gotta be a better way to do this but for the life of me I can't figure it out
 export const _assignToActorField = async function (fields, value, actor) {
   // Top-level variables
-  const actorData = duplicate(actor)
+  const actorData = foundry.utils.duplicate(actor)
 
   // update actor owned items
   if (fields.length === 2 && fields[0] === 'items') {

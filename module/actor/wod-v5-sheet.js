@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ChatMessage, duplicate, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
+/* global DEFAULT_TOKEN, ChatMessage, foundry, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
 
 import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
@@ -28,21 +28,26 @@ export class WoDActor extends ActorSheet {
     data.displayBanner = game.settings.get('vtm5e', 'actorBanner')
 
     // Enrich non-header editor fields
-    if (actorData.biography) { data.enrichedBiography = await TextEditor.enrichHTML(actorData.biography, { async: true }) }
-    if (actorData.appearance) { data.enrichedAppearance = await TextEditor.enrichHTML(actorData.appearance, { async: true }) }
-    if (actorData.notes) { data.enrichedNotes = await TextEditor.enrichHTML(actorData.notes, { async: true }) }
-    if (actorData.equipment) { data.enrichedEquipment = await TextEditor.enrichHTML(actorData.equipment, { async: true }) }
+    if (actorData.biography) { data.enrichedBiography = await TextEditor.enrichHTML(actorData.biography) }
+    if (actorData.appearance) { data.enrichedAppearance = await TextEditor.enrichHTML(actorData.appearance) }
+    if (actorData.notes) { data.enrichedNotes = await TextEditor.enrichHTML(actorData.notes) }
+    if (actorData.equipment) { data.enrichedEquipment = await TextEditor.enrichHTML(actorData.equipment) }
 
     // Enrich actor header editor fields
     if (actorHeaders) {
-      if (actorHeaders.tenets) { data.enrichedTenets = await TextEditor.enrichHTML(actorHeaders.tenets, { async: true }) }
-      if (actorHeaders.touchstones) { data.enrichedTouchstones = await TextEditor.enrichHTML(actorHeaders.touchstones, { async: true }) }
+      if (actorHeaders.tenets) { data.enrichedTenets = await TextEditor.enrichHTML(actorHeaders.tenets) }
+      if (actorHeaders.touchstones) { data.enrichedTouchstones = await TextEditor.enrichHTML(actorHeaders.touchstones) }
 
       // Vampire stuff
-      if (actorHeaders.bane) { data.enrichedBane = await TextEditor.enrichHTML(actorHeaders.bane, { async: true }) }
+      if (actorHeaders.bane) { data.enrichedBane = await TextEditor.enrichHTML(actorHeaders.bane) }
 
       // Ghoul stuff
-      if (actorHeaders.creedfields) { data.enrichedCreedFields = await TextEditor.enrichHTML(actorHeaders.creedfields, { async: true }) }
+      if (actorHeaders.creedfields) { data.enrichedCreedFields = await TextEditor.enrichHTML(actorHeaders.creedfields) }
+    }
+
+    // Enrich item descriptions
+    for (const i of data.items) {
+      i.system.enrichedDescription = await TextEditor.enrichHTML(i.system.description)
     }
 
     return data
@@ -55,7 +60,7 @@ export class WoDActor extends ActorSheet {
      * @return {undefined}
      * @override
      */
-  _prepareItems (sheetData) {
+  async _prepareItems (sheetData) {
     const actorData = sheetData.actor
 
     const attributes = {
@@ -68,7 +73,6 @@ export class WoDActor extends ActorSheet {
       social: [],
       mental: []
     }
-
     const features = {
       background: [],
       merit: [],
@@ -138,7 +142,8 @@ export class WoDActor extends ActorSheet {
             id,
             value: actorSkills[id].value,
             hasSpecialties,
-            specialtiesList
+            specialtiesList,
+            macroid: actorSkills[id].macroid
           }, value)
         } else { // Otherwise, use the default
           skillData = Object.assign({
@@ -160,6 +165,8 @@ export class WoDActor extends ActorSheet {
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
       i.img = i.img || DEFAULT_TOKEN
+
+      // Sort the item into its appropriate place
       if (i.type === 'item') {
         // Append to gear.
         gear.push(i)
@@ -195,7 +202,7 @@ export class WoDActor extends ActorSheet {
     const actor = this.actor
 
     // Resource squares (Health, Willpower)
-    html.find('.resource-counter > .resource-counter-step').click(_onSquareCounterChange.bind(this))
+    html.find('.resource-counter.editable > .resource-counter-step').click(_onSquareCounterChange.bind(this))
     html.find('.resource-plus').click(_onResourceChange.bind(this))
     html.find('.resource-minus').click(_onResourceChange.bind(this))
 
@@ -223,13 +230,12 @@ export class WoDActor extends ActorSheet {
     html.find('.edit-skill').click(this._onSkillEdit.bind(this))
 
     // Send Inventory Item to Chat
-    html.find('.item-chat').click(event => {
+    html.find('.item-chat').click(async event => {
       const li = $(event.currentTarget).parents('.item')
       const item = actor.getEmbeddedDocument('Item', li.data('itemId'))
       renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
         name: item.name,
-        img: item.img,
-        description: item.system.description
+        img: item.img
       }).then(html => {
         ChatMessage.create({
           content: html
@@ -238,14 +244,14 @@ export class WoDActor extends ActorSheet {
     })
 
     // Update Inventory Item
-    html.find('.item-edit').click(event => {
+    html.find('.item-edit').click(async event => {
       const li = $(event.currentTarget).parents('.item')
       const item = actor.getEmbeddedDocument('Item', li.data('itemId'))
       item.sheet.render(true)
     })
 
     // Delete Inventory Item
-    html.find('.item-delete').click(event => {
+    html.find('.item-delete').click(async event => {
       const li = $(event.currentTarget).parents('.item')
       actor.deleteEmbeddedDocuments('Item', [li.data('itemId')])
       li.slideUp(200, () => this.render(false))
@@ -314,7 +320,7 @@ export class WoDActor extends ActorSheet {
     const type = header.dataset.type
 
     // Secondary variables
-    const data = duplicate(header.dataset)
+    const data = foundry.utils.duplicate(header.dataset)
 
     // Variables yet to be defined
     let prelocalizeString
@@ -413,17 +419,17 @@ export class WoDActor extends ActorSheet {
           }
 
           // Prompt the dialog to add a new bonus
-          html.find('.add-bonus').click(event => {
+          html.find('.add-bonus').click(async event => {
             _onAddBonus(event, actor, skillData, SkillEditDialog)
           })
 
           // Delete a bonus
-          html.find('.delete-bonus').click(event => {
+          html.find('.delete-bonus').click(async event => {
             _onDeleteBonus(event, actor, skillData, SkillEditDialog)
           })
 
           // Prompt the dialog to edit a bonus
-          html.find('.edit-bonus').click(event => {
+          html.find('.edit-bonus').click(async event => {
             _onEditBonus(event, actor, skillData, SkillEditDialog)
           })
         }

@@ -126,7 +126,7 @@
       "Medicine": "Medizin",
       "Melee": "Nahkampf",
       "Performance": "Darbietung",
-      "Occult": "Okultismus",
+      "Occult": "Okkultismus",
       "Larceny": "Diebeshandwerk",
       "Persuasion": "Überzeugen",
       "Politics": "Politik",
@@ -189,6 +189,11 @@
       "WillpowerFull": "Willenskraft ist vollständig aufgebraucht, kann sie nicht weiter verringern.",
       "WillpowerDamage": "Willenskraft-Schaden",
       "HasReceivedWillpowerDamage": "{actor} hat {willpowerDamage} Punkte Willenskraft-Schaden erlitten"
+    },
+
+    "Macro": {
+        "_MacroID": "",
+        "_MacroNote": ""
     }
   }
 }

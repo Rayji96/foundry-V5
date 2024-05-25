@@ -19,55 +19,91 @@
                 </a>
                 {{#unless actor.limited}}
                   <a class="remove-actor" data-uuid="{{member.uuid}}" title="{{localize 'WOD5E.RemoveFromGroup'}}">
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-times"></i>
                   </a>
                 {{/unless}}
               </div>
             </div>
-            <div class="flexrow">
-                {{#ifeq member.type 'vampire'}}
-                  <div class="sub-item">
-                      <div class="sub-item-name">Hunger</div>
-                      <div class="vampire-member-resource resource-content flexrow flex-center flex-between">
-                        {{#if member.isOwner}}
-                          <div class="resource-value" data-value="{{member.system.hunger.value}}" data-name="system.hunger.value">
-                              <span class="resource-value-empty member-hunger" data-actor-id="{{member.id}}"></span>
-                              {{#numLoop 5}}
-                              <span class="resource-value-step member-hunger" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
-                              {{/numLoop}}
-                          </div>
-                        {{else}}
-                          <div class="resource-value">
-                              {{#numLoop 5}}
-                              <span class="resource-value-step member-hunger" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
-                              {{/numLoop}}
-                          </div>
-                        {{/if}}
+            <div class="member-resources">
+              <!-- Actor Health -->
+              <div class="sub-item">
+                  <div class="sub-item-name">{{localize "WOD5E.Health"}}</div>
+                  <div class="member-resource flexcol flex-between">
+                      <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{member.system.health.max}}"
+                          data-superficial="{{member.system.health.superficial}}" data-aggravated="{{member.system.health.aggravated}}">
+                          {{#numLoop member.system.health.max}}
+                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                          {{/numLoop}}
                       </div>
+                      {{#ifeq member.system.activeForm "crinos"}}
+                      <div class="resource-counter crinos-health" data-states="/:superficial,x:aggravated" data-max="{{member.system.crinosHealth.max}}"
+                          data-superficial="{{member.system.crinosHealth.superficial}}" data-aggravated="{{member.system.crinosHealth.aggravated}}">
+                          {{#numLoop member.system.crinosHealth.max}}
+                            <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                          {{/numLoop}}
+                      </div>
+                      {{/ifeq}}
                   </div>
-                {{/ifeq}}
+              </div>
 
-                {{#ifeq member.type 'werewolf'}}
-                  <div class="sub-item">
-                      <div class="sub-item-name">Rage</div>
-                      <div class="werewolf-member-resource resource-content flexrow flex-center flex-between">
-                        {{#if member.isOwner}}
-                          <div class="resource-value" data-value="{{member.system.rage.value}}" data-name="system.rage.value">
-                              <span class="resource-value-empty member-rage" data-actor-id="{{member.id}}"></span>
-                              {{#numLoop 5}}
-                              <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
-                              {{/numLoop}}
-                          </div>
-                        {{else}}
-                          <div class="resource-value">
-                              {{#numLoop 5}}
-                              <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
-                              {{/numLoop}}
-                          </div>
-                        {{/if}}
+              <!-- Actor Willpower -->
+              <div class="sub-item">
+                  <div class="sub-item-name">{{localize "WOD5E.Willpower"}}</div>
+                  <div class="member-resource flexrow flex-center flex-between">
+                      <div class="resource-counter" data-states="/:superficial,x:aggravated" data-max="{{member.system.willpower.max}}"
+                          data-superficial="{{member.system.willpower.superficial}}" data-aggravated="{{member.system.willpower.aggravated}}">
+                          {{#numLoop member.system.willpower.max}}
+                              <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
+                          {{/numLoop}}
                       </div>
                   </div>
-                {{/ifeq}}
+              </div>
+
+              {{#ifeq member.type 'vampire'}}
+                <!-- Vampire Hunger -->
+                <div class="sub-item">
+                    <div class="sub-item-name">{{localize "WOD5E.VTM.Hunger"}}</div>
+                    <div class="vampire-member-resource resource-content flexrow flex-center flex-between">
+                      {{#if member.isOwner}}
+                        <div class="resource-value" data-value="{{member.system.hunger.value}}" data-name="system.hunger.value">
+                            <span class="resource-value-empty member-hunger" data-actor-id="{{member.id}}"></span>
+                            {{#numLoop 5}}
+                            <span class="resource-value-step member-hunger" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
+                            {{/numLoop}}
+                        </div>
+                      {{else}}
+                        <div class="resource-value">
+                            {{#numLoop 5}}
+                            <span class="resource-value-step member-hunger" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
+                            {{/numLoop}}
+                        </div>
+                      {{/if}}
+                    </div>
+                </div>
+              {{/ifeq}}
+
+              {{#ifeq member.type 'werewolf'}}
+                <!-- Werewolf Rage -->
+                <div class="sub-item">
+                    <div class="sub-item-name">{{localize "WOD5E.WTA.Rage"}}</div>
+                    <div class="werewolf-member-resource resource-content flexrow flex-center flex-between">
+                      {{#if member.isOwner}}
+                        <div class="resource-value" data-value="{{member.system.rage.value}}" data-name="system.rage.value">
+                            <span class="resource-value-empty member-rage" data-actor-id="{{member.id}}"></span>
+                            {{#numLoop 5}}
+                            <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
+                            {{/numLoop}}
+                        </div>
+                      {{else}}
+                        <div class="resource-value">
+                            {{#numLoop 5}}
+                            <span class="resource-value-step member-rage" data-index="{{this}}" data-actor-id="{{member.id}}"></span>
+                            {{/numLoop}}
+                        </div>
+                      {{/if}}
+                    </div>
+                </div>
+              {{/ifeq}}
             </div>
           </div>
         </div>

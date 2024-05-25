@@ -31,6 +31,7 @@ class WOD5eDice {
    * @param selectors                 (Optional, default []) Any selectors to use when compiling situational modifiers
    * @param macro                     (Optional, default '') A macro to run after the roll has been made
    * @param disableMessageOutput      (optional, default false) Whether to display the message output of a roll
+   * @param advancedCheckDice         (optional, default 0) Any dice that, part of an 'advanced' diceset, is rolled separately but at the same time
    *
    */
   static async Roll ({
@@ -52,7 +53,8 @@ class WOD5eDice {
     rerollHunger = false,
     selectors = [],
     macro = '',
-    disableMessageOutput = false
+    disableMessageOutput = false,
+    advancedCheckDice = 0
   }) {
     // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systems list
     const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
@@ -127,9 +129,7 @@ class WOD5eDice {
       }
 
       // Send the roll to chat
-      const roll = await new Roll(rollFormula, data).roll({
-        async: true
-      })
+      const roll = await new Roll(rollFormula, data).roll()
 
       // Handle failures for werewolves and vampires
       if (roll.terms[2]) await handleFailure(system, roll.terms[2].results)
@@ -148,11 +148,27 @@ class WOD5eDice {
         })
       }
 
+      // Roll any advanced check dice that need to be rolled in a separate rollmessage
+      if (advancedCheckDice) {
+        await this.Roll({
+          actor,
+          data,
+          title: `${game.i18n.localize('WOD5E.VTM.RousingBlood')} - ${title}`,
+          system,
+          disableBasicDice: true,
+          advancedDice: advancedCheckDice,
+          rollMode,
+          quickRoll: true,
+          increaseHunger: system === 'vampire',
+          decreaseRage: system === 'werewolf'
+        })
+      }
+
       // The below isn't needed if there's no dice being rolled
       if (parseInt(inputBasicDice) === 0 && parseInt(inputAdvancedDice) === 0) return roll
 
       // The below isn't needed if disableMessageOutput is set to true
-      if (disableMessageOutput) {
+      if (disableMessageOutput && game.dice3d) {
         // Send notice to DiceSoNice because we're not making a new chat message
         game.dice3d.showForRoll(roll, game.user, true)
 
@@ -173,7 +189,7 @@ class WOD5eDice {
       })
 
       // Post the message to the chat
-      roll.toMessage({
+      await roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor }),
         content,
         flags: {
@@ -260,6 +276,7 @@ class WOD5eDice {
             render: (html) => {
               // Obtain the input fields for basic and advanced dice
               const basicDiceInput = html.find('#inputBasicDice')
+              const advancedDiceInput = html.find('#inputAdvancedDice')
 
               // Add event listeners to plus and minus signs on the dice in the dialog
               html.find('.dialog-plus').click(function (event) {
@@ -291,27 +308,86 @@ class WOD5eDice {
               html.find('.mod-checkbox').on('change', function (event) {
                 event.preventDefault()
 
+                // Actor data
+                const actorData = actor.system
+
                 // Determine the input
                 const modCheckbox = $(event.target)
-                const modifier = event.currentTarget.dataset.value
+                const modifier = parseInt(event.currentTarget.dataset.value)
 
                 // Get the values of basic and advanced dice
-                const basicValue = basicDiceInput.val() ? basicDiceInput.val() : 0
+                const basicValue = basicDiceInput.val() ? parseInt(basicDiceInput.val()) : 0
+                const advancedValue = advancedDiceInput.val() ? parseInt(advancedDiceInput.val()) : 0
+
+                // Determine whether any alterations need to be made to basic dice or advanced dice
+                let applyDiceTo = 'basic'
+                // Apply dice to advancedDice if advancedValue is below the actor's hunger/rage value
+                if ((system === 'vampire' && advancedValue < actorData?.hunger.value) || (system === 'werewolf' && advancedValue < actorData?.rage.value)) {
+                  applyDiceTo = 'advanced'
+                }
 
                 // Determine the new input depending on if the bonus is getting added (checked)
                 // or not (unchecked)
                 let newValue = 0
+                let checkValue = 0
                 if (modCheckbox.prop('checked')) {
-                  newValue = parseInt(basicValue) + parseInt(modifier)
+                  // Adding the modifier
+                  if (applyDiceTo === 'advanced') {
+                    // Apply the modifier to advancedDice
+                    newValue = advancedValue + modifier
+
+                    // Determine what we're checking against
+                    if (system === 'vampire') {
+                      checkValue = actorData?.hunger.value
+                    }
+                    if (system === 'werewolf') {
+                      checkValue = actorData?.rage.value
+                    }
+
+                    if (newValue > actorData?.hunger.value || newValue > checkValue) {
+                      // Check for any excess and apply it to basicDice
+                      const excess = newValue - checkValue
+                      newValue = checkValue
+                      basicDiceInput.val(basicValue + excess)
+                    }
+
+                    // Update the advancedDice in the menu
+                    advancedDiceInput.val(newValue)
+                  } else {
+                    // If advancedDice is already at its max, apply the whole modifier to just basicDice
+                    newValue = basicValue + modifier
+                    basicDiceInput.val(newValue)
+                  }
                 } else {
-                  newValue = parseInt(basicValue) - parseInt(modifier)
+                  // Removing the modifier
+                  if (applyDiceTo === 'advanced' && advancedValue > 0) {
+                    // Apply the modifier to advancedDice
+                    newValue = advancedValue - modifier
+
+                    if (newValue < 0) {
+                      // Check for any deficit and apply it to basicDice
+                      const deficit = Math.abs(newValue)
+                      newValue = 0
+                      basicDiceInput.val(Math.max(basicValue - deficit, 0))
+                    }
+
+                    // Update the advancedDice in the menu
+                    advancedDiceInput.val(newValue)
+                  } else {
+                    newValue = basicValue - modifier
+                    if (newValue < 0) {
+                      const deficit = Math.abs(newValue)
+                      newValue = 0
+                      advancedDiceInput.val(Math.max(advancedValue - deficit, 0))
+                    }
+
+                    basicDiceInput.val(newValue)
+                  }
                 }
 
                 // Ensure that there can't be negative dice
-                if (newValue < 0) newValue = 0
-
-                // Plug in the new value to the input
-                basicDiceInput.val(newValue)
+                if (basicDiceInput.val() < 0) basicDiceInput.val(0)
+                if (advancedDiceInput.val() < 0) advancedDiceInput.val(0)
               })
 
               // Add event listener to the add custo mmodifier button

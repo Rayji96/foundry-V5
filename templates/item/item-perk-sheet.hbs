@@ -9,9 +9,9 @@
                 <div class="flexcol edge flex-center">
                     <label>{{localize "WOD5E.HTR.EdgeType"}}</label>
                     <select name="system.edge" data-type="String">
-                        {{#select item.system.edge}}
+                        {{#selectOptions item.system.edge}}
                         {{> "systems/vtm5e/templates/item/parts/edges.hbs"}}
-                        {{/select}}
+                        {{/selectOptions}}
                     </select>
                 </div>
             </div>

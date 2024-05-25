@@ -1,14 +1,10 @@
 <div class="resource flex-group-center humanity">
-
-    <label 
-        for="actor.system.humanity.value" 
-        class="resource-label system-rollable remorse-roll"
-        >
-            {{localize "WOD5E.VTM.Humanity"}}
+    <label for="actor.system.humanity.value" class="resource-label system-rollable remorse-roll" title="{{localize 'WOD5E.VTM.RollRemorse'}}">
+        {{localize "WOD5E.VTM.Humanity"}}
     </label>
     
     <div class="resource-content flexrow flex-center flex-between">
-        <div class="resource-counter" data-states="/:stains,-:value" data-value="{{actor.system.humanity.value}}" data-stains="{{actor.system.humanity.stains}}"  data-name="system.humanity">
+        <div class="resource-counter editable" data-states="/:stains,-:value" data-value="{{actor.system.humanity.value}}" data-stains="{{actor.system.humanity.stains}}"  data-name="system.humanity">
             {{#numLoop 10}}
             <span class="resource-counter-step" data-index="{{this}}" data-state=""></span>
             {{/numLoop}}

@@ -14,9 +14,9 @@
     {{#each advancedDice.results as |die key|}}
       <img src="{{die.img}}" class="{{die.classes}}" data-index="{{die.index}}" alt="{{die.altText}}"/>
     {{/each}}
-    {{#if flavor}}
+    {{#if enrichedFlavor}}
       <hr>
-      {{{enrichHTML flavor}}}
+      {{{enrichedFlavor}}}
       <hr>
     {{/if}}
     <div class="dice-tooltip">
@@ -50,6 +50,6 @@
         </div>
       </section>
     </div>
-    {{{enrichHTML resultLabel}}}
+    {{{enrichedResultLabel}}}
   </div>
 </div>
