@@ -153,12 +153,6 @@ export class WerewolfActorSheet extends WoDActor {
     // Create a new Rite
     html.find('.rite-create').click(this._onCreateRite.bind(this))
 
-    // Make Gift hidden
-    html.find('.gift-delete').click(ev => {
-      const data = $(ev.currentTarget)[0].dataset
-      actor.update({ [`system.gifts.${data.gift}.powers`]: [] })
-    })
-
     // Post Gift description to the chat
     html.find('.gift-chat').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
