@@ -126,12 +126,6 @@ export class HunterActorSheet extends WoDActor {
     // Make Edge visible
     html.find('.edge-create').click(this._onCreateEdge.bind(this))
 
-    // Make Edge hidden
-    html.find('.edge-delete').click(ev => {
-      const data = $(ev.currentTarget)[0].dataset
-      actor.update({ [`system.edges.${data.edge}.visible`]: false })
-    })
-
     // Rollable Edge powers
     html.find('.edge-rollable').click(this._onEdgeRoll.bind(this))
 
