@@ -73,20 +73,7 @@ export class HunterActorSheet extends WoDActor {
     const actor = this.actor
 
     // Variables yet to be defined
-    const edges = {
-      arsenal: [],
-      fleet: [],
-      ordnance: [],
-      library: [],
-      improvisedgear: [],
-      globalaccess: [],
-      dronejockey: [],
-      beastwhisperer: [],
-      sensetheunnatural: [],
-      repeltheunnatural: [],
-      thwarttheunnatural: [],
-      artifact: []
-    }
+    const edgesList = structuredClone(actorData.system.edges)
 
     // Track whether despair is toggled on or not
     if (actor.system.despair.value > 0) {
@@ -96,20 +83,17 @@ export class HunterActorSheet extends WoDActor {
     // Iterate through items, allocating to containers
     for (const i of sheetData.items) {
       // Make sure the item is a perk and has an edge set
-      if (i.type === 'perk' && i.system.edge) {
-        // Append to edges
-        edges[i.system.edge].push(i)
-
-        // If the edge isn't already visible, make it visible
-        if (!actor.system.edges[i.system.edge].visible) {
-          actor.update({ [`system.edges.${i.system.edge}.visible`]: true })
+      if (i.type === 'perk') {
+        // Append to each of the perk types.
+        if (i.system.edge !== undefined && edgesList[i.system.edge]?.powers) {
+          edgesList[i.system.edge].powers.push(i)
         }
       }
     }
 
     // Sort the edge containers by the level of the power instead of by creation date
-    for (const edgeType in edges) {
-      edges[edgeType] = edges[edgeType].sort(function (power1, power2) {
+    for (const edgeType in edgesList) {
+      edgesList[edgeType].powers = edgesList[edgeType].powers.sort(function (power1, power2) {
         // If the levels are the same, sort alphabetically instead
         if (power1.system.level === power2.system.level) {
           return power1.name.localeCompare(power2.name)
@@ -121,7 +105,7 @@ export class HunterActorSheet extends WoDActor {
     }
 
     // Assign and return the edges list
-    actorData.system.edges_list = edges
+    actorData.system.edgesList = edgesList
   }
   /* -------------------------------------------- */
 
@@ -140,7 +124,7 @@ export class HunterActorSheet extends WoDActor {
     html.find('.despair-toggle').click(this._onToggleDespair.bind(this))
 
     // Make Edge visible
-    html.find('.edge-create').click(this._onShowEdge.bind(this))
+    html.find('.edge-create').click(this._onCreateEdge.bind(this))
 
     // Make Edge hidden
     html.find('.edge-delete').click(ev => {
@@ -192,55 +176,102 @@ export class HunterActorSheet extends WoDActor {
   }
 
   /**
-     * Handle making a edge visible
+     * Handle making a new edge
      * @param {Event} event   The originating click event
      * @private
      */
-  _onShowEdge (event) {
+  _onCreateEdge (event) {
     event.preventDefault()
 
     // Top-level variables
     const actor = this.actor
+    const header = event.currentTarget
 
     // Variables yet to be defined
     let options = ''
-    for (const [key, value] of Object.entries(actor.system.edges)) {
-      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
-    }
-
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.HTR.SelectEdge')}</label>
-              <select id="edgeSelect">${options}</select>
-          </div>
-      </form>`
-
     let buttons = {}
-    buttons = {
-      submit: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Add'),
-        callback: async (html) => {
-          const edge = html.find('#edgeSelect')[0].value
-          actor.update({ [`system.edges.${edge}.visible`]: true })
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
-      }
-    }
 
-    new Dialog({
-      title: game.i18n.localize('WOD5E.HTR.AddEdge'),
-      content: template,
-      buttons,
-      default: 'submit'
-    },
-    {
-      classes: ['wod5e', 'hunter-dialog', 'hunter-sheet']
-    }).render(true)
+    // If the type of edge is already set, we don't need to ask for it
+    if (header.dataset.edge) {
+      // Get the image for the item, if one is available from the item definitions
+      const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'perk' in obj)
+      const img = itemFromList.perk.img ? itemFromList.perk.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+
+      // Prepare the item object.
+      const itemData = {
+        name: game.i18n.localize('WOD5E.HTR.NewPerk'),
+        type: 'perk',
+        img,
+        system: {
+          edge: header.dataset.edge
+        }
+      }
+
+      // Remove the type from the dataset since it's in the itemData.type prop.
+      delete itemData.system.type
+
+      // Finally, create the item!
+      return actor.createEmbeddedDocuments('Item', [itemData])
+    } else {
+      // Go through the options and add them to the options variable
+      for (const [key, value] of Object.entries(actor.system.edges)) {
+        options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
+      }
+
+      // Define the template to be used
+      const template = `
+        <form>
+            <div class="form-group">
+                <label>${game.i18n.localize('WOD5E.HTR.SelectEdge')}</label>
+                <select id="edgeSelect">${options}</select>
+            </div>
+        </form>`
+
+      // Define the buttons to be used and push them to the buttons variable
+      buttons = {
+        submit: {
+          icon: '<i class="fas fa-check"></i>',
+          label: game.i18n.localize('WOD5E.Add'),
+          callback: async (html) => {
+            const edge = html.find('#edgeSelect')[0].value
+
+            // Get the image for the item, if one is available from the item definitions
+            const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'perk' in obj)
+            const img = itemFromList.perk.img ? itemFromList.perk.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+
+            // Prepare the item object.
+            const itemData = {
+              name: game.i18n.localize('WOD5E.HTR.NewPerk'),
+              type: 'perk',
+              img,
+              system: {
+                edge: edge
+              }
+            }
+            // Remove the type from the dataset since it's in the itemData.type prop.
+            delete itemData.system.type
+
+            // Finally, create the item!
+            return actor.createEmbeddedDocuments('Item', [itemData])
+          }
+        },
+        cancel: {
+          icon: '<i class="fas fa-times"></i>',
+          label: game.i18n.localize('WOD5E.Cancel')
+        }
+      }
+
+      // Display the dialog
+      new Dialog({
+        title: game.i18n.localize('WOD5E.WTA.AddGift'),
+        content: template,
+        buttons,
+        default: 'submit'
+      },
+      {
+        classes: ['wod5e', 'hunter-dialog', 'hunter-sheet']
+      }).render(true)
+    }
   }
 
   async _onEdgeRoll (event) {
