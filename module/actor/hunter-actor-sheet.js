@@ -1,4 +1,4 @@
-/* global Dialog, game, foundry, renderTemplate, ChatMessage */
+/* global Dialog, game, foundry, renderTemplate, ChatMessage, WOD5E */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -239,7 +239,7 @@ export class HunterActorSheet extends WoDActor {
               type: 'perk',
               img,
               system: {
-                edge: edge
+                edge
               }
             }
             // Remove the type from the dataset since it's in the itemData.type prop.
