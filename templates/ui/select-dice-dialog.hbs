@@ -69,13 +69,16 @@
         </div>
       {{/if}}
 
-      {{#ifnoteq hungerValue 5}}
-        <div class="secondary-selector">
-          <div class="selector-title">{{localize "WOD5E.VTM.BloodSurge"}}</div>
-            <div class="flexrow flex-center">
-                <input id="bloodSurge" type="checkbox"/>
-            </div>
-        </div>
+      <!-- If the actor isn't a ghoul and isn't at max hunger, show blood surge option -->
+      {{#ifnoteq actorType 'ghoul'}}
+        {{#ifnoteq hungerValue 5}}
+          <div class="secondary-selector">
+            <div class="selector-title">{{localize "WOD5E.VTM.BloodSurge"}}</div>
+              <div class="flexrow flex-center">
+                  <input id="bloodSurge" type="checkbox"/>
+              </div>
+          </div>
+        {{/ifnoteq}}
       {{/ifnoteq}}
     </div>
   {{/ifeq}}

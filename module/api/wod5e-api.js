@@ -141,7 +141,8 @@ export class wod5eAPI {
       renown,
       attributesList,
       skillsList,
-      hungerValue: system === 'vampire' && actor.type !== 'ghoul' && actor.type !== 'spc' ? actor.system.hunger.value : 0
+      hungerValue: system === 'vampire' && actor.type !== 'ghoul' && actor.type !== 'spc' ? actor.system.hunger.value : 0,
+      actorType: actor.type
     }
     // Render the template
     const content = await renderTemplate(dialogTemplate, dialogData)
