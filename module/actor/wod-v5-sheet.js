@@ -345,7 +345,7 @@ export class WoDActor extends ActorSheet {
 
     // Get the image for the item, if one is available from the item definitions
     const itemFromList = WOD5E.ItemTypes.getList().find(obj => type in obj)
-    const img = itemFromList[type].img ? itemFromList[type].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+    const img = itemFromList[type].img ? itemFromList[type].img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
     // Initialize a default name.
     const name = await WOD5E.api.generateLabelAndLocalize({ string: prelocalizeString })

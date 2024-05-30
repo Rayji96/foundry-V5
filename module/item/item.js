@@ -75,7 +75,7 @@ export class ItemInfo extends Item {
         if (!data.name) data.name = game.i18n.format('DOCUMENT.New', { type: itemTypes[data.type] })
         // Generate a default image depending on the item type
         const itemFromList = WOD5E.ItemTypes.getList().find(obj => data.type in obj)
-        data.img = itemFromList[data.type].img ? itemFromList[data.type].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+        data.img = itemFromList[data.type].img ? itemFromList[data.type].img : 'systems/vtm5e/assets/icons/items/item-default.svg'
         // If folder isn't given, delete the field
         if (!data.folder) delete data.folder
         // Choose the default item type if there's only one

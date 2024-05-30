@@ -1,8 +1,8 @@
 // Static locations of various sets of icons
-const mortalDiceLocation = '/systems/vtm5e/assets/icons/dice/mortal/'
-const vampireDiceLocation = '/systems/vtm5e/assets/icons/dice/vampire/'
-const werewolfDiceLocation = '/systems/vtm5e/assets/icons/dice/werewolf/'
-const hunterDiceLocation = '/systems/vtm5e/assets/icons/dice/hunter/'
+const mortalDiceLocation = 'systems/vtm5e/assets/icons/dice/mortal/'
+const vampireDiceLocation = 'systems/vtm5e/assets/icons/dice/vampire/'
+const werewolfDiceLocation = 'systems/vtm5e/assets/icons/dice/werewolf/'
+const hunterDiceLocation = 'systems/vtm5e/assets/icons/dice/hunter/'
 
 // Baseline dice variables and icon filenames
 const normalDiceFaces = {

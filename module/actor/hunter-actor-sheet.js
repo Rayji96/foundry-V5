@@ -189,7 +189,7 @@ export class HunterActorSheet extends WoDActor {
     if (header.dataset.edge) {
       // Get the image for the item, if one is available from the item definitions
       const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'perk' in obj)
-      const img = itemFromList.perk.img ? itemFromList.perk.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+      const img = itemFromList.perk.img ? itemFromList.perk.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
       // Prepare the item object.
       const itemData = {
@@ -231,7 +231,7 @@ export class HunterActorSheet extends WoDActor {
 
             // Get the image for the item, if one is available from the item definitions
             const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'perk' in obj)
-            const img = itemFromList.perk.img ? itemFromList.perk.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+            const img = itemFromList.perk.img ? itemFromList.perk.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
             // Prepare the item object.
             const itemData = {
