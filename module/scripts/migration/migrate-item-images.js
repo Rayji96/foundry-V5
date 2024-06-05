@@ -16,14 +16,14 @@ export const MigrateItemImages = async function () {
 
     for (const item of actorItems) {
       // Check if there are any instances of /systems/vtm5e/assets/icons/powers/ in the actor data
-      if (countInstances(item.img, '/systems/vtm5e/assets/icons/powers/') > 0) {
+      if (countInstances(item.img, 'systems/vtm5e/assets/icons/powers/') > 0) {
         hasFixedItems = true
 
         // Create a new object with the updated 'img' property
         const updatedItem = {
           _id: item._id, // Preserve the original _id
           ...item.toObject(),
-          img: item.img.replace(/\/systems\/vtm5e\/assets\/icons\/powers\//, '/systems/vtm5e/assets/icons/items/')
+          img: item.img.replace(/\/systems\/vtm5e\/assets\/icons\/powers\//, 'systems/vtm5e/assets/icons/items/')
         }
 
         // Push the updated item to the array

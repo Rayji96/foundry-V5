@@ -141,7 +141,8 @@ export class wod5eAPI {
       renown,
       attributesList,
       skillsList,
-      hungerValue: system === 'vampire' ? actor.system.hunger.value : 0
+      hungerValue: system === 'vampire' && actor.type !== 'ghoul' && actor.type !== 'spc' ? actor.system.hunger.value : 0,
+      actorType: actor.type
     }
     // Render the template
     const content = await renderTemplate(dialogTemplate, dialogData)
@@ -300,7 +301,7 @@ export class wod5eAPI {
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
     const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
 
-    if (system === 'vampire' && actor.type !== 'ghoul') {
+    if (system === 'vampire' && actor.type !== 'ghoul' && actor.type !== 'spc') {
       // Define actor's hunger dice, ensuring it can't go below 0
       const hungerDice = Math.max(actorData.hunger.value, 0)
 
