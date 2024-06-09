@@ -14,7 +14,7 @@ export class Attributes {
   static addCustom(customAttributes) {
     for (const [key, value] of Object.entries(customAttributes)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        this[key] = value
+        this[value.id] = value
       }
     }
   }

@@ -8,9 +8,14 @@ export class StorytellerMenu extends FormApplication {
       classes: ['wod5e'],
       template: 'systems/vtm5e/templates/ui/storyteller-menu.hbs',
       width: 500,
-      height: 'auto',
+      height: 450,
       resizable: true,
-      closeOnSubmit: true
+      closeOnSubmit: true,
+      tabs: [{
+        navSelector: '.sheet-tabs',
+        contentSelector: '.sheet-body',
+        initial: 'modifications'
+      }]
     })
   }
 
@@ -20,9 +25,18 @@ export class StorytellerMenu extends FormApplication {
   async getData () {
     const data = await super.getData()
 
+    data.attributeTypes = {
+      physical: 'WOD5E.SPC.Physical',
+      social: 'WOD5E.SPC.Social',
+      mental: 'WOD5E.SPC.Mental'
+    }
+
     // Grab the modifications from the game settings and add them to the application data
     data.attributeModifications = game.settings.get('vtm5e', 'modifiedAttributes')
     data.skillModifications = game.settings.get('vtm5e', 'modifiedSkills')
+
+    // Grab the custom attributes from the game settings and add them to the application data
+    data.customAttributes = game.settings.get('vtm5e', 'customAttributes')
 
     return data
   }
@@ -37,7 +51,7 @@ export class StorytellerMenu extends FormApplication {
       const data = event.target.dataset
       const type = data.type
 
-      generatePrompt(type)
+      _onGeneratePrompt(type)
     })
 
     html.find('.remove-mod-button').click(function (event) {
@@ -47,20 +61,55 @@ export class StorytellerMenu extends FormApplication {
       const type = data.type
       const id = data.id
 
-      removeChange(type, id)
+      _onRemoveChange(type, id)
+    })
+
+    html.find('.add-custom-button').click(function (event) {
+      event.preventDefault()
+
+      const data = event.target.dataset
+      const type = data.type
+
+      // Get the list of custom attributes
+      const customAttributes = game.settings.get('vtm5e', 'customAttributes')
+
+      // Define the new attribute and push it to the list
+      const newAttribute = {
+        id: foundry.utils.randomID(8),
+        label: 'New Attribute',
+        type: 'physical'
+      }
+      customAttributes.push(newAttribute)
+
+      console.log(customAttributes)
+
+      // Set the new list of attributes
+      game.settings.set('vtm5e', 'customAttributes', customAttributes)
+    })
+
+    html.find('.remove-custom-button').click(function (event) {
+      event.preventDefault()
+
+      const data = event.target.dataset
+      const type = data.type
+      const id = data.id
+
+      _onRemoveCustom(type, id)
     })
 
     html.find('.save-modifications').click(function (event) {
       event.preventDefault()
 
       const attributeModifications = []
+      const customAttributes = []
       const skillModifications = []
 
+      // Modifications to existing features
       html.find('.modification-row').each(function () {
-        const modification = $(this)[0]
-        const id = modification.dataset.id
-        const type = modification.dataset.type
-        const label = modification.dataset.label
+        const featureMod = $(this)[0]
+        const id = featureMod.dataset.id
+        const type = featureMod.dataset.type
+        const label = featureMod.dataset.label
 
         const rename = $(this).find('.mod-rename')[0].value
         const hidden = $(this).find('.mod-hidden')[0].checked
@@ -82,15 +131,40 @@ export class StorytellerMenu extends FormApplication {
         }
       })
 
+      // Custom additions to existing features
+      html.find('.customization-row').each(function () {
+        const customFeature = $(this)[0]
+        const id = customFeature.dataset.id
+        const type = customFeature.dataset.type
+
+        const label = $(this).find('.label')[0].value
+        const attrType = $(this).find('.attr-type')[0].value
+
+        if (type === 'attribute') {
+          customAttributes.push({
+            id,
+            type: attrType,
+            label
+          })
+        }/* else if (type === 'skill') {
+          #customSkills.push({
+            id,
+            type,
+            label
+          })
+        }*/
+      })
+
       // Save the new settings
       game.settings.set('vtm5e', 'modifiedAttributes', attributeModifications)
+      game.settings.set('vtm5e', 'customAttributes', customAttributes)
       game.settings.set('vtm5e', 'modifiedSkills', skillModifications)
     })
   }
 }
 
 // Function for getting the information necessary for the selection dialog
-async function generatePrompt (type) {
+async function _onGeneratePrompt (type) {
   if (type === 'attribute') {
     const attributes = WOD5E.Attributes.getList()
     const attributesList = []
@@ -108,7 +182,7 @@ async function generatePrompt (type) {
     }
 
     // Render the dialog
-    renderPromptDialog('attribute', attributesList, game.i18n.localize('WOD5E.Attributes.Label'))
+    _onRenderPromptDialog('attribute', attributesList, game.i18n.localize('WOD5E.Attributes.Label'))
   } else if (type === 'skill') {
     const skills = WOD5E.Skills.getList()
     const skillsList = []
@@ -127,12 +201,12 @@ async function generatePrompt (type) {
     }
 
     // Render the dialog
-    renderPromptDialog('skill', skillsList, game.i18n.localize('WOD5E.Skills.Label'))
+    _onRenderPromptDialog('skill', skillsList, game.i18n.localize('WOD5E.Skills.Label'))
   }
 }
 
 // Function for rendering the dialog for adding a new modification
-async function renderPromptDialog (type, list, title) {
+async function _onRenderPromptDialog (type, list, title) {
   // Render the template
   const template = 'systems/vtm5e/templates/ui/select-dialog.hbs'
   const content = await renderTemplate(template, { list })
@@ -195,7 +269,7 @@ async function renderPromptDialog (type, list, title) {
 }
 
 // Function for removing a change
-async function removeChange (type, id) {
+async function _onRemoveChange (type, id) {
   if (type === 'attribute') {
     // Get the list of modified attributes
     let modifiedAttributes = game.settings.get('vtm5e', 'modifiedAttributes')

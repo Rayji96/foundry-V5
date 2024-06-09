@@ -88,6 +88,14 @@ export class WoDActor extends ActorSheet {
     const attributesList = Attributes.getList()
     const actorAttributes = actorData.system?.abilities
     if (actorAttributes) {
+      // Clean up non-existent attributes, such as custom ones that no longer exist
+      const validAttributes = new Set(attributesList.map(entry => Object.keys(entry)[0]))
+      for (const id of Object.keys(actorAttributes)) {
+        if (!validAttributes.has(id)) {
+          delete actorAttributes[id]
+        }
+      }
+
       for (const entry of attributesList) {
         // Assign the data to a value
         const [, value] = Object.entries(entry)[0]
@@ -100,7 +108,11 @@ export class WoDActor extends ActorSheet {
             id,
             value: actorAttributes[id].value
           }, value)
-        } else { // Otherwise, use the default
+        } else { // Otherwise, add it to the actor and set it as some default data
+          await this.actor.update({ [`system.abilities.${id}`]: {
+            value
+          } })
+
           attributeData = Object.assign({
             id,
             value: 1

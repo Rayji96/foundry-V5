@@ -144,6 +144,7 @@ export const loadSettings = async function () {
     Storyteller Settings
   */
 
+  // Register the storyteller menu
   game.settings.registerMenu('vtm5e', 'storytellerMenu', {
     name: 'Storyteller Menu',
     label: 'Storyteller Settings',
@@ -153,6 +154,7 @@ export const loadSettings = async function () {
     restricted: true
   })
 
+  // Register the modified attributes
   game.settings.register('vtm5e', 'modifiedAttributes', {
     name: 'Attribute Modifications',
     hint: 'Allows for modification of existing attributes.',
@@ -162,11 +164,7 @@ export const loadSettings = async function () {
     type: Array,
     onChange: async () => {
       // Re-render the storyteller menu window once settings are updated
-      const StorytellerWindow = Object.values(ui.windows).filter(w => (w.id === 'wod5e-storyteller'))[0]
-
-      if (StorytellerMenu) {
-        StorytellerWindow.render()
-      }
+      this._rerenderStorytellerWindow()
 
       // Re-init labels
       WOD5E.Attributes.initializeLabels()
@@ -176,6 +174,31 @@ export const loadSettings = async function () {
     }
   })
 
+  // Register the custom attributes
+  game.settings.register('vtm5e', 'customAttributes', {
+    name: 'Custom Attributes',
+    hint: 'Allows for the creation of custom attributes.',
+    scope: 'world',
+    config: false,
+    default: [],
+    type: Array,
+    onChange: async (customAttributes) => {
+
+      // Re-render the storyteller menu window once settings are updated
+      _rerenderStorytellerWindow()
+
+      // Grab the custom attributes and send them to the function to update the list
+      WOD5E.Attributes.addCustom(customAttributes)
+
+      // Re-init labels
+      WOD5E.Attributes.initializeLabels()
+
+      // Reload actorsheets
+      resetActors()
+    }
+  })
+
+  // Register the modified skills
   game.settings.register('vtm5e', 'modifiedSkills', {
     name: 'Skill Modifications',
     hint: 'Allows for modification of existing skills.',
@@ -185,11 +208,10 @@ export const loadSettings = async function () {
     type: Array,
     onChange: async () => {
       // Re-render the storyteller menu window once settings are updated
-      const StorytellerWindow = Object.values(ui.windows).filter(w => (w.id === 'wod5e-storyteller'))[0]
+      this._rerenderStorytellerWindow()
 
-      if (StorytellerWindow) {
-        StorytellerWindow.render()
-      }
+      // Grab the custom skills and send them to the function to update the list
+      WOD5E.Skills.addCustom(customAttributes)
 
       // Re-init labels
       WOD5E.Skills.initializeLabels()
@@ -198,4 +220,12 @@ export const loadSettings = async function () {
       resetActors()
     }
   })
+}
+
+function _rerenderStorytellerWindow () {
+  const storytellerWindow = Object.values(ui.windows).filter(w => (w.id === 'wod5e-storyteller'))[0]
+
+  if (storytellerWindow) {
+    storytellerWindow.render()
+  }
 }

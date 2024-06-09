@@ -1,55 +1,22 @@
 <form autocomplete="off" class="wod5e-config-form storyteller-menu">
-  <div class="config-category">
-    <h2>Modified Attributes</h2>
-    <div class="subcategory">
-      <p class="notes">Allows the storyteller to modify the attributes on actor sheets.</p>
-      <div class="grid grid-3col">
-        <div class="mod-header">Attribute</div>
-        <div class="mod-header">Rename</div>
-        <div class="mod-header">Hidden</div>
-      </div>
-      {{#each attributeModifications as |attribute id|}}
-        <div class="modification-row grid grid-3col" data-type="attribute" data-id="{{attribute.id}}" data-label="{{attribute.label}}">
-          <div class="mod-label">
-            <i class="fas fa-trash remove-mod-button" data-type="attribute" data-id="{{attribute.id}}"></i>
-            {{attribute.label}}
-          </div>
-          <input type="text" class="mod-rename" placeholder="{{attribute.label}}" value="{{attribute.rename}}">
-          <input type="checkbox" class="mod-hidden"{{#if attribute.hidden}} checked{{/if}}/>
-        </div>
-      {{/each}}
-      <div class="mod-footer">
-        <hr>
-        <div class="add-mod-button" data-type="attribute">Add Attribute Modification</div>
-      </div>
+  {{!-- Cell Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <div class="item" data-tab="modifications">Modifications</div>
+    <div class="item" data-tab="custom">Custom</div>
+  </nav>
+
+  {{!-- Menu Body --}}
+  <section class="sheet-body">
+    {{!-- Modifications Tab --}}
+    {{> "systems/vtm5e/templates/ui/parts/storyteller-menu/modification-menu.hbs"}}
+
+    {{!-- Custom Tab --}}
+    {{> "systems/vtm5e/templates/ui/parts/storyteller-menu/custom-menu.hbs"}}
+
+    {{!-- Save button --}}
+    <hr>
+    <div>
+      <button class="save-modifications">Save Changes</button>
     </div>
-  </div>
-  <div class="config-category">
-    <h2>Modified Skills</h2>
-    <div class="subcategory">
-      <p class="notes">Allows the storyteller to modify the skills on actor sheets.</p>
-      <div class="grid grid-3col">
-        <div class="mod-header">Skill</div>
-        <div class="mod-header">Rename</div>
-        <div class="mod-header">Hidden</div>
-      </div>
-      {{#each skillModifications as |skill id|}}
-        <div class="modification-row grid grid-3col" data-type="skill" data-id="{{skill.id}}" data-label="{{skill.label}}">
-          <div class="mod-label">
-            <i class="fas fa-trash remove-mod-button" data-type="skill" data-id="{{skill.id}}"></i>
-            {{skill.label}}
-          </div>
-          <input type="text" class="mod-rename" placeholder="{{skill.label}}" value="{{skill.rename}}">
-          <input type="checkbox" data-type="skill" class="mod-hidden"{{#if skill.hidden}} checked{{/if}}/>
-        </div>
-      {{/each}}
-      <div class="mod-footer">
-        <hr>
-        <div class="add-mod-button" data-type="skill">Add Skill Modification</div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <button class="save-modifications">Save Modifications</button>
-  </div>
+  </section>
 </form>

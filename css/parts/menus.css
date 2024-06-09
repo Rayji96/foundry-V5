@@ -28,13 +28,13 @@
   text-align: center;
 }
 
-.wod5e-config-form.storyteller-menu .add-mod-button {
+.wod5e-config-form.storyteller-menu .addition-button {
   border-radius: 0;
   font-weight: bold;
   letter-spacing: 0.05em;
 }
 
-.wod5e-config-form.storyteller-menu .add-mod-button:hover {
+.wod5e-config-form.storyteller-menu .addition-button:hover {
   cursor: pointer;
   outline: none;
   transition-duration: 0.3s;

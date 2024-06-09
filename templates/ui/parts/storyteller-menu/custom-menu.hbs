@@ -1,0 +1,24 @@
+<div class="tab" data-group="primary" data-tab="custom">
+  <div class="config-category">
+    <h2>Custom Attributes</h2>
+    <div class="subcategory">
+      <p class="notes">Allows the storyteller to add custom attributes to the actor sheets.</p>
+      <div class="grid grid-3col">
+        <div class="mod-header">Label</div>
+        <div class="mod-header">Attribute Type</div>
+      </div>
+      {{#each customAttributes as |attribute id|}}
+        <div class="customization-row grid grid-2col" data-type="attribute" data-id="{{attribute.id}}">
+          <input type="text" class="label" placeholder="New Attribute" value="{{attribute.label}}">
+          <select class="attr-type" data-type="String">
+            {{selectOptions ../attributeTypes selected=attribute.type localize=true}}
+          </select>
+        </div>
+      {{/each}}
+      <div class="mod-footer">
+        <hr>
+        <div class="add-custom-button addition-button" data-type="attribute">Add New Attribute</div>
+      </div>
+    </div>
+  </div>
+</div>
