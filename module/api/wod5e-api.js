@@ -318,63 +318,36 @@ export class wod5eAPI {
     }
   }
 
-  static async generateLabelAndLocalize ({
+  static async generateLabelAndLocalize({
     string = ''
   }) {
-    // Always lowercase any labels we're localizing
-    // customRoll is the one exception to this rule
-    const str = string === 'customRoll' ? 'customRoll' : string.toLowerCase()
-
     // Lists
-    const attributes = WOD5E.Attributes.getList()
-    const skills = WOD5E.Skills.getList()
-    const features = WOD5E.Features.getList()
-    const items = WOD5E.ItemTypes.getList()
-    const disciplines = WOD5E.Disciplines.getList()
-    const renown = WOD5E.Renown.getList()
-    const edges = WOD5E.Edges.getList()
+    const lists = [
+      WOD5E.Attributes.getList(),
+      WOD5E.Skills.getList(),
+      WOD5E.Features.getList(),
+      WOD5E.ItemTypes.getList(),
+      WOD5E.Disciplines.getList(),
+      WOD5E.Renown.getList(),
+      WOD5E.Edges.getList()
+    ]
 
-    // Attributes
-    if (attributes.find(obj => str in obj)) {
-      return findLabel(attributes, str)
-    }
-    // Skills
-    if (skills.find(obj => str in obj)) {
-      return findLabel(skills, str)
-    }
-    // Features
-    if (features.find(obj => str in obj)) {
-      return findLabel(features, str)
-    }
-    // Items
-    if (items.find(obj => str in obj)) {
-      return findLabel(items, str)
-    }
-    // Disciplines
-    if (disciplines.find(obj => str in obj)) {
-      return findLabel(disciplines, str)
-    }
-    // Renown
-    if (renown.find(obj => str in obj)) {
-      return findLabel(renown, str)
-    }
-    // Edges
-    if (edges.find(obj => str in obj)) {
-      return findLabel(edges, str)
+    // Iterate through each list to find the label
+    for (const list of lists) {
+      const label = findLabel(list, string)
+
+      if (label) {
+        return label
+      }
     }
 
     // Return the base localization if nothing else is found
-    return game.i18n.localize(`WOD5E.${str}`)
+    return game.i18n.localize(`WOD5E.${string}`)
 
     // Function to actually grab the localized label
-    function findLabel (list, string) {
-      const stringObject = list.find(obj => string in obj)
-
-      // Return the localized string if found
-      if (stringObject) return stringObject[string].displayName
-
-      // Return nothing
-      return ''
+    function findLabel(list, str) {
+      const strObject = list.find(obj => str in obj)
+      return strObject ? strObject[str].displayName : ''
     }
   }
 }
