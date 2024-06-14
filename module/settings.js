@@ -164,7 +164,7 @@ export const loadSettings = async function () {
     type: Array,
     onChange: async () => {
       // Re-render the storyteller menu window once settings are updated
-      this._rerenderStorytellerWindow()
+      _rerenderStorytellerWindow()
 
       // Re-init labels
       WOD5E.Attributes.initializeLabels()
@@ -208,10 +208,7 @@ export const loadSettings = async function () {
     type: Array,
     onChange: async () => {
       // Re-render the storyteller menu window once settings are updated
-      this._rerenderStorytellerWindow()
-
-      // Grab the custom skills and send them to the function to update the list
-      WOD5E.Skills.addCustom(customAttributes)
+      _rerenderStorytellerWindow()
 
       // Re-init labels
       WOD5E.Skills.initializeLabels()
