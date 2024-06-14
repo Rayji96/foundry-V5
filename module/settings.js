@@ -216,6 +216,29 @@ export const loadSettings = async function () {
       resetActors()
     }
   })
+
+  // Register the custom attributes
+  game.settings.register('vtm5e', 'customSkills', {
+    name: 'Custom Skills',
+    hint: 'Allows for the creation of custom skills.',
+    scope: 'world',
+    config: false,
+    default: [],
+    type: Array,
+    onChange: async (customSkills) => {
+      // Re-render the storyteller menu window once settings are updated
+      _rerenderStorytellerWindow()
+
+      // Grab the custom skills and send them to the function to update the list
+      WOD5E.Skills.addCustom(customSkills)
+
+      // Re-init labels
+      WOD5E.Skills.initializeLabels()
+
+      // Reload actorsheets
+      resetActors()
+    }
+  })
 }
 
 function _rerenderStorytellerWindow () {
