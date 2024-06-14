@@ -24,7 +24,7 @@
       "PossibleDesperationFailure": "Возможный Перебор или Безысходный провал",
       "DespairFailure": "Безысходный провал",
       "DesperationUnavailable": "Отчаяние недоступно при Безысходности",
-      "_Drive": "",
+      "Drive": "Мотивация",
 
       "Arsenal": "Арсенал",
       "Fleet": "Автопарк",

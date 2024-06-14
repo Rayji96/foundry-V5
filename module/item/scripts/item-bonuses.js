@@ -74,7 +74,23 @@ export const _onAddBonus = async function (event, item) {
           label: game.i18n.localize('WOD5E.Cancel')
         }
       },
-      default: 'add'
+      default: 'add',
+      render: (html) => {
+        // Active When Handler
+        const activeWhenCheck = html.find('#activeWhenCheck')
+        const activeWhenPath = html.find('#activeWhenPath').parent()
+        const activeWhenValue = html.find('#activeWhenValue').parent()
+
+        activeWhenCheck.on('change', function () {
+          if (activeWhenCheck.val() === 'isEqual') {
+            activeWhenPath.css('visibility', 'visible')
+            activeWhenValue.css('visibility', 'visible')
+          } else {
+            activeWhenPath.css('visibility', 'hidden')
+            activeWhenValue.css('visibility', 'hidden')
+          }
+        })
+      }
     }
   ).render(true)
 }
@@ -169,7 +185,7 @@ export const _onEditBonus = async function (event, item) {
         const activeWhenValue = html.find('#activeWhenValue').parent()
 
         activeWhenCheck.on('change', function () {
-          if (activeWhenCheck.val() === 'ifEquals') {
+          if (activeWhenCheck.val() === 'isEqual') {
             activeWhenPath.css('visibility', 'visible')
             activeWhenValue.css('visibility', 'visible')
           } else {

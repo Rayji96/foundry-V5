@@ -248,24 +248,35 @@ function parseCounterStates (states) {
   }, {})
 }
 
-// There's gotta be a better way to do this but for the life of me I can't figure it out
-export const _assignToActorField = async function (fields, value, actor) {
-  // Top-level variables
+// Handle assigning a new value to the appropriate actor field
+export const _assignToActorField = async (fields, value, actor) => {
   const actorData = foundry.utils.duplicate(actor)
 
-  // update actor owned items
+  // Handle updating actor owned items
   if (fields.length === 2 && fields[0] === 'items') {
-    for (const item of actorData.items) {
-      if (fields[1] === item._id) {
-        item.system.points = value
-        break
-      }
+    const itemId = fields[1]
+    const item = actorData.items.find(item => item._id === itemId)
+    if (item) {
+      item.system.points = value
+    } else {
+      console.warn(`Item with ID ${itemId} not found.`)
     }
   } else {
-    const lastField = fields.pop()
-    fields.reduce((data, field) => data[field], actorData)[lastField] = value
+    try {
+      const lastField = fields.pop()
+      const target = fields.reduce((data, field) => {
+        if (!(field in data)) {
+          throw new Error(`Field "${field}" not found in actor data.`)
+        }
+        return data[field]
+      }, actorData)
+      target[lastField] = value
+    } catch (error) {
+      console.error(`Error updating actor field: ${error.message}`)
+      return
+    }
   }
 
   // Update the actor with the new data
-  actor.update(actorData)
+  await actor.update(actorData)
 }

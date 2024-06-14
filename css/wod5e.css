@@ -355,7 +355,6 @@
 .wod5e .sheet-body,
 .wod5e .sheet-body .tab,
 .wod5e .sheet-body .tab .editor {
-    height: 100%;
     min-height: 160px;
 }
 

@@ -1,5 +1,5 @@
-{{#each (getSkillsList) as |skill|}}
+{{#each (getSkillsList) as |skill key|}}
   {{#unless skill.hidden}}
-    <option value="{{skill.id}}">{{skill.displayName}}</option>
+    <option value="{{key}}">{{skill.displayName}}</option>
   {{/unless}}
 {{/each}}

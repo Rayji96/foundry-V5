@@ -57,7 +57,7 @@ class WOD5eDice {
     advancedCheckDice = 0
   }) {
     // Define the actor's gamesystem, defaulting to 'mortal' if it's not in the systems list
-    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+    const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
     // Handle getting any situational modifiers
     const situationalModifiers = await getSituationalModifiers({

@@ -40,13 +40,11 @@ export class ActorInfo extends Actor {
 
     // Reorganize the actor templates into something usable for the creation form
     const actorTypes = {}
-    for (const i in actorTemplateTypes) {
-      const actorType = actorTemplateTypes[i]
-
-      // If the actor template has a label, add it to the types list
-      // Otherwise, default to the actor's key
-      const actorFromList = WOD5E.ActorTypes.getList().find(obj => actorType in obj)
-      actorTypes[actorType] = actorFromList ? actorFromList[actorType].label : actorType
+    const actorTypesList = WOD5E.ActorTypes.getList()
+    // Cycle through all the template types, and use a label if one is found;
+    // default to just the base type (key) provided
+    for (const actorType of actorTemplateTypes) {
+      actorTypes[actorType] = actorTypesList[actorType] ? actorTypesList[actorType].label : actorType
     }
 
     // Render the document creation form
