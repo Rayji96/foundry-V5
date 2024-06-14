@@ -35,8 +35,9 @@ export class StorytellerMenu extends FormApplication {
     data.attributeModifications = game.settings.get('vtm5e', 'modifiedAttributes')
     data.skillModifications = game.settings.get('vtm5e', 'modifiedSkills')
 
-    // Grab the custom attributes from the game settings and add them to the application data
+    // Grab the custom features from the game settings and add them to the application data
     data.customAttributes = game.settings.get('vtm5e', 'customAttributes')
+    data.customSkills = game.settings.get('vtm5e', 'customSkills')
 
     return data
   }
@@ -174,6 +175,7 @@ export class StorytellerMenu extends FormApplication {
       game.settings.set('vtm5e', 'modifiedAttributes', attributeModifications)
       game.settings.set('vtm5e', 'customAttributes', customAttributes)
       game.settings.set('vtm5e', 'modifiedSkills', skillModifications)
+      game.settings.set('vtm5e', 'customSkills', customSkills)
     })
   }
 }

@@ -107,7 +107,7 @@ export class WoDActor extends ActorSheet {
             value: actorAttributes[id].value
           }, value)
         } else { // Otherwise, add it to the actor and set it as some default data
-          await this.actor.update({ [`system.abilities.${id}`]: { value } })
+          await this.actor.update({ [`system.abilities.${id}`]: { value: 1 } })
 
           attributeData = Object.assign({
             id,
@@ -159,7 +159,9 @@ export class WoDActor extends ActorSheet {
             specialtiesList,
             macroid: actorSkills[id].macroid
           }, value)
-        } else { // Otherwise, use the default
+        } else { // Otherwise, add it to the actor and set it as some default data
+          await this.actor.update({ [`system.skills.${id}`]: { value: 0 } })
+
           skillData = Object.assign({
             id,
             value: 0,
@@ -409,7 +411,7 @@ export class WoDActor extends ActorSheet {
     // Render the dialog window to select which skill/attribute combo to use
     const SkillEditDialog = new Dialog(
       {
-        title: game.i18n.localize(actor.system.skills[skill].name),
+        title: WOD5E.Skills.getList()[skill].displayName,
         content,
         buttons: { },
         close: (html) => {

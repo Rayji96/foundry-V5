@@ -15,9 +15,9 @@ export class Skills {
 
   // Method to add extra skills
   static addCustom (customSkills) {
-    for (const [key, value] of Object.entries(customSkills)) {
+    for (const [, value] of Object.entries(customSkills)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-        this[key] = value
+        this[value.id] = value
       }
     }
   }
@@ -49,7 +49,7 @@ export class Skills {
 
   // Run any necessary compilation on ready
   static onReady () {
-    const customSkills = [] // game.settings.get('vtm5e', 'customSkills')
+    const customSkills = game.settings.get('vtm5e', 'customSkills')
 
     if (customSkills) {
       Skills.addCustom(customSkills)
