@@ -70,21 +70,35 @@ export class StorytellerMenu extends FormApplication {
       const data = event.target.dataset
       const type = data.type
 
-      // Get the list of custom attributes
-      const customAttributes = game.settings.get('vtm5e', 'customAttributes')
+      if (type === 'attribute') {
+        // Get the list of custom attributes
+        const customAttributes = game.settings.get('vtm5e', 'customAttributes')
+  
+        // Define the new attribute and push it to the list
+        const newAttribute = {
+          id: foundry.utils.randomID(8),
+          label: 'New Attribute',
+          type: 'physical'
+        }
+        customAttributes.push(newAttribute)
 
-      // Define the new attribute and push it to the list
-      const newAttribute = {
-        id: foundry.utils.randomID(8),
-        label: 'New Attribute',
-        type: 'physical'
+        // Set the new list of attributes
+        game.settings.set('vtm5e', 'customAttributes', customAttributes)
+      } else if (type === 'skill') {
+        // Get the list of custom skills
+        const customSkills = game.settings.get('vtm5e', 'customSkills')
+  
+        // Define the new skill and push it to the list
+        const newSkill = {
+          id: foundry.utils.randomID(8),
+          label: 'New Skill',
+          type: 'physical'
+        }
+        customSkills.push(newSkill)
+
+        // Set the new list of attributes
+        game.settings.set('vtm5e', 'customSkills', customSkills)
       }
-      customAttributes.push(newAttribute)
-
-      console.log(customAttributes)
-
-      // Set the new list of attributes
-      game.settings.set('vtm5e', 'customAttributes', customAttributes)
     })
 
     html.find('.remove-custom-button').click(function (event) {
@@ -146,13 +160,13 @@ export class StorytellerMenu extends FormApplication {
             type: attrType,
             label
           })
-        }/* else if (type === 'skill') {
-          #customSkills.push({
+        } else if (type === 'skill') {
+          customSkills.push({
             id,
-            type,
+            type: attrType,
             label
           })
-        }*/
+        }
       })
 
       // Save the new settings
@@ -257,5 +271,24 @@ async function _onRemoveChange (type, id) {
     // Remove the skill by id then update the game settings
     modifiedSkills = modifiedSkills.filter(skill => (skill.id !== id))
     game.settings.set('vtm5e', 'modifiedSkills', modifiedSkills)
+  }
+}
+
+// Function for removing a custom feature
+async function _onRemoveCustom (type, id) {
+  if (type === 'attribute') {
+    // Get the list of custom attributes
+    let customAttributes = game.settings.get('vtm5e', 'customAttributes')
+
+    // Remove the attribute by id then update the game settings
+    customAttributes = customAttributes.filter(attribute => (attribute.id !== id))
+    game.settings.set('vtm5e', 'customAttributes', customAttributes)
+  } else if (type === 'skill') {
+    // Get the list of custom skills
+    let customSkills = game.settings.get('vtm5e', 'customSkills')
+
+    // Remove the skill by id then update the game settings
+    customSkills = customSkills.filter(skill => (skill.id !== id))
+    game.settings.set('vtm5e', 'customSkills', customSkills)
   }
 }

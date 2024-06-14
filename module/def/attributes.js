@@ -14,8 +14,8 @@ export class Attributes {
   }
 
   // Method to add extra attributes
-  static addCustom(customAttributes) {
-    for (const [key, value] of Object.entries(customAttributes)) {
+  static addCustom (customAttributes) {
+    for (const [, value] of Object.entries(customAttributes)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         this[value.id] = value
       }

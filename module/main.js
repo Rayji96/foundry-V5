@@ -56,7 +56,7 @@ Hooks.once('init', async function () {
   Actors.unregisterSheet('core', ActorSheet)
   // Loop through each entry in the actorTypesList and register their sheet classes
   const actorTypesList = ActorTypes.getList()
-  for (const [key, value] of Object.entries(actorTypesList)) {
+  for (const [, value] of Object.entries(actorTypesList)) {
     const { types, sheetClass } = value
 
     Actors.registerSheet('vtm5e', sheetClass, {

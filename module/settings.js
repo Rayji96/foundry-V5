@@ -183,7 +183,6 @@ export const loadSettings = async function () {
     default: [],
     type: Array,
     onChange: async (customAttributes) => {
-
       // Re-render the storyteller menu window once settings are updated
       _rerenderStorytellerWindow()
 

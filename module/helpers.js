@@ -120,7 +120,7 @@ export const loadHelpers = async function () {
     // Function to actually grab the localized label
     function findLabel (list, string) {
       const stringObject = list[string]
-  
+
       // Return the localized string if found
       if (stringObject?.displayName) return stringObject.displayName
       if (stringObject?.label) return stringObject.label

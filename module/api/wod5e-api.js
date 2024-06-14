@@ -290,7 +290,7 @@ export class wod5eAPI {
     }
   }
 
-  static async generateLabelAndLocalize({
+  static async generateLabelAndLocalize ({
     string = ''
   }) {
     // Lists
@@ -317,7 +317,7 @@ export class wod5eAPI {
     return game.i18n.localize(`WOD5E.${string}`)
 
     // Function to actually grab the localized label
-    function findLabel(list, str) {
+    function findLabel (list, str) {
       return str in list ? list[str].displayName : ''
     }
   }
