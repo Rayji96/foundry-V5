@@ -258,8 +258,8 @@ export class WerewolfActorSheet extends WoDActor {
     // If the type of gift is already set, we don't need to ask for it
     if (header.dataset.gift) {
       // Get the image for the item, if one is available from the item definitions
-      const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-      const img = itemFromList.gift.img ? itemFromList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
+      const itemsList = WOD5E.ItemTypes.getList()
+      const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
       // Prepare the item object.
       const itemData = {
@@ -300,8 +300,8 @@ export class WerewolfActorSheet extends WoDActor {
             const gift = html.find('#giftSelect')[0].value
 
             // Get the image for the item, if one is available from the item definitions
-            const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-            const img = itemFromList.gift.img ? itemFromList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
+            const itemsList = WOD5E.ItemTypes.getList()
+            const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
             // Prepare the item object.
             const itemData = {
@@ -350,8 +350,8 @@ export class WerewolfActorSheet extends WoDActor {
     const actor = this.actor
 
     // Get the image for the item, if one is available from the item definitions
-    const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-    const img = itemFromList.gift.img ? itemFromList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
+    const itemsList = WOD5E.ItemTypes.getList()
+    const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
     // Prepare the item object.
     const itemData = {

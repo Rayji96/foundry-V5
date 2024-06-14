@@ -166,39 +166,12 @@ export class StorytellerMenu extends FormApplication {
 // Function for getting the information necessary for the selection dialog
 async function _onGeneratePrompt (type) {
   if (type === 'attribute') {
-    const attributes = WOD5E.Attributes.getList()
-    const attributesList = []
-
-    for (const attribute of attributes) {
-      // Assign the data to a value
-      const [, value] = Object.entries(attribute)[0]
-      const id = Object.getOwnPropertyNames(attribute)[0]
-      const label = value.label
-
-      attributesList.push({
-        id,
-        label
-      })
-    }
+    const attributesList = WOD5E.Attributes.getList()
 
     // Render the dialog
     _onRenderPromptDialog('attribute', attributesList, game.i18n.localize('WOD5E.Attributes.Label'))
   } else if (type === 'skill') {
-    const skills = WOD5E.Skills.getList()
-    const skillsList = []
-
-    for (const skill of skills) {
-      // Assign the data to a value
-      const [, value] = Object.entries(skill)[0]
-      const id = Object.getOwnPropertyNames(skill)[0]
-
-      const label = value.label
-
-      skillsList.push({
-        id,
-        label
-      })
-    }
+    const skillsList = WOD5E.Skills.getList()
 
     // Render the dialog
     _onRenderPromptDialog('skill', skillsList, game.i18n.localize('WOD5E.Skills.Label'))

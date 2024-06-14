@@ -87,19 +87,17 @@ export class WoDActor extends ActorSheet {
     // Loop through each entry in the attributes list, get the data (if available), and then push to the containers
     const attributesList = Attributes.getList()
     const actorAttributes = actorData.system?.abilities
+
     if (actorAttributes) {
       // Clean up non-existent attributes, such as custom ones that no longer exist
-      const validAttributes = new Set(attributesList.map(entry => Object.keys(entry)[0]))
+      const validAttributes = new Set(Object.keys(attributesList))
       for (const id of Object.keys(actorAttributes)) {
         if (!validAttributes.has(id)) {
           delete actorAttributes[id]
         }
       }
 
-      for (const entry of attributesList) {
-        // Assign the data to a value
-        const [, value] = Object.entries(entry)[0]
-        const id = Object.getOwnPropertyNames(entry)[0]
+      for (const [id, value] of Object.entries(attributesList)) {
         let attributeData = {}
 
         // If the actor has an attribute with the key, grab its current values
@@ -109,9 +107,7 @@ export class WoDActor extends ActorSheet {
             value: actorAttributes[id].value
           }, value)
         } else { // Otherwise, add it to the actor and set it as some default data
-          await this.actor.update({ [`system.abilities.${id}`]: {
-            value
-          } })
+          await this.actor.update({ [`system.abilities.${id}`]: { value } })
 
           attributeData = Object.assign({
             id,
@@ -119,9 +115,10 @@ export class WoDActor extends ActorSheet {
           }, value)
         }
 
-        // Push to the container in the appropraite type
+        // Push to the container in the appropriate type
         // as long as the attribute isn't "hidden"
         if (!attributeData.hidden) {
+          if (!attributes[value.type]) attributes[value.type] = [] // Ensure the type exists
           attributes[value.type].push(attributeData)
         }
       }
@@ -132,15 +129,20 @@ export class WoDActor extends ActorSheet {
     const actorSkills = actorData.system?.skills
 
     if (actorSkills) {
-      for (const entry of skillsList) {
-        // Assign the data to a value
-        const [, value] = Object.entries(entry)[0]
-        const id = Object.getOwnPropertyNames(entry)[0]
+      // Clean up non-existent skills, such as custom ones that no longer exist
+      const validSkills = new Set(Object.keys(skillsList))
+      for (const id of Object.keys(actorSkills)) {
+        if (!validSkills.has(id)) {
+          delete actorSkills[id]
+        }
+      }
+
+      for (const [id, value] of Object.entries(skillsList)) {
         let skillData = {}
         let hasSpecialties = false
         const specialtiesList = []
 
-        if (actorSkills[id].bonuses.length > 0) {
+        if (actorSkills[id]?.bonuses?.length > 0) {
           hasSpecialties = true
 
           for (const bonus of actorSkills[id].bonuses) {
@@ -166,9 +168,10 @@ export class WoDActor extends ActorSheet {
           }, value)
         }
 
-        // Push to the container in the appropraite type
+        // Push to the container in the appropriate type
         // as long as the skill isn't "hidden"
         if (!skillData.hidden) {
+          if (!skills[value.type]) skills[value.type] = [] // Ensure the type exists
           skills[value.type].push(skillData)
         }
       }
@@ -357,8 +360,8 @@ export class WoDActor extends ActorSheet {
     }
 
     // Get the image for the item, if one is available from the item definitions
-    const itemFromList = WOD5E.ItemTypes.getList().find(obj => type in obj)
-    const img = itemFromList[type].img ? itemFromList[type].img : 'systems/vtm5e/assets/icons/items/item-default.svg'
+    const itemsList = WOD5E.ItemTypes.getList()
+    const img = itemsList[type]?.img ? itemsList[type].img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
     // Initialize a default name.
     const name = await WOD5E.api.generateLabelAndLocalize({ string: prelocalizeString })
@@ -391,7 +394,7 @@ export class WoDActor extends ActorSheet {
     const skill = header.dataset.skill
 
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+    const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
     // Render selecting a skill/attribute to roll
     const skillTemplate = 'systems/vtm5e/templates/actor/parts/skill-dialog.hbs'

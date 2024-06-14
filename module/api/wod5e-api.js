@@ -96,40 +96,12 @@ export class wod5eAPI {
     const { skill, attribute, discipline, renown } = dataset
 
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+    const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
     // Attribute definitions
-    const attributes = WOD5E.Attributes.getList()
-    const attributesList = []
-
-    for (const attribute of attributes) {
-      // Assign the data to a value
-      const [, value] = Object.entries(attribute)[0]
-      const id = Object.getOwnPropertyNames(attribute)[0]
-      const displayName = value.displayName
-
-      attributesList.push({
-        id,
-        displayName
-      })
-    }
-
+    const attributesList = WOD5E.Attributes.getList()
     // Skill definitions
-    const skills = WOD5E.Skills.getList()
-    const skillsList = []
-
-    for (const skill of skills) {
-      // Assign the data to a value
-      const [, value] = Object.entries(skill)[0]
-      const id = Object.getOwnPropertyNames(skill)[0]
-
-      const displayName = value.displayName
-
-      skillsList.push({
-        id,
-        displayName
-      })
-    }
+    const skillsList = WOD5E.Skills.getList()
 
     // Render selecting a skill/attribute to roll
     const dialogTemplate = 'systems/vtm5e/templates/ui/select-dice-dialog.hbs'
@@ -299,7 +271,7 @@ export class wod5eAPI {
     const actorData = actor.system
 
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+    const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
     if (system === 'vampire' && actor.type !== 'ghoul' && actor.type !== 'spc') {
       // Define actor's hunger dice, ensuring it can't go below 0
@@ -346,8 +318,7 @@ export class wod5eAPI {
 
     // Function to actually grab the localized label
     function findLabel(list, str) {
-      const strObject = list.find(obj => str in obj)
-      return strObject ? strObject[str].displayName : ''
+      return str in list ? list[str].displayName : ''
     }
   }
 }

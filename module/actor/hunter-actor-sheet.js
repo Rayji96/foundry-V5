@@ -188,8 +188,8 @@ export class HunterActorSheet extends WoDActor {
     // If the type of edge is already set, we don't need to ask for it
     if (header.dataset.edge) {
       // Get the image for the item, if one is available from the item definitions
-      const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'perk' in obj)
-      const img = itemFromList.perk.img ? itemFromList.perk.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
+      const itemsList = WOD5E.ItemTypes.getList()
+      const img = itemsList?.perk?.img ? itemsList.perk.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
       // Prepare the item object.
       const itemData = {
@@ -230,8 +230,8 @@ export class HunterActorSheet extends WoDActor {
             const edge = html.find('#edgeSelect')[0].value
 
             // Get the image for the item, if one is available from the item definitions
-            const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'perk' in obj)
-            const img = itemFromList.perk.img ? itemFromList.perk.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
+            const itemsList = WOD5E.ItemTypes.getList()
+            const img = itemsList?.perk?.img ? itemsList.perk.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
             // Prepare the item object.
             const itemData = {
