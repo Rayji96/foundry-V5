@@ -2,10 +2,11 @@
   "id": "vtm5e",
   "title": "World of Darkness 5e",
   "description": "World of Darkness 5e system for Foundry VTT",
-  "version": "4.2.1",
+  "version": "4.3.3",
   "compatibility": {
     "minimum": "11",
-    "verified": "11"
+    "verified": "12.327",
+    "maximum": ""
   },
   "authors": [
     {
@@ -280,16 +281,18 @@
   ],
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "willpower",
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "grid": {
+    "units": "ft",
+    "distance": 5
+  },
   "initiative": "1d10",
   "changelog": "https://veilza.github.io/wod5e-docs/changelog.html",
   "license": "./LICENSE",
   "url": "https://github.com/Rayji96/foundry-V5",
   "bugs": "https://github.com/Rayji96/foundry-V5/issues",
   "background": "systems/vtm5e/assets/images/wodcity.jpg",
-  "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/4.2.1/system.json",
-  "download": "https://github.com/Rayji96/foundry-V5/releases/download/4.2.1/vtm5e-4.2.1.zip",
+  "manifest": "https://github.com/Rayji96/foundry-V5/releases/download/4.3.3/system.json",
+  "download": "https://github.com/Rayji96/foundry-V5/releases/download/4.3.3/vtm5e-4.3.3.zip",
   "flags": {
     "hotReload": {
       "extensions": ["css", "hbs", "json"],

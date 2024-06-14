@@ -1,4 +1,4 @@
-/* global game, mergeObject, renderTemplate, ChatMessage, Dialog, WOD5E */
+/* global game, foundry, renderTemplate, ChatMessage, Dialog, WOD5E */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -15,7 +15,7 @@ export class WerewolfActorSheet extends WoDActor {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'werewolf-sheet', 'actor', 'sheet', 'werewolf']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/werewolf-sheet.hbs',
       width: 1050,
@@ -51,7 +51,7 @@ export class WerewolfActorSheet extends WoDActor {
   }
 
   /** Prepare important data for the werewolf actor */
-  _prepareItems (sheetData) {
+  async _prepareItems (sheetData) {
     super._prepareItems(sheetData)
 
     const actorData = sheetData.actor
@@ -100,6 +100,17 @@ export class WerewolfActorSheet extends WoDActor {
 
     actorData.system.giftsList = giftsList
     actorData.system.ritesList = ritesList
+
+    // If the actor's rage is above 0, make sure they aren't in "lost the wolf" form
+    if (actorData.system.rage.value > 0 && actorData.system.lostTheWolf) {
+      this.actor.update({ 'system.lostTheWolf': false })
+    }
+
+    // Check if the actor's rage is 0, they're in a supernatural form, and they haven't already lost the wolf
+    const supernaturalForms = ['glabro', 'crinos', 'hispo']
+    if ((actorData.system.rage.value === 0) && (supernaturalForms.indexOf(actorData.system.activeForm) > -1)) {
+      this._onLostTheWolf()
+    }
   }
 
   /* -------------------------------------------- */
@@ -141,12 +152,6 @@ export class WerewolfActorSheet extends WoDActor {
 
     // Create a new Rite
     html.find('.rite-create').click(this._onCreateRite.bind(this))
-
-    // Make Gift hidden
-    html.find('.gift-delete').click(ev => {
-      const data = $(ev.currentTarget)[0].dataset
-      actor.update({ [`system.gifts.${data.gift}.powers`]: [] })
-    })
 
     // Post Gift description to the chat
     html.find('.gift-chat').click(ev => {
@@ -253,8 +258,8 @@ export class WerewolfActorSheet extends WoDActor {
     // If the type of gift is already set, we don't need to ask for it
     if (header.dataset.gift) {
       // Get the image for the item, if one is available from the item definitions
-      const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-      const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+      const itemsList = WOD5E.ItemTypes.getList()
+      const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
       // Prepare the item object.
       const itemData = {
@@ -295,8 +300,8 @@ export class WerewolfActorSheet extends WoDActor {
             const gift = html.find('#giftSelect')[0].value
 
             // Get the image for the item, if one is available from the item definitions
-            const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-            const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+            const itemsList = WOD5E.ItemTypes.getList()
+            const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
             // Prepare the item object.
             const itemData = {
@@ -345,8 +350,8 @@ export class WerewolfActorSheet extends WoDActor {
     const actor = this.actor
 
     // Get the image for the item, if one is available from the item definitions
-    const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'gift' in obj)
-    const img = itemFromList.gift.img ? itemFromList.gift.img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+    const itemsList = WOD5E.ItemTypes.getList()
+    const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
 
     // Prepare the item object.
     const itemData = {
@@ -371,8 +376,10 @@ export class WerewolfActorSheet extends WoDActor {
     // Top-level variables
     const actor = this.actor
 
+    // Enable frenzy
     actor.update({ 'system.frenzyActive': true })
 
+    // Set rage to 5
     actor.update({ 'system.rage.value': 5 })
   }
 
@@ -383,7 +390,63 @@ export class WerewolfActorSheet extends WoDActor {
     // Top-level variables
     const actor = this.actor
 
+    // Disable frenzy
     actor.update({ 'system.frenzyActive': false })
+
+    // Set rage to 0
+    actor.update({ 'system.rage.value': 0 })
+  }
+
+  // Handle when the actor has Lost the Wolf
+  _onLostTheWolf () {
+    // Top-level variables
+    const actor = this.actor
+
+    // Variables yet to be defined
+    let buttons = {}
+
+    // If automatedRage is disabled, we don't wat to show this dialogue
+    if (!game.settings.get('vtm5e', 'automatedRage')) return
+
+    // If the actor has already lost the wolf, we don't need to show this prompt again
+    if (actor.system.lostTheWolf) return
+
+    // Update the listTheWolf key
+    actor.update({ 'system.lostTheWolf': true })
+
+    // Define the template to be used
+    const template = `
+    <form>
+        <div class="form-group">
+            <label>${game.i18n.localize('WOD5E.WTA.LostWolfShiftDown')}</label>
+        </div>
+    </form>`
+
+    // Define the buttons and push them to the buttons variable
+    buttons = {
+      homid: {
+        label: 'Homid',
+        callback: async () => {
+          actor.update({ 'system.activeForm': 'homid' })
+        }
+      },
+      lupus: {
+        label: 'Lupus',
+        callback: async () => {
+          actor.update({ 'system.activeForm': 'lupus' })
+        }
+      }
+    }
+
+    new Dialog({
+      title: 'Lost the Wolf',
+      content: template,
+      buttons,
+      default: 'homid'
+    },
+    {
+      classes: ['wod5e', 'werewolf-dialog', 'werewolf-sheet']
+    }).render(true)
   }
 
   // Switch function to direct data to form change functions
@@ -603,7 +666,7 @@ export class WerewolfActorSheet extends WoDActor {
     const template = `
     <form>
         <div class="form-group">
-            <label>This actor has Lost the Wolf and cannot transform into supernatural forms due to insufficient rage. Would you like to shift anyway?</label>
+            <label>${game.i18n.localize('WOD5E.WTA.LostWolfShiftAnyway')}</label>
         </div>
     </form>`
 

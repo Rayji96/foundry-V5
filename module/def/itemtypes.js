@@ -6,7 +6,10 @@ export class ItemTypes {
   static getList () {
     return Object.entries(this)
       .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
-      .map(([key, value]) => ({ [key]: value }))
+      .reduce((accumulator, [key, value]) => {
+        accumulator[key] = value
+        return accumulator
+      }, {})
   }
 
   // Localize the labels
@@ -32,32 +35,32 @@ export class ItemTypes {
 
   static feature = {
     label: 'WOD5E.Items.Feature',
-    img: '/systems/vtm5e/assets/icons/items/feature.svg'
+    img: 'systems/vtm5e/assets/icons/items/feature.svg'
   }
 
   static power = {
     label: 'WOD5E.VTM.Discipline',
-    img: '/systems/vtm5e/assets/icons/items/discipline.png'
+    img: 'systems/vtm5e/assets/icons/items/discipline.png'
   }
 
   static boon = {
     label: 'WOD5E.Items.Boon',
-    img: '/systems/vtm5e/assets/icons/items/boon.svg'
+    img: 'systems/vtm5e/assets/icons/items/boon.svg'
   }
 
   static customRoll = {
     label: 'WOD5E.Items.CustomRoll',
-    img: '/systems/vtm5e/assets/icons/items/custom-roll.png'
+    img: 'systems/vtm5e/assets/icons/items/custom-roll.png'
   }
 
   static perk = {
     label: 'WOD5E.HTR.Edge',
-    img: '/systems/vtm5e/assets/icons/items/edge.png'
+    img: 'systems/vtm5e/assets/icons/items/edge.png'
   }
 
   static gift = {
     label: 'WOD5E.WTA.Gift',
-    img: '/systems/vtm5e/assets/icons/items/gift.png'
+    img: 'systems/vtm5e/assets/icons/items/gift.png'
   }
 }
 

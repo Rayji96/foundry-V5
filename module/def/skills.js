@@ -7,7 +7,19 @@ export class Skills {
   static getList (type) {
     return Object.entries(this)
       .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) && (!type || value.type === type))
-      .map(([key, value]) => ({ [key]: value }))
+      .reduce((accumulator, [key, value]) => {
+        accumulator[key] = value
+        return accumulator
+      }, {})
+  }
+
+  // Method to add extra skills
+  static addCustom (customSkills) {
+    for (const [, value] of Object.entries(customSkills)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        this[value.id] = value
+      }
+    }
   }
 
   // Localize the labels
@@ -37,6 +49,12 @@ export class Skills {
 
   // Run any necessary compilation on ready
   static onReady () {
+    const customSkills = game.settings.get('vtm5e', 'customSkills')
+
+    if (customSkills) {
+      Skills.addCustom(customSkills)
+    }
+
     Skills.initializeLabels()
   }
 

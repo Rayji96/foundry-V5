@@ -41,7 +41,12 @@
       "FrenzyActiveWarning": "Momentan in Raserei.",
       "Active": "Aktiv",
       "FrenzyActiveWarning2": "Du kannst in Raserei keine Gaben oder Riten nutzen.",
+
+      "_LostTheWolf": "",
+      "_LostWolfWarning": "",
       "LostWolfFormChange": "Du hast deinen inneren Wolf verloren - momentan kein Formwandeln möglich.",
+      "_LostWolfShiftDown": "",
+      "_LostWolfShiftAnyway": "",
 
       "Renown": "Ansehen",
       "AddRenown": "Ansehen hinzufügen",

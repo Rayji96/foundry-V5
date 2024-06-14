@@ -56,8 +56,7 @@ Hooks.once('init', async function () {
   Actors.unregisterSheet('core', ActorSheet)
   // Loop through each entry in the actorTypesList and register their sheet classes
   const actorTypesList = ActorTypes.getList()
-  for (const entry of actorTypesList) {
-    const [, value] = Object.entries(entry)[0]
+  for (const [, value] of Object.entries(actorTypesList)) {
     const { types, sheetClass } = value
 
     Actors.registerSheet('vtm5e', sheetClass, {
@@ -202,7 +201,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
       groupElement.append(subdirectoryElement)
 
       // Add an event listener for toggling the group collapse
-      groupElement.find('.group-header').click(event => {
+      groupElement.find('.group-header').click(async event => {
         event.preventDefault()
 
         const collapsed = !group.system.collapsed
@@ -216,7 +215,7 @@ Hooks.on('renderSidebarTab', async (object, html) => {
       })
 
       // Add an event listener for opening the group sheet
-      groupElement.find('.open-sheet').click(event => {
+      groupElement.find('.open-sheet').click(async event => {
         event.preventDefault()
         event.stopPropagation()
 

@@ -6,7 +6,10 @@ export class Renown {
   static getList () {
     return Object.entries(this)
       .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
-      .map(([key, value]) => ({ [key]: value }))
+      .reduce((accumulator, [key, value]) => {
+        accumulator[key] = value
+        return accumulator
+      }, {})
   }
 
   // Localize the labels

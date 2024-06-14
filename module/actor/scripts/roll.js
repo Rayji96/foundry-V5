@@ -41,6 +41,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
 
   // Variables yet to be defined
   let basicDice, advancedDice
+  let advancedCheckDice
 
   // Handle getting any situational modifiers
   const activeBonuses = await getActiveBonuses({
@@ -76,7 +77,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
   }
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+  const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
   // Some quick modifications to vampire and werewolf rolls
   // in order to properly display the dice in the dialog window
@@ -102,6 +103,11 @@ export const _onConfirmRoll = async function (dataset, actor) {
     }
   }
 
+  // Check if this roll contains a rouse check
+  if (selectors.indexOf('blood-surge') > -1) {
+    advancedCheckDice = 1
+  }
+
   // Send the roll to the system
   WOD5eDice.Roll({
     basicDice,
@@ -119,6 +125,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
     increaseHunger,
     decreaseRage,
     selectors,
-    macro
+    macro,
+    advancedCheckDice
   })
 }

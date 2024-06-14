@@ -35,21 +35,21 @@ export class ActorInfo extends Actor {
     // Localize the label and title
     const label = game.i18n.localize(this.metadata.label)
     const title = game.i18n.format('DOCUMENT.Create', { type: label })
+    // Generate a default name based on the label
+    const defaultName = game.i18n.format('DOCUMENT.New', { type: label })
 
     // Reorganize the actor templates into something usable for the creation form
     const actorTypes = {}
-    for (const i in actorTemplateTypes) {
-      const actorType = actorTemplateTypes[i]
-
-      // If the actor template has a label, add it to the types list
-      // Otherwise, default to the actor's key
-      const actorFromList = WOD5E.ActorTypes.getList().find(obj => actorType in obj)
-      actorTypes[actorType] = actorFromList ? actorFromList[actorType].label : actorType
+    const actorTypesList = WOD5E.ActorTypes.getList()
+    // Cycle through all the template types, and use a label if one is found;
+    // default to just the base type (key) provided
+    for (const actorType of actorTemplateTypes) {
+      actorTypes[actorType] = actorTypesList[actorType] ? actorTypesList[actorType].label : actorType
     }
 
     // Render the document creation form
     const html = await renderTemplate('templates/sidebar/document-create.html', {
-      name: data.name || game.i18n.format('DOCUMENT.New', { type: label }),
+      name: data.name || defaultName,
       folder: data.folder,
       folders: gameFolders,
       hasFolders: gameFolders.length > 0,
@@ -64,11 +64,18 @@ export class ActorInfo extends Actor {
       content: html,
       label: title,
       callback: html => {
+        // Grab the element for data manipulation
         const form = html[0].querySelector('form')
         const fd = new FormDataExtended(form)
+        // Merge data with Foundry's default object before we manipulate it
         data = foundry.utils.mergeObject(data, fd.object)
+        // Force a default name if none is given
+        if (!data.name) data.name = game.i18n.format('DOCUMENT.New', { type: actorTypes[data.type] })
+        // If folder isn't given, delete the field
         if (!data.folder) delete data.folder
+        // Choose the default actor type if there's only one
         if (actorTypes.length === 1) data.type = actorTypes[0]
+        // Render the sheet after creating it
         return this.create(data, {
           renderSheet: true,
           pack: options.pack || ''
@@ -94,6 +101,7 @@ export class ActorInfo extends Actor {
     }
   }
 
+  /** Handle things that need to be done every update or specifically when the actor is being updated */
   async _onUpdate (data, options, user) {
     await super._onUpdate(data, options, user)
     const actor = game.actors.get(data._id)

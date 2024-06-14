@@ -7,7 +7,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
   const bonusPath = header.dataset.bonusPath
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+  const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
   // Default values for a new specialty
   const bonusData = {
@@ -98,7 +98,7 @@ export const _onDeleteBonus = async function (event, actor, data, SkillEditDialo
   const bonusPath = header.dataset.bonusPath
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+  const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
   // Define the existing list of bonuses
   const bonusKeys = bonusPath.split('.')
@@ -133,7 +133,7 @@ export const _onEditBonus = async function (event, actor, data, SkillEditDialog)
   }
 
   // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-  const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+  const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
   // Render the template
   const bonusTemplate = 'systems/vtm5e/templates/actor/parts/specialty-display.hbs'

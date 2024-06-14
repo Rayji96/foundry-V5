@@ -55,8 +55,8 @@
             "PathsSeparatedBySemicolons": "",
             "DisplayWhenInactive": "",
             "Unless": "",
-            "_PathToCheck": "",
-            "_ValueToCheck": ""
+            "PathToCheck": "",
+            "ValueToCheck": ""
         },
 
         "SPC": {
@@ -187,6 +187,11 @@
             "WillpowerFull": "",
             "WillpowerDamage": "",
             "HasReceivedWillpowerDamage": "{actor} {willpowerDamage}"
+        },
+
+        "Macro": {
+            "MacroID": "",
+            "MacroNote": ""
         }
     }
 }

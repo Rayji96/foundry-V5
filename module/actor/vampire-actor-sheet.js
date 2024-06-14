@@ -1,4 +1,4 @@
-/* global game, mergeObject */
+/* global game, foundry */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { GhoulActorSheet } from './ghoul-actor-sheet.js'
@@ -15,7 +15,7 @@ export class VampireActorSheet extends GhoulActorSheet {
     // Define the base list of CSS classes
     const classList = ['wod5e', 'sheet', 'actor', 'vampire', 'vampire-sheet']
 
-    return mergeObject(super.defaultOptions, {
+    return foundry.utils.mergeObject(super.defaultOptions, {
       classes: classList,
       template: 'systems/vtm5e/templates/actor/vampire-sheet.hbs',
       width: 940,
@@ -57,7 +57,7 @@ export class VampireActorSheet extends GhoulActorSheet {
      * @return {undefined}
      * @override
      */
-  _prepareItems (sheetData) {
+  async _prepareItems (sheetData) {
     // Prepare items
     super._prepareItems(sheetData)
 
@@ -73,7 +73,7 @@ export class VampireActorSheet extends GhoulActorSheet {
     // Handle adding blood potency bonuses
     actorData.system.blood.bonuses = [
       {
-        source: 'Blood Potency',
+        source: game.i18n.localize('WOD5E.VTM.BloodPotency'),
         value: actorData.system.bloodPotency.power,
         paths: ['disciplines'],
         activeWhen: {
@@ -81,13 +81,13 @@ export class VampireActorSheet extends GhoulActorSheet {
         }
       },
       {
-        source: 'Blood Surge',
+        source: game.i18n.localize('WOD5E.VTM.BloodSurge'),
         value: actorData.system.bloodPotency.surge,
         paths: ['blood-surge'],
         activeWhen: {
           check: 'always'
         },
-        displayWhenInactive: true
+        forceDiceType: 'advanced'
       }
     ]
   }

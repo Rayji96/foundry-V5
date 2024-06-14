@@ -37,15 +37,11 @@
                             <a class="item-control gift-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}" data-type="power" data-gift="{{key}}">
                                 <i class="fas fa-comment-alt"></i>
                             </a>
-                            <!-- Icon to delete the gift (as long as it doesn't have any powers) -->
-                            <a class="item-control gift-delete" title="{{localize 'WOD5E.Delete'}}" data-gift="{{key}}">
-                                <i class="fas fa-trash"></i>
-                            </a>
                         </div>
                     </li>
                     <!-- Gift description -->
                     <div class="collapsible-content">
-                        <textarea class="gift-description" name="system.giftsList.{{key}}.description">{{gift.description}}</textarea>
+                        <textarea class="gift-description" name="system.giftsList.{{key}}.description">{{{gift.enrichedDescription}}}</textarea>
                     </div>
                 </div>
                 <!-- Iterate through each of the gift powers -->
@@ -95,7 +91,7 @@
                         </div>
                         <!-- Power description, expandable by a collapse -->
                         <div class="collapsible-content">
-                            {{{enrichHTML item.system.description}}}
+                            {{{item.system.enrichedDescription}}}
                         </div>
                     </li>
                 {{/each}}
@@ -164,7 +160,7 @@
                 </div>
                 <!-- Power description, expandable by a collapse -->
                 <div class="collapsible-content">
-                    {{{enrichHTML item.system.description}}}
+                    {{{item.system.enrichedDescription}}}
                 </div>
             </li>
         {{/each}}

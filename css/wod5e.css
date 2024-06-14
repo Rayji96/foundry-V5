@@ -355,7 +355,6 @@
 .wod5e .sheet-body,
 .wod5e .sheet-body .tab,
 .wod5e .sheet-body .tab .editor {
-    height: 100%;
     min-height: 160px;
 }
 
@@ -612,7 +611,7 @@ h3.item-name.chat-portrait-text-size-name-generic {
 }
 
 .dice-tray {
-    background: url("/systems/vtm5e/assets/images/background-black-marble.jpg"), #000;
+    background: url("systems/vtm5e/assets/images/background-black-marble.jpg"), #000;
     border: 2px solid #000;
 }
 

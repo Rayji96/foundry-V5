@@ -93,6 +93,8 @@ export const preloadHandlebarsTemplates = async function () {
     // Menu Partials
     'systems/vtm5e/templates/ui/automation-menu.hbs',
     'systems/vtm5e/templates/ui/storyteller-menu.hbs',
+    'systems/vtm5e/templates/ui/parts/storyteller-menu/modification-menu.hbs',
+    'systems/vtm5e/templates/ui/parts/storyteller-menu/custom-menu.hbs',
     'systems/vtm5e/templates/ui/select-dialog.hbs'
   ]
 

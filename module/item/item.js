@@ -35,21 +35,21 @@ export class ItemInfo extends Item {
     // Localize the label and title
     const label = game.i18n.localize(this.metadata.label)
     const title = game.i18n.format('DOCUMENT.Create', { type: label })
+    // Generate a default name based on the label
+    const defaultName = game.i18n.format('DOCUMENT.New', { type: label })
 
     // Reorganize the item templates into something usable for the creation form
     const itemTypes = {}
-    for (const i in itemTemplateTypes) {
-      const itemType = itemTemplateTypes[i]
-
-      // If the item template has a label, add it to the types list
-      // Otherwise, default to the item's key
-      const itemFromList = WOD5E.ItemTypes.getList().find(obj => itemType in obj)
-      itemTypes[itemType] = itemFromList ? itemFromList[itemType].label : itemType
+    const itemTypesList = WOD5E.ItemTypes.getList()
+    // Cycle through all the template types, and use a label if one is found;
+    // default to just the base type (key) provided
+    for (const itemType of itemTemplateTypes) {
+      itemTypes[itemType] = itemTypesList[itemType] ? itemTypesList[itemType].label : itemType
     }
 
     // Render the document creation form
     const html = await renderTemplate('templates/sidebar/document-create.html', {
-      name: data.name || game.i18n.format('DOCUMENT.New', { type: label }),
+      name: data.name || defaultName,
       folder: data.folder,
       folders: gameFolders,
       hasFolders: gameFolders.length > 0,
@@ -64,14 +64,21 @@ export class ItemInfo extends Item {
       content: html,
       label: title,
       callback: html => {
+        // Grab the element for data manipulation
         const form = html[0].querySelector('form')
         const fd = new FormDataExtended(form)
+        // Merge data with Foundry's default object before we manipulate it
         data = foundry.utils.mergeObject(data, fd.object)
-        const itemFromList = WOD5E.ItemTypes.getList().find(obj => data.type in obj)
-        data.img = itemFromList[data.type].img ? itemFromList[data.type].img : '/systems/vtm5e/assets/icons/items/item-default.svg'
+        // Force a default name if none is given
+        if (!data.name) data.name = game.i18n.format('DOCUMENT.New', { type: itemTypes[data.type] })
+        // Generate a default image depending on the item type
+        const itemsList = WOD5E.ItemTypes.getList()
+        data.img = itemsList[data.type].img ? itemsList[data.type].img : 'systems/vtm5e/assets/icons/items/item-default.svg'
+        // If folder isn't given, delete the field
         if (!data.folder) delete data.folder
+        // Choose the default item type if there's only one
         if (itemTypes.length === 1) data.type = itemTypes[0]
-
+        // Render the item after creating it
         return this.create(data, {
           renderSheet: true,
           pack: options.pack || ''

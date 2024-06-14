@@ -7,7 +7,19 @@ export class Attributes {
   static getList (type) {
     return Object.entries(this)
       .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) && (!type || value.type === type))
-      .map(([key, value]) => ({ [key]: value }))
+      .reduce((accumulator, [key, value]) => {
+        accumulator[key] = value
+        return accumulator
+      }, {})
+  }
+
+  // Method to add extra attributes
+  static addCustom (customAttributes) {
+    for (const [, value] of Object.entries(customAttributes)) {
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        this[value.id] = value
+      }
+    }
   }
 
   // Localize the labels
@@ -37,6 +49,12 @@ export class Attributes {
 
   // Run any necessary compilation on ready
   static onReady () {
+    const customAttributes = game.settings.get('vtm5e', 'customAttributes')
+
+    if (customAttributes) {
+      Attributes.addCustom(customAttributes)
+    }
+
     Attributes.initializeLabels()
   }
 

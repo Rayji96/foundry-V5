@@ -1,4 +1,4 @@
-/* global Handlebars, game, TextEditor, WOD5E */
+/* global Handlebars, game, WOD5E */
 
 /**
  * Define any helpers necessary for working with Handlebars
@@ -71,48 +71,12 @@ export const loadHelpers = async function () {
 
   // Helper to define attributes lists
   Handlebars.registerHelper('getAttributesList', function () {
-    // Attribute definitions
-    const attributes = WOD5E.Attributes.getList()
-    const attributesList = []
-
-    for (const attribute of attributes) {
-      // Assign the data to a value
-      const [, value] = Object.entries(attribute)[0]
-      const id = Object.getOwnPropertyNames(attribute)[0]
-      const displayName = value.displayName
-      const hidden = value.hidden
-
-      attributesList.push({
-        id,
-        displayName,
-        hidden
-      })
-    }
-
-    return attributesList
+    return WOD5E.Attributes.getList()
   })
 
   // Helper to define skills lists
   Handlebars.registerHelper('getSkillsList', function () {
-    // Skill definitions
-    const skills = WOD5E.Skills.getList()
-    const skillsList = []
-
-    for (const skill of skills) {
-      // Assign the data to a value
-      const [, value] = Object.entries(skill)[0]
-      const id = Object.getOwnPropertyNames(skill)[0]
-      const displayName = value.displayName
-      const hidden = value.hidden
-
-      skillsList.push({
-        id,
-        displayName,
-        hidden
-      })
-    }
-
-    return skillsList
+    return WOD5E.Skills.getList()
   })
 
   Handlebars.registerHelper('generateLocalizedLabel', function (str) {
@@ -125,27 +89,27 @@ export const loadHelpers = async function () {
     const edges = WOD5E.Edges.getList()
 
     // Attributes
-    if (attributes.find(obj => str in obj)) {
+    if (str in attributes) {
       return findLabel(attributes, str)
     }
     // Skills
-    if (skills.find(obj => str in obj)) {
+    if (str in skills) {
       return findLabel(skills, str)
     }
     // Features
-    if (features.find(obj => str in obj)) {
+    if (str in features) {
       return findLabel(features, str)
     }
     // Disciplines
-    if (disciplines.find(obj => str in obj)) {
+    if (str in disciplines) {
       return findLabel(disciplines, str)
     }
     // Renown
-    if (renown.find(obj => str in obj)) {
+    if (str in renown) {
       return findLabel(renown, str)
     }
     // Edges
-    if (edges.find(obj => str in obj)) {
+    if (str in edges) {
       return findLabel(edges, str)
     }
 
@@ -155,7 +119,7 @@ export const loadHelpers = async function () {
 
     // Function to actually grab the localized label
     function findLabel (list, string) {
-      const stringObject = list.find(obj => string in obj)[string]
+      const stringObject = list[string]
 
       // Return the localized string if found
       if (stringObject?.displayName) return stringObject.displayName
@@ -234,9 +198,5 @@ export const loadHelpers = async function () {
       artifact: 'WOD5E.HTR.Artifact'
     }
     return edges[key]
-  })
-
-  Handlebars.registerHelper('enrichHTML', function (text) {
-    return TextEditor.enrichHTML(text, { async: false })
   })
 }

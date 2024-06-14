@@ -96,40 +96,12 @@ export class wod5eAPI {
     const { skill, attribute, discipline, renown } = dataset
 
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+    const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
     // Attribute definitions
-    const attributes = WOD5E.Attributes.getList()
-    const attributesList = []
-
-    for (const attribute of attributes) {
-      // Assign the data to a value
-      const [, value] = Object.entries(attribute)[0]
-      const id = Object.getOwnPropertyNames(attribute)[0]
-      const displayName = value.displayName
-
-      attributesList.push({
-        id,
-        displayName
-      })
-    }
-
+    const attributesList = WOD5E.Attributes.getList()
     // Skill definitions
-    const skills = WOD5E.Skills.getList()
-    const skillsList = []
-
-    for (const skill of skills) {
-      // Assign the data to a value
-      const [, value] = Object.entries(skill)[0]
-      const id = Object.getOwnPropertyNames(skill)[0]
-
-      const displayName = value.displayName
-
-      skillsList.push({
-        id,
-        displayName
-      })
-    }
+    const skillsList = WOD5E.Skills.getList()
 
     // Render selecting a skill/attribute to roll
     const dialogTemplate = 'systems/vtm5e/templates/ui/select-dice-dialog.hbs'
@@ -140,7 +112,9 @@ export class wod5eAPI {
       discipline,
       renown,
       attributesList,
-      skillsList
+      skillsList,
+      hungerValue: system === 'vampire' && actor.type !== 'ghoul' && actor.type !== 'spc' ? actor.system.hunger.value : 0,
+      actorType: actor.type
     }
     // Render the template
     const content = await renderTemplate(dialogTemplate, dialogData)
@@ -159,6 +133,7 @@ export class wod5eAPI {
               const skillSelect = html.find('[id=skillSelect]').val()
               const attributeSelect = html.find('[id=attributeSelect]').val()
               const disciplineSelect = html.find('[id=disciplineSelect]').val()
+              const bloodSurgeCheckbox = html.find('[id=bloodSurge]')
               const renownSelect = html.find('[id=renownSelect]').val()
 
               // Handle adding a skill to the dicepool
@@ -202,6 +177,10 @@ export class wod5eAPI {
 
                 // Add the discipline and potency selectors to the roll
                 dataset.selectors += ` disciplines disciplines.${disciplineSelect}.value`
+              }
+              // Handle adding a blood surge to the roll
+              if (bloodSurgeCheckbox[0]?.checked) {
+                dataset.selectors += ' blood-surge'
               }
               // Handle adding a renown to the dicepool
               if (renownSelect) {
@@ -292,9 +271,9 @@ export class wod5eAPI {
     const actorData = actor.system
 
     // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
-    const system = WOD5E.Systems.getList().find(obj => actor.system.gamesystem in obj) ? actor.system.gamesystem : 'mortal'
+    const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
-    if (system === 'vampire' && actor.type !== 'ghoul') {
+    if (system === 'vampire' && actor.type !== 'ghoul' && actor.type !== 'spc') {
       // Define actor's hunger dice, ensuring it can't go below 0
       const hungerDice = Math.max(actorData.hunger.value, 0)
 
@@ -314,60 +293,32 @@ export class wod5eAPI {
   static async generateLabelAndLocalize ({
     string = ''
   }) {
-    // Always lowercase any labels we're localizing
-    // customRoll is the one exception to this rule
-    const str = string === 'customRoll' ? 'customRoll' : string.toLowerCase()
-
     // Lists
-    const attributes = WOD5E.Attributes.getList()
-    const skills = WOD5E.Skills.getList()
-    const features = WOD5E.Features.getList()
-    const items = WOD5E.ItemTypes.getList()
-    const disciplines = WOD5E.Disciplines.getList()
-    const renown = WOD5E.Renown.getList()
-    const edges = WOD5E.Edges.getList()
+    const lists = [
+      WOD5E.Attributes.getList(),
+      WOD5E.Skills.getList(),
+      WOD5E.Features.getList(),
+      WOD5E.ItemTypes.getList(),
+      WOD5E.Disciplines.getList(),
+      WOD5E.Renown.getList(),
+      WOD5E.Edges.getList()
+    ]
 
-    // Attributes
-    if (attributes.find(obj => str in obj)) {
-      return findLabel(attributes, str)
-    }
-    // Skills
-    if (skills.find(obj => str in obj)) {
-      return findLabel(skills, str)
-    }
-    // Features
-    if (features.find(obj => str in obj)) {
-      return findLabel(features, str)
-    }
-    // Items
-    if (items.find(obj => str in obj)) {
-      return findLabel(items, str)
-    }
-    // Disciplines
-    if (disciplines.find(obj => str in obj)) {
-      return findLabel(disciplines, str)
-    }
-    // Renown
-    if (renown.find(obj => str in obj)) {
-      return findLabel(renown, str)
-    }
-    // Edges
-    if (edges.find(obj => str in obj)) {
-      return findLabel(edges, str)
+    // Iterate through each list to find the label
+    for (const list of lists) {
+      const label = findLabel(list, string)
+
+      if (label) {
+        return label
+      }
     }
 
     // Return the base localization if nothing else is found
-    return game.i18n.localize(`WOD5E.${str}`)
+    return game.i18n.localize(`WOD5E.${string}`)
 
     // Function to actually grab the localized label
-    function findLabel (list, string) {
-      const stringObject = list.find(obj => string in obj)
-
-      // Return the localized string if found
-      if (stringObject) return stringObject[string].displayName
-
-      // Return nothing
-      return ''
+    function findLabel (list, str) {
+      return str in list ? list[str].displayName : ''
     }
   }
 }
