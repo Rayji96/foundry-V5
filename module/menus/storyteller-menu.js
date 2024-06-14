@@ -73,7 +73,7 @@ export class StorytellerMenu extends FormApplication {
       if (type === 'attribute') {
         // Get the list of custom attributes
         const customAttributes = game.settings.get('vtm5e', 'customAttributes')
-  
+
         // Define the new attribute and push it to the list
         const newAttribute = {
           id: foundry.utils.randomID(8),
@@ -87,7 +87,7 @@ export class StorytellerMenu extends FormApplication {
       } else if (type === 'skill') {
         // Get the list of custom skills
         const customSkills = game.settings.get('vtm5e', 'customSkills')
-  
+
         // Define the new skill and push it to the list
         const newSkill = {
           id: foundry.utils.randomID(8),
@@ -117,6 +117,7 @@ export class StorytellerMenu extends FormApplication {
       const attributeModifications = []
       const customAttributes = []
       const skillModifications = []
+      const customSkills = []
 
       // Modifications to existing features
       html.find('.modification-row').each(function () {
