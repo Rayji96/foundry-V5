@@ -72,7 +72,7 @@ export async function getSituationalModifiers ({
       if (check === 'isEqual') {
         const pathValue = path.split('.').reduce((obj, key) => obj[key], data)
         modifier.isActive = true
-        return pathValue === value
+        return String(pathValue) === value
       }
 
       // If the modifier should be shown no matter what, still return it

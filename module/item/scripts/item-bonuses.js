@@ -82,7 +82,7 @@ export const _onAddBonus = async function (event, item) {
         const activeWhenValue = html.find('#activeWhenValue').parent()
 
         activeWhenCheck.on('change', function () {
-          if (activeWhenCheck.val() === 'ifEquals') {
+          if (activeWhenCheck.val() === 'isEqual') {
             activeWhenPath.css('visibility', 'visible')
             activeWhenValue.css('visibility', 'visible')
           } else {
@@ -185,7 +185,7 @@ export const _onEditBonus = async function (event, item) {
         const activeWhenValue = html.find('#activeWhenValue').parent()
 
         activeWhenCheck.on('change', function () {
-          if (activeWhenCheck.val() === 'ifEquals') {
+          if (activeWhenCheck.val() === 'isEqual') {
             activeWhenPath.css('visibility', 'visible')
             activeWhenValue.css('visibility', 'visible')
           } else {
