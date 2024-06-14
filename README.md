@@ -29,11 +29,15 @@ Replace the 1s with however many you want to roll for each type, and let the dic
 
 Bugs or feature requests created to this repository are greatly appreciate. Please use the [Issues](https://github.com/Rayji96/foundry-V5/issues) page for these!
 
-Please reach out to me at "weinerdolphin" or "veilza" on Discord with any pressing issues, I'd love to help you get your game running smoothly!
+You can also reach out to "weinerdolphin" or "veilza" on Discord, or leave a message in the #wod channel in the official Foundry Discord server, with any issues. We'd love to help you get your game running smoothly!
 
 Please check the issues list before suggesting new features.
 
 ## Credits
+
+### Core Developers
+* Lead System Developer: [Veilza]
+* Quality Assurance: [Rayji96]
 
 Huge thanks to these folks for their contributions!
 
@@ -46,7 +50,6 @@ Huge thanks to these folks for their contributions!
 * Incredible work on dot and box counters by [erizocosmico]
 * Refactors and enhancements by [bmgraves]
 * Partial HTML, character types, migrations, bugfixes, and refactors by [Dakayl]
-* In-chat willpower rerolling, dark theme, Werewolf v5 support, and numerous other features and fixes by [Veilza]
 * Adding blood potency bonus to discipline rolls by [MarkusOzgur]
 * Various upgrades and CSS design improvements by [LorduFreeman]
 * Dicebox by [crcroberts]
@@ -108,3 +111,4 @@ Licensed WoD 5e materials will not be provided as this system is provided for pu
 [MrDionysus]: https://github.com/MrDionysus
 [LorduFreeman]: https://github.com/LorduFreeman
 [Xuula]: https://github.com/Xuula
+[Rayji96]: https://github.com/Rayji96
