@@ -113,6 +113,7 @@
 
 .wod5e .resource-label {
     font-weight: 500;
+    position: relative;
 }
 
 .wod5e .description-content {
@@ -306,6 +307,9 @@
 
 .wod5e.sheet.actor .window-content .skills .skill .edit-skill {
     font-size: 14px;
+    position: absolute;
+    left: -20px;
+    top: 2px;
 }
 
 .wod5e .window-content .sheet-body .tab > .resource-label {
