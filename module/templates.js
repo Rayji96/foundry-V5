@@ -68,6 +68,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/item/parts/macro.hbs',
 
     // Dice Tray Partials
+    /*
     'systems/vtm5e/templates/ui/parts/select-character.hbs',
     'systems/vtm5e/templates/ui/parts/pool1-select-attribute.hbs',
     'systems/vtm5e/templates/ui/parts/pool1-select-skill.hbs',
@@ -75,7 +76,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/ui/parts/pool2-select-attribute.hbs',
     'systems/vtm5e/templates/ui/parts/pool2-select-skill.hbs',
     'systems/vtm5e/templates/ui/parts/pool2-select-discipline.hbs',
-    'systems/vtm5e/templates/ui/parts/pool2-nothing.hbs',
+    'systems/vtm5e/templates/ui/parts/pool2-nothing.hbs',*/
 
     // Roll dialog Partials
     'systems/vtm5e/templates/ui/parts/roll-dialog-base.hbs',
