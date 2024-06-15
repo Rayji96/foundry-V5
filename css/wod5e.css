@@ -126,6 +126,7 @@
 .wod5e .window-content .resource-label {
     text-transform: initial;
     font-size: 1.2em;
+    text-align: left;
 }
 
 .wod5e .window-content .abilities .ability .resource-label {

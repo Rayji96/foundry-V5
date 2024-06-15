@@ -1,3 +1,7 @@
+.wod5e .resource-value {
+  align-self: flex-end;
+}
+
 .wod5e .resource-value .resource-value-step {
   height: 14px;
   width: 14px;
