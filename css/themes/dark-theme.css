@@ -17,10 +17,6 @@
   color: #e0e0e0;
 }
 
-.dark-theme .wod5e.item.sheet .bonuses input {
-  color: #000;
-}
-
 .dark-theme .wod5e .window-content nav.sheet-tabs {
   background: #121212;
   color: #790813;
@@ -214,6 +210,10 @@
 
 .dark-theme .wod5e input[name="system.blood.resonance"] {
   color: #bb1020;
+}
+
+.dark-theme .wod5e.item.sheet .bonuses input {
+  color: #000;
 }
 
 .wod5e.item.sheet .window-content input[type="number"] {
