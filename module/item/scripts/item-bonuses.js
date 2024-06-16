@@ -85,8 +85,9 @@ export const _onAddBonus = async function (event, item) {
           if (activeWhenCheck.val() === 'isEqual') {
             activeWhenPath.css('visibility', 'visible')
             activeWhenValue.css('visibility', 'visible')
-          } if (activeWhenCheck.val() === 'isPath') {
+          } else if (activeWhenCheck.val() === 'isPath') {
             activeWhenPath.css('visibility', 'visible')
+            activeWhenValue.css('visibility', 'hidden')
           } else {
             activeWhenPath.css('visibility', 'hidden')
             activeWhenValue.css('visibility', 'hidden')
@@ -190,8 +191,9 @@ export const _onEditBonus = async function (event, item) {
           if (activeWhenCheck.val() === 'isEqual') {
             activeWhenPath.css('visibility', 'visible')
             activeWhenValue.css('visibility', 'visible')
-          } if (activeWhenCheck.val() === 'isPath') {
+          } else if (activeWhenCheck.val() === 'isPath') {
             activeWhenPath.css('visibility', 'visible')
+            activeWhenValue.css('visibility', 'hidden')
           } else {
             activeWhenPath.css('visibility', 'hidden')
             activeWhenValue.css('visibility', 'hidden')
