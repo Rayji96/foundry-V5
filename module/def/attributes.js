@@ -10,9 +10,9 @@ export class Attributes {
   }) {
     return Object.entries(this)
       // Filter out any entries with improper formats
-      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value)
+      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) &&
         // Filter based on given filters provided with the function, if any
-        && (!type || value.type === type) && (!custom || value.custom === custom))
+        (!type || value.type === type) && (!custom || value.custom === custom))
       // Reduce into a format the system can work with
       .reduce((accumulator, [key, value]) => {
         accumulator[key] = value
@@ -41,7 +41,7 @@ export class Attributes {
         const checkModification = modifications.filter(attribute => attribute.id === key)
 
         value.label = game.i18n.localize(value.label)
-        
+
         // If there are modifications, update the attribute
         if (checkModification.length > 0) {
           value.rename = checkModification[0].rename

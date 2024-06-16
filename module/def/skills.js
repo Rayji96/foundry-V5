@@ -10,9 +10,9 @@ export class Skills {
   }) {
     return Object.entries(this)
       // Filter out any entries with improper formats
-      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value)
+      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) &&
         // Filter based on given filters provided with the function, if any
-        && (!type || value.type === type) && (!custom || value.custom === custom))
+        (!type || value.type === type) && (!custom || value.custom === custom))
       // Reduce into a format the system can work with
       .reduce((accumulator, [key, value]) => {
         accumulator[key] = value

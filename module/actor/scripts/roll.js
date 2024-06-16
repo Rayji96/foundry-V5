@@ -47,7 +47,7 @@ export const _onConfirmRoll = async function (dataset, actor) {
     actor,
     selectors
   })
-  let advancedCheckDice = activeBonuses.totalACDValue
+  const advancedCheckDice = activeBonuses.totalACDValue
 
   // Get the number of basicDice and advancedDice
   if (disableBasicDice && useAbsoluteValue) {
