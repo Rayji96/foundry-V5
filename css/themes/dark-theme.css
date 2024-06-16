@@ -212,16 +212,16 @@
   color: #bb1020;
 }
 
+.dark-theme .wod5e .actor-header h1.charname input {
+  color: #faf5ed;
+}
+
 .dark-theme .wod5e.item.sheet .bonuses input {
   color: #000;
 }
 
 .wod5e.item.sheet .window-content input[type="number"] {
     color: #000;
-}
-
-.dark-theme .wod5e .actor-header h1.charname input {
-  color: #faf5ed;
 }
 
 .dark-theme .wod5e .description-content {
