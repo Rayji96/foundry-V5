@@ -16,6 +16,7 @@
         "Exp": "",
         "None": "",
         "Value": "",
+        "Label": "",
 
         "Mortal": "",
         "GroupSheet": "",
@@ -193,6 +194,66 @@
         "Macro": {
             "MacroID": "",
             "MacroNote": ""
+        },
+
+        "Settings": {
+            "SaveChanges": "",
+    
+            "Modifications": "",
+            "Custom": "",
+    
+            "Rename": "",
+            "Hidden": "",
+    
+            "AddAttributeModification": "",
+            "AddSkillModification": "",
+            "AddCustomAttribute": "",
+            "AddCustomSkill": "",
+    
+            "AttributeType": "",
+            "SkillType": "",
+    
+            "WorldVersion": "",
+            "WorldVersionHint": "",
+    
+            "DarkTheme": "",
+            "DarkThemeHint": "",
+    
+            "ActorBanner": "",
+            "ActorBannerHint": "",
+    
+            "AutomationSettings": "",
+            "AutomationSettingsHint": "",
+    
+            "DisableAutomation": "",
+            "DisableAutomationHint": "",
+    
+            "AutomateWillpower": "",
+            "AutomateWillpowerHint": "",
+    
+            "AutomateHunger": "",
+            "AutomateHungerHint": "",
+    
+            "AutomateOblivion": "",
+            "AutomateOblivionHint": "",
+    
+            "AutomateRage": "",
+            "AutomateRageHint": "",
+    
+            "StorytellerMenu": "",
+            "StorytellerMenuHint": "",
+    
+            "ModifiedAttributes": "",
+            "ModifiedAttributesHint": "",
+    
+            "ModifiedSkills": "",
+            "ModifiedSkillsHint": "",
+    
+            "CustomAttributes": "",
+            "CustomAttributesHint": "",
+    
+            "CustomSkills": "",
+            "CustomSkillsHint": ""
         }
     }
 }
