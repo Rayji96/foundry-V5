@@ -225,7 +225,7 @@ export class WerewolfActorSheet extends WoDActor {
     })
 
     // Add all values together
-    const dicePool = dice1 + dice2 + activeBonuses
+    const dicePool = dice1 + dice2 + activeBonuses.totalValue
 
     // Send the roll to the system
     WOD5eDice.Roll({
@@ -503,7 +503,7 @@ export class WerewolfActorSheet extends WoDActor {
 
       // Roll the rage dice necessary
       WOD5eDice.Roll({
-        advancedDice: diceCount + activeBonuses,
+        advancedDice: diceCount + activeBonuses.totalValue,
         title: form,
         actor,
         data: actor.system,

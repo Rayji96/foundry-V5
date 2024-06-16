@@ -55,7 +55,8 @@
             "DisplayWhenInactive": "Display When Inactive",
             "Unless": "Unless",
             "PathToCheck": "Path to Check",
-            "ValueToCheck": "Value to Check"
+            "ValueToCheck": "Value to Check",
+            "IfPathIs": "If path is..."
         },
 
         "SPC": {

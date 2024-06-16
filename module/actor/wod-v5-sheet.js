@@ -85,7 +85,7 @@ export class WoDActor extends ActorSheet {
     const gear = []
 
     // Loop through each entry in the attributes list, get the data (if available), and then push to the containers
-    const attributesList = Attributes.getList()
+    const attributesList = Attributes.getList({})
     const actorAttributes = actorData.system?.abilities
 
     if (actorAttributes) {
@@ -125,7 +125,7 @@ export class WoDActor extends ActorSheet {
     }
 
     // Loop through each entry in the skills list, get the data (if available), and then push to the containers
-    const skillsList = Skills.getList()
+    const skillsList = Skills.getList({})
     const actorSkills = actorData.system?.skills
 
     if (actorSkills) {
@@ -411,7 +411,7 @@ export class WoDActor extends ActorSheet {
     // Render the dialog window to select which skill/attribute combo to use
     const SkillEditDialog = new Dialog(
       {
-        title: WOD5E.Skills.getList()[skill].displayName,
+        title: WOD5E.Skills.getList({})[skill].displayName,
         content,
         buttons: { },
         close: (html) => {
@@ -521,6 +521,7 @@ export class WoDActor extends ActorSheet {
     WOD5eDice.Roll({
       basicDice: dicePool,
       title: game.i18n.localize('WOD5E.Chat.RollingWillpower'),
+      paths: ['willpower'],
       actor,
       data: actor.system,
       quickRoll: false,

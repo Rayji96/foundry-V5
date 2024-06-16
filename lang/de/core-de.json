@@ -58,7 +58,8 @@
         "DisplayWhenInactive": "Anzeigen, wenn inaktiv",
         "Unless": "Außer, wenn …",
         "PathToCheck": "Pfad",
-        "ValueToCheck": "Wert"
+        "ValueToCheck": "Wert",
+        "_IfPathIs": ""
     },
 
     "SPC": {

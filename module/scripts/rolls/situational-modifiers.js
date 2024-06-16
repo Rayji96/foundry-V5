@@ -21,21 +21,28 @@ export async function getSituationalModifiers ({
   function getModifiers (data, selectors) {
     const modifiers = []
 
+    // Run a search for bonuses within the actor's data
+    searchBonuses(data, '')
     function searchBonuses (obj, path) {
+      // Ensure that we're receiving a valid object
       if (typeof obj !== 'object' || obj === null) {
         return
       }
 
+      // Check if there's a "bonuses" path that is an array
       if (obj.bonuses && Array.isArray(obj.bonuses)) {
+        // Check for matching bonuses, or 'all'
         const matchingBonuses = obj.bonuses.filter(bonus =>
-          selectors.some(selector => bonus.paths.includes(selector))
+          selectors.some(selector => bonus.paths.includes(selector)) || bonus.paths.includes('all')
         )
 
+        // If there are any matching bonuses, push it to the modifiers list
         if (matchingBonuses.length > 0) {
           modifiers.push(...matchingBonuses)
         }
       }
 
+      // If there are further objects to search, search those for bonuses as well
       Object.entries(obj).forEach(([key, value]) => {
         const currentPath = path ? `${path}.${key}` : key
 
@@ -45,16 +52,16 @@ export async function getSituationalModifiers ({
       })
     }
 
-    searchBonuses(data, '')
-
     return modifiers
   }
 
+  // Filter out only modifiers that apply to the roll we're doing
   function filterModifiers (data, modifiers) {
     return modifiers.filter(modifier => {
       const { check, path, value } = modifier?.activeWhen || {}
       const displayWhenInactive = modifier?.displayWhenInactive || ''
       const unless = modifier?.unless || ''
+      let showModifier = false
 
       // Check if any 'unless' strings are present in the 'selectors' array
       if (unless && unless.some(value => selectors.indexOf(value) !== -1)) {
@@ -65,23 +72,29 @@ export async function getSituationalModifiers ({
       // As long as the path is found, the modifier will be active
       if (check === 'always') {
         modifier.isActive = true
-        return true
+        showModifier = true
       }
 
       // If the path has a qualifier, it's checked for here
       if (check === 'isEqual') {
         const pathValue = path.split('.').reduce((obj, key) => obj[key], data)
         modifier.isActive = true
-        return String(pathValue) === value
+        showModifier = String(pathValue) === value
       }
 
-      // If the modifier should be shown no matter what, still return it
-      if (displayWhenInactive) {
+      // If the qualifier is the path, the modifier will be active
+      if (check === 'isPath' && selectors.indexOf(path) > -1) {
+        modifier.isActive = true
+        showModifier = true
+      }
+
+      // If the modifier should be shown no matter what, still show it but don't make it active
+      if (displayWhenInactive && !modifier.isActive) {
         modifier.isActive = false
-        return true
+        showModifier = true
       }
 
-      return false
+      return showModifier
     })
   }
 }
@@ -104,10 +117,15 @@ export async function getActiveBonuses ({
   })
   const activeModifiers = situationalModifiers.filter(modifier => modifier.isActive === true)
   let totalValue = 0
+  let totalACDValue = 0
 
   activeModifiers.forEach((modifier) => {
     totalValue += parseInt(modifier.value)
+    totalACDValue += parseInt(modifier.advancedCheckDice)
   })
 
-  return totalValue
+  return {
+    totalValue,
+    totalACDValue
+  }
 }

@@ -71,18 +71,18 @@ export const loadHelpers = async function () {
 
   // Helper to define attributes lists
   Handlebars.registerHelper('getAttributesList', function () {
-    return WOD5E.Attributes.getList()
+    return WOD5E.Attributes.getList({})
   })
 
   // Helper to define skills lists
   Handlebars.registerHelper('getSkillsList', function () {
-    return WOD5E.Skills.getList()
+    return WOD5E.Skills.getList({})
   })
 
   Handlebars.registerHelper('generateLocalizedLabel', function (str) {
     // Lists
-    const attributes = WOD5E.Attributes.getList()
-    const skills = WOD5E.Skills.getList()
+    const attributes = WOD5E.Attributes.getList({})
+    const skills = WOD5E.Skills.getList({})
     const features = WOD5E.Features.getList()
     const disciplines = WOD5E.Disciplines.getList()
     const renown = WOD5E.Renown.getList()

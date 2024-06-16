@@ -149,7 +149,7 @@ class WOD5eDice {
       }
 
       // Roll any advanced check dice that need to be rolled in a separate rollmessage
-      if (advancedCheckDice) {
+      if (advancedCheckDice > 0) {
         await this.Roll({
           actor,
           data,
@@ -318,6 +318,7 @@ class WOD5eDice {
                 // Get the values of basic and advanced dice
                 const basicValue = basicDiceInput.val() ? parseInt(basicDiceInput.val()) : 0
                 const advancedValue = advancedDiceInput.val() ? parseInt(advancedDiceInput.val()) : 0
+                const aCDValue = parseInt(event.currentTarget.dataset.advancedCheckDice)
 
                 // Determine whether any alterations need to be made to basic dice or advanced dice
                 let applyDiceTo = 'basic'
@@ -358,6 +359,9 @@ class WOD5eDice {
                     newValue = basicValue + modifier
                     basicDiceInput.val(newValue)
                   }
+
+                  // Apply the advancedCheckDice value
+                  advancedCheckDice = advancedCheckDice + aCDValue
                 } else {
                   // Removing the modifier
                   if (applyDiceTo === 'advanced' && advancedValue > 0) {
@@ -383,6 +387,9 @@ class WOD5eDice {
 
                     basicDiceInput.val(newValue)
                   }
+
+                  // Apply the advancedCheckDice value while ensuring the value can't go below 0
+                  advancedCheckDice = Math.max(advancedCheckDice - aCDValue, 0)
                 }
 
                 // Ensure that there can't be negative dice

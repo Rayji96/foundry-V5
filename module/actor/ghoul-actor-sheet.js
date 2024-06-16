@@ -180,7 +180,7 @@ export class GhoulActorSheet extends MortalActorSheet {
 
         // Send the roll to the system
         WOD5eDice.Roll({
-          advancedDice: cost + activeBonuses,
+          advancedDice: cost + activeBonuses.totalValue,
           title: game.i18n.localize('WOD5E.VTM.RousingBlood'),
           actor,
           disableBasicDice: true,
@@ -352,7 +352,7 @@ export class GhoulActorSheet extends MortalActorSheet {
       selectors
     })
 
-    const dicePool = dice1 + dice2 + activeBonuses
+    const dicePool = dice1 + dice2 + activeBonuses.totalValue
 
     WOD5eDice.Roll({
       basicDice: Math.max(dicePool - hunger, 0),

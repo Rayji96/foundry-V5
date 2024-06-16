@@ -99,9 +99,9 @@ export class wod5eAPI {
     const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
 
     // Attribute definitions
-    const attributesList = WOD5E.Attributes.getList()
+    const attributesList = WOD5E.Attributes.getList({})
     // Skill definitions
-    const skillsList = WOD5E.Skills.getList()
+    const skillsList = WOD5E.Skills.getList({})
 
     // Render selecting a skill/attribute to roll
     const dialogTemplate = 'systems/vtm5e/templates/ui/select-dice-dialog.hbs'
@@ -295,8 +295,8 @@ export class wod5eAPI {
   }) {
     // Lists
     const lists = [
-      WOD5E.Attributes.getList(),
-      WOD5E.Skills.getList(),
+      WOD5E.Attributes.getList({}),
+      WOD5E.Skills.getList({}),
       WOD5E.Features.getList(),
       WOD5E.ItemTypes.getList(),
       WOD5E.Disciplines.getList(),

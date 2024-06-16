@@ -56,7 +56,8 @@
             "DisplayWhenInactive": "",
             "Unless": "",
             "PathToCheck": "",
-            "ValueToCheck": ""
+            "ValueToCheck": "",
+            "IfPathIs": ""
         },
 
         "SPC": {

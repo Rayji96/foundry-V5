@@ -52,7 +52,7 @@ export class StorytellerMenu extends FormApplication {
       const data = event.target.dataset
       const type = data.type
 
-      _onGeneratePrompt(type)
+      _onGenerateModPrompt(type)
     })
 
     html.find('.remove-mod-button').click(function (event) {
@@ -181,14 +181,14 @@ export class StorytellerMenu extends FormApplication {
 }
 
 // Function for getting the information necessary for the selection dialog
-async function _onGeneratePrompt (type) {
+async function _onGenerateModPrompt (type) {
   if (type === 'attribute') {
-    const attributesList = WOD5E.Attributes.getList()
+    const attributesList = WOD5E.Attributes.getList({})
 
     // Render the dialog
     _onRenderPromptDialog('attribute', attributesList, game.i18n.localize('WOD5E.Attributes.Label'))
   } else if (type === 'skill') {
-    const skillsList = WOD5E.Skills.getList()
+    const skillsList = WOD5E.Skills.getList({})
 
     // Render the dialog
     _onRenderPromptDialog('skill', skillsList, game.i18n.localize('WOD5E.Skills.Label'))
@@ -213,7 +213,7 @@ async function _onRenderPromptDialog (type, list, title) {
             // Grab the id from the select element
             const id = html.find('[id=optionSelect]').val()
             // Define the label
-            const label = list.filter(item => item.id === id)[0].label
+            const label = id in list ? list[id]?.label : id
 
             if (type === 'attribute') {
               // Get the list of modified attributes

@@ -58,7 +58,8 @@
         "DisplayWhenInactive": "Montrer quand inactif",
         "Unless": "Minimum",
         "_PathToCheck": "",
-        "ValueToCheck": "Valeur vérifiée"
+        "ValueToCheck": "Valeur vérifiée",
+        "_IfPathIs": ""
     },
 
     "SPC": {

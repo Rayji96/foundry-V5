@@ -58,7 +58,8 @@
             "_DisplayWhenInactive": "",
             "_Unless": "",
             "_PathToCheck": "",
-            "_ValueToCheck": ""
+            "_ValueToCheck": "",
+            "_IfPathIs": ""
         },
 
         "SPC": {

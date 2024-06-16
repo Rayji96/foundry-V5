@@ -4,9 +4,16 @@ export class Attributes {
   // Function to help with quickly grabbing all the listed values;
   // Will only retrieve objects (definitions)
   // Optional string can be provided to filter by type
-  static getList (type) {
+  static getList ({
+    type = '',
+    custom = false
+  }) {
     return Object.entries(this)
-      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) && (!type || value.type === type))
+      // Filter out any entries with improper formats
+      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value)
+        // Filter based on given filters provided with the function, if any
+        && (!type || value.type === type) && (!custom || value.custom === custom))
+      // Reduce into a format the system can work with
       .reduce((accumulator, [key, value]) => {
         accumulator[key] = value
         return accumulator
@@ -17,6 +24,9 @@ export class Attributes {
   static addCustom (customAttributes) {
     for (const [, value] of Object.entries(customAttributes)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        // Note this feature as being a custom feature
+        value.custom = true
+
         this[value.id] = value
       }
     }
@@ -31,10 +41,15 @@ export class Attributes {
         const checkModification = modifications.filter(attribute => attribute.id === key)
 
         value.label = game.i18n.localize(value.label)
-
+        
+        // If there are modifications, update the attribute
         if (checkModification.length > 0) {
           value.rename = checkModification[0].rename
           value.hidden = checkModification[0].hidden
+        } else {
+          // If there are no modifications, use default values
+          value.rename = ''
+          value.hidden = false
         }
       }
 

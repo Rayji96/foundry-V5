@@ -306,7 +306,7 @@ export class HunterActorSheet extends WoDActor {
     })
 
     // Add it all together
-    const dicePool = dice1 + dice2 + activeBonuses
+    const dicePool = dice1 + dice2 + activeBonuses.totalValue
 
     // Send the roll to the system
     WOD5eDice.Roll({
