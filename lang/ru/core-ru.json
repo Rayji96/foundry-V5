@@ -20,6 +20,8 @@
         "Value": "Значение",
         "_Label": "",
 
+        "_New": "New {string}",
+
         "Mortal": "Смертный",
         "_GroupSheet": "",
 

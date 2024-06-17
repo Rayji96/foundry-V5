@@ -19,6 +19,8 @@
     "None": "Brak",
     "Value": "Wartość",
     "_Label": "",
+
+    "_New": "New {string}",
     
     "Mortal": "Śmiertelnik",
     "_GroupSheet": "",

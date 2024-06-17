@@ -19,6 +19,8 @@
     "None": "Nenhum",
     "Value": "Valor",
     "_Label": "",
+
+    "_New": "New {string}",
     
     "Mortal": "Mortal",
     "_GroupSheet": "",

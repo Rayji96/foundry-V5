@@ -20,6 +20,8 @@
     "Value": "Wert",
     "_Label": "",
 
+    "New": "Neue {string}",
+
     "Mortal": "Sterblicher",
     "GroupSheet": "Gruppen-Bogen",
 
