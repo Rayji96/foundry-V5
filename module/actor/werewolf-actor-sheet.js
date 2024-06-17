@@ -1,4 +1,4 @@
-/* global game, foundry, renderTemplate, ChatMessage, Dialog, WOD5E */
+/* global game, foundry, renderTemplate, ChatMessage, Dialog */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'

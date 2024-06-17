@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ChatMessage, foundry, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
+/* global DEFAULT_TOKEN, ChatMessage, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
 
 import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
@@ -510,11 +510,11 @@ export class WoDActor extends ActorSheet {
         itemOptions = WOD5E.Gifts.getList()
         break
       case 'feature':
-        selectLabel = "Select Feature"
+        selectLabel = game.i18n.localize('WOD5E.Items.SelectFeature')
         itemOptions = WOD5E.Features.getList()
         break
       default:
-        console.log("Error: Invalid type provided.")
+        console.log('Error: Invalid type provided.')
         break
     }
 
