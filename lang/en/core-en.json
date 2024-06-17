@@ -18,6 +18,8 @@
         "Value": "Value",
         "Label": "Label",
 
+        "New": "New {string}",
+
         "Mortal": "Mortal",
         "GroupSheet": "Group Sheet",
 
@@ -138,7 +140,8 @@
         },
 
         "Items": {
-            "Label": "Items",
+            "Label": "Item",
+            "Items": "Items",
             "ShowToChat": "Show to Chat",
             "CustomRoll": "Custom Roll",
             "CustomRolls": "Custom Rolls",

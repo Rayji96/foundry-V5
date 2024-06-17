@@ -6,7 +6,7 @@
             <div class="item-name header-level">{{localize "WOD5E.Level"}}</div>
             <!-- Item controls for adding new discipline lists -->
             <div class="item-controls">
-                <a class="item-control discipline-create" title="{{localize 'WOD5E.VTM.AddDiscipline'}}">
+                <a class="item-control discipline-create item-create" title="{{localize 'WOD5E.VTM.AddDiscipline'}}" data-type="power">
                     <i class="fas fa-plus"></i>
                     {{localize "WOD5E.VTM.AddDiscipline"}}
                 </a>
@@ -33,7 +33,7 @@
                         <!-- Item controls for Discipline sections -->
                         <div class="item-controls">
                             <!-- Add new discipline power -->
-                            <a class="item-control item-create" title="{{localize 'WOD5E.VTM.AddPower'}}" data-type="power" data-discipline="{{key}}">
+                            <a class="item-control item-create" title="{{localize 'WOD5E.VTM.AddPower'}}" data-type="power" data-subtype="{{key}}">
                                 <i class="fas fa-plus"></i>
                             </a>
                             <!-- Icon to roll the discipline with an attribute -->

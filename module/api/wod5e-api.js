@@ -301,7 +301,8 @@ export class wod5eAPI {
       WOD5E.ItemTypes.getList(),
       WOD5E.Disciplines.getList(),
       WOD5E.Renown.getList(),
-      WOD5E.Edges.getList()
+      WOD5E.Edges.getList(),
+      WOD5E.Gifts.getList()
     ]
 
     // Iterate through each list to find the label

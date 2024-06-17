@@ -5,7 +5,7 @@
             <div class="item-name">{{localize "WOD5E.Name"}}</div>
             <!-- Item controls for adding new edge lists -->
             <div class="item-controls">
-                <a class="item-control edge-create" title="{{localize 'WOD5E.HTR.AddEdge'}}">
+                <a class="item-control edge-create item-create" data-type="perk" title="{{localize 'WOD5E.HTR.AddEdge'}}">
                     <i class="fas fa-plus"></i>
                     {{localize "WOD5E.HTR.AddEdge"}}
                 </a>
@@ -22,7 +22,7 @@
                         <!-- Item controls for Edge sections -->
                         <div class="item-controls">
                             <!-- Add new edge perk -->
-                            <a class="item-control edge-create" title="{{localize 'WOD5E.HTR.AddPerk'}}" data-type="perk" data-edge="{{key}}">
+                            <a class="item-control edge-create item-create" title="{{localize 'WOD5E.HTR.AddPerk'}}" data-type="perk" data-subtype="{{key}}">
                                 <i class="fas fa-plus"></i>
                             </a>
                             <!-- Icon to show the edge description to the chat-->

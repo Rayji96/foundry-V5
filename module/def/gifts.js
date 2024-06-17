@@ -100,6 +100,10 @@ export class Gifts {
   static silverfang = {
     label: 'WOD5E.WTA.SilverFang'
   }
+
+  static rite = {
+    label: 'WOD5E.WTA.Rite'
+  }
 }
 
 // Hook to call onReady when the game is ready

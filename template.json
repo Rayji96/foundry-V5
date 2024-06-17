@@ -903,7 +903,7 @@
     },
     "feature": {
       "templates": ["base"],
-      "featuretype":"merit",
+      "featuretype": "merit",
       "points": 0
     },
     "power": {
@@ -925,8 +925,8 @@
     },
     "customRoll": {
       "templates": ["base"],
-      "dice1" : "",
-      "dice2" : "",
+      "dice1": "strength",
+      "dice2": "athletics",
       "modifier": 0
     },
     "perk": {

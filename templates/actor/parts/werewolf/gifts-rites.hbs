@@ -13,7 +13,7 @@
             <div class="item-name header-level">{{localize "WOD5E.WTA.Renown"}}</div>
             <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
-                <a class="item-control gift-create" title="{{localize 'WOD5E.WTA.AddGift'}}">
+                <a class="item-control gift-create item-create" data-type="gift" title="{{localize 'WOD5E.WTA.AddGift'}}">
                     <i class="fas fa-plus"></i>
                     {{localize "WOD5E.WTA.AddGift"}}
                 </a>
@@ -30,11 +30,11 @@
                         <!-- Item controls for Gifts sections -->
                         <div class="item-controls">
                             <!-- Add new gift -->
-                            <a class="item-control gift-create" title="{{localize 'WOD5E.WTA.AddGift'}}" data-gift="{{key}}">
+                            <a class="item-control gift-create item-create" data-type="gift" data-subtype="{{key}}" title="{{localize 'WOD5E.WTA.AddGift'}}">
                                 <i class="fas fa-plus"></i>
                             </a>
                             <!-- Icon to show the gift description to the chat-->
-                            <a class="item-control gift-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}" data-type="power" data-gift="{{key}}">
+                            <a class="item-control gift-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}" data-type="gift" data-gift="{{key}}">
                                 <i class="fas fa-comment-alt"></i>
                             </a>
                         </div>
@@ -107,7 +107,7 @@
             <div class="item-name header-level">{{localize "WOD5E.WTA.Renown"}}</div>
             <!-- Item controls for adding new gift lists -->
             <div class="item-controls">
-                <a class="item-control rite-create" title="{{localize 'WOD5E.WTA.AddRite'}}">
+                <a class="item-control rite-create item-create" data-type="gift" data-subtype="rite" title="{{localize 'WOD5E.WTA.AddRite'}}">
                     <i class="fas fa-plus"></i>
                     {{localize "WOD5E.WTA.AddRite"}}
                 </a>
