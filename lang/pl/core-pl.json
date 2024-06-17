@@ -161,7 +161,8 @@
       "_NewSpecialty": "",
       "Boon": "Przysługa",
       "Boons": "Przysługi",
-      "_Macro": "Macro"
+      "_Macro": "",
+      "_SelectFeature": ""
     },
 
     "Biography": {

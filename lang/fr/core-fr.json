@@ -161,7 +161,8 @@
       "NewSpecialty": "Nouvelle Spécialité",
       "Boon": "Dette",
       "Boons": "Dettes",
-      "Macro": "Macro"
+      "Macro": "Macro",
+      "_SelectFeature": ""
     },
 
     "Biography": {

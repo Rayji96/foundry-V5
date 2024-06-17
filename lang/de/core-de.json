@@ -161,7 +161,8 @@
       "NewSpecialty": "Neue Spezialisierung",
       "Boon": "Gefallen",
       "Boons": "Gefallen",
-      "Macro": "Macro"
+      "Macro": "Macro",
+      "_SelectFeature": ""
     },
 
     "Biography": {

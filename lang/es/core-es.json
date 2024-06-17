@@ -161,7 +161,8 @@
       "NewSpecialty": "Nueva Especialidad",
       "Boon": "Bendición",
       "Boons": "Favores",
-      "Macro": "Macro"
+      "Macro": "Macro",
+      "_SelectFeature": ""
     },
 
     "Biography": {

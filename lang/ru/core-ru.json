@@ -161,7 +161,8 @@
             "_NewSpecialty": "",
             "Boon": "Долг",
             "Boons": "Долги",
-            "_Macro": ""
+            "_Macro": "",
+            "_SelectFeature": ""
         },
 
         "Biography": {
