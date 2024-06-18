@@ -94,7 +94,7 @@
       "Other": "Altro"
     },
 
-    "Attributes": {
+    "AttributesList": {
       "Label": "Attributo",
       "Attributes": "Attributi",
       "Strength": "Forza",
@@ -108,7 +108,7 @@
       "Resolve": "Fermezza"
     },
 
-    "Skills": {
+    "SkillsList": {
       "Label": "Abilità",
       "Skills": "Abilità",
       "Specialty": "Specialità",
@@ -142,7 +142,7 @@
       "Technology": "Tecnologia"
     },
 
-    "Items": {
+    "ItemsList": {
       "Label": "Etichetta",
       "ShowToChat": "Mostra in chat",
       "CustomRoll": "Tiro personalizzato",

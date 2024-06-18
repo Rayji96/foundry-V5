@@ -91,7 +91,7 @@
             "Other": "Other"
         },
 
-        "Attributes": {
+        "AttributesList": {
             "Label": "Attribute",
             "Attributes": "Attributes",
             "Strength": "Strength",
@@ -105,7 +105,7 @@
             "Resolve": "Resolve"
         },
 
-        "Skills": {
+        "SkillsList": {
             "Label": "Skill",
             "Skills": "Skills",
             "Specialty": "Specialty",
@@ -139,7 +139,7 @@
             "Technology": "Technology"
         },
 
-        "Items": {
+        "ItemsList": {
             "Label": "Item",
             "Items": "Items",
             "ShowToChat": "Show to Chat",

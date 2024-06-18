@@ -92,7 +92,7 @@
             "Other": ""
         },
 
-        "Attributes": {
+        "AttributesList": {
             "Label": "",
             "Attributes": "",
             "Strength": "",
@@ -106,7 +106,7 @@
             "Resolve": ""
         },
 
-        "Skills": {
+        "SkillsList": {
             "Label": "",
             "Skills": "",
             "Specialty": "",
@@ -140,7 +140,7 @@
             "Technology": ""
         },
 
-        "Items": {
+        "ItemsList": {
             "Label": "",
             "ShowToChat": "",
             "CustomRoll": "",

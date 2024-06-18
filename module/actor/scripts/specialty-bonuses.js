@@ -13,7 +13,7 @@ export const _onAddBonus = async function (event, actor, data, SkillEditDialog) 
   const bonusData = {
     actor,
     bonus: {
-      source: game.i18n.localize('WOD5E.Items.NewSpecialty'),
+      source: game.i18n.localize('WOD5E.ItemsList.NewSpecialty'),
       value: 1,
       paths: [`skills.${skill}`]
     }

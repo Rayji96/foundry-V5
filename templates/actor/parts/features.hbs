@@ -24,7 +24,7 @@
                             {{/numLoop}}
                         </div>
                         <div class="item-controls">
-                            <a class="item-control item-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}"><i
+                            <a class="item-control item-chat" title="{{localize 'WOD5E.ItemsList.ShowToChat'}}"><i
                                 class="fas fa-comment-alt"></i></a>
                             <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}"><i
                                     class="fas fa-edit"></i></a>
@@ -40,11 +40,11 @@
         {{/each}}
     </ol>
     {{#if (or hasBoons isCharacter)}}
-        <label class="resource-label flex-center">{{localize "WOD5E.Items.Boons"}}</label>
+        <label class="resource-label flex-center">{{localize "WOD5E.ItemsList.Boons"}}</label>
         <ol class="items-list flex-left">
             <li class="item flexrow item-header">
                 <div class="item-name">{{localize "WOD5E.Name"}}</div>
-                <div class="item-type">{{localize "WOD5E.Items.Type"}}</div>
+                <div class="item-type">{{localize "WOD5E.ItemsList.Type"}}</div>
                 <div class="item-controls">
                     <a class="item-control item-create" title="{{localize 'WOD5E.Add'}}"
                         data-type="boon"><i class="fas fa-plus"></i> {{localize "WOD5E.Add"}}
@@ -62,7 +62,7 @@
                         </div>
                         <div class="item-type">{{item.system.boontype}}</div>
                         <div class="item-controls">
-                            <a class="item-control item-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}"><i
+                            <a class="item-control item-chat" title="{{localize 'WOD5E.ItemsList.ShowToChat'}}"><i
                                 class="fas fa-comment-alt"></i></a>
                             <a class="item-control item-edit" title="{{localize 'WOD5E.Edit'}}"><i
                                     class="fas fa-edit"></i></a>

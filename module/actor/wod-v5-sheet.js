@@ -510,7 +510,7 @@ export class WoDActor extends ActorSheet {
         itemOptions = WOD5E.Gifts.getList()
         break
       case 'feature':
-        selectLabel = game.i18n.localize('WOD5E.Items.SelectFeature')
+        selectLabel = game.i18n.localize('WOD5E.ItemsList.SelectFeature')
         itemOptions = WOD5E.Features.getList()
         break
       default:

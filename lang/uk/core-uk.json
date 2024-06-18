@@ -94,7 +94,7 @@
             "Other": "Інше"
         },
 
-        "Attributes": {
+        "AttributesList": {
             "Label": "Атрибут",
             "Attributes": "Атрибути",
             "Strength": "Сила",
@@ -108,7 +108,7 @@
             "Resolve": "Зосередженість"
         },
 
-        "Skills": {
+        "SkillsList": {
             "Label": "Навичка",
             "Skills": "Навички",
             "Specialty": "Спеціалізація",
@@ -142,7 +142,7 @@
             "Technology": "Технології"
         },
 
-        "Items": {
+        "ItemsList": {
             "_Label": "",
             "ShowToChat": "Показати в чат",
             "CustomRoll": "Власна перевірка",

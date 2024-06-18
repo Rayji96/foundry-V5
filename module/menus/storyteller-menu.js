@@ -186,12 +186,12 @@ async function _onGenerateModPrompt (type) {
     const attributesList = WOD5E.Attributes.getList({})
 
     // Render the dialog
-    _onRenderPromptDialog('attribute', attributesList, game.i18n.localize('WOD5E.Attributes.Label'))
+    _onRenderPromptDialog('attribute', attributesList, game.i18n.localize('WOD5E.AttributesList.Label'))
   } else if (type === 'skill') {
     const skillsList = WOD5E.Skills.getList({})
 
     // Render the dialog
-    _onRenderPromptDialog('skill', skillsList, game.i18n.localize('WOD5E.Skills.Label'))
+    _onRenderPromptDialog('skill', skillsList, game.i18n.localize('WOD5E.SkillsList.Label'))
   }
 }
 

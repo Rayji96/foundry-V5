@@ -94,7 +94,7 @@
       "Other": "Inne"
     },
 
-    "Attributes": {
+    "AttributesList": {
       "Label": "Atrybut",
       "Attributes": "Atrybuty",
       "Strength": "Siła",
@@ -108,7 +108,7 @@
       "Resolve": "Determinacja"
     },
 
-    "Skills": {
+    "SkillsList": {
       "Label": "Umiejętność",
       "Skills": "Umiejętności",
       "Specialty": "Specjalizacja",
@@ -142,7 +142,7 @@
       "Technology": "Technika"
     },
 
-    "Items": {
+    "ItemsList": {
       "_Label": "",
       "ShowToChat": "Pokaż na czacie",
       "CustomRoll": "Własny Rzut",

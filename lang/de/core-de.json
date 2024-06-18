@@ -94,7 +94,7 @@
       "Other": "Sonstige"
     },
 
-    "Attributes": {
+    "AttributesList": {
       "Label": "Attribute",
       "Attributes": "Attribute",
       "Strength": "Körperkraft",
@@ -108,7 +108,7 @@
       "Resolve": "Entschlossenheit"
     },
 
-    "Skills": {
+    "SkillsList": {
       "Label": "Fähigkeiten",
       "Skills": "Fähigkeiten",
       "Specialty": "Spezialisierung",
@@ -142,7 +142,7 @@
       "Technology": "Technologie"
     },
 
-    "Items": {
+    "ItemsList": {
       "Label": "Gegenstände",
       "ShowToChat": "An Chat senden",
       "CustomRoll": "Benutzerdefinierter Wurf",

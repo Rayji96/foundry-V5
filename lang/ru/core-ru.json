@@ -94,7 +94,7 @@
             "Other": "Прочее"
         },
 
-        "Attributes": {
+        "AttributesList": {
             "Label": "Характеристика",
             "Attributes": "Характеристики",
             "Strength": "Сила",
@@ -108,7 +108,7 @@
             "Resolve": "Упорство"
         },
 
-        "Skills": {
+        "SkillsList": {
             "Label": "Навык",
             "Skills": "Навыки",
             "Specialty": "Специализация",
@@ -142,7 +142,7 @@
             "Technology": "Техника"
         },
 
-        "Items": {
+        "ItemsList": {
             "_Label": "",
             "ShowToChat": "Вывести в чат",
             "CustomRoll": "Уникальная проверка",

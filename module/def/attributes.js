@@ -74,47 +74,47 @@ export class Attributes {
   }
 
   static strength = {
-    label: 'WOD5E.Attributes.Strength',
+    label: 'WOD5E.AttributesList.Strength',
     type: 'physical'
   }
 
   static charisma = {
-    label: 'WOD5E.Attributes.Charisma',
+    label: 'WOD5E.AttributesList.Charisma',
     type: 'social'
   }
 
   static intelligence = {
-    label: 'WOD5E.Attributes.Intelligence',
+    label: 'WOD5E.AttributesList.Intelligence',
     type: 'mental'
   }
 
   static dexterity = {
-    label: 'WOD5E.Attributes.Dexterity',
+    label: 'WOD5E.AttributesList.Dexterity',
     type: 'physical'
   }
 
   static manipulation = {
-    label: 'WOD5E.Attributes.Manipulation',
+    label: 'WOD5E.AttributesList.Manipulation',
     type: 'social'
   }
 
   static wits = {
-    label: 'WOD5E.Attributes.Wits',
+    label: 'WOD5E.AttributesList.Wits',
     type: 'mental'
   }
 
   static stamina = {
-    label: 'WOD5E.Attributes.Stamina',
+    label: 'WOD5E.AttributesList.Stamina',
     type: 'physical'
   }
 
   static composure = {
-    label: 'WOD5E.Attributes.Composure',
+    label: 'WOD5E.AttributesList.Composure',
     type: 'social'
   }
 
   static resolve = {
-    label: 'WOD5E.Attributes.Resolve',
+    label: 'WOD5E.AttributesList.Resolve',
     type: 'mental'
   }
 }
