@@ -1,12 +1,12 @@
 <div class="tab" data-group="primary" data-tab="modifications">
   <div class="config-category">
-    <h2>Modified Attributes</h2>
+    <h2>{{localize 'WOD5E.Settings.ModifiedAttributes'}}</h2>
     <div class="subcategory">
-      <p class="notes">Allows the storyteller to modify the attributes on actor sheets.</p>
+      <p class="notes">{{localize 'WOD5E.Settings.ModifiedAttributesHint'}}</p>
       <div class="grid grid-3col">
-        <div class="mod-header">Attribute</div>
-        <div class="mod-header">Rename</div>
-        <div class="mod-header">Hidden</div>
+        <div class="mod-header">{{localize 'WOD5E.AttributesList.Label'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.Rename'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.Hidden'}}</div>
       </div>
       {{#each attributeModifications as |attribute id|}}
         <div class="modification-row grid grid-3col" data-type="attribute" data-id="{{attribute.id}}" data-label="{{attribute.label}}">
@@ -20,18 +20,18 @@
       {{/each}}
       <div class="mod-footer">
         <hr>
-        <div class="add-mod-button addition-button" data-type="attribute">Add Attribute Modification</div>
+        <div class="add-mod-button addition-button" data-type="attribute">{{localize 'WOD5E.Settings.AddAttributeModification'}}</div>
       </div>
     </div>
   </div>
   <div class="config-category">
-    <h2>Modified Skills</h2>
+    <h2>{{localize 'WOD5E.Settings.ModifiedSkills'}}</h2>
     <div class="subcategory">
-      <p class="notes">Allows the storyteller to modify the skills on actor sheets.</p>
+      <p class="notes">{{localize 'WOD5E.Settings.ModifiedSkillsHint'}}</p>
       <div class="grid grid-3col">
-        <div class="mod-header">Skill</div>
-        <div class="mod-header">Rename</div>
-        <div class="mod-header">Hidden</div>
+        <div class="mod-header">{{localize 'WOD5E.SkillsList.Label'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.Rename'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.Hidden'}}</div>
       </div>
       {{#each skillModifications as |skill id|}}
         <div class="modification-row grid grid-3col" data-type="skill" data-id="{{skill.id}}" data-label="{{skill.label}}">
@@ -45,7 +45,7 @@
       {{/each}}
       <div class="mod-footer">
         <hr>
-        <div class="add-mod-button addition-button" data-type="skill">Add Skill Modification</div>
+        <div class="add-mod-button addition-button" data-type="skill">{{localize 'WOD5E.Settings.AddSkillModification'}}</div>
       </div>
     </div>
   </div>

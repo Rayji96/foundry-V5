@@ -6,7 +6,7 @@
             <div class="item-name header-level">{{localize "WOD5E.Level"}}</div>
             <!-- Item controls for adding new discipline lists -->
             <div class="item-controls">
-                <a class="item-control discipline-create" title="{{localize 'WOD5E.VTM.AddDiscipline'}}">
+                <a class="item-control discipline-create item-create" title="{{localize 'WOD5E.VTM.AddDiscipline'}}" data-type="power">
                     <i class="fas fa-plus"></i>
                     {{localize "WOD5E.VTM.AddDiscipline"}}
                 </a>
@@ -33,7 +33,7 @@
                         <!-- Item controls for Discipline sections -->
                         <div class="item-controls">
                             <!-- Add new discipline power -->
-                            <a class="item-control item-create" title="{{localize 'WOD5E.VTM.AddPower'}}" data-type="power" data-discipline="{{key}}">
+                            <a class="item-control item-create" title="{{localize 'WOD5E.VTM.AddPower'}}" data-type="power" data-subtype="{{key}}">
                                 <i class="fas fa-plus"></i>
                             </a>
                             <!-- Icon to roll the discipline with an attribute -->
@@ -42,7 +42,7 @@
                                 <i class="fas fa-dice-d20"></i>
                             </a>
                             <!-- Icon to show the discipline description to the chat-->
-                            <a class="item-control discipline-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}" data-type="power" data-discipline="{{key}}">
+                            <a class="item-control discipline-chat" title="{{localize 'WOD5E.ItemsList.ShowToChat'}}" data-type="power" data-discipline="{{key}}">
                                 <i class="fas fa-comment-alt"></i>
                             </a>
                             <!-- Icon to delete the discipline (as long as it doesn't have any powers) -->
@@ -85,7 +85,7 @@
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <!-- Icon to display the power in chat -->
-                                <a class="item-control item-chat" title="{{localize 'WOD5E.Items.ShowToChat'}}">
+                                <a class="item-control item-chat" title="{{localize 'WOD5E.ItemsList.ShowToChat'}}">
                                     <i class="fas fa-comment-alt"></i>
                                 </a>
                                 <!-- Icon to delete the power -->

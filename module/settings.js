@@ -10,8 +10,8 @@ import { resetActors } from './scripts/reset-actors.js'
  */
 export const loadSettings = async function () {
   game.settings.register('vtm5e', 'worldVersion', {
-    name: 'World Version',
-    hint: 'Automatically upgrades data when the system.json is upgraded.',
+    name: game.i18n.localize('WOD5E.Settings.WorldVersion'),
+    hint: game.i18n.localize('WOD5E.Settings.WorldVersionHint'),
     scope: 'world',
     config: true,
     default: '1.5',
@@ -19,8 +19,8 @@ export const loadSettings = async function () {
   })
 
   game.settings.register('vtm5e', 'darkTheme', {
-    name: 'Dark Theme',
-    hint: 'Display sheets using a darker theme on a per-user basis.',
+    name: game.i18n.localize('WOD5E.Settings.DarkTheme'),
+    hint: game.i18n.localize('WOD5E.Settings.DarkThemeHint'),
     scope: 'client',
     config: true,
     default: false,
@@ -31,8 +31,8 @@ export const loadSettings = async function () {
   })
 
   game.settings.register('vtm5e', 'actorBanner', {
-    name: 'Enable Character Type Banner',
-    hint: 'Display a banner at the top of actor sheets to represent the character type.',
+    name: game.i18n.localize('WOD5E.Settings.ActorBanner'),
+    hint: game.i18n.localize('WOD5E.Settings.ActorBannerHint'),
     scope: 'client',
     config: true,
     default: true,
@@ -68,17 +68,17 @@ export const loadSettings = async function () {
   */
 
   game.settings.registerMenu('vtm5e', 'automationMenu', {
-    name: 'Automation Settings',
-    label: 'WOD5E Automation',
-    hint: 'Access various automation settings.',
+    name: game.i18n.localize('WOD5E.Settings.AutomationSettings'),
+    hint: game.i18n.localize('WOD5E.Settings.AutomationSettingsHint'),
+    label: game.i18n.localize('WOD5E.Settings.AutomationSettings'),
     icon: 'fas fa-wrench',
     type: AutomationMenu,
     restricted: true
   })
 
   game.settings.register('vtm5e', 'disableAutomation', {
-    name: 'Disable All Automation',
-    hint: 'Disables all automation without having to individually press all the below buttons.',
+    name: game.i18n.localize('WOD5E.Settings.DisableAutomation'),
+    hint: game.i18n.localize('WOD5E.Settings.DisableAutomationHint'),
     scope: 'world',
     config: false,
     default: false,
@@ -105,8 +105,8 @@ export const loadSettings = async function () {
   })
 
   game.settings.register('vtm5e', 'automatedWillpower', {
-    name: 'Automate Willpower Damage',
-    hint: 'If enabled, using features that deal Willpower damage will automatically tick Willpower damage on the associated actor.',
+    name: game.i18n.localize('WOD5E.Settings.AutomateWillpower'),
+    hint: game.i18n.localize('WOD5E.Settings.AutomateWillpowerHint'),
     scope: 'world',
     config: false,
     default: true,
@@ -114,8 +114,8 @@ export const loadSettings = async function () {
   })
 
   game.settings.register('vtm5e', 'automatedHunger', {
-    name: 'Automate Hunger Increase',
-    hint: 'If enabled, rolling Hunger Dice and failing will automatically increase the Hunger of the associated actor.',
+    name: game.i18n.localize('WOD5E.Settings.AutomateHunger'),
+    hint: game.i18n.localize('WOD5E.Settings.AutomateHungerHint'),
     scope: 'world',
     config: false,
     default: true,
@@ -123,8 +123,8 @@ export const loadSettings = async function () {
   })
 
   game.settings.register('vtm5e', 'automatedOblivion', {
-    name: 'Automate Oblivion Stains',
-    hint: 'If enabled, rolling 1 or 10 on rouse checks on Oblivion discipline powers will grant a stain on the humanity of the associated actor.',
+    name: game.i18n.localize('WOD5E.Settings.AutomateOblivion'),
+    hint: game.i18n.localize('WOD5E.Settings.AutomateOblivionHint'),
     scope: 'world',
     config: false,
     default: true,
@@ -132,8 +132,8 @@ export const loadSettings = async function () {
   })
 
   game.settings.register('vtm5e', 'automatedRage', {
-    name: 'Automate Rage Dice',
-    hint: 'If enabled, rolling Rage Dice and failing will automatically decrease Rage from the associated actor.',
+    name: game.i18n.localize('WOD5E.Settings.AutomateRage'),
+    hint: game.i18n.localize('WOD5E.Settings.AutomateRageHint'),
     scope: 'world',
     config: false,
     default: true,
@@ -146,9 +146,9 @@ export const loadSettings = async function () {
 
   // Register the storyteller menu
   game.settings.registerMenu('vtm5e', 'storytellerMenu', {
-    name: 'Storyteller Menu',
-    label: 'Storyteller Settings',
-    hint: 'Modify the system, such as renaming skills and attributes.',
+    name: game.i18n.localize('WOD5E.Settings.StorytellerMenu'),
+    hint: game.i18n.localize('WOD5E.Settings.StorytellerMenuHint'),
+    label: game.i18n.localize('WOD5E.Settings.StorytellerMenu'),
     icon: 'fas fa-bars',
     type: StorytellerMenu,
     restricted: true
@@ -156,8 +156,8 @@ export const loadSettings = async function () {
 
   // Register the modified attributes
   game.settings.register('vtm5e', 'modifiedAttributes', {
-    name: 'Attribute Modifications',
-    hint: 'Allows for modification of existing attributes.',
+    name: game.i18n.localize('WOD5E.Settings.ModifiedAttributes'),
+    hint: game.i18n.localize('WOD5E.Settings.ModifiedAttributesHint'),
     scope: 'world',
     config: false,
     default: [],
@@ -176,8 +176,8 @@ export const loadSettings = async function () {
 
   // Register the custom attributes
   game.settings.register('vtm5e', 'customAttributes', {
-    name: 'Custom Attributes',
-    hint: 'Allows for the creation of custom attributes.',
+    name: game.i18n.localize('WOD5E.Settings.CustomAttributes'),
+    hint: game.i18n.localize('WOD5E.Settings.CustomAttributes'),
     scope: 'world',
     config: false,
     default: [],
@@ -199,8 +199,8 @@ export const loadSettings = async function () {
 
   // Register the modified skills
   game.settings.register('vtm5e', 'modifiedSkills', {
-    name: 'Skill Modifications',
-    hint: 'Allows for modification of existing skills.',
+    name: game.i18n.localize('WOD5E.Settings.ModifiedSkills'),
+    hint: game.i18n.localize('WOD5E.Settings.ModifiedSkillsHint'),
     scope: 'world',
     config: false,
     default: [],
@@ -219,8 +219,8 @@ export const loadSettings = async function () {
 
   // Register the custom attributes
   game.settings.register('vtm5e', 'customSkills', {
-    name: 'Custom Skills',
-    hint: 'Allows for the creation of custom skills.',
+    name: game.i18n.localize('WOD5E.Settings.CustomSkills'),
+    hint: game.i18n.localize('WOD5E.Settings.CustomSkillsHint'),
     scope: 'world',
     config: false,
     default: [],

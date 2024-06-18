@@ -220,137 +220,137 @@
         "exceptionaldicepools": {
           "athletics": {
             "value": 0,
-            "name": "WOD5E.Skills.Athletics",
+            "name": "WOD5E.SkillsList.Athletics",
             "visible": false
           },
           "animalken": {
             "value": 0,
-            "name": "WOD5E.Skills.AnimalKen",
+            "name": "WOD5E.SkillsList.AnimalKen",
             "visible": false
           },
           "academics": {
             "value": 0,
-            "name": "WOD5E.Skills.Academics",
+            "name": "WOD5E.SkillsList.Academics",
             "visible": false
           },
           "brawl": {
             "value": 0,
-            "name": "WOD5E.Skills.Brawl",
+            "name": "WOD5E.SkillsList.Brawl",
             "visible": false
           },
           "etiquette": {
             "value": 0,
-            "name": "WOD5E.Skills.Etiquette",
+            "name": "WOD5E.SkillsList.Etiquette",
             "visible": false
           },
           "awareness": {
             "value": 0,
-            "name": "WOD5E.Skills.Awareness",
+            "name": "WOD5E.SkillsList.Awareness",
             "visible": false
           },
           "craft": {
             "value": 0,
-            "name": "WOD5E.Skills.Craft",
+            "name": "WOD5E.SkillsList.Craft",
             "visible": false
           },
           "insight": {
             "value": 0,
-            "name": "WOD5E.Skills.Insight",
+            "name": "WOD5E.SkillsList.Insight",
             "visible": false
           },
           "finance": {
             "value": 0,
-            "name": "WOD5E.Skills.Finance",
+            "name": "WOD5E.SkillsList.Finance",
             "visible": false
           },
           "drive": {
             "value": 0,
-            "name": "WOD5E.Skills.Drive",
+            "name": "WOD5E.SkillsList.Drive",
             "visible": false
           },
           "intimidation": {
             "value": 0,
-            "name": "WOD5E.Skills.Intimidation",
+            "name": "WOD5E.SkillsList.Intimidation",
             "visible": false
           },
           "investigation": {
             "value": 0,
-            "name": "WOD5E.Skills.Investigation",
+            "name": "WOD5E.SkillsList.Investigation",
             "visible": false
           },
           "firearms": {
             "value": 0,
-            "name": "WOD5E.Skills.Firearms",
+            "name": "WOD5E.SkillsList.Firearms",
             "visible": false
           },
           "leadership": {
             "value": 0,
-            "name": "WOD5E.Skills.Leadership",
+            "name": "WOD5E.SkillsList.Leadership",
             "visible": false
           },
           "medicine": {
             "value": 0,
-            "name": "WOD5E.Skills.Medicine",
+            "name": "WOD5E.SkillsList.Medicine",
             "visible": false
           },
           "larceny": {
             "value": 0,
-            "name": "WOD5E.Skills.Larceny",
+            "name": "WOD5E.SkillsList.Larceny",
             "visible": false
           },
           "performance": {
             "value": 0,
-            "name": "WOD5E.Skills.Performance",
+            "name": "WOD5E.SkillsList.Performance",
             "visible": false
           },
           "occult": {
             "value": 0,
-            "name": "WOD5E.Skills.Occult",
+            "name": "WOD5E.SkillsList.Occult",
             "visible": false
           },
           "melee": {
             "value": 0,
-            "name": "WOD5E.Skills.Melee",
+            "name": "WOD5E.SkillsList.Melee",
             "visible": false
           },
           "persuasion": {
             "value": 0,
-            "name": "WOD5E.Skills.Persuasion",
+            "name": "WOD5E.SkillsList.Persuasion",
             "visible": false
           },
           "politics": {
             "value": 0,
-            "name": "WOD5E.Skills.Politics",
+            "name": "WOD5E.SkillsList.Politics",
             "visible": false
           },
           "stealth": {
             "value": 0,
-            "name": "WOD5E.Skills.Stealth",
+            "name": "WOD5E.SkillsList.Stealth",
             "visible": false
           },
           "streetwise": {
             "value": 0,
-            "name": "WOD5E.Skills.Streetwise",
+            "name": "WOD5E.SkillsList.Streetwise",
             "visible": false
           },
           "science": {
             "value": 0,
-            "name": "WOD5E.Skills.Science",
+            "name": "WOD5E.SkillsList.Science",
             "visible": false
           },
           "survival": {
             "value": 0,
-            "name": "WOD5E.Skills.Survival",
+            "name": "WOD5E.SkillsList.Survival",
             "visible": false
           },
           "subterfuge": {
             "value": 0,
-            "name": "WOD5E.Skills.Subterfuge",
+            "name": "WOD5E.SkillsList.Subterfuge",
             "visible": false
           },
           "technology": {
             "value": 0,
-            "name": "WOD5E.Skills.Technology",
+            "name": "WOD5E.SkillsList.Technology",
             "visible": false
           }
         }
@@ -903,7 +903,7 @@
     },
     "feature": {
       "templates": ["base"],
-      "featuretype":"merit",
+      "featuretype": "merit",
       "points": 0
     },
     "power": {
@@ -925,8 +925,8 @@
     },
     "customRoll": {
       "templates": ["base"],
-      "dice1" : "",
-      "dice2" : "",
+      "dice1": "strength",
+      "dice2": "athletics",
       "modifier": 0
     },
     "perk": {

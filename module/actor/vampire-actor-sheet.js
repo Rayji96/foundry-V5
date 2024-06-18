@@ -83,11 +83,14 @@ export class VampireActorSheet extends GhoulActorSheet {
       {
         source: game.i18n.localize('WOD5E.VTM.BloodSurge'),
         value: actorData.system.bloodPotency.surge,
-        paths: ['blood-surge'],
+        paths: ['all'],
+        unless: ['willpower', 'humanity', 'extended'],
+        displayWhenInactive: true,
         activeWhen: {
-          check: 'always'
+          check: 'isPath',
+          path: 'blood-surge'
         },
-        forceDiceType: 'advanced'
+        advancedCheckDice: 1
       }
     ]
   }
@@ -125,6 +128,7 @@ export class VampireActorSheet extends GhoulActorSheet {
     WOD5eDice.Roll({
       basicDice: dicePool,
       title: game.i18n.localize('WOD5E.VTM.RollingRemorse'),
+      paths: ['humanity'],
       actor,
       data: actor.system,
       quickRoll: true,

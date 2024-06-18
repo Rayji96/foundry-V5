@@ -30,15 +30,15 @@
       
       "Arsenal": "Arsenal",
       "Fleet": "Flotte",
-      "Ordnance": "Artillerie",
+      "Ordnance": "Sprengstoff",
       "Library": "Bibliothek",
       "ImprovisedGear": "Improvisierte Ausrüstung",
-      "GlobalAccess": "Globaler Zugang",
+      "GlobalAccess": "Globaler Zugriff",
       "DroneJockey": "Drohnenjockey",
       "BeastWhisperer": "Tierflüsterer",
-      "SenseTheUnnatural": "Das Unnatürliche spüren",
-      "RepelTheUnnatural": "Das Unnatürliche abwehren",
-      "ThwartTheUnnatural": "Das Unnatürliche verhindern",
+      "SenseTheUnnatural": "Übernatürliches spüren",
+      "RepelTheUnnatural": "Übernatürliches zurücktreiben",
+      "ThwartTheUnnatural": "Übernatürliches vereiteln",
       "Artifact": "Artefakt"
     }
   }

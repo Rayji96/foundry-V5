@@ -8,14 +8,22 @@
   text-align: center;
 }
 
-.wod5e-config-form.storyteller-menu .modification-row {
+.wod5e-config-form.storyteller-menu .modification-row, .wod5e-config-form.storyteller-menu .custom-row {
   margin-top: 3px;
   margin-bottom: 3px;
 }
 
-.wod5e-config-form.storyteller-menu .modification-row .mod-label {
+.wod5e-config-form.storyteller-menu .mod-label {
   font-weight: bold;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wod5e-config-form.storyteller-menu .mod-label input {
+  margin-left: 5px;
 }
 
 .wod5e-config-form.storyteller-menu .modification-row .mod-hidden {
@@ -42,4 +50,9 @@
 
 .wod5e-config-form.storyteller-menu .remove-mod-button {
   cursor: pointer;
+}
+
+.wod5e-config-form.storyteller-menu .remove-custom-button {
+  cursor: pointer;
+  margin-top: 5px;
 }

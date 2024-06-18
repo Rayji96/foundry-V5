@@ -34,19 +34,19 @@ export class Features {
   }
 
   static background = {
-    label: 'WOD5E.Items.Background'
+    label: 'WOD5E.ItemsList.Background'
   }
 
   static merit = {
-    label: 'WOD5E.Items.Merit'
+    label: 'WOD5E.ItemsList.Merit'
   }
 
   static flaw = {
-    label: 'WOD5E.Items.Flaw'
+    label: 'WOD5E.ItemsList.Flaw'
   }
 
   static boon = {
-    label: 'WOD5E.Items.Boon'
+    label: 'WOD5E.ItemsList.Boon'
   }
 }
 

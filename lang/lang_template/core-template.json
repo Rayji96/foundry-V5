@@ -16,6 +16,9 @@
         "Exp": "",
         "None": "",
         "Value": "",
+        "Label": "",
+
+        "New": "{string}",
 
         "Mortal": "",
         "GroupSheet": "",
@@ -56,7 +59,8 @@
             "DisplayWhenInactive": "",
             "Unless": "",
             "PathToCheck": "",
-            "ValueToCheck": ""
+            "ValueToCheck": "",
+            "IfPathIs": ""
         },
 
         "SPC": {
@@ -88,7 +92,7 @@
             "Other": ""
         },
 
-        "Attributes": {
+        "AttributesList": {
             "Label": "",
             "Attributes": "",
             "Strength": "",
@@ -102,7 +106,7 @@
             "Resolve": ""
         },
 
-        "Skills": {
+        "SkillsList": {
             "Label": "",
             "Skills": "",
             "Specialty": "",
@@ -136,7 +140,7 @@
             "Technology": ""
         },
 
-        "Items": {
+        "ItemsList": {
             "Label": "",
             "ShowToChat": "",
             "CustomRoll": "",
@@ -155,7 +159,8 @@
             "NewSpecialty": "",
             "Boon": "",
             "Boons": "",
-            "Macro": ""
+            "Macro": "",
+            "SelectFeature": ""
         },
 
         "Biography": {
@@ -192,6 +197,66 @@
         "Macro": {
             "MacroID": "",
             "MacroNote": ""
+        },
+
+        "Settings": {
+            "SaveChanges": "",
+    
+            "Modifications": "",
+            "Custom": "",
+    
+            "Rename": "",
+            "Hidden": "",
+    
+            "AddAttributeModification": "",
+            "AddSkillModification": "",
+            "AddCustomAttribute": "",
+            "AddCustomSkill": "",
+    
+            "AttributeType": "",
+            "SkillType": "",
+    
+            "WorldVersion": "",
+            "WorldVersionHint": "",
+    
+            "DarkTheme": "",
+            "DarkThemeHint": "",
+    
+            "ActorBanner": "",
+            "ActorBannerHint": "",
+    
+            "AutomationSettings": "",
+            "AutomationSettingsHint": "",
+    
+            "DisableAutomation": "",
+            "DisableAutomationHint": "",
+    
+            "AutomateWillpower": "",
+            "AutomateWillpowerHint": "",
+    
+            "AutomateHunger": "",
+            "AutomateHungerHint": "",
+    
+            "AutomateOblivion": "",
+            "AutomateOblivionHint": "",
+    
+            "AutomateRage": "",
+            "AutomateRageHint": "",
+    
+            "StorytellerMenu": "",
+            "StorytellerMenuHint": "",
+    
+            "ModifiedAttributes": "",
+            "ModifiedAttributesHint": "",
+    
+            "ModifiedSkills": "",
+            "ModifiedSkillsHint": "",
+    
+            "CustomAttributes": "",
+            "CustomAttributesHint": "",
+    
+            "CustomSkills": "",
+            "CustomSkillsHint": ""
         }
     }
 }

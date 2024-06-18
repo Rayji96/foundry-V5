@@ -1,4 +1,4 @@
-/* global DEFAULT_TOKEN, ChatMessage, foundry, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
+/* global DEFAULT_TOKEN, ChatMessage, ActorSheet, game, renderTemplate, Dialog, TextEditor, WOD5E */
 
 import { _onRoll } from './scripts/roll.js'
 import { _onResourceChange, _setupDotCounters, _setupSquareCounters, _onDotCounterChange, _onDotCounterEmpty, _onSquareCounterChange } from './scripts/counters.js'
@@ -85,7 +85,7 @@ export class WoDActor extends ActorSheet {
     const gear = []
 
     // Loop through each entry in the attributes list, get the data (if available), and then push to the containers
-    const attributesList = Attributes.getList()
+    const attributesList = Attributes.getList({})
     const actorAttributes = actorData.system?.abilities
 
     if (actorAttributes) {
@@ -125,7 +125,7 @@ export class WoDActor extends ActorSheet {
     }
 
     // Loop through each entry in the skills list, get the data (if available), and then push to the containers
-    const skillsList = Skills.getList()
+    const skillsList = Skills.getList({})
     const actorSkills = actorData.system?.skills
 
     if (actorSkills) {
@@ -241,7 +241,7 @@ export class WoDActor extends ActorSheet {
     html.find('.resource-value > .resource-value-empty').click(_onDotCounterEmpty.bind(this))
 
     // Add Inventory Item
-    html.find('.item-create').click(this._onItemCreate.bind(this))
+    html.find('.item-create').click(this._onCreateItem.bind(this))
 
     // Edit a skill
     html.find('.edit-skill').click(this._onSkillEdit.bind(this))
@@ -325,64 +325,6 @@ export class WoDActor extends ActorSheet {
   }
 
   /**
-   * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
-   * @param {Event} event   The originating click event
-   * @protected
-   */
-  async _onItemCreate (event) {
-    event.preventDefault()
-
-    // Top-level variables
-    const actor = this.actor
-    const header = event.currentTarget
-    const type = header.dataset.type
-
-    // Secondary variables
-    const data = foundry.utils.duplicate(header.dataset)
-
-    // Variables yet to be defined
-    let prelocalizeString
-
-    // Handle situational variable changing
-    if (type === 'power') { // Vampire disciplines
-      prelocalizeString = data.discipline
-    } else if (type === 'perk') {
-      prelocalizeString = data.edge
-    } else if (type === 'feature') {
-      prelocalizeString = data.featuretype
-    } else {
-      prelocalizeString = type
-    }
-    // Handle situational variable changing part 2
-    if (type === 'boon') {
-      data.boontype = 'Trivial'
-    } else if (type === 'customRoll') {
-      data.dice1 = 'strength'
-      data.dice2 = 'athletics'
-    }
-
-    // Get the image for the item, if one is available from the item definitions
-    const itemsList = WOD5E.ItemTypes.getList()
-    const img = itemsList[type]?.img ? itemsList[type].img : 'systems/vtm5e/assets/icons/items/item-default.svg'
-
-    // Initialize a default name.
-    const name = await WOD5E.api.generateLabelAndLocalize({ string: prelocalizeString })
-
-    // Prepare the item object.
-    const itemData = {
-      name,
-      type,
-      img,
-      system: data
-    }
-    // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.system.type
-
-    // Finally, create the item!
-    return actor.createEmbeddedDocuments('Item', [itemData])
-  }
-
-  /**
    * Handle bringing up the skill edit dialog window
    * @param {Event} event   The originating click event
    * @protected
@@ -411,7 +353,7 @@ export class WoDActor extends ActorSheet {
     // Render the dialog window to select which skill/attribute combo to use
     const SkillEditDialog = new Dialog(
       {
-        title: WOD5E.Skills.getList()[skill].displayName,
+        title: WOD5E.Skills.getList({})[skill].displayName,
         content,
         buttons: { },
         close: (html) => {
@@ -521,10 +463,168 @@ export class WoDActor extends ActorSheet {
     WOD5eDice.Roll({
       basicDice: dicePool,
       title: game.i18n.localize('WOD5E.Chat.RollingWillpower'),
+      paths: ['willpower'],
       actor,
       data: actor.system,
       quickRoll: false,
       disableAdvancedDice: true
     })
+  }
+
+  /**
+   * Handle creating a new Owned Item for the actor using initial data defined in a dataset
+   * @param {Event} event   The originating click event
+   */
+  async _onCreateItem (event) {
+    event.preventDefault()
+
+    // Top-level variables
+    const actor = this.actor
+    const dataset = event.currentTarget.dataset
+    const itemsList = WOD5E.ItemTypes.getList()
+    const type = dataset.type
+
+    // Variables to be defined later
+    let subtype = dataset.subtype
+    let itemName = ''
+    let selectLabel = ''
+    let itemOptions = {}
+    let itemData = {}
+    let options = ''
+
+    // Define the actor's gamesystem, defaulting to "mortal" if it's not in the systems list
+    const system = actor.system.gamesystem in WOD5E.Systems.getList() ? actor.system.gamesystem : 'mortal'
+
+    // Generate item-specific data based on type
+    switch (type) {
+      case 'power':
+        selectLabel = game.i18n.localize('WOD5E.VTM.SelectDiscipline')
+        itemOptions = WOD5E.Disciplines.getList()
+        break
+      case 'perk':
+        selectLabel = game.i18n.localize('WOD5E.HTR.SelectEdge')
+        itemOptions = WOD5E.Edges.getList()
+        break
+      case 'gift':
+        selectLabel = game.i18n.localize('WOD5E.WTA.SelectGift')
+        itemOptions = WOD5E.Gifts.getList()
+        break
+      case 'feature':
+        selectLabel = game.i18n.localize('WOD5E.ItemsList.SelectFeature')
+        itemOptions = WOD5E.Features.getList()
+        break
+      default:
+        console.log('Error: Invalid type provided.')
+        break
+    }
+
+    // Get the image for the item, if available
+    const itemImg = itemsList[type]?.img || 'systems/vtm5e/assets/icons/items/item-default.svg'
+
+    // Create item if subtype is already defined or not needed
+    if (subtype || ['customRoll', 'boon'].includes(type)) {
+      if (subtype) {
+        itemData = await this.appendSubtypeData(type, subtype, itemData)
+      }
+
+      // Generate item name
+      itemName = subtype ? await WOD5E.api.generateLabelAndLocalize({ string: subtype }) : itemsList[type].label
+
+      // Create the item
+      return this._createItem(actor, itemName, type, itemImg, itemData)
+    } else {
+      // Build the options for the select dropdown
+      for (const [key, value] of Object.entries(itemOptions)) {
+        options += `<option value="${key}">${value.displayName}</option>`
+      }
+
+      // Template for the dialog form
+      const template = `
+        <form>
+          <div class="form-group">
+            <label>${selectLabel}</label>
+            <select id="subtypeSelect">${options}</select>
+          </div>
+        </form>`
+
+      // Define dialog buttons
+      const buttons = {
+        submit: {
+          icon: '<i class="fas fa-check"></i>',
+          label: game.i18n.localize('WOD5E.Add'),
+          callback: async (html) => {
+            subtype = html.find('#subtypeSelect')[0].value
+            itemData = await this.appendSubtypeData(type, subtype, itemData)
+
+            // Generate the item name
+            itemName = subtype ? await WOD5E.api.generateLabelAndLocalize({ string: subtype }) : itemsList[type].label
+
+            // Create the item
+            return this._createItem(actor, itemName, type, itemImg, itemData)
+          }
+        },
+        cancel: {
+          icon: '<i class="fas fa-times"></i>',
+          label: game.i18n.localize('WOD5E.Cancel')
+        }
+      }
+
+      // Display the dialog
+      new Dialog({
+        title: game.i18n.localize('WOD5E.Add'),
+        content: template,
+        buttons,
+        default: 'submit'
+      }, {
+        classes: ['wod5e', `${system}-dialog`, `${system}-sheet`]
+      }).render(true)
+    }
+  }
+
+  /**
+  * Append subtype data to the item data based on item type
+  * @param {string} type    The item type
+  * @param {string} subtype The item subtype
+  * @param {object} itemData The existing item data
+  * @returns {object} The updated item data
+  */
+  async appendSubtypeData (type, subtype, itemData) {
+    switch (type) {
+      case 'power':
+        itemData.discipline = subtype
+        break
+      case 'perk':
+        itemData.edge = subtype
+        break
+      case 'gift':
+        itemData.giftType = subtype
+        break
+      case 'feature':
+        itemData.featuretype = subtype
+        break
+      default:
+        itemData.subtype = subtype
+    }
+
+    return itemData
+  }
+
+  /**
+  * Create an item for the actor
+  * @param {object} actor    The actor object
+  * @param {string} itemName The name of the item
+  * @param {string} type     The type of the item
+  * @param {string} itemImg  The image for the item
+  * @param {object} itemData The data for the item
+  */
+  async _createItem (actor, itemName, type, itemImg, itemData) {
+    return actor.createEmbeddedDocuments('Item', [{
+      name: `${game.i18n.format('WOD5E.New', {
+        string: itemName
+      })}`,
+      type,
+      img: itemImg,
+      system: itemData
+    }])
   }
 }

@@ -18,6 +18,9 @@
     "Exp": "Exp",
     "None": "Aucun",
     "Value": "Valeur",
+    "_Label": "",
+
+    "New": "Nouveau {string}",
     
     "Mortal": "Mortel",
     "_GroupSheet": "",
@@ -58,7 +61,8 @@
         "DisplayWhenInactive": "Montrer quand inactif",
         "Unless": "Minimum",
         "_PathToCheck": "",
-        "ValueToCheck": "Valeur vérifiée"
+        "ValueToCheck": "Valeur vérifiée",
+        "_IfPathIs": ""
     },
 
     "SPC": {
@@ -90,7 +94,7 @@
       "Other": "Autre"
     },
 
-    "Attributes": {
+    "AttributesList": {
       "Label": "Attribut",
       "Attributes": "Attributs",
       "Strength": "Force",
@@ -104,7 +108,7 @@
       "Resolve": "Résolution"
     },
 
-    "Skills": {
+    "SkillsList": {
       "Label": "Compétence",
       "Skills": "Compétences",
       "Specialty": "Spécialité",
@@ -138,7 +142,7 @@
       "Technology": "Technologie"
     },
 
-    "Items": {
+    "ItemsList": {
       "Label": "Objets",
       "ShowToChat": "Afficher pour discuter",
       "CustomRoll": "Jet Personnalisé",
@@ -157,7 +161,8 @@
       "NewSpecialty": "Nouvelle Spécialité",
       "Boon": "Dette",
       "Boons": "Dettes",
-      "Macro": "Macro"
+      "Macro": "Macro",
+      "_SelectFeature": ""
     },
 
     "Biography": {
@@ -194,6 +199,66 @@
     "Macro": {
         "_MacroID": "",
         "_MacroNote": ""
+    },
+
+    "Settings": {
+        "_SaveChanges": "",
+
+        "_Modifications": "",
+        "_Custom": "",
+
+        "_Rename": "",
+        "_Hidden": "",
+
+        "_AddAttributeModification": "",
+        "_AddSkillModification": "",
+        "_AddCustomAttribute": "",
+        "_AddCustomSkill": "",
+
+        "_AttributeType": "",
+        "_SkillType": "",
+
+        "_WorldVersion": "",
+        "_WorldVersionHint": "",
+
+        "_DarkTheme": "",
+        "_DarkThemeHint": "",
+
+        "_ActorBanner": "",
+        "_ActorBannerHint": "",
+
+        "_AutomationSettings": "",
+        "_AutomationSettingsHint": "",
+
+        "_DisableAutomation": "",
+        "_DisableAutomationHint": "",
+
+        "_AutomateWillpower": "",
+        "_AutomateWillpowerHint": "",
+
+        "_AutomateHunger": "",
+        "_AutomateHungerHint": "",
+
+        "_AutomateOblivion": "",
+        "_AutomateOblivionHint": "",
+
+        "_AutomateRage": "",
+        "_AutomateRageHint": "",
+
+        "_StorytellerMenu": "",
+        "_StorytellerMenuHint": "",
+
+        "_ModifiedAttributes": "",
+        "_ModifiedAttributesHint": "",
+
+        "_ModifiedSkills": "",
+        "_ModifiedSkillsHint": "",
+
+        "_CustomAttributes": "",
+        "_CustomAttributesHint": "",
+
+        "_CustomSkills": "",
+        "_CustomSkillsHint": ""
     }
   }
 }

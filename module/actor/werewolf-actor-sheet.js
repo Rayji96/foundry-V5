@@ -1,4 +1,4 @@
-/* global game, foundry, renderTemplate, ChatMessage, Dialog, WOD5E */
+/* global game, foundry, renderTemplate, ChatMessage, Dialog */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -147,12 +147,6 @@ export class WerewolfActorSheet extends WoDActor {
     // Form edit buttons
     html.find('.were-form-edit').click(this._onFormEdit.bind(this))
 
-    // Create a new Gift
-    html.find('.gift-create').click(this._onCreateGift.bind(this))
-
-    // Create a new Rite
-    html.find('.rite-create').click(this._onCreateRite.bind(this))
-
     // Post Gift description to the chat
     html.find('.gift-chat').click(ev => {
       const data = $(ev.currentTarget)[0].dataset
@@ -225,7 +219,7 @@ export class WerewolfActorSheet extends WoDActor {
     })
 
     // Add all values together
-    const dicePool = dice1 + dice2 + activeBonuses
+    const dicePool = dice1 + dice2 + activeBonuses.totalValue
 
     // Send the roll to the system
     WOD5eDice.Roll({
@@ -237,136 +231,6 @@ export class WerewolfActorSheet extends WoDActor {
       selectors,
       macro
     })
-  }
-
-  /**
-     * Handle making a new gift
-     * @param {Event} event   The originating click event
-     * @private
-     */
-  _onCreateGift (event) {
-    event.preventDefault()
-
-    // Top-level variables
-    const actor = this.actor
-    const header = event.currentTarget
-
-    // Variables yet to be defined
-    let options = ''
-    let buttons = {}
-
-    // If the type of gift is already set, we don't need to ask for it
-    if (header.dataset.gift) {
-      // Get the image for the item, if one is available from the item definitions
-      const itemsList = WOD5E.ItemTypes.getList()
-      const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
-
-      // Prepare the item object.
-      const itemData = {
-        name: game.i18n.localize('WOD5E.WTA.NewGift'),
-        type: 'gift',
-        img,
-        system: {
-          giftType: header.dataset.gift
-        }
-      }
-
-      // Remove the type from the dataset since it's in the itemData.type prop.
-      delete itemData.system.type
-
-      // Finally, create the item!
-      return actor.createEmbeddedDocuments('Item', [itemData])
-    } else {
-      // Go through the options and add them to the options variable
-      for (const [key, value] of Object.entries(actor.system.gifts)) {
-        options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
-      }
-
-      // Define the template to be used
-      const template = `
-        <form>
-            <div class="form-group">
-                <label>${game.i18n.localize('WOD5E.WTA.SelectGift')}</label>
-                <select id="giftSelect">${options}</select>
-            </div>
-        </form>`
-
-      // Define the buttons to be used and push them to the buttons variable
-      buttons = {
-        submit: {
-          icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize('WOD5E.Add'),
-          callback: async (html) => {
-            const gift = html.find('#giftSelect')[0].value
-
-            // Get the image for the item, if one is available from the item definitions
-            const itemsList = WOD5E.ItemTypes.getList()
-            const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
-
-            // Prepare the item object.
-            const itemData = {
-              name: game.i18n.localize('WOD5E.WTA.NewGift'),
-              type: 'gift',
-              img,
-              system: {
-                giftType: gift
-              }
-            }
-            // Remove the type from the dataset since it's in the itemData.type prop.
-            delete itemData.system.type
-
-            // Finally, create the item!
-            return actor.createEmbeddedDocuments('Item', [itemData])
-          }
-        },
-        cancel: {
-          icon: '<i class="fas fa-times"></i>',
-          label: game.i18n.localize('WOD5E.Cancel')
-        }
-      }
-
-      // Display the dialog
-      new Dialog({
-        title: game.i18n.localize('WOD5E.WTA.AddGift'),
-        content: template,
-        buttons,
-        default: 'submit'
-      },
-      {
-        classes: ['wod5e', 'werewolf-dialog', 'werewolf-sheet']
-      }).render(true)
-    }
-  }
-
-  /**
-     * Handle making a new rite
-     * @param {Event} event   The originating click event
-     * @private
-     */
-  _onCreateRite (event) {
-    event.preventDefault()
-
-    // Top-level variables
-    const actor = this.actor
-
-    // Get the image for the item, if one is available from the item definitions
-    const itemsList = WOD5E.ItemTypes.getList()
-    const img = itemsList?.gift?.img ? itemsList.gift.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
-
-    // Prepare the item object.
-    const itemData = {
-      name: game.i18n.localize('WOD5E.WTA.NewRite'),
-      type: 'gift',
-      img,
-      system: {
-        giftType: 'rite'
-      }
-    }
-    // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.system.type
-
-    // Finally, create the item!
-    return actor.createEmbeddedDocuments('Item', [itemData])
   }
 
   // Handle when an actor goes into a frenzy
@@ -503,7 +367,7 @@ export class WerewolfActorSheet extends WoDActor {
 
       // Roll the rage dice necessary
       WOD5eDice.Roll({
-        advancedDice: diceCount + activeBonuses,
+        advancedDice: diceCount + activeBonuses.totalValue,
         title: form,
         actor,
         data: actor.system,

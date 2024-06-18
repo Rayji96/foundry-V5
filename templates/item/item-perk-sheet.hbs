@@ -21,9 +21,9 @@
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</a>
-        <a class="item" data-tab="attributes">{{localize "WOD5E.Attributes.Attributes"}}</a>
-        <a class="item" data-tab="macro">{{localize "WOD5E.Items.Macro"}}</a>
-        <a class="item" data-tab="bonuses">{{localize "WOD5E.Items.Bonuses"}}</a>
+        <a class="item" data-tab="attributes">{{localize "WOD5E.AttributesList.Attributes"}}</a>
+        <a class="item" data-tab="macro">{{localize "WOD5E.ItemsList.Macro"}}</a>
+        <a class="item" data-tab="bonuses">{{localize "WOD5E.ItemsList.Bonuses"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -68,11 +68,11 @@
                 {{/if}}
 
                 <!-- Rollable or not -->
-                <label class="resource-label">{{localize "WOD5E.Items.Rollable"}}: </label>
+                <label class="resource-label">{{localize "WOD5E.ItemsList.Rollable"}}: </label>
                 <input type="checkbox" id="system.rollable" name="system.rollable" {{checked item.system.rollable}}>
 
                 <!-- Whether the "system" option uses skills or not -->
-                <label class="resource-label">{{localize "WOD5E.Items.UseSkill"}}: </label>
+                <label class="resource-label">{{localize "WOD5E.ItemsList.UseSkill"}}: </label>
                 {{#if item.system.amalgam}}
                     <input type="checkbox" id="system.skill" name="system.skill" disabled {{checked item.system.skill}}>
                 {{else}}

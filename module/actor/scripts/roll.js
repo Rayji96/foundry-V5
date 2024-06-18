@@ -41,35 +41,35 @@ export const _onConfirmRoll = async function (dataset, actor) {
 
   // Variables yet to be defined
   let basicDice, advancedDice
-  let advancedCheckDice
 
   // Handle getting any situational modifiers
   const activeBonuses = await getActiveBonuses({
     actor,
     selectors
   })
+  const advancedCheckDice = activeBonuses.totalACDValue
 
   // Get the number of basicDice and advancedDice
   if (disableBasicDice && useAbsoluteValue) {
     // For when basic dice are disabled and we want the
     // advanced dice to equal the absoluteValue given
-    advancedDice = absoluteValue + activeBonuses
+    advancedDice = absoluteValue + activeBonuses.totalValue
     basicDice = 0
   } else if (disableBasicDice) {
     // If just the basicDice are disabled, set it to 0
     // and retrieve the appropriate amount of advanced dice
     basicDice = 0
-    advancedDice = disableAdvancedDice ? 0 + activeBonuses : await WOD5E.api.getAdvancedDice(actor) + activeBonuses
+    advancedDice = disableAdvancedDice ? 0 + activeBonuses.totalValue : await WOD5E.api.getAdvancedDice(actor) + activeBonuses.totalValue
   } else {
     // Calculate basicDice based on different conditions
     if (useAbsoluteValue) {
       // If basic dice aren't disabled, but we use the absolute
       // value, add the absoluteValue and the flatMod together
-      basicDice = absoluteValue + flatMod + activeBonuses
+      basicDice = absoluteValue + flatMod + activeBonuses.totalValue
     } else {
       // All other, more normal, circumstances where basicDice
       // are calculated normally
-      basicDice = await WOD5E.api.getBasicDice({ valuePaths: dataset.valuePaths, flatMod: flatMod + activeBonuses, actor })
+      basicDice = await WOD5E.api.getBasicDice({ valuePaths: dataset.valuePaths, flatMod: flatMod + activeBonuses.totalValue, actor })
     }
 
     // Retrieve the appropriate amount of advanced dice
@@ -101,11 +101,6 @@ export const _onConfirmRoll = async function (dataset, actor) {
       // the number of rage dice from them, minimum zero
       basicDice = Math.max(basicDice - advancedDice, 0)
     }
-  }
-
-  // Check if this roll contains a rouse check
-  if (selectors.indexOf('blood-surge') > -1) {
-    advancedCheckDice = 1
   }
 
   // Send the roll to the system

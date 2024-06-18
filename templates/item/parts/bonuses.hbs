@@ -33,6 +33,7 @@
                             <option value="never"{{#ifeq bonus.activeWhen.check "never"}} selected{{/ifeq}} disabled="true">{{localize 'WOD5E.Bonus.Never'}}</option>
                             <option value="always"{{#ifeq bonus.activeWhen.check "always"}} selected{{/ifeq}} disabled="true">{{localize 'WOD5E.Bonus.Always'}}</option>
                             <option value="isEqual"{{#ifeq bonus.activeWhen.check "isEqual"}} selected{{/ifeq}} disabled="true">{{localize 'WOD5E.Bonus.IfEquals'}}</option>
+                            <option value="isPath"{{#ifeq bonus.activeWhen.check "isPath"}} selected{{/ifeq}} disabled="true">{{localize 'WOD5E.Bonus.IfPathIs'}}</option>
                         </select>
                     </div>
                     {{#ifeq bonus.activeWhen.check 'isEqual'}}
@@ -43,6 +44,11 @@
                         <div>
                             <b>{{localize "WOD5E.Bonus.ValueToCheck"}}</b>
                             <input name="value" type="text" value="{{bonus.activeWhen.value}}" placeholder="{{localize 'WOD5E.Bonus.ValueToCheck'}}" disabled="true"/>
+                        </div>
+                    {{else if (eq bonus.activeWhen.check "isPath")}}
+                        <div>
+                            <b>{{localize "WOD5E.Bonus.PathToCheck"}}</b>
+                            <input name="path" type="text" value="{{bonus.activeWhen.path}}" placeholder="{{localize 'WOD5E.Bonus.PathToCheck'}}" disabled="true"/>
                         </div>
                     {{/ifeq}}
                 </div>

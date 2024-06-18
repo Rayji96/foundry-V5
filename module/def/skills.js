@@ -4,9 +4,16 @@ export class Skills {
   // Function to help with quickly grabbing all the listed values;
   // Will only retrieve objects (definitions)
   // Optional string can be provided to filter by type
-  static getList (type) {
+  static getList ({
+    type = '',
+    custom = false
+  }) {
     return Object.entries(this)
-      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) && (!type || value.type === type))
+      // Filter out any entries with improper formats
+      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) &&
+        // Filter based on given filters provided with the function, if any
+        (!type || value.type === type) && (!custom || value.custom === custom))
+      // Reduce into a format the system can work with
       .reduce((accumulator, [key, value]) => {
         accumulator[key] = value
         return accumulator
@@ -17,6 +24,9 @@ export class Skills {
   static addCustom (customSkills) {
     for (const [, value] of Object.entries(customSkills)) {
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        // Note this feature as being a custom feature
+        value.custom = true
+
         this[value.id] = value
       }
     }
@@ -32,9 +42,14 @@ export class Skills {
 
         value.label = game.i18n.localize(value.label)
 
+        // If there are modifications, update the attribute
         if (checkModification.length > 0) {
           value.rename = checkModification[0].rename
           value.hidden = checkModification[0].hidden
+        } else {
+          // If there are no modifications, use default values
+          value.rename = ''
+          value.hidden = false
         }
       }
 
@@ -59,137 +74,137 @@ export class Skills {
   }
 
   static athletics = {
-    label: 'WOD5E.Skills.Athletics',
+    label: 'WOD5E.SkillsList.Athletics',
     type: 'physical'
   }
 
   static animalken = {
-    label: 'WOD5E.Skills.AnimalKen',
+    label: 'WOD5E.SkillsList.AnimalKen',
     type: 'social'
   }
 
   static academics = {
-    label: 'WOD5E.Skills.Academics',
+    label: 'WOD5E.SkillsList.Academics',
     type: 'mental'
   }
 
   static brawl = {
-    label: 'WOD5E.Skills.Brawl',
+    label: 'WOD5E.SkillsList.Brawl',
     type: 'physical'
   }
 
   static etiquette = {
-    label: 'WOD5E.Skills.Etiquette',
+    label: 'WOD5E.SkillsList.Etiquette',
     type: 'social'
   }
 
   static awareness = {
-    label: 'WOD5E.Skills.Awareness',
+    label: 'WOD5E.SkillsList.Awareness',
     type: 'mental'
   }
 
   static craft = {
-    label: 'WOD5E.Skills.Craft',
+    label: 'WOD5E.SkillsList.Craft',
     type: 'physical'
   }
 
   static insight = {
-    label: 'WOD5E.Skills.Insight',
+    label: 'WOD5E.SkillsList.Insight',
     type: 'social'
   }
 
   static finance = {
-    label: 'WOD5E.Skills.Finance',
+    label: 'WOD5E.SkillsList.Finance',
     type: 'mental'
   }
 
   static drive = {
-    label: 'WOD5E.Skills.Drive',
+    label: 'WOD5E.SkillsList.Drive',
     type: 'physical'
   }
 
   static intimidation = {
-    label: 'WOD5E.Skills.Intimidation',
+    label: 'WOD5E.SkillsList.Intimidation',
     type: 'social'
   }
 
   static investigation = {
-    label: 'WOD5E.Skills.Investigation',
+    label: 'WOD5E.SkillsList.Investigation',
     type: 'mental'
   }
 
   static firearms = {
-    label: 'WOD5E.Skills.Firearms',
+    label: 'WOD5E.SkillsList.Firearms',
     type: 'physical'
   }
 
   static leadership = {
-    label: 'WOD5E.Skills.Leadership',
+    label: 'WOD5E.SkillsList.Leadership',
     type: 'social'
   }
 
   static medicine = {
-    label: 'WOD5E.Skills.Medicine',
+    label: 'WOD5E.SkillsList.Medicine',
     type: 'mental'
   }
 
   static larceny = {
-    label: 'WOD5E.Skills.Larceny',
+    label: 'WOD5E.SkillsList.Larceny',
     type: 'physical'
   }
 
   static performance = {
-    label: 'WOD5E.Skills.Performance',
+    label: 'WOD5E.SkillsList.Performance',
     type: 'social'
   }
 
   static occult = {
-    label: 'WOD5E.Skills.Occult',
+    label: 'WOD5E.SkillsList.Occult',
     type: 'mental'
   }
 
   static melee = {
-    label: 'WOD5E.Skills.Melee',
+    label: 'WOD5E.SkillsList.Melee',
     type: 'physical'
   }
 
   static persuasion = {
-    label: 'WOD5E.Skills.Persuasion',
+    label: 'WOD5E.SkillsList.Persuasion',
     type: 'social'
   }
 
   static politics = {
-    label: 'WOD5E.Skills.Politics',
+    label: 'WOD5E.SkillsList.Politics',
     type: 'mental'
   }
 
   static stealth = {
-    label: 'WOD5E.Skills.Stealth',
+    label: 'WOD5E.SkillsList.Stealth',
     type: 'physical'
   }
 
   static streetwise = {
-    label: 'WOD5E.Skills.Streetwise',
+    label: 'WOD5E.SkillsList.Streetwise',
     type: 'social'
   }
 
   static science = {
-    label: 'WOD5E.Skills.Science',
+    label: 'WOD5E.SkillsList.Science',
     type: 'mental'
   }
 
   static survival = {
-    label: 'WOD5E.Skills.Survival',
+    label: 'WOD5E.SkillsList.Survival',
     type: 'physical'
   }
 
   static subterfuge = {
-    label: 'WOD5E.Skills.Subterfuge',
+    label: 'WOD5E.SkillsList.Subterfuge',
     type: 'social'
   }
 
   static technology = {
-    label: 'WOD5E.Skills.Technology',
+    label: 'WOD5E.SkillsList.Technology',
     type: 'mental'
   }
 }

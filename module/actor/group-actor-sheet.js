@@ -77,6 +77,10 @@ export class GroupActorSheet extends WoDActor {
 
     if (data.type === 'Actor') {
       this._addActor(data.uuid)
+    } else if (data.type === 'Item') {
+      this.actor.createEmbeddedDocuments('Item', [
+        fromUuidSync(data.uuid)
+      ])
     }
   }
 

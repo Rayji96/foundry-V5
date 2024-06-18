@@ -5,9 +5,9 @@ export async function _increaseHunger (actor, amount) {
   const currentHunger = actor.system.hunger.value
   const newHungerAmount = Math.min(currentHunger + amount, 5)
 
-  // If the roll would push the actor's hunger above 4 when their hunger was previously
-  // below 5, send a message in the chat to warn them.
-  if (newHungerAmount > 4 && currentHunger < 5) {
+  // If the actor is already at max hunger, send a message in the chat to warn them
+  // that their hunger cannot be increased further
+  if (amount > 0 && currentHunger === 5) {
     renderTemplate('systems/vtm5e/templates/chat/chat-message.hbs', {
       name: game.i18n.localize('WOD5E.VTM.HungerFull1'),
       img: 'systems/vtm5e/assets/icons/dice/vampire/bestial-failure.png',
