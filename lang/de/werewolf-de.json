@@ -42,11 +42,11 @@
       "Active": "Aktiv",
       "FrenzyActiveWarning2": "Du kannst in Raserei keine Gaben oder Riten nutzen.",
 
-      "_LostTheWolf": "",
-      "_LostWolfWarning": "",
+      "LostTheWolf": "Den inneren Wolf verloren",
+      "LostWolfWarning": "Dieser Akteur hat 0 Zorn und den Wolf in sich verloren.",
       "LostWolfFormChange": "Du hast deinen inneren Wolf verloren - momentan kein Formwandeln möglich.",
-      "_LostWolfShiftDown": "",
-      "_LostWolfShiftAnyway": "",
+      "LostWolfShiftDown": "Dieser Akteur hat den Wolf in sich verloren und kann nicht in übernatürlicher Form bleiben. Wähle eine Form zum Zurückverwandeln.",
+      "LostWolfShiftAnyway": "Dieser Akteur hat den Wolf in sich verloren und nicht genügend Zorn, um in eine übernatürliche Form zu wechseln. Willst du trotzdem Formwandeln?",
 
       "Renown": "Ansehen",
       "AddRenown": "Ansehen hinzufügen",

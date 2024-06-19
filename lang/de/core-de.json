@@ -18,9 +18,9 @@
     "Exp": "EP",
     "None": "Kein",
     "Value": "Wert",
-    "_Label": "",
+    "Label": "Label",
 
-    "New": "Neue {string}",
+    "New": "Neuer {string}",
 
     "Mortal": "Sterblicher",
     "GroupSheet": "Gruppen-Bogen",
@@ -33,7 +33,7 @@
       "Label": "Wurf",
       "RollMode": "Wurf-Modus",
       "MortalDice": "Würfel",
-      "_SelectRoll": "",
+      "SelectRoll": "Wurf auswählen",
       "Success": "Erfolg",
       "Successes": "Erfolge",
       "CriticalSuccess": "Kritischer Erfolg",
@@ -45,7 +45,7 @@
       "Active": "Aktiv",
       "CustomModifiers": "Eigene Modifikatoren",
       "AddCustomModifier": "Eigene Modifikatoren hinzufügen",
-      "_Total": ""
+      "Total": "Gesamt"
     },
 
     "Bonus": {
@@ -64,7 +64,7 @@
         "Unless": "Außer, wenn …",
         "PathToCheck": "Pfad",
         "ValueToCheck": "Wert",
-        "_IfPathIs": ""
+        "IfPathIs": "Wenn Pfad … ist"
     },
 
     "SPC": {
@@ -164,7 +164,7 @@
       "Boon": "Gefallen",
       "Boons": "Gefallen",
       "Macro": "Macro",
-      "_SelectFeature": ""
+      "SelectFeature": "Merkmal auswählen"
     },
 
     "BiographyList": {
@@ -199,68 +199,68 @@
     },
 
     "Macro": {
-        "_MacroID": "",
-        "_MacroNote": ""
+        "MacroID": "Makro-ID",
+        "MacroNote": "Wenn ein Makro eingetragen ist, wird es sofort nach dem Klick auf das Item oder dem Wurf ausgeführt."
     },
 
     "Settings": {
-        "_SaveChanges": "",
+        "SaveChanges": "Änderungen speichern",
 
-        "_Modifications": "",
-        "_Custom": "",
+        "Modifications": "Modifikationen",
+        "Custom": "Anpassungen",
 
-        "_Rename": "",
-        "_Hidden": "",
+        "Rename": "Umbenennen",
+        "Hidden": "Versteckt",
 
-        "_AddAttributeModification": "",
-        "_AddSkillModification": "",
-        "_AddCustomAttribute": "",
-        "_AddCustomSkill": "",
+        "AddAttributeModification": "Attributs-Modifikation hinzufügen",
+        "AddSkillModification": "Fähigkeiten-Modifikation hinzufügen",
+        "AddCustomAttribute": "Eigenes Attribut hinzufügen",
+        "AddCustomSkill": "Eigene Fähigkeit hinzufügen",
 
-        "_AttributeType": "",
-        "_SkillType": "",
+        "AttributeType": "Attributs-Typ",
+        "SkillType": "Fähigkeits-Typ",
 
-        "_WorldVersion": "",
-        "_WorldVersionHint": "",
+        "WorldVersion": "Welt-Versionsnummer",
+        "WorldVersionHint": "Updatet automatisch Daten, wenn die system.json geupdated wird.",
 
-        "_DarkTheme": "",
-        "_DarkThemeHint": "",
+        "DarkTheme": "Dunkles Aussehen",
+        "DarkThemeHint": "Zeigt Charakterbögen in dunklem Stil. (Einstellung gilt nur für diesen Benutzer)",
 
-        "_ActorBanner": "",
-        "_ActorBannerHint": "",
+        "ActorBanner": "Charakter-Typ-Banner anzeigen",
+        "ActorBannerHint": "Zeigt einen farbigen Banner oben am Charakterbogen, der den Typ von Wesen anzeigt.",
 
-        "_AutomationSettings": "",
-        "_AutomationSettingsHint": "",
+        "AutomationSettings": "Automatisierungs-Einstellungen",
+        "AutomationSettingsHint": "Verändert verschiedene Einstellungen der Automatisierung.",
 
-        "_DisableAutomation": "",
-        "_DisableAutomationHint": "",
+        "DisableAutomation": "Jegliche Automatisierung ausschalten",
+        "DisableAutomationHint": "Schaltet jede Automatisierung aus, ohne alle untenstehenden Häkchen entfernen zu müssen.",
 
-        "_AutomateWillpower": "",
-        "_AutomateWillpowerHint": "",
+        "AutomateWillpower": "Automatisierter Willenskraft-Schaden",
+        "AutomateWillpowerHint": "Wenn eingeschaltet tragen Willenskraft vebrauchende Features automatisch Willenskraft-Schaden im Bogen ein.",
 
-        "_AutomateHunger": "",
-        "_AutomateHungerHint": "",
+        "AutomateHunger": "Automatisierte Hunger-Steigerung",
+        "AutomateHungerHint": "Wenn eingeschaltet erhöhen fehlgeschlagene Wallungs-Würfe automatisch den Hunger im Charakterbogen.",
 
-        "_AutomateOblivion": "",
-        "_AutomateOblivionHint": "",
+        "AutomateOblivion": "Automatisierte Vergessens-Makel",
+        "AutomateOblivionHint": "Wenn eingeschaltet trägt das Würfeln einer 1 oder 10 bei Vergessens-Würfen automatisch einen Makel für die Menschlichkeit im Bogen ein.",
 
-        "_AutomateRage": "",
-        "_AutomateRageHint": "",
+        "AutomateRage": "Automatisierte Zorn-Würfel",
+        "AutomateRageHint": "Wenn eingeschaltet verringern fehlgeschlagene Zorn-Würfe automatisch den Zorn im Bogen.",
 
-        "_StorytellerMenu": "",
-        "_StorytellerMenuHint": "",
+        "StorytellerMenu": "Geschichtenerzähler-Menü",
+        "StorytellerMenuHint": "Passe das System durch Änderungen oder Umbenennung der Attribute und Fähigkeiten an.",
 
-        "_ModifiedAttributes": "",
-        "_ModifiedAttributesHint": "",
+        "ModifiedAttributes": "Attributs-Modifikationen",
+        "ModifiedAttributesHint": "Erlaubt Änderungen an den existierenden Attributen.",
 
-        "_ModifiedSkills": "",
-        "_ModifiedSkillsHint": "",
+        "ModifiedSkills": "Fähigkeits-Modifikationen",
+        "ModifiedSkillsHint": "Erlaubt Änderungen an den existierenden Fähigkeiten.",
 
-        "_CustomAttributes": "",
-        "_CustomAttributesHint": "",
+        "CustomAttributes": "Eigene Attribute",
+        "CustomAttributesHint": "Erlaubt die Erstellung eigener Attribute.",
 
-        "_CustomSkills": "",
-        "_CustomSkillsHint": ""
+        "CustomSkills": "Eigene Fähigkeiten",
+        "CustomSkillsHint": "Erlaubt die Erstellung eigener Fähigkeiten."
     }
   }
 }
