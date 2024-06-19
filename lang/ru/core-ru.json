@@ -30,6 +30,7 @@
             "Label": "Проверка",
             "RollMode": "Режим броска",
             "MortalDice": "Кости смертного",
+            "SelectRoll": "Сформируйте проверку",
             "Success": "Успех",
             "Successes": "Успехов",
             "CriticalSuccess": "Триумф",
@@ -40,7 +41,8 @@
             "Source": "Источник",
             "Active": "Активиный",
             "CustomModifiers": "Пользовательские модификаторы",
-            "AddCustomModifier": "Добавить пользовательский модификатор"
+            "AddCustomModifier": "Добавить пользовательский модификатор",
+            "Total": "Результат"
         },
 
         "Bonus": {

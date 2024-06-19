@@ -122,7 +122,7 @@ export class wod5eAPI {
     // Render the dialog window to select which skill/attribute combo to use
     new Dialog(
       {
-        title: 'Select Roll',
+        title: game.i18n.localize('WOD5E.RollList.SelectRoll'),
         content,
         buttons: {
           confirm: {

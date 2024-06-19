@@ -33,6 +33,7 @@
       "Label": "Rolagem",
       "RollMode": "Modo de Rolagem",
       "MortalDice": "Dados de Mortal",
+      "_SelectRoll": "",
       "Success": "Sucesso",
       "Successes": "Sucessos",
       "CriticalSuccess": "Sucesso Crítico",
@@ -43,7 +44,8 @@
       "_Source": "",
       "_Active": "",
       "_CustomModifiers": "",
-      "_AddCustomModifier": ""
+      "_AddCustomModifier": "",
+      "_Total": ""
     },
 
     "Bonus": {

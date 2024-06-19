@@ -33,6 +33,7 @@
       "Label": "Rzut",
       "_RollMode": "",
       "_MortalDice": "",
+      "_SelectRoll": "",
       "Success": "Sukces",
       "Successes": "Sukcesy",
       "CriticalSuccess": "Krytyczny Sukces",
@@ -43,7 +44,8 @@
       "_Source": "",
       "_Active": "",
       "_CustomModifiers": "",
-      "_AddCustomModifier": ""
+      "_AddCustomModifier": "",
+      "_Total": ""
     },
 
     "Bonus": {

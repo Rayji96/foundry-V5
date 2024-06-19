@@ -33,6 +33,7 @@
       "Label": "Jet",
       "RollMode": "Type de jet",
       "MortalDice": "Dé mortel",
+      "_SelectRoll": "",
       "Success": "Succès",
       "Successes": "Succès",
       "CriticalSuccess": "Succès Critique",
@@ -43,7 +44,8 @@
       "Source": "Source",
       "Active": "Actif",
       "CustomModifiers": "Modificateur personnalisé",
-      "AddCustomModifier":"Ajouter un modificateur perso."
+      "AddCustomModifier":"Ajouter un modificateur perso.",
+      "_Total": ""
     },
 
     "Bonus": {

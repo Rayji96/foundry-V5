@@ -33,6 +33,7 @@
       "Label": "Wurf",
       "RollMode": "Wurf-Modus",
       "MortalDice": "Würfel",
+      "_SelectRoll": "",
       "Success": "Erfolg",
       "Successes": "Erfolge",
       "CriticalSuccess": "Kritischer Erfolg",
@@ -43,7 +44,8 @@
       "Source": "Quelle",
       "Active": "Aktiv",
       "CustomModifiers": "Eigene Modifikatoren",
-      "AddCustomModifier": "Eigene Modifikatoren hinzufügen"	  
+      "AddCustomModifier": "Eigene Modifikatoren hinzufügen",
+      "_Total": ""
     },
 
     "Bonus": {

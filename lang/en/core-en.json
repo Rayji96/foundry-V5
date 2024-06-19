@@ -31,6 +31,7 @@
             "Label": "Roll",
             "RollMode": "Roll Mode",
             "MortalDice": "Mortal Dice",
+            "SelectRoll": "Select Roll",
             "Success": "Success",
             "Successes": "Successes",
             "CriticalSuccess": "Critical Success",
@@ -40,7 +41,8 @@
             "Source": "Source",
             "SelectableModifiers": "Selectable Modifiers",
             "CustomModifiers": "Custom Modifiers",
-            "AddCustomModifier": "Add Custom Modifier"
+            "AddCustomModifier": "Add Custom Modifier",
+            "Total": "Total"
         },
 
         "Bonus": {

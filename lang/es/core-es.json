@@ -33,6 +33,7 @@
       "Label": "Tirada",
       "RollMode": "Modo de tirada",
       "MortalDice": "Dados de mortal",
+      "_SelectRoll": "",
       "Success": "Éxito",
       "Successes": "Éxitos",
       "CriticalSuccess": "Éxito crítico",
@@ -43,7 +44,8 @@
       "Source": "Origen",
       "Active": "Activo",
       "CustomModifiers": "Modificadores personalizados",
-      "_AddCustomModifier": ""
+      "_AddCustomModifier": "",
+      "_Total": ""
     },
 
     "Bonus": {

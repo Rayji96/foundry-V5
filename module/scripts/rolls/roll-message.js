@@ -225,7 +225,7 @@ export async function generateRollMessage ({
     let totalAndDifficulty = `<div class="total-and-difficulty">
       <div class="roll-total">
         <span class="total-title">
-          Total
+          ${game.i18n.localize('WOD5E.RollList.Total')}
         </span>
         <span class="total-contents">
           ${totalResult}

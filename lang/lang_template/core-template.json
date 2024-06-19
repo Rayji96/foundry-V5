@@ -31,6 +31,7 @@
             "Label": "",
             "RollMode": "",
             "MortalDice": "",
+            "SelectRoll": "",
             "Success": "",
             "Successes": "",
             "CriticalSuccess": "",
@@ -41,7 +42,8 @@
             "Source": "",
             "Active": "",
             "CustomModifiers": "",
-            "AddCustomModifier": ""
+            "AddCustomModifier": "",
+            "Total": ""
         },
 
         "Bonus": {

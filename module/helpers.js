@@ -81,13 +81,19 @@ export const loadHelpers = async function () {
 
   Handlebars.registerHelper('generateLocalizedLabel', function (str) {
     // Lists
+    const actortypes = WOD5E.ActorTypes.getList()
     const attributes = WOD5E.Attributes.getList({})
     const skills = WOD5E.Skills.getList({})
     const features = WOD5E.Features.getList()
     const disciplines = WOD5E.Disciplines.getList()
+    const gifts = WOD5E.Gifts.getList()
     const renown = WOD5E.Renown.getList()
     const edges = WOD5E.Edges.getList()
 
+    // Actor Types
+    if (str in actortypes) {
+      return findLabel(actortypes, str)
+    }
     // Attributes
     if (str in attributes) {
       return findLabel(attributes, str)
@@ -103,6 +109,10 @@ export const loadHelpers = async function () {
     // Disciplines
     if (str in disciplines) {
       return findLabel(disciplines, str)
+    }
+    // Gifts
+    if (str in gifts) {
+      return findLabel(gifts, str)
     }
     // Renown
     if (str in renown) {
