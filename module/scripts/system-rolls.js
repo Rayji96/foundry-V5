@@ -237,7 +237,7 @@ class WOD5eDice {
             buttons: {
               roll: {
                 icon: '<i class="fas fa-dice"></i>',
-                label: game.i18n.localize('WOD5E.Roll.Label'),
+                label: game.i18n.localize('WOD5E.RollList.Label'),
                 callback: async html => {
                   // Obtain the input fields
                   const basicDiceInput = html.find('#inputBasicDice')

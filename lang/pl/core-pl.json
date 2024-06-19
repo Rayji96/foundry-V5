@@ -29,7 +29,7 @@
     "_RemoveFromGroup": "",
     "_NoGroupMembers": "",
 
-    "Roll": {
+    "RollList": {
       "Label": "Rzut",
       "_RollMode": "",
       "_MortalDice": "",
@@ -165,7 +165,7 @@
       "_SelectFeature": ""
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Biografia",
       "Concept": "Koncept",
       "Chronicle": "Kronika",

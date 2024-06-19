@@ -27,7 +27,7 @@
         "RemoveFromGroup": "",
         "NoGroupMembers": "",
 
-        "Roll": {
+        "RollList": {
             "Label": "",
             "RollMode": "",
             "MortalDice": "",
@@ -163,7 +163,7 @@
             "SelectFeature": ""
         },
 
-        "Biography": {
+        "BiographyList": {
             "Label": "",
             "Concept": "",
             "Chronicle": "",

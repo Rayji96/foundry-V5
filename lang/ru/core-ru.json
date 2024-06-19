@@ -26,7 +26,7 @@
         "_RemoveFromGroup": "Удалить из групы",
         "_NoGroupMembers": "Нету персонажей в группе",
 
-        "Roll": {
+        "RollList": {
             "Label": "Проверка",
             "RollMode": "Режим броска",
             "MortalDice": "Кости смертного",
@@ -162,7 +162,7 @@
             "_SelectFeature": ""
         },
 
-        "Biography": {
+        "BiographyList": {
             "Label": "Биография",
             "Concept": "Концепция",
             "Chronicle": "Хроника",

@@ -29,7 +29,7 @@
     "_RemoveFromGroup": "",
     "_NoGroupMembers": "",
 
-    "Roll": {
+    "RollList": {
       "Label": "Tirada",
       "RollMode": "Modo de tirada",
       "MortalDice": "Dados de mortal",
@@ -165,7 +165,7 @@
       "_SelectFeature": ""
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Biografía",
       "Concept": "Concepto",
       "Chronicle": "Crónica",

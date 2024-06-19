@@ -29,7 +29,7 @@
     "RemoveFromGroup": "Aus Gruppe entfernen",
     "NoGroupMembers": "Keine Gruppenmitglieder. Zum Hinzufügen aus der Akteur-Liste hierher ziehen.",
 
-    "Roll": {
+    "RollList": {
       "Label": "Wurf",
       "RollMode": "Wurf-Modus",
       "MortalDice": "Würfel",
@@ -165,7 +165,7 @@
       "_SelectFeature": ""
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Geschichte",
       "Concept": "Konzept",
       "Chronicle": "Chronik",

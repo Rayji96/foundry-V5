@@ -287,7 +287,7 @@ async function createVampireMacro (data, slot) {
   const item = data.system
 
   // Create the macro command
-  const command = `game.wod5e.rollItemMacro("${item.name}");`
+  const command = `game.WOD5E.RollListItemMacro("${item.name}");`
   let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command))
   if (!macro) {
     macro = await Macro.create({

@@ -234,7 +234,7 @@ export async function generateRollMessage ({
     if (difficulty > 0) {
       totalAndDifficulty += `<div class="roll-difficulty">
         <span class="difficulty-title">
-          ${game.i18n.localize('WOD5E.Roll.Difficulty')}
+          ${game.i18n.localize('WOD5E.RollList.Difficulty')}
         </span>
         <span class="difficulty-contents">
           ${difficulty}
@@ -253,10 +253,10 @@ export async function generateRollMessage ({
         resultLabel += totalAndDifficulty + `<div class="roll-result-label desperation-failure">${game.i18n.localize('WOD5E.HTR.PossibleDesperationFailure')}</div>`
       } else {
         if (totalResult === 0 || difficulty > 0) { // Handle failures
-          resultLabel = totalAndDifficulty + `<div class="roll-result-label failure">${game.i18n.localize('WOD5E.Roll.Fail')}</div>`
+          resultLabel = totalAndDifficulty + `<div class="roll-result-label failure">${game.i18n.localize('WOD5E.RollList.Fail')}</div>`
         } else { // Show the number of successes
           // Handle pluralizing based on the number of successes
-          const successText = totalResult > 1 ? 'WOD5E.Roll.Successes' : 'WOD5E.Roll.Success'
+          const successText = totalResult > 1 ? 'WOD5E.RollList.Successes' : 'WOD5E.RollList.Success'
 
           if (system === 'vampire' && (advancedDice.criticals > 1 || (basicDice.criticals > 0 && advancedDice.criticals > 0))) { // Handle messy criticals if no difficulty is set
             resultLabel = `<div class="roll-result-label messy-critical">${game.i18n.localize('WOD5E.VTM.MessyCritical')}</div>
@@ -274,10 +274,10 @@ export async function generateRollMessage ({
           if (system === 'vampire' && (advancedDice.criticals > 1 || (basicDice.criticals > 0 && advancedDice.criticals > 0))) { // Handle messy criticals
             resultLabel = totalAndDifficulty + `<div class="roll-result-label messy-critical">${game.i18n.localize('WOD5E.VTM.MessyCritical')}</div>`
           } else { // Everything else is just a normal critical success
-            resultLabel = totalAndDifficulty + `<div class="roll-result-label critical-success">${game.i18n.localize('WOD5E.Roll.CriticalSuccess')}</div>`
+            resultLabel = totalAndDifficulty + `<div class="roll-result-label critical-success">${game.i18n.localize('WOD5E.RollList.CriticalSuccess')}</div>`
           }
         } else { // Normal success
-          resultLabel = totalAndDifficulty + `<div class="roll-result-label success">${game.i18n.localize('WOD5E.Roll.Success')}</div>`
+          resultLabel = totalAndDifficulty + `<div class="roll-result-label success">${game.i18n.localize('WOD5E.RollList.Success')}</div>`
         }
       }
     }

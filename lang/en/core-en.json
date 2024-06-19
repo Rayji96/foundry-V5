@@ -27,7 +27,7 @@
         "RemoveFromGroup": "Remove from group",
         "NoGroupMembers": "No group members added. Drag and drop from the actors sidebar to add some!",
 
-        "Roll": {
+        "RollList": {
             "Label": "Roll",
             "RollMode": "Roll Mode",
             "MortalDice": "Mortal Dice",
@@ -163,7 +163,7 @@
             "SelectFeature": "Select Feature"
         },
 
-        "Biography": {
+        "BiographyList": {
             "Label": "Biography",
             "Concept": "Concept",
             "Chronicle": "Chronicle",

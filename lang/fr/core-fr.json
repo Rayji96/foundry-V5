@@ -29,7 +29,7 @@
     "_RemoveFromGroup": "",
     "_NoGroupMembers": "",
 
-    "Roll": {
+    "RollList": {
       "Label": "Jet",
       "RollMode": "Type de jet",
       "MortalDice": "Dé mortel",
@@ -165,7 +165,7 @@
       "_SelectFeature": ""
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Biographie",
       "Concept": "Concept",
       "Chronicle": "Chronique",
