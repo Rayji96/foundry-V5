@@ -29,10 +29,11 @@
     "_RemoveFromGroup": "",
     "_NoGroupMembers": "",
 
-    "Roll": {
+    "RollList": {
       "Label": "Jet",
       "RollMode": "Type de jet",
       "MortalDice": "Dé mortel",
+      "_SelectRoll": "",
       "Success": "Succès",
       "Successes": "Succès",
       "CriticalSuccess": "Succès Critique",
@@ -43,7 +44,8 @@
       "Source": "Source",
       "Active": "Actif",
       "CustomModifiers": "Modificateur personnalisé",
-      "AddCustomModifier":"Ajouter un modificateur perso."
+      "AddCustomModifier":"Ajouter un modificateur perso.",
+      "_Total": ""
     },
 
     "Bonus": {
@@ -165,7 +167,7 @@
       "_SelectFeature": ""
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Biographie",
       "Concept": "Concept",
       "Chronicle": "Chronique",

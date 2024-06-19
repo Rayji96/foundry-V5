@@ -27,10 +27,11 @@
         "RemoveFromGroup": "",
         "NoGroupMembers": "",
 
-        "Roll": {
+        "RollList": {
             "Label": "",
             "RollMode": "",
             "MortalDice": "",
+            "SelectRoll": "",
             "Success": "",
             "Successes": "",
             "CriticalSuccess": "",
@@ -41,7 +42,8 @@
             "Source": "",
             "Active": "",
             "CustomModifiers": "",
-            "AddCustomModifier": ""
+            "AddCustomModifier": "",
+            "Total": ""
         },
 
         "Bonus": {
@@ -163,7 +165,7 @@
             "SelectFeature": ""
         },
 
-        "Biography": {
+        "BiographyList": {
             "Label": "",
             "Concept": "",
             "Chronicle": "",

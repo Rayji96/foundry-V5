@@ -29,10 +29,11 @@
         "_RemoveFromGroup": "",
         "_NoGroupMembers": "",
 
-        "Roll": {
+        "RollList": {
             "Label": "Перевірка",
             "_RollMode": "",
             "_MortalDice": "",
+            "_SelectRoll": "",
             "Success": "Успіх",
             "Successes": "Успіхів",
             "CriticalSuccess": "Критичний успіх",
@@ -43,7 +44,8 @@
             "_Source": "",
             "_Active": "",
             "_CustomModifiers": "",
-            "_AddCustomModifier": ""
+            "_AddCustomModifier": "",
+            "_Total": ""
         },
 
         "Bonus": {
@@ -165,7 +167,7 @@
             "_SelectFeature": ""
         },
 
-        "Biography": {
+        "BiographyList": {
             "Label": "Передісторія",
             "Concept": "Концепт",
             "Chronicle": "Хроніка",

@@ -29,10 +29,11 @@
     "_RemoveFromGroup": "",
     "_NoGroupMembers": "",
 
-    "Roll": {
+    "RollList": {
       "Label": "Tira",
       "RollMode": "Modalità di tiro",
       "MortalDice": "Dadi mortale",
+      "_SelectRoll": "",
       "Success": "Successo",
       "Successes": "Successi",
       "CriticalSuccess": "Successo critico",
@@ -43,7 +44,8 @@
       "Source": "Fonte",
       "Active": "Attiva",
       "CustomModifiers": "Modificatori personalizzati",
-      "_AddCustomModifier": ""
+      "_AddCustomModifier": "",
+      "_Total": ""
     },
 
     "Bonus": {
@@ -165,7 +167,7 @@
       "_SelectFeature": ""
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Biografia",
       "Concept": "Concetto",
       "Chronicle": "Cronaca",
