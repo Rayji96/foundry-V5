@@ -36,7 +36,7 @@ export class ActorInfo extends Actor {
     const label = game.i18n.localize(this.metadata.label)
     const title = game.i18n.format('DOCUMENT.Create', { type: label })
     // Generate a default name based on the label
-    const defaultName = game.i18n.format('DOCUMENT.New', { type: label })
+    const defaultName = game.i18n.format('WOD5E.New', { type: label })
 
     // Reorganize the actor templates into something usable for the creation form
     const actorTypes = {}
@@ -70,7 +70,7 @@ export class ActorInfo extends Actor {
         // Merge data with Foundry's default object before we manipulate it
         data = foundry.utils.mergeObject(data, fd.object)
         // Force a default name if none is given
-        if (!data.name) data.name = game.i18n.format('DOCUMENT.New', { type: actorTypes[data.type] })
+        if (!data.name) data.name = game.i18n.format('WOD5E.New', { type: actorTypes[data.type] })
         // If folder isn't given, delete the field
         if (!data.folder) delete data.folder
         // Choose the default actor type if there's only one
