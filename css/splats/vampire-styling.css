@@ -12,9 +12,10 @@
 }
 
 .wod5e.window-app .window-resizable-handle {
-  border-top: 3px double #ff0404;
-  border-left: 3px double #ff0404;
-  border-bottom: 1px solid #ff0404;
+  border-top: 3px double var(--vampire-primary);
+  border-left: 3px double var(--vampire-primary);
+  border-bottom: 1px solid var(--vampire-primary);
+  border-right: 1px solid var(--vampire-primary);
   border-radius: 0;
 }
 
@@ -24,7 +25,10 @@
 }
 
 .item-image.power-rollable img {
-  box-shadow: inset 0 0 5px 0 #c7c7c7
+    box-shadow: inset 1px 1px 4px 0 red;
+    border: 1px solid var(--vampire-primary);
+    filter: drop-shadow(2px 2px 1px grey);
+    border-radius: 4px;
 }
 
 .wod5e .profile-img,
