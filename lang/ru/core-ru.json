@@ -3,9 +3,9 @@
         "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
         "Name": "Название",
-        "_Confirm": "",
+        "Confirm": "Подтвердить",
         "Close": "Отмена",
-        "_Save": "",
+        "Save": "Сохранить",
         "_Submit": "",
         "System": "Бросок",
         "Edit": "Изменить",
@@ -18,40 +18,37 @@
         "Exp": "Опыт",
         "None": "Нет",
         "Value": "Значение",
-        "_Label": "",
-
-        "_New": "New {string}",
 
         "Mortal": "Смертный",
-        "_GroupSheet": "",
+        "GroupSheet": "Лист Котерии",
 
-        "_OpenSheet": "",
-        "_RemoveFromGroup": "",
-        "_NoGroupMembers": "",
+        "_OpenSheet": "Открыть лист",
+        "_RemoveFromGroup": "Удалить из групы",
+        "_NoGroupMembers": "Нету персонажей в группе",
 
         "Roll": {
-            "Label": "Бросить",
-            "_RollMode": "",
-            "_MortalDice": "",
+            "Label": "Проверка",
+            "RollMode": "Режим броска",
+            "MortalDice": "Кости смертного",
             "Success": "Успех",
             "Successes": "Успехов",
             "CriticalSuccess": "Триумф",
             "Fail": "Провал",
             "Modifier": "Модификатор",
             "Difficulty": "Сложность",
-            "_SelectableModifiers": "",
-            "_Source": "",
-            "_Active": "",
-            "_CustomModifiers": "",
-            "_AddCustomModifier": ""
+            "SelectableModifiers": "Выбранные модификаторы",
+            "Source": "Источник",
+            "Active": "Активиный",
+            "CustomModifiers": "Пользовательские модификаторы",
+            "AddCustomModifier": "Добавить пользовательский модификатор"
         },
 
         "Bonus": {
-            "_NewSpecialty": "",
-            "_AddNewSpecialty": "",
-            "_NewBonus": "",
-            "_AddNewBonus": "",
-            "_Active": "",
+            "NewSpecialty": "Новая специализация",
+            "AddNewSpecialty": "Добавить новую специализацию",
+            "NewBonus": "Новый бонус",
+            "AddNewBonus": "Добавить новый бонус",
+            "Active": "Активен",
             "_ActiveWhen": "",
             "_Always": "",
             "_Never": "",
@@ -85,7 +82,7 @@
         },
 
         "Tabs": {
-            "_Members": "",
+            "Members": "Участники",
             "Stats": "Параметры",
             "Features": "Преимущества",
             "Description": "Описание",
@@ -148,9 +145,9 @@
             "CustomRoll": "Уникальная проверка",
             "CustomRolls": "Уникальные проверки",
             "Merit": "Достоинства",
-            "_Cost": "",
+            "Cost": "Стоимость",
             "Flaw": "Недостатки",
-            "_Bonuses": "",
+            "Bonuses": "Бонусы",
             "Background": "Факты биографии",
             "Points": "Точки",
             "UseSkill": "Использовать навыки",
@@ -158,10 +155,10 @@
             "Feature": "Преимущества",
             "FeatureType": "Тип преимущества",
             "Type": "Тип",
-            "_NewSpecialty": "",
+            "NewSpecialty": "Новая специализация",
             "Boon": "Долг",
             "Boons": "Долги",
-            "_Macro": "",
+            "Macro": "Макрос",
             "_SelectFeature": ""
         },
 
@@ -197,8 +194,8 @@
         },
 
         "Macro": {
-            "_MacroID": "",
-            "_MacroNote": ""
+            "MacroID": "ID Макроса",
+            "MacroNote": "Если макрос был указан, то он будет выполнен непосредственно после нажатия на элемент или выполнения броска."
         },
 
         "Settings": {
