@@ -25,10 +25,10 @@
 }
 
 .item-image.power-rollable img {
-    box-shadow: inset 1px 1px 4px 0 red;
-    border: 1px solid var(--vampire-primary);
-    filter: drop-shadow(2px 2px 1px grey);
-    border-radius: 4px;
+  box-shadow: inset 1px 1px 4px 0 red;
+  border: 1px solid var(--vampire-primary);
+  filter: drop-shadow(2px 2px 1px grey);
+  border-radius: 4px;
 }
 
 .wod5e .profile-img,
