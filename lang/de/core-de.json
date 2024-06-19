@@ -20,7 +20,7 @@
     "Value": "Wert",
     "Label": "Label",
 
-    "New": "Neue {Zeichenfolge}",
+    "New": "Neuer {string}",
 
     "Mortal": "Sterblicher",
     "GroupSheet": "Gruppen-Bogen",
