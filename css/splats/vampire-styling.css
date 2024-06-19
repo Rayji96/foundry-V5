@@ -21,7 +21,7 @@
 
 .fa-arrows-alt-h::before,
 .fa-left-right::before {
-    color: #ff0404;
+  color: var(--vampire-primary);
 }
 
 .item-image.power-rollable img {
