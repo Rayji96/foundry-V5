@@ -227,22 +227,22 @@
         "DarkThemeHint": "Zeigt Charakterbögen in dunklem Stil. (Einstellung gilt nur für diesen Benutzer)",
 
         "ActorBanner": "Charakter-Typ-Banner anzeigen",
-        "ActorBannerHint": "Zeigt einen farbigen Banner an der Oberseite des Charakterbogens an, der den Typ von Wesen anzeigt.",
+        "ActorBannerHint": "Zeigt einen farbigen Banner oben am Charakterbogen, der den Typ von Wesen anzeigt.",
 
         "AutomationSettings": "Automatisierungs-Einstellungen",
-        "AutomationSettingsHint": "Verändere verschiedene Einstellungen der Automatisierung.",
+        "AutomationSettingsHint": "Verändert verschiedene Einstellungen der Automatisierung.",
 
         "DisableAutomation": "Jegliche Automatisierung ausschalten",
         "DisableAutomationHint": "Schaltet jede Automatisierung aus, ohne alle untenstehenden Häkchen entfernen zu müssen.",
 
         "AutomateWillpower": "Automatisierter Willenskraft-Schaden",
-        "AutomateWillpowerHint": "Wenn eingeschaltet, tragen Willenskraft vebrauchende Features automatisch Willenskraft-Schaden im Bogen ein.",
+        "AutomateWillpowerHint": "Wenn eingeschaltet tragen Willenskraft vebrauchende Features automatisch Willenskraft-Schaden im Bogen ein.",
 
         "AutomateHunger": "Automatisierte Hunger-Steigerung",
-        "AutomateHungerHint": "Wenn eingeschaltet, erhöhen fehlgeschlagene Wallungs-Würfe automatisch den Hunger im Charakterbogen.",
+        "AutomateHungerHint": "Wenn eingeschaltet erhöhen fehlgeschlagene Wallungs-Würfe automatisch den Hunger im Charakterbogen.",
 
         "AutomateOblivion": "Automatisierte Vergessens-Makel",
-        "AutomateOblivionHint": "Wenn eingeschaltet, trägt das Würfeln einer 1 oder 10 bei Vergessens-Würfen automatisch einen Makel für die Menschlichkeit im Bogen ein.",
+        "AutomateOblivionHint": "Wenn eingeschaltet trägt das Würfeln einer 1 oder 10 bei Vergessens-Würfen automatisch einen Makel für die Menschlichkeit im Bogen ein.",
 
         "AutomateRage": "Automatisierte Zorn-Würfel",
         "AutomateRageHint": "Wenn eingeschaltet verringern fehlgeschlagene Zorn-Würfe automatisch den Zorn im Bogen.",
