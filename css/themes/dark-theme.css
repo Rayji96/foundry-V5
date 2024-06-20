@@ -249,7 +249,7 @@
   background: #121212;
 }
 
-.dark-theme textarea {
+.dark-theme .actor.sheet textarea, .dark-theme .item.sheet textarea {
   color: #FFF;
 }
 
