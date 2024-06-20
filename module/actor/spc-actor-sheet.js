@@ -1,4 +1,4 @@
-/* global Dialog, game, foundry */
+/* global Dialog, game, foundry, WOD5E */
 
 import { WoDActor } from './wod-v5-sheet.js'
 import { Skills } from '../def/skills.js'
