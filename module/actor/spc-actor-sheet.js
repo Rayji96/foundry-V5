@@ -1,7 +1,7 @@
 /* global Dialog, game, foundry */
 
-// Export this function to be used in other scripts
 import { WoDActor } from './wod-v5-sheet.js'
+import { Skills } from '../def/skills.js'
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -63,8 +63,69 @@ export class SPCActorSheet extends WoDActor {
      * @override
      */
   async _prepareItems (sheetData) {
+    // Top-level variables
+    const actorData = sheetData.actor
+
+    // Secondary variables
+    const exceptionaldicepools = []
+
     // Prepare items
     super._prepareItems(sheetData)
+
+    // Loop through each entry in the skills list, get the data (if available), and then push to the containers
+    const skillsList = Skills.getList({})
+    const actorSkills = actorData.system?.exceptionaldicepools
+
+    if (actorSkills) {
+      // Clean up non-existent skills, such as custom ones that no longer exist
+      const validSkills = new Set(Object.keys(skillsList))
+      for (const id of Object.keys(actorSkills)) {
+        if (!validSkills.has(id)) {
+          delete actorSkills[id]
+        }
+      }
+
+      for (const [id, value] of Object.entries(skillsList)) {
+        let skillData = {}
+        let hasSpecialties = false
+        const specialtiesList = []
+
+        if (actorSkills[id]?.bonuses?.length > 0) {
+          hasSpecialties = true
+
+          for (const bonus of actorSkills[id].bonuses) {
+            specialtiesList.push(bonus.source)
+          }
+        }
+
+        // If the actor has a skill with the key, grab its current values
+        if (Object.prototype.hasOwnProperty.call(actorSkills, id)) {
+          skillData = Object.assign({
+            id,
+            value: actorSkills[id].value,
+            hasSpecialties,
+            specialtiesList,
+            visible: actorSkills[id].visible
+          }, value)
+        } else { // Otherwise, add it to the actor and set it as some default data
+          await this.actor.update({ [`system.exceptionaldicepools.${id}`]: { value: 0 } })
+
+          skillData = Object.assign({
+            id,
+            value: 0,
+            hasSpecialties,
+            specialtiesList
+          }, value)
+        }
+
+        // Push to the container as long as the skill isn't "hidden"
+        if (!skillData.hidden && skillData.visible) {
+          exceptionaldicepools.push(skillData)
+        }
+      }
+    }
+
+    actorData.system.exceptionaldicepools_list = exceptionaldicepools
   }
 
   /* -------------------------------------------- */
@@ -115,8 +176,8 @@ export class SPCActorSheet extends WoDActor {
     let buttons = {}
 
     // Gather and push the list of options to the 'options' variable
-    for (const [key, value] of Object.entries(actor.system.exceptionaldicepools)) {
-      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
+    for (const [key, value] of Object.entries(WOD5E.Skills.getList({}))) {
+      options = options.concat(`<option value="${key}">${game.i18n.localize(value.displayName)}</option>`)
     }
 
     // Define the template to be used
