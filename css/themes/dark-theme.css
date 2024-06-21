@@ -263,3 +263,7 @@
 .dark-theme .wod5e .resource-counter .resource-counter-step[data-state="-"] {
   background-color: #f30018;
 }
+
+.dark-theme .wod5e-config-form .notes {
+  color: #FFF;
+}
