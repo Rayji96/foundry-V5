@@ -1,10 +1,9 @@
 {
   "WOD5E": {
     "WTA": {
-      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
-
+     
       "Label": "Licantropo",
-      "_Pack": "",
+      "Pack": "Branco",
       "WerewolfDice": "Dadi Licantropo",
       "RageDice": "Dadi Furia",
       "GiftsandRites": "Doni e Riti",
@@ -34,13 +33,13 @@
       "FrenzyActiveWarning": "La frenesia è attiva.",
       "Active": "Attiva",
       "FrenzyActiveWarning2": "Non puoi utilizzare doni e riti durante una frenesia.",
-      "_LostTheWolf": "",
-      "_LostWolfWarning": "",
-      "LostWolfFormChange": "Hai perso il lupo: Non puoi assumere forme naturali al momento.",
-      "_LostWolfShiftDown": "",
-      "_LostWolfShiftAnyway": "",
+      "LostTheWolf": "Perso il lupo",
+      "LostWolfWarning": "Questo personaggio ha furia zero e ha perso il lupo",
+      "LostWolfFormChange": "Hai perso il lupo: Non puoi assumere forme sovrannaturali al momento.",
+      "LostWolfShiftDown": "Questo personaggio ha perso il lupo e non può rimanere nella sua forma sovrannaturale. Scegli una forma a cui scendere",
+      "LostWolfShiftAnyway": "Questo personaggio ha perso il lupo e non può trasformarsi a causa della basa furia. Vuoi Trasformarti comunque?",
       "Renown": "Prestigio",
-      "_AddRenown": "",
+      "AddRenown": "Aggiungi Prestigio",
       "Wisdom": "Saggezza",
       "Glory": "Gloria",
       "Honor": "Onore",

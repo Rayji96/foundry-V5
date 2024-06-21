@@ -1,11 +1,10 @@
 {
   "WOD5E": {
-    "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
-
+    
     "Name": "Nome",
     "Confirm": "Conferma",
-    "_Close": "Chiudi",
-    "_Save": "Salva",
+    "Close": "Chiudi",
+    "Save": "Salva",
     "Submit": "Invia",
     "System": "Sistema",
     "Edit": "Modifica",
@@ -18,22 +17,22 @@
     "Exp": "Esp",
     "None": "Nssuno",
     "Value": "Valore",
-    "_Label": "",
+    "Label": "Etichetta",
 
     "New": "Nuova {string}",
     
     "Mortal": "Mortale",
-    "_GroupSheet": "",
+    "GroupSheet": "Scheda di gruppo",
 
-    "_OpenSheet": "",
-    "_RemoveFromGroup": "",
-    "_NoGroupMembers": "",
+    "OpenSheet": "Apri scheda",
+    "RemoveFromGroup": "Rimuovi dal gruppo",
+    "NoGroupMembers": "Non ci sono membri in questo gruppo. Trascina una scheda per aggiungerla al gruppo!",
 
     "RollList": {
       "Label": "Tira",
       "RollMode": "Modalità di tiro",
       "MortalDice": "Dadi mortale",
-      "_SelectRoll": "",
+      "SelectRoll": "Seleziona tiro",
       "Success": "Successo",
       "Successes": "Successi",
       "CriticalSuccess": "Successo critico",
@@ -44,27 +43,27 @@
       "Source": "Fonte",
       "Active": "Attiva",
       "CustomModifiers": "Modificatori personalizzati",
-      "_AddCustomModifier": "",
-      "_Total": ""
+      "AddCustomModifier": "Aggiungi Modificatore personalizzato",
+      "Total": "Totale"
     },
 
     "Bonus": {
-        "_NewSpecialty": "",
-        "_AddNewSpecialty": "",
-        "_NewBonus": "",
-        "_AddNewBonus": "",
-        "_Active": "",
-        "_ActiveWhen": "",
-        "_Always": "",
-        "_Never": "",
-        "_IfEquals": "",
-        "_Path": "",
-        "_PathsSeparatedBySemicolons": "",
-        "_DisplayWhenInactive": "",
-        "_Unless": "",
-        "_PathToCheck": "",
-        "_ValueToCheck": "",
-        "_IfPathIs": ""
+        "NewSpecialty": "Nuova specialità",
+        "AddNewSpecialty": "Aggiungi nuova specialità",
+        "NewBonus": "Nuovo bonus",
+        "AddNewBonus": "Aggiungi nuovo bonus",
+        "Active": "Attivo",
+        "ActiveWhen": "Attivo quando",
+        "Always": "Sempre",
+        "Never": "Mai",
+        "IfEquals": "Se uguale",
+        "Path": "Percorso",
+        "PathsSeparatedBySemicolons": "Percorsi, separati da punti e virgole (;) ",
+        "DisplayWhenInactive": "Mostra quando inattivo",
+        "Unless": "A meno che",
+        "PathToCheck": "Percorso da controllare",
+        "ValueToCheck": "Valore è",
+        "IfPathIs": "Percorso è"
     },
 
     "SPC": {
@@ -87,7 +86,7 @@
     },
 
     "Tabs": {
-      "_Members": "",
+      "Members": "Membri",
       "Stats": "Statistiche",
       "Features": "Caratteristiche",
       "Description": "Descrizioni",
@@ -164,7 +163,7 @@
       "Boon": "Favore",
       "Boons": "Favori",
       "Macro": "Macro",
-      "_SelectFeature": ""
+      "SelectFeature": "Seleziona Caratteristica"
     },
 
     "BiographyList": {
@@ -199,68 +198,67 @@
     },
 
     "Macro": {
-        "_MacroID": "",
-        "_MacroNote": ""
+        "MacroID": "ID macro",
+        "MacroNote": "Se è stata aggiunta una macro, verrà eseguita al click sull'oggetto o dopo aver effettuato un tiro."
     },
 
     "Settings": {
-        "_SaveChanges": "",
+        "SaveChanges": "Salva modifiche",
 
-        "_Modifications": "",
-        "_Custom": "",
+        "Modifications": "Modifiche",
+        "Custom": "Personalizzazioni",
 
-        "_Rename": "",
-        "_Hidden": "",
+        "Rename": "Rinomina",
+        "Hidden": "Nascondi",
 
-        "_AddAttributeModification": "",
-        "_AddSkillModification": "",
-        "_AddCustomAttribute": "",
-        "_AddCustomSkill": "",
+        "AddAttributeModification": "Aggiungi modifica attributo",
+        "AddSkillModification": "Aggiungi modifica Abilità",
+        "AddCustomAttribute": "Aggiungi attributo personalizzato",
+        "AddCustomSkill": "Aggiungi abilità Personalizzata",
 
-        "_AttributeType": "",
-        "_SkillType": "",
+        "AttributeType": "Tipo di attributo",
+        "SkillType": "Tipo di abilità",
+        "WorldVersion": "Versione",
+        "WorldVersionHint": "Si aggiorna automaticamente quando system.json viene aggiornato.",
 
-        "_WorldVersion": "",
-        "_WorldVersionHint": "",
+        "DarkTheme": "Tema Scuro",
+        "DarkThemeHint": "Mostra le schede con un interfaccia più scura.",
 
-        "_DarkTheme": "",
-        "_DarkThemeHint": "",
+        "ActorBanner": "Etichetta tipo personaggio",
+        "ActorBannerHint": "Mostra un etichetta sulla scheda che rappresenta il tipo di personaggio.",
 
-        "_ActorBanner": "",
-        "_ActorBannerHint": "",
+        "AutomationSettings": "Impostazioni automazioni",
+        "AutomationSettingsHint": "Accedi a varie impostazioni per automazioni.",
 
-        "_AutomationSettings": "",
-        "_AutomationSettingsHint": "",
+        "DisableAutomation": "Disabilita tutte le automazioni",
+        "DisableAutomationHint": "Disabilita tutte le automazioni senza dover cliccare tutti i pulsanti qui sotto.",
 
-        "_DisableAutomation": "",
-        "_DisableAutomationHint": "",
+        "AutomateWillpower": "Automatizza Forza di volontà",
+        "AutomateWillpowerHint": "Se selezionato, utilizzare funzioni che fanno danno alla forza di volontà fare scendere la forza di volontà sulla scheda.",
 
-        "_AutomateWillpower": "",
-        "_AutomateWillpowerHint": "",
+        "AutomateHunger": "Automatizza fame",
+        "AutomateHungerHint": "Se selezionato, tirare dadi fame e fallire farà automaticamente salire la fame sulla scheda.",
 
-        "_AutomateHunger": "",
-        "_AutomateHungerHint": "",
+        "AutomateOblivion": "Automatizza Oblio",
+        "AutomateOblivionHint": "Se selezionato, un risultato di 1 o 10 su un tiro di risveglio per oblio segnerà una macchia sulla scheda.",
 
-        "_AutomateOblivion": "",
-        "_AutomateOblivionHint": "",
+        "AutomateRage": "Automatizza furia",
+        "AutomateRageHint": "Se selezionato, tirare dadi furia e fallire farà automaticamente scendere la furia sulla scheda.",
 
-        "_AutomateRage": "",
-        "_AutomateRageHint": "",
+        "StorytellerMenu": "Menu del narratore",
+        "StorytellerMenuHint": "Effettua modifiche al sistema, come cambiare abilità e attributi o creane di nuovi",
 
-        "_StorytellerMenu": "",
-        "_StorytellerMenuHint": "",
+        "ModifiedAttributes": "Modifica attributi",
+        "ModifiedAttributesHint": "Consente di modificare Attributi esistenti",
 
-        "_ModifiedAttributes": "",
-        "_ModifiedAttributesHint": "",
+        "ModifiedSkills": "Modifica abilità",
+        "ModifiedSkillsHint": "Consente di modificare abilità esistenti",
 
-        "_ModifiedSkills": "",
-        "_ModifiedSkillsHint": "",
+        "CustomAttributes": "Attributi Personalizzati",
+        "CustomAttributesHint": "Consente di creare attributi Personalizzati",
 
-        "_CustomAttributes": "",
-        "_CustomAttributesHint": "",
-
-        "_CustomSkills": "",
-        "_CustomSkillsHint": ""
+        "CustomSkills": "Abilità Personalizzate",
+        "CustomSkillsHint": "Consente di creare abilità Personalizzate"
     }
   }
 }

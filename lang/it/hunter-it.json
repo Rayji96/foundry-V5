@@ -1,8 +1,6 @@
 {
   "WOD5E": {
     "HTR": {
-      "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
-
       "Label": "Cacciatore",
       "HunterDice": "Dadi Cacciatore",
       "DesperationDice": "Dadi disperazione?",
@@ -17,7 +15,7 @@
       "AddEdge": "Aggiungi Privilegio",
       "SelectEdge": "Seleziona Privilegio",
       "AddPerk": "Aggiungi Beneficio",
-      "_NewPerk": "",
+      "NewPerk": "Nuovo Beneficio",
       "Desperation": "Disperazione",
       "Danger": "Pericolo",
       "DesperationSuccess": "Successo a un costo o fallimento disperato",
@@ -30,9 +28,9 @@
       "Ordnance": "Esplosivi",
       "Library": "Archivio",
       "ImprovisedGear": "Equipaggiamento improvvisato",
-      "GlobalAccess": "Chaive di rete",
-      "DroneJockey": "Oepratore di droni",
-      "BeastWhisperer": "Comapgno animale",
+      "GlobalAccess": "Chiave di rete",
+      "DroneJockey": "Operatore di droni",
+      "BeastWhisperer": "Compagno animale",
       "SenseTheUnnatural": "Percepire il sovrannaturale",
       "RepelTheUnnatural": "Scacciare il sovrannaturale",
       "ThwartTheUnnatural": "Resistere al sovrannaturale",
