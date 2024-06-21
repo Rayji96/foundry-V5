@@ -3,7 +3,7 @@
 export class StorytellerMenu extends FormApplication {
   static get defaultOptions () {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      title: 'Storyteller Settings',
+      title: game.i18n.localize('WOD5E.Settings.StorytellerMenu'),
       id: 'wod5e-storyteller',
       classes: ['wod5e'],
       template: 'systems/vtm5e/templates/ui/storyteller-menu.hbs',
