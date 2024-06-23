@@ -328,6 +328,10 @@
     margin-bottom: 0;
 }
 
+.wod5e .window-content .actor-header .resource-label {
+    text-align: center;
+}
+
 .sheet-banner h1 {
     margin-bottom: 0;
 }
