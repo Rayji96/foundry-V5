@@ -1,4 +1,4 @@
-/* global Actor, game, foundry */
+/* global Actor, game, foundry, CONST */
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
