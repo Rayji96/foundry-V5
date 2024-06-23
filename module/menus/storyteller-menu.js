@@ -284,6 +284,7 @@ async function _onRemoveCustom (type, id) {
     let customAttributes = game.settings.get('vtm5e', 'customAttributes')
 
     // Remove the attribute by id then update the game settings
+    WOD5E.Attributes.removeCustom(id)
     customAttributes = customAttributes.filter(attribute => (attribute.id !== id))
     game.settings.set('vtm5e', 'customAttributes', customAttributes)
   } else if (type === 'skill') {
@@ -291,6 +292,7 @@ async function _onRemoveCustom (type, id) {
     let customSkills = game.settings.get('vtm5e', 'customSkills')
 
     // Remove the skill by id then update the game settings
+    WOD5E.Skills.removeCustom(id)
     customSkills = customSkills.filter(skill => (skill.id !== id))
     game.settings.set('vtm5e', 'customSkills', customSkills)
   }

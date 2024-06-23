@@ -32,6 +32,13 @@ export class Attributes {
     }
   }
 
+  // Method to remove a custom skill
+  static removeCustom (key) {
+    if (this[key] && this[key].custom) {
+      delete this[key]
+    }
+  }
+
   // Localize the labels
   static initializeLabels () {
     const modifications = game.settings.get('vtm5e', 'modifiedAttributes')
