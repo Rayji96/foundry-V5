@@ -1,4 +1,24 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Vampir",
+          "ghoul": "Ghoul",
+          "mortal": "Sterblicher",
+          "hunter": "Jäger",
+          "werewolf": "Werwolf",
+          "spc": "Erzähler-Charakter",
+          "group": "Gruppen-Bogen"
+      },
+      "Item": {
+          "boon": "Gefallen",
+          "customRoll": "Benutzerdefinierter Wurf",
+          "feature": "Merkmal",
+          "gift": "Gabe",
+          "perk": "Verstärkung",
+          "power": "Disziplin"
+      }
+  },
+
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
@@ -18,6 +38,9 @@
     "Exp": "EP",
     "None": "Kein",
     "Value": "Wert",
+    "Label": "Label",
+
+    "New": "Neuer {string}",
 
     "Mortal": "Sterblicher",
     "GroupSheet": "Gruppen-Bogen",
@@ -26,10 +49,11 @@
     "RemoveFromGroup": "Aus Gruppe entfernen",
     "NoGroupMembers": "Keine Gruppenmitglieder. Zum Hinzufügen aus der Akteur-Liste hierher ziehen.",
 
-    "Roll": {
+    "RollList": {
       "Label": "Wurf",
       "RollMode": "Wurf-Modus",
       "MortalDice": "Würfel",
+      "SelectRoll": "Wurf auswählen",
       "Success": "Erfolg",
       "Successes": "Erfolge",
       "CriticalSuccess": "Kritischer Erfolg",
@@ -40,7 +64,8 @@
       "Source": "Quelle",
       "Active": "Aktiv",
       "CustomModifiers": "Eigene Modifikatoren",
-      "AddCustomModifier": "Eigene Modifikatoren hinzufügen"	  
+      "AddCustomModifier": "Eigene Modifikatoren hinzufügen",
+      "Total": "Gesamt"
     },
 
     "Bonus": {
@@ -58,7 +83,8 @@
         "DisplayWhenInactive": "Anzeigen, wenn inaktiv",
         "Unless": "Außer, wenn …",
         "PathToCheck": "Pfad",
-        "ValueToCheck": "Wert"
+        "ValueToCheck": "Wert",
+        "IfPathIs": "Wenn Pfad … ist"
     },
 
     "SPC": {
@@ -90,7 +116,7 @@
       "Other": "Sonstige"
     },
 
-    "Attributes": {
+    "AttributesList": {
       "Label": "Attribute",
       "Attributes": "Attribute",
       "Strength": "Körperkraft",
@@ -104,7 +130,7 @@
       "Resolve": "Entschlossenheit"
     },
 
-    "Skills": {
+    "SkillsList": {
       "Label": "Fähigkeiten",
       "Skills": "Fähigkeiten",
       "Specialty": "Spezialisierung",
@@ -138,7 +164,7 @@
       "Technology": "Technologie"
     },
 
-    "Items": {
+    "ItemsList": {
       "Label": "Gegenstände",
       "ShowToChat": "An Chat senden",
       "CustomRoll": "Benutzerdefinierter Wurf",
@@ -157,10 +183,11 @@
       "NewSpecialty": "Neue Spezialisierung",
       "Boon": "Gefallen",
       "Boons": "Gefallen",
-      "Macro": "Macro"
+      "Macro": "Macro",
+      "SelectFeature": "Merkmal auswählen"
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Geschichte",
       "Concept": "Konzept",
       "Chronicle": "Chronik",
@@ -192,8 +219,68 @@
     },
 
     "Macro": {
-        "_MacroID": "",
-        "_MacroNote": ""
+        "MacroID": "Makro-ID",
+        "MacroNote": "Wenn ein Makro eingetragen ist, wird es sofort nach dem Klick auf das Item oder dem Wurf ausgeführt."
+    },
+
+    "Settings": {
+        "SaveChanges": "Änderungen speichern",
+
+        "Modifications": "Modifikationen",
+        "Custom": "Anpassungen",
+
+        "Rename": "Umbenennen",
+        "Hidden": "Versteckt",
+
+        "AddAttributeModification": "Attributs-Modifikation hinzufügen",
+        "AddSkillModification": "Fähigkeiten-Modifikation hinzufügen",
+        "AddCustomAttribute": "Eigenes Attribut hinzufügen",
+        "AddCustomSkill": "Eigene Fähigkeit hinzufügen",
+
+        "AttributeType": "Attributs-Typ",
+        "SkillType": "Fähigkeits-Typ",
+
+        "WorldVersion": "Welt-Versionsnummer",
+        "WorldVersionHint": "Updatet automatisch Daten, wenn die system.json geupdated wird.",
+
+        "DarkTheme": "Dunkles Aussehen",
+        "DarkThemeHint": "Zeigt Charakterbögen in dunklem Stil. (Einstellung gilt nur für diesen Benutzer)",
+
+        "ActorBanner": "Charakter-Typ-Banner anzeigen",
+        "ActorBannerHint": "Zeigt einen farbigen Banner oben am Charakterbogen, der den Typ von Wesen anzeigt.",
+
+        "AutomationSettings": "Automatisierungs-Einstellungen",
+        "AutomationSettingsHint": "Verändert verschiedene Einstellungen der Automatisierung.",
+
+        "DisableAutomation": "Jegliche Automatisierung ausschalten",
+        "DisableAutomationHint": "Schaltet jede Automatisierung aus, ohne alle untenstehenden Häkchen entfernen zu müssen.",
+
+        "AutomateWillpower": "Automatisierter Willenskraft-Schaden",
+        "AutomateWillpowerHint": "Wenn eingeschaltet tragen Willenskraft vebrauchende Features automatisch Willenskraft-Schaden im Bogen ein.",
+
+        "AutomateHunger": "Automatisierte Hunger-Steigerung",
+        "AutomateHungerHint": "Wenn eingeschaltet erhöhen fehlgeschlagene Wallungs-Würfe automatisch den Hunger im Charakterbogen.",
+
+        "AutomateOblivion": "Automatisierte Vergessens-Makel",
+        "AutomateOblivionHint": "Wenn eingeschaltet trägt das Würfeln einer 1 oder 10 bei Vergessens-Würfen automatisch einen Makel für die Menschlichkeit im Bogen ein.",
+
+        "AutomateRage": "Automatisierte Zorn-Würfel",
+        "AutomateRageHint": "Wenn eingeschaltet verringern fehlgeschlagene Zorn-Würfe automatisch den Zorn im Bogen.",
+
+        "StorytellerMenu": "Geschichtenerzähler-Menü",
+        "StorytellerMenuHint": "Passe das System durch Änderungen oder Umbenennung der Attribute und Fähigkeiten an.",
+
+        "ModifiedAttributes": "Attributs-Modifikationen",
+        "ModifiedAttributesHint": "Erlaubt Änderungen an den existierenden Attributen.",
+
+        "ModifiedSkills": "Fähigkeits-Modifikationen",
+        "ModifiedSkillsHint": "Erlaubt Änderungen an den existierenden Fähigkeiten.",
+
+        "CustomAttributes": "Eigene Attribute",
+        "CustomAttributesHint": "Erlaubt die Erstellung eigener Attribute.",
+
+        "CustomSkills": "Eigene Fähigkeiten",
+        "CustomSkillsHint": "Erlaubt die Erstellung eigener Fähigkeiten."
     }
   }
 }

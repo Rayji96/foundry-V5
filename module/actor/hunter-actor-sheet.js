@@ -1,4 +1,4 @@
-/* global Dialog, game, foundry, renderTemplate, ChatMessage, WOD5E */
+/* global game, foundry, renderTemplate, ChatMessage */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -123,9 +123,6 @@ export class HunterActorSheet extends WoDActor {
     // Toggle despair
     html.find('.despair-toggle').click(this._onToggleDespair.bind(this))
 
-    // Make Edge visible
-    html.find('.edge-create').click(this._onCreateEdge.bind(this))
-
     // Rollable Edge powers
     html.find('.edge-rollable').click(this._onEdgeRoll.bind(this))
 
@@ -169,105 +166,6 @@ export class HunterActorSheet extends WoDActor {
     }
   }
 
-  /**
-     * Handle making a new edge
-     * @param {Event} event   The originating click event
-     * @private
-     */
-  _onCreateEdge (event) {
-    event.preventDefault()
-
-    // Top-level variables
-    const actor = this.actor
-    const header = event.currentTarget
-
-    // Variables yet to be defined
-    let options = ''
-    let buttons = {}
-
-    // If the type of edge is already set, we don't need to ask for it
-    if (header.dataset.edge) {
-      // Get the image for the item, if one is available from the item definitions
-      const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'perk' in obj)
-      const img = itemFromList.perk.img ? itemFromList.perk.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
-
-      // Prepare the item object.
-      const itemData = {
-        name: game.i18n.localize('WOD5E.HTR.NewPerk'),
-        type: 'perk',
-        img,
-        system: {
-          edge: header.dataset.edge
-        }
-      }
-
-      // Remove the type from the dataset since it's in the itemData.type prop.
-      delete itemData.system.type
-
-      // Finally, create the item!
-      return actor.createEmbeddedDocuments('Item', [itemData])
-    } else {
-      // Go through the options and add them to the options variable
-      for (const [key, value] of Object.entries(actor.system.edges)) {
-        options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
-      }
-
-      // Define the template to be used
-      const template = `
-        <form>
-            <div class="form-group">
-                <label>${game.i18n.localize('WOD5E.HTR.SelectEdge')}</label>
-                <select id="edgeSelect">${options}</select>
-            </div>
-        </form>`
-
-      // Define the buttons to be used and push them to the buttons variable
-      buttons = {
-        submit: {
-          icon: '<i class="fas fa-check"></i>',
-          label: game.i18n.localize('WOD5E.Add'),
-          callback: async (html) => {
-            const edge = html.find('#edgeSelect')[0].value
-
-            // Get the image for the item, if one is available from the item definitions
-            const itemFromList = WOD5E.ItemTypes.getList().find(obj => 'perk' in obj)
-            const img = itemFromList.perk.img ? itemFromList.perk.img : 'systems/vtm5e/assets/icons/items/item-default.svg'
-
-            // Prepare the item object.
-            const itemData = {
-              name: game.i18n.localize('WOD5E.HTR.NewPerk'),
-              type: 'perk',
-              img,
-              system: {
-                edge
-              }
-            }
-            // Remove the type from the dataset since it's in the itemData.type prop.
-            delete itemData.system.type
-
-            // Finally, create the item!
-            return actor.createEmbeddedDocuments('Item', [itemData])
-          }
-        },
-        cancel: {
-          icon: '<i class="fas fa-times"></i>',
-          label: game.i18n.localize('WOD5E.Cancel')
-        }
-      }
-
-      // Display the dialog
-      new Dialog({
-        title: game.i18n.localize('WOD5E.WTA.AddGift'),
-        content: template,
-        buttons,
-        default: 'submit'
-      },
-      {
-        classes: ['wod5e', 'hunter-dialog', 'hunter-sheet']
-      }).render(true)
-    }
-  }
-
   async _onEdgeRoll (event) {
     event.preventDefault()
 
@@ -306,7 +204,7 @@ export class HunterActorSheet extends WoDActor {
     })
 
     // Add it all together
-    const dicePool = dice1 + dice2 + activeBonuses
+    const dicePool = dice1 + dice2 + activeBonuses.totalValue
 
     // Send the roll to the system
     WOD5eDice.Roll({

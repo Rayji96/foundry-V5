@@ -12,9 +12,10 @@
 }
 
 .wod5e.hunter-sheet.window-app .window-resizable-handle {
-  border-top: 3px double #ff9a02;
-  border-left: 3px double #ff9a02;
-  border-bottom: 1px solid #ff9a02;
+  border-top: 3px double var(--hunter-primary);
+  border-left: 3px double var(--hunter-primary);
+  border-bottom: 1px solid var(--hunter-primary);
+  border-right: 1px solid var(--hunter-primary);
   border-radius: 0;
 }
 
@@ -87,7 +88,10 @@
 }
 
 .wod5e.hunter-sheet .item-image.edge-rollable img {
-  box-shadow: inset 0 0 5px 0 red;
+    box-shadow: inset 1px 1px 4px 0 orange;
+    border: 1px solid var(--hunter-primary);
+    filter: drop-shadow(2px 2px 1px grey);
+    border-radius: 4px;
 }
 
 /* dialog.css */

@@ -30,7 +30,7 @@ jobs:
                             "notes": "https://github.com/Rayji96/foundry-V5/releases/tag/${{ github.event.release.tag_name }}",
                             "compatibility": {
                                 "minimum": "11",
-                                "verified": "12.324",
+                                "verified": "12.327",
                                 "maximum": ""
                             }
                         }

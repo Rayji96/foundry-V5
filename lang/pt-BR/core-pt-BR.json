@@ -1,4 +1,24 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Vampiro",
+          "ghoul": "Carniçal",
+          "mortal": "Mortal",
+          "hunter": "Caçador",
+          "werewolf": "",
+          "spc": "Personagem do Narrador",
+          "_group": ""
+      },
+      "Item": {
+          "boon": "Favor",
+          "customRoll": "Rolagem Personalizada",
+          "feature": "Vantagem",
+          "_gift": "",
+          "perk": "Distinção",
+          "power": "Disciplina"
+      }
+  },
+
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
@@ -18,6 +38,9 @@
     "Exp": "Experiência",
     "None": "Nenhum",
     "Value": "Valor",
+    "_Label": "",
+
+    "_New": "New {string}",
     
     "Mortal": "Mortal",
     "_GroupSheet": "",
@@ -26,10 +49,11 @@
     "_RemoveFromGroup": "",
     "_NoGroupMembers": "",
 
-    "Roll": {
+    "RollList": {
       "Label": "Rolagem",
       "RollMode": "Modo de Rolagem",
       "MortalDice": "Dados de Mortal",
+      "_SelectRoll": "",
       "Success": "Sucesso",
       "Successes": "Sucessos",
       "CriticalSuccess": "Sucesso Crítico",
@@ -40,7 +64,8 @@
       "_Source": "",
       "_Active": "",
       "_CustomModifiers": "",
-      "_AddCustomModifier": ""
+      "_AddCustomModifier": "",
+      "_Total": ""
     },
 
     "Bonus": {
@@ -58,7 +83,8 @@
         "_DisplayWhenInactive": "",
         "_Unless": "",
         "_PathToCheck": "",
-        "_ValueToCheck": ""
+        "_ValueToCheck": "",
+        "_IfPathIs": ""
     },
 
     "SPC": {
@@ -90,7 +116,7 @@
       "Other": "Outro"
     },
 
-    "Attributes": {
+    "AttributesList": {
       "Label": "Atributos",
       "Attributes": "Atributos",
       "Strength": "Força",
@@ -104,7 +130,7 @@
       "Resolve": "Determinação"
     },
 
-    "Skills": {
+    "SkillsList": {
       "Label": "Habilidades",
       "Skills": "Habilidades",
       "Specialty": "Especialização",
@@ -138,7 +164,7 @@
       "Technology": "Tecnologia"
     },
 
-    "Items": {
+    "ItemsList": {
       "Label": "Items",
       "ShowToChat": "Mostrar no Chat",
       "CustomRoll": "Rolagem Personalizada",
@@ -151,16 +177,17 @@
       "Points": "Pontos",
       "UseSkill": "Usar Habilidades",
       "Rollable": "Rolável",
-      "_Feature": "",
+      "Feature": "Vantagem",
       "FeatureType": "Tipo de Vantagem",
       "Type": "Tipo",
       "NewSpecialty": "New Specialty",
       "Boon": "Favor",
       "Boons": "Favores",
-      "_Macro": "Macro"
+      "_Macro": "",
+      "_SelectFeature": ""
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Biografia",
       "Concept": "Conceito",
       "Chronicle": "Crônica",
@@ -194,6 +221,66 @@
     "Macro": {
         "_MacroID": "",
         "_MacroNote": ""
+    },
+
+    "Settings": {
+        "_SaveChanges": "",
+
+        "_Modifications": "",
+        "_Custom": "",
+
+        "_Rename": "",
+        "_Hidden": "",
+
+        "_AddAttributeModification": "",
+        "_AddSkillModification": "",
+        "_AddCustomAttribute": "",
+        "_AddCustomSkill": "",
+
+        "_AttributeType": "",
+        "_SkillType": "",
+
+        "_WorldVersion": "",
+        "_WorldVersionHint": "",
+
+        "_DarkTheme": "",
+        "_DarkThemeHint": "",
+
+        "_ActorBanner": "",
+        "_ActorBannerHint": "",
+
+        "_AutomationSettings": "",
+        "_AutomationSettingsHint": "",
+
+        "_DisableAutomation": "",
+        "_DisableAutomationHint": "",
+
+        "_AutomateWillpower": "",
+        "_AutomateWillpowerHint": "",
+
+        "_AutomateHunger": "",
+        "_AutomateHungerHint": "",
+
+        "_AutomateOblivion": "",
+        "_AutomateOblivionHint": "",
+
+        "_AutomateRage": "",
+        "_AutomateRageHint": "",
+
+        "_StorytellerMenu": "",
+        "_StorytellerMenuHint": "",
+
+        "_ModifiedAttributes": "",
+        "_ModifiedAttributesHint": "",
+
+        "_ModifiedSkills": "",
+        "_ModifiedSkillsHint": "",
+
+        "_CustomAttributes": "",
+        "_CustomAttributesHint": "",
+
+        "_CustomSkills": "",
+        "_CustomSkillsHint": ""
     }
   }
 }

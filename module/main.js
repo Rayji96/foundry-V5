@@ -56,8 +56,7 @@ Hooks.once('init', async function () {
   Actors.unregisterSheet('core', ActorSheet)
   // Loop through each entry in the actorTypesList and register their sheet classes
   const actorTypesList = ActorTypes.getList()
-  for (const entry of actorTypesList) {
-    const [, value] = Object.entries(entry)[0]
+  for (const [, value] of Object.entries(actorTypesList)) {
     const { types, sheetClass } = value
 
     Actors.registerSheet('vtm5e', sheetClass, {
@@ -288,7 +287,7 @@ async function createVampireMacro (data, slot) {
   const item = data.system
 
   // Create the macro command
-  const command = `game.wod5e.rollItemMacro("${item.name}");`
+  const command = `game.WOD5E.RollListItemMacro("${item.name}");`
   let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command))
   if (!macro) {
     macro = await Macro.create({

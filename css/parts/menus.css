@@ -8,14 +8,22 @@
   text-align: center;
 }
 
-.wod5e-config-form.storyteller-menu .modification-row {
+.wod5e-config-form.storyteller-menu .modification-row, .wod5e-config-form.storyteller-menu .custom-row {
   margin-top: 3px;
   margin-bottom: 3px;
 }
 
-.wod5e-config-form.storyteller-menu .modification-row .mod-label {
+.wod5e-config-form.storyteller-menu .mod-label {
   font-weight: bold;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wod5e-config-form.storyteller-menu .mod-label input {
+  margin-left: 5px;
 }
 
 .wod5e-config-form.storyteller-menu .modification-row .mod-hidden {
@@ -28,13 +36,13 @@
   text-align: center;
 }
 
-.wod5e-config-form.storyteller-menu .add-mod-button {
+.wod5e-config-form.storyteller-menu .addition-button {
   border-radius: 0;
   font-weight: bold;
   letter-spacing: 0.05em;
 }
 
-.wod5e-config-form.storyteller-menu .add-mod-button:hover {
+.wod5e-config-form.storyteller-menu .addition-button:hover {
   cursor: pointer;
   outline: none;
   transition-duration: 0.3s;
@@ -42,4 +50,9 @@
 
 .wod5e-config-form.storyteller-menu .remove-mod-button {
   cursor: pointer;
+}
+
+.wod5e-config-form.storyteller-menu .remove-custom-button {
+  cursor: pointer;
+  margin-top: 5px;
 }

@@ -113,6 +113,7 @@
 
 .wod5e .resource-label {
     font-weight: 500;
+    position: relative;
 }
 
 .wod5e .description-content {
@@ -125,6 +126,7 @@
 .wod5e .window-content .resource-label {
     text-transform: initial;
     font-size: 1.2em;
+    text-align: left;
 }
 
 .wod5e .window-content .abilities .ability .resource-label {
@@ -306,6 +308,9 @@
 
 .wod5e.sheet.actor .window-content .skills .skill .edit-skill {
     font-size: 14px;
+    position: absolute;
+    left: -20px;
+    top: 2px;
 }
 
 .wod5e .window-content .sheet-body .tab > .resource-label {
@@ -355,7 +360,6 @@
 .wod5e .sheet-body,
 .wod5e .sheet-body .tab,
 .wod5e .sheet-body .tab .editor {
-    height: 100%;
     min-height: 160px;
 }
 

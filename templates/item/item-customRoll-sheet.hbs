@@ -10,9 +10,9 @@
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">{{localize "WOD5E.Tabs.Description"}}</a>
-        <a class="item" data-tab="attributes">{{localize "WOD5E.Attributes.Attributes"}}</a>
-        <a class="item" data-tab="macro">{{localize "WOD5E.Items.Macro"}}</a>
-        <a class="item" data-tab="bonuses">{{localize "WOD5E.Items.Bonuses"}}</a>
+        <a class="item" data-tab="attributes">{{localize "WOD5E.AttributesList.Attributes"}}</a>
+        <a class="item" data-tab="macro">{{localize "WOD5E.ItemsList.Macro"}}</a>
+        <a class="item" data-tab="bonuses">{{localize "WOD5E.ItemsList.Bonuses"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -25,19 +25,19 @@
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
             <div class="resource grid grid-2col flex-center">
-                <label class="resource-label">{{localize "WOD5E.Attributes.Label"}}: </label>
+                <label class="resource-label">{{localize "WOD5E.AttributesList.Label"}}: </label>
                 <select name="system.dice1" data-type="String">
                     {{#select item.system.dice1}}
                     {{> "systems/vtm5e/templates/item/parts/attributes.hbs"}}
                     {{/select}}
                 </select>
-                <label class="resource-label">{{localize "WOD5E.Skills.Label"}}: </label>
+                <label class="resource-label">{{localize "WOD5E.SkillsList.Label"}}: </label>
                 <select name="system.dice2" data-type="String">
                     {{#select item.system.dice2}}
                     {{> "systems/vtm5e/templates/item/parts/skills.hbs"}}
                     {{/select}}
                 </select>
-                <label class="resource-label">{{localize "WOD5E.Roll.Modifier"}}: </label>
+                <label class="resource-label">{{localize "WOD5E.RollList.Modifier"}}: </label>
                 <input name="system.modifier" value="{{item.system.modifier}}" type="number"/>
             </div>
         </div>

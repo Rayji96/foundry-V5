@@ -6,7 +6,10 @@ export class ItemTypes {
   static getList () {
     return Object.entries(this)
       .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
-      .map(([key, value]) => ({ [key]: value }))
+      .reduce((accumulator, [key, value]) => {
+        accumulator[key] = value
+        return accumulator
+      }, {})
   }
 
   // Localize the labels
@@ -31,7 +34,7 @@ export class ItemTypes {
   }
 
   static feature = {
-    label: 'WOD5E.Items.Feature',
+    label: 'WOD5E.ItemsList.Feature',
     img: 'systems/vtm5e/assets/icons/items/feature.svg'
   }
 
@@ -41,12 +44,12 @@ export class ItemTypes {
   }
 
   static boon = {
-    label: 'WOD5E.Items.Boon',
+    label: 'WOD5E.ItemsList.Boon',
     img: 'systems/vtm5e/assets/icons/items/boon.svg'
   }
 
   static customRoll = {
-    label: 'WOD5E.Items.CustomRoll',
+    label: 'WOD5E.ItemsList.CustomRoll',
     img: 'systems/vtm5e/assets/icons/items/custom-roll.png'
   }
 

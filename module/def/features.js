@@ -6,7 +6,10 @@ export class Features {
   static getList () {
     return Object.entries(this)
       .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
-      .map(([key, value]) => ({ [key]: value }))
+      .reduce((accumulator, [key, value]) => {
+        accumulator[key] = value
+        return accumulator
+      }, {})
   }
 
   // Localize the labels
@@ -31,19 +34,19 @@ export class Features {
   }
 
   static background = {
-    label: 'WOD5E.Items.Background'
+    label: 'WOD5E.ItemsList.Background'
   }
 
   static merit = {
-    label: 'WOD5E.Items.Merit'
+    label: 'WOD5E.ItemsList.Merit'
   }
 
   static flaw = {
-    label: 'WOD5E.Items.Flaw'
+    label: 'WOD5E.ItemsList.Flaw'
   }
 
   static boon = {
-    label: 'WOD5E.Items.Boon'
+    label: 'WOD5E.ItemsList.Boon'
   }
 }
 

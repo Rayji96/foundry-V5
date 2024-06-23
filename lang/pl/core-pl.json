@@ -1,4 +1,24 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Wampir",
+          "ghoul": "Ghul",
+          "mortal": "Śmiertelnik",
+          "hunter": "Łowca",
+          "_werewolf": "",
+          "_spc": "",
+          "_group": ""
+      },
+      "Item": {
+          "boon": "Przysługa",
+          "customRoll": "Własny Rzut",
+          "feature": "Cechy",
+          "_gift": "",
+          "perk": "Perk",
+          "power": "Dyscyplinę"
+      }
+  },
+
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
@@ -18,6 +38,9 @@
     "Exp": "PD",
     "None": "Brak",
     "Value": "Wartość",
+    "_Label": "",
+
+    "_New": "New {string}",
     
     "Mortal": "Śmiertelnik",
     "_GroupSheet": "",
@@ -26,10 +49,11 @@
     "_RemoveFromGroup": "",
     "_NoGroupMembers": "",
 
-    "Roll": {
+    "RollList": {
       "Label": "Rzut",
       "_RollMode": "",
       "_MortalDice": "",
+      "_SelectRoll": "",
       "Success": "Sukces",
       "Successes": "Sukcesy",
       "CriticalSuccess": "Krytyczny Sukces",
@@ -40,7 +64,8 @@
       "_Source": "",
       "_Active": "",
       "_CustomModifiers": "",
-      "_AddCustomModifier": ""
+      "_AddCustomModifier": "",
+      "_Total": ""
     },
 
     "Bonus": {
@@ -58,7 +83,8 @@
         "_DisplayWhenInactive": "",
         "_Unless": "",
         "_PathToCheck": "",
-        "_ValueToCheck": ""
+        "_ValueToCheck": "",
+        "_IfPathIs": ""
     },
 
     "SPC": {
@@ -90,7 +116,7 @@
       "Other": "Inne"
     },
 
-    "Attributes": {
+    "AttributesList": {
       "Label": "Atrybut",
       "Attributes": "Atrybuty",
       "Strength": "Siła",
@@ -104,7 +130,7 @@
       "Resolve": "Determinacja"
     },
 
-    "Skills": {
+    "SkillsList": {
       "Label": "Umiejętność",
       "Skills": "Umiejętności",
       "Specialty": "Specjalizacja",
@@ -138,7 +164,7 @@
       "Technology": "Technika"
     },
 
-    "Items": {
+    "ItemsList": {
       "_Label": "",
       "ShowToChat": "Pokaż na czacie",
       "CustomRoll": "Własny Rzut",
@@ -157,10 +183,11 @@
       "_NewSpecialty": "",
       "Boon": "Przysługa",
       "Boons": "Przysługi",
-      "_Macro": "Macro"
+      "_Macro": "",
+      "_SelectFeature": ""
     },
 
-    "Biography": {
+    "BiographyList": {
       "Label": "Biografia",
       "Concept": "Koncept",
       "Chronicle": "Kronika",
@@ -194,6 +221,66 @@
     "Macro": {
         "_MacroID": "",
         "_MacroNote": ""
+    },
+
+    "Settings": {
+        "_SaveChanges": "",
+
+        "_Modifications": "",
+        "_Custom": "",
+
+        "_Rename": "",
+        "_Hidden": "",
+
+        "_AddAttributeModification": "",
+        "_AddSkillModification": "",
+        "_AddCustomAttribute": "",
+        "_AddCustomSkill": "",
+
+        "_AttributeType": "",
+        "_SkillType": "",
+
+        "_WorldVersion": "",
+        "_WorldVersionHint": "",
+
+        "_DarkTheme": "",
+        "_DarkThemeHint": "",
+
+        "_ActorBanner": "",
+        "_ActorBannerHint": "",
+
+        "_AutomationSettings": "",
+        "_AutomationSettingsHint": "",
+
+        "_DisableAutomation": "",
+        "_DisableAutomationHint": "",
+
+        "_AutomateWillpower": "",
+        "_AutomateWillpowerHint": "",
+
+        "_AutomateHunger": "",
+        "_AutomateHungerHint": "",
+
+        "_AutomateOblivion": "",
+        "_AutomateOblivionHint": "",
+
+        "_AutomateRage": "",
+        "_AutomateRageHint": "",
+
+        "_StorytellerMenu": "",
+        "_StorytellerMenuHint": "",
+
+        "_ModifiedAttributes": "",
+        "_ModifiedAttributesHint": "",
+
+        "_ModifiedSkills": "",
+        "_ModifiedSkillsHint": "",
+
+        "_CustomAttributes": "",
+        "_CustomAttributesHint": "",
+
+        "_CustomSkills": "",
+        "_CustomSkillsHint": ""
     }
   }
 }

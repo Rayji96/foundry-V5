@@ -1,4 +1,4 @@
-/* global Dialog, game, foundry, renderTemplate, ChatMessage */
+/* global game, foundry, renderTemplate, ChatMessage */
 
 import { WOD5eDice } from '../scripts/system-rolls.js'
 import { getActiveBonuses } from '../scripts/rolls/situational-modifiers.js'
@@ -127,9 +127,6 @@ export class GhoulActorSheet extends MortalActorSheet {
     // Top-level variables
     const actor = this.actor
 
-    // Make Discipline visible
-    html.find('.discipline-create').click(this._onShowDiscipline.bind(this))
-
     // Make Discipline hidden
     html.find('.discipline-delete').click(async ev => {
       const data = $(ev.currentTarget)[0].dataset
@@ -180,7 +177,7 @@ export class GhoulActorSheet extends MortalActorSheet {
 
         // Send the roll to the system
         WOD5eDice.Roll({
-          advancedDice: cost + activeBonuses,
+          advancedDice: cost + activeBonuses.totalValue,
           title: game.i18n.localize('WOD5E.VTM.RousingBlood'),
           actor,
           disableBasicDice: true,
@@ -208,66 +205,6 @@ export class GhoulActorSheet extends MortalActorSheet {
 
     // Rollable Vampire/Ghouls powers
     html.find('.power-rollable').click(this._onVampireRoll.bind(this))
-  }
-
-  /**
-     * Handle making a discipline visible
-     * @param {Event} event   The originating click event
-     * @private
-     */
-  _onShowDiscipline (event) {
-    event.preventDefault()
-
-    // Top-level variables
-    const actor = this.actor
-
-    // Variables yet to be defined
-    let options = ''
-    let buttons = {}
-
-    // Go through each discipline and add it to the list of options
-    for (const [key, value] of Object.entries(actor.system.disciplines)) {
-      options = options.concat(`<option value="${key}">${game.i18n.localize(value.name)}</option>`)
-    }
-
-    // Base template for the discipline selector
-    const template = `
-      <form>
-          <div class="form-group">
-              <label>${game.i18n.localize('WOD5E.VTM.SelectDiscipline')}</label>
-              <select id="disciplineSelect">${options}</select>
-          </div>
-      </form>`
-
-    // Add buttons
-    buttons = {
-      submit: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('WOD5E.Add'),
-        callback: async (html) => {
-          // Define the discipline selected
-          const discipline = html.find('#disciplineSelect')[0].value
-
-          // Make the selected discipline visible
-          actor.update({ [`system.disciplines.${discipline}.visible`]: true })
-        }
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('WOD5E.Cancel')
-      }
-    }
-
-    // Render the dialog window
-    new Dialog({
-      title: game.i18n.localize('WOD5E.VTM.AddDiscipline'),
-      content: template,
-      buttons,
-      default: 'submit'
-    },
-    {
-      classes: ['wod5e', 'vampire-dialog', 'vampire-sheet']
-    }).render(true)
   }
 
   async _onVampireRoll (event) {
@@ -352,7 +289,7 @@ export class GhoulActorSheet extends MortalActorSheet {
       selectors
     })
 
-    const dicePool = dice1 + dice2 + activeBonuses
+    const dicePool = dice1 + dice2 + activeBonuses.totalValue
 
     WOD5eDice.Roll({
       basicDice: Math.max(dicePool - hunger, 0),

@@ -19,7 +19,7 @@
       "AddEdge": "Trumpf hinzufügen",
       "SelectEdge": "Wähle einen Trumpf:",
       "AddPerk": "Füge eine Verstärkung hinzu",
-      "_NewPerk": "",
+      "NewPerk": "Neue Verstärkung",
       "Desperation": "Verzweiflung",
       "Danger": "Gefahr",
       "DesperationSuccess": "Erfolg mit Überanstrengen oder verzweifelter Fehlschlag",
@@ -30,15 +30,15 @@
       
       "Arsenal": "Arsenal",
       "Fleet": "Flotte",
-      "Ordnance": "Artillerie",
+      "Ordnance": "Sprengstoff",
       "Library": "Bibliothek",
       "ImprovisedGear": "Improvisierte Ausrüstung",
-      "GlobalAccess": "Globaler Zugang",
+      "GlobalAccess": "Globaler Zugriff",
       "DroneJockey": "Drohnenjockey",
       "BeastWhisperer": "Tierflüsterer",
-      "SenseTheUnnatural": "Das Unnatürliche spüren",
-      "RepelTheUnnatural": "Das Unnatürliche abwehren",
-      "ThwartTheUnnatural": "Das Unnatürliche verhindern",
+      "SenseTheUnnatural": "Übernatürliches spüren",
+      "RepelTheUnnatural": "Übernatürliches zurücktreiben",
+      "ThwartTheUnnatural": "Übernatürliches vereiteln",
       "Artifact": "Artefakt"
     }
   }

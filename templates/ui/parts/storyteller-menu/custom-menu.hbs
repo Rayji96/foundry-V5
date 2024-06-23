@@ -1,0 +1,53 @@
+<div class="tab" data-group="primary" data-tab="custom">
+  <div class="config-category">
+    <h2>{{localize 'WOD5E.Settings.CustomAttributes'}}</h2>
+    <div class="subcategory">
+      <p class="notes">{{localize 'WOD5E.Settings.CustomAttributesHint'}}</p>
+      <div class="grid grid-2col">
+        <div class="mod-header">{{localize 'WOD5E.Label'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.AttributeType'}}</div>
+      </div>
+      {{#each customAttributes as |attribute id|}}
+        <div class="customization-row grid grid-2col" data-type="attribute" data-id="{{attribute.id}}">
+          <div class="mod-label">
+            <i class="fas fa-trash remove-custom-button" data-type="attribute" data-id="{{attribute.id}}"></i>
+            <input type="text" class="label" placeholder="New Attribute" value="{{attribute.label}}">
+          </div>
+          <select class="attr-type" data-type="String">
+            {{selectOptions ../attributeTypes selected=attribute.type localize=true}}
+          </select>
+        </div>
+      {{/each}}
+      <div class="mod-footer">
+        <hr>
+        <div class="add-custom-button addition-button" data-type="attribute">{{localize 'WOD5E.Settings.AddCustomAttribute'}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="config-category">
+    <h2>{{localize 'WOD5E.Settings.CustomSkills'}}</h2>
+    <div class="subcategory">
+      <p class="notes">{{localize 'WOD5E.Settings.CustomSkillsHint'}}</p>
+      <div class="grid grid-2col">
+        <div class="mod-header">{{localize 'WOD5E.Label'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.SkillType'}}</div>
+      </div>
+      {{#each customSkills as |skill id|}}
+        <div class="customization-row grid grid-2col" data-type="skill" data-id="{{skill.id}}">
+          <div class="mod-label">
+            <i class="fas fa-trash remove-custom-button" data-type="skill" data-id="{{skill.id}}"></i>
+            <input type="text" class="label" placeholder="New Skill" value="{{skill.label}}">
+          </div>
+          <select class="attr-type" data-type="String">
+            {{selectOptions ../attributeTypes selected=skill.type localize=true}}
+          </select>
+        </div>
+      {{/each}}
+      <div class="mod-footer">
+        <hr>
+        <div class="add-custom-button addition-button" data-type="skill">{{localize 'WOD5E.Settings.AddCustomSkill'}}</div>
+      </div>
+    </div>
+  </div>
+</div>

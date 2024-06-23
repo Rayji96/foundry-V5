@@ -1,0 +1,52 @@
+<div class="tab" data-group="primary" data-tab="modifications">
+  <div class="config-category">
+    <h2>{{localize 'WOD5E.Settings.ModifiedAttributes'}}</h2>
+    <div class="subcategory">
+      <p class="notes">{{localize 'WOD5E.Settings.ModifiedAttributesHint'}}</p>
+      <div class="grid grid-3col">
+        <div class="mod-header">{{localize 'WOD5E.AttributesList.Label'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.Rename'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.Hidden'}}</div>
+      </div>
+      {{#each attributeModifications as |attribute id|}}
+        <div class="modification-row grid grid-3col" data-type="attribute" data-id="{{attribute.id}}" data-label="{{attribute.label}}">
+          <div class="mod-label">
+            <i class="fas fa-trash remove-mod-button" data-type="attribute" data-id="{{attribute.id}}"></i>
+            {{attribute.label}}
+          </div>
+          <input type="text" class="mod-rename" placeholder="{{attribute.label}}" value="{{attribute.rename}}">
+          <input type="checkbox" class="mod-hidden"{{#if attribute.hidden}} checked{{/if}}/>
+        </div>
+      {{/each}}
+      <div class="mod-footer">
+        <hr>
+        <div class="add-mod-button addition-button" data-type="attribute">{{localize 'WOD5E.Settings.AddAttributeModification'}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="config-category">
+    <h2>{{localize 'WOD5E.Settings.ModifiedSkills'}}</h2>
+    <div class="subcategory">
+      <p class="notes">{{localize 'WOD5E.Settings.ModifiedSkillsHint'}}</p>
+      <div class="grid grid-3col">
+        <div class="mod-header">{{localize 'WOD5E.SkillsList.Label'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.Rename'}}</div>
+        <div class="mod-header">{{localize 'WOD5E.Settings.Hidden'}}</div>
+      </div>
+      {{#each skillModifications as |skill id|}}
+        <div class="modification-row grid grid-3col" data-type="skill" data-id="{{skill.id}}" data-label="{{skill.label}}">
+          <div class="mod-label">
+            <i class="fas fa-trash remove-mod-button" data-type="skill" data-id="{{skill.id}}"></i>
+            {{skill.label}}
+          </div>
+          <input type="text" class="mod-rename" placeholder="{{skill.label}}" value="{{skill.rename}}">
+          <input type="checkbox" data-type="skill" class="mod-hidden"{{#if skill.hidden}} checked{{/if}}/>
+        </div>
+      {{/each}}
+      <div class="mod-footer">
+        <hr>
+        <div class="add-mod-button addition-button" data-type="skill">{{localize 'WOD5E.Settings.AddSkillModification'}}</div>
+      </div>
+    </div>
+  </div>
+</div>

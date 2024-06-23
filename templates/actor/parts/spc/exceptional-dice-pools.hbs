@@ -8,15 +8,15 @@
       </div>
     <ol class="items-list">
         <!-- Iterate through each of the skill lists -->
-        {{#each actor.system.exceptionaldicepools as |exceptionalskill key|}}
+        {{#each actor.system.exceptionaldicepools_list as |exceptionalskill key|}}
             {{#if exceptionalskill.visible}}
                 <li class="flexrow item-header">
                     <label for="{{exceptionalskill.name}}" class="resource-label rollable" data-absolute-value="{{exceptionalskill.value}}" 
-                      data-use-absolute-value="true" data-label="{{localize exceptionalskill.name}}">{{localize exceptionalskill.name}} 
+                      data-use-absolute-value="true" data-label="{{exceptionalskill.displayName}}">{{exceptionalskill.displayName}} 
                     </label>
                     <div class="resource-value">
-                        <input type="number" name="system.exceptionaldicepools.{{key}}.value" 
-                        value="{{exceptionalskill.value}}" data-name="system.exceptionaldicepools.{{key}}.value" />
+                        <input type="number" name="system.exceptionaldicepools.{{exceptionalskill.id}}.value" 
+                        value="{{exceptionalskill.value}}" data-name="system.exceptionaldicepools.{{exceptionalskill.id}}.value" />
                     </div>
                     <!-- Item controls for Exceptional Skill sections -->
                     <div class="item-controls">

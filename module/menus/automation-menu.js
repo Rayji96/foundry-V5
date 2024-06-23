@@ -3,7 +3,7 @@
 export class AutomationMenu extends FormApplication {
   static get defaultOptions () {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      title: 'Automation Settings',
+      title: game.i18n.localize('WOD5E.Settings.AutomationSettings'),
       id: 'wod5e-automation',
       classes: ['wod5e'],
       template: 'systems/vtm5e/templates/ui/automation-menu.hbs',

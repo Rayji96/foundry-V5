@@ -68,14 +68,14 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/vtm5e/templates/item/parts/macro.hbs',
 
     // Dice Tray Partials
-    'systems/vtm5e/templates/ui/parts/select-character.hbs',
-    'systems/vtm5e/templates/ui/parts/pool1-select-attribute.hbs',
-    'systems/vtm5e/templates/ui/parts/pool1-select-skill.hbs',
-    'systems/vtm5e/templates/ui/parts/pool1-select-discipline.hbs',
-    'systems/vtm5e/templates/ui/parts/pool2-select-attribute.hbs',
-    'systems/vtm5e/templates/ui/parts/pool2-select-skill.hbs',
-    'systems/vtm5e/templates/ui/parts/pool2-select-discipline.hbs',
-    'systems/vtm5e/templates/ui/parts/pool2-nothing.hbs',
+    // 'systems/vtm5e/templates/ui/parts/select-character.hbs',
+    // 'systems/vtm5e/templates/ui/parts/pool1-select-attribute.hbs',
+    // 'systems/vtm5e/templates/ui/parts/pool1-select-skill.hbs',
+    // 'systems/vtm5e/templates/ui/parts/pool1-select-discipline.hbs',
+    // 'systems/vtm5e/templates/ui/parts/pool2-select-attribute.hbs',
+    // 'systems/vtm5e/templates/ui/parts/pool2-select-skill.hbs',
+    // 'systems/vtm5e/templates/ui/parts/pool2-select-discipline.hbs',
+    // 'systems/vtm5e/templates/ui/parts/pool2-nothing.hbs',
 
     // Roll dialog Partials
     'systems/vtm5e/templates/ui/parts/roll-dialog-base.hbs',
@@ -93,6 +93,8 @@ export const preloadHandlebarsTemplates = async function () {
     // Menu Partials
     'systems/vtm5e/templates/ui/automation-menu.hbs',
     'systems/vtm5e/templates/ui/storyteller-menu.hbs',
+    'systems/vtm5e/templates/ui/parts/storyteller-menu/modification-menu.hbs',
+    'systems/vtm5e/templates/ui/parts/storyteller-menu/custom-menu.hbs',
     'systems/vtm5e/templates/ui/select-dialog.hbs'
   ]
 

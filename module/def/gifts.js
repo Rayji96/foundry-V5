@@ -3,11 +3,13 @@
 export class Gifts {
   // Function to help with quickly grabbing all the listed values;
   // Will only retrieve objects (definitions)
-  // Optional string can be provided to filter by type
-  static getList (type) {
+  static getList () {
     return Object.entries(this)
-      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value) && (!type || value.type === type))
-      .map(([key, value]) => ({ [key]: value }))
+      .filter(([, value]) => typeof value === 'object' && value !== null && !Array.isArray(value))
+      .reduce((accumulator, [key, value]) => {
+        accumulator[key] = value
+        return accumulator
+      }, {})
   }
 
   // Localize the labels
@@ -97,6 +99,10 @@ export class Gifts {
 
   static silverfang = {
     label: 'WOD5E.WTA.SilverFang'
+  }
+
+  static rite = {
+    label: 'WOD5E.WTA.Rite'
   }
 }
 
