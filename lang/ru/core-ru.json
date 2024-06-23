@@ -1,4 +1,24 @@
 {
+    "TYPES": {
+        "Actor": {
+            "vampire": "Вампир",
+            "ghoul": "Гуль",
+            "mortal": "Смертный",
+            "hunter": "Охотник",
+            "werewolf": "Оборотень",
+            "spc": "Персонаж Рассказчика",
+            "group": "Лист Котерии"
+        },
+        "Item": {
+            "boon": "Долг",
+            "customRoll": "Уникальная проверка",
+            "feature": "Преимущества",
+            "gift": "дара",
+            "perk": "Улучшение",
+            "power": "Дисциплина"
+        }
+    },
+  
     "WOD5E": {
         "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 

@@ -1,4 +1,24 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Wampir",
+          "ghoul": "Ghul",
+          "mortal": "Śmiertelnik",
+          "hunter": "Łowca",
+          "_werewolf": "",
+          "_spc": "",
+          "_group": ""
+      },
+      "Item": {
+          "boon": "Przysługa",
+          "customRoll": "Własny Rzut",
+          "feature": "Cechy",
+          "_gift": "",
+          "perk": "Perk",
+          "power": "Dyscyplinę"
+      }
+  },
+
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 

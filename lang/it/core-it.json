@@ -1,6 +1,25 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Vampiro",
+          "ghoul": "Ghoul",
+          "mortal": "Mortale",
+          "hunter": "Cacciatore",
+          "werewolf": "Licantropo",
+          "spc": "PNG",
+          "group": "Scheda di gruppo"
+      },
+      "Item": {
+          "boon": "Favore",
+          "customRoll": "Tiro personalizzato",
+          "feature": "Caratteristica",
+          "gift": "Dono",
+          "perk": "Beneficio",
+          "power": "Disciplina"
+      }
+  },
+
   "WOD5E": {
-    
     "Name": "Nome",
     "Confirm": "Conferma",
     "Close": "Chiudi",

@@ -1,4 +1,24 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Vampire",
+          "ghoul": "Goule",
+          "mortal": "Mortel",
+          "hunter": "Chasseur",
+          "_werewolf": "",
+          "spc": "Antagoniste",
+          "_group": ""
+      },
+      "Item": {
+          "boon": "Dette",
+          "customRoll": "Jet Personnalisé",
+          "feature": "Atout",
+          "_gift": "",
+          "perk": "Avantage",
+          "power": "Discipline"
+      }
+  },
+
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 

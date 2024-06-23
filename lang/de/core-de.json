@@ -1,4 +1,24 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Vampir",
+          "ghoul": "Ghoul",
+          "mortal": "Sterblicher",
+          "hunter": "Jäger",
+          "werewolf": "Werwolf",
+          "spc": "Erzähler-Charakter",
+          "group": "Gruppen-Bogen"
+      },
+      "Item": {
+          "boon": "Gefallen",
+          "customRoll": "Benutzerdefinierter Wurf",
+          "feature": "Merkmal",
+          "gift": "Gabe",
+          "perk": "Verstärkung",
+          "power": "Disziplin"
+      }
+  },
+
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 

@@ -1,4 +1,24 @@
 {
+    "TYPES": {
+        "Actor": {
+            "vampire": "Вампір",
+            "ghoul": "Упир",
+            "mortal": "Смертний",
+            "hunter": "Мисливець",
+            "werewolf": "Перевертень",
+            "spc": "НІП",
+            "_group": ""
+        },
+        "Item": {
+            "boon": "Милість",
+            "customRoll": "Власна перевірка",
+            "feature": "Особливості",
+            "gift": "Дар",
+            "perk": "Вигоду",
+            "power": "Дисципліна"
+        }
+    },
+  
     "WOD5E": {
         "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
@@ -157,7 +177,7 @@
             "Points": "Крапки",
             "UseSkill": "Використовує Навички",
             "Rollable": "Є перевірка",
-            "_Feature": "",
+            "Feature": "Особливості",
             "FeatureType": "Тип Особливості",
             "Type": "Тип",
             "_NewSpecialty": "",

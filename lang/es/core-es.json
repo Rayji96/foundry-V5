@@ -1,4 +1,24 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Vampiro",
+          "ghoul": "Ghoul",
+          "mortal": "Mortal",
+          "hunter": "Cazador",
+          "werewolf": "Hombre lobo",
+          "spc": "Personaje del narrador",
+          "_group": ""
+      },
+      "Item": {
+          "boon": "Bendición",
+          "customRoll": "Tirada Personalizadas",
+          "feature": "Rasgo",
+          "_gift": "",
+          "perk": "Beneficio",
+          "power": "Disciplina"
+      }
+  },
+
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 

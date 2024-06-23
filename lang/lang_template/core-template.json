@@ -1,4 +1,24 @@
 {
+    "TYPES": {
+        "Actor": {
+            "vampire": "",
+            "ghoul": "",
+            "mortal": "",
+            "hunter": "",
+            "werewolf": "",
+            "spc": "",
+            "group": ""
+        },
+        "Item": {
+            "boon": "",
+            "customRoll": "",
+            "feature": "",
+            "gift": "",
+            "perk": "",
+            "power": ""
+        }
+    },
+  
     "WOD5E": {
         "Name": "",
         "Confirm": "",

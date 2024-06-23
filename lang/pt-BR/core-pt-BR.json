@@ -1,4 +1,24 @@
 {
+  "TYPES": {
+      "Actor": {
+          "vampire": "Vampiro",
+          "ghoul": "Carniçal",
+          "mortal": "Mortal",
+          "hunter": "Caçador",
+          "werewolf": "",
+          "spc": "Personagem do Narrador",
+          "_group": ""
+      },
+      "Item": {
+          "boon": "Favor",
+          "customRoll": "Rolagem Personalizada",
+          "feature": "Vantagem",
+          "_gift": "",
+          "perk": "Distinção",
+          "power": "Disciplina"
+      }
+  },
+
   "WOD5E": {
     "_COMMENT": "This localization file has missing translations, marked with an underscore before the string. If you have a translation, please submit a pull request!",
 
@@ -157,7 +177,7 @@
       "Points": "Pontos",
       "UseSkill": "Usar Habilidades",
       "Rollable": "Rolável",
-      "_Feature": "",
+      "Feature": "Vantagem",
       "FeatureType": "Tipo de Vantagem",
       "Type": "Tipo",
       "NewSpecialty": "New Specialty",
