@@ -1,4 +1,4 @@
-/* global Item, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E */
+/* global Item */
 
 /**
  * Extend the base ItemSheet document and put all our base functionality here

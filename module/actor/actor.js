@@ -1,4 +1,4 @@
-/* global Actor, game, renderTemplate, Dialog, FormDataExtended, foundry, WOD5E, CONST */
+/* global Actor, game, foundry */
 
 /**
  * Extend the base ActorSheet document and put all our base functionality here
