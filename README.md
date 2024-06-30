@@ -37,7 +37,7 @@ Please check the issues list before suggesting new features.
 
 ### Core Developers
 * Lead System Developer: [Veilza]
-* Quality Assurance: [Rayji96]
+* Creator: [Rayji96]
 
 Huge thanks to these folks for their contributions!
 
